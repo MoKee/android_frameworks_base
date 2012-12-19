@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2006 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="TextAppearance.StatusBar.IntruderAlert"
+        parent="@*android:style/TextAppearance.StatusBar">
+    </style>
+
+    <style name="TextAppearance.StatusBar.SystemPanel"
+        parent="@*android:style/TextAppearance.StatusBar">
+        <item name="android:textAppearance">?android:attr/textAppearance</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#FF808080</item>
+    </style>
+
+    <style name="TextAppearance.StatusBar.TextButton"
+        parent="@*android:style/TextAppearance.StatusBar">
+        <item name="android:textAppearance">?android:attr/textAppearance</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+    </style>
+
+    <style name="TextAppearance.StatusBar.Battery" parent="@*android:style/TextAppearance.StatusBar.Icon">
+        <!-- Note: must be dp to fit in status bar -->
+        <item name="android:textSize">12dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@android:color/holo_blue_light</item>
+    </style>
+
+    <style name="TextAppearance.StatusBar.Clock" parent="@*android:style/TextAppearance.StatusBar.Icon">
+        <!-- Note: must be dp to fit in status bar -->
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@android:color/holo_blue_light</item>
+    </style>
+
+    <style name="TextAppearance.StatusBar.Date" parent="@*android:style/TextAppearance.StatusBar.Icon">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@android:color/holo_blue_light</item>
+    </style>
+
+    <style name="TextAppearance.StatusBar.Expanded" parent="@*android:style/TextAppearance.StatusBar" />
+
+    <style name="TextAppearance.StatusBar.Expanded.Clock">
+        <item name="android:textSize">32dp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/clock_view_color</item>
+    </style>
+
+    <style name="TextAppearance.StatusBar.Expanded.Date">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/date_view_color</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="TextAppearance.StatusBar.Expanded.Network" parent="@style/TextAppearance.StatusBar.Expanded.Date">
+        <item name="android:textColor">#999999</item>
+    </style>
+
+    <style name="TextAppearance.StatusBar.Signal" parent="@*android:style/TextAppearance.StatusBar.Icon">
+        <!-- Note: must be dp to fit in status bar -->
+        <item name="android:textSize">12dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@android:color/holo_blue_light</item>
+    </style>
+
+    <style name="TextAppearance.StatusBar.Expanded.Network.EmergencyOnly">
+    </style>
+
+    <style name="Animation" />
+
+    <style name="Animation.ShirtPocketPanel">
+        <item name="android:windowEnterAnimation">@*android:anim/grow_fade_in_from_bottom</item>
+        <item name="android:windowExitAnimation">@*android:anim/shrink_fade_out_from_bottom</item>
+    </style>
+
+    <style name="Animation.RecentPanel">
+        <item name="android:windowEnterAnimation">@*android:anim/grow_fade_in_from_bottom</item>
+        <item name="android:windowExitAnimation">@*android:anim/shrink_fade_out_from_bottom</item>
+    </style>
+
+    <!-- Standard animations for hiding and showing the status bar. -->
+    <style name="Animation.StatusBar">
+    </style>
+
+    <style name="Animation.StatusBar.IntruderAlert">
+        <item name="android:windowEnterAnimation">@anim/priority_alert_enter</item>
+        <item name="android:windowExitAnimation">@anim/priority_alert_exit</item>
+    </style>
+
+    <style name="TextAppearance.StatusBar.PhoneTicker"
+        parent="@*android:style/TextAppearance.StatusBar.Ticker">
+        <!-- Note: must be dp to fit in status bar -->
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="StatusBarPanelSettingsIcon">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">64dp</item>
+        <item name="android:scaleType">center</item>
+    </style>
+
+    <style name="StatusBarPanelSettingsRow">
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">?android:attr/listChoiceBackgroundIndicator</item>
+    </style>
+
+    <style name="StatusBarPanelSettingsContents">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_gravity">left|center_vertical</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    
+</resources>
