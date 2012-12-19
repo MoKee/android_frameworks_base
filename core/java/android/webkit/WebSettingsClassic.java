@@ -420,9 +420,9 @@ public class WebSettingsClassic extends WebSettings {
             buffer.append(" Build/");
             buffer.append(id);
         }
-        final String cmversion = SystemProperties.get("ro.cm.version");
-        if (cmversion != null && cmversion.length() > 0)
-            buffer.append("; CyanogenMod-" + cmversion.replaceAll("(.+?)-.*","$1"));
+        final String mkversion = SystemProperties.get("ro.mk.version");
+        if (mkversion != null && mkversion.length() > 0)
+            buffer.append("; MoKee-" + mkversion.replaceAll("(.+?)-.*","$1"));
         String mobile = mContext.getResources().getText(
             com.android.internal.R.string.web_user_agent_target_content).toString();
         final String base = mContext.getResources().getText(
