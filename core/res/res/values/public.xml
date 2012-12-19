@@ -3936,6 +3936,18 @@
   <java-symbol type="string" name="toast_rotation_unlocked" />
   <java-symbol type="string" name="toast_rotation_locked" />
 
+  <java-symbol type="array" name="animals" />
+  <java-symbol type="array" name="chinesenumber" />
+  <java-symbol type="array" name="chineseten" />
+  <java-symbol type="array" name="gan" />
+  <java-symbol type="array" name="zhi" />
+  <java-symbol type="string" name="status_chushi" />
+  <java-symbol type="string" name="status_format1" />
+  <java-symbol type="string" name="status_format2" />
+  <java-symbol type="string" name="status_leap" />
+  <java-symbol type="string" name="status_month" />
+  <java-symbol type="string" name="status_year" />
+  <java-symbol type="string" name="status_day" />
   <!-- IME Picker showing upon pressing Sym Key -->
   <java-symbol type="bool" name="config_symKeyShowsImePicker" />
 
