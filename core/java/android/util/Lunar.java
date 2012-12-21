@@ -33,6 +33,7 @@ public class Lunar {
     private boolean leap;
     private Context mContext;
     private String[] chineseNumber;
+    private String[] lunarMonthName;
     private SimpleDateFormat chineseDateFormat;
     final static long[] lunarInfo = new long[] { 0x04bd8, 0x04ae0, 0x0a570,
             0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0, 0x09ad0, 0x055d2,
@@ -110,6 +111,7 @@ public class Lunar {
         int leapMonth = 0;
         mContext = context;
         chineseNumber = mContext.getResources().getStringArray(R.array.chinesenumber);
+        lunarMonthName = mContext.getResources().getStringArray(R.array.lunar_month_name);
         String format1 = mContext.getResources().getString(R.string.status_format1);
         chineseDateFormat = new SimpleDateFormat(format1);
         Date baseDate = null;
@@ -184,7 +186,7 @@ public class Lunar {
     	String year1 = mContext.getResources().getString(R.string.status_year);
     	String run1 = mContext.getResources().getString(R.string.status_leap);
     	String month1 = mContext.getResources().getString(R.string.status_month);
-        return cyclical() + animalsYear() + year1 + (leap ? run1 : "") + chineseNumber[month - 1] + month1
+        return cyclical() + animalsYear() + year1 + (leap ? run1 : "") + lunarMonthName[month - 1] + month1
                 + getChinaDayString(day);
     }
 }
