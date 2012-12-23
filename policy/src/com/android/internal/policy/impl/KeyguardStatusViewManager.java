@@ -76,6 +76,13 @@ import java.util.Date;
 
 import libcore.util.MutableInt;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import android.util.Lunar;
+
 /***
  * Manages a number of views inside of LockScreen layouts. See below for a list of widgets
  *
@@ -106,6 +113,7 @@ class KeyguardStatusViewManager implements OnClickListener {
     // NOTE: These may be null in some LockScreen screens and should protect from NPE
     private TextView mCarrierView;
     private TextView mDateView;
+    private TextView mLunarDateView;
     private TextView mStatus1View;
     private TextView mOwnerInfoView;
     private TextView mAlarmStatusView;
@@ -134,6 +142,8 @@ class KeyguardStatusViewManager implements OnClickListener {
 
     // last known SIM state
     protected State mSimState;
+
+    private String mDate;
 
     private LockPatternUtils mLockPatternUtils;
     private KeyguardUpdateMonitor mUpdateMonitor;
@@ -216,13 +226,14 @@ class KeyguardStatusViewManager implements OnClickListener {
                 boolean emergencyButtonEnabledInScreen) {
         if (DEBUG) Log.v(TAG, "KeyguardStatusViewManager()");
         mContainer = view;
-        mDateFormatString = getContext().getString(R.string.abbrev_wday_month_day_no_year);
+        mDateFormatString = getContext().getString(R.string.abbrev_wday_month_day_year);
         mLockPatternUtils = lockPatternUtils;
         mUpdateMonitor = updateMonitor;
         mCallback = callback;
 
         mCarrierView = (TextView) findViewById(R.id.carrier);
         mDateView = (TextView) findViewById(R.id.date);
+		mLunarDateView = (TextView) findViewById(R.id.lunar_date);
         mStatus1View = (TextView) findViewById(R.id.status1);
         mAlarmStatusView = (TextView) findViewById(R.id.alarm_status);
         mOwnerInfoView = (TextView) findViewById(R.id.propertyOf);
@@ -284,7 +295,7 @@ class KeyguardStatusViewManager implements OnClickListener {
         }
 
         // Required to get Marquee to work.
-        final View scrollableViews[] = { mCarrierView, mDateView, mStatus1View, mOwnerInfoView,
+        final View scrollableViews[] = { mCarrierView, mDateView, mLunarDateView, mStatus1View, mOwnerInfoView,
                 mAlarmStatusView, mCalendarEventDetails, mWeatherCity, mWeatherCondition };
         for (View v : scrollableViews) {
             if (v != null) {
@@ -781,6 +792,10 @@ class KeyguardStatusViewManager implements OnClickListener {
             mDateLineView.setGravity(gravity);
             setSpecificMargins(mDateLineView, leftMargin, -1, rightMargin, -1);
         }
+	if (mLunarDateView != null) {
+	    mLunarDateView.setGravity(gravity);
+            setSpecificMargins(mLunarDateView, leftMargin, -1, rightMargin, -1);
+	}
         if (mStatus1View != null) {
             mStatus1View.setGravity(gravity);
             setSpecificMargins(mStatus1View, leftMargin, -1, rightMargin, -1);
@@ -875,9 +890,27 @@ class KeyguardStatusViewManager implements OnClickListener {
     }
 
     void refreshDate() {
-        if (mDateView != null) {
-            mDateView.setText(DateFormat.format(mDateFormatString, new Date()));
+        if (mDateView != null && mLunarDateView != null) {
+			mDate = (DateFormat.format(mDateFormatString, new Date())).toString();
+            mDateView.setText(mDate);
+	    	mLunarDateView.setText(buildLunarDate(mDate));
         }
+    }
+
+    /**
+     * Get lunar date
+     */
+	private String buildLunarDate(String date){
+        List<String> list = new ArrayList<String>();
+        Calendar cal = Calendar.getInstance();    
+        Pattern p = Pattern.compile("[\\u4e00-\\u9fa5]+|\\d+");
+        Matcher m = p.matcher(date);
+        while(m.find()){
+            list.add(m.group());
+        }
+        cal.set(Integer.parseInt(list.get(0)), Integer.parseInt(list.get(2)) - 1,Integer.parseInt(list.get(4)));
+        Lunar lunar = new Lunar(cal, getContext());
+        return lunar.toString();
     }
 
     /**
