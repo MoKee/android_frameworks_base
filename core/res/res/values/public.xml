@@ -1261,6 +1261,7 @@
   <java-symbol type="id" name="date" />
   <java-symbol type="id" name="lunar_date" />
   <java-symbol type="id" name="date_line" />
+  <java-symbol type="id" name="status_line" />
   <java-symbol type="id" name="eight" />
   <java-symbol type="id" name="emergencyCallButton" />
   <java-symbol type="id" name="faceLockAreaView" />

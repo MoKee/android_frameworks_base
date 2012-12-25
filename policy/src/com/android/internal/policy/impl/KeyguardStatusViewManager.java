@@ -119,6 +119,7 @@ class KeyguardStatusViewManager implements OnClickListener {
     private TextView mOwnerInfoView;
     private TextView mAlarmStatusView;
     private LinearLayout mDateLineView;
+    private LinearLayout mStatusLineView;
     private TransportControlView mTransportView;
     private RelativeLayout mWeatherPanel, mWeatherTempsPanel;
     private TextView mWeatherCity, mWeatherCondition, mWeatherLowHigh, mWeatherTemp, mWeatherUpdateTime;
@@ -236,11 +237,12 @@ class KeyguardStatusViewManager implements OnClickListener {
 
         mCarrierView = (TextView) findViewById(R.id.carrier);
         mDateView = (TextView) findViewById(R.id.date);
-		mLunarDateView = (TextView) findViewById(R.id.lunar_date);
+	mLunarDateView = (TextView) findViewById(R.id.lunar_date);
         mStatus1View = (TextView) findViewById(R.id.status1);
         mAlarmStatusView = (TextView) findViewById(R.id.alarm_status);
         mOwnerInfoView = (TextView) findViewById(R.id.propertyOf);
         mDateLineView = (LinearLayout) findViewById(R.id.date_line);
+        mStatusLineView = (LinearLayout) findViewById(R.id.status_line);
         mTransportView = (TransportControlView) findViewById(R.id.transport);
         mEmergencyCallButton = (Button) findViewById(R.id.emergencyCallButton);
         mEmergencyCallButtonEnabledInScreen = emergencyButtonEnabledInScreen;
@@ -795,17 +797,9 @@ class KeyguardStatusViewManager implements OnClickListener {
             mDateLineView.setGravity(gravity);
             setSpecificMargins(mDateLineView, leftMargin, -1, rightMargin, -1);
         }
-	if (mLunarDateView != null) {
-	    mLunarDateView.setGravity(gravity);
-            setSpecificMargins(mLunarDateView, leftMargin, -1, rightMargin, -1);
-	}
-        if (mStatus1View != null) {
-            mStatus1View.setGravity(gravity);
-            setSpecificMargins(mStatus1View, leftMargin, -1, rightMargin, -1);
-        }
-        if (mAlarmStatusView != null) {
-            mAlarmStatusView.setGravity(gravity);
-            setSpecificMargins(mAlarmStatusView, leftMargin, -1, rightMargin, -1);
+        if (mStatusLineView != null) {
+            mStatusLineView.setGravity(gravity);
+            setSpecificMargins(mStatusLineView, leftMargin, -1, rightMargin, -1);
         }
     }
 
@@ -924,7 +918,7 @@ class KeyguardStatusViewManager implements OnClickListener {
         }
         cal.set(Integer.parseInt(list.get(0)), Integer.parseInt(list.get(2)) - 1,Integer.parseInt(list.get(4)));
         Lunar lunar = new Lunar(cal, getContext());
-        return "   "+lunar.toString().substring(4,lunar.toString().length());
+        return lunar.toString().substring(4,lunar.toString().length());
     }
 
     /**

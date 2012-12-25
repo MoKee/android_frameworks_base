@@ -84,6 +84,7 @@
             android:id="@+id/lunar_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dip"
             android:singleLine="true"
             android:ellipsize="marquee"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -91,6 +92,12 @@
             />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/status_line"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/alarm_status"
@@ -107,12 +114,15 @@
         android:id="@+id/status1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dip"
         android:singleLine="true"
         android:ellipsize="marquee"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="@dimen/keyguard_lockscreen_status_line_font_size"
         android:drawablePadding="4dip"
         />
+
+    </LinearLayout>
 
     <!-- CyanogenMod Weather Panel -->
     <RelativeLayout
