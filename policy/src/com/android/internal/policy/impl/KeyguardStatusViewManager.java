@@ -107,6 +107,7 @@ class KeyguardStatusViewManager implements OnClickListener {
 
     private StatusMode mStatus;
     private String mDateFormatString;
+    private String mDateFormatString1;
     private TransientTextManager mTransientTextManager;
 
     // Views that this class controls.
@@ -144,6 +145,7 @@ class KeyguardStatusViewManager implements OnClickListener {
     protected State mSimState;
 
     private String mDate;
+    private String mDate1;
 
     private LockPatternUtils mLockPatternUtils;
     private KeyguardUpdateMonitor mUpdateMonitor;
@@ -226,7 +228,8 @@ class KeyguardStatusViewManager implements OnClickListener {
                 boolean emergencyButtonEnabledInScreen) {
         if (DEBUG) Log.v(TAG, "KeyguardStatusViewManager()");
         mContainer = view;
-        mDateFormatString = getContext().getString(R.string.abbrev_wday_month_day_year);
+        mDateFormatString = getContext().getString(R.string.abbrev_wday_month_day_no_year);
+        mDateFormatString1 = getContext().getString(R.string.abbrev_wday_month_day_year);		
         mLockPatternUtils = lockPatternUtils;
         mUpdateMonitor = updateMonitor;
         mCallback = callback;
@@ -760,7 +763,7 @@ class KeyguardStatusViewManager implements OnClickListener {
         }
 
         final int clockAlign = Settings.System.getInt(getContext().getContentResolver(),
-                Settings.System.LOCKSCREEN_CLOCK_ALIGN, 2);
+                Settings.System.LOCKSCREEN_CLOCK_ALIGN, 1);
         int margin = (int) Math.round(getContext().getResources().getDimension(
                 R.dimen.keyguard_lockscreen_status_line_font_right_margin));
 
@@ -799,6 +802,10 @@ class KeyguardStatusViewManager implements OnClickListener {
         if (mStatus1View != null) {
             mStatus1View.setGravity(gravity);
             setSpecificMargins(mStatus1View, leftMargin, -1, rightMargin, -1);
+        }
+        if (mAlarmStatusView != null) {
+            mAlarmStatusView.setGravity(gravity);
+            setSpecificMargins(mAlarmStatusView, leftMargin, -1, rightMargin, -1);
         }
     }
 
@@ -890,10 +897,17 @@ class KeyguardStatusViewManager implements OnClickListener {
     }
 
     void refreshDate() {
-        if (mDateView != null && mLunarDateView != null) {
-			mDate = (DateFormat.format(mDateFormatString, new Date())).toString();
-            mDateView.setText(mDate);
-	    	mLunarDateView.setText(buildLunarDate(mDate));
+        if (mDateView != null) {
+            Resources res = getContext().getResources();
+            String strCountry = res.getConfiguration().locale.getCountry();
+            if(strCountry.equals("CN") || strCountry.equals("TW") && mLunarDateView != null){
+            	mDate = (DateFormat.format(mDateFormatString, new Date())).toString();
+            	mDate1 = (DateFormat.format(mDateFormatString1, new Date())).toString();
+                mDateView.setText(mDate);
+    	    	mLunarDateView.setText(buildLunarDate(mDate1));
+            	return;
+            }
+            mDateView.setText(DateFormat.format(mDateFormatString, new Date())); 
         }
     }
 
@@ -910,7 +924,7 @@ class KeyguardStatusViewManager implements OnClickListener {
         }
         cal.set(Integer.parseInt(list.get(0)), Integer.parseInt(list.get(2)) - 1,Integer.parseInt(list.get(4)));
         Lunar lunar = new Lunar(cal, getContext());
-        return lunar.toString();
+        return "   "+lunar.toString().substring(4,lunar.toString().length());
     }
 
     /**
