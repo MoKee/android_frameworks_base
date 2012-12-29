@@ -37,6 +37,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import android.util.Lunar;
 
 /***
  * Manages a number of views inside of LockScreen layouts. See below for a list of widgets
@@ -61,12 +67,14 @@ class KeyguardStatusViewManager implements OnClickListener {
 
     private StatusMode mStatus;
     private String mDateFormatString;
+    private String mDateFormatString1;
     private TransientTextManager mTransientTextManager;
 
     // Views that this class controls.
     // NOTE: These may be null in some LockScreen screens and should protect from NPE
     private TextView mCarrierView;
     private TextView mDateView;
+    private TextView mLunarDateView;
     private TextView mStatus1View;
     private TextView mOwnerInfoView;
     private TextView mAlarmStatusView;
@@ -86,6 +94,8 @@ class KeyguardStatusViewManager implements OnClickListener {
 
     // last known SIM state
     protected IccCardConstants.State mSimState;
+    private String mDate;
+    private String mDate1;
 
     private LockPatternUtils mLockPatternUtils;
     private KeyguardUpdateMonitor mUpdateMonitor;
@@ -171,12 +181,14 @@ class KeyguardStatusViewManager implements OnClickListener {
         if (DEBUG) Log.v(TAG, "KeyguardStatusViewManager()");
         mContainer = view;
         mDateFormatString = getContext().getString(R.string.abbrev_wday_month_day_no_year);
+        mDateFormatString1 = getContext().getString(R.string.abbrev_wday_month_day_year);		
         mLockPatternUtils = lockPatternUtils;
         mUpdateMonitor = updateMonitor;
         mCallback = callback;
 
         mCarrierView = (TextView) findViewById(R.id.carrier);
         mDateView = (TextView) findViewById(R.id.date);
+        mLunarDateView = (TextView) findViewById(R.id.lunar_date);
         mStatus1View = (TextView) findViewById(R.id.status1);
         mAlarmStatusView = (TextView) findViewById(R.id.alarm_status);
         mOwnerInfoView = (TextView) findViewById(R.id.owner_info);
@@ -416,8 +428,33 @@ class KeyguardStatusViewManager implements OnClickListener {
 
     void refreshDate() {
         if (mDateView != null) {
-            mDateView.setText(DateFormat.format(mDateFormatString, new Date()));
+            Resources res = getContext().getResources();
+            String strCountry = res.getConfiguration().locale.getCountry();
+            if(strCountry.equals("CN") || strCountry.equals("TW") && mLunarDateView != null){
+            	mDate = (DateFormat.format(mDateFormatString, new Date())).toString();
+            	mDate1 = (DateFormat.format(mDateFormatString1, new Date())).toString();
+                mDateView.setText(mDate);
+    	    	mLunarDateView.setText(buildLunarDate(mDate1));
+            	return;
+            }
+            mDateView.setText(DateFormat.format(mDateFormatString, new Date())); 
         }
+    }
+
+    /**
+     * Get lunar date
+     */
+	private String buildLunarDate(String date){
+        List<String> list = new ArrayList<String>();
+        Calendar cal = Calendar.getInstance();    
+        Pattern p = Pattern.compile("[\\u4e00-\\u9fa5]+|\\d+");
+        Matcher m = p.matcher(date);
+        while(m.find()){
+            list.add(m.group());
+        }
+        cal.set(Integer.parseInt(list.get(0)), Integer.parseInt(list.get(2)) - 1,Integer.parseInt(list.get(4)));
+        Lunar lunar = new Lunar(cal, getContext());
+        return lunar.toString().substring(4,lunar.toString().length());
     }
 
     /**
