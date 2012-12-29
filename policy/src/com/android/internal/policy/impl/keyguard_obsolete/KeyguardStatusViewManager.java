@@ -29,6 +29,11 @@ import libcore.util.MutableInt;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.Configuration;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
