@@ -100,6 +100,7 @@ public class KeyguardStatusView extends GridLayout {
 
         // Use custom font in mDateView
         mDateView.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
+        mLunarDateView.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
 
         // Required to get Marquee to work.
         final View marqueeViews[] = { mDateView, mAlarmStatusView };
@@ -136,7 +137,7 @@ public class KeyguardStatusView extends GridLayout {
         Resources res = getContext().getResources();
         String strCountry = res.getConfiguration().locale.getCountry();
         if(strCountry.equals("CN") || strCountry.equals("TW") && mLunarDateView != null){
-            mLunarDateView.setText(buildLunarDate(DateFormat.format(mDateFormatString1, new Date())));
+            mLunarDateView.setText(buildLunarDate(DateFormat.format(mDateFormatString1, new Date()).toString()));
             return;
         }
     }
