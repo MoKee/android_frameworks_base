@@ -465,6 +465,7 @@ class KeyguardStatusViewManager implements OnClickListener {
     /**
      * Determine the current status of the lock screen given the sim state and other stuff.
      */
+
     public StatusMode getStatusForIccState(IccCardConstants.State simState) {
         // Since reading the SIM may take a while, we assume it is present until told otherwise.
         if (simState == null) {

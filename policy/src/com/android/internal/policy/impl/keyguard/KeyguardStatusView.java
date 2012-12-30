@@ -27,6 +27,13 @@ import android.view.View;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import android.util.Lunar;
+
 import com.android.internal.R;
 import com.android.internal.widget.LockPatternUtils;
 
@@ -43,9 +50,11 @@ public class KeyguardStatusView extends GridLayout {
     public static final int BATTERY_LOW_ICON = 0; //R.drawable.ic_lock_idle_low_battery;
 
     private CharSequence mDateFormatString;
+    private CharSequence mDateFormatString1;
     private LockPatternUtils mLockPatternUtils;
 
     private TextView mDateView;
+    private TextView mLunarDateView;
     private TextView mAlarmStatusView;
     private ClockView mClockView;
 
@@ -81,9 +90,10 @@ public class KeyguardStatusView extends GridLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         Resources res = getContext().getResources();
-        mDateFormatString =
-                res.getText(com.android.internal.R.string.abbrev_wday_month_day_no_year);
+        mDateFormatString = res.getText(com.android.internal.R.string.abbrev_wday_month_day_no_year);
+        mDateFormatString1 = res.getText(com.android.internal.R.string.abbrev_wday_month_day_year);
         mDateView = (TextView) findViewById(R.id.date);
+        mLunarDateView = (TextView) findViewById(R.id.lunar_date);
         mAlarmStatusView = (TextView) findViewById(R.id.alarm_status);
         mClockView = (ClockView) findViewById(R.id.clock_view);
         mLockPatternUtils = new LockPatternUtils(getContext());
@@ -123,7 +133,33 @@ public class KeyguardStatusView extends GridLayout {
 
     void refreshDate() {
         maybeSetUpperCaseText(mDateView, DateFormat.format(mDateFormatString, new Date()));
+        Resources res = getContext().getResources();
+        String strCountry = res.getConfiguration().locale.getCountry();
+        if(strCountry.equals("CN") || strCountry.equals("TW") && mLunarDateView != null){
+            mLunarDateView.setText(buildLunarDate(DateFormat.format(mDateFormatString1, new Date())));
+            return;
+        }
     }
+
+    /**
+     * Get lunar date
+     */
+	private String buildLunarDate(String date){
+        List<String> list = new ArrayList<String>();
+        Calendar cal = Calendar.getInstance();    
+        Pattern p = Pattern.compile("[\\u4e00-\\u9fa5]+|\\d+");
+        Matcher m = p.matcher(date);
+        while(m.find()){
+            list.add(m.group());
+        }
+        cal.set(Integer.parseInt(list.get(0)), Integer.parseInt(list.get(2)) - 1,Integer.parseInt(list.get(4)));
+        Lunar lunar = new Lunar(cal, getContext());
+        return lunar.toString().substring(4,lunar.toString().length());
+    }
+
+    /**
+     * Determine the current status of the lock screen given the sim state and other stuff.
+     */
 
     @Override
     protected void onAttachedToWindow() {
