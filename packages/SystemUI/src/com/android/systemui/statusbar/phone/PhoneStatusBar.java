@@ -46,6 +46,7 @@ import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.text.format.DateFormat;
 import android.inputmethodservice.InputMethodService;
 import android.os.Handler;
 import android.os.IBinder;
@@ -83,6 +84,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import android.util.Lunar;
 
 import com.android.internal.statusbar.StatusBarIcon;
 import com.android.internal.statusbar.StatusBarNotification;
@@ -238,6 +246,9 @@ public class PhoneStatusBar extends BaseStatusBar {
 
     // the date view
     DateView mDateView;
+
+    // // the lunar date View
+    TextView mLunarDateView;
 
     // for immersive activities
     private IntruderAlertView mIntruderAlertView;
@@ -522,6 +533,14 @@ public class PhoneStatusBar extends BaseStatusBar {
         mClearButton.setVisibility(View.INVISIBLE);
         mClearButton.setEnabled(false);
         mDateView = (DateView)mStatusBarWindow.findViewById(R.id.date);
+
+        //LunarDateView
+        mLunarDateView = (TextView)mStatusBarWindow.findViewById(R.id.lunar_date);
+        String strCountry = res.getConfiguration().locale.getCountry();
+        if(strCountry.equals("CN") || strCountry.equals("TW") && mLunarDateView != null){
+            CharSequence mDateFormatString = res.getText(com.android.internal.R.string.abbrev_wday_month_day_year);
+            mLunarDateView.setText(buildLunarDate(DateFormat.format(mDateFormatString, new Date()).toString()));
+        }
 
         mHasSettingsPanel = res.getBoolean(R.bool.config_hasSettingsPanel);
         mHasFlipSettings = res.getBoolean(R.bool.config_hasFlipSettingsPanel);
@@ -2830,5 +2849,21 @@ public class PhoneStatusBar extends BaseStatusBar {
                     false, this);
         }
     }
+
+	/**
+	* Get lunar date
+	*/
+	private String buildLunarDate(String date){
+        List<String> list = new ArrayList<String>();
+        Calendar cal = Calendar.getInstance();    
+        Pattern p = Pattern.compile("[\\u4e00-\\u9fa5]+|\\d+");
+        Matcher m = p.matcher(date);
+        while(m.find()){
+            list.add(m.group());
+        }
+        cal.set(Integer.parseInt(list.get(0)), Integer.parseInt(list.get(2)) - 1,Integer.parseInt(list.get(4)));
+        Lunar lunar = new Lunar(cal, mContext);
+        return lunar.toString();
+        }
 
 }

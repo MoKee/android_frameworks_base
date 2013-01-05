@@ -46,14 +46,28 @@
             android:clickable="true"
             />
 
-        <com.android.systemui.statusbar.policy.DateView android:id="@+id/date"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:textAppearance="@style/TextAppearance.StatusBar.Expanded.Date"
-            android:layout_toRightOf="@id/clock"
-            android:layout_alignBaseline="@id/clock"
-            />
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/clock"           
+            >
+		<TextView
+		    android:id="@+id/lunar_date"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:singleLine="true"
+		    android:textAppearance="@style/TextAppearance.StatusBar.Expanded.Date"
+		    />
+
+		<com.android.systemui.statusbar.policy.DateView android:id="@+id/date"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:singleLine="true"
+		    android:textAppearance="@style/TextAppearance.StatusBar.Expanded.Date"
+		    android:layout_below="@id/lunar_date"
+		    />
+            </RelativeLayout>
     </RelativeLayout>
 
     <Space
