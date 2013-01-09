@@ -18,6 +18,8 @@
 
     <style name="RecentsStyle" parent="@android:style/Theme.Holo.Wallpaper.NoTitleBar">
         <item name="android:windowAnimationStyle">@style/Animation.RecentsActivity</item>
+        <item name="android:windowBackground">@color/translucent</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <!-- Animations for a non-full-screen window or activity. -->

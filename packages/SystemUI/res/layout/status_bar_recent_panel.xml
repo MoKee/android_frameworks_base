@@ -57,14 +57,88 @@
 
         </com.android.systemui.recent.RecentsVerticalScrollView>
 
-        <ImageView
-            android:id="@+id/recents_clear"
-            android:clickable="true"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:scaleType="center"
-            android:layout_gravity="top|right"
-            android:src="@drawable/ic_notify_clear" />
+        <ScrollView 
+         xmlns:android="http://schemas.android.com/apk/res/android"
+         android:layout_width="50dp"
+         android:layout_height="match_parent"
+         android:scrollbars="vertical"
+         android:layout_gravity="top|right"
+	 android:gravity="center_horizontal"
+         >
+
+		<LinearLayout 
+		    android:id="@+id/shortcut_bar"
+		    android:layout_width="wrap_content"
+		    android:layout_height="match_parent"
+		    android:orientation="vertical">
+
+			<ImageView
+			    android:id="@+id/recents_clear"
+			    android:clickable="true"
+			    android:layout_width="50dp"
+			    android:layout_height="50dp"
+			    android:scaleType="center"
+			    android:src="@drawable/ic_notify_clear"/>
+
+			<ImageView
+			    android:id="@+id/shortcut_alarmclock"
+			    android:clickable="true"
+			    android:layout_width="50dp"
+			    android:layout_height="50dp"
+			    android:scaleType="center"
+			    android:src="@drawable/ic_shortcut_alarmclock"/>
+
+			<ImageView
+			    android:id="@+id/shortcut_soundrecorder"
+			    android:clickable="true"
+			    android:layout_width="50dp"
+			    android:layout_height="50dp"
+			    android:scaleType="center"
+			    android:src="@drawable/ic_shortcut_soundrecorder"/>
+
+			<ImageView
+			    android:id="@+id/shortcut_calculator"
+			    android:clickable="true"
+			    android:layout_width="50dp"
+			    android:layout_height="50dp"
+			    android:scaleType="center"
+			    android:src="@drawable/ic_shortcut_calculator"/>
+
+			<ImageView
+			    android:id="@+id/shortcut_camera"
+			    android:clickable="true"
+			    android:layout_width="50dp"
+			    android:layout_height="50dp"
+			    android:scaleType="center"
+			    android:src="@drawable/ic_shortcut_camera"/>
+
+			<ImageView
+			    android:id="@+id/shortcut_calendar"
+			    android:clickable="true"
+			    android:layout_width="50dp"
+			    android:layout_height="50dp"
+			    android:scaleType="center"
+			    android:src="@drawable/ic_shortcut_calendar"/>
+
+			<ImageView
+			    android:id="@+id/shortcut_maps"
+			    android:clickable="true"
+			    android:layout_width="50dp"
+			    android:layout_height="50dp"
+			    android:scaleType="center"
+			    android:src="@drawable/ic_shortcut_maps"/>
+
+			<ImageView
+			    android:id="@+id/shortcut_music"
+			    android:clickable="true"
+			    android:layout_width="50dp"
+			    android:layout_height="50dp"
+			    android:scaleType="center"
+			    android:src="@drawable/ic_shortcut_music"/>
+
+		</LinearLayout>
+
+        </ScrollView>
 
     </FrameLayout>
 
