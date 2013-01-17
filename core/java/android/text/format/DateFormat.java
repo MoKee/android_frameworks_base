@@ -30,6 +30,7 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.TimeZone;
 import java.text.SimpleDateFormat;
+import android.content.res.Resources;
 
 /**
     Utility class for producing strings with formatted date/time.
@@ -533,15 +534,22 @@ public class DateFormat {
             }
 
             String replacement;
-
+        	Resources r = Resources.getSystem();
             switch (c) {
-                case AM_PM:
-                    replacement = DateUtils.getAMPMString(inDate.get(Calendar.AM_PM));
+                case AM_PM:             
+                 	if(r.getConfiguration().locale.getCountry().equals("CN")||r.getConfiguration().locale.getCountry().equals("TW")){
+                 		replacement=DateUtils.getAMPMCNString(inDate.get(Calendar.HOUR),inDate.get(Calendar.AM_PM));
+                 	}else{
+                 		replacement=DateUtils.getAMPMString(inDate.get(Calendar.AM_PM));
+                 	}              	                
                     break;
                                         
                 case CAPITAL_AM_PM:
-                    //FIXME: this is the same as AM_PM? no capital?
-                    replacement = DateUtils.getAMPMString(inDate.get(Calendar.AM_PM));
+                 	if(r.getConfiguration().locale.getCountry().equals("CN")||r.getConfiguration().locale.getCountry().equals("TW")){
+                 		replacement=DateUtils.getAMPMCNString(inDate.get(Calendar.HOUR),inDate.get(Calendar.AM_PM));
+                 	}else{
+                 		replacement=DateUtils.getAMPMString(inDate.get(Calendar.AM_PM));
+                 	}
                     break;
                 
                 case DATE:

@@ -2028,7 +2028,7 @@
   <public type="style" name="Widget.DeviceDefault.CheckedTextView" id="0x010301db" />
   <public type="style" name="Widget.DeviceDefault.Light.CheckedTextView" id="0x010301dc" />
 
-  <!-- MoKee Lunar Start -->
+  <!-- MoKee Start -->
   <java-symbol type="id" name="lunar_date" />
   <java-symbol type="array" name="animals" />
   <java-symbol type="array" name="chinesenumber" />
@@ -2047,5 +2047,14 @@
   <java-symbol type="string" name="status_year" />
   <java-symbol type="string" name="status_day" />
   <java-symbol type="string" name="abbrev_wday_month_day_year" />
-  <!-- MoKee Lunar End -->
+
+  <java-symbol type="string" name="lc" />
+  <java-symbol type="string" name="lm" />
+  <java-symbol type="string" name="zc" />
+  <java-symbol type="string" name="sw" />
+  <java-symbol type="string" name="zw" />
+  <java-symbol type="string" name="xw" />
+  <java-symbol type="string" name="bw" />
+  <java-symbol type="string" name="sy" />
+  <!-- MoKee End -->
 </resources>

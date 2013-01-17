@@ -163,7 +163,7 @@ public class Clock extends TextView implements OnClickListener, OnLongClickListe
         boolean b24 = DateFormat.is24HourFormat(context);
         int res;
 
-        if (b24 ||  mAmPmStyle == AM_PM_STYLE_GONE) {
+        if (b24) {
             res = R.string.twenty_four_hour_time_format;
         } else {
             res = R.string.twelve_hour_time_format;
@@ -210,8 +210,13 @@ public class Clock extends TextView implements OnClickListener, OnLongClickListe
         } else {
             sdf = mClockFormat;
         }
-        String result = sdf.format(mCalendar.getTime());
-
+        String result="";
+        if(b24){
+            result= sdf.format(mCalendar.getTime());
+        }
+        else{
+            result = DateFormat.format(format, mCalendar.getTime()).toString();
+        }
         if (mAmPmStyle != AM_PM_STYLE_NORMAL) {
             int magic1 = result.indexOf(MAGIC1);
             int magic2 = result.indexOf(MAGIC2);
