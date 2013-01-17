@@ -240,7 +240,7 @@ public class Clock extends TextView implements OnClickListener, OnLongClickListe
         ContentResolver resolver = mContext.getContentResolver();
 
         int amPmStyle = (Settings.System.getInt(resolver,
-                Settings.System.STATUS_BAR_AM_PM, 2));
+                Settings.System.STATUS_BAR_AM_PM, 0));
 
         if (mAmPmStyle != amPmStyle) {
             mAmPmStyle = amPmStyle;
