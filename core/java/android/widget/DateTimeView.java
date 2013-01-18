@@ -164,7 +164,7 @@ public class DateTimeView extends TextView {
         // Set the text
         String text = "";
         Resources r = Resources.getSystem();
-        if (!android.text.format.DateFormat.is24HourFormat(getContext())) {
+        if (!android.text.format.DateFormat.is24HourFormat(getContext()) && display == SHOW_TIME) {
         	text = android.text.format.DateFormat.format(r.getString(R.string.twelve_hour_time_format), mTime).toString();
         }
         else{
