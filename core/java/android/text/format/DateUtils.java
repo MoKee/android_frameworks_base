@@ -1312,7 +1312,13 @@ public class DateUtils
                 }
             }
 
-            startTimeString = startDate.format(startTimeFormat);
+            if(startTimeFormat.equals(res.getString(com.android.internal.R.string.hour_minute_cap_ampm))){
+            	startTimeString = DateFormat.format(res.getString(R.string.twelve_hour_time_format), startMillis).toString();
+            }
+            else
+            {
+            	startTimeString = startDate.format(startTimeFormat);
+            }   
             endTimeString = isInstant ? startTimeString : endDate.format(endTimeFormat);
         }
 
