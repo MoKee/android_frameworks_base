@@ -61,7 +61,8 @@ public class LunarDateView extends TextView implements OnClickListener, OnLongCl
             final String action = intent.getAction();
             if (Intent.ACTION_TIME_TICK.equals(action)
                     || Intent.ACTION_TIME_CHANGED.equals(action)
-                    || Intent.ACTION_TIMEZONE_CHANGED.equals(action)) {
+                    || Intent.ACTION_TIMEZONE_CHANGED.equals(action)
+                    || Intent.ACTION_LOCALE_CHANGED.equals(action)) {
                 updateClock();
             }
         }
@@ -128,7 +129,9 @@ public class LunarDateView extends TextView implements OnClickListener, OnLongCl
         if(strCountry.equals("CN") || strCountry.equals("TW")){
             CharSequence mDateFormatString = res.getText(com.android.internal.R.string.abbrev_wday_month_day_year);
             setText(buildLunarDate(DateFormat.format(mDateFormatString, new Date()).toString()));
+            return;
         }
+        setText("");
     }
 
     private boolean isVisible() {
@@ -156,6 +159,7 @@ public class LunarDateView extends TextView implements OnClickListener, OnLongCl
                 filter.addAction(Intent.ACTION_TIME_TICK);
                 filter.addAction(Intent.ACTION_TIME_CHANGED);
                 filter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
+                filter.addAction(Intent.ACTION_LOCALE_CHANGED);
                 mContext.registerReceiver(mIntentReceiver, filter, null, null);
                 updateClock();
             } else {
