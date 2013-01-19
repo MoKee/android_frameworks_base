@@ -72,7 +72,7 @@
 			    android:layout_width="50dp"
 			    android:layout_height="50dp"
 			    android:scaleType="center"
-			    android:src="@drawable/ic_notify_clear"/>
+			    android:src="@drawable/ic_recents_clear" />
 
 			<ImageView
 			    android:id="@+id/shortcut_alarmclock"
