@@ -179,8 +179,8 @@ public class AudioService extends IAudioService.Stub implements OnFinished {
     /** @see VolumeStreamState */
     private VolumeStreamState[] mStreamStates;
     private SettingsObserver mSettingsObserver;
-    private boolean noDelayInATwoDP =
-            Resources.getSystem().getBoolean(com.android.internal.R.bool.config_noDelayInATwoDP);
+    //nodelay in a2dp
+    private boolean noDelayInATwoDP = Resources.getSystem().getBoolean(com.android.internal.R.bool.config_noDelayInATwoDP);
 
     private int mMode;
     // protects mRingerMode
@@ -438,6 +438,7 @@ public class AudioService extends IAudioService.Stub implements OnFinished {
     // Devices for which the volume is fixed and VolumePanel slider should be disabled
     final int mFixedVolumeDevices = AudioSystem.DEVICE_OUT_AUX_DIGITAL |
             AudioSystem.DEVICE_OUT_DGTL_DOCK_HEADSET |
+            AudioSystem.DEVICE_OUT_ANLG_DOCK_HEADSET |
             AudioSystem.DEVICE_OUT_ALL_USB;
 
     private final boolean mMonitorOrientation;
@@ -506,9 +507,8 @@ public class AudioService extends IAudioService.Stub implements OnFinished {
         // Register for device connection intent broadcasts.
         IntentFilter intentFilter =
                 new IntentFilter(BluetoothHeadset.ACTION_AUDIO_STATE_CHANGED);
-        if (noDelayInATwoDP) {
+        if (noDelayInATwoDP)
             intentFilter.addAction(BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED);
-        }
         intentFilter.addAction(BluetoothHeadset.ACTION_CONNECTION_STATE_CHANGED);
         intentFilter.addAction(Intent.ACTION_DOCK_EVENT);
         intentFilter.addAction(Intent.ACTION_USB_AUDIO_ACCESSORY_PLUG);
@@ -516,7 +516,6 @@ public class AudioService extends IAudioService.Stub implements OnFinished {
         intentFilter.addAction(Intent.ACTION_BOOT_COMPLETED);
         intentFilter.addAction(Intent.ACTION_SCREEN_ON);
         intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
-        intentFilter.addAction(Intent.ACTION_USER_BACKGROUND);
         intentFilter.addAction(Intent.ACTION_USER_SWITCHED);
         intentFilter.addAction(Intent.ACTION_WIFI_DISPLAY_AUDIO);
 
@@ -2198,18 +2197,18 @@ public class AudioService extends IAudioService.Stub implements OnFinished {
                 deviceList = a2dp.getConnectedDevices();
                 if (deviceList.size() > 0) {
                     btDevice = deviceList.get(0);
-                    if (!noDelayInATwoDP) {
-                        synchronized (mConnectedDevices) {
-                            int state = a2dp.getConnectionState(btDevice);
-                            int delay = checkSendBecomingNoisyIntent(
-                                                AudioSystem.DEVICE_OUT_BLUETOOTH_A2DP,
-                                                (state == BluetoothA2dp.STATE_CONNECTED) ? 1 : 0);
-                            queueMsgUnderWakeLock(mAudioHandler,
-                                    MSG_SET_A2DP_CONNECTION_STATE,
-                                    state,
-                                    0,
-                                    btDevice,
-                                    delay);
+                    if (!noDelayInATwoDP){
+		                synchronized (mConnectedDevices) {
+		                    int state = a2dp.getConnectionState(btDevice);
+		                    int delay = checkSendBecomingNoisyIntent(
+		                                            AudioSystem.DEVICE_OUT_BLUETOOTH_A2DP,
+		                                            (state == BluetoothA2dp.STATE_CONNECTED) ? 1 : 0);
+		                    queueMsgUnderWakeLock(mAudioHandler,
+		                            MSG_SET_A2DP_CONNECTION_STATE,
+		                            state,
+		                            0,
+		                            btDevice,
+		                            delay);
                         }
                     } else {
                         onSetA2dpConnectionState(btDevice, a2dp.getConnectionState(btDevice));
@@ -2628,18 +2627,19 @@ public class AudioService extends IAudioService.Stub implements OnFinished {
         }
     }
 
-    public int setBluetoothA2dpDeviceConnectionState(BluetoothDevice device, int state) {
+    public int setBluetoothA2dpDeviceConnectionState(BluetoothDevice device, int state)
+    {
         int delay;
-        if (!noDelayInATwoDP) {
-            synchronized (mConnectedDevices) {
-                delay = checkSendBecomingNoisyIntent(AudioSystem.DEVICE_OUT_BLUETOOTH_A2DP,
-                                                (state == BluetoothA2dp.STATE_CONNECTED) ? 1 : 0);
-                queueMsgUnderWakeLock(mAudioHandler,
-                        MSG_SET_A2DP_CONNECTION_STATE,
-                        state,
-                        0,
-                        device,
-                        delay);
+        if(!noDelayInATwoDP) {
+		    synchronized (mConnectedDevices) {
+		        delay = checkSendBecomingNoisyIntent(AudioSystem.DEVICE_OUT_BLUETOOTH_A2DP,
+		                                        (state == BluetoothA2dp.STATE_CONNECTED) ? 1 : 0);
+		        queueMsgUnderWakeLock(mAudioHandler,
+		                MSG_SET_A2DP_CONNECTION_STATE,
+		                state,
+		                0,
+		                device,
+		                delay);
             }
         } else {
             delay = 0;
@@ -3551,9 +3551,8 @@ public class AudioService extends IAudioService.Stub implements OnFinished {
 
     // must be called synchronized on mConnectedDevices
     private void makeA2dpDeviceUnavailableNow(String address) {
-        if (noDelayInATwoDP) {
+        if (noDelayInATwoDP)
             onSendBecomingNoisyIntent();
-        }
         AudioSystem.setDeviceConnectionState(AudioSystem.DEVICE_OUT_BLUETOOTH_A2DP,
                 AudioSystem.DEVICE_STATE_UNAVAILABLE,
                 address);
@@ -3976,7 +3975,7 @@ public class AudioService extends IAudioService.Stub implements OnFinished {
                 AudioSystem.setParameters("screen_state=off");
             } else if (action.equalsIgnoreCase(Intent.ACTION_CONFIGURATION_CHANGED)) {
                 handleConfigurationChanged(context);
-            } else if (action.equals(Intent.ACTION_USER_BACKGROUND)) {
+            } else if (action.equals(Intent.ACTION_USER_SWITCHED)) {
                 // attempt to stop music playback for background user
                 sendMsg(mAudioHandler,
                         MSG_BROADCAST_AUDIO_BECOMING_NOISY,
@@ -3985,7 +3984,6 @@ public class AudioService extends IAudioService.Stub implements OnFinished {
                         0,
                         null,
                         0);
-            } else if (action.equals(Intent.ACTION_USER_SWITCHED)) {
                 // the current audio focus owner is no longer valid
                 discardAudioFocusOwner();
 
