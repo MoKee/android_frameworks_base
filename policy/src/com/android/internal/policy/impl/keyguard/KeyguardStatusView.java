@@ -100,6 +100,7 @@ public class KeyguardStatusView extends GridLayout {
 
         // Use custom font in mDateView
         mDateView.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
+        if(mLunarDateView!=null)
         mLunarDateView.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
 
         // Required to get Marquee to work.
