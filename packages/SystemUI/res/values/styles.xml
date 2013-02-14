@@ -32,6 +32,8 @@
         <item name="android:wallpaperOpenExitAnimation">@anim/recents_launch_from_launcher_exit</item>
         <item name="android:wallpaperIntraOpenEnterAnimation">@anim/wallpaper_recents_launch_from_launcher_enter</item>
         <item name="android:wallpaperIntraOpenExitAnimation">@anim/wallpaper_recents_launch_from_launcher_exit</item>
+        <item name="android:windowBackground">@color/translucent</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <style name="TextAppearance.StatusBar.IntruderAlert"
