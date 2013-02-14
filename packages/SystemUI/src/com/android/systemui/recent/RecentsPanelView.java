@@ -475,7 +475,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
             mCalculator.setOnClickListener(this);
         }
         if (mCamera != null){
-            mCamera.setVisibility(checkApkExist(mContext,"com.android.gallery3d") ? ImageView.VISIBLE : ImageView.GONE );
+            mCamera.setVisibility(checkApkExist(mContext,"com.google.android.gallery3d") ? ImageView.VISIBLE : ImageView.GONE );
             mCamera.setOnClickListener(this);
         }
         if (mCalendar != null){
@@ -548,7 +548,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
 			startApplication("com.android.calculator2","com.android.calculator2.Calculator");
 			break;
 		case R.id.shortcut_camera:
-			startApplication("com.android.gallery3d","com.android.camera.CameraLauncher");
+			startApplication("com.google.android.gallery3d","com.android.camera.CameraLauncher");
 			break;
 		case R.id.shortcut_calendar:
 			startApplication("com.android.calendar","com.android.calendar.LaunchActivity");
