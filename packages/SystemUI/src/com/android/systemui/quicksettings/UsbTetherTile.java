@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.hardware.usb.UsbManager;
 import android.net.ConnectivityManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -50,12 +49,7 @@ public class UsbTetherTile extends QuickSettingsTile {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (intent.getAction().equals(ConnectivityManager.ACTION_TETHER_STATE_CHANGED)) {
-            Log.d(TAG,"ACTION_TETHER_STATE_CHANGED");
-        }
-
         if (intent.getAction().equals(UsbManager.ACTION_USB_STATE)) {
-            Log.d(TAG,"ACTION_USB_STATE");
             mUsbConnected = intent.getBooleanExtra(UsbManager.USB_CONNECTED, false);
         }
 
@@ -67,12 +61,12 @@ public class UsbTetherTile extends QuickSettingsTile {
             mMassStorageActive = false;
         }
 
-        updateTileState();
+        updateResources();
     }
 
     @Override
     void onPostCreate() {
-        updateTileState();
+        updateTile();
         super.onPostCreate();
     }
 
@@ -82,7 +76,13 @@ public class UsbTetherTile extends QuickSettingsTile {
         super.updateQuickSettings();
     }
 
-    private void updateTileState() {
+    @Override
+    public void updateResources() {
+        updateTile();
+        super.updateResources();
+    }
+
+    private synchronized void updateTile() {
         updateState();
         if (mUsbConnected && !mMassStorageActive) {
             if (mUsbTethered) {
@@ -95,9 +95,6 @@ public class UsbTetherTile extends QuickSettingsTile {
         } else {
             mDrawable = R.drawable.ic_qs_usb_tether_off;
             mLabel = mContext.getString(R.string.quick_settings_usb_tether_off_label);
-        }
-        if(mTile != null) {
-            updateQuickSettings();
         }
     }
 
