@@ -310,7 +310,7 @@ public class NavbarEditor implements OnTouchListener {
             delim="|";
             saveValue.append(mParent.findViewById(id).getTag());
         }
-        Settings.System.putString(mContext.getContentResolver(), Settings.System.NAV_BUTTONS, saveValue.toString());
+        Settings.System.putString(mContext.getContentResolver(), Settings.System.NAVIGATION_BUTTONS, saveValue.toString());
     }
 
     /**
@@ -332,7 +332,7 @@ public class NavbarEditor implements OnTouchListener {
      */
     @SuppressWarnings("unchecked")
     protected void updateKeys() {
-        String saved = Settings.System.getString(mContext.getContentResolver(), Settings.System.NAV_BUTTONS);
+        String saved = Settings.System.getString(mContext.getContentResolver(), Settings.System.NAVIGATION_BUTTONS);
         if (saved == null) {
             saved = "empty|back|home|recent|empty|menu0";
         }

@@ -666,7 +666,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.HARDWARE_KEY_REBINDING), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.NAV_BUTTONS_HEIGHT), false, this);
+                    Settings.System.NAVIGATION_BAR_HEIGHT), false, this);
 
             updateSettings();
         }
@@ -1477,7 +1477,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 		
 		// Height of the navigation bar when presented horizontally at bottom	
 		int mNavButtonsHeight = Settings.System.getInt(resolver,
-                    Settings.System.NAV_BUTTONS_HEIGHT, 48);
+                    Settings.System.NAVIGATION_BAR_HEIGHT, 48);
             	mNavigationBarHeightForRotation[mPortraitRotation] =
             	mNavigationBarHeightForRotation[mUpsideDownRotation] =
                 mNavButtonsHeight * DisplayMetrics.DENSITY_DEVICE/DisplayMetrics.DENSITY_DEFAULT;
