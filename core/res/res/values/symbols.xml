@@ -1925,4 +1925,6 @@
   <java-symbol type="drawable" name="ic_navigation_ring_torch" />
   <java-symbol type="drawable" name="ic_navigation_ring_vibrate" />
 
+  <!-- Screenshort Trash -->
+  <java-symbol type="string" name="trash" />
 </resources>

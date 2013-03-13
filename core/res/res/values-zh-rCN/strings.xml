@@ -1355,6 +1355,7 @@
     <string name="media_shared" product="default" msgid="5706130568133540435">"目前有计算机正在使用 SD 卡。"</string>
     <string name="media_unknown_state" msgid="729192782197290385">"外部媒体处于未知状态。"</string>
     <string name="share" msgid="1778686618230011964">"分享"</string>
+    <string name="trash">"舍弃"</string>
     <string name="find" msgid="4808270900322985960">"查找"</string>
     <string name="websearch" msgid="4337157977400211589">"网页搜索"</string>
     <string name="find_next" msgid="5742124618942193978">"查找下一个"</string>

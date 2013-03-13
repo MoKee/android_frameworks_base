@@ -3624,6 +3624,7 @@
     <!-- Text for WebView's text selection Action Mode -->
     <!-- ActionBar action to share the current selection [CHAR LIMIT=10] -->
     <string name="share">Share</string>
+    <string name="trash">Trash</string>
     <!-- ActionBar action to use the current selection to open the Find on page functionality [CHAR LIMIT=10]-->
     <string name="find">Find</string>
     <!-- ActionBar action to use the current selection to perform a web search [CHAR-LIMIT=16] -->
