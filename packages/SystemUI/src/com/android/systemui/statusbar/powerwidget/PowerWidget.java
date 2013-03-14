@@ -51,8 +51,10 @@ public class PowerWidget extends FrameLayout {
 
     private static final String BUTTONS_DEFAULT = PowerButton.BUTTON_WIFI
                              + BUTTON_DELIMITER + PowerButton.BUTTON_BLUETOOTH
-                             + BUTTON_DELIMITER + PowerButton.BUTTON_GPS
-                             + BUTTON_DELIMITER + PowerButton.BUTTON_SOUND;
+                             + BUTTON_DELIMITER + PowerButton.BUTTON_SOUND
+                             + BUTTON_DELIMITER + PowerButton.BUTTON_MOBILEDATA
+                             + BUTTON_DELIMITER + PowerButton.BUTTON_AUTOROTATE
+                             + BUTTON_DELIMITER + PowerButton.BUTTON_AIRPLANE;
 
     private static final FrameLayout.LayoutParams WIDGET_LAYOUT_PARAMS = new FrameLayout.LayoutParams(
                                         ViewGroup.LayoutParams.MATCH_PARENT, // width = match_parent
@@ -395,7 +397,7 @@ public class PowerWidget extends FrameLayout {
     public void updateVisibility() {
         // now check if we need to display the widget still
         boolean displayPowerWidget = Settings.System.getInt(mContext.getContentResolver(),
-                   Settings.System.EXPANDED_VIEW_WIDGET, 0) == 1;
+                   Settings.System.EXPANDED_VIEW_WIDGET, 1) == 1;
         if(!displayPowerWidget) {
             setVisibility(View.GONE);
         } else {
@@ -406,7 +408,7 @@ public class PowerWidget extends FrameLayout {
     private void updateScrollbar() {
         if (mScrollView == null) return;
         boolean hideScrollBar = Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.EXPANDED_HIDE_SCROLLBAR, 0) == 1;
+                    Settings.System.EXPANDED_HIDE_SCROLLBAR, 1) == 1;
         mScrollView.setHorizontalScrollBarEnabled(!hideScrollBar);
     }
 

@@ -60,6 +60,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.systemui.R;
@@ -96,13 +97,19 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
     private boolean mHighEndGfx;
     private ImageView mClearRecents;
     private ImageView mAlarmClock;
-    private ImageView mSoundRecorder;
     private ImageView mCalculator;
     private ImageView mCamera;
     private ImageView mCalendar;
     private ImageView mMaps;
     private ImageView mMusic;
-    private LinearLayout mShortcutBar;
+    private ImageView mFacebook;
+    private ImageView mGooglePlus;
+    private ImageView mQQ;
+    private ImageView mSinaWeibo;
+    private ImageView mTwitter;
+    private ImageView mWeChat;
+
+    private ScrollView mShortcutBar;
 
     public static interface RecentsScrollView {
         public int numItemsInOneScreenful();
@@ -457,46 +464,36 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
         mRecentsNoApps = findViewById(R.id.recents_no_apps);
         mClearRecents = (ImageView) findViewById(R.id.recents_clear);
 
-	mShortcutBar = (LinearLayout) findViewById(R.id.shortcut_bar);
+	mShortcutBar = (ScrollView) findViewById(R.id.shortcut_bar);
         mAlarmClock = (ImageView) findViewById(R.id.shortcut_alarmclock);
-        mSoundRecorder = (ImageView) findViewById(R.id.shortcut_soundrecorder);
         mCalculator = (ImageView) findViewById(R.id.shortcut_calculator);
         mCamera = (ImageView) findViewById(R.id.shortcut_camera);
         mCalendar = (ImageView) findViewById(R.id.shortcut_calendar);
         mMaps = (ImageView) findViewById(R.id.shortcut_maps);
         mMusic = (ImageView) findViewById(R.id.shortcut_music);
+        mFacebook = (ImageView) findViewById(R.id.shortcut_facebook);
+        mGooglePlus = (ImageView) findViewById(R.id.shortcut_googleplus);
+        mQQ = (ImageView) findViewById(R.id.shortcut_qq);
+        mSinaWeibo = (ImageView) findViewById(R.id.shortcut_sinaweibo);
+        mTwitter = (ImageView) findViewById(R.id.shortcut_twitter);
+        mWeChat = (ImageView) findViewById(R.id.shortcut_wechat);
 
         if (mClearRecents != null){
             mClearRecents.setOnClickListener(this);
         }
-        if (mAlarmClock != null){
-            mAlarmClock.setVisibility(checkApkExist(mContext,"com.android.deskclock") ? ImageView.VISIBLE : ImageView.GONE );
-            mAlarmClock.setOnClickListener(this);
-        }
-        if (mSoundRecorder != null){
-            mSoundRecorder.setVisibility(checkApkExist(mContext,"com.android.soundrecorder") ? ImageView.VISIBLE : ImageView.GONE );
-            mSoundRecorder.setOnClickListener(this);
-        }
-        if (mCalculator != null){
-            mCalculator.setVisibility(checkApkExist(mContext,"com.android.calculator2") ? ImageView.VISIBLE : ImageView.GONE );
-            mCalculator.setOnClickListener(this);
-        }
-        if (mCamera != null){
-            mCamera.setVisibility(checkApkExist(mContext,"com.google.android.gallery3d") ? ImageView.VISIBLE : ImageView.GONE );
-            mCamera.setOnClickListener(this);
-        }
-        if (mCalendar != null){
-            mCalendar.setVisibility(checkApkExist(mContext,"com.android.calendar") ? ImageView.VISIBLE : ImageView.GONE );
-            mCalendar.setOnClickListener(this);
-        }
-        if (mMaps != null){
-            mMaps.setVisibility(checkApkExist(mContext,"com.google.android.apps.maps") ? ImageView.VISIBLE : ImageView.GONE );
-            mMaps.setOnClickListener(this);
-        }
-        if (mMusic != null){
-            mMusic.setVisibility(checkApkExist(mContext,"com.andrew.apollo") ? ImageView.VISIBLE : ImageView.GONE );
-            mMusic.setOnClickListener(this);
-        }
+
+        setShortcurtEnable(mAlarmClock, "com.android.deskclock");
+        setShortcurtEnable(mCalculator, "com.android.calculator2");
+        setShortcurtEnable(mCamera, "com.google.android.gallery3d");
+        setShortcurtEnable(mCalendar, "com.android.calendar");
+        setShortcurtEnable(mMaps, "com.google.android.apps.maps");
+        setShortcurtEnable(mMusic, "com.andrew.apollo");
+        setShortcurtEnable(mFacebook, "com.facebook.katana");
+        setShortcurtEnable(mGooglePlus, "com.google.android.apps.plus");
+        setShortcurtEnable(mQQ, "com.tencent.mobileqq");
+        setShortcurtEnable(mSinaWeibo, "com.sina.weibo");
+        setShortcurtEnable(mTwitter, "com.twitter.android");
+        setShortcurtEnable(mWeChat, "com.tencent.mm");
 
         if (mRecentsScrim != null) {
             mHighEndGfx = ActivityManager.isHighEndGfx();
@@ -509,7 +506,14 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
         }
     }
 
-    public boolean checkApkExist(Context context, String packageName) {
+    private void setShortcurtEnable (ImageView imageView, String packageName) {
+        if (imageView != null){
+            imageView.setVisibility(checkApkExist(mContext, packageName) ? ImageView.VISIBLE : ImageView.GONE );
+            imageView.setOnClickListener(this);
+        }
+    }
+
+    private boolean checkApkExist(Context context, String packageName) {
         try {
                 ApplicationInfo info = context.getPackageManager().getApplicationInfo(packageName,PackageManager.GET_UNINSTALLED_PACKAGES);
                 return true;
@@ -548,9 +552,6 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
 		case R.id.shortcut_alarmclock:
 			startApplication("com.android.deskclock","com.android.deskclock.DeskClock");
 			break;
-		case R.id.shortcut_soundrecorder:
-			startApplication("com.android.soundrecorder","com.android.soundrecorder.SoundRecorder");
-			break;
 		case R.id.shortcut_calculator:
 			startApplication("com.android.calculator2","com.android.calculator2.Calculator");
 			break;
@@ -565,6 +566,24 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
 			break;
 		case R.id.shortcut_music:
 			startApplication("com.andrew.apollo","com.andrew.apollo.activities.MusicLibrary");
+			break;
+		case R.id.shortcut_facebook:
+			startApplication("com.facebook.katana","com.facebook.katana.LoginActivity");
+			break;
+		case R.id.shortcut_googleplus:
+			startApplication("com.google.android.apps.plus","com.google.android.apps.plus.phone.HomeActivity");
+			break;
+		case R.id.shortcut_qq:
+			startApplication("com.tencent.mobileqq","com.tencent.mobileqq.activity.SplashActivity");
+			break;
+		case R.id.shortcut_sinaweibo:
+			startApplication("com.sina.weibo","com.sina.weibo.SplashActivity");
+			break;
+		case R.id.shortcut_twitter:
+			startApplication("com.twitter.android","com.twitter.android.StartActivity");
+			break;
+		case R.id.shortcut_wechat:
+			startApplication("com.tencent.mm","com.tencent.mm.ui.LauncherUI");
 			break;
 	}		
     }
