@@ -565,7 +565,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
 			startApplication("com.google.android.apps.maps","com.google.android.maps.MapsActivity");
 			break;
 		case R.id.shortcut_music:
-			startApplication("com.andrew.apollo","com.andrew.apollo.activities.HomeActivity");
+			startApplication("com.andrew.apollo","com.andrew.apollo.ui.activities.HomeActivity");
 			break;
 		case R.id.shortcut_facebook:
 			startApplication("com.facebook.katana","com.facebook.katana.LoginActivity");
