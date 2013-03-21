@@ -2176,6 +2176,12 @@ public final class Settings {
         public static final String DTMF_TONE_WHEN_DIALING = "dtmf_tone";
 
         /**
+         * direct call by the dialer. The value is
+         * boolean (1 or 0).
+         */
+        public static final String DIALER_DIRECT_CALL = "dialer_direct_call";
+
+        /**
          * CDMA only settings
          * DTMF tone type played by the dialer when dialing.
          *                 0 = Normal
