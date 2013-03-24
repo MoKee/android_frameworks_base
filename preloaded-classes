@@ -568,6 +568,7 @@ android.media.MediaRecorder
 android.media.MediaScanner
 android.media.RemoteDisplay
 android.media.ToneGenerator
+android.mokee.location.PhoneLocation
 android.net.ConnectivityManager
 android.net.Credentials
 android.net.DhcpInfoInternal
