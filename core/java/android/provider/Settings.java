@@ -2637,6 +2637,18 @@ public final class Settings {
           */
          public static final String FULLSCREEN_KEYBOARD = "fullscreen_keyboard";
 
+        /**  
+         * Give MMS Notifications a breathing effect
+         * @hide
+         */
+        public static final String MMS_BREATH = "mms_breath";
+ 
+        /**  
+         * Give Missed Call Notifications a breathing effect
+         * @hide
+         */
+        public static final String MISSED_CALL_BREATH = "missed_call_breath";
+
         /**
         * Notification Power Widget - Custom Brightness Mode
         * @hide
