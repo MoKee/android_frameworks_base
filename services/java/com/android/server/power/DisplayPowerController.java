@@ -227,6 +227,10 @@ final class DisplayPowerController {
     // a stylish electron beam animation instead.
     private boolean mElectronBeamFadesConfig;
 
+    // ElectronBeam toggle(CRT)
+    private boolean mElectronBeamOnEnabled;
+    private boolean mElectronBeamOffEnabled;
+
     // The pending power request.
     // Initially null until the first call to requestPowerState.
     // Guarded by mLock.
@@ -754,12 +758,12 @@ final class DisplayPowerController {
                         blockScreenOn();
                     } else {
                         unblockScreenOn();
-                        if (USE_ELECTRON_BEAM_ON_ANIMATION) {
+                        if (mElectronBeamOffEnabled) {
                             if (!mElectronBeamOnAnimator.isStarted()) {
                                 if (mPowerState.getElectronBeamLevel() == 1.0f) {
                                     mPowerState.dismissElectronBeam();
                                 } else if (mPowerState.prepareElectronBeam(
-                                        mElectronBeamFadesConfig ?
+                                        !mElectronBeamOnEnabled ?
                                                 ElectronBeam.MODE_FADE :
                                                         ElectronBeam.MODE_WARM_UP)) {
                                     mElectronBeamOnAnimator.start();
