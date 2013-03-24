@@ -64,9 +64,9 @@ public class PlatLogoActivity extends Activity {
         lp.gravity = Gravity.CENTER_HORIZONTAL;
         lp.bottomMargin = (int) (-4*metrics.density);
 
-        String cmVersion = SystemProperties.get("ro.cm.version");
-        if (cmVersion != null) {
-            cmVersion = cmVersion.replaceAll("([0-9\\.]+?)-.*", "$1");
+        String mkVersion = SystemProperties.get("ro.mk.version");
+        if (mkVersion != null) {
+            mkVersion = mkVersion.replaceAll("([0-9\\.]+?)-.*", "$1");
         }
 
         TextView tv = new TextView(this);
@@ -74,7 +74,7 @@ public class PlatLogoActivity extends Activity {
         tv.setTextSize(1.25f*size);
         tv.setTextColor(0xFFFFFFFF);
         tv.setShadowLayer(4*metrics.density, 0, 2*metrics.density, 0x66000000);
-        tv.setText(mIsCid ? "CyanogenMod " + cmVersion : "Android " + Build.VERSION.RELEASE);
+        tv.setText(mIsCid ? "MoKee OpenSource " + mkVersion : "Android " + Build.VERSION.RELEASE);
         view.addView(tv, lp);
 
         tv = new TextView(this);
