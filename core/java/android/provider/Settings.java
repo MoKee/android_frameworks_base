@@ -2780,6 +2780,16 @@ public final class Settings {
         public static final String VOLUME_WAKE_SCREEN = "volume_wake_screen";
 
         /**
+         * @hide
+         */
+        public static final String SYSTEM_POWER_ENABLE_CRT_OFF = "system_power_enable_crt_off";
+
+        /**
+         * @hide
+         */
+        public static final String SYSTEM_POWER_ENABLE_CRT_ON = "system_power_enable_crt_on";
+
+        /**
          * Whether or not volume button music controls should be enabled to seek media tracks
          * @hide
          */
