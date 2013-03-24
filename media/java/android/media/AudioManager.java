@@ -482,7 +482,7 @@ public class AudioManager {
                  */
                 int direction;
                 int swapKeys = Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, 0);
+                        Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, 1);
                 int rotation = mWindowManager.getDefaultDisplay().getRotation();
                 if (swapKeys == 1 // phone or hybrid
                         && (rotation == Surface.ROTATION_90
