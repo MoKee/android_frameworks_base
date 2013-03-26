@@ -2912,6 +2912,12 @@ public final class Settings {
           */
         public static final String LOCKSCREEN_ALWAYS_SHOW_BATTERY = "lockscreen_always_show_battery";
 
+         /**
+          * Wether the hints for the left and right widgets are shown when the screen is turned on
+          * @hide
+          */
+        public static final String LOCKSCREEN_HIDE_INITIAL_PAGE_HINTS = "lockscreen_hide_initial_page_hints";
+
         /**
          * Show the pending notification counts as overlays on the status bar
          * @hide
