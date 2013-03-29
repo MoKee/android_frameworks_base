@@ -19,6 +19,7 @@ package com.android.systemui.statusbar.phone;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.LayoutTransition;
+import android.app.KeyguardManager;
 import android.app.StatusBarManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -26,9 +27,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.PorterDuff;
 import android.os.Handler;
 import android.os.Message;
 import android.os.ServiceManager;
@@ -49,9 +53,11 @@ import java.io.PrintWriter;
 
 import com.android.internal.statusbar.IStatusBarService;
 import com.android.systemui.R;
+import com.android.systemui.TransparencyManager;
 import com.android.systemui.statusbar.BaseStatusBar;
 import com.android.systemui.statusbar.DelegateViewHelper;
 import com.android.systemui.statusbar.policy.DeadZone;
+import com.android.systemui.statusbar.policy.KeyButtonView;
 
 public class NavigationBarView extends LinearLayout implements BaseStatusBar.NavigationBarCallback {
     final static boolean DEBUG = false;
@@ -84,6 +90,9 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
     boolean mHidden, mLowProfile, mShowMenu;
     int mDisabledFlags = 0;
     int mNavigationIconHints = 0;
+    
+    int mNavigationBarColor = -1;
+    private TransparencyManager mTransparencyManager;
 
     private Drawable mBackIcon, mBackLandIcon, mBackAltIcon, mBackAltLandIcon;
     
@@ -176,6 +185,22 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
     // for when home is disabled, but search isn't
     public View getSearchLight() {
         return mCurrentView.findViewById(R.id.search_light);
+    }
+    
+    public void setTransparencyManager(TransparencyManager tm) {
+        mTransparencyManager = tm;
+    }
+    
+    private void makeBar() {
+        Drawable bg = mContext.getResources().getDrawable(R.drawable.nav_bar_bg);
+        if(bg instanceof ColorDrawable) {
+            BackgroundAlphaColorDrawable bacd = new BackgroundAlphaColorDrawable(
+                    mNavigationBarColor > 0 ? mNavigationBarColor : ((ColorDrawable) bg).getColor());
+            setBackground(bacd);
+        }
+        if(mTransparencyManager != null) {
+            mTransparencyManager.update();
+        }
     }
 
     public NavigationBarView(Context context, AttributeSet attrs) {
@@ -297,6 +322,17 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         }
         setDisabledFlags(mDisabledFlags, true);
     }
+    
+    private boolean areKeyguardHintsEnabled() {
+        return ((mDisabledFlags & View.STATUS_BAR_DISABLE_HOME) != 0) && !((mDisabledFlags & View.STATUS_BAR_DISABLE_SEARCH) != 0);
+    }
+
+    private boolean isKeyguardEnabled() {
+        KeyguardManager km = (KeyguardManager)mContext.getSystemService(Context.KEYGUARD_SERVICE);
+        if(km == null) return false;
+
+        return km.isKeyguardLocked();
+    }
 
     @Override
     public void setDisabledFlags(int disabledFlags) {
@@ -313,6 +349,7 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         final boolean disableBack = ((disabledFlags & View.STATUS_BAR_DISABLE_BACK) != 0)
                 && ((mNavigationIconHints & StatusBarManager.NAVIGATION_HINT_BACK_ALT) == 0);
         final boolean disableSearch = ((disabledFlags & View.STATUS_BAR_DISABLE_SEARCH) != 0);
+        final boolean keygaurdProbablyEnabled = areKeyguardHintsEnabled();
 
         if (SLIPPERY_WHEN_DISABLED) {
             setSlippery(disableHome && disableRecent && disableBack && disableSearch);
@@ -335,7 +372,7 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         setButtonWithTagVisibility(NavbarEditor.NAVBAR_ALWAYS_MENU, disableRecent ? View.INVISIBLE : View.VISIBLE);
         setButtonWithTagVisibility(NavbarEditor.NAVBAR_MENU_BIG, disableRecent ? View.INVISIBLE : View.VISIBLE);
         setButtonWithTagVisibility(NavbarEditor.NAVBAR_SEARCH, disableRecent ? View.INVISIBLE : View.VISIBLE);
-        getSearchLight().setVisibility((disableHome && !disableSearch) ? View.VISIBLE : View.GONE);
+        getSearchLight().setVisibility(keygaurdProbablyEnabled ? View.VISIBLE : View.GONE);
     }
 
     public void setSlippery(boolean newSlippery) {
@@ -463,6 +500,10 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         }
 
         setNavigationIconHints(mNavigationIconHints, true);
+        
+        // this takes care of making the buttons
+         SettingsObserver settingsObserver = new SettingsObserver(new Handler());
+         settingsObserver.observe();
     }
 
     @Override
@@ -512,8 +553,59 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         return super.onInterceptTouchEvent(ev);
     }
     */
-        
+    
+    class SettingsObserver extends ContentObserver {
+        SettingsObserver(Handler handler) {
+            super(handler);
+        }
 
+        void observe() {
+            ContentResolver resolver = mContext.getContentResolver();
+            
+            resolver.registerContentObserver(
+                    Settings.System.getUriFor(Settings.System.NAVIGATION_BAR_COLOR), false, this);
+            updateSettings();
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            updateSettings();
+        }
+    }
+
+    /*
+     * ]0 < alpha < 1[
+     */
+    public void setBackgroundAlpha(float alpha) {
+        Drawable bg = getBackground();
+        if(bg == null) return;
+
+        if(bg instanceof BackgroundAlphaColorDrawable) {
+         // if there's a custom color while the lockscreen is on, clear it momentarily, otherwise it won't match.
+            if(mNavigationBarColor > 0) {
+                if(isKeyguardEnabled()) {
+                    ((BackgroundAlphaColorDrawable) bg).setBgColor(-1);
+                } else {
+                    ((BackgroundAlphaColorDrawable) bg).setBgColor(mNavigationBarColor);
+                }
+            }
+        }
+        int a = Math.round(alpha * 255);
+        bg.setAlpha(a);
+    }
+    
+    protected void updateSettings() {
+        ContentResolver resolver = mContext.getContentResolver();
+        
+        mNavigationBarColor = Settings.System.getInt(resolver,
+                Settings.System.NAVIGATION_BAR_COLOR, -1);
+        makeBar();
+    }
+
+    private void postCheckForInvalidLayout(final String how) {
+        mHandler.obtainMessage(MSG_CHECK_INVALID_LAYOUT, 0, 0, how).sendToTarget();
+    }
+    
     private String getResourceName(int resId) {
         if (resId != 0) {
             final android.content.res.Resources res = mContext.getResources();
