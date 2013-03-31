@@ -74,7 +74,7 @@ public class TransparencyManager {
 
     public void update() {
         mHandler.removeCallbacks(updateTransparencyRunnable);
-        mHandler.postDelayed(updateTransparencyRunnable, 100);
+        mHandler.post(updateTransparencyRunnable);
     }
 
     public void setNavbar(NavigationBarView n) {
@@ -203,7 +203,7 @@ public class TransparencyManager {
         String alphas[];
         String settingValue = Settings.System.getString(resolver,
                 Settings.System.NAVIGATION_BAR_ALPHA_CONFIG);
-        Log.e(TAG, "nav bar config: " + settingValue);
+        //Log.e(TAG, "nav bar config: " + settingValue);
         if (settingValue == null) {
             mNavbarInfo.homeAlpha = defaultAlpha;
             mNavbarInfo.keyguardAlpha = KEYGUARD_ALPHA;
@@ -217,7 +217,7 @@ public class TransparencyManager {
 
         settingValue = Settings.System.getString(resolver,
                 Settings.System.STATUS_BAR_ALPHA_CONFIG);
-        Log.e(TAG, "status bar config: " + settingValue);
+        //Log.e(TAG, "status bar config: " + settingValue);
         if (settingValue == null) {
             mStatusbarInfo.homeAlpha = defaultAlpha;
             mStatusbarInfo.keyguardAlpha = KEYGUARD_ALPHA;
