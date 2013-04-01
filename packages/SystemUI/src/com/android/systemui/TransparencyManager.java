@@ -60,11 +60,24 @@ public class TransparencyManager {
 
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
+        intentFilter.addAction("mokee.launcher.status");
         context.registerReceiver(new BroadcastReceiver() {
 
             @Override
             public void onReceive(Context context, Intent intent) {
-                update();
+                if(intent.getAction().equals("mokee.launcher.status")) {
+                    int value = Integer.valueOf(intent.getExtra("status").toString());
+                    if (mNavbar != null) {
+                        mNavbar.setBackgroundAlpha(value == 1 ? 1 : mNavbarInfo.homeAlpha);
+                    }
+                    if (mStatusbar != null) {
+                        mStatusbar.setBackgroundAlpha(value == 1 ? 1 : mStatusbarInfo.homeAlpha);
+                    }
+                }
+                else
+                {
+                    update();
+                }
             }
         }, intentFilter);
 
