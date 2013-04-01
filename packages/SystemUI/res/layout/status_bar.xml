@@ -45,11 +45,56 @@
     <LinearLayout android:id="@+id/status_bar_contents"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="6dip"
-        android:paddingRight="6dip"
+        android:paddingLeft="8dip"
+        android:paddingRight="8dip"
         android:orientation="horizontal"
         >
-
+        
+        <RelativeLayout
+            android:id="@+id/bigclock"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+            
+            <com.android.systemui.statusbar.policy.Clock
+                android:id="@+id/clock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.StatusBar.BigClock"
+                android:layout_centerVertical="true"
+                android:clickable="false"
+                />
+            
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/clock"
+                android:layout_alignBottom="@id/status_bar_contents"
+                >
+                
+                <Space
+                    android:id="@+id/date_space"
+                    android:layout_width="1dp"
+                    android:layout_height="16dp"
+                    android:layout_weight="1"
+                />
+                <com.android.systemui.statusbar.policy.DateView 
+		    android:id="@+id/date"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:singleLine="true"
+		    android:textAppearance="@style/TextAppearance.StatusBar.Expanded.Date"
+		    android:clickable="false"
+		    android:layout_below="@id/date_space"
+		    />
+	    </RelativeLayout>
+        </RelativeLayout>
+        
+        
         <LinearLayout
             android:id="@+id/notification_icon_area"
             android:layout_width="0dip"
@@ -67,7 +112,7 @@
             <com.android.systemui.statusbar.phone.IconMerger android:id="@+id/notificationIcons"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"/>  
         </LinearLayout>
@@ -152,17 +197,6 @@
                     android:paddingLeft="@dimen/status_bar_battery_cluster_padding"
                     />
             </LinearLayout>
-
-            <com.android.systemui.statusbar.policy.Clock
-                android:id="@+id/clock"
-                android:textAppearance="@style/TextAppearance.StatusBar.Clock"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:singleLine="true"
-                android:paddingLeft="6dip"
-                android:gravity="center_vertical|left"
-                android:clickable="false"
-                />
         </LinearLayout>
     </LinearLayout>
 

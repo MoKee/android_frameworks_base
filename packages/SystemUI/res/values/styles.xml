@@ -68,6 +68,13 @@
         <item name="android:textColor">@android:color/holo_blue_light</item>
     </style>
 
+    <style name="TextAppearance.StatusBar.BigClock" parent="@*android:style/TextAppearance.StatusBar.Icon">
+        <item name="android:textSize">36dp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/clock_view_color</item>
+    </style>
+
     <style name="TextAppearance.StatusBar.Date" parent="@*android:style/TextAppearance.StatusBar.Icon">
         <item name="android:textSize">16dp</item>
         <item name="android:textStyle">normal</item>
@@ -77,7 +84,7 @@
     <style name="TextAppearance.StatusBar.Expanded" parent="@*android:style/TextAppearance.StatusBar" />
 
     <style name="TextAppearance.StatusBar.Expanded.Clock">
-        <item name="android:textSize">32dp</item>
+        <item name="android:textSize">36dp</item>
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/clock_view_color</item>
