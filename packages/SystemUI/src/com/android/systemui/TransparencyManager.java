@@ -26,6 +26,7 @@ import java.util.List;
 public class TransparencyManager {
 
     public static final float KEYGUARD_ALPHA = 0.44f;
+    public static final String MOKEE_ALPHA_STATUS_CHANGED = "mokee.alpha.status.changed";
 
     private static final String TAG = TransparencyManager.class.getSimpleName();
 
@@ -60,12 +61,12 @@ public class TransparencyManager {
 
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
-        intentFilter.addAction("mokee.launcher.status");
+        intentFilter.addAction(MOKEE_ALPHA_STATUS_CHANGED);
         context.registerReceiver(new BroadcastReceiver() {
 
             @Override
             public void onReceive(Context context, Intent intent) {
-                if(intent.getAction().equals("mokee.launcher.status")) {
+                if(intent.getAction().equals(MOKEE_ALPHA_STATUS_CHANGED)) {
                     int value = Integer.valueOf(intent.getExtra("status").toString());
                     if (mNavbar != null) {
                         mNavbar.setBackgroundAlpha(value == 1 ? 1 : mNavbarInfo.homeAlpha);
@@ -87,7 +88,7 @@ public class TransparencyManager {
 
     public void update() {
         mHandler.removeCallbacks(updateTransparencyRunnable);
-        mHandler.post(updateTransparencyRunnable);
+        mHandler.postDelayed(updateTransparencyRunnable, 100);
     }
 
     public void setNavbar(NavigationBarView n) {
