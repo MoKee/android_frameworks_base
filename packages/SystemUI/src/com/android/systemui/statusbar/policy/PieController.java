@@ -255,7 +255,7 @@ public class PieController implements BaseStatusBar.NavigationBarCallback,
         void observe() {
             ContentResolver resolver = mContext.getContentResolver();
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.NAV_BUTTONS), false, this);
+                    Settings.System.NAVIGATION_BUTTONS), false, this);
         }
 
         @Override

@@ -608,10 +608,6 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         makeBar();
     }
 
-    private void postCheckForInvalidLayout(final String how) {
-        mHandler.obtainMessage(MSG_CHECK_INVALID_LAYOUT, 0, 0, how).sendToTarget();
-    }
-    
     private String getResourceName(int resId) {
         if (resId != 0) {
             final android.content.res.Resources res = mContext.getResources();
@@ -623,6 +619,10 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         } else {
             return "(null)";
         }
+    }
+
+    private void postCheckForInvalidLayout(final String how) {
+        mHandler.obtainMessage(MSG_CHECK_INVALID_LAYOUT, 0, 0, how).sendToTarget();
     }
 
     private static String visibilityToString(int vis) {

@@ -169,7 +169,7 @@ public class NavigationButtons {
      */
     public static ButtonInfo[] loadButtonMap(Context context) {
         String saved = Settings.System.getString(context.getContentResolver(),
-                Settings.System.NAV_BUTTONS);
+                Settings.System.NAVIGATION_BUTTONS);
         if (saved == null) {
             saved = NavigationButtons.DEFAULT_SETTING_STRING;
         }
@@ -199,6 +199,6 @@ public class NavigationButtons {
             sb.append(map[i].key);
         }
         Settings.System.putString(context.getContentResolver(),
-                Settings.System.NAV_BUTTONS, sb.toString());
+                Settings.System.NAVIGATION_BUTTONS, sb.toString());
     }
 }
