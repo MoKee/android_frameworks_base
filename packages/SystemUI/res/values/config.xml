@@ -104,6 +104,6 @@
     <bool name="config_hasFlipSettingsPanel">true</bool>
     
     <!-- default Navigation Bar transparency. 0-255 -->
-    <integer name="navigation_bar_transparency">204</integer>
+    <integer name="navigation_bar_transparency">128</integer>
 </resources>
 
