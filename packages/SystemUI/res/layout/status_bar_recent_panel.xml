@@ -143,6 +143,14 @@
 			    android:layout_height="43dp"
 			    android:scaleType="center"
 			    android:src="@drawable/ic_shortcut_sinaweibo"/>
+			    
+			<ImageView
+			    android:id="@+id/shortcut_fuubo"
+			    android:clickable="true"
+			    android:layout_width="43dp"
+			    android:layout_height="43dp"
+			    android:scaleType="center"
+			    android:src="@drawable/ic_shortcut_fuubo"/>
 
 			<ImageView
 			    android:id="@+id/shortcut_wechat"

@@ -108,6 +108,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
     private ImageView mSinaWeibo;
     private ImageView mTwitter;
     private ImageView mWeChat;
+    private ImageView mFuubo;
 
     private ScrollView mShortcutBar;
 
@@ -464,7 +465,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
         mRecentsNoApps = findViewById(R.id.recents_no_apps);
         mClearRecents = (ImageView) findViewById(R.id.recents_clear);
 
-	mShortcutBar = (ScrollView) findViewById(R.id.shortcut_bar);
+	    mShortcutBar = (ScrollView) findViewById(R.id.shortcut_bar);
         mAlarmClock = (ImageView) findViewById(R.id.shortcut_alarmclock);
         mCalculator = (ImageView) findViewById(R.id.shortcut_calculator);
         mCamera = (ImageView) findViewById(R.id.shortcut_camera);
@@ -477,6 +478,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
         mSinaWeibo = (ImageView) findViewById(R.id.shortcut_sinaweibo);
         mTwitter = (ImageView) findViewById(R.id.shortcut_twitter);
         mWeChat = (ImageView) findViewById(R.id.shortcut_wechat);
+        mFuubo = (ImageView) findViewById(R.id.shortcut_fuubo);
 
         if (mClearRecents != null){
             mClearRecents.setOnClickListener(this);
@@ -494,6 +496,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
         setShortcurtEnable(mSinaWeibo, "com.sina.weibo");
         setShortcurtEnable(mTwitter, "com.twitter.android");
         setShortcurtEnable(mWeChat, "com.tencent.mm");
+        setShortcurtEnable(mFuubo, "me.imid.fuubo");
 
         if (mRecentsScrim != null) {
             mHighEndGfx = ActivityManager.isHighEndGfx();
@@ -585,6 +588,8 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
 		case R.id.shortcut_wechat:
 			startApplication("com.tencent.mm","com.tencent.mm.ui.LauncherUI");
 			break;
+	    case R.id.shortcut_fuubo:
+			startApplication("me.imid.fuubo","me.imid.fuubo.ui.Fuubo");
 	}		
     }
 
