@@ -538,8 +538,8 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
         	Intent mIntent =new Intent(Intent.ACTION_VIEW);
     		mIntent.setClassName(packageName, loginMain);
     		mIntent.addFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY | Intent.FLAG_ACTIVITY_TASK_ON_HOME | Intent.FLAG_ACTIVITY_NEW_TASK );
-    		dismiss();
     		mContext.startActivityAsUser(mIntent, new UserHandle(UserHandle.USER_CURRENT));
+    		dismiss();
         }   	
     }
 
