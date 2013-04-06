@@ -484,9 +484,11 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
             mClearRecents.setOnClickListener(this);
         }
 
+        // if previous camera doesn't exist,try to set another one
+        boolean mIsExist = checkApkExist(mContext, "com.android.gallery3d");
         setShortcurtEnable(mAlarmClock, "com.android.deskclock");
         setShortcurtEnable(mCalculator, "com.android.calculator2");
-        setShortcurtEnable(mCamera, "com.google.android.gallery3d");
+        setShortcurtEnable(mCamera,mIsExist ? "com.android.gallery3d" : "com.google.android.gallery3d");
         setShortcurtEnable(mCalendar, "com.android.calendar");
         setShortcurtEnable(mMaps, "com.google.android.apps.maps");
         setShortcurtEnable(mMusic, "com.andrew.apollo");
