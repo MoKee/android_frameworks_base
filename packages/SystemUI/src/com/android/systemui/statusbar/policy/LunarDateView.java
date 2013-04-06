@@ -221,6 +221,7 @@ public class LunarDateView extends TextView implements OnClickListener, OnLongCl
         }
         cal.set(Integer.parseInt(list.get(0)), Integer.parseInt(list.get(2)) - 1,Integer.parseInt(list.get(4)));
         Lunar lunar = new Lunar(cal, mContext);
-        return lunar.toString();
+        String lunarStr = lunar.toString();
+        return lunarStr.substring(2, lunarStr.length());
     }
 }
