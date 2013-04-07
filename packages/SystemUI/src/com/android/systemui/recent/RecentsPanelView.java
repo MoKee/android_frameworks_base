@@ -112,6 +112,8 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
 
     private ScrollView mShortcutBar;
 
+    private String mCameraPath;
+
     public static interface RecentsScrollView {
         public int numItemsInOneScreenful();
         public void setAdapter(TaskDescriptionAdapter adapter);
@@ -484,10 +486,10 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
             mClearRecents.setOnClickListener(this);
         }
 
-        
+        mCameraPath = checkApkExist(mContext, "com.android.gallery3d") ? "com.android.gallery3d" : "com.google.android.gallery3d";
         setShortcurtEnable(mAlarmClock, "com.android.deskclock");
         setShortcurtEnable(mCalculator, "com.android.calculator2");
-        setShortcurtEnable(mCamera,checkApkExist(mContext, "com.android.gallery3d") ? "com.android.gallery3d" : "com.google.android.gallery3d");// if previous camera doesn't exist,try to set another one
+        setShortcurtEnable(mCamera, mCameraPath);// if previous camera doesn't exist,try to set another one
         setShortcurtEnable(mCalendar, "com.android.calendar");
         setShortcurtEnable(mMaps, "com.google.android.apps.maps");
         setShortcurtEnable(mMusic, "com.andrew.apollo");
@@ -560,7 +562,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
 			startApplication("com.android.calculator2","com.android.calculator2.Calculator");
 			break;
 		case R.id.shortcut_camera:
-			startApplication("com.google.android.gallery3d","com.android.camera.CameraLauncher");
+			startApplication(mCameraPath,"com.android.camera.CameraLauncher");
 			break;
 		case R.id.shortcut_calendar:
 			startApplication("com.android.calendar","com.android.calendar.LaunchActivity");
