@@ -106,7 +106,6 @@ import com.android.systemui.statusbar.policy.NetworkController;
 import com.android.systemui.statusbar.policy.NotificationRowLayout;
 import com.android.systemui.statusbar.policy.OnSizeChangedListener;
 import com.android.systemui.statusbar.policy.Prefs;
-import com.android.systemui.statusbar.policy.PieController.Position;
 import com.android.systemui.statusbar.powerwidget.PowerWidget;
 
 public class PhoneStatusBar extends BaseStatusBar {
@@ -461,6 +460,7 @@ public class PhoneStatusBar extends BaseStatusBar {
             }});
 
         mStatusBarView = (PhoneStatusBarView) mStatusBarWindow.findViewById(R.id.status_bar);
+        mStatusBarView.setStatusBar(this);
         mStatusBarView.setBar(this);
 
 
@@ -770,6 +770,11 @@ public class PhoneStatusBar extends BaseStatusBar {
     @Override
     protected View getStatusBarView() {
         return mStatusBarView;
+    }
+
+    @Override
+    public QuickSettingsContainerView getQuickSettingsPanel() {
+        return mSettingsContainer;
     }
 
     @Override
@@ -1555,6 +1560,7 @@ public class PhoneStatusBar extends BaseStatusBar {
 
         mStatusBarWindow.cancelExpandHelper();
         mStatusBarView.collapseAllPanels(true);
+        super.animateCollapsePanels(flags);
     }
 
     public ViewPropertyAnimator setVisibilityWhenDone(
@@ -1609,11 +1615,6 @@ public class PhoneStatusBar extends BaseStatusBar {
         if (SPEW) Slog.d(TAG, "animateExpand: mExpandedVisible=" + mExpandedVisible);
         if ((mDisabled & StatusBarManager.DISABLE_EXPAND) != 0) {
             return ;
-        }
-        // don't allow expanding via e.g. service call while status bar is hidden
-        // due to expanded desktop
-        if (mExpandedDesktopState == 2) {
-            return;
         }
 
         mNotificationPanel.expand();
@@ -1680,11 +1681,6 @@ public class PhoneStatusBar extends BaseStatusBar {
     public void animateExpandSettingsPanel() {
         if (SPEW) Slog.d(TAG, "animateExpand: mExpandedVisible=" + mExpandedVisible);
         if ((mDisabled & StatusBarManager.DISABLE_EXPAND) != 0) {
-            return;
-        }
-        // don't allow expanding via e.g. service call while status bar is hidden
-        // due to expanded desktop
-        if (mExpandedDesktopState == 2) {
             return;
         }
 
@@ -2244,27 +2240,17 @@ public class PhoneStatusBar extends BaseStatusBar {
 
     @Override
     public void topAppWindowChanged(boolean showMenu) {
+        if (mPieControlPanel != null)
+            mPieControlPanel.setMenu(showMenu);
         mTransparencyManager.update();
         if (DEBUG) {
             Slog.d(TAG, (showMenu?"showing":"hiding") + " the MENU button");
         }
         propagateMenuVisibility(showMenu);
 
-        // hide pie triggers when keyguard is visible
-        try {
-            if (mWindowManagerService.isKeyguardLocked()) {
-                updatePieTriggerMask(Position.BOTTOM.FLAG
-                        | Position.TOP.FLAG);
-            } else {
-                updatePieTriggerMask(Position.LEFT.FLAG
-                        | Position.BOTTOM.FLAG
-                        | Position.RIGHT.FLAG
-                        | Position.TOP.FLAG);
-            }
-        } catch (RemoteException e) {
-            // nothing else to do ...
+        if (mNavigationBarView != null) {
+            mNavigationBarView.setMenuVisibility(showMenu);
         }
-
         // See above re: lights-out policy for legacy apps.
         if (showMenu) setLightsOn(true);
     }
