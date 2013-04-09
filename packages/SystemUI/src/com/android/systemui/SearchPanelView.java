@@ -19,6 +19,7 @@ package com.android.systemui;
 
 import android.animation.LayoutTransition;
 import android.app.ActivityOptions;
+import android.app.SearchManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -307,6 +308,11 @@ public class SearchPanelView extends FrameLayout implements
 
         return screenSize == Configuration.SCREENLAYOUT_SIZE_LARGE
                 || screenSize == Configuration.SCREENLAYOUT_SIZE_XLARGE;
+    }
+
+    public boolean isAssistantAvailable() {
+        return ((SearchManager) mContext.getSystemService(Context.SEARCH_SERVICE))
+                .getAssistIntent(mContext, UserHandle.USER_CURRENT) != null;
     }
 
     private boolean isScreenPortrait() {

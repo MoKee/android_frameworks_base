@@ -46,7 +46,6 @@ import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 
 import com.android.systemui.R;
-import com.android.systemui.statusbar.policy.PieController.Position;
 import com.android.systemui.statusbar.BackgroundAlphaColorDrawable;
 import com.android.systemui.statusbar.phone.NavigationBarView;
 
@@ -190,12 +189,6 @@ public class PhoneStatusBarView extends PanelBar {
         mBar.makeExpandedInvisibleSoon();
         mFadingPanel = null;
         mLastFullyOpenedPanel = null;
-
-        // show up you pie controls
-        mBar.updatePieTriggerMask(Position.LEFT.FLAG
-                | Position.TOP.FLAG
-                | Position.RIGHT.FLAG
-                | Position.TOP.FLAG);
     }
 
     @Override
@@ -203,13 +196,6 @@ public class PhoneStatusBarView extends PanelBar {
         super.onPanelFullyOpened(openPanel);
         if (openPanel != mLastFullyOpenedPanel) {
             openPanel.sendAccessibilityEvent(AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED);
-        }
-
-        // back off you pie controls!
-        if (mShouldFade) {
-            mBar.updatePieTriggerMask(Position.LEFT.FLAG
-                    | Position.RIGHT.FLAG
-                    | Position.TOP.FLAG);
         }
 
         mFadingPanel = openPanel;

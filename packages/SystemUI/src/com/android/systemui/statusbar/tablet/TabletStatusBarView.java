@@ -18,6 +18,7 @@ package com.android.systemui.statusbar.tablet;
 
 import com.android.systemui.R;
 import com.android.systemui.statusbar.BaseStatusBar;
+import com.android.systemui.statusbar.phone.PanelBar;
 import com.android.systemui.statusbar.DelegateViewHelper;
 
 import android.content.Context;
@@ -28,7 +29,7 @@ import android.view.View;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 
-public class TabletStatusBarView extends FrameLayout {
+public class TabletStatusBarView extends PanelBar {
     private Handler mHandler;
 
     private final int MAX_PANELS = 5;

@@ -62,6 +62,9 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.SlidingDrawer.OnDrawerCloseListener;
+import android.widget.SlidingDrawer.OnDrawerOpenListener;
+import android.widget.SlidingDrawer.OnDrawerScrollListener;
 
 import com.android.internal.statusbar.StatusBarIcon;
 import com.android.internal.statusbar.StatusBarNotification;
@@ -73,6 +76,7 @@ import com.android.systemui.statusbar.NotificationData;
 import com.android.systemui.statusbar.NotificationData.Entry;
 import com.android.systemui.statusbar.SignalClusterView;
 import com.android.systemui.statusbar.StatusBarIconView;
+import com.android.systemui.statusbar.phone.QuickSettingsContainerView;
 import com.android.systemui.statusbar.policy.BatteryController;
 import com.android.systemui.statusbar.policy.BluetoothController;
 import com.android.systemui.statusbar.policy.CompatModeButton;
@@ -96,6 +100,10 @@ public class TabletStatusBar extends BaseStatusBar implements
     public static final int MSG_CLOSE_NOTIFICATION_PANEL = 1001;
     public static final int MSG_OPEN_NOTIFICATION_PEEK = 1002;
     public static final int MSG_CLOSE_NOTIFICATION_PEEK = 1003;
+    public static final int MSG_OPEN_QUICKNAVBAR_PANEL = 1004;
+    public static final int MSG_CLOSE_QUICKNAVBAR_PANEL = 1005;
+    public static final int MSG_TOGGLE_RECENTS_PANEL = 1006;
+    public static final int MSG_OPEN_SETTINGS_PANEL = 1007;
     // 1020-1029 reserved for BaseStatusBar
     public static final int MSG_SHOW_CHROME = 1030;
     public static final int MSG_HIDE_CHROME = 1031;
@@ -174,6 +182,8 @@ public class TabletStatusBar extends BaseStatusBar implements
 
     View mCompatibilityHelpDialog = null;
 
+    public View[] mPieDummyTrigger = new View[4];
+
     // for disabling the status bar
     int mDisabled = 0;
 
@@ -238,6 +248,10 @@ public class TabletStatusBar extends BaseStatusBar implements
         // very little screen real-estate and is updated fairly frequently.  By using CPU rendering
         // for the status bar, we prevent the GPU from having to wake up just to do these small
         // updates, which should help keep power consumption down.
+
+        if (ActivityManager.isHighEndGfx()) {
+             lp.flags |= WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED;
+         }
 
         lp.gravity = getStatusBarGravity();
         lp.setTitle("SystemBar");
@@ -365,8 +379,6 @@ public class TabletStatusBar extends BaseStatusBar implements
         lp.windowAnimations = android.R.style.Animation_Dialog;
 
         mWindowManager.addView(mCompatModePanel, lp);
-
-        mRecentButton.setOnTouchListener(mRecentsPreloadOnTouchListener);
 
         mPile = (NotificationRowLayout)mNotificationPanel.findViewById(R.id.content);
         mPile.removeAllViews();
@@ -496,6 +508,11 @@ public class TabletStatusBar extends BaseStatusBar implements
         return mStatusBarView;
     }
 
+     @Override
+     public QuickSettingsContainerView getQuickSettingsPanel() {
+         return mNotificationPanel.mSettingsContainer;
+     }
+
     protected View makeStatusBarView() {
         final Context context = mContext;
 
@@ -519,6 +536,12 @@ public class TabletStatusBar extends BaseStatusBar implements
                 Slog.e(TAG, "Tablet device cannot show navigation bar and system bar");
             }
         } catch (RemoteException ex) {
+        }
+
+        int dummyGravity[] = {Gravity.LEFT, Gravity.TOP, Gravity.RIGHT, Gravity.BOTTOM};
+        for (int i = 0; i < 4; i++) {
+            mPieDummyTrigger[i] = new View(mContext);
+            mWindowManager.addView(mPieDummyTrigger[i], getDummyTriggerLayoutParams(mContext, dummyGravity[i]));
         }
 
         mBarContents = (ViewGroup) sb.findViewById(R.id.bar_contents);
@@ -1040,6 +1063,9 @@ public class TabletStatusBar extends BaseStatusBar implements
         if (!firstTime && (n.notification.flags & Notification.FLAG_ONLY_ALERT_ONCE) != 0) {
             return;
         }
+
+        if (!notificationIsForCurrentUser(n)) return;
+
         // Show the ticker if one is requested. Also don't do this
         // until status bar window is attached to the window manager,
         // because...  well, what's the point otherwise?  And trying to
@@ -1088,7 +1114,7 @@ public class TabletStatusBar extends BaseStatusBar implements
             mHandler.removeMessages(MSG_CLOSE_COMPAT_MODE_PANEL);
             mHandler.sendEmptyMessage(MSG_CLOSE_COMPAT_MODE_PANEL);
         }
-
+        super.animateCollapsePanels(flags);
     }
 
     @Override
@@ -1166,11 +1192,13 @@ public class TabletStatusBar extends BaseStatusBar implements
     }
 
     public void topAppWindowChanged(boolean showMenu) {
+        if (mPieControlPanel != null)
+                mPieControlPanel.setMenu(showMenu);
+
         if (DEBUG) {
             Slog.d(TAG, (showMenu?"showing":"hiding") + " the MENU button");
         }
         mMenuButton.setVisibility(showMenu ? View.VISIBLE : View.GONE);
-        propagateMenuVisibility(showMenu);
 
         // See above re: lights-out policy for legacy apps.
         if (showMenu) setLightsOn(true);
@@ -1410,6 +1438,106 @@ public class TabletStatusBar extends BaseStatusBar implements
                 NOTIFICATION_PEEK_FADE_DELAY);
     }
 
+    private class NotificationIconTouchListener implements View.OnTouchListener {
+        VelocityTracker mVT;
+        int mPeekIndex;
+        float mInitialTouchX, mInitialTouchY;
+        int mTouchSlop;
+
+        public NotificationIconTouchListener() {
+            mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+        }
+
+        public boolean onTouch(View v, MotionEvent event) {
+            boolean peeking = mNotificationPeekWindow.getVisibility() != View.GONE;
+            boolean panelShowing = mNotificationPanel.isShowing();
+            if (panelShowing) return false;
+
+            int numIcons = mIconLayout.getChildCount();
+            int newPeekIndex = (int)(event.getX() * numIcons / mIconLayout.getWidth());
+            if (newPeekIndex > numIcons - 1) newPeekIndex = numIcons - 1;
+            else if (newPeekIndex < 0) newPeekIndex = 0;
+
+            final int action = event.getAction();
+            switch (action) {
+                case MotionEvent.ACTION_DOWN:
+                    mVT = VelocityTracker.obtain();
+                    mInitialTouchX = event.getX();
+                    mInitialTouchY = event.getY();
+                    mPeekIndex = -1;
+
+                    // fall through
+                case MotionEvent.ACTION_OUTSIDE:
+                case MotionEvent.ACTION_MOVE:
+                    // peek and switch icons if necessary
+
+                    if (newPeekIndex != mPeekIndex) {
+                        mPeekIndex = newPeekIndex;
+
+                        if (DEBUG) Slog.d(TAG, "will peek at notification #" + mPeekIndex);
+                        Message peekMsg = mHandler.obtainMessage(MSG_OPEN_NOTIFICATION_PEEK);
+                        peekMsg.arg1 = mPeekIndex;
+
+                        mHandler.removeMessages(MSG_OPEN_NOTIFICATION_PEEK);
+
+                        if (peeking) {
+                            // no delay if we're scrubbing left-right
+                            mHandler.sendMessage(peekMsg);
+                        } else {
+                            // wait for fling
+                            mHandler.sendMessageDelayed(peekMsg, NOTIFICATION_PEEK_HOLD_THRESH);
+                        }
+                    }
+
+                    // check for fling
+                    if (mVT != null) {
+                        mVT.addMovement(event);
+                        mVT.computeCurrentVelocity(1000); // pixels per second
+                        // require a little more oomph once we're already in peekaboo mode
+                        if (!panelShowing && (
+                               (peeking && mVT.getYVelocity() < -mNotificationFlingVelocity*3)
+                            || (mVT.getYVelocity() < -mNotificationFlingVelocity))) {
+                            mHandler.removeMessages(MSG_OPEN_NOTIFICATION_PEEK);
+                            mHandler.removeMessages(MSG_OPEN_NOTIFICATION_PANEL);
+                            mHandler.sendEmptyMessage(MSG_CLOSE_NOTIFICATION_PEEK);
+                            mHandler.sendEmptyMessage(MSG_OPEN_NOTIFICATION_PANEL);
+                        }
+                    }
+                    return true;
+                case MotionEvent.ACTION_UP:
+                case MotionEvent.ACTION_CANCEL:
+                    mHandler.removeMessages(MSG_OPEN_NOTIFICATION_PEEK);
+                    if (!peeking) {
+                        if (action == MotionEvent.ACTION_UP
+                                // was this a sloppy tap?
+                                && Math.abs(event.getX() - mInitialTouchX) < mTouchSlop
+                                && Math.abs(event.getY() - mInitialTouchY) < (mTouchSlop / 3)
+                                // dragging off the bottom doesn't count
+                                && (int)event.getY() < v.getBottom()) {
+                            Message peekMsg = mHandler.obtainMessage(MSG_OPEN_NOTIFICATION_PEEK);
+                            peekMsg.arg1 = mPeekIndex;
+                            mHandler.removeMessages(MSG_OPEN_NOTIFICATION_PEEK);
+                            mHandler.sendMessage(peekMsg);
+
+                            v.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_CLICKED);
+                            v.playSoundEffect(SoundEffectConstants.CLICK);
+
+                            peeking = true; // not technically true yet, but the next line will run
+                        }
+                    }
+
+                    if (peeking) {
+                        resetNotificationPeekFadeTimer();
+                    }
+
+                    mVT.recycle();
+                    mVT = null;
+                    return true;
+            }
+            return false;
+        }
+    }
+
     private void reloadAllNotificationIcons() {
         if (mIconLayout == null) return;
         mIconLayout.removeAllViews();
@@ -1515,7 +1643,7 @@ public class TabletStatusBar extends BaseStatusBar implements
         // If the device hasn't been through Setup, we only show system notifications
         for (int i=0; i<N; i++) {
             Entry ent = mNotificationData.get(N-i-1);
-            if (provisioned || showNotificationEvenIfUnprovisioned(ent.notification)) {
+            if (provisioned || showNotificationEvenIfUnprovisioned(ent.notification) && !notificationIsForCurrentUser(ent.notification)) {
                 toShow.add(ent.row);
             }
         }
