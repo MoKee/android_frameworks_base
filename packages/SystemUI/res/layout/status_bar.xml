@@ -81,8 +81,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:orientation="horizontal"/>    
-    
+                android:orientation="horizontal"/> 
+   
+           <com.android.systemui.statusbar.policy.Traffic
+                android:id="@+id/traffic"
+                android:textAppearance="@style/TextAppearance.StatusBar.Battery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:paddingLeft="6dip"
+                android:gravity="center_vertical|left"
+                android:clickable="false"
+                />
             <LinearLayout
                 android:id="@+id/signal_battery_cluster"
                 android:layout_width="wrap_content"

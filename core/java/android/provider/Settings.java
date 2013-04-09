@@ -2777,6 +2777,8 @@ public final class Settings {
          */
         public static final String STATUS_BAR_CLOCK = "status_bar_clock";
 
+        public static final String STATUS_BAR_TRAFFIC = "status_bar_traffic";
+
         /**
          * Whether to show the signal text or signal bars.
          * default: 0
