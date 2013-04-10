@@ -266,4 +266,6 @@
     <string name="navbar_menu_always_button">菜单键 (总是显示)</string>
     <string name="navbar_menu_big_button">菜单键</string>
 
+    <!-- Super Pie -->
+    <string name="pie_date_format">M月d日E</string>
 </resources>
