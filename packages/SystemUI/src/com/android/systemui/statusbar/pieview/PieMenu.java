@@ -833,9 +833,6 @@ public class PieMenu extends FrameLayout {
                     canvas.restoreToCount(state);
                 }
 
-                // Better not show inverted junk for top pies
-                if (mPanelOrientation != Gravity.TOP) {
-
                     // Draw Battery
                     mBatteryBackground.setAlpha((int)(mAnimators[ANIMATOR_DEC_SPEED15].fraction * 0x22));
                     mBatteryJuice.setAlpha((int)(mAnimators[ANIMATOR_ACC_SPEED15].fraction * 0x88));
@@ -902,7 +899,6 @@ public class PieMenu extends FrameLayout {
                         }
                     }
                     canvas.restoreToCount(state);
-                }
             }
         }
     }
