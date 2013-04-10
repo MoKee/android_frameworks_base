@@ -30,6 +30,7 @@ import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
 
 import com.android.systemui.R;
+import com.android.systemui.statusbar.util.SpnOverride;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -43,6 +44,7 @@ public class PiePolicy {
     private static Context mContext;
     private static int mBatteryLevel = 0;
     private static boolean mTelephony;
+    private static boolean isCN;
 
     private OnClockChangedListener mClockChangedListener;
 
@@ -57,6 +59,7 @@ public class PiePolicy {
         @Override
         public void onReceive(Context context, Intent intent) {
             mClockChangedListener.onChange(getSimpleTime());
+            isCN = mContext.getResources().getConfiguration().locale.getCountry().equals("CN") || mContext.getResources().getConfiguration().locale.getCountry().equals("TW");
         }
     };
 
@@ -71,12 +74,14 @@ public class PiePolicy {
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_TIME_TICK);
         filter.addAction(Intent.ACTION_TIME_CHANGED);
+        filter.addAction(Intent.ACTION_LOCALE_CHANGED);
         mContext.registerReceiver(mClockReceiver, filter);
         LOW_BATTERY_LEVEL = mContext.getResources().getInteger(
                 com.android.internal.R.integer.config_lowBatteryWarningLevel);
         CRITICAL_BATTERY_LEVEL = mContext.getResources().getInteger(
                 com.android.internal.R.integer.config_criticalBatteryWarningLevel);
         mTelephony = mContext.getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
+        isCN = mContext.getResources().getConfiguration().locale.getCountry().equals("CN") || mContext.getResources().getConfiguration().locale.getCountry().equals("TW");
     }
 
     public void setOnClockChangedListener(OnClockChangedListener l){
@@ -105,17 +110,25 @@ public class PiePolicy {
         String operatorName = mContext.getString(R.string.quick_settings_wifi_no_network);
         TelephonyManager telephonyManager = (TelephonyManager) mContext
                 .getSystemService(Context.TELEPHONY_SERVICE);
-        operatorName = telephonyManager.getNetworkOperatorName();
-        if(operatorName == null) {
-            operatorName = telephonyManager.getSimOperatorName();
+        if(isCN) {
+            String operator = telephonyManager.getNetworkOperator();
+            SpnOverride mSpnOverride = new SpnOverride();
+            operatorName = mSpnOverride.getSpn(operator);
+            if(operatorName == null) {
+                operatorName = telephonyManager.getSimOperatorName();
+            }    		
+        } else {
+            operatorName = telephonyManager.getNetworkOperatorName();
+            if(operatorName == null) {
+                operatorName = telephonyManager.getSimOperatorName();
+            }
         }
         return operatorName.toUpperCase();
     }
 
     public static String getSimpleDate() {
-        SimpleDateFormat sdf = new SimpleDateFormat(
-                mContext.getString(R.string.pie_date_format));
-        String date = sdf.format(new Date());
+	String dateFormat = mContext.getString(R.string.pie_date_format);
+        String date = String.valueOf(DateFormat.format(dateFormat, new Date()));
         return date.toUpperCase();
     }
 
@@ -134,7 +147,7 @@ public class PiePolicy {
     public static String getAmPm() {
         String amPm = "";
         if(!is24Hours()) {
-        	if(mContext.getResources().getConfiguration().locale.getCountry().equals("CN") || mContext.getResources().getConfiguration().locale.getCountry().equals("TW")) {
+        	if(isCN) {
         		Calendar inDate = Calendar.getInstance();
         		amPm = DateUtils.getAMPMCNString(inDate.get(Calendar.HOUR), inDate.get(Calendar.AM_PM));
         	} else {
