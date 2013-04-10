@@ -264,7 +264,7 @@ public abstract class BaseStatusBar extends SystemUI implements
         public void onChange(boolean selfChange) {
             updatePieControls();
             if (Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.PIE_STICK, 1) == 0) {
+                Settings.System.PIE_STICK, 0) == 0) {
                 updatePieControls();
             }
         }
