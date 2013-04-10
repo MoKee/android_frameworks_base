@@ -220,7 +220,7 @@ public class PieMenu extends FrameLayout {
     private int mStatusMode;
     private float mPieSize = SIZE_BASE;
     private boolean mOpen;
-    private boolean mNavbarOff;
+    //private boolean mNavbarOff;
     private boolean mEnableColor;
     private boolean mUseMenuAlways;
     private boolean mUseSearch;
@@ -285,8 +285,8 @@ public class PieMenu extends FrameLayout {
         mUseSearch = Settings.System.getInt(mContext.getContentResolver(), Settings.System.PIE_SEARCH, 1) == 1;
         mUseLastApp = Settings.System.getInt(mContext.getContentResolver(), Settings.System.PIE_LAST_APP, 0) == 1;
         mStatusMode = Settings.System.getInt(mContext.getContentResolver(), Settings.System.PIE_MODE, 0);
-        mNavbarOff = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.EXPANDED_DESKTOP_STATE, 0) == 1 && !sbexpanded;
+        //mNavbarOff = Settings.System.getInt(mContext.getContentResolver(),
+        //        Settings.System.EXPANDED_DESKTOP_STATE, 0) == 1 && !sbexpanded;
         mPieSize = Settings.System.getFloat(mContext.getContentResolver(),
                 Settings.System.PIE_SIZE, 0.9f);
         mPieGap = Settings.System.getInt(mContext.getContentResolver(),
@@ -775,7 +775,7 @@ public class PieMenu extends FrameLayout {
             int state;
 
             // Draw background
-            if (mStatusMode != -1 && !mNavbarOff) {
+            if (mStatusMode != -1) {
                 canvas.drawARGB((int)(mAnimators[ANIMATOR_DEC_SPEED15].fraction * 0xcc), 0, 0, 0);
             }
 
@@ -811,7 +811,7 @@ public class PieMenu extends FrameLayout {
             }
 
             // Paint status report only if settings allow
-            if (mStatusMode != -1 && !mNavbarOff) {
+            if (mStatusMode != -1) {
 
                 // Draw chevron rings
                 mChevronBackgroundLeft.setAlpha((int)(mAnimators[ANIMATOR_DEC_SPEED15].fraction * mGlowOffsetLeft / 2 * (mPanelOrientation == Gravity.TOP ? 0.2 : 1)));
@@ -1032,23 +1032,21 @@ public class PieMenu extends FrameLayout {
                         state = distanceY < 0 ? PieStatusPanel.QUICK_SETTINGS_PANEL : PieStatusPanel.NOTIFICATIONS_PANEL;
                         break;
                 }
-
-                if (!mNavbarOff) {
-                    if (state == PieStatusPanel.QUICK_SETTINGS_PANEL && 
-                            mStatusPanel.getFlipViewState() != PieStatusPanel.QUICK_SETTINGS_PANEL
-                            && mStatusPanel.getCurrentViewState() != PieStatusPanel.QUICK_SETTINGS_PANEL) {
-                        mGlowOffsetRight = mPanelOrientation != Gravity.TOP ? 150 : 255;;
-                        mGlowOffsetLeft = mPanelOrientation != Gravity.TOP ? 255 : 150;
-                        mStatusPanel.setFlipViewState(PieStatusPanel.QUICK_SETTINGS_PANEL);
-                        if (mHapticFeedback && !snapActive) mVibrator.vibrate(2);
-                    } else if (state == PieStatusPanel.NOTIFICATIONS_PANEL && 
-                            mStatusPanel.getFlipViewState() != PieStatusPanel.NOTIFICATIONS_PANEL
-                            && mStatusPanel.getCurrentViewState() != PieStatusPanel.NOTIFICATIONS_PANEL) {
-                        mGlowOffsetRight = mPanelOrientation != Gravity.TOP ? 255 : 150;
-                        mGlowOffsetLeft = mPanelOrientation != Gravity.TOP ? 150 : 255;
-                        mStatusPanel.setFlipViewState(PieStatusPanel.NOTIFICATIONS_PANEL);
-                        if (mHapticFeedback && !snapActive) mVibrator.vibrate(2);
-                    }
+                // Always show PieStatusPanel
+                if (state == PieStatusPanel.QUICK_SETTINGS_PANEL && 
+                        mStatusPanel.getFlipViewState() != PieStatusPanel.QUICK_SETTINGS_PANEL
+                        && mStatusPanel.getCurrentViewState() != PieStatusPanel.QUICK_SETTINGS_PANEL) {
+                    mGlowOffsetRight = mPanelOrientation != Gravity.TOP ? 150 : 255;;
+                    mGlowOffsetLeft = mPanelOrientation != Gravity.TOP ? 255 : 150;
+                    mStatusPanel.setFlipViewState(PieStatusPanel.QUICK_SETTINGS_PANEL);
+                    if (mHapticFeedback && !snapActive) mVibrator.vibrate(2);
+                } else if (state == PieStatusPanel.NOTIFICATIONS_PANEL && 
+                        mStatusPanel.getFlipViewState() != PieStatusPanel.NOTIFICATIONS_PANEL
+                        && mStatusPanel.getCurrentViewState() != PieStatusPanel.NOTIFICATIONS_PANEL) {
+                    mGlowOffsetRight = mPanelOrientation != Gravity.TOP ? 255 : 150;
+                    mGlowOffsetLeft = mPanelOrientation != Gravity.TOP ? 150 : 255;
+                    mStatusPanel.setFlipViewState(PieStatusPanel.NOTIFICATIONS_PANEL);
+                    if (mHapticFeedback && !snapActive) mVibrator.vibrate(2);
                 }
                 deselect();
             }

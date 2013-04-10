@@ -474,8 +474,23 @@ public abstract class BaseStatusBar extends SystemUI implements
                 Settings.System.EXPANDED_DESKTOP_STATE, 0) == 1;
         boolean sbexpanded = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.EXPANDED_DESKTOP_STYLE, 0) == 2;
-
-        return (pie);
+        boolean hasnavbar = true;
+        IWindowManager windowManager = IWindowManager.Stub.asInterface(
+                ServiceManager.getService(Context.WINDOW_SERVICE));
+        try {
+            hasnavbar = windowManager.hasNavigationBar();
+        } catch (RemoteException e) {
+            Slog.e(TAG,"windowManager has catched errors",e);
+        }
+        
+        if (hasnavbar) {
+            if (navbarOff || sbexpanded)
+                return pie;
+            return false;
+        }
+        else
+            return pie;
+        
     }
 
     public void updatePieControls() {
