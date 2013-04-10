@@ -2631,18 +2631,18 @@ public final class Settings {
          */
         public static final String NAVIGATION_BUTTONS = "navigation_buttons";
 
-         /**
+        /**
          * Height of navigation bar buttons
 	 * @hide
          */
         public static final String NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
 
-         /**
-          * Toggle fullscreen keyboard
-          *
-          * @hide
-          */
-         public static final String FULLSCREEN_KEYBOARD = "fullscreen_keyboard";
+        /**
+         * Toggle fullscreen keyboard
+         *
+         * @hide
+         */
+        public static final String FULLSCREEN_KEYBOARD = "fullscreen_keyboard";
 
         /**  
          * Give MMS Notifications a breathing effect
@@ -2687,12 +2687,6 @@ public final class Settings {
         public static final String PIE_CONTROLS = "pie_controls";
 
         /**
-         * Restart Launcher
-         * @hide
-         */
-        public static final String EXPANDED_DESKTOP_RESTART_LAUNCHER = "expanded_desktop_restart_launcher";
-
-        /**
          * Pie menu, should default to 1 (yes, show)
          * @hide
          */
@@ -2703,8 +2697,6 @@ public final class Settings {
          * @hide
          */
         public static final String PIE_SEARCH = "pie_search";
-
-
 
         /**
          * Pie will not rotate. Should default to 1 (yes, do not rotate)
@@ -2762,7 +2754,7 @@ public final class Settings {
          */
         public static final String PIE_SIZE = "pie_size";
 
-       // PIE COLORS EVERYWHERE! //
+        // PIE COLORS EVERYWHERE! //
 
         /**
          * @hide
