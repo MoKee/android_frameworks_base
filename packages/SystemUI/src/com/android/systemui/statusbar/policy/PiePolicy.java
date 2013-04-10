@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.text.format.DateFormat;
+import android.text.format.DateUtils;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
@@ -31,6 +32,7 @@ import android.telephony.TelephonyManager;
 import com.android.systemui.R;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class PiePolicy {
@@ -132,9 +134,13 @@ public class PiePolicy {
     public static String getAmPm() {
         String amPm = "";
         if(!is24Hours()) {
-            SimpleDateFormat sdf = new SimpleDateFormat(
-                    mContext.getString(R.string.pie_am_pm));
-            amPm = sdf.format(new Date()).toUpperCase();
+        	if(mContext.getResources().getConfiguration().locale.getCountry().equals("CN") || mContext.getResources().getConfiguration().locale.getCountry().equals("TW")) {
+        		Calendar inDate = Calendar.getInstance();
+        		amPm = DateUtils.getAMPMCNString(inDate.get(Calendar.HOUR), inDate.get(Calendar.AM_PM));
+        	} else {
+        		SimpleDateFormat sdf = new SimpleDateFormat(mContext.getString(R.string.pie_am_pm));
+        		amPm = sdf.format(new Date()).toUpperCase();
+        	}
         }
         return amPm;
     }
