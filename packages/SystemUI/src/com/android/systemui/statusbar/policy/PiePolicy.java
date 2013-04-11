@@ -28,7 +28,7 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
-
+import android.provider.Settings;
 import com.android.systemui.R;
 import com.android.systemui.statusbar.util.SpnOverride;
 
@@ -107,7 +107,10 @@ public class PiePolicy {
     }
 
     public static String getNetworkProvider() {
-        String operatorName = mContext.getString(R.string.quick_settings_wifi_no_network);
+         String operatorName = Settings.Global.getString(mContext.getContentResolver(),
+                Settings.System.CUSTOM_CARRIER_LABEL);
+         if(operatorName != null && operatorName.trim().length() < 1){
+              operatorName = mContext.getString(R.string.quick_settings_wifi_no_network);
         TelephonyManager telephonyManager = (TelephonyManager) mContext
                 .getSystemService(Context.TELEPHONY_SERVICE);
         if(isCN) {
@@ -116,13 +119,15 @@ public class PiePolicy {
             operatorName = mSpnOverride.getSpn(operator);
             if(operatorName == null) {
                 operatorName = telephonyManager.getSimOperatorName();
-            }    		
+            }           
         } else {
             operatorName = telephonyManager.getNetworkOperatorName();
             if(operatorName == null) {
                 operatorName = telephonyManager.getSimOperatorName();
             }
         }
+         }
+       
         return operatorName.toUpperCase();
     }
 
