@@ -107,9 +107,10 @@ public class PiePolicy {
     }
 
     public static String getNetworkProvider() {
-         String operatorName = Settings.Global.getString(mContext.getContentResolver(),
+         String operatorName = Settings.System.getString(mContext.getContentResolver(),
                 Settings.System.CUSTOM_CARRIER_LABEL);
-         if(operatorName != null && operatorName.trim().length() < 1){
+         if(operatorName != null && operatorName.trim().length() < 1)//is fake 
+         {
               operatorName = mContext.getString(R.string.quick_settings_wifi_no_network);
         TelephonyManager telephonyManager = (TelephonyManager) mContext
                 .getSystemService(Context.TELEPHONY_SERVICE);
