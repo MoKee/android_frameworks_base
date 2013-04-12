@@ -325,10 +325,12 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
         mAnimateIconOfFirstTask = animateIconOfFirstTask;
         mWaitingForWindowAnimation = animateIconOfFirstTask;
         if (show) {
+            mRecentsScrim.setVisibility(View.VISIBLE);
             mWaitingToShow = true;
             refreshRecentTasksList(recentTaskDescriptions, firstScreenful);
             showIfReady();
         } else {
+            mRecentsScrim.setVisibility(View.GONE);
             showImpl(false);
         }
     }
@@ -467,7 +469,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
         mRecentsNoApps = findViewById(R.id.recents_no_apps);
         mClearRecents = (ImageView) findViewById(R.id.recents_clear);
 
-	    mShortcutBar = (ScrollView) findViewById(R.id.shortcut_bar);
+	mShortcutBar = (ScrollView) findViewById(R.id.shortcut_bar);
         mAlarmClock = (ImageView) findViewById(R.id.shortcut_alarmclock);
         mCalculator = (ImageView) findViewById(R.id.shortcut_calculator);
         mCamera = (ImageView) findViewById(R.id.shortcut_camera);
@@ -531,22 +533,22 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
     private void startApplication(String packageName, String loginMain) {
     	if(mRecentTaskDescriptions != null)
         {
-        	for(TaskDescription i : mRecentTaskDescriptions)
-        	{
-        		if(i.packageName.equals(packageName) && i.taskId >= 0)
-        		{
-        			final ActivityManager am = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
-        			am.moveTaskToFront(i.taskId, ActivityManager.MOVE_TASK_WITH_HOME);
-        			dismiss();
-        			return;
-        		}
-        	}
-        	Intent mIntent =new Intent(Intent.ACTION_VIEW);
-    		mIntent.setClassName(packageName, loginMain);
-    		mIntent.addFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY | Intent.FLAG_ACTIVITY_TASK_ON_HOME | Intent.FLAG_ACTIVITY_NEW_TASK );
-    		mContext.startActivityAsUser(mIntent, new UserHandle(UserHandle.USER_CURRENT));
-    		dismiss();
-        }   	
+		for(TaskDescription i : mRecentTaskDescriptions)
+		{
+			if(i.packageName.equals(packageName) && i.taskId >= 0)
+			{
+				final ActivityManager am = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
+				am.moveTaskToFront(i.taskId, ActivityManager.MOVE_TASK_WITH_HOME);
+				dismiss();
+				return;
+			}
+		}
+		Intent mIntent =new Intent(Intent.ACTION_VIEW);
+		mIntent.setClassName(packageName, loginMain);
+		mIntent.addFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY | Intent.FLAG_ACTIVITY_TASK_ON_HOME | Intent.FLAG_ACTIVITY_NEW_TASK );
+		mContext.startActivityAsUser(mIntent, new UserHandle(UserHandle.USER_CURRENT));
+		dismiss();
+        }
     }
 
     @Override
@@ -591,9 +593,10 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
 		case R.id.shortcut_wechat:
 			startApplication("com.tencent.mm","com.tencent.mm.ui.LauncherUI");
 			break;
-	    case R.id.shortcut_fuubo:
+		case R.id.shortcut_fuubo:
 			startApplication("me.imid.fuubo","me.imid.fuubo.ui.Fuubo");
-	}		
+			break;
+	}	
     }
 
     public void setMinSwipeAlpha(float minAlpha) {
