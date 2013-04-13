@@ -5,13 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
+import android.os.ServiceManager;
 import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.IWindowManager;
 
 import com.android.systemui.R;
 import com.android.systemui.statusbar.phone.QuickSettingsContainerView;
 import com.android.systemui.statusbar.phone.QuickSettingsController;
+
+import android.os.RemoteException;
 
 public class ExpandedDesktopTile extends QuickSettingsTile {
     private boolean mEnabled = false;
@@ -27,6 +31,7 @@ public class ExpandedDesktopTile extends QuickSettingsTile {
                 // Change the system setting
                 Settings.System.putInt(mContext.getContentResolver(),
                         Settings.System.EXPANDED_DESKTOP_STATE, mEnabled ? 0 : 1);
+                disablePie();
             }
         };
 
@@ -43,6 +48,22 @@ public class ExpandedDesktopTile extends QuickSettingsTile {
 
         Uri stateUri = Settings.System.getUriFor(Settings.System.EXPANDED_DESKTOP_STATE);
         qsc.registerObservedContent(stateUri, this);
+    }
+    // I want disable pie when switch to normal desktop 
+    // on devices that has navbar 
+    private void disablePie()
+    {
+        boolean hasnavbar = true;
+        IWindowManager windowManager = IWindowManager.Stub.asInterface(
+            ServiceManager.getService(Context.WINDOW_SERVICE));
+        try {
+            hasnavbar = windowManager.hasNavigationBar();
+        } catch (RemoteException e) {
+        }
+        if (hasnavbar) {
+            Settings.System.putInt(mContext.getContentResolver(),
+                Settings.System.PIE_CONTROLS, 0);
+        }
     }
 
     void onPostCreate() {

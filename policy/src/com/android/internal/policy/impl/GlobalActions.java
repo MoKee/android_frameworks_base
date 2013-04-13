@@ -30,6 +30,7 @@ import android.app.Profile;
 import android.app.ProfileManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -57,6 +58,7 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.InputDevice;
+import android.view.IWindowManager;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -1232,6 +1234,22 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                 mContext.getContentResolver(),
                 Settings.System.EXPANDED_DESKTOP_STATE,
                 on ? 1 : 0);
+        disablePie();
+    }
+
+    private void disablePie() {
+        boolean hasnavbar = true;
+        IWindowManager windowManager = IWindowManager.Stub.asInterface(
+            ServiceManager.getService(Context.WINDOW_SERVICE));
+        try {
+            hasnavbar = windowManager.hasNavigationBar();
+        } catch (RemoteException e) {
+            Log.e(TAG,"windowManager has catched errors",e);
+        }
+        if (hasnavbar) {
+            Settings.System.putInt(mContext.getContentResolver(),
+                Settings.System.PIE_CONTROLS, 0);
+        }
     }
 
     private static final class GlobalActionsDialog extends Dialog implements DialogInterface {
