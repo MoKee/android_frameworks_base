@@ -1930,6 +1930,10 @@
   <!-- IME Picker showing upon pressing Sym Key -->
   <java-symbol type="bool" name="config_symKeyShowsImePicker" />
   
+  <!-- Stylus gestures -->
+  <java-symbol type="bool" name="config_stylusGestures" />
+  <java-symbol type="string" name="stylus_app_not_installed" />
+  
   <!-- MoKee Start Add -->
   <!-- Screenshort Trash -->
   <java-symbol type="string" name="trash" />    
