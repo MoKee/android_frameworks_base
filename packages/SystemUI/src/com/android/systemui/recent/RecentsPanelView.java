@@ -23,8 +23,10 @@ import android.app.ActivityManager;
 import android.app.ActivityManagerNative;
 import android.app.ActivityOptions;
 import android.app.TaskStackBuilder;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -70,6 +72,7 @@ import com.android.systemui.statusbar.tablet.StatusBarPanel;
 import com.android.systemui.statusbar.tablet.TabletStatusBar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecentsPanelView extends FrameLayout implements OnClickListener, OnItemClickListener, RecentsCallback,
         StatusBarPanel, Animator.AnimatorListener {
@@ -325,15 +328,49 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
         mAnimateIconOfFirstTask = animateIconOfFirstTask;
         mWaitingForWindowAnimation = animateIconOfFirstTask;
         if (show) {
-            mRecentsScrim.setVisibility(View.VISIBLE);
             mWaitingToShow = true;
             refreshRecentTasksList(recentTaskDescriptions, firstScreenful);
             showIfReady();
+            mRecentsScrim.setVisibility(View.VISIBLE);
         } else {
-            mRecentsScrim.setVisibility(View.GONE);
             showImpl(false);
+            if(!isLauncherShowing())
+            mRecentsScrim.setVisibility(View.GONE);
         }
     }
+
+    private boolean isLauncherShowing() {
+        try {
+            ActivityManager am = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
+            final List<ActivityManager.RecentTaskInfo> recentTasks = am
+                    .getRecentTasksForUser(
+                            1, ActivityManager.RECENT_WITH_EXCLUDED,
+                            UserHandle.CURRENT.getIdentifier());
+            if (recentTasks.size() > 0) {
+                ActivityManager.RecentTaskInfo recentInfo = recentTasks.get(0);
+                Intent intent = new Intent(recentInfo.baseIntent);
+                if (recentInfo.origActivity != null) {
+                    intent.setComponent(recentInfo.origActivity);
+                }
+                if (isCurrentHomeActivity(intent.getComponent(), null)) {
+                    return true;
+                }
+            }
+        } catch(Exception ignore) {
+        }
+        return false;
+    }
+
+    private boolean isCurrentHomeActivity(ComponentName component, ActivityInfo homeInfo) {
+        if (homeInfo == null) {
+            homeInfo = new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME)
+                    .resolveActivityInfo(mContext.getPackageManager(), 0);
+        }
+        return homeInfo != null
+                && homeInfo.packageName.equals(component.getPackageName())
+                && homeInfo.name.equals(component.getClassName());
+    }
+
 
     private void showIfReady() {
         // mWaitingToShow => there was a touch up on the recents button
