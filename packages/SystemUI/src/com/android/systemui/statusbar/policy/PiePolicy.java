@@ -115,6 +115,8 @@ public class PiePolicy {
 		TelephonyManager telephonyManager = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
 		if(isCN) {
 		    String operator = telephonyManager.getNetworkOperator();
+		    if(TextUtils.isEmpty(operator))
+		        operator = telephonyManager.getSimOperator();
 		    SpnOverride mSpnOverride = new SpnOverride();
 		    operatorName = mSpnOverride.getSpn(operator);
 		    if(operatorName == null) {
