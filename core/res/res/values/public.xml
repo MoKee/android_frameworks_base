@@ -2056,5 +2056,7 @@
   <java-symbol type="string" name="xw" />
   <java-symbol type="string" name="bw" />
   <java-symbol type="string" name="sy" />
+
+  <java-symbol type="array" name="config_vendorServices" />
   <!-- MoKee End -->
 </resources>
