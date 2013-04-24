@@ -1835,6 +1835,7 @@
   <eat-comment />
 
   <!-- Config.xml entries -->
+  <java-symbol type="string" name="volume_fm" />
   <java-symbol type="bool" name="config_forceDisableHardwareKeyboard" />
   <java-symbol type="bool" name="config_hasRotationLockSwitch" />
   <java-symbol type="integer" name="config_backKillTimeout" />
@@ -1844,6 +1845,7 @@
   <java-symbol type="bool" name="config_hasRemovableLid" />
   <java-symbol type="bool" name="config_hasDockBattery" />
   <java-symbol type="bool" name="config_noDelayInATwoDP" />
+  <java-symbol type="bool" name="config_fmSeparateVolumeControl" />
 
   <!-- Telephony -->
   <java-symbol type="bool" name="config_smsSamsungCdmaAlternateMessageIDEncoding" />
