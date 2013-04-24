@@ -50,23 +50,30 @@ import java.util.TimeZone;
  * Digital clock for the status bar.
  */
 public class Clock extends TextView implements OnClickListener, OnLongClickListener {
-    private boolean mAttached;
-    private Calendar mCalendar;
-    private String mClockFormatString;
-    private SimpleDateFormat mClockFormat;
+    protected boolean mAttached;
+    protected Calendar mCalendar;
+    protected String mClockFormatString;
+    protected SimpleDateFormat mClockFormat;
     private Locale mLocale;
     private SettingsObserver mObserver;
 
-    private static final int AM_PM_STYLE_NORMAL  = 0;
-    private static final int AM_PM_STYLE_SMALL   = 1;
-    private static final int AM_PM_STYLE_GONE    = 2;
+    public static final int AM_PM_STYLE_NORMAL  = 0;
+    public static final int AM_PM_STYLE_SMALL   = 1;
+    public static final int AM_PM_STYLE_GONE    = 2;
 
-    private int mAmPmStyle = AM_PM_STYLE_GONE;
-    private boolean mShowClock;
+    public int AM_PM_STYLE = AM_PM_STYLE_GONE;
+
+    protected int mAmPmStyle;
+
+    public static final int CLOCK_STYLE_NOCLOCK  = 0;
+    public static final int CLOCK_STYLE_RIGHT    = 1;
+    public static final int CLOCK_STYLE_CENTER   = 2;
+
+    protected int mClockStyle;
 
     Handler mHandler;
 
-    class SettingsObserver extends ContentObserver {
+    protected class SettingsObserver extends ContentObserver {
         SettingsObserver(Handler handler) {
             super(handler);
         }
@@ -76,7 +83,7 @@ public class Clock extends TextView implements OnClickListener, OnLongClickListe
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_AM_PM), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.STATUS_BAR_CLOCK), false, this);
+                    Settings.System.STATUS_BAR_CLOCK_STYLE), false, this);
         }
 
         void unobserve() {
@@ -144,9 +151,10 @@ public class Clock extends TextView implements OnClickListener, OnLongClickListe
             mObserver.unobserve();
             mAttached = false;
         }
+
     }
 
-    private final BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
+    protected final BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
@@ -167,12 +175,12 @@ public class Clock extends TextView implements OnClickListener, OnLongClickListe
         }
     };
 
-    final void updateClock() {
+    protected final void updateClock() {
         mCalendar.setTimeInMillis(System.currentTimeMillis());
         setText(getSmallTime());
     }
 
-    private final CharSequence getSmallTime() {
+    protected final CharSequence getSmallTime() {
         Context context = getContext();
         boolean b24 = DateFormat.is24HourFormat(context);
         int res;
@@ -255,7 +263,7 @@ public class Clock extends TextView implements OnClickListener, OnLongClickListe
 
     }
 
-    private void updateSettings(){
+    protected void updateSettings(){
         ContentResolver resolver = mContext.getContentResolver();
 
         int amPmStyle = (Settings.System.getInt(resolver,
@@ -269,12 +277,13 @@ public class Clock extends TextView implements OnClickListener, OnLongClickListe
                 updateClock();
             }
         }
+        mClockStyle = (Settings.System.getInt(resolver,Settings.System.STATUS_BAR_CLOCK_STYLE, 1));
+        updateClockVisibility(true);
+    }
 
-        mShowClock = (Settings.System.getInt(resolver,
-                Settings.System.STATUS_BAR_CLOCK, 1) == 1);
-
-        if(mShowClock)
-            setVisibility(View.VISIBLE);
+    public void updateClockVisibility(boolean show) {
+        if (mClockStyle == CLOCK_STYLE_RIGHT)
+            setVisibility(show ? View.VISIBLE : View.GONE);
         else
             setVisibility(View.GONE);
     }
