@@ -17,6 +17,8 @@
 
 package android.app;
 
+import android.annotation.MokeeHook;
+import android.annotation.MokeeHook.MokeeHookType;
 import com.android.internal.app.IAssetRedirectionManager;
 import com.android.internal.os.BinderInternal;
 import com.android.internal.os.RuntimeInit;
@@ -1680,6 +1682,7 @@ public final class ActivityThread {
      * @param compInfo the compability info. It will use the default compatibility info when it's
      * null.
      */
+    @MokeeHook(MokeeHook.MokeeHookType.CHANGE_CODE)
     Resources getTopLevelResources(String resDir,
             int displayId, Configuration overrideConfiguration,
             CompatibilityInfo compInfo) {
@@ -1854,6 +1857,23 @@ public final class ActivityThread {
 
     final Handler getHandler() {
         return mH;
+    }
+
+    @MokeeHook(MokeeHook.MokeeHookType.NEW_METHOD)
+    Resources getTopLevelResources(String packageName, String resDir,
+			int displayId, Configuration overrideConfiguration,
+			LoadedApk pkgInfo) {
+        return getTopLevelResources(packageName, resDir, displayId, overrideConfiguration,
+					pkgInfo.mCompatibilityInfo.get());
+    }
+
+    @MokeeHook(MokeeHook.MokeeHookType.NEW_METHOD)
+    Resources getTopLevelResources(String packageName, String resDir,
+			int displayId, Configuration overrideConfiguration,
+			CompatibilityInfo compInfo) {
+        Resources resources = getTopLevelResources(resDir, displayId, overrideConfiguration, compInfo);
+       // (resources).init(packageName);
+        return resources;
     }
 
     public final LoadedApk getPackageInfo(String packageName, CompatibilityInfo compatInfo,
@@ -3944,6 +3964,7 @@ public final class ActivityThread {
         }
     }
 
+	@MokeeHook(MokeeHook.MokeeHookType.CHANGE_CODE)
     final int applyConfigurationToResourcesLocked(Configuration config,
             CompatibilityInfo compat) {
         if (mResConfiguration == null) {
