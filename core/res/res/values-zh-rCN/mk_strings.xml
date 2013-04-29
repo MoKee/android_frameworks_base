@@ -15,6 +15,6 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Super Pie -->
-    <string name="pie_date_format">M月d日E</string>
+    <!-- ScreenShort Trash -->
+    <string name="trash">"舍弃"</string>
 </resources>

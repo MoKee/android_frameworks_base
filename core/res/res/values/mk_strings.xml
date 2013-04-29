@@ -25,4 +25,7 @@
     <string name="status_format1"  translatable="false">yyyy年MM月dd日</string>
     <string name="status_format2"  translatable="false">1900年1月31日</string>
 
+    <!-- ScreenShort Trash -->
+    <string name="trash">Trash</string>
+
 </resources>
