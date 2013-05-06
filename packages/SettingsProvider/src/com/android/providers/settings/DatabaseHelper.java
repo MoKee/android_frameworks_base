@@ -1849,6 +1849,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     stmt,
                     Settings.System.VOLUME_BLUETOOTH_SCO,
                     AudioManager.DEFAULT_STREAM_VOLUME[AudioManager.STREAM_BLUETOOTH_SCO]);
+            loadSetting(stmt, Settings.System.VOLUME_FM,
+                    AudioManager.DEFAULT_STREAM_VOLUME[AudioManager.STREAM_FM]);
 
             // By default:
             // - ringtones, notification, system and music streams are affected by ringer mode

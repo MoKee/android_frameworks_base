@@ -157,5 +157,7 @@
     <string name="symbol_picker_equal">\u2260\u2248\u221e</string>
     <string name="symbol_picker_lt">\u2264\u00ab\u2039</string>
     <string name="symbol_picker_gt">\u2265\u00bb\u203a</string>
-
+    
+    <!-- Title of the dialog where the user is adjusting the audio volume for FM radio -->
+    <string name="volume_fm">FM radio volume</string>
 </resources>
