@@ -2625,6 +2625,13 @@ public final class Settings {
         public static final String WIDGET_BUTTONS_TABLET = "expanded_widget_buttons_tablet";
 
         /**
+         * Holds the text for the Carrier label. An empty string
+         * will bring the default text back.
+         * @hide
+         */
+        public static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
+
+        /**
          * Navigation controls to Use
          *
          * @hide
@@ -2633,7 +2640,7 @@ public final class Settings {
 
         /**
          * Height of navigation bar buttons
-	 * @hide
+	     * @hide
          */
         public static final String NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
 
@@ -3304,12 +3311,12 @@ public final class Settings {
         };
 
         /**
-         * Holds the text for the Carrier label. An empty string
-         * will bring the default text back.
+         * Volume key controls ringtone or media sound stream
+         *
          * @hide
          */
-        public static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
- 
+        public static final String VOLUME_KEYS_CONTROL_RING_STREAM = "volume_keys_control_ring_stream";
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
