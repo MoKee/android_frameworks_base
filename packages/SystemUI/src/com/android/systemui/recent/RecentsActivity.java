@@ -42,6 +42,8 @@ public class RecentsActivity extends Activity {
     public static final String WINDOW_ANIMATION_START_INTENT = "com.android.systemui.recent.action.WINDOW_ANIMATION_START";
     public static final String PRELOAD_PERMISSION = "com.android.systemui.recent.permission.PRELOAD";
     public static final String WAITING_FOR_WINDOW_ANIMATION_PARAM = "com.android.systemui.recent.WAITING_FOR_WINDOW_ANIMATION";
+    public static final String PACKAGE_ADDED = "android.intent.action.PACKAGE_ADDED";
+    public static final String PACKAGE_REMOVED = "android.intent.action.PACKAGE_REMOVED";
     private static final String WAS_SHOWING = "was_showing";
 
     private RecentsPanelView mRecentsPanel;
@@ -62,6 +64,10 @@ public class RecentsActivity extends Activity {
             } else if (WINDOW_ANIMATION_START_INTENT.equals(intent.getAction())) {
                 if (mRecentsPanel != null) {
                     mRecentsPanel.onWindowAnimationStart();
+                }
+            } else if (PACKAGE_ADDED.equals(intent.getAction()) || PACKAGE_REMOVED.equals(intent.getAction())) {
+                if (mRecentsPanel != null) {
+                    mRecentsPanel.refreshViews();
                 }
             }
         }
@@ -190,6 +196,8 @@ public class RecentsActivity extends Activity {
         mIntentFilter = new IntentFilter();
         mIntentFilter.addAction(CLOSE_RECENTS_INTENT);
         mIntentFilter.addAction(WINDOW_ANIMATION_START_INTENT);
+        mIntentFilter.addAction(PACKAGE_ADDED);
+        mIntentFilter.addAction(PACKAGE_REMOVED);
         registerReceiver(mIntentReceiver, mIntentFilter);
         super.onCreate(savedInstanceState);
     }
