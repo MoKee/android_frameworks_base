@@ -20,6 +20,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Slog;
@@ -62,6 +63,7 @@ public class CarrierLabel extends TextView {
             mAttached = true;
             IntentFilter filter = new IntentFilter();
             filter.addAction(TelephonyIntents.SPN_STRINGS_UPDATED_ACTION);
+            filter.addAction("com.android.settings.LABEL_CHANGED");
             getContext().registerReceiver(mIntentReceiver, filter, null, getHandler());
         }
     }
@@ -79,12 +81,12 @@ public class CarrierLabel extends TextView {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            if (TelephonyIntents.SPN_STRINGS_UPDATED_ACTION.equals(action)) {
+            if (TelephonyIntents.SPN_STRINGS_UPDATED_ACTION.equals(action) || "com.android.settings.LABEL_CHANGED".equals(action)) {
                 updateNetworkName(intent.getBooleanExtra(TelephonyIntents.EXTRA_SHOW_SPN, false),
                         intent.getStringExtra(TelephonyIntents.EXTRA_SPN),
                         intent.getBooleanExtra(TelephonyIntents.EXTRA_SHOW_PLMN, false),
                         intent.getStringExtra(TelephonyIntents.EXTRA_PLMN));
-            }
+            } 
         }
     };
 
@@ -106,9 +108,13 @@ public class CarrierLabel extends TextView {
         } else {
             str = "";
         }
-        setText(str);
+        String customLabel = Settings.System.getString(getContext().getContentResolver(),
+                Settings.System.CUSTOM_CARRIER_LABEL);
+        if(!TextUtils.isEmpty(customLabel))
+            setText(customLabel);
+        else
+            setText(str);
     }
-
 
 }
 

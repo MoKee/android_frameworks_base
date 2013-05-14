@@ -234,6 +234,9 @@ public class PhoneStatusBar extends BaseStatusBar {
     // clock
     private boolean mShowClock;
 
+    // Carrier
+    private boolean mShowCarrierLabel;
+
     // drag bar
     CloseDragHandle mCloseView;
     private int mCloseViewHeight;
@@ -350,6 +353,8 @@ public class PhoneStatusBar extends BaseStatusBar {
                     Settings.System.SCREEN_BRIGHTNESS_MODE), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.NOTIFICATION_SHADE_DIM), false, this);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_CARRIER), false, this);
             update();
         }
 
@@ -368,6 +373,9 @@ public class PhoneStatusBar extends BaseStatusBar {
             mNotificationShadeDim = Settings.System.getInt(
                     resolver, Settings.System.NOTIFICATION_SHADE_DIM,
                     ActivityManager.isHighEndGfx() ? 1 : 0) == 1;
+            mShowCarrierLabel = Settings.System.getInt(
+                    resolver, Settings.System.STATUS_BAR_CARRIER, 0) == 1;
+            showCarrierLabel(mShowCarrierLabel);
         }
     }
 
@@ -1341,6 +1349,18 @@ public class PhoneStatusBar extends BaseStatusBar {
         }
     }
 
+    public void showCarrierLabel(boolean show) {
+        if (mStatusBarView == null) return;
+        ContentResolver resolver = mContext.getContentResolver();
+        View statusCarrierLabel = mStatusBarView.findViewById(R.id.status_carrier_label);
+        mShowCarrierLabel = (Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_CARRIER, 0) == 1);
+        if (statusCarrierLabel != null) {
+            statusCarrierLabel.setVisibility(show ? (mShowCarrierLabel ? View.VISIBLE : View.GONE) : View.GONE);
+        }
+    }
+
+
     /**
      * State is one or more of the DISABLE constants from StatusBarManager.
      */
@@ -1405,6 +1425,8 @@ public class PhoneStatusBar extends BaseStatusBar {
         if ((diff & StatusBarManager.DISABLE_CLOCK) != 0) {
             boolean show = (state & StatusBarManager.DISABLE_CLOCK) == 0;
             showClock(show);
+            //add CarrierLabel
+            showCarrierLabel(show);
         }
         if ((diff & StatusBarManager.DISABLE_EXPAND) != 0) {
             if ((state & StatusBarManager.DISABLE_EXPAND) != 0) {
@@ -2161,6 +2183,7 @@ public class PhoneStatusBar extends BaseStatusBar {
             final View dockBattery3 = mStatusBarView.findViewById(R.id.circle_dock_battery);
             final View clock = mStatusBarView.findViewById(R.id.clock);
             final View traffic = mStatusBarView.findViewById(R.id.traffic);
+            final View statusCarrierLabel = mStatusBarView.findViewById(R.id.status_carrier_label);
 
             List<ObjectAnimator> lightsOutObjs = new ArrayList<ObjectAnimator>();
             lightsOutObjs.add(ObjectAnimator.ofFloat(notifications, View.ALPHA, 0));
@@ -2183,6 +2206,8 @@ public class PhoneStatusBar extends BaseStatusBar {
 
             lightsOutObjs.add(ObjectAnimator.ofFloat(traffic, View.ALPHA, 0.5f));
 
+            lightsOutObjs.add(ObjectAnimator.ofFloat(statusCarrierLabel, View.ALPHA, 0.5f));
+
             List<ObjectAnimator> lightsOnObjs = new ArrayList<ObjectAnimator>();
             lightsOnObjs.add(ObjectAnimator.ofFloat(notifications, View.ALPHA, 1));
             lightsOnObjs.add(ObjectAnimator.ofFloat(systemIcons, View.ALPHA, 1));
@@ -2203,6 +2228,8 @@ public class PhoneStatusBar extends BaseStatusBar {
             lightsOnObjs.add(ObjectAnimator.ofFloat(clock, View.ALPHA, 1));
 
             lightsOnObjs.add(ObjectAnimator.ofFloat(traffic, View.ALPHA, 1));
+
+            lightsOnObjs.add(ObjectAnimator.ofFloat(statusCarrierLabel, View.ALPHA, 1));
 
             final AnimatorSet lightsOutAnim = new AnimatorSet();
             lightsOutAnim.playTogether(
