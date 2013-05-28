@@ -62,6 +62,11 @@ final class DisplayPowerRequest {
     // visible to the user.
     public boolean blockScreenOn;
 
+    // Multiplication factor for delays used in auto-brightness computations
+    // Lower values mean faster reaction to changing light conditions, but
+    // potentially higher CPU usage and flicker.
+    public float responsitivityFactor;
+	
     // override config for ElectronBeam on or off
     public boolean electronBeamOnEnabled;
     public boolean electronBeamOffEnabled;    
@@ -73,6 +78,7 @@ final class DisplayPowerRequest {
         screenAutoBrightnessAdjustment = 0.0f;
         useAutoBrightness = false;
         blockScreenOn = false;
+        responsitivityFactor = 1.0f;
         electronBeamOnEnabled = false;
         electronBeamOffEnabled = false;
     }
@@ -88,6 +94,7 @@ final class DisplayPowerRequest {
         screenAutoBrightnessAdjustment = other.screenAutoBrightnessAdjustment;
         useAutoBrightness = other.useAutoBrightness;
         blockScreenOn = other.blockScreenOn;
+        responsitivityFactor = other.responsitivityFactor;
         electronBeamOnEnabled = other.electronBeamOnEnabled;
         electronBeamOffEnabled = other.electronBeamOffEnabled;
     }
@@ -106,6 +113,7 @@ final class DisplayPowerRequest {
                 && screenAutoBrightnessAdjustment == other.screenAutoBrightnessAdjustment
                 && useAutoBrightness == other.useAutoBrightness
                 && blockScreenOn == other.blockScreenOn
+                && Math.abs(responsitivityFactor - other.responsitivityFactor) < 1E-6
                 && electronBeamOnEnabled == other.electronBeamOnEnabled
                 && electronBeamOffEnabled == other.electronBeamOffEnabled;
     }
@@ -123,6 +131,7 @@ final class DisplayPowerRequest {
                 + ", screenAutoBrightnessAdjustment=" + screenAutoBrightnessAdjustment
                 + ", useAutoBrightness=" + useAutoBrightness
                 + ", blockScreenOn=" + blockScreenOn
+                + ", responsitivityFactor=" + responsitivityFactor
                 + ", electronBeamOnEnabled=" + electronBeamOnEnabled
                 + ", electronBeamOffEnabled=" + electronBeamOffEnabled;
     }
