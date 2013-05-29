@@ -136,6 +136,7 @@ public class PieMenu extends FrameLayout {
     private int mPanelOrientation;
     private int mInnerPieRadius;
     private int mOuterPieRadius;
+    private int mPieAngle;
     private int mPieGap;
     private int mInnerChevronRadius;
     private int mOuterChevronRadius;
@@ -220,7 +221,6 @@ public class PieMenu extends FrameLayout {
     private int mStatusMode;
     private float mPieSize = SIZE_BASE;
     private boolean mOpen;
-    //private boolean mNavbarOff;
     private boolean mEnableColor;
     private boolean mUseMenuAlways;
     private boolean mUseSearch;
@@ -281,14 +281,18 @@ public class PieMenu extends FrameLayout {
         // Fetch modes
         boolean sbexpanded = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.EXPANDED_DESKTOP_STYLE, 0) == 2;
-        mUseMenuAlways = Settings.System.getInt(mContext.getContentResolver(), Settings.System.PIE_MENU, 1) == 1;
-        mUseSearch = Settings.System.getInt(mContext.getContentResolver(), Settings.System.PIE_SEARCH, 1) == 1;
-        mUseLastApp = Settings.System.getInt(mContext.getContentResolver(), Settings.System.PIE_LAST_APP, 0) == 1;
-        mStatusMode = Settings.System.getInt(mContext.getContentResolver(), Settings.System.PIE_MODE, 0);
-        //mNavbarOff = Settings.System.getInt(mContext.getContentResolver(),
-        //        Settings.System.EXPANDED_DESKTOP_STATE, 0) == 1 && !sbexpanded;
+        mUseMenuAlways = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.PIE_MENU, 1) == 1;
+        mUseSearch = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.PIE_SEARCH, 1) == 1;
+        mUseLastApp = Settings.System.getInt(mContext.getContentResolver(), 
+                Settings.System.PIE_LAST_APP, 0) == 1;
+        mStatusMode = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.PIE_MODE, 0);
         mPieSize = Settings.System.getFloat(mContext.getContentResolver(),
                 Settings.System.PIE_SIZE, 0.9f);
+        mPieAngle = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.PIE_ANGLE, 0);
         mPieGap = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.PIE_GAP, 3);
         mHapticFeedback = Settings.System.getInt(mContext.getContentResolver(),
@@ -652,7 +656,7 @@ public class PieMenu extends FrameLayout {
     }
 
     private void layoutPie() {
-        float emptyangle = mEmptyAngle * (float)Math.PI / 180;
+        float emptyangle = mPieAngle * (float)Math.PI / 180;
         int inner = mInnerPieRadius;
         int outer = mOuterPieRadius;
 
@@ -969,7 +973,7 @@ public class PieMenu extends FrameLayout {
                         mStatusPanel.showTilesPanel();
                     break;
                 }
-
+      
                 // Check for click actions
                 if (item != null && item.getView() != null && mCenterDistance < shadeTreshold) {
                     if(mHapticFeedback) mVibrator.vibrate(2);
@@ -1084,6 +1088,7 @@ public class PieMenu extends FrameLayout {
         } else {
             mCurrentItem = null;
         }
+
     }
 
     private void deselect() {

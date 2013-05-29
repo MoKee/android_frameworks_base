@@ -37,7 +37,7 @@
     <drawable name="notification_icon_area_smoke">#aa000000</drawable>
     <color name="notification_panel_scrim_color">#B0000000</color>
 
-    <!-- MoKee Add START -->
+    <!-- MOKEE ADD START -->
     <!-- recent panel translucent -->
     <color name="translucent">#6000</color>
     
@@ -54,7 +54,7 @@
     <color name="qcMenuBackground">#C0000000</color>
     <color name="qc_tab_nr">#F033B5E5</color>
     
-    <!-- THEMEABLE PIE PIE PIE PIE PIE? -->
+    <!-- Pie control panel -->
     <color name="pie_menu_background">#C0000000</color>
     <color name="alpha_mask">#aa000000</color>
     <color name="opaque_mask">#ff000000</color>
@@ -72,7 +72,6 @@
     <color name="status">#ffffff</color>
     <color name="toggle_text">#ffffffff</color>
     <color name="toggle_text_changing_state_color">#ff787878</color>
-    <color name="toggle_image_changing_state_overlay">@color/toggle_text_changing_state_color</color>
-    
-    <!-- MoKee Add END -->
+    <color name="toggle_image_changing_state_overlay">@color/toggle_text_changing_state_color</color>    
+    <!-- MOKEE ADD END -->
 </resources>

@@ -217,7 +217,8 @@
     <!-- The margin adjusment of the text items of the battery cluster -->
     <dimen name="status_bar_battery_cluster_text_margin">-1dip</dimen>
 
-    <!-- Super Pie Start -->
+    <!-- MOKEE ADD START -->
+    <!-- Pie control panel -->
     <dimen name="pie_trigger_height">12dp</dimen>
     <dimen name="pie_radius_start">65dp</dimen>
     <dimen name="pie_radius_increment">80dp</dimen>
@@ -245,5 +246,5 @@
     <dimen name="pie_tab_title_height">24dp</dimen>
     <dimen name="pie_item_size">40dp</dimen>
     <dimen name="pie_panel_padding">20dp</dimen>
-    <!-- Super Pie End -->
+    <!-- MOKEE ADD END -->
 </resources>
