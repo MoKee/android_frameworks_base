@@ -224,6 +224,7 @@ public class PieMenu extends FrameLayout {
     private boolean mEnableColor;
     private boolean mUseMenuAlways;
     private boolean mUseSearch;
+    private boolean mUsePower;
     private boolean mUseLastApp;
     private boolean mHapticFeedback;
 
@@ -287,6 +288,8 @@ public class PieMenu extends FrameLayout {
                 Settings.System.PIE_SEARCH, 1) == 1;
         mUseLastApp = Settings.System.getInt(mContext.getContentResolver(), 
                 Settings.System.PIE_LAST_APP, 0) == 1;
+        mUsePower = Settings.System.getInt(mContext.getContentResolver(), 
+                Settings.System.PIE_POWER, 0) == 1;
         mStatusMode = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.PIE_MODE, 0);
         mPieSize = Settings.System.getFloat(mContext.getContentResolver(),
@@ -652,7 +655,8 @@ public class PieMenu extends FrameLayout {
     private boolean canItemDisplay(PieItem item) {
         return !(item.getName().equals(PieControl.MENU_BUTTON) && !mPanel.currentAppUsesMenu() && !mUseMenuAlways) &&
                 !(item.getName().equals(PieControl.SEARCH_BUTTON) && !mUseSearch) &&
-                !(item.getName().equals(PieControl.LAST_APP_BUTTON) && !mUseLastApp);
+                !(item.getName().equals(PieControl.LAST_APP_BUTTON) && !mUseLastApp) &&
+                !(item.getName().equals(PieControl.POWER_BUTTON) && !mUsePower);
     }
 
     private void layoutPie() {
@@ -663,6 +667,7 @@ public class PieMenu extends FrameLayout {
         int itemCount = mItems.size();
         if (!mPanel.currentAppUsesMenu() && !mUseMenuAlways) itemCount--;
         if (!mUseSearch) itemCount--;
+        if (!mUsePower) itemCount--;
         if (!mUseLastApp) itemCount--;
 
         int totalCount = 0;
