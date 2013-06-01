@@ -54,18 +54,19 @@ public class RecentsActivity extends Activity {
     private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (CLOSE_RECENTS_INTENT.equals(intent.getAction())) {
+            String action = intent.getAction();
+            if (CLOSE_RECENTS_INTENT.equals(action)) {
                 if (mRecentsPanel != null && mRecentsPanel.isShowing()) {
                     if (mShowing && !mForeground) {
                         // Captures the case right before we transition to another activity
                         mRecentsPanel.show(false);
                     }
                 }
-            } else if (WINDOW_ANIMATION_START_INTENT.equals(intent.getAction())) {
+            } else if (WINDOW_ANIMATION_START_INTENT.equals(action)) {
                 if (mRecentsPanel != null) {
                     mRecentsPanel.onWindowAnimationStart();
                 }
-            } else if (PACKAGE_ADDED.equals(intent.getAction()) || PACKAGE_REMOVED.equals(intent.getAction())) {
+            } else if (PACKAGE_ADDED.equals(action) || PACKAGE_REMOVED.equals(action)) {
                 if (mRecentsPanel != null) {
                     mRecentsPanel.refreshViews();
                 }
