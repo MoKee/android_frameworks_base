@@ -2773,7 +2773,7 @@ public final class Settings {
         public static final String PIE_MODE = "pie_mode";
 
         /**
-         * Pie size fraction
+         * Pie size fraction, default is 1.0f (normal)
          * @hide
          */
         public static final String PIE_SIZE = "pie_size";
