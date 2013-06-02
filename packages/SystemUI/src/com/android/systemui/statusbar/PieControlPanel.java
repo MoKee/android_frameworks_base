@@ -32,7 +32,6 @@ import android.graphics.Rect;
 import android.hardware.input.InputManager;
 import android.os.Handler;
 import android.os.Message;
-import android.os.PowerManager;
 import android.os.SystemClock;
 import android.os.UserHandle;
 import android.provider.Settings;
@@ -303,7 +302,7 @@ public class PieControlPanel extends FrameLayout implements StatusBarPanel, OnNa
         } else if (buttonName.equals(PieControl.LAST_APP_BUTTON)) {
             toggleLastApp();
         } else if (buttonName.equals(PieControl.POWER_BUTTON)) {
-            goToSleep();
+            injectKeyDelayed(KeyEvent.KEYCODE_POWER);
         }
     }
 
@@ -325,11 +324,6 @@ public class PieControlPanel extends FrameLayout implements StatusBarPanel, OnNa
             } catch (ActivityNotFoundException e) {
             }
         }
-    }
-
-    private void goToSleep() {
-        PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
-        pm.goToSleep(SystemClock.uptimeMillis());
     }
 
     private void toggleLastApp() {
