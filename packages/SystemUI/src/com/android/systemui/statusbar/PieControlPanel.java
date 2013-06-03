@@ -374,6 +374,6 @@ public class PieControlPanel extends FrameLayout implements StatusBarPanel, OnNa
     };
 
     public boolean getKeyguardStatus() {
-        return mKeyguardManger.isKeyguardLocked() && mKeyguardManger.isKeyguardSecure();
+        return mKeyguardManger.isKeyguardLocked() && mKeyguardManger.isKeyguardSecure() || mKeyguardManger.isKeyguardLocked() && !mKeyguardManger.isKeyguardSecure();
     }
 }
