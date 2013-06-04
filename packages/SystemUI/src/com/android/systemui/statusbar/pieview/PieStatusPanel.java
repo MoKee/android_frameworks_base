@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 ParanoidAndroid Project
+ * Copyright (C) 2010 MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +37,7 @@ import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.os.Handler;
 import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Animation;
 import android.view.animation.AlphaAnimation;
 import android.view.LayoutInflater;
 import android.view.View;

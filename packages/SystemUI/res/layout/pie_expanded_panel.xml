@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2013 ParanoidAndroid Project
+<!-- Copyright (C) 2013 MoKee OpenSource Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -56,14 +56,23 @@
                     android:layout_centerVertical="true"
                     />
             </RelativeLayout>
-            
+
+            <ImageView android:id="@+id/halo_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/clear_all_button"
+                android:paddingTop="10dp"
+                android:paddingRight="8dp"
+                android:src="@drawable/ic_notify_halo"
+                android:contentDescription="@string/accessibility_halo"/>
+
             <ImageView android:id="@+id/clear_all_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:paddingTop="10dp"
                 android:paddingRight="8dp"
-                android:src="@drawable/ic_notify_clear_normal"
+                android:src="@drawable/ic_notify_clear"
                 android:contentDescription="@string/accessibility_clear_all"/>
 
         </RelativeLayout>

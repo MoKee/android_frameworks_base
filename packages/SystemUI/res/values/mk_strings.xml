@@ -21,8 +21,11 @@
     <string name="pie_hour_format_12">hh:mm</string>
     <string name="pie_hour_format_24">HH:mm</string>
     <string name="pie_am_pm">a</string>
+
     <!-- Power Button -->
     <string name="navbar_power_button">Power button</string>
     <string name="accessibility_power">Power</string>
-
+    
+    <!-- Content description of the halo button in the notification panel for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_halo">Create notification halo.</string>
 </resources>
