@@ -18,5 +18,8 @@
 
     <!-- Super Pie -->
     <string name="pie_date_format">M月d日E</string>
+    <!-- Power Button -->
+    <string name="navbar_power_button">电源按键</string>
+    <string name="accessibility_power">电源</string>
 
 </resources>

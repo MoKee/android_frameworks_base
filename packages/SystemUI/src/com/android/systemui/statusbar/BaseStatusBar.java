@@ -1015,7 +1015,7 @@ public abstract class BaseStatusBar extends SystemUI implements
                 if (mSearchPanelView != null && mSearchPanelView.isShowing()) {
                     mSearchPanelView.show(false, true);
                 }
-                break;
+                 break;
             }
         }
     }

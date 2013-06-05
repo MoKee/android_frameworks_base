@@ -104,6 +104,7 @@ public class NavigationButtons {
     private static final String BACK_STRING = "back";
     private static final String SEARCH_STRING = "search";
     private static final String RECENT_STRING = "recent";
+    private static final String POWER_STRING = "power";
     private static final String CONDITIONAL_MENU_STRING = "menu0";
     private static final String ALWAYS_MENU_STRING = "menu1";
     private static final String MENU_BIG_STRING = "menu2";
@@ -139,6 +140,10 @@ public class NavigationButtons {
             R.string.navbar_recent_button,
             R.string.accessibility_recent, 0, R.drawable.ic_sysbar_recent,
             R.drawable.ic_sysbar_recent_land, R.drawable.ic_sysbar_recent_side, RECENT_STRING);
+    public static final ButtonInfo POWER =  new ButtonInfo(
+            R.string.navbar_power_button,
+            R.string.accessibility_power, 0, R.drawable.ic_sysbar_power,
+            R.drawable.ic_sysbar_power_land, R.drawable.ic_sysbar_power, POWER_STRING);
     public static final ButtonInfo EMPTY = new ButtonInfo(
             R.string.navbar_empty_button,
             R.string.accessibility_clear_all, 0, R.drawable.ic_sysbar_add,
@@ -159,6 +164,7 @@ public class NavigationButtons {
         temp.put(BACK_STRING, BACK);
         temp.put(SEARCH_STRING, SEARCH);
         temp.put(RECENT_STRING, RECENT);
+        temp.put(POWER_STRING, POWER);
         temp.put(EMPTY_STRING, EMPTY);
         BUTTON_MAP = Collections.unmodifiableMap(temp);
     }

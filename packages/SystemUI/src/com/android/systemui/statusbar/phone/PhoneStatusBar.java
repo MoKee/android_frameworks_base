@@ -107,6 +107,7 @@ import com.android.systemui.statusbar.policy.NotificationRowLayout;
 import com.android.systemui.statusbar.policy.OnSizeChangedListener;
 import com.android.systemui.statusbar.policy.Prefs;
 import com.android.systemui.statusbar.powerwidget.PowerWidget;
+import com.android.systemui.statusbar.toggle.TogglePowerButtonListener;
 
 public class PhoneStatusBar extends BaseStatusBar {
     static final String TAG = "PhoneStatusBar";
@@ -891,6 +892,8 @@ public class PhoneStatusBar extends BaseStatusBar {
         }
     };
 
+    private final View.OnTouchListener mPowerTouchListener = new TogglePowerButtonListener();
+
     private int mShowSearchHoldoff = 0;
     private final Runnable mShowSearchPanel = new Runnable() {
         @Override
@@ -933,7 +936,7 @@ public class PhoneStatusBar extends BaseStatusBar {
 
     private void prepareNavigationBarView() {
         mNavigationBarView.reorient();
-        mNavigationBarView.setListener(mRecentsClickListener,mRecentsPreloadOnTouchListener, mHomeSearchActionListener);
+        mNavigationBarView.setListener(mRecentsClickListener, mRecentsPreloadOnTouchListener, mHomeSearchActionListener, mPowerTouchListener);
         updateSearchPanel();
     }
 
@@ -1393,6 +1396,8 @@ public class PhoneStatusBar extends BaseStatusBar {
         flagdbg.append(((diff  & StatusBarManager.DISABLE_HOME) != 0) ? "* " : " ");
         flagdbg.append(((state & StatusBarManager.DISABLE_RECENT) != 0) ? "RECENT" : "recent");
         flagdbg.append(((diff  & StatusBarManager.DISABLE_RECENT) != 0) ? "* " : " ");
+        flagdbg.append(((state & StatusBarManager.DISABLE_POWER) != 0) ? "POWER" : "power");
+        flagdbg.append(((diff  & StatusBarManager.DISABLE_POWER) != 0) ? "* " : " ");
         flagdbg.append(((state & StatusBarManager.DISABLE_CLOCK) != 0) ? "CLOCK" : "clock");
         flagdbg.append(((diff  & StatusBarManager.DISABLE_CLOCK) != 0) ? "* " : " ");
         flagdbg.append(((state & StatusBarManager.DISABLE_SEARCH) != 0) ? "SEARCH" : "search");
@@ -1437,7 +1442,8 @@ public class PhoneStatusBar extends BaseStatusBar {
         if ((diff & (StatusBarManager.DISABLE_HOME
                         | StatusBarManager.DISABLE_RECENT
                         | StatusBarManager.DISABLE_BACK
-                        | StatusBarManager.DISABLE_SEARCH)) != 0) {
+                        | StatusBarManager.DISABLE_SEARCH
+                        | StatusBarManager.DISABLE_POWER)) != 0) {
 
             // all navigation bar listeners will take care of these
             propagateDisabledFlags(state);
