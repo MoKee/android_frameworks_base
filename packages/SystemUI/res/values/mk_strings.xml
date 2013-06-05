@@ -21,5 +21,8 @@
     <string name="pie_hour_format_12">hh:mm</string>
     <string name="pie_hour_format_24">HH:mm</string>
     <string name="pie_am_pm">a</string>
+    <!-- Power Button -->
+    <string name="navbar_power_button">Power button</string>
+    <string name="accessibility_power">Power</string>
 
 </resources>

@@ -326,6 +326,11 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
                     ? (mVertical ? mBackAltLandIcon : mBackAltIcon)
                             : (mVertical ? mBackLandIcon : mBackIcon));
         }
+        button = mCurrentView.findViewWithTag(NavigationButtons.POWER);
+        if (button != null) {
+            button.setAlpha(
+                    (0 != (hints & StatusBarManager.NAVIGATION_HINT_POWER_NOP)) ? 0.5f : 1.0f);
+        }
         setDisabledFlags(mDisabledFlags, true);
     }
     
@@ -355,6 +360,7 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         final boolean disableBack = ((disabledFlags & View.STATUS_BAR_DISABLE_BACK) != 0)
                 && ((mNavigationIconHints & StatusBarManager.NAVIGATION_HINT_BACK_ALT) == 0);
         final boolean disableSearch = ((disabledFlags & View.STATUS_BAR_DISABLE_SEARCH) != 0);
+        final boolean disablePower = ((disabledFlags & View.STATUS_BAR_DISABLE_POWER) != 0);
         final boolean keygaurdProbablyEnabled = areKeyguardHintsEnabled();
 
         if (SLIPPERY_WHEN_DISABLED) {
@@ -378,6 +384,7 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         setButtonWithTagVisibility(NavigationButtons.ALWAYS_MENU, disableRecent ? View.INVISIBLE : View.VISIBLE);
         setButtonWithTagVisibility(NavigationButtons.MENU_BIG, disableRecent ? View.INVISIBLE : View.VISIBLE);
         setButtonWithTagVisibility(NavigationButtons.SEARCH, disableRecent ? View.INVISIBLE : View.VISIBLE);
+        setButtonWithTagVisibility(NavigationButtons.POWER, disablePower ? View.INVISIBLE : View.VISIBLE);
         getSearchLight().setVisibility(keygaurdProbablyEnabled ? View.VISIBLE : View.GONE);
     }
 
@@ -667,6 +674,7 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         final View back = mCurrentView.findViewWithTag("back");
         final View home = mCurrentView.findViewWithTag("home");
         final View recent = mCurrentView.findViewWithTag("recent");
+        final View power = mCurrentView.findViewWithTag("power");
 
         pw.println("      back: "
                 + PhoneStatusBar.viewInfo(back)
@@ -676,9 +684,13 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
                 + PhoneStatusBar.viewInfo(home)
                 + " " + visibilityToString(home.getVisibility())
                 );
-        pw.println("      rcnt: "
+        pw.println("      recent: "
                 + PhoneStatusBar.viewInfo(recent)
                 + " " + visibilityToString(recent.getVisibility())
+                );
+        pw.println("      power: "
+                + PhoneStatusBar.viewInfo(power)
+                + " " + visibilityToString(power.getVisibility())
                 );
         pw.println("    }");
     }

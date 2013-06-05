@@ -1393,6 +1393,8 @@ public class PhoneStatusBar extends BaseStatusBar {
         flagdbg.append(((diff  & StatusBarManager.DISABLE_HOME) != 0) ? "* " : " ");
         flagdbg.append(((state & StatusBarManager.DISABLE_RECENT) != 0) ? "RECENT" : "recent");
         flagdbg.append(((diff  & StatusBarManager.DISABLE_RECENT) != 0) ? "* " : " ");
+        flagdbg.append(((state & StatusBarManager.DISABLE_POWER) != 0) ? "POWER" : "power");
+        flagdbg.append(((diff  & StatusBarManager.DISABLE_POWER) != 0) ? "* " : " ");
         flagdbg.append(((state & StatusBarManager.DISABLE_CLOCK) != 0) ? "CLOCK" : "clock");
         flagdbg.append(((diff  & StatusBarManager.DISABLE_CLOCK) != 0) ? "* " : " ");
         flagdbg.append(((state & StatusBarManager.DISABLE_SEARCH) != 0) ? "SEARCH" : "search");
@@ -1437,7 +1439,8 @@ public class PhoneStatusBar extends BaseStatusBar {
         if ((diff & (StatusBarManager.DISABLE_HOME
                         | StatusBarManager.DISABLE_RECENT
                         | StatusBarManager.DISABLE_BACK
-                        | StatusBarManager.DISABLE_SEARCH)) != 0) {
+                        | StatusBarManager.DISABLE_SEARCH
+                        | StatusBarManager.DISABLE_POWER)) != 0) {
 
             // all navigation bar listeners will take care of these
             propagateDisabledFlags(state);

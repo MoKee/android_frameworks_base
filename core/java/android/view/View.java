@@ -2471,6 +2471,17 @@ public class View implements Drawable.Callback, KeyEvent.Callback,
 
     /**
      * @hide
+     *
+     * NOTE: This flag may only be used in subtreeSystemUiVisibility. It is masked
+     * out of the public fields to keep the undefined bits out of the developer's way.
+     *
+     * Flag to hide only the power button. Don't use this
+     * unless you're a special part of the system UI (i.e., setup wizard, keyguard).
+     */
+    public static final int STATUS_BAR_DISABLE_POWER = 0x03000000;
+
+    /**
+     * @hide
      */
     public static final int PUBLIC_STATUS_BAR_VISIBILITY_MASK = 0x0000FFFF;
 
