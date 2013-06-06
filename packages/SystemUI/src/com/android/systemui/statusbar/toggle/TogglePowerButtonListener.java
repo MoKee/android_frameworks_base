@@ -36,11 +36,11 @@ public class TogglePowerButtonListener implements View.OnTouchListener {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 deayed = SystemClock.uptimeMillis();
-                mHandler.postDelayed(mPowerMenuRunnable, 500);
+                mHandler.postDelayed(mPowerMenuRunnable, 200);
                 break;
             case MotionEvent.ACTION_UP:
                 deayed = SystemClock.uptimeMillis() - deayed;
-                if (deayed < 500) {
+                if (deayed < 200) {
                     mHandler.removeCallbacks(mPowerMenuRunnable);
                     injectKeyDelayed(KeyEvent.KEYCODE_POWER, 10);
                 }
