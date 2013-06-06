@@ -804,9 +804,8 @@ final class DisplayPowerController {
                         } else if (mPowerState.prepareElectronBeam(
                                 !mElectronBeamOffEnabled ?
                                         ElectronBeam.MODE_FADE :
-                                        ElectronBeam.MODE_COOL_DOWN)
-                                && mPowerState.isScreenOn()
-                                && useScreenOffAnimation()) {
+                                                ElectronBeam.MODE_COOL_DOWN)
+                                && mPowerState.isScreenOn()) {
                             mElectronBeamOffAnimator.start();
                         } else {
                             mElectronBeamOffAnimator.end();
@@ -1463,9 +1462,4 @@ final class DisplayPowerController {
             updatePowerState();
         }
     };
-
-    private boolean useScreenOffAnimation() {
-        return Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.SCREEN_OFF_ANIMATION, 1) == 1;
-    }
 }
