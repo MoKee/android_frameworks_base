@@ -1194,6 +1194,8 @@ public class TabletStatusBar extends BaseStatusBar implements
     public void topAppWindowChanged(boolean showMenu) {
         if (mPieControlPanel != null)
                 mPieControlPanel.setMenu(showMenu);
+        if (mPieControlsTrigger != null)
+                mPieControlsTrigger.setVisibility(!mPieControlPanel.getKeyguardStatus() ? View.VISIBLE : View.GONE);
 
         if (DEBUG) {
             Slog.d(TAG, (showMenu?"showing":"hiding") + " the MENU button");
