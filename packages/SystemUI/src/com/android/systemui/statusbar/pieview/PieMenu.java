@@ -100,6 +100,7 @@ public class PieMenu extends FrameLayout {
     private static int ANIMATOR_SNAP_GROW = ANIMATOR_ACC_INC_15 + 2;
     private static int ANIMATOR_END = ANIMATOR_SNAP_GROW;
 
+    private static final int COLOR_OUTLINES_MASK = 0x22000000;
     private static final int COLOR_ALPHA_MASK = 0xaa000000;
     private static final int COLOR_OPAQUE_MASK = 0xff000000;
     private static final int COLOR_SNAP_BACKGROUND = 0xffffffff;
@@ -115,7 +116,6 @@ public class PieMenu extends FrameLayout {
     private static final int COLOR_BATTERY_BACKGROUND = 0xffffff;
     private static final int COLOR_STATUS = 0xffffff;
     private static final int BASE_SPEED = 1000;
-    private static final int EMPTY_ANGLE_BASE = 10;
     private static final int CHEVRON_FRAGMENTS = 16;
     private static final float SIZE_BASE = 1.0f;
 
@@ -386,11 +386,11 @@ public class PieMenu extends FrameLayout {
 
         if (mEnableColor) {
             mPieBackground.setColor(Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.PIE_BACKGROUND, COLOR_PIE_BACKGROUND));
+                        Settings.System.PIE_BACKGROUND, COLOR_PIE_BACKGROUND) | COLOR_ALPHA_MASK);
             mPieSelected.setColor(Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.PIE_SELECT, COLOR_PIE_SELECT));
+                        Settings.System.PIE_SELECT, COLOR_PIE_SELECT) | COLOR_ALPHA_MASK);
             mPieOutlines.setColor(Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.PIE_OUTLINES, COLOR_PIE_OUTLINES));
+                        Settings.System.PIE_OUTLINES, COLOR_PIE_OUTLINES) | COLOR_OUTLINES_MASK);
             mClockPaint.setColor(Settings.System.getInt(mContext.getContentResolver(),
                         Settings.System.PIE_STATUS_CLOCK, COLOR_STATUS));
             mAmPmPaint.setColor(Settings.System.getInt(mContext.getContentResolver(),
@@ -803,7 +803,7 @@ public class PieMenu extends FrameLayout {
                     float snapTouch = snapDistance < mSnapRadius * 7 ? 200 - (snapDistance * (200 - snap.alpha) / (mSnapRadius * 7)) : snap.alpha;
 
                     mSnapBackground.setAlpha((int)(snapTouch));
-                    int len = (int)(snap.radius * 1.3f + (snap.active ? mAnimators[ANIMATOR_SNAP_GROW].fraction * 500 : 0));
+                    int len = (int)(snap.radius * 1.3f);
                     int thick = (int)(len * 0.2f);
 
                     Path plus = new Path();
