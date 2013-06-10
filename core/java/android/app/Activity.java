@@ -57,6 +57,7 @@ import android.util.AttributeSet;
 import android.util.EventLog;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.util.Slog;
 import android.util.SparseArray;
 import android.view.ActionMode;
@@ -5332,6 +5333,7 @@ public class Activity extends ContextThemeWrapper
         // as well let it go.
         if (!mChangingConfigurations && mWindow != null && mWindow.mIsFloatingWindow && !isFinishing()) {
             finish();
+        }
     }
 
     final void performDestroy() {

@@ -78,10 +78,10 @@ public class TaskStackBuilder {
     public static TaskStackBuilder create(Context context) {
         return new TaskStackBuilder(context);
     }
-    
+
     public void setTaskOnHome(boolean firstTaskOnHome) {
-+        mFirstTaskOnHome = firstTaskOnHome;
-+    }
+        mFirstTaskOnHome = firstTaskOnHome;
+    }
 
     /**
      * Add a new Intent to the task stack. The most recently added Intent will invoke
