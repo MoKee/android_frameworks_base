@@ -227,25 +227,24 @@ public abstract class Ticker {
         }
 
         mSegments.add(newSegment);
-        
         if (mEvent != null) {
             if (newSegment != null) {
                 mEvent.updateTicker(newSegment.notification, text.toString());
             }
         }
-
+        
         if (initialCount == 0 && mSegments.size() > 0) {
             Segment seg = mSegments.get(0);
             seg.first = false;
-            
+
             mIconSwitcher.setAnimateFirstView(false);
             mIconSwitcher.reset();
             mIconSwitcher.setImageDrawable(seg.icon);
-            
+
             mTextSwitcher.setAnimateFirstView(false);
             mTextSwitcher.reset();
             mTextSwitcher.setText(seg.getText());
-            
+
             tickerStarting();
             scheduleAdvance();
         }
