@@ -112,7 +112,6 @@ public class PieStatusPanel {
         mHaloButton = (ImageView) mPanel.getBar().mContainer.findViewById(R.id.halo_button);
         if (mHaloButton != null) {
             mHaloButton.setOnClickListener(mHaloButtonListener);
-            updateHaloButton();
         }
 
         // Listen for HALO state for PIE
@@ -120,7 +119,7 @@ public class PieStatusPanel {
                 Settings.System.getUriFor(Settings.System.HALO_ACTIVE), false, new ContentObserver(new Handler()) {
             @Override
             public void onChange(boolean selfChange) {
-                updateHaloButton();
+                showHaloButton(true);
             }});
 
         mPanel.getBar().mContainer.setVisibility(View.GONE);
@@ -134,11 +133,15 @@ public class PieStatusPanel {
         }
     };
 
-    protected void updateHaloButton() {
+    protected void showHaloButton(boolean show) {
         if (mHaloButton != null) {
-            mHaloActive = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.HALO_ACTIVE, 0) == 1;
-            mHaloButton.setVisibility(!mHaloActive ? View.VISIBLE : View.GONE);
+            if(show) {
+                mHaloActive = Settings.System.getInt(mContext.getContentResolver(),
+                    Settings.System.HALO_ACTIVE, 0) == 1;
+                mHaloButton.setVisibility(!mHaloActive ? View.VISIBLE : View.GONE);
+            } else {
+                mHaloButton.setVisibility(View.GONE);
+            }
         }
     }
 
@@ -294,12 +297,17 @@ public class PieStatusPanel {
 
     public void showTilesPanel() {
         showPanel(mQS);
-        ShowClearAll(true);
+        ShowClearAll(false);
+        showHaloButton(false);
     }
 
     public void showNotificationsPanel() {
         showPanel(mNotificationPanel);
-        ShowClearAll(false);
+        //check show ClearAll Button
+        boolean any = mNotificationData.size() > 0;
+        boolean clearable = any && mNotificationData.hasClearableItems();
+        ShowClearAll(clearable);
+        showHaloButton(true);
     }
 
     public void hideTilesPanel() {
@@ -357,8 +365,8 @@ public class PieStatusPanel {
     }
 
     private void ShowClearAll(boolean show){
-        mClearButton.setAlpha(show ? 0.0f : 1.0f);
-        mClearButton.setVisibility(show ? View.INVISIBLE : View.VISIBLE);
+        mClearButton.setAlpha(show ? 1.0f : 0.0f);
+        mClearButton.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 
     public static WindowManager.LayoutParams getFlipPanelLayoutParams() {
