@@ -57,21 +57,34 @@
                     />
             </RelativeLayout>
 
-            <ImageView android:id="@+id/halo_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/clear_all_button"
-                android:paddingRight="8dp"
-                android:src="@drawable/ic_notify_halo"
-                android:contentDescription="@string/accessibility_halo"/>
-
-            <ImageView android:id="@+id/clear_all_button"
+            <LinearLayout
+                android:id="@+id/toggle_buttons"
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:paddingRight="8dp"
-                android:src="@drawable/ic_notify_clear"
-                android:contentDescription="@string/accessibility_clear_all"/>
+                android:enabled="false"
+                >
+
+                <ImageView android:id="@+id/halo_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/ic_notify_halo"
+                    android:contentDescription="@string/accessibility_halo"
+                    />
+
+                <ImageView android:id="@+id/clear_all_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/ic_notify_clear"
+                    android:contentDescription="@string/accessibility_clear_all"
+                    />
+
+            </LinearLayout>
 
         </RelativeLayout>
 
