@@ -32,6 +32,7 @@ import android.animation.Keyframe;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.content.ContentResolver;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -167,6 +168,11 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
     private float initialX = 0;
     private float initialY = 0;
     private boolean hiddenState = false;
+    
+    // Halo dock position
+    SharedPreferences preferences;
+    private String KEY_HALO_POSITION_Y = "halo_position_y";
+    private String KEY_HALO_POSITION_X = "halo_position_x";
 
     private final class SettingsObserver extends ContentObserver {
         SettingsObserver(Handler handler) {
@@ -265,7 +271,10 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
         // Get actual screen size
         mScreenWidth = mEffect.getWidth();
         mScreenHeight = mEffect.getHeight();
-
+        
+        // Halo dock position
+        preferences = mContext.getSharedPreferences("Halo", 0);
+        
         mKillX = mScreenWidth / 2;
         mKillY = mIconHalfSize;
 
@@ -277,9 +286,13 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
         } else {
             // Do the startup animations only once
             mFirstStart = false;
-            updateTriggerPosition(0, mScreenHeight / 2 - mIconHalfSize);
-            mEffect.setHaloX(0);
-            mEffect.setHaloY(mScreenHeight / 2 - mIconHalfSize);
+            // Halo dock position
+            int savePositionX = preferences.getInt(KEY_HALO_POSITION_X, 0);
+            int savePositionY = preferences.getInt(KEY_HALO_POSITION_Y, mScreenHeight / 2 - mIconHalfSize);
+            mTickerLeft = savePositionX == 0 ? true : false;
+            updateTriggerPosition(savePositionX, savePositionY);
+            mEffect.setHaloX(savePositionX);
+            mEffect.setHaloY(savePositionY);
             mEffect.nap(500);
             if (mHideTicker) mEffect.sleep(HaloEffect.SNAP_TIME + HaloEffect.NAP_TIME + 2500, HaloEffect.SLEEP_TIME);
         }
@@ -455,6 +468,9 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
                             Settings.System.HALO_ACTIVE, 0);
                     return true;
                 }
+                
+                // Halo dock position
+                preferences.edit().putInt(KEY_HALO_POSITION_X, mTickerLeft ? 0 : mScreenWidth - mIconSize).putInt(KEY_HALO_POSITION_Y, mEffect.mHaloY).apply();
                     
                 if (mGesture == Gesture.TASK) {
                     // Launch tasks
