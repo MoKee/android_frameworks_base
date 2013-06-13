@@ -1354,8 +1354,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mVolBtnMusicControls = (Settings.System.getIntForUser(resolver,
                     Settings.System.VOLBTN_MUSIC_CONTROLS, 1, UserHandle.USER_CURRENT) == 1);
 					
-			// Height of the navigation bar when presented horizontally at bottom	
-			int mNavButtonsHeight = Settings.System.getInt(resolver,
+            // Height of the navigation bar when presented horizontally at bottom	
+            int mNavButtonsHeight = Settings.System.getIntForUser(resolver,
                     Settings.System.NAVIGATION_BAR_HEIGHT, 48, UserHandle.USER_CURRENT);
             	mNavigationBarHeightForRotation[mPortraitRotation] =
             	mNavigationBarHeightForRotation[mUpsideDownRotation] =
@@ -1364,7 +1364,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             	mNavigationBarHeightForRotation[mSeascapeRotation] =
                 mNavButtonsHeight * DisplayMetrics.DENSITY_DEVICE/DisplayMetrics.DENSITY_DEFAULT;
 					
-			// Width of the navigation bar when presented vertically along one side
+            // Width of the navigation bar when presented vertically along one side
             	mNavigationBarWidthForRotation[mPortraitRotation] =
             	mNavigationBarWidthForRotation[mUpsideDownRotation] =
             	mNavigationBarWidthForRotation[mLandscapeRotation] =
