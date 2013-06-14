@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 MoKee OpenSource Project.
+ * Copyright (C) 2013 ParanoidAndroid Project.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,25 +17,41 @@
 package android.app;
 
 import android.app.Activity;
-import android.os.Handler;
+import android.os.Bundle;
 
 public class LayerActivity extends Activity {
 
-    private boolean mResume = false;
+    private Bundle mSavedInstanceState;
+    private boolean mShouldFinish = false;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mSavedInstanceState = savedInstanceState;
+    }
 
     @Override
     public void onStart() {
         super.onStart();
-        mResume = false;
+        mShouldFinish = false;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (!mResume) {
-            mResume = true;
+        if (!mShouldFinish) {
+            mShouldFinish = true;
             return;
         }
+        mShouldFinish = false;
         finish();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mSavedInstanceState != null) {
+            finish();
+        }
     }
 }
