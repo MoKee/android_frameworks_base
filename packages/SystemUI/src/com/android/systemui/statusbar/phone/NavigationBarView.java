@@ -677,27 +677,22 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
                         mLowProfile ? "true" : "false",
                         mShowMenu ? "true" : "false"));
 
-        final View back = mCurrentView.findViewWithTag("back");
-        final View home = mCurrentView.findViewWithTag("home");
-        final View recent = mCurrentView.findViewWithTag("recent");
-        final View power = mCurrentView.findViewWithTag("power");
+        final View back = mCurrentView.findViewWithTag(NavigationButtons.BACK);
+        final View home = mCurrentView.findViewWithTag(NavigationButtons.HOME);
+        final View recent = mCurrentView.findViewWithTag(NavigationButtons.RECENT);
+        final View power = mCurrentView.findViewWithTag(NavigationButtons.POWER);
 
-        pw.println("      back: "
-                + PhoneStatusBar.viewInfo(back)
-                + " " + visibilityToString(back.getVisibility())
-                );
-        pw.println("      home: "
-                + PhoneStatusBar.viewInfo(home)
-                + " " + visibilityToString(home.getVisibility())
-                );
-        pw.println("      recent: "
-                + PhoneStatusBar.viewInfo(recent)
-                + " " + visibilityToString(recent.getVisibility())
-                );
-        pw.println("      power: "
-                + PhoneStatusBar.viewInfo(power)
-                + " " + visibilityToString(power.getVisibility())
-                );
+        pw.println("      back: " + back != null ?
+                PhoneStatusBar.viewInfo(back) + " " + visibilityToString(back.getVisibility())
+                : "null" );
+        pw.println("      home: " +
+                PhoneStatusBar.viewInfo(home) + " " + visibilityToString(home.getVisibility()));
+        pw.println("      recent: " + recent != null ?
+                PhoneStatusBar.viewInfo(recent) + " " + visibilityToString(recent.getVisibility())
+                : "null" );
+        pw.println("      power: " + power != null ?
+                PhoneStatusBar.viewInfo(power) + " " + visibilityToString(power.getVisibility())
+                : "null" );
         pw.println("    }");
     }
 
