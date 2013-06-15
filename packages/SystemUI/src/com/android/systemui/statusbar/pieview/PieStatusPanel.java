@@ -130,6 +130,7 @@ public class PieStatusPanel {
             // Activate HALO
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.HALO_ACTIVE, 1);
+            hidePanels(true);
         }
     };
 
