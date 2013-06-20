@@ -180,7 +180,7 @@
     2. Circle
     3. Circle with Percentage
     4. None/Hidden -->
-    <integer name="def_battery_style">0</integer>
+    <integer name="def_battery_style">3</integer>
 
     <!-- Default for Settings.System.STATUS_BAR_NOTIF_COUNT. -->
    <integer name="def_notif_count">0</integer>
