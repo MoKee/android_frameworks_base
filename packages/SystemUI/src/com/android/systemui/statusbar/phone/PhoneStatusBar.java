@@ -1814,6 +1814,7 @@ public class PhoneStatusBar extends BaseStatusBar {
             mScrollView.setScaleX(-progress);
             mPowerWidget.updateVisibility();
             mNotificationButton.setVisibility(View.GONE);
+            mHaloButtonVisible = true;
         } else { // settings side
             mFlipSettingsView.setScaleX(progress);
             mFlipSettingsView.setVisibility(View.VISIBLE);
@@ -1823,8 +1824,10 @@ public class PhoneStatusBar extends BaseStatusBar {
             mPowerWidget.setVisibility(View.GONE);
             mNotificationButton.setVisibility(View.VISIBLE);
             mNotificationButton.setAlpha(progress);
+            mHaloButtonVisible = false;
         }
         mClearButton.setVisibility(View.GONE);
+        updateHaloButton();
     }
 
     public void flipToSettings() {
@@ -1871,6 +1874,7 @@ public class PhoneStatusBar extends BaseStatusBar {
                 ObjectAnimator.ofFloat(mHaloButton, View.ALPHA, 0f)
                     .setDuration(FLIP_DURATION),
                     mScrollView, View.INVISIBLE));
+        mHaloButton.setVisibility(View.GONE);
         mNotificationButton.setVisibility(View.VISIBLE);
         mNotificationButtonAnim = start(
             ObjectAnimator.ofFloat(mNotificationButton, View.ALPHA, 1f)
@@ -1880,6 +1884,7 @@ public class PhoneStatusBar extends BaseStatusBar {
                 ObjectAnimator.ofFloat(mClearButton, View.ALPHA, 0f)
                 .setDuration(FLIP_DURATION),
                 mClearButton, View.INVISIBLE));
+        mClearButton.setVisibility(View.GONE);
         mNotificationPanel.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -1932,7 +1937,6 @@ public class PhoneStatusBar extends BaseStatusBar {
             mPowerWidget.updateVisibility();
             mSettingsButton.setAlpha(1f);
             mSettingsButton.setVisibility(View.VISIBLE);
-            mHaloButton.setAlpha(1f);
             mHaloButtonVisible = true;
             updateHaloButton();
             mNotificationPanel.setVisibility(View.GONE);
