@@ -598,12 +598,12 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
             
             resolver.registerContentObserver(
                     Settings.System.getUriFor(Settings.System.NAVIGATION_BAR_COLOR), false, this);
-            updateSettings();
+            updateNavSettings();
         }
 
         @Override
         public void onChange(boolean selfChange) {
-            updateSettings();
+            updateNavSettings();
         }
     }
 
@@ -628,7 +628,7 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         bg.setAlpha(a);
     }
     
-    protected void updateSettings() {
+    protected void updateNavSettings() {
         ContentResolver resolver = mContext.getContentResolver();
         
         mNavigationBarColor = Settings.System.getInt(resolver,
