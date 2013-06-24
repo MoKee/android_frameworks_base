@@ -38,6 +38,7 @@ import android.graphics.PorterDuff;
 import android.os.Handler;
 import android.os.Message;
 import android.os.ServiceManager;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.AttributeSet;
 import android.util.Slog;
@@ -77,7 +78,7 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
     final static boolean ANIMATE_HIDE_TRANSITION = false; // turned off because it introduces unsightly delay when videos goes to full screen
     final static String NAVBAR_EDIT = "android.intent.action.NAVBAR_EDIT";
 
-    private static boolean EDIT_MODE;
+    private boolean mInEditMode;
     private NavbarEditor mEditBar;
     private NavBarReceiver mNavBarReceiver;
     private OnClickListener mRecentsClickListener;
@@ -160,30 +161,43 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
 
     private H mHandler = new H();
 
-    public static boolean getEditMode() {
-        return EDIT_MODE;
+    public boolean isInEditMode() {
+        return mInEditMode;
     }
-    
-    protected void setListener(OnClickListener RecentsClickListener, OnTouchListener RecentsPreloadListener, OnTouchListener HomeSearchActionListener, OnTouchListener PowerTouchListener) {
-        mRecentsClickListener = RecentsClickListener;
-        mRecentsPreloadListener = RecentsPreloadListener;
-        mHomeSearchActionListener = HomeSearchActionListener;
+
+    /* package */ void setListeners(OnClickListener recentsClickListener,
+            OnTouchListener recentsPreloadListener, OnTouchListener homeSearchActionListener, OnTouchListener PowerTouchListener) {
+        mRecentsClickListener = recentsClickListener;
+        mRecentsPreloadListener = recentsPreloadListener;
+        mHomeSearchActionListener = homeSearchActionListener;
         mPowerTouchListener = PowerTouchListener;
     }
 
-    protected void toggleButtonListener(boolean enable) {
+    private void removeButtonListeners() {
+        ViewGroup container = (ViewGroup) mCurrentView.findViewById(R.id.container);
+        int viewCount = container.getChildCount();
+        for (int i = 0; i < viewCount; i++) {
+            View button = container.getChildAt(i);
+            if (button instanceof KeyButtonView) {
+                button.setOnClickListener(null);
+                button.setOnTouchListener(null);
+            }
+        }
+    }
+
+    protected void updateButtonListeners() {
         View recentView = mCurrentView.findViewWithTag(NavigationButtons.RECENT);
         if (recentView != null) {
-            recentView.setOnClickListener(enable ? mRecentsClickListener : null);
-            recentView.setOnTouchListener(enable ? mRecentsPreloadListener : null);
+            recentView.setOnClickListener(mRecentsClickListener);
+            recentView.setOnTouchListener(mRecentsPreloadListener);
         }
         View homeView = mCurrentView.findViewWithTag(NavigationButtons.HOME);
         if (homeView != null) {
-            homeView.setOnTouchListener(enable ? mHomeSearchActionListener : null);
+            homeView.setOnTouchListener(mHomeSearchActionListener);
         }
         View powerView = mCurrentView.findViewWithTag(NavigationButtons.POWER);
         if (powerView != null) {
-            powerView.setOnTouchListener(enable ? mPowerTouchListener : null);
+            powerView.setOnTouchListener(mPowerTouchListener);
         }
     }
 
@@ -233,7 +247,8 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         updateResources();
 
         mNavBarReceiver = new NavBarReceiver();
-        mContext.registerReceiver(mNavBarReceiver, new IntentFilter(NAVBAR_EDIT));
+        mContext.registerReceiverAsUser(mNavBarReceiver, UserHandle.ALL,
+                new IntentFilter(NAVBAR_EDIT), null, null);
     }
 
     protected void updateResources() {
@@ -249,29 +264,27 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         public void onReceive(Context context, Intent intent) {
             boolean edit = intent.getBooleanExtra("edit", false);
             boolean save = intent.getBooleanExtra("save", false);
-            if (edit != EDIT_MODE) {
-                EDIT_MODE = edit;
-                if (EDIT_MODE) {
-                    toggleButtonListener(false);
-                    mEditBar.setupListeners();
-                    mEditBar.updateKeys();
+            if (edit != mInEditMode) {
+                mInEditMode = edit;
+                if (edit) {
+                    removeButtonListeners();
+                    mEditBar.setEditMode(true);
                 } else {
-                    mEditBar.dismissDialog();
                     if (save) {
                         mEditBar.saveKeys();
                     }
-                    mEditBar.reInflate();
-                    mEditBar = new NavbarEditor((ViewGroup) mCurrentView.findViewById(R.id.container), mVertical);
-                    mEditBar.updateKeys();
-                    toggleButtonListener(true);
-                    if (save) {
-                        mEditBar.updateLowLights(mCurrentView);
-                    }
-                    ((ViewGroup) mCurrentView.findViewById(R.id.mid_nav_buttons)).setLayoutTransition(
-                            new LayoutTransition());
+                    mEditBar.setEditMode(false);
+                    updateSettings();
                 }
             }
         }
+    }
+
+    public void updateSettings() {
+        mEditBar.updateKeys();
+        removeButtonListeners();
+        updateButtonListeners();
+        setDisabledFlags(mDisabledFlags, true /* force */);
     }
 
     public void notifyScreenOn(boolean screenOn) {
@@ -502,10 +515,8 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         } else {
             mVertical = getWidth() > 0 && getHeight() > getWidth();
         }
-        mEditBar = new NavbarEditor((ViewGroup) mCurrentView.findViewById(R.id.container), mVertical);
-        mEditBar.updateKeys();
-        mEditBar.updateLowLights(mCurrentView);
-        toggleButtonListener(true);
+        mEditBar = new NavbarEditor(mCurrentView, mVertical);
+        updateSettings();
 
         mDeadZone = (DeadZone) mCurrentView.findViewById(R.id.deadzone);
 
@@ -528,12 +539,16 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
-        ViewGroup mid_nav = (ViewGroup) mCurrentView.findViewById(R.id.mid_nav_buttons);
-        View vViews[] = new View[mid_nav.getChildCount()];
-        for (int cc = 0;cc < mid_nav.getChildCount(); cc++) {
-            vViews[cc] = mid_nav.getChildAt(cc);
+
+        ViewGroup midNavButtons = (ViewGroup) mCurrentView.findViewById(R.id.mid_nav_buttons);
+        int count = midNavButtons.getChildCount();
+        View buttons[] = new View[count];
+
+        for (int i = 0; i < count; i++) {
+            buttons[i] = midNavButtons.getChildAt(i);
         }
-        mDelegateHelper.setInitialTouchRegion(vViews);
+
+        mDelegateHelper.setInitialTouchRegion(buttons);
     }
 
     @Override
