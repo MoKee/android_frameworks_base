@@ -20,6 +20,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.TextView;
+import android.os.UserHandle;
 import android.provider.Settings;
 import com.android.internal.R;
 import com.android.internal.telephony.IccCardConstants;
@@ -74,8 +75,8 @@ public class CarrierText extends TextView {
 
     protected void updateCarrierText(State simState, CharSequence plmn, CharSequence spn) {
         CharSequence text = getCarrierTextForSimState(simState, plmn, spn);
-        String customLabel = Settings.System.getString(getContext().getContentResolver(),
-                Settings.System.CUSTOM_CARRIER_LABEL);
+        String customLabel = Settings.System.getStringForUser(getContext().getContentResolver(),
+                Settings.System.CUSTOM_CARRIER_LABEL, UserHandle.USER_CURRENT);
         if (customLabel == null || customLabel.length() == 0) {
             if (KeyguardViewManager.USE_UPPER_CASE) {
                 setText(text != null ? text.toString().toUpperCase() : null);

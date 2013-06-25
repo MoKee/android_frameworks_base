@@ -20,6 +20,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -108,8 +109,8 @@ public class CarrierLabel extends TextView {
         } else {
             str = "";
         }
-        String customLabel = Settings.System.getString(getContext().getContentResolver(),
-                Settings.System.CUSTOM_CARRIER_LABEL);
+        String customLabel = Settings.System.getStringForUser(getContext().getContentResolver(),
+                Settings.System.CUSTOM_CARRIER_LABEL, UserHandle.USER_CURRENT);
         if(!TextUtils.isEmpty(customLabel))
             setText(customLabel);
         else

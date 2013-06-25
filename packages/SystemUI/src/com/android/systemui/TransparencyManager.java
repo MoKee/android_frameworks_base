@@ -214,8 +214,8 @@ public class TransparencyManager {
 
         final float defaultAlpha = Float.valueOf(mContext.getResources().getInteger(R.integer.navigation_bar_transparency)) / 255;
         String alphas[];
-        String settingValue = Settings.System.getString(resolver,
-                Settings.System.NAVIGATION_BAR_ALPHA_CONFIG);
+        String settingValue = Settings.System.getStringForUser(resolver,
+                Settings.System.NAVIGATION_BAR_ALPHA_CONFIG, UserHandle.USER_CURRENT);
         //Log.e(TAG, "nav bar config: " + settingValue);
         if (settingValue == null) {
             mNavbarInfo.homeAlpha = defaultAlpha;
@@ -228,8 +228,8 @@ public class TransparencyManager {
             }
         }
 
-        settingValue = Settings.System.getString(resolver,
-                Settings.System.STATUS_BAR_ALPHA_CONFIG);
+        settingValue = Settings.System.getStringForUser(resolver,
+                Settings.System.STATUS_BAR_ALPHA_CONFIG, UserHandle.USER_CURRENT);
         //Log.e(TAG, "status bar config: " + settingValue);
         if (settingValue == null) {
             mStatusbarInfo.homeAlpha = defaultAlpha;

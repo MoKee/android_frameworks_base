@@ -56,6 +56,7 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.Matrix;
 import android.os.Handler;
 import android.os.RemoteException;
+import android.os.UserHandle;
 import android.os.Vibrator;
 import android.os.ServiceManager;
 import android.provider.Settings;
@@ -192,11 +193,11 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
         @Override
         public void onChange(boolean selfChange) {
             mInteractionReversed =
-                    Settings.System.getInt(mContext.getContentResolver(), Settings.System.HALO_REVERSED, 1) == 1;
+                    Settings.System.getIntForUser(mContext.getContentResolver(), Settings.System.HALO_REVERSED, 1, UserHandle.USER_CURRENT) == 1;
             mHideTicker =
-                    Settings.System.getInt(mContext.getContentResolver(), Settings.System.HALO_HIDE, 0) == 1;
-            mHapticFeedback = Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.HAPTIC_FEEDBACK_ENABLED, 1) != 0;
+                    Settings.System.getIntForUser(mContext.getContentResolver(), Settings.System.HALO_HIDE, 0, UserHandle.USER_CURRENT) == 1;
+            mHapticFeedback = Settings.System.getIntForUser(mContext.getContentResolver(),
+                    Settings.System.HAPTIC_FEEDBACK_ENABLED, 1, UserHandle.USER_CURRENT) != 0;
 
             if (!selfChange) {
                 mEffect.wake();
@@ -474,8 +475,8 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
 
                 // Do we erase ourselves?
                 if (mOverX) {
-                    Settings.System.putInt(mContext.getContentResolver(),
-                            Settings.System.HALO_ACTIVE, 0);
+                    Settings.System.putIntForUser(mContext.getContentResolver(),
+                            Settings.System.HALO_ACTIVE, 0, UserHandle.USER_CURRENT);
                     return true;
                 }
                 

@@ -28,6 +28,7 @@ import android.net.ConnectivityManager;
 import android.net.TrafficStats;
 import android.os.Handler;
 import android.os.Message;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
@@ -158,8 +159,8 @@ public class Traffic extends TextView {
 
 	private void updateSettings() {
 		ContentResolver resolver = mContext.getContentResolver();
-		showTraffic = (Settings.System.getInt(resolver,
-				Settings.System.STATUS_BAR_TRAFFIC, 0) == 1);
+		showTraffic = (Settings.System.getIntForUser(resolver,
+				Settings.System.STATUS_BAR_TRAFFIC, 0, UserHandle.USER_CURRENT) == 1);
 		if (showTraffic && getConnectAvailable()) {
 			if (mAttached) {
 				updateTraffic();

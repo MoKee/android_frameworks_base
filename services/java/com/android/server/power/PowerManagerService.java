@@ -579,10 +579,12 @@ public final class PowerManagerService extends IPowerManager.Stub
                 Settings.Global.STAY_ON_WHILE_PLUGGED_IN, BatteryManager.BATTERY_PLUGGED_AC);
 
         // respect default config values
-        mElectronBeamOnEnabled = Settings.System.getInt(resolver,
-                Settings.System.SYSTEM_POWER_ENABLE_CRT_ON, 0) == 1;
-        mElectronBeamOffEnabled = Settings.System.getInt(resolver,
-                Settings.System.SYSTEM_POWER_ENABLE_CRT_OFF, mElectronBeamFadesConfig ? 0 : 1) == 1;
+        mElectronBeamOnEnabled = Settings.System.getIntForUser(resolver,
+                Settings.System.SYSTEM_POWER_ENABLE_CRT_ON, 0,
+                UserHandle.USER_CURRENT) == 1;
+        mElectronBeamOffEnabled = Settings.System.getIntForUser(resolver,
+                Settings.System.SYSTEM_POWER_ENABLE_CRT_OFF, mElectronBeamFadesConfig ? 0 : 1,
+                UserHandle.USER_CURRENT) == 1;
 
         final int oldScreenBrightnessSetting = mScreenBrightnessSetting;
         mScreenBrightnessSetting = Settings.System.getIntForUser(resolver,
@@ -735,8 +737,8 @@ public final class PowerManagerService extends IPowerManager.Stub
             notifyWakeLockReleasedLocked(wakeLock);
             wakeLock.mLock.unlinkToDeath(wakeLock, 0);
 
-            int buggyProximity = Settings.System.getInt(mContext.getContentResolver(),
-                                                Settings.System.INACCURATE_PROXIMITY_WORKAROUND, 0);
+            int buggyProximity = Settings.System.getIntForUser(mContext.getContentResolver(),
+                                                Settings.System.INACCURATE_PROXIMITY_WORKAROUND, 0, UserHandle.USER_CURRENT);
             if ((flags & PowerManager.WAIT_FOR_PROXIMITY_NEGATIVE) != 0 && buggyProximity == 0) {
                 mRequestWaitForNegativeProximity = true;
             }
