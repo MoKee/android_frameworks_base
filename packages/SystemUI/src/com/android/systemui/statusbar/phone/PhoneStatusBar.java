@@ -377,11 +377,11 @@ public class PhoneStatusBar extends BaseStatusBar {
             mBrightnessControl = brightnessValue != Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC
                     && Settings.System.getIntForUser(resolver, Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL,
                             0, UserHandle.USER_CURRENT) == 1;
-            mNotificationShadeDim = Settings.System.getInt(
+            mNotificationShadeDim = Settings.System.getIntForUser(
                     resolver, Settings.System.NOTIFICATION_SHADE_DIM,
-                    ActivityManager.isHighEndGfx() ? 1 : 0) == 1;
-            mShowCarrierLabel = Settings.System.getInt(
-                    resolver, Settings.System.STATUS_BAR_CARRIER, 0) == 1;
+                    ActivityManager.isHighEndGfx() ? 1 : 0, UserHandle.USER_CURRENT) == 1;
+            mShowCarrierLabel = Settings.System.getIntForUser(
+                    resolver, Settings.System.STATUS_BAR_CARRIER, 0, UserHandle.USER_CURRENT) == 1;
             showCarrierLabel(mShowCarrierLabel);
         }
     }
@@ -1386,8 +1386,8 @@ public class PhoneStatusBar extends BaseStatusBar {
         if (mStatusBarView == null) return;
         ContentResolver resolver = mContext.getContentResolver();
         View statusCarrierLabel = mStatusBarView.findViewById(R.id.status_carrier_label);
-        mShowCarrierLabel = (Settings.System.getInt(resolver,
-                Settings.System.STATUS_BAR_CARRIER, 0) == 1);
+        mShowCarrierLabel = (Settings.System.getIntForUser(resolver,
+                Settings.System.STATUS_BAR_CARRIER, 0, UserHandle.USER_CURRENT) == 1);
         if (statusCarrierLabel != null) {
             statusCarrierLabel.setVisibility(show ? (mShowCarrierLabel ? View.VISIBLE : View.GONE) : View.GONE);
         }
@@ -2721,8 +2721,8 @@ public class PhoneStatusBar extends BaseStatusBar {
     private View.OnClickListener mHaloButtonListener = new View.OnClickListener() {
         public void onClick(View v) {
             // Activate HALO
-            Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.HALO_ACTIVE, 1);
+            Settings.System.putIntForUser(mContext.getContentResolver(),
+                    Settings.System.HALO_ACTIVE, 1, UserHandle.USER_CURRENT);
             // Switch off regular ticker
             mTickerView.setVisibility(View.GONE);
             // Collapse

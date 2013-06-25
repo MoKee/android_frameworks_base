@@ -20,6 +20,7 @@ import android.animation.LayoutTransition;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
@@ -63,10 +64,10 @@ public class QuickSettingsContainerView extends FrameLayout {
     void updateResources() {
         Resources r = getContext().getResources();
         mCellGap = r.getDimension(R.dimen.quick_settings_cell_gap);
-        mNumColumns = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.QUICK_TILES_PER_ROW, r.getInteger(R.integer.quick_settings_num_columns));
-        mDuplicateColumnsLandscape = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.QUICK_TILES_PER_ROW_DUPLICATE_LANDSCAPE, 1) == 1;
+        mNumColumns = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.QUICK_TILES_PER_ROW, r.getInteger(R.integer.quick_settings_num_columns), UserHandle.USER_CURRENT);
+        mDuplicateColumnsLandscape = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.QUICK_TILES_PER_ROW_DUPLICATE_LANDSCAPE, 1, UserHandle.USER_CURRENT) == 1;
         requestLayout();
     }
 
@@ -173,9 +174,9 @@ public class QuickSettingsContainerView extends FrameLayout {
 
     public int updateTileTextSize() {
         int tileTextSize;
-        int numColumns = Settings.System.getInt(mContext.getContentResolver(),
+        int numColumns = Settings.System.getIntForUser(mContext.getContentResolver(),
                 Settings.System.QUICK_TILES_PER_ROW,
-                getContext().getResources().getInteger(R.integer.quick_settings_num_columns));
+                getContext().getResources().getInteger(R.integer.quick_settings_num_columns), UserHandle.USER_CURRENT);
 
         // adjust Tile Text Size based on column count
         switch (numColumns) {

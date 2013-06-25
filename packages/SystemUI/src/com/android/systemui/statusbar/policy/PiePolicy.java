@@ -25,6 +25,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.format.DateFormat;
@@ -109,7 +110,7 @@ public class PiePolicy {
     }
 
     public static String getNetworkProvider() {
-        String operatorName = Settings.System.getString(mContext.getContentResolver(), Settings.System.CUSTOM_CARRIER_LABEL);
+        String operatorName = Settings.System.getStringForUser(mContext.getContentResolver(), Settings.System.CUSTOM_CARRIER_LABEL, UserHandle.USER_CURRENT);
         if(TextUtils.isEmpty(operatorName)) {
 		operatorName = mContext.getString(R.string.quick_settings_wifi_no_network);
 		TelephonyManager telephonyManager = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);

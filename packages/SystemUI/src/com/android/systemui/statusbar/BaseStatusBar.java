@@ -279,8 +279,8 @@ public abstract class BaseStatusBar extends SystemUI implements
         @Override
         public void onChange(boolean selfChange) {
             updatePieControls();
-            if (Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.PIE_STICK, 0) == 0) {
+            if (Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.PIE_STICK, 0, UserHandle.USER_CURRENT) == 0) {
                 updatePieControls();
             }
         }
@@ -350,7 +350,7 @@ public abstract class BaseStatusBar extends SystemUI implements
                 if (!mPieControlPanel.isShowing()) {
                     switch(action) {
                         case MotionEvent.ACTION_DOWN:
-                            centerPie = Settings.System.getInt(mContext.getContentResolver(), Settings.System.PIE_CENTER, 1) == 1;
+                            centerPie = Settings.System.getIntForUser(mContext.getContentResolver(), Settings.System.PIE_CENTER, 1, UserHandle.USER_CURRENT) == 1;
                             actionDown = true;
                             initialX = event.getX();
                             initialY = event.getY();
@@ -412,11 +412,11 @@ public abstract class BaseStatusBar extends SystemUI implements
 
         mTransparencyManager = new TransparencyManager(mContext);
 
-        mHaloEnabled = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.HALO_ENABLED, 0) == 1;
+        mHaloEnabled = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.HALO_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
 
-        mHaloActive = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.HALO_ACTIVE, 0) == 1;
+        mHaloActive = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.HALO_ACTIVE, 0, UserHandle.USER_CURRENT) == 1;
         createAndAddWindows();
 
         disable(switches[0]);
@@ -515,10 +515,10 @@ public abstract class BaseStatusBar extends SystemUI implements
     }
 
     protected void updateHalo() {
-        mHaloEnabled = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.HALO_ENABLED, 0) == 1;
-        mHaloActive = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.HALO_ACTIVE, 0) == 1;
+        mHaloEnabled = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.HALO_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
+        mHaloActive = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.HALO_ACTIVE, 0, UserHandle.USER_CURRENT) == 1;
 
         mHaloButtonVisible = mHaloEnabled;
         updateHaloButton();
@@ -547,10 +547,10 @@ public abstract class BaseStatusBar extends SystemUI implements
     }
 
     private boolean showPie() {
-        boolean pie = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.PIE_CONTROLS, 0) == 1;
-        boolean navbarOff = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.EXPANDED_DESKTOP_STATE, 0) == 1;
+        boolean pie = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.PIE_CONTROLS, 0, UserHandle.USER_CURRENT) == 1;
+        boolean navbarOff = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.EXPANDED_DESKTOP_STATE, 0, UserHandle.USER_CURRENT) == 1;
         boolean hasnavbar = true;
         IWindowManager windowManager = IWindowManager.Stub.asInterface(
                 ServiceManager.getService(Context.WINDOW_SERVICE));
@@ -593,8 +593,8 @@ public abstract class BaseStatusBar extends SystemUI implements
             }
 
             // Add pie (s), want some slice?
-            int gravity = Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.PIE_GRAVITY, 3);
+            int gravity = Settings.System.getIntForUser(mContext.getContentResolver(),
+                    Settings.System.PIE_GRAVITY, 3, UserHandle.USER_CURRENT);
 
             switch(gravity) {
                 case 0:
@@ -657,8 +657,8 @@ public abstract class BaseStatusBar extends SystemUI implements
 
     public static WindowManager.LayoutParams getPieTriggerLayoutParams(Context context, int gravity) {
         final Resources res = context.getResources();
-        final float mPieSize = Settings.System.getFloat(context.getContentResolver(),
-                Settings.System.PIE_TRIGGER, 1f);
+        final float mPieSize = Settings.System.getFloatForUser(context.getContentResolver(),
+                Settings.System.PIE_TRIGGER, 1f, UserHandle.USER_CURRENT);
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams(
               (gravity == Gravity.TOP || gravity == Gravity.BOTTOM ?
                     ViewGroup.LayoutParams.MATCH_PARENT : (int)(res.getDimensionPixelSize(R.dimen.pie_trigger_height)*mPieSize)),

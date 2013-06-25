@@ -4804,8 +4804,8 @@ final class ActivityStack {
 
     private boolean pauseActiveAppWhenUsingHalo() {
         int isLowRAM = (ActivityManager.isLargeRAM()) ? 0 : 1;
-        return Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.HALO_PAUSE, isLowRAM) == 1;
+        return Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.HALO_PAUSE, isLowRAM, UserHandle.USER_CURRENT) == 1;
     }
 
     public void dismissKeyguardOnNextActivityLocked() {

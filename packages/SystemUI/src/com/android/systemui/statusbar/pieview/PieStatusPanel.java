@@ -36,6 +36,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.os.Handler;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Animation;
@@ -128,8 +129,8 @@ public class PieStatusPanel {
     private View.OnClickListener mHaloButtonListener = new View.OnClickListener() {
         public void onClick(View v) {
             // Activate HALO
-            Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.HALO_ACTIVE, 1);
+            Settings.System.putIntForUser(mContext.getContentResolver(),
+                    Settings.System.HALO_ACTIVE, 1, UserHandle.USER_CURRENT);
             hidePanels(true);
         }
     };
@@ -137,8 +138,8 @@ public class PieStatusPanel {
     protected void showHaloButton(boolean show) {
         if (mHaloButton != null) {
             if(show) {
-                mHaloActive = Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.HALO_ACTIVE, 0) == 1;
+                mHaloActive = Settings.System.getIntForUser(mContext.getContentResolver(),
+                    Settings.System.HALO_ACTIVE, 0, UserHandle.USER_CURRENT) == 1;
                 mHaloButton.setVisibility(!mHaloActive ? View.VISIBLE : View.GONE);
             } else {
                 mHaloButton.setVisibility(View.GONE);

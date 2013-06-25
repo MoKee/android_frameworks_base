@@ -631,8 +631,8 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
     protected void updateNavSettings() {
         ContentResolver resolver = mContext.getContentResolver();
         
-        mNavigationBarColor = Settings.System.getInt(resolver,
-                Settings.System.NAVIGATION_BAR_COLOR, -1);
+        mNavigationBarColor = Settings.System.getIntForUser(resolver,
+                Settings.System.NAVIGATION_BAR_COLOR, -1, UserHandle.USER_CURRENT);
         makeBar();
     }
 
