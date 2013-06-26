@@ -28,6 +28,7 @@ import android.os.HandlerThread;
 import android.os.UserHandle;
 import android.os.storage.StorageEventListener;
 import android.os.storage.StorageManager;
+import android.os.SystemProperties;
 import android.provider.Settings;
 import android.util.Slog;
 
@@ -35,7 +36,8 @@ public class StorageNotification extends StorageEventListener {
     private static final String TAG = "StorageNotification";
     private static final boolean DEBUG = false;
 
-    private static final boolean POP_UMS_ACTIVITY_ON_CONNECT = true;
+    private static final boolean POP_UMS_ACTIVITY_ON_CONNECT =
+        (SystemProperties.getInt("ro.usb.use_custom_service", 0) == 0);
 
     /**
      * Binder context for this service
@@ -285,6 +287,8 @@ public class StorageNotification extends StorageEventListener {
      */
     private synchronized void setUsbStorageNotification(int titleId, int messageId, int icon,
             boolean sound, boolean visible, PendingIntent pi) {
+
+        visible = visible && POP_UMS_ACTIVITY_ON_CONNECT;
 
         if (!visible && mUsbStorageNotification == null) {
             return;

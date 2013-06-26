@@ -363,6 +363,7 @@ public class AudioTrack
            && (streamType != AudioManager.STREAM_VOICE_CALL)
            && (streamType != AudioManager.STREAM_NOTIFICATION)
            && (streamType != AudioManager.STREAM_BLUETOOTH_SCO)
+           && (streamType != AudioManager.STREAM_FM)
            && (streamType != AudioManager.STREAM_DTMF)) {
             throw new IllegalArgumentException("Invalid stream type.");
         } else {

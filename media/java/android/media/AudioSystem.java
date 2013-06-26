@@ -54,13 +54,15 @@ public class AudioSystem
     public static final int STREAM_TTS = 9;
     /* @hide The audio stream for incall music delivery */
     public static final int STREAM_INCALL_MUSIC = 10;
+    /* @hide The audio stream for FM Radio */
+    public static final int STREAM_FM = 11;
     /**
      * @deprecated Use {@link #numStreamTypes() instead}
      */
     public static final int NUM_STREAMS = 5;
 
     // Expose only the getter method publicly so we can change it in the future
-    private static final int NUM_STREAM_TYPES = 10;
+    private static final int NUM_STREAM_TYPES = 12;
     public static final int getNumStreamTypes() { return NUM_STREAM_TYPES; }
 
     /*
