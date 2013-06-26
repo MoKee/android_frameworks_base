@@ -190,4 +190,6 @@
     <!-- Description of policy access to start enforcing MMAC policy [CHAR LIMIT=110]-->
     <string name="policydesc_enforceMmac">Toggle MMAC policy enforcing or permissive mode.</string>
 
+    <!-- Title of the dialog where the user is adjusting the audio volume for FM radio -->
+    <string name="volume_fm">FM radio volume</string>
 </resources>
