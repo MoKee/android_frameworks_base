@@ -28,4 +28,7 @@
     
     <!-- Content description of the halo button in the notification panel for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
     <string name="accessibility_halo">Create notification halo.</string>
+
+    <!-- Quick Settings -->
+    <string name="quick_settings_fcharge">Fast charge</string> 
 </resources>

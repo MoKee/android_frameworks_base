@@ -44,6 +44,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_VOLUME;
 import static com.android.internal.util.cm.QSConstants.TILE_WIFI;
 import static com.android.internal.util.cm.QSConstants.TILE_WIFIAP;
 import static com.android.internal.util.cm.QSConstants.TILE_WIMAX;
+import static com.android.internal.util.cm.QSConstants.TILE_FCHARGE;
 
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
@@ -93,6 +94,7 @@ import com.android.systemui.quicksettings.VolumeTile;
 import com.android.systemui.quicksettings.WiFiDisplayTile;
 import com.android.systemui.quicksettings.WiFiTile;
 import com.android.systemui.quicksettings.WifiAPTile;
+import com.android.systemui.quicksettings.FChargeTile;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -243,6 +245,10 @@ public class QuickSettingsController {
                 if (QSUtils.expandedDesktopEnabled(resolver)) {
                     qs = new ExpandedDesktopTile(mContext, this, mHandler);
                 }
+            } else if (tile.equals(TILE_FCHARGE)) {
+                // User cannot add the fast charge tile if the device does not support it
+                // No need to check again here
+                qs = new FChargeTile(mContext, this, mHandler);
             }
 
             if (qs != null) {
