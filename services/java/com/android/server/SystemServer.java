@@ -73,10 +73,10 @@ import com.android.server.wm.WindowManagerService;
 import dalvik.system.VMRuntime;
 import dalvik.system.Zygote;
 
-import java.io.BufferedWriter; 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException; 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import com.stericsson.hardware.fm.FmReceiverService;
@@ -88,7 +88,7 @@ class ServerThread extends Thread {
     private static final String ENCRYPTED_STATE = "1";
 
     public static final String FAST_CHARGE_DIR = "/sys/kernel/fast_charge";
-    public static final String FAST_CHARGE_FILE = "force_fast_charge"; 
+    public static final String FAST_CHARGE_FILE = "force_fast_charge";
 
     ContentResolver mContentResolver;
 
