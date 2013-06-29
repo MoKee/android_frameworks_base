@@ -1071,7 +1071,6 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
     public boolean performItemClick(View view, int position, long id) {
         boolean handled = false;
         boolean dispatchItemClick = true;
-        mIsScrolling = false;
         if (mChoiceMode != CHOICE_MODE_NONE) {
             handled = true;
             boolean checkedStateChanged = false;
@@ -5357,6 +5356,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
 
     @Override
     protected void handleDataChanged() {
+        mIsScrolling = false;
         int count = mItemCount;
         int lastHandledItemCount = mLastHandledItemCount;
         mLastHandledItemCount = mItemCount;
