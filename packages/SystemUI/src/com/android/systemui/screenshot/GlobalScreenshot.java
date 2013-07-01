@@ -198,16 +198,6 @@ class SaveImageInBackgroundTask extends AsyncTask<SaveImageInBackgroundData, Voi
                      PendingIntent.getActivity(context, 0, chooserIntent, 
                              PendingIntent.FLAG_CANCEL_CURRENT));
 
-            // Trash Image
-            Intent trashIntent = new Intent();
-            trashIntent.setClass(context, TrashScreenshot.class);
-            trashIntent.putExtra(TrashScreenshot.SCREENSHOT_URI, uri.toString());
-
-            mNotificationBuilder.addAction(R.drawable.ic_menu_trash,
-                     r.getString(com.android.internal.R.string.trash),
-                     PendingIntent.getBroadcast(context, 0, trashIntent,
-                        PendingIntent.FLAG_CANCEL_CURRENT));
-
             OutputStream out = resolver.openOutputStream(uri);
             image.compress(Bitmap.CompressFormat.PNG, 100, out);
             out.flush();
@@ -237,6 +227,16 @@ class SaveImageInBackgroundTask extends AsyncTask<SaveImageInBackgroundData, Voi
         } else {
             // Show the final notification to indicate screenshot saved
             Resources r = params.context.getResources();
+
+            // Trash Image
+            Intent trashIntent = new Intent();
+            trashIntent.setClass(params.context, TrashScreenshot.class);
+            trashIntent.putExtra(TrashScreenshot.SCREENSHOT_URI, params.imageUri.toString());
+
+            mNotificationBuilder.addAction(R.drawable.ic_menu_trash,
+                     r.getString(com.android.internal.R.string.trash),
+                     PendingIntent.getBroadcast(params.context, 0, trashIntent,
+                        PendingIntent.FLAG_CANCEL_CURRENT));
 
             // Create the intent to show the screenshot in gallery
             Intent launchIntent = new Intent(Intent.ACTION_VIEW);

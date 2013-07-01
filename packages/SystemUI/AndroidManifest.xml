@@ -101,8 +101,7 @@
             android:exported="false" />
 
         <receiver
-            android:name=".screenshot.TrashScreenshot"
-            android:exported="true" />
+            android:name=".screenshot.TrashScreenshot" />
 
         <service android:name=".LoadAverageService"
                 android:exported="true" />
