@@ -82,7 +82,7 @@ public class PieStatusPanel {
     private NotificationData mNotificationData;
     private Runnable mPostCollapseCleanup = null;
 
-    private boolean mHaloActive;
+    private boolean mHaloActive, mHaloEnabled;
 
     private int mCurrentViewState = -1;
     private int mFlipViewState = -1;
@@ -140,7 +140,9 @@ public class PieStatusPanel {
             if(show) {
                 mHaloActive = Settings.System.getIntForUser(mContext.getContentResolver(),
                     Settings.System.HALO_ACTIVE, 0, UserHandle.USER_CURRENT) == 1;
-                mHaloButton.setVisibility(!mHaloActive ? View.VISIBLE : View.GONE);
+                mHaloEnabled = Settings.System.getIntForUser(mContext.getContentResolver(),
+                    Settings.System.HALO_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
+                mHaloButton.setVisibility(!mHaloActive && mHaloEnabled ? View.VISIBLE : View.GONE);
             } else {
                 mHaloButton.setVisibility(View.GONE);
             }
