@@ -54,6 +54,10 @@
     <string name="toast_rotation_unlocked">屏幕方向已解锁</string>
     <string name="toast_rotation_locked">屏幕方向已锁定</string>
     <string name="stylus_app_not_installed">%s 尚未被安装</string>
+    <string name="permlab_changePrivacyGuardState">启用或禁用隐私防护</string>
+    <string name="permdesc_changePrivacyGuardState">允许应用更改另一个应用程序是否运行隐私防护。当一个应用程序在隐私防护模式运行时，它将不能访问个人数据，如联系人，通话记录或消息。</string>
+    <string name="privacy_guard_notification">隐私防火已运行</string>
+    <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g>将不能放问您的个人数据</string>
     <string name="profile_picker_title">情景</string>
     <string name="profile_none">无</string>
     <string name="permlab_interceptSmsSent">拦截传出短信</string>
