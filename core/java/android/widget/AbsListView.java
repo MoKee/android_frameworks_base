@@ -77,6 +77,7 @@ import java.lang.NullPointerException;
 
 import android.view.animation.Animation;
 import android.view.animation.AlphaAnimation;
+import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.view.animation.AnimationUtils;
@@ -2276,6 +2277,9 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
                 break;
             case 10:
                 anim = new TranslateAnimation(mWidth, 0.0f, 0.0f, 0.0f);
+                break;
+            case 11:
+                anim = new RotateAnimation(180, 0.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                 break;
         }
         anim.setDuration(500);
