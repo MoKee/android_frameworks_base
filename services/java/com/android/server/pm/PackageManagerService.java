@@ -9214,11 +9214,11 @@ public class PackageManagerService extends IPackageManager.Stub {
             }
             pkgSetting.setPrivacyGuard(enabled, userId);
             mSettings.writePackageRestrictionsLPr(userId);
-            try {
-                ActivityManagerNative.getDefault().forceStopPackage(packageName, userId);
-            } catch (RemoteException e) {
-                //nothing
-            }
+        }
+        try {
+            ActivityManagerNative.getDefault().forceStopPackage(packageName, userId);
+        } catch (RemoteException e) {
+            //nothing
         }
     }
 
