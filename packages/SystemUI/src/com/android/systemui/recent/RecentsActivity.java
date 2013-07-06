@@ -127,12 +127,9 @@ public class RecentsActivity extends Activity {
 
     @Override
     public void onStart() {
-        // Hide wallpaper if it's not a static image
-        if (forceOpaqueBackground(this)) {
-            updateWallpaperVisibility(false);
-        } else {
-            updateWallpaperVisibility(true);
-        }
+        // always show wallpaper
+        updateWallpaperVisibility(true);
+
         mShowing = true;
         if (mRecentsPanel != null) {
             mRecentsPanel.refreshViews();
