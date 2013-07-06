@@ -470,8 +470,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
         mRecentsScrim = findViewById(R.id.recents_bg_protect);
         mRecentsNoApps = findViewById(R.id.recents_no_apps);
         mClearRecents = (ImageView) findViewById(R.id.recents_clear);
-
-	mShortcutBar = (ScrollView) findViewById(R.id.shortcut_bar);
+        mShortcutBar = (ScrollView) findViewById(R.id.shortcut_bar);
         mAlarmClock = (ImageView) findViewById(R.id.shortcut_alarmclock);
         mCalculator = (ImageView) findViewById(R.id.shortcut_calculator);
         mCamera = (ImageView) findViewById(R.id.shortcut_camera);
@@ -489,11 +488,11 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
         if (mClearRecents != null){
             mClearRecents.setOnClickListener(this);
         }
-
+        // if previous camera doesn't exist,try to set another one
         mCameraPath = checkApkExist(mContext, "com.android.gallery3d") ? "com.android.gallery3d" : "com.google.android.gallery3d";
         setShortcurtEnable(mAlarmClock, "com.android.deskclock");
         setShortcurtEnable(mCalculator, "com.android.calculator2");
-        setShortcurtEnable(mCamera, mCameraPath);// if previous camera doesn't exist,try to set another one
+        setShortcurtEnable(mCamera, mCameraPath);
         setShortcurtEnable(mCalendar, "com.android.calendar");
         setShortcurtEnable(mMaps, "com.google.android.apps.maps");
         setShortcurtEnable(mMusic, "com.andrew.apollo");
@@ -556,50 +555,61 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
     @Override
     public void onClick(View v) {
     	int value = v.getId();
-    	if(R.id.recents_clear != value)
-	mRecentsScrim.setVisibility(View.GONE);
     	switch (v.getId()) {
 		case R.id.recents_clear:
 			mRecentsContainer.removeAllViewsInLayout();
 			break;
 		case R.id.shortcut_alarmclock:
 			startApplication("com.android.deskclock","com.android.deskclock.DeskClock");
+			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_calculator:
 			startApplication("com.android.calculator2","com.android.calculator2.Calculator");
+			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_camera:
 			startApplication(mCameraPath,"com.android.camera.CameraLauncher");
+			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_calendar:
 			startApplication("com.android.calendar","com.android.calendar.LaunchActivity");
+			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_maps:
 			startApplication("com.google.android.apps.maps","com.google.android.maps.MapsActivity");
+			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_music:
 			startApplication("com.andrew.apollo","com.andrew.apollo.ui.activities.HomeActivity");
+			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_facebook:
 			startApplication("com.facebook.katana","com.facebook.katana.LoginActivity");
+			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_googleplus:
 			startApplication("com.google.android.apps.plus","com.google.android.apps.plus.phone.HomeActivity");
+			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_qq:
 			startApplication("com.tencent.mobileqq","com.tencent.mobileqq.activity.SplashActivity");
+			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_sinaweibo:
 			startApplication("com.sina.weibo","com.sina.weibo.SplashActivity");
+			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_twitter:
 			startApplication("com.twitter.android","com.twitter.android.StartActivity");
+			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_wechat:
 			startApplication("com.tencent.mm","com.tencent.mm.ui.LauncherUI");
+			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_fuubo:
 			startApplication("me.imid.fuubo","me.imid.fuubo.ui.Fuubo");
+			mRecentsScrim.setVisibility(View.GONE);
 			break;
 	}	
     }
