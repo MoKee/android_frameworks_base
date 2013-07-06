@@ -331,7 +331,6 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
             mWaitingToShow = true;
             refreshRecentTasksList(recentTaskDescriptions, firstScreenful);
             showIfReady();
-            mRecentsScrim.setVisibility(View.VISIBLE);
         } else {
             showImpl(false);
         }
@@ -561,55 +560,42 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
 			break;
 		case R.id.shortcut_alarmclock:
 			startApplication("com.android.deskclock","com.android.deskclock.DeskClock");
-			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_calculator:
 			startApplication("com.android.calculator2","com.android.calculator2.Calculator");
-			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_camera:
 			startApplication(mCameraPath,"com.android.camera.CameraLauncher");
-			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_calendar:
 			startApplication("com.android.calendar","com.android.calendar.LaunchActivity");
-			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_maps:
 			startApplication("com.google.android.apps.maps","com.google.android.maps.MapsActivity");
-			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_music:
 			startApplication("com.andrew.apollo","com.andrew.apollo.ui.activities.HomeActivity");
-			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_facebook:
 			startApplication("com.facebook.katana","com.facebook.katana.LoginActivity");
-			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_googleplus:
 			startApplication("com.google.android.apps.plus","com.google.android.apps.plus.phone.HomeActivity");
-			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_qq:
 			startApplication("com.tencent.mobileqq","com.tencent.mobileqq.activity.SplashActivity");
-			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_sinaweibo:
 			startApplication("com.sina.weibo","com.sina.weibo.SplashActivity");
-			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_twitter:
 			startApplication("com.twitter.android","com.twitter.android.StartActivity");
-			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_wechat:
 			startApplication("com.tencent.mm","com.tencent.mm.ui.LauncherUI");
-			mRecentsScrim.setVisibility(View.GONE);
 			break;
 		case R.id.shortcut_fuubo:
 			startApplication("me.imid.fuubo","me.imid.fuubo.ui.Fuubo");
-			mRecentsScrim.setVisibility(View.GONE);
 			break;
 	}	
     }
