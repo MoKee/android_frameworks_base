@@ -146,7 +146,9 @@ public class TransparencyManager {
                 if (recentInfo.origActivity != null) {
                     intent.setComponent(recentInfo.origActivity);
                 }
-                if (isCurrentHomeActivity(intent.getComponent(), null)) {
+                ComponentName cn = intent.getComponent();
+                boolean isRecentActivity = cn.getPackageName().equals("com.android.systemui") && cn.getClassName().equals("com.android.systemui.recent.RecentsActivity");
+                if (isCurrentHomeActivity(intent.getComponent(), null) || isRecentActivity) {
                     return true;
                 }
             }
