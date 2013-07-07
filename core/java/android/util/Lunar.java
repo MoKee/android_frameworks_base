@@ -116,7 +116,7 @@ public class Lunar {
         chineseDateFormat = new SimpleDateFormat(format1);
         Date baseDate = null;
         try {
-        	String format2 = mContext.getResources().getString(R.string.status_format2);
+            String format2 = mContext.getResources().getString(R.string.status_format2);
             baseDate = chineseDateFormat.parse(format2);
         } catch (ParseException e) {
             e.printStackTrace();
@@ -176,8 +176,10 @@ public class Lunar {
         int n = day % 10 == 0 ? 9 : day % 10 - 1;
         if (day > 30)
             return "";
-        if (day == 10)
+        else if (day == 10)
             return mContext.getResources().getString(R.string.status_chushi);
+        else if (day == 30)
+            return mContext.getResources().getString(R.string.status_sanshi);
         else
             return chineseTen[day / 10] + chineseNumber[n];
     }
