@@ -60,6 +60,8 @@
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g>将不能访问您的个人数据</string>
     <string name="profile_picker_title">情景</string>
     <string name="profile_none">无</string>
+    <string name="permlab_cancelNotifications">取消应用程序通知</string>
+    <string name="permdesc_cancelNotifications">允许应用程序取消由其他应用程序创建的通知。</string>
     <string name="permlab_interceptSmsSent">拦截传出短信</string>
     <string name="permdesc_interceptSmsSent">允许程序拦截发送短信，可以防止恶意应用程序发送短信。</string>
 </resources>
