@@ -703,7 +703,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
     int mvPosition;
     boolean mIsTap = false;
     boolean mIsGridView = false;
-	
+
     /**
      * Interface definition for a callback to be invoked when the list or grid
      * has been scrolled.
