@@ -132,6 +132,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
     private INotificationManager mNotificationManager;
     private SettingsObserver mSettingsObserver;
     private GestureDetector mGestureDetector;
+    private KeyguardManager mKeyguardManager;
 
     private HaloEffect mEffect;
     private WindowManager.LayoutParams mTriggerPos;
@@ -225,6 +226,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
         mGestureDetector = new GestureDetector(mContext, new GestureListener());
         mHandler = new Handler();
         mRoot = this;
+        mKeyguardManager = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
 
         mSettingsObserver = new SettingsObserver(new Handler());
         mSettingsObserver.observe();
@@ -365,8 +367,8 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
 
     void launchTask(NotificationClicker intent) {
 
-        // Do not launch tasks in hidden state
-        if (mState == State.HIDDEN) return;
+        // Do not launch tasks in hidden state or protected lock screen
+        if (mState == State.HIDDEN || (mKeyguardManager.isKeyguardLocked() && mKeyguardManager.isKeyguardSecure())) return;
 
         try {
             ActivityManagerNative.getDefault().resumeAppSwitches();
