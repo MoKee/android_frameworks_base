@@ -23,9 +23,11 @@
     <string name="navbar_power_button">电源按键</string>
     <string name="accessibility_power">电源</string>
 
-    <!-- Content description of the halo button in the notification panel for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
-    <string name="accessibility_halo">打开HALO</string>
-    
     <!-- Quick Settings -->
     <string name="quick_settings_fcharge">快速充电</string>
+
+    <!-- HALO -->
+    <string name="accessibility_halo">打开HALO</string>
+    <string name="halo_dismiss">取消通知</string>
+    <string name="halo_hide">隐藏HALO</string>
 </resources>
