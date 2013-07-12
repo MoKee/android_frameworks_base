@@ -311,8 +311,14 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
                 mEffect.setHaloY(isLandscapeMod() ? msavePositionY : (int)mTmpHaloY);
             }
  
-            mEffect.nap(500);
-            if (mHideTicker) mEffect.sleep(HaloEffect.SNAP_TIME + HaloEffect.NAP_TIME + 2500, HaloEffect.SLEEP_TIME);
+            if (mState == State.HIDDEN) {
+                mEffect.setHaloX((int)(mTickerLeft ? -mIconSize*0.8f : mScreenWidth - mIconSize*0.2f));
+                final int triggerWidth = (int)(mTickerLeft ? -mIconSize*0.7f : mScreenWidth - mIconSize*0.3f);
+                updateTriggerPosition(triggerWidth, mEffect.mHaloY);
+            } else {
+                mEffect.nap(500);
+                if (mHideTicker) mEffect.sleep(HaloEffect.SNAP_TIME + HaloEffect.NAP_TIME + 2500, HaloEffect.SLEEP_TIME);
+            }
         } else {
             // Do the startup animations only once
             mFirstStart = false;
@@ -778,7 +784,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
         protected int pingMaxRadius = 0;        
         private boolean mPingAllowed = true;
 
-        private Bitmap mMarker, mMarkerL, mMarkerT, mMarkerR, mMarkerB;
+        private Bitmap mMarker, mMarkerT, mMarkerB;
         private Bitmap mBigRed;
         private Paint mMarkerPaint = new Paint();
         private Paint xPaint = new Paint();
@@ -797,12 +803,8 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
                     R.drawable.halo_bigred);
             mMarker = BitmapFactory.decodeResource(mContext.getResources(),
                     R.drawable.halo_marker);
-            mMarkerL = BitmapFactory.decodeResource(mContext.getResources(),
-                    R.drawable.halo_marker_l);
             mMarkerT = BitmapFactory.decodeResource(mContext.getResources(),
                     R.drawable.halo_marker_t);
-            mMarkerR = BitmapFactory.decodeResource(mContext.getResources(),
-                    R.drawable.halo_marker_r);
             mMarkerB = BitmapFactory.decodeResource(mContext.getResources(),
                     R.drawable.halo_marker_b);
 
