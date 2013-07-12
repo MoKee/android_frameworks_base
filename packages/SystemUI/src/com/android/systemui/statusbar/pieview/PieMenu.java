@@ -525,7 +525,7 @@ public class PieMenu extends FrameLayout {
                 NotificationData.Entry entry = notifData.get(i);
                 StatusBarNotification statusNotif = entry.notification;
                 if (statusNotif == null) continue;
-                boolean hide = statusNotif.pkg.equals("com.paranoid.halo");
+                boolean hide = statusNotif.pkg.equals("com.mokee.halo");
                 if (hide) {
                     mHiddenNotification++;
                     continue;
