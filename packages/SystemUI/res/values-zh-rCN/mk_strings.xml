@@ -29,5 +29,7 @@
     <!-- HALO -->
     <string name="accessibility_halo">打开HALO</string>
     <string name="halo_dismiss">取消通知</string>
-    <string name="halo_hide">隐藏HALO</string>
+    <string name="halo_hide">隐藏</string>
+    <string name="halo_clear_all">清除全部通知</string>
+    <string name="halo_silence">隐藏并静默，直到唤醒</string>
 </resources>

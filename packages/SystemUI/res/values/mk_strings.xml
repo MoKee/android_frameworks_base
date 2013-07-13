@@ -30,9 +30,9 @@
     <string name="quick_settings_fcharge">Fast charge</string>
 
     <!-- HALO -->
+    <string name="accessibility_halo">Create notification halo.</string>
     <string name="halo_dismiss">Dismiss notification</string>
     <string name="halo_hide">Hide</string>
     <string name="halo_clear_all">Clear all notifications</string>
     <string name="halo_silence">Hide and silence until woken up</string>
-    <string name="accessibility_halo">Create notification halo.</string>
 </resources>
