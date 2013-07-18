@@ -3022,7 +3022,7 @@ public final class Settings {
          * Whether Status Bar is currently hidden or not
          * @hide
          */
-        public static final String HIDE_STATUSBAR = "hide_statusbar";  
+        public static final String HIDE_STATUSBAR = "hide_statusbar";
 
          /**
          * Expanded desktop on/off state

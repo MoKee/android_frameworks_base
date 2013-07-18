@@ -361,7 +361,7 @@ public class PhoneStatusBar extends BaseStatusBar {
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_CARRIER), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.AUTO_HIDE_STATUSBAR), false, this, UserHandle.USER_ALL); 
+                    Settings.System.AUTO_HIDE_STATUSBAR), false, this, UserHandle.USER_ALL);
             update();
         }
 
@@ -383,7 +383,7 @@ public class PhoneStatusBar extends BaseStatusBar {
             mShowCarrierLabel = Settings.System.getIntForUser(
                     resolver, Settings.System.STATUS_BAR_CARRIER, 0, UserHandle.USER_CURRENT) == 1;
             showCarrierLabel(mShowCarrierLabel);
-            updateStatusBarVisibility(); 
+            updateStatusBarVisibility();
         }
     }
 
