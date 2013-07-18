@@ -453,8 +453,11 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
         final float originalAlpha = mContext.getResources().getFraction(R.dimen.status_bar_icon_drawing_alpha, 1, 1);
         for (int i = 0; i < mNotificationData.size(); i++) {
             NotificationData.Entry entry = mNotificationData.get(i);
-            if (entry.notification.pkg.equals("com.mokee.halo")) continue;
-            entry.icon.setAlpha(originalAlpha);
+            if (entry.notification.pkg.equals("com.mokee.halo")) {
+                entry.icon.setAlpha(0);
+            } else {
+                entry.icon.setAlpha(originalAlpha);
+            }
         }
     }
 
@@ -486,7 +489,9 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
 
                 mMarkerIndex = -1;
                 oldIconIndex = -1;
-                
+
+                resetIcons();
+
                 mGesture = Gesture.NONE;
                 hiddenState = (mState == State.HIDDEN || mState == State.SILENT);
                 if (hiddenState) {
