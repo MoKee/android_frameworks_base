@@ -1381,7 +1381,7 @@ public class PhoneStatusBar extends BaseStatusBar {
                 .start();
         }
 
-        if (mNotificationData.size() < 2) updateStatusBarVisibility(); 
+        if (mNotificationData.size() < 2) updateStatusBarVisibility();
 
         updateCarrierLabelVisibility(false);
     }
