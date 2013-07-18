@@ -31,7 +31,7 @@ static int do_ping(char **arg, char reply[REPLY_MAX])
 
 static int do_install(char **arg, char reply[REPLY_MAX])
 {
-    return install(arg[0], atoi(arg[1]), atoi(arg[2])); /* pkgname, uid, gid */
+    return install(arg[0], atoi(arg[1]), atoi(arg[2]), arg[3]); /* pkgname, uid, gid, seinfo */
 }
 
 static int do_dexopt(char **arg, char reply[REPLY_MAX])
@@ -103,7 +103,8 @@ static int do_rm_user_data(char **arg, char reply[REPLY_MAX])
 
 static int do_mk_user_data(char **arg, char reply[REPLY_MAX])
 {
-    return make_user_data(arg[0], atoi(arg[1]), atoi(arg[2])); /* pkgname, uid, userid */
+    return make_user_data(arg[0], atoi(arg[1]), atoi(arg[2]), arg[3]);
+                             /* pkgname, uid, userid, seinfo */
 }
 
 static int do_rm_user(char **arg, char reply[REPLY_MAX])
@@ -134,7 +135,7 @@ struct cmdinfo {
 
 struct cmdinfo cmds[] = {
     { "ping",                 0, do_ping },
-    { "install",              3, do_install },
+    { "install",              4, do_install },
     { "dexopt",               3, do_dexopt },
     { "movedex",              2, do_move_dex },
     { "rmdex",                1, do_rm_dex },
@@ -147,7 +148,7 @@ struct cmdinfo cmds[] = {
     { "rmuserdata",           2, do_rm_user_data },
     { "movefiles",            0, do_movefiles },
     { "linklib",              3, do_linklib },
-    { "mkuserdata",           3, do_mk_user_data },
+    { "mkuserdata",           4, do_mk_user_data },
     { "rmuser",               1, do_rm_user },
     { "cloneuserdata",        3, do_clone_user_data },
 };

@@ -183,6 +183,8 @@ public class PackageManagerService extends IPackageManager.Stub {
     private static final boolean DEBUG_PREFERRED = false;
     static final boolean DEBUG_UPGRADE = false;
     private static final boolean DEBUG_INSTALL = false;
+    private static final boolean DEBUG_POLICY = true;
+    private static final boolean DEBUG_POLICY_INSTALL = DEBUG_POLICY || false;
     private static final boolean DEBUG_REMOVE = false;
     private static final boolean DEBUG_BROADCASTS = false;
     private static final boolean DEBUG_SHOW_INFO = false;
@@ -361,6 +363,9 @@ public class PackageManagerService extends IPackageManager.Stub {
     // etc/permissions.xml file.
     final HashMap<String, FeatureInfo> mAvailableFeatures =
             new HashMap<String, FeatureInfo>();
+
+    // If mac_permissions.xml was found for seinfo labeling.
+    boolean mFoundPolicyFile;
 
     // All available activities, for your resolving pleasure.
     final ActivityIntentResolver mActivities =
@@ -1053,6 +1058,8 @@ public class PackageManagerService extends IPackageManager.Stub {
                     mInstallLock, mPackages);
 
             readPermissions();
+
+            mFoundPolicyFile = SELinuxMMAC.readInstallPolicy();
 
             mRestoredSettings = mSettings.readLPw(sUserManager.getUsers(false),
                     mSdkVersion, mOnlyCore);
@@ -3649,16 +3656,16 @@ public class PackageManagerService extends IPackageManager.Stub {
         }
     }
 
-    private int createDataDirsLI(String packageName, int uid) {
+    private int createDataDirsLI(String packageName, int uid, String seinfo) {
         int[] users = sUserManager.getUserIds();
-        int res = mInstaller.install(packageName, uid, uid);
+        int res = mInstaller.install(packageName, uid, uid, seinfo);
         if (res < 0) {
             return res;
         }
         for (int user : users) {
             if (user != 0) {
                 res = mInstaller.createUserData(packageName,
-                        UserHandle.getUid(user, uid), user);
+                        UserHandle.getUid(user, uid), user, seinfo);
                 if (res < 0) {
                     return res;
                 }
@@ -3928,6 +3935,14 @@ public class PackageManagerService extends IPackageManager.Stub {
                 pkg.applicationInfo.flags |= ApplicationInfo.FLAG_UPDATED_SYSTEM_APP;
             }
 
+            if (mFoundPolicyFile && !SELinuxMMAC.passInstallPolicyChecks(pkg) &&
+                SELinuxMMAC.getEnforcingMode()) {
+                Slog.w(TAG, "Installing application package " + pkg.packageName
+                       + " failed due to policy.");
+                mLastScanError = PackageManager.INSTALL_FAILED_POLICY_REJECTED_PERMISSION;
+                return null;
+            }
+
             pkg.applicationInfo.uid = pkgSetting.appId;
             pkg.mExtras = pkgSetting;
 
@@ -4066,7 +4081,8 @@ public class PackageManagerService extends IPackageManager.Stub {
                             recovered = true;
 
                             // And now re-install the app.
-                            ret = createDataDirsLI(pkgName, pkg.applicationInfo.uid);
+                            ret = createDataDirsLI(pkgName, pkg.applicationInfo.uid,
+                                                   pkg.applicationInfo.seinfo);
                             if (ret == -1) {
                                 // Ack should not happen!
                                 msg = prefix + pkg.packageName
@@ -4112,7 +4128,8 @@ public class PackageManagerService extends IPackageManager.Stub {
                         Log.v(TAG, "Want this data dir: " + dataPath);
                 }
                 //invoke installer to do the actual installation
-                int ret = createDataDirsLI(pkgName, pkg.applicationInfo.uid);
+                int ret = createDataDirsLI(pkgName, pkg.applicationInfo.uid,
+                                           pkg.applicationInfo.seinfo);
                 if (ret < 0) {
                     // Error from installer
                     mLastScanError = PackageManager.INSTALL_FAILED_INSUFFICIENT_STORAGE;

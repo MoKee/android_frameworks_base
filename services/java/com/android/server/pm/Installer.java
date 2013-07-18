@@ -188,7 +188,7 @@ public final class Installer {
         }
     }
 
-    public int install(String name, int uid, int gid) {
+    public int install(String name, int uid, int gid, String seinfo) {
         StringBuilder builder = new StringBuilder("install");
         builder.append(' ');
         builder.append(name);
@@ -196,6 +196,8 @@ public final class Installer {
         builder.append(uid);
         builder.append(' ');
         builder.append(gid);
+        builder.append(' ');
+        builder.append(seinfo != null ? seinfo : "!");
         return execute(builder.toString());
     }
 
@@ -263,7 +265,7 @@ public final class Installer {
         return execute(builder.toString());
     }
 
-    public int createUserData(String name, int uid, int userId) {
+    public int createUserData(String name, int uid, int userId, String seinfo) {
         StringBuilder builder = new StringBuilder("mkuserdata");
         builder.append(' ');
         builder.append(name);
@@ -271,6 +273,8 @@ public final class Installer {
         builder.append(uid);
         builder.append(' ');
         builder.append(userId);
+        builder.append(' ');
+        builder.append(seinfo != null ? seinfo : "!");
         return execute(builder.toString());
     }
 
