@@ -53,6 +53,7 @@ public class HaloProperties extends FrameLayout {
     private LayoutInflater mInflater;
 
     protected int mHaloX = 0, mHaloY = 0;
+    protected int mHaloContentY = 0;
     protected float mHaloContentAlpha = 0;
 
     private Drawable mHaloDismiss;
@@ -155,6 +156,13 @@ public class HaloProperties extends FrameLayout {
         return mHaloY;
     }
 
+    public void setHaloContentY(int value) {
+        mHaloContentY = value;
+    }
+
+    public int getHaloContentY() {
+        return mHaloContentY; 
+    }
 
     protected CustomObjectAnimator msgNumberFlipAnimator = new CustomObjectAnimator(this);
     protected CustomObjectAnimator msgNumberAlphaAnimator = new CustomObjectAnimator(this);
