@@ -32,4 +32,7 @@
     <string name="halo_hide">隐藏</string>
     <string name="halo_clear_all">清除全部通知</string>
     <string name="halo_silence">隐藏并静默，直到唤醒</string>
+    <string name="halo_tutorial1">我是HALO</string>
+    <string name="halo_tutorial2">通过双击并按住拖动来更换位置，单击并拖动来切换程序</string>
+    <string name="halo_tutorial3">在设置中更改我的行为</string>
 </resources>
