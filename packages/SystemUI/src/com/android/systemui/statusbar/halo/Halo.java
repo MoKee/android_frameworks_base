@@ -108,6 +108,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
     public static final String TAG = "HaloLauncher";
 
     enum State {
+        FIRST_RUN,
         IDLE,
         HIDDEN,
         SILENT,
@@ -180,6 +181,8 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
     SharedPreferences preferences;
     private String KEY_HALO_POSITION_Y = "halo_position_y";
     private String KEY_HALO_POSITION_X = "halo_position_x";
+    private String KEY_HALO_FIRST_RUN = "halo_first_run";
+
 
     private final class SettingsObserver extends ContentObserver {
         SettingsObserver(Handler handler) {
@@ -302,6 +305,11 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
         preferences = mContext.getSharedPreferences("Halo", 0);
         int msavePositionX = preferences.getInt(KEY_HALO_POSITION_X, 0);
         int msavePositionY = preferences.getInt(KEY_HALO_POSITION_Y, mScreenHeight / 2 - mIconHalfSize);
+
+        if (preferences.getBoolean(KEY_HALO_FIRST_RUN, true)) {
+            mState = State.FIRST_RUN;
+            preferences.edit().putBoolean(KEY_HALO_FIRST_RUN, false).apply();
+        }
         
         mKillX = mScreenWidth / 2;
         mKillY = mIconHalfSize;
@@ -330,11 +338,38 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
             mTickerLeft = msavePositionX == 0 ? true : false;
             updateTriggerPosition(msavePositionX, msavePositionY);
             mEffect.mHaloTextViewL.setVisibility(mTickerLeft ? View.VISIBLE : View.GONE);
-            mEffect.mHaloTextViewR.setVisibility(mTickerLeft ? View.GONE : View.VISIBLE);
-            mEffect.setHaloX(msavePositionX);
-            mEffect.setHaloY(msavePositionY);
-            mEffect.nap(500);
-            if (mHideTicker) mEffect.sleep(HaloEffect.SNAP_TIME + HaloEffect.NAP_TIME + 2500, HaloEffect.SLEEP_TIME, false);
+            mEffect.mHaloTextViewR.setVisibility(mTickerLeft ? View.GONE : View.VISIBLE);            
+            mEffect.setHaloY(msavePositionY);         
+
+            if (mState == State.FIRST_RUN) {
+                mEffect.setHaloX(msavePositionX + (mTickerLeft ? -mIconSize : mIconSize));
+                mEffect.setHaloOverlay(HaloProperties.Overlay.MESSAGE, 1f);
+                mHandler.postDelayed(new Runnable() {
+                    public void run() {
+                        mEffect.wake();
+                        tick(mLastNotificationEntry, mContext.getResources().getString(R.string.halo_tutorial1), 0, 3000, true);
+                        mHandler.postDelayed(new Runnable() {
+                            public void run() {
+                                tick(mLastNotificationEntry, mContext.getResources().getString(R.string.halo_tutorial2), 0, 3000, true);
+                                mHandler.postDelayed(new Runnable() {
+                                    public void run() {
+                                        tick(mLastNotificationEntry, mContext.getResources().getString(R.string.halo_tutorial3), 0, 3000, true);
+                                        mHandler.postDelayed(new Runnable() {
+                                            public void run() {
+                                                mState = State.IDLE;                                        
+                                                mEffect.nap(0);
+                                                mEffect.setHaloOverlay(HaloProperties.Overlay.NONE, 0f);
+                                                if (mHideTicker) mEffect.sleep(HaloEffect.SNAP_TIME + HaloEffect.NAP_TIME
+                                                        + 2500, HaloEffect.SLEEP_TIME, false);                                        
+                                            }}, 6000);
+                                    }}, 6000);
+                            }}, 6000);
+                    }}, 1000);
+            } else {
+                mEffect.setHaloX(msavePositionX);
+                mEffect.nap(500);
+                if (mHideTicker) mEffect.sleep(HaloEffect.SNAP_TIME + HaloEffect.NAP_TIME + 2500, HaloEffect.SLEEP_TIME, false);
+            }
         }
     }
     
@@ -479,6 +514,10 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+
+        // Prevent any kind of interaction while HALO explains itself
+        if (mState == State.FIRST_RUN) return true;
+
         mGestureDetector.onTouchEvent(event);
 
         final int action = event.getAction();
@@ -732,8 +771,15 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
 
                         boolean gestureChanged = false;
                         final int deltaIndex = (Math.abs(deltaY) - verticalThreshold) / verticalSteps;
-                        if (deltaY > 0) {                           
-                            if (deltaIndex < 2 && mGesture != Gesture.UP1) {
+
+                        if (deltaIndex < 1 && mGesture != Gesture.NONE) {
+                            // Dead zone buffer to prevent accidental notifiction dismissal
+                            gestureChanged = true;
+                            mEffect.setHaloOverlay(HaloProperties.Overlay.NONE, 0f);
+                            if (verticalGesture()) gestureText = "";
+                            mGesture = Gesture.NONE;
+                        } else if (deltaY > 0) { 
+                            if (deltaIndex == 1 && mGesture != Gesture.UP1) {
                                 mGesture = Gesture.UP1;
                                 gestureChanged = true;
                                 mEffect.setHaloOverlay(HaloProperties.Overlay.DISMISS, 1f);
@@ -746,7 +792,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
                             }
 
                         } else {
-                            if (deltaIndex < 2 && mGesture != Gesture.DOWN1) {
+                            if (deltaIndex == 1 && mGesture != Gesture.DOWN1) {
                                 mGesture = Gesture.DOWN1;
                                 gestureChanged = true;
                                 mEffect.setHaloOverlay(mTickerLeft ? HaloProperties.Overlay.BACK_LEFT
