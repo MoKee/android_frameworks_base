@@ -206,8 +206,6 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
                     Settings.System.getIntForUser(mContext.getContentResolver(), Settings.System.HALO_REVERSED, 1, UserHandle.USER_CURRENT) == 1;
             mHideTicker =
                     Settings.System.getIntForUser(mContext.getContentResolver(), Settings.System.HALO_HIDE, 0, UserHandle.USER_CURRENT) == 1;
-            mHapticFeedback = Settings.System.getIntForUser(mContext.getContentResolver(),
-                    Settings.System.HAPTIC_FEEDBACK_ENABLED, 1, UserHandle.USER_CURRENT) != 0;
 
             if (!selfChange) {
                 mEffect.wake();
@@ -226,7 +224,6 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
             mAttached = true;
             mSettingsObserver = new SettingsObserver(new Handler());
             mSettingsObserver.observe();
-            mSettingsObserver.onChange(true);
         }
     }
 
@@ -260,8 +257,16 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
         mKeyguardManager = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
 
         // Init variables
+        mInteractionReversed =
+                Settings.System.getIntForUser(mContext.getContentResolver(), 
+                Settings.System.HALO_REVERSED, 1, UserHandle.USER_CURRENT) == 1;
+        mHideTicker =
+                Settings.System.getIntForUser(mContext.getContentResolver(), 
+                Settings.System.HALO_HIDE, 0, UserHandle.USER_CURRENT) == 1;
         mHaloSize = Settings.System.getFloatForUser(mContext.getContentResolver(),
                 Settings.System.HALO_SIZE, 1.0f, UserHandle.USER_CURRENT);
+        mHapticFeedback = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.HAPTIC_FEEDBACK_ENABLED, 1, UserHandle.USER_CURRENT) != 0;
         mIconSize = (int)(mContext.getResources().getDimensionPixelSize(R.dimen.halo_bubble_size) * mHaloSize);
         mIconHalfSize = mIconSize / 2;
         mTriggerPos = getWMParams();
@@ -390,7 +395,6 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
 
     private void loadLastNotification(boolean includeCurrentDismissable) {
         if (mNotificationData.size() > 0) {
-            //oldEntry = mLastNotificationEntry;
             mLastNotificationEntry = mNotificationData.get(mNotificationData.size() - 1);
 
             // If the current notification is dismissable we might want to skip it if so desired
@@ -603,21 +607,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
                         // system process is dead if we're here.
                     }
                     
-                    mCurrentNotficationEntry = null;
-                    if (mNotificationData.size() > 0) {
-                        for (int i = mNotificationData.size() - 1; i >= 0; i--) {
-                            NotificationData.Entry item = mNotificationData.get(i);
-                            if (!((item.notification.notification.flags &
-                                    Notification.FLAG_AUTO_CANCEL) == Notification.FLAG_AUTO_CANCEL)) {
-                                tick(item, "", 0, 0, false);
-                                break;
-                            }
-                        }
-                    }
-
-                    if (mCurrentNotficationEntry == null) clearTicker();
-                    mLastNotificationEntry = null;
-                    loadLastNotification(true);
+                    loadLastNotification(false);
 
                     mEffect.nap(1500);
                     if (mHideTicker) mEffect.sleep(HaloEffect.NAP_TIME + 3000, HaloEffect.SLEEP_TIME, false);
