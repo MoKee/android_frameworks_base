@@ -35,7 +35,7 @@
     <string name="reboot_recovery">恢复模式</string>
     <string name="reboot_bootloader">引导程序</string>
     <string name="reboot_bootmenu">引导菜单</string>
-    <string name="reboot_fastboot">Fastboot</string>
+    <string name="reboot_fastboot">刷机模式</string>
     <string name="reboot_download">下载模式</string>
     <string name="reboot_progress">正在重启\u2026</string>
     <string name="reboot_confirm" product="tablet">您的平板电脑将会重启。</string>
