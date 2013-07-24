@@ -1112,10 +1112,10 @@ public abstract class BaseStatusBar extends SystemUI implements
                  }
                  break;
              case MSG_CLOSE_SEARCH_PANEL:
-                if (DEBUG) Slog.d(TAG, "closing search panel");
-                if (mSearchPanelView != null && mSearchPanelView.isShowing()) {
-                    mSearchPanelView.show(false, true);
-                }
+                 if (DEBUG) Slog.d(TAG, "closing search panel");
+                 if (mSearchPanelView != null && mSearchPanelView.isShowing()) {
+                     mSearchPanelView.show(false, true);
+                 }
                  break;
             }
         }
@@ -1234,6 +1234,7 @@ public abstract class BaseStatusBar extends SystemUI implements
         entry.content = content;
         entry.expanded = expandedOneU;
         entry.setLargeView(expandedLarge);
+
         return true;
     }
 
@@ -1497,6 +1498,7 @@ public abstract class BaseStatusBar extends SystemUI implements
             }
         }
     }
+
     protected abstract void haltTicker();
     protected abstract void setAreThereNotifications();
     protected abstract void updateNotificationIcons();
