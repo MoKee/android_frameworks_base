@@ -52,6 +52,8 @@ public class AudioSystem
     public static final int STREAM_DTMF = 8;
     /* @hide The audio stream for text to speech (TTS) */
     public static final int STREAM_TTS = 9;
+    /* @hide The audio stream for incall music delivery */
+    public static final int STREAM_INCALL_MUSIC = 10;
     /**
      * @deprecated Use {@link #numStreamTypes() instead}
      */
@@ -109,6 +111,14 @@ public class AudioSystem
      * return true if any track playing on this stream is active.
      */
     public static native boolean isStreamActive(int stream, int inPastMs);
+
+    /*
+     * Checks whether the specified stream type is active on a remotely connected device. The notion
+     * of what constitutes a remote device is enforced by the audio policy manager of the platform.
+     *
+     * return true if any track playing on this stream is active on a remote device.
+     */
+    public static native boolean isStreamActiveRemotely(int stream, int inPastMs);
 
     /*
      * Checks whether the specified audio source is active.
@@ -411,5 +421,6 @@ public class AudioSystem
     // helpers for android.media.AudioManager.getProperty(), see description there for meaning
     public static native int getPrimaryOutputSamplingRate();
     public static native int getPrimaryOutputFrameCount();
+    public static native int getOutputLatency(int stream);
 
 }

@@ -109,7 +109,7 @@ public class KeyguardWidgetCarousel extends KeyguardWidgetPager {
             boolean inVisibleRange = i >= getNextPage() - 1 && i <= getNextPage() + 1;
             KeyguardWidgetFrame child = getWidgetPageAt(i);
             if (inVisibleRange) {
-                 int HideHints=Settings.System.getInt(getContext().getContentResolver(),
+                int HideHints=Settings.System.getInt(getContext().getContentResolver(),
                         Settings.System.LOCKSCREEN_HIDE_INITIAL_PAGE_HINTS, 0);
                 if (HideHints != 1) {
                     child.setBackgroundAlpha(KeyguardWidgetFrame.OUTLINE_ALPHA_MULTIPLIER);

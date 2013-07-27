@@ -103,7 +103,9 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
     private TransparencyManager mTransparencyManager;
 
     private Drawable mBackIcon, mBackLandIcon, mBackAltIcon, mBackAltLandIcon;
-    
+    private Drawable mRecentIcon;
+    private Drawable mRecentLandIcon;
+
     private DelegateViewHelper mDelegateHelper;
     private DeadZone mDeadZone;
 
@@ -257,6 +259,8 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         mBackLandIcon = res.getDrawable(R.drawable.ic_sysbar_back_land);
         mBackAltIcon = res.getDrawable(R.drawable.ic_sysbar_back_ime);
         mBackAltLandIcon = res.getDrawable(R.drawable.ic_sysbar_back_ime_land);
+        mRecentIcon = res.getDrawable(R.drawable.ic_sysbar_recent);
+        mRecentLandIcon = res.getDrawable(R.drawable.ic_sysbar_recent_land);
     }
 
     public class NavBarReceiver extends BroadcastReceiver {
@@ -285,6 +289,13 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         removeButtonListeners();
         updateButtonListeners();
         setDisabledFlags(mDisabledFlags, true /* force */);
+    }
+
+    @Override
+    public void setLayoutDirection(int layoutDirection) {
+        updateResources();
+
+        super.setLayoutDirection(layoutDirection);
     }
 
     public void notifyScreenOn(boolean screenOn) {
@@ -352,7 +363,7 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         }
         setDisabledFlags(mDisabledFlags, true);
     }
-    
+
     private boolean areKeyguardHintsEnabled() {
         return ((mDisabledFlags & View.STATUS_BAR_DISABLE_HOME) != 0) && !((mDisabledFlags & View.STATUS_BAR_DISABLE_SEARCH) != 0);
     }

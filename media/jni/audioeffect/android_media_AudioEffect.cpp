@@ -407,6 +407,8 @@ setup_failure:
     env->SetIntField(thiz, fields.fidNativeAudioEffect, 0);
 
     if (lpJniStorage) {
+        env->DeleteGlobalRef(lpJniStorage->mCallbackData.audioEffect_class);
+        env->DeleteGlobalRef(lpJniStorage->mCallbackData.audioEffect_ref);
         delete lpJniStorage;
     }
     env->SetIntField(thiz, fields.fidJniData, 0);
@@ -439,6 +441,9 @@ static void android_media_AudioEffect_native_finalize(JNIEnv *env,  jobject thiz
     AudioEffectJniStorage* lpJniStorage = (AudioEffectJniStorage *)env->GetIntField(
         thiz, fields.fidJniData);
     if (lpJniStorage) {
+        // delete global refs created in native_setup
+        env->DeleteGlobalRef(lpJniStorage->mCallbackData.audioEffect_class);
+        env->DeleteGlobalRef(lpJniStorage->mCallbackData.audioEffect_ref);
         ALOGV("deleting pJniStorage: %x\n", (int)lpJniStorage);
         delete lpJniStorage;
     }
@@ -705,7 +710,7 @@ android_media_AudioEffect_native_queryEffects(JNIEnv *env, jclass clazz)
 {
     effect_descriptor_t desc;
     char str[EFFECT_STRING_LEN_MAX];
-    uint32_t numEffects;
+    uint32_t numEffects = 0;
     uint32_t i = 0;
     jstring jdescType;
     jstring jdescUuid;
@@ -714,7 +719,10 @@ android_media_AudioEffect_native_queryEffects(JNIEnv *env, jclass clazz)
     jstring jdescImplementor;
     jobject jdesc;
 
-    AudioEffect::queryNumberEffects(&numEffects);
+    if (AudioEffect::queryNumberEffects(&numEffects) != NO_ERROR) {
+        return NULL;
+    }
+
     jobjectArray ret = env->NewObjectArray(numEffects, fields.clazzDesc, NULL);
     if (ret == NULL) {
         return ret;

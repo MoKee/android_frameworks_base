@@ -20,7 +20,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.text.TextUtils;
-import android.text.format.DateFormat;
 import android.util.AttributeSet;
 import android.util.Slog;
 import android.view.View;
@@ -37,7 +36,11 @@ import android.util.Lunar;
 import com.android.internal.R;
 import com.android.internal.widget.LockPatternUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
+
+import libcore.icu.ICU;
 
 public class KeyguardStatusView extends GridLayout {
     private static final boolean DEBUG = KeyguardViewMediator.DEBUG;
@@ -49,6 +52,7 @@ public class KeyguardStatusView extends GridLayout {
     public static final int DISCHARGING_ICON = 0; // no icon used in ics+ currently
     public static final int BATTERY_LOW_ICON = 0; //R.drawable.ic_lock_idle_low_battery;
 
+    private SimpleDateFormat mDateFormat;
     private CharSequence mDateFormatString;
     private CharSequence mDateFormatString1;
     private LockPatternUtils mLockPatternUtils;
@@ -90,6 +94,11 @@ public class KeyguardStatusView extends GridLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         Resources res = getContext().getResources();
+        final Locale locale = Locale.getDefault();
+        final String datePattern =
+                res.getString(com.android.internal.R.string.system_ui_date_pattern);
+        final String bestFormat = ICU.getBestDateTimePattern(datePattern, locale.toString());
+        mDateFormat = new SimpleDateFormat(bestFormat, locale);
         mDateFormatString = res.getText(com.android.internal.R.string.abbrev_wday_month_day_no_year);
         mDateFormatString1 = res.getText(com.android.internal.R.string.abbrev_wday_month_day_year);
         mDateView = (TextView) findViewById(R.id.date);
@@ -158,10 +167,6 @@ public class KeyguardStatusView extends GridLayout {
         return lunar.toString().substring(4,lunar.toString().length());
     }
 
-    /**
-     * Determine the current status of the lock screen given the sim state and other stuff.
-     */
-
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -179,8 +184,7 @@ public class KeyguardStatusView extends GridLayout {
     }
 
     private void maybeSetUpperCaseText(TextView textView, CharSequence text) {
-        if (KeyguardViewManager.USE_UPPER_CASE
-                && textView.getId() != R.id.owner_info) { // currently only required for date view
+        if (KeyguardViewManager.USE_UPPER_CASE) {
             textView.setText(text != null ? text.toString().toUpperCase() : null);
         } else {
             textView.setText(text);
