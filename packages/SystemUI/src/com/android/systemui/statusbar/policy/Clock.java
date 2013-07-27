@@ -227,7 +227,7 @@ public class Clock extends TextView implements OnClickListener, OnLongClickListe
             sdf = mClockFormat;
         }
         String result="";
-        if(b24){
+        if(is24){
             result= sdf.format(mCalendar.getTime());
         }
         else{

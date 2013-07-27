@@ -232,11 +232,6 @@ public abstract class BaseStatusBar extends SystemUI implements
     public void collapse() {
     }
 
-    @Override
-    protected void onConfigurationChanged(Configuration newConfig) {
-        if (mPieControlPanel != null) mPieControlPanel.bumpConfiguration();
-    }
-
     public QuickSettingsContainerView getQuickSettingsPanel() {
         // This method should be overriden
         return null;
@@ -483,6 +478,8 @@ public abstract class BaseStatusBar extends SystemUI implements
             }
         }, filter);
 
+        mLocale = mContext.getResources().getConfiguration().locale;
+
         attachPie();
 
         // Listen for HALO enabled switch
@@ -719,8 +716,6 @@ public abstract class BaseStatusBar extends SystemUI implements
                 | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING;
         lp.gravity = gravity;
         return lp;
-
-        mLocale = mContext.getResources().getConfiguration().locale;
     }
 
     public void userSwitched(int newUserId) {
@@ -746,6 +741,7 @@ public abstract class BaseStatusBar extends SystemUI implements
             mLayoutDirection = TextUtils.getLayoutDirectionFromLocale(mLocale);
             refreshLayout(mLayoutDirection);
         }
+        if (mPieControlPanel != null) mPieControlPanel.bumpConfiguration();
     }
 
     protected View updateNotificationVetoButton(View row, StatusBarNotification n) {

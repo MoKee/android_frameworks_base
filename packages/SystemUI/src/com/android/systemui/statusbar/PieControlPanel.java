@@ -308,7 +308,7 @@ public class PieControlPanel extends FrameLayout implements StatusBarPanel, OnNa
 
     private Intent getAssistIntent() {
         Intent intent = ((SearchManager) mContext.getSystemService(Context.SEARCH_SERVICE))
-                .getAssistIntent(mContext, UserHandle.USER_CURRENT);
+                .getAssistIntent(mContext,true , UserHandle.USER_CURRENT);
         return intent;
     }
 

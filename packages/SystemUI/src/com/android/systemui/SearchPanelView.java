@@ -339,7 +339,7 @@ public class SearchPanelView extends FrameLayout implements
 
     public boolean isAssistantAvailable() {
         return ((SearchManager) mContext.getSystemService(Context.SEARCH_SERVICE))
-                .getAssistIntent(mContext, UserHandle.USER_CURRENT) != null;
+                .getAssistIntent(mContext, true, UserHandle.USER_CURRENT) != null;
     }
 
     private boolean isScreenPortrait() {

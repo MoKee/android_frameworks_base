@@ -38,6 +38,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import libcore.icu.LocaleData;
+
 //
 // TODO
 // - listen for the next threshold time to update the view.
@@ -165,7 +167,8 @@ public class DateTimeView extends TextView {
         String text = "";
         Resources r = Resources.getSystem();
         if (!android.text.format.DateFormat.is24HourFormat(getContext()) && display == SHOW_TIME) {
-        	text = android.text.format.DateFormat.format(r.getString(R.string.twelve_hour_time_format), mTime).toString();
+        	LocaleData d = LocaleData.get(getContext().getResources().getConfiguration().locale);
+			text = android.text.format.DateFormat.format(d.timeFormat12, mTime).toString();
         }
         else{
         	text = format.format(mTime);
