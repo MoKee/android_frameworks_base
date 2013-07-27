@@ -3188,7 +3188,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     if (navVisible) {
                         mNavigationBar.showLw(true);
                         mSystemBottom = mDockBottom = mTmpNavigationFrame.bottom - mDockTop;
-                        mRestrictedScreenHeight = mDockBottom - mRestrictedScreenTop;
+                        //mRestrictedScreenHeight = mDockBottom - mRestrictedScreenTop;
                         mRestrictedOverscanScreenHeight = mDockBottom - mRestrictedOverscanScreenTop;
                     } else {
                         // We currently want to hide the navigation UI.
@@ -3199,7 +3199,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                         // and not in the process of animating on or off, then
                         // we can tell the app that it is covered by it.
                         mSystemBottom = displayHeight;
-                        mRestrictedScreenHeight = mTmpNavigationFrame.top - mDockTop;
+                        //mRestrictedScreenHeight = mTmpNavigationFrame.top - mDockTop;
                     }
                 } else {
                     // Landscape screen; nav bar goes to the right.
@@ -3221,7 +3221,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                         // and not in the process of animating on or off, then
                         // we can tell the app that it is covered by it.
                         mSystemRight = displayWidth;
-                        mRestrictedScreenWidth = mTmpNavigationFrame.left - mDockLeft;
+                        //mRestrictedScreenWidth = mTmpNavigationFrame.left - mDockLeft;
                     }
                 }
                 // Make sure the content and current rectangles are updated to
@@ -3699,14 +3699,14 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     } else {
                         df.left = of.left = cf.left = mRestrictedScreenLeft;
                         df.top = of.top = cf.top = mRestrictedScreenTop;
-                        df.right = of.right = cf.right = mRestrictedScreenLeft+mRestrictedScreenWidth;
-                        df.bottom = of.bottom = cf.bottom = mRestrictedScreenTop+mRestrictedScreenHeight;
+                        df.right = of.right = cf.right = mRestrictedScreenLeft + mRestrictedScreenWidth;
+                        df.bottom = of.bottom = cf.bottom = mRestrictedScreenTop + mRestrictedScreenHeight;
                     }
                     if (adjust != SOFT_INPUT_ADJUST_NOTHING) {
                         vf.left = mRestrictedScreenLeft;
                         vf.top =  mRestrictedScreenTop;
-                        vf.right = mRestrictedScreenLeft+mRestrictedScreenWidth;
-                        vf.bottom = mRestrictedScreenTop+mRestrictedScreenHeight;
+                        vf.right = mRestrictedScreenLeft + mRestrictedScreenWidth;
+                        vf.bottom = mRestrictedScreenTop + mRestrictedScreenHeight;
                     } else {
                         vf.set(cf);
                     }
