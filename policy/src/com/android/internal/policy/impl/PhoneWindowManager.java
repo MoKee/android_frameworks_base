@@ -1937,12 +1937,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     @Override
     public int getWallpaperHeight(int rotation) {
-        return getWallpaperTop(rotation)+getWallpaperBottom(rotation);
+        return getWallpaperTop(rotation) + getWallpaperBottom(rotation);
     }
 
     @Override
     public int getWallpaperWidth(int rotation) {
-        return getWallpaperLeft(rotation)+getWallpaperRight(rotation);
+        return getWallpaperLeft(rotation) + getWallpaperRight(rotation);
     }
 
     @Override
@@ -1957,12 +1957,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     @Override
     public int getWallpaperBottom(int rotation) {
-        return mUnrestrictedScreenTop+mUnrestrictedScreenHeight;
+        return mUnrestrictedScreenTop + mUnrestrictedScreenHeight;
     }
 
     @Override
     public int getWallpaperRight(int rotation) {
-        return mUnrestrictedScreenLeft+mUnrestrictedScreenWidth;
+        return mUnrestrictedScreenLeft + mUnrestrictedScreenWidth;
     }
 
     @Override
@@ -3188,7 +3188,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     if (navVisible) {
                         mNavigationBar.showLw(true);
                         mSystemBottom = mDockBottom = mTmpNavigationFrame.bottom - mDockTop;
-                        //mRestrictedScreenHeight = mDockBottom - mRestrictedScreenTop;
+                        mRestrictedScreenHeight = mDockBottom - mRestrictedScreenTop;
                         mRestrictedOverscanScreenHeight = mDockBottom - mRestrictedOverscanScreenTop;
                     } else {
                         // We currently want to hide the navigation UI.
@@ -3199,7 +3199,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                         // and not in the process of animating on or off, then
                         // we can tell the app that it is covered by it.
                         mSystemBottom = displayHeight;
-                        //mRestrictedScreenHeight = mTmpNavigationFrame.top - mDockTop;
+                        mRestrictedScreenHeight = mTmpNavigationFrame.top - mDockTop;
                     }
                 } else {
                     // Landscape screen; nav bar goes to the right.
@@ -3221,7 +3221,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                         // and not in the process of animating on or off, then
                         // we can tell the app that it is covered by it.
                         mSystemRight = displayWidth;
-                        //mRestrictedScreenWidth = mTmpNavigationFrame.left - mDockLeft;
+                        mRestrictedScreenWidth = mTmpNavigationFrame.left - mDockLeft;
                     }
                 }
                 // Make sure the content and current rectangles are updated to
