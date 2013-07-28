@@ -1620,6 +1620,7 @@ public class NotificationManagerService extends INotificationManager.Stub
      */
     private void importOldBlockDb() {
         loadBlockDb();
+        loadHaloBlockDb();
 
         PackageManager pm = mContext.getPackageManager();
         for (String pkg : mBlockedPackages) {

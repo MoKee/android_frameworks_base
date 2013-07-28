@@ -624,7 +624,6 @@ public class KeyguardWidgetPager extends PagedView implements PagedView.PageSwit
                 if (HideHints != 1) {
                     child.setBackgroundAlpha(sidePageAlpha);
                 }
-                child.setBackgroundAlpha(sidePageAlpha);
                 child.setContentAlpha(0f);
             } else {
                 child.setBackgroundAlpha(0f);
