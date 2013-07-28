@@ -3187,9 +3187,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     mStableBottom = mStableFullscreenBottom = mTmpNavigationFrame.top;
                     if (navVisible) {
                         mNavigationBar.showLw(true);
-                        mSystemBottom = mDockBottom = mTmpNavigationFrame.bottom - mDockTop;
-                        mRestrictedScreenHeight = mDockBottom - mRestrictedScreenTop;
-                        mRestrictedOverscanScreenHeight = mDockBottom - mRestrictedOverscanScreenTop;
+                        mSystemBottom = mDockBottom = mTmpNavigationFrame.bottom - mRestrictedScreenTop;
+                        //mRestrictedOverscanScreenHeight = mDockBottom - mRestrictedOverscanScreenTop;
                     } else {
                         // We currently want to hide the navigation UI.
                         mNavigationBar.hideLw(true);
@@ -3199,7 +3198,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                         // and not in the process of animating on or off, then
                         // we can tell the app that it is covered by it.
                         mSystemBottom = displayHeight;
-                        mRestrictedScreenHeight = mTmpNavigationFrame.top - mDockTop;
+                        mRestrictedScreenHeight = mTmpNavigationFrame.top - mRestrictedScreenTop;
+						mRestrictedOverscanScreenHeight = mTmpNavigationFrame.top - mRestrictedOverscanScreenTop;
                     }
                 } else {
                     // Landscape screen; nav bar goes to the right.
@@ -3209,9 +3209,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     mStableRight = mStableFullscreenRight = mTmpNavigationFrame.left;
                     if (navVisible) {
                         mNavigationBar.showLw(true);
-                        mSystemRight = mDockRight = mTmpNavigationFrame.left - mDockLeft;
-                        mRestrictedScreenWidth = mDockRight - mRestrictedScreenLeft;
-                        mRestrictedOverscanScreenWidth = mDockRight - mRestrictedOverscanScreenLeft;
+                        mSystemRight = mDockRight = mTmpNavigationFrame.left - mRestrictedScreenLeft;
+                        //mRestrictedOverscanScreenWidth = mDockRight - mRestrictedOverscanScreenLeft;
                     } else {
                         // We currently want to hide the navigation UI.
                         mNavigationBar.hideLw(true);
@@ -3221,7 +3220,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                         // and not in the process of animating on or off, then
                         // we can tell the app that it is covered by it.
                         mSystemRight = displayWidth;
-                        mRestrictedScreenWidth = mTmpNavigationFrame.left - mDockLeft;
+                        mRestrictedScreenWidth = mTmpNavigationFrame.left - mRestrictedScreenLeft;
+						mRestrictedOverscanScreenWidth = mTmpNavigationFrame.left - mRestrictedOverscanScreenLeft;
                     }
                 }
                 // Make sure the content and current rectangles are updated to
