@@ -102,6 +102,7 @@ import com.android.systemui.statusbar.policy.BatteryController;
 import com.android.systemui.statusbar.policy.Clock;
 import com.android.systemui.statusbar.policy.NetworkController;
 import com.android.systemui.statusbar.policy.NotificationRowLayout;
+
 import java.util.ArrayList;
 
 public abstract class BaseStatusBar extends SystemUI implements
@@ -127,6 +128,10 @@ public abstract class BaseStatusBar extends SystemUI implements
     public static final int EXPANDED_LEAVE_ALONE = -10000;
     public static final int EXPANDED_FULL_OPEN = -10001;
 
+    private static final boolean CLOSE_PANEL_WHEN_EMPTIED = true;
+    private static final int COLLAPSE_AFTER_DISMISS_DELAY = 200;
+    private static final int COLLAPSE_AFTER_REMOVE_DELAY = 400;
+
     protected CommandQueue mCommandQueue;
     protected IStatusBarService mBarService;
     protected H mHandler = createHandler();
@@ -134,6 +139,7 @@ public abstract class BaseStatusBar extends SystemUI implements
     // all notifications
     protected NotificationData mNotificationData = new NotificationData();
     protected NotificationRowLayout mPile;
+
     protected StatusBarNotification mCurrentlyIntrudingNotification;
 
     // used to notify status bar for suppressing notification LED
@@ -141,8 +147,11 @@ public abstract class BaseStatusBar extends SystemUI implements
 
     // Search panel
     protected SearchPanelView mSearchPanelView;
+
     protected PopupMenu mNotificationBlamePopup;
+
     protected int mCurrentUserId = 0;
+
     protected FrameLayout mStatusBarContainer;
 
     // Pie controls
@@ -177,6 +186,13 @@ public abstract class BaseStatusBar extends SystemUI implements
     private Canvas mCurrentCanvas;
     private Canvas mNewCanvas;
     private TransitionDrawable mTransition;
+
+    private Runnable mPanelCollapseRunnable = new Runnable() {
+        @Override
+        public void run() {
+            animateCollapsePanels(CommandQueue.FLAG_EXCLUDE_NONE);
+        }
+    };
 
     /**
      * An interface for navigation key bars to allow status bars to signal which keys are
@@ -219,6 +235,7 @@ public abstract class BaseStatusBar extends SystemUI implements
     public TransparencyManager mTransparencyManager;
 
     private boolean mDeviceProvisioned = false;
+    private int mAutoCollapseBehaviour;
 
     public Ticker getTicker() {
         return mTicker;
@@ -286,7 +303,7 @@ public abstract class BaseStatusBar extends SystemUI implements
         }
     }
 
-    private ContentObserver mProvisioningObserver = new ContentObserver(new Handler()) {
+    private ContentObserver mProvisioningObserver = new ContentObserver(mHandler) {
         @Override
         public void onChange(boolean selfChange) {
             final boolean provisioned = 0 != Settings.Global.getInt(
@@ -297,6 +314,33 @@ public abstract class BaseStatusBar extends SystemUI implements
             }
         }
     };
+
+    private class PieSettingsObserver extends ContentObserver {
+        public SettingsObserver(Handler handler) {
+            super(handler);
+        }
+
+        public void observe() {
+            ContentResolver resolver = mContext.getContentResolver();
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_COLLAPSE_ON_DISMISS), false, this);
+            update();
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            update();
+        }
+
+        private void update() {
+            ContentResolver resolver = mContext.getContentResolver();
+            mAutoCollapseBehaviour = Settings.System.getIntForUser(resolver,
+                    Settings.System.STATUS_BAR_COLLAPSE_ON_DISMISS,
+                    Settings.System.STATUS_BAR_COLLAPSE_IF_NO_CLEARABLE, UserHandle.USER_CURRENT);
+        }
+    };
+
+    private PieSettingsObserver mPieSettingsObserver = new SettingsObserver(mHandler);
 
     private RemoteViews.OnClickHandler mOnClickHandler = new RemoteViews.OnClickHandler() {
         @Override
@@ -390,6 +434,8 @@ public abstract class BaseStatusBar extends SystemUI implements
                 Settings.Global.getUriFor(Settings.Global.DEVICE_PROVISIONED), true,
                 mProvisioningObserver);
 
+        mPieSettingsObserver.observe();
+
         mBarService = IStatusBarService.Stub.asInterface(
                 ServiceManager.getService(Context.STATUS_BAR_SERVICE));
 
@@ -417,6 +463,7 @@ public abstract class BaseStatusBar extends SystemUI implements
 
         mHaloActive = Settings.System.getIntForUser(mContext.getContentResolver(),
                 Settings.System.HALO_ACTIVE, 0, UserHandle.USER_CURRENT) == 1;
+
         createAndAddWindows();
 
         disable(switches[0]);
@@ -1353,18 +1400,33 @@ public abstract class BaseStatusBar extends SystemUI implements
         if (rowParent != null) rowParent.removeView(entry.row);
         updateExpansionStates();
         updateNotificationIcons();
-
-        if (entry.userCleared() && !mNotificationData.hasClearableItems()) {
-            // wait a bit to make the user aware of what's happening
-            mHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    animateCollapsePanels(CommandQueue.FLAG_EXCLUDE_NONE);
-                }
-            }, 225);
-        }
+        maybeCollapseAfterNotificationRemoval(entry.userDismissed());
 
         return entry.notification;
+    }
+
+    protected void maybeCollapseAfterNotificationRemoval(boolean userDismissed) {
+        if (mAutoCollapseBehaviour == Settings.System.STATUS_BAR_COLLAPSE_NEVER) {
+            return;
+        }
+        if (!isNotificationPanelFullyVisible()) {
+            return;
+        }
+
+        boolean collapseDueToEmpty =
+                mAutoCollapseBehaviour == Settings.System.STATUS_BAR_COLLAPSE_IF_EMPTIED
+                && mNotificationData.size() == 0;
+        boolean collapseDueToNoClearable =
+                mAutoCollapseBehaviour == Settings.System.STATUS_BAR_COLLAPSE_IF_NO_CLEARABLE
+                && !mNotificationData.hasClearableItems();
+
+        if (userDismissed && (collapseDueToEmpty || collapseDueToNoClearable)) {
+            mHandler.removeCallbacks(mPanelCollapseRunnable);
+            mHandler.postDelayed(mPanelCollapseRunnable, COLLAPSE_AFTER_DISMISS_DELAY);
+        } else if (mNotificationData.size() == 0) {
+            mHandler.removeCallbacks(mPanelCollapseRunnable);
+            mHandler.postDelayed(mPanelCollapseRunnable, COLLAPSE_AFTER_REMOVE_DELAY);
+        }
     }
     
     private Bitmap createRoundIcon(StatusBarNotification notification) {
@@ -1457,6 +1519,7 @@ public abstract class BaseStatusBar extends SystemUI implements
         }
         updateExpansionStates();
         updateNotificationIcons();
+        mHandler.removeCallbacks(mPanelCollapseRunnable);
 
         return iconView;
     }
@@ -1505,6 +1568,7 @@ public abstract class BaseStatusBar extends SystemUI implements
     protected abstract void tick(IBinder key, StatusBarNotification n, boolean firstTime);
     protected abstract void updateExpandedViewPos(int expandedPosition);
     protected abstract int getExpandedViewMaxHeight();
+    protected abstract boolean isNotificationPanelFullyVisible();
     protected abstract boolean shouldDisableNavbarGestures();
 
     protected boolean isTopNotification(ViewGroup parent, NotificationData.Entry entry) {
