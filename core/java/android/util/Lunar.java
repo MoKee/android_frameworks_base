@@ -178,6 +178,8 @@ public class Lunar {
             return "";
         else if (day == 10)
             return mContext.getResources().getString(R.string.status_chushi);
+        else if (day == 20)
+            return mContext.getResources().getString(R.string.status_ershi);
         else if (day == 30)
             return mContext.getResources().getString(R.string.status_sanshi);
         else
