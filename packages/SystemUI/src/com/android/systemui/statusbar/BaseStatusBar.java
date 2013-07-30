@@ -274,8 +274,8 @@ public abstract class BaseStatusBar extends SystemUI implements
         return mDeviceProvisioned;
     }
 
-    private final class SettingsObserver extends ContentObserver {
-        SettingsObserver(Handler handler) {
+    private final class PieSettingsObserver extends ContentObserver {
+        PieSettingsObserver(Handler handler) {
             super(handler);
         }
 
@@ -315,7 +315,7 @@ public abstract class BaseStatusBar extends SystemUI implements
         }
     };
 
-    private class PieSettingsObserver extends ContentObserver {
+    private class SettingsObserver extends ContentObserver {
         public SettingsObserver(Handler handler) {
             super(handler);
         }
@@ -340,7 +340,7 @@ public abstract class BaseStatusBar extends SystemUI implements
         }
     };
 
-    private PieSettingsObserver mPieSettingsObserver = new SettingsObserver(mHandler);
+    private SettingsObserver mSettingsObserver = new SettingsObserver(mHandler);
 
     private RemoteViews.OnClickHandler mOnClickHandler = new RemoteViews.OnClickHandler() {
         @Override
@@ -434,7 +434,7 @@ public abstract class BaseStatusBar extends SystemUI implements
                 Settings.Global.getUriFor(Settings.Global.DEVICE_PROVISIONED), true,
                 mProvisioningObserver);
 
-        mPieSettingsObserver.observe();
+        mSettingsObserver.observe();
 
         mBarService = IStatusBarService.Stub.asInterface(
                 ServiceManager.getService(Context.STATUS_BAR_SERVICE));
@@ -549,7 +549,7 @@ public abstract class BaseStatusBar extends SystemUI implements
 
         updateHalo();
 
-        SettingsObserver settingsObserver = new SettingsObserver(new Handler());
+        PieSettingsObserver settingsObserver = new PieSettingsObserver(new Handler());
         settingsObserver.observe();
     }
     
