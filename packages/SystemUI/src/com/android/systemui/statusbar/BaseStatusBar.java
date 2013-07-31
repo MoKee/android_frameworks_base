@@ -779,6 +779,15 @@ public abstract class BaseStatusBar extends SystemUI implements
         return notificationUserId == UserHandle.USER_ALL
                 || thisUserId == notificationUserId;
     }
+    @Override
+    protected void onConfigurationChanged(Configuration newConfig) {
+        final Locale newLocale = mContext.getResources().getConfiguration().locale;
+        if (! newLocale.equals(mLocale)) {
+            mLocale = newLocale;
+            mLayoutDirection = TextUtils.getLayoutDirectionFromLocale(mLocale);
+            refreshLayout(mLayoutDirection);
+        }
+    }
 
     protected View updateNotificationVetoButton(View row, StatusBarNotification n) {
         View vetoButton = row.findViewById(R.id.veto);
