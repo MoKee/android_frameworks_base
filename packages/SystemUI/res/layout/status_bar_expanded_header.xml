@@ -67,7 +67,7 @@
 		    android:textAppearance="@style/TextAppearance.StatusBar.Expanded.Date"
 		    android:layout_below="@id/date"
 		    />
-            </RelativeLayout>
+        </RelativeLayout>
     </RelativeLayout>
 
     <Space
