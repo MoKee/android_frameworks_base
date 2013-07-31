@@ -24,8 +24,11 @@ import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.animation.TimeInterpolator;
 import android.database.ContentObserver;
+import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -613,6 +616,18 @@ public class PieMenu extends FrameLayout {
 
         // Get all dimensions
         getDimensions();
+
+        //MoKeeLauncher showPIENotificationsPanel
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.mokee.show_pie_expand");
+        mContext.registerReceiver(new BroadcastReceiver() {
+
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                mStatusPanel.setCurrentViewState(PieStatusPanel.NOTIFICATIONS_PANEL);
+                mStatusPanel.showNotificationsPanel();
+            }
+        }, intentFilter);
     }
 
     public void init() {
