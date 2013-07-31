@@ -129,9 +129,11 @@ public class LunarDateView extends TextView implements OnClickListener, OnLongCl
         if(strCountry.equals("CN") || strCountry.equals("TW")){
             CharSequence mDateFormatString = res.getText(com.android.internal.R.string.abbrev_wday_month_day_year);
             setText(buildLunarDate(DateFormat.format(mDateFormatString, new Date()).toString()));
+            setVisibility(View.VISIBLE);
             return;
         }
         setText("");
+        setVisibility(View.GONE);
     }
 
     private boolean isVisible() {
@@ -150,6 +152,13 @@ public class LunarDateView extends TextView implements OnClickListener, OnLongCl
     }
 
     private void setUpdates() {
+        Resources res = mContext.getResources();
+        String strCountry = res.getConfiguration().locale.getCountry();	
+        if(strCountry.equals("CN") || strCountry.equals("TW")){
+            setVisibility(View.VISIBLE);
+        } else {
+            setVisibility(View.GONE);
+        }
         boolean update = mAttachedToWindow && mWindowVisible && isVisible();
         if (update != mUpdating) {
             mUpdating = update;
