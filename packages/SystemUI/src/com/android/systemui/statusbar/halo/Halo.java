@@ -30,7 +30,6 @@ import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.animation.Keyframe;
 import android.animation.PropertyValuesHolder;
-import android.animation.TimeInterpolator;
 import android.content.pm.ApplicationInfo;
 import android.content.Context;
 import android.content.ContentResolver;
@@ -401,11 +400,11 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
             if (!includeCurrentDismissable) {
                 if (mNotificationData.size() > 1 && mLastNotificationEntry != null &&
                         mLastNotificationEntry.notification == mCurrentNotficationEntry.notification) {
-                    boolean cancel = (mLastNotificationEntry.notification.notification.flags &
+                    boolean cancel = (mLastNotificationEntry.notification.getNotification().flags &
                             Notification.FLAG_AUTO_CANCEL) == Notification.FLAG_AUTO_CANCEL;
                     if (cancel) mLastNotificationEntry = mNotificationData.get(mNotificationData.size() - 2);
                 } else if (mNotificationData.size() == 1) {
-                    boolean cancel = (mLastNotificationEntry.notification.notification.flags &
+                    boolean cancel = (mLastNotificationEntry.notification.getNotification().flags &
                             Notification.FLAG_AUTO_CANCEL) == Notification.FLAG_AUTO_CANCEL;
                     if (cancel) {
                         // We have one notification left and it is dismissable, clear it...
@@ -416,9 +415,9 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
             }
 
             if (mLastNotificationEntry.notification != null
-                    && mLastNotificationEntry.notification.notification != null
-                    && mLastNotificationEntry.notification.notification.tickerText != null) {
-                mNotificationText = mLastNotificationEntry.notification.notification.tickerText.toString();
+                    && mLastNotificationEntry.notification.getNotification() != null
+                    && mLastNotificationEntry.notification.getNotification().tickerText != null) {
+                mNotificationText = mLastNotificationEntry.notification.getNotification().tickerText.toString();
             }
 
             tick(mLastNotificationEntry, "", 0, 0, false);
@@ -493,7 +492,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
         final float originalAlpha = mContext.getResources().getFraction(R.dimen.status_bar_icon_drawing_alpha, 1, 1);
         for (int i = 0; i < mNotificationData.size(); i++) {
             NotificationData.Entry entry = mNotificationData.get(i);
-            if (entry.notification.pkg.equals("com.mokee.halo")) {
+            if (entry.notification.getPackageName().equals("com.mokee.halo")) {
                 entry.icon.setAlpha(0);
             } else {
                 entry.icon.setAlpha(originalAlpha);
@@ -505,7 +504,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
         float originalAlpha = mContext.getResources().getFraction(R.dimen.status_bar_icon_drawing_alpha, 1, 1);
         for (int i = 0; i < mNotificationData.size(); i++) {
             NotificationData.Entry entry = mNotificationData.get(i);
-            if (entry.notification.pkg.equals("com.mokee.halo")) continue;
+            if (entry.notification.getPackageName().equals("com.mokee.halo")) continue;
             entry.icon.setAlpha(index == i ? 1f : originalAlpha);
         }
     }
@@ -633,7 +632,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
                                     && mCurrentNotficationEntry.notification == item.notification) {
                                 continue;
                             }
-                            boolean cancel = (item.notification.notification.flags &
+                            boolean cancel = (item.notification.getNotification().flags &
                                     Notification.FLAG_AUTO_CANCEL) == Notification.FLAG_AUTO_CANCEL;
                             if (cancel) {
                                 entry = item;
@@ -841,14 +840,14 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
 
                                 ApplicationInfo ai;
                                 try {
-                                    ai = mPm.getApplicationInfo( entry.notification.pkg, 0);
+                                    ai = mPm.getApplicationInfo( entry.notification.getPackageName(), 0);
                                 } catch (final NameNotFoundException e) {
                                     ai = null;
                                 }
                                 String text = (String) (ai != null ? mPm.getApplicationLabel(ai) : "...");
 
-                                if (entry.notification.notification.tickerText != null) {
-                                    text = entry.notification.notification.tickerText.toString();
+                                if (entry.notification.getNotification().tickerText != null) {
+                                    text = entry.notification.getNotification().tickerText.toString();
                                 }
                                 tick(entry, text, 0, 250, false);
                                 mTaskIntent = entry.getFloatingIntent();
@@ -1206,7 +1205,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
         }
 
         StatusBarNotification notification = entry.notification;
-        Notification n = notification.notification;
+        Notification n = notification.getNotification();
 
         // Deal with the intent
         mContentIntent = entry.getFloatingIntent();
@@ -1222,7 +1221,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
         mEffect.invalidate();
 
         // Set Number
-        mEffect.setHaloMessageNumber(n.number, alwaysFlip);
+        mEffect.setHaloMessageNumber(n.number, alwaysFlip, delay);
     }
 
     // This is the android ticker callback
@@ -1230,7 +1229,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
 
         boolean allowed = false; // default off
         try {
-            allowed = mNotificationManager.isPackageAllowedForHalo(notification.pkg);
+            allowed = mNotificationManager.isPackageAllowedForHalo(notification.getPackageName());
         } catch (android.os.RemoteException ex) {
             // System is dead
         }
@@ -1241,7 +1240,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
             if (entry.notification == notification) {
 
                 // No intent, no tick ...
-                if (entry.notification.notification.contentIntent == null) return;
+                if (entry.notification.getNotification().contentIntent == null) return;
 
                 mIsNotificationNew = true;
                 if (mLastNotificationEntry != null && notification == mLastNotificationEntry.notification) {
@@ -1255,16 +1254,16 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
                     mLastNotificationEntry = entry;
 
                     if (allowed && mState != State.FIRST_RUN) {
-                        tick(entry, text, HaloEffect.WAKE_TIME, 1000, true);
-
-                        // Pop while not tasking, only if notification is certified fresh
-                        if (mGesture != Gesture.TASK && mState != State.SILENT) mEffect.ping(mPaintHoloBlue, HaloEffect.WAKE_TIME);
-
                         if (mState == State.IDLE || mState == State.HIDDEN) {
                             mEffect.wake();
-                            mEffect.nap(HaloEffect.NAP_DELAY);
-                            if (mHideTicker) mEffect.sleep(HaloEffect.SLEEP_DELAY, HaloEffect.SLEEP_TIME, false);
+                            mEffect.nap(HaloEffect.NAP_DELAY + HaloEffect.WAKE_TIME * 2);
+                            if (mHideTicker) mEffect.sleep(HaloEffect.SLEEP_DELAY + HaloEffect.WAKE_TIME * 2, HaloEffect.SLEEP_TIME, false);
                         }
+
+                        tick(entry, text, HaloEffect.WAKE_TIME * 3, 1000, true);
+
+                        // Pop while not tasking, only if notification is certified fresh
+                        if (mGesture != Gesture.TASK && mState != State.SILENT) mEffect.ping(mPaintHoloBlue, HaloEffect.WAKE_TIME * 2);
                     }
                 }
                 break;
