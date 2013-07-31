@@ -98,6 +98,27 @@
                     android:contentDescription="@string/accessibility_clear_all"
                     />
 
+                <ImageView android:id="@+id/quicksettings_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/clear_all_button"
+                    android:layout_marginLeft="8dp"
+                    android:src="@drawable/ic_notify_quicksettings"
+                    android:contentDescription="@string/accessibility_desc_quick_settings"
+                    />
+
+                <ImageView android:id="@+id/notification_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/clear_all_button"
+                    android:layout_marginLeft="8dp"
+                    android:src="@drawable/ic_notifications"
+                    android:visibility="gone"
+                    android:contentDescription="@string/accessibility_notifications_button"
+                    />
+
             </RelativeLayout>
 
         </RelativeLayout>

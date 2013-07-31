@@ -16,51 +16,31 @@
 
 package com.android.systemui.statusbar.pieview;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
+import com.android.systemui.R;
+import com.android.systemui.statusbar.NotificationData;
+import com.android.systemui.statusbar.PieControlPanel;
+import com.android.systemui.statusbar.phone.QuickSettingsContainerView;
+import com.android.systemui.statusbar.policy.NotificationRowLayout;
+
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.database.ContentObserver;
-import android.content.ContentResolver;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
+import android.database.ContentObserver;
 import android.graphics.PixelFormat;
-import android.graphics.Rect;
 import android.os.Handler;
 import android.os.UserHandle;
 import android.provider.Settings;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.AlphaAnimation;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.View.OnTouchListener;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.view.WindowManager;
-import android.widget.FrameLayout;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 
-import com.android.systemui.R;
-import com.android.systemui.statusbar.phone.QuickSettingsContainerView;
-import com.android.systemui.statusbar.NotificationData;
-import com.android.systemui.statusbar.policy.NotificationRowLayout;
-import com.android.systemui.statusbar.PieControlPanel;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class PieStatusPanel {
 
@@ -73,6 +53,8 @@ public class PieStatusPanel {
     private View mClearButton;
     private View mContentFrame;
     private View mHaloButton;
+    private View mQuickSettingsButton;
+    private View mNotificationButton;
     private QuickSettingsContainerView mQS;
     private NotificationRowLayout mNotificationPanel;
     private PieControlPanel mPanel;
@@ -115,6 +97,16 @@ public class PieStatusPanel {
             mHaloButton.setOnClickListener(mHaloButtonListener);
         }
 
+        mQuickSettingsButton = (ImageView) mPanel.getBar().mContainer.findViewById(R.id.quicksettings_button);
+        if (mQuickSettingsButton != null) {
+            mQuickSettingsButton.setOnClickListener(mQuickSettingsButtonListener);
+        }
+
+        mNotificationButton = (ImageView) mPanel.getBar().mContainer.findViewById(R.id.notification_button);
+        if (mNotificationButton != null) {
+            mNotificationButton.setOnClickListener(mNotificationButtonListener);
+        }
+
         // Listen for HALO state for PIE
         mContext.getContentResolver().registerContentObserver(
                 Settings.System.getUriFor(Settings.System.HALO_ACTIVE), false, new ContentObserver(new Handler()) {
@@ -135,6 +127,23 @@ public class PieStatusPanel {
         }
     };
 
+    private View.OnClickListener mQuickSettingsButtonListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            setCurrentViewState(PieStatusPanel.QUICK_SETTINGS_PANEL);
+            showTilesPanel();
+            mNotificationButton.setVisibility(View.VISIBLE);
+        }
+    };
+
+
+    private View.OnClickListener mNotificationButtonListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            setCurrentViewState(PieStatusPanel.NOTIFICATIONS_PANEL);
+            showNotificationsPanel();
+            mQuickSettingsButton.setVisibility(View.VISIBLE);
+        }
+    };
+
     protected void showHaloButton(boolean show) {
         if (mHaloButton != null) {
             if(show) {
@@ -146,6 +155,24 @@ public class PieStatusPanel {
             } else {
                 mHaloButton.setVisibility(View.GONE);
             }
+        }
+    }
+
+    protected void showQuickSettingsButton(boolean show) {
+        if (mQuickSettingsButton != null) {
+            mQuickSettingsButton.setVisibility(show ? View.VISIBLE : View.GONE);
+        }
+        if (mNotificationButton != null) {
+            mNotificationButton.setVisibility(!show ? View.VISIBLE : View.GONE);
+        }
+    }
+
+    protected void showNotificationButton(boolean show) {
+        if (mNotificationButton != null) {
+            mNotificationButton.setVisibility(show ? View.VISIBLE : View.GONE);
+        }
+        if (mQuickSettingsButton != null) {
+            mQuickSettingsButton.setVisibility(!show ? View.VISIBLE : View.GONE);
         }
     }
 
@@ -303,6 +330,7 @@ public class PieStatusPanel {
         showPanel(mQS);
         ShowClearAll(false);
         showHaloButton(false);
+        showNotificationButton(true);
     }
 
     public void showNotificationsPanel() {
@@ -312,6 +340,7 @@ public class PieStatusPanel {
         boolean clearable = any && mNotificationData.hasClearableItems();
         ShowClearAll(clearable);
         showHaloButton(true);
+        showQuickSettingsButton(true);
     }
 
     public void hideTilesPanel() {
