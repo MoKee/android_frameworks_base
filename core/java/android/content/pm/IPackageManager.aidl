@@ -388,7 +388,4 @@ interface IPackageManager {
 
     /** Reflects current DeviceStorageMonitorService state */
     boolean isStorageLow();
-
-    String[] getRevokedPermissions(String packageName);
-    void setRevokedPermissions(String packageName, in String[] perms);
 }
