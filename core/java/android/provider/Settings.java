@@ -2639,13 +2639,6 @@ public final class Settings {
         public static final String POINTER_SPEED = "pointer_speed";
 
         /**
-         * Quick Settings Panel Tiles to Use
-         *
-         * @hide
-         */
-        public static final String QUICK_SETTINGS_TILES = "quick_settings_tiles";
-
-	/**
          * number of tiles per row in quick settings
          *
          * @hide
@@ -2658,6 +2651,14 @@ public final class Settings {
          * @hide
          */
         public static final String QUICK_TILES_PER_ROW_DUPLICATE_LANDSCAPE = "quick_tiles_per_row_duplicate_landscape";
+
+        /**
+         * Quick Settings Panel Tiles to Use
+         *
+         * @hide
+         */
+        public static final String QUICK_SETTINGS_TILES = "quick_settings_tiles";
+
         /**
          * Quick Settings Panel Dynamic Tiles
          *
@@ -5481,8 +5482,6 @@ public final class Settings {
          * @hide
          */
         public static final String ADVANCED_REBOOT = "advanced_reboot";
-
-		public static final String ENABLE_PERMISSIONS_MANAGEMENT = "enable_permissions_management";
 
         /**
          * Whether newly installed apps should run with privacy guard by default
