@@ -528,12 +528,12 @@ public class PieMenu extends FrameLayout {
                 NotificationData.Entry entry = notifData.get(i);
                 StatusBarNotification statusNotif = entry.notification;
                 if (statusNotif == null) continue;
-                boolean hide = statusNotif.pkg.equals("com.mokee.halo");
+                boolean hide = statusNotif.getPackageName().equals("com.mokee.halo");
                 if (hide) {
                     mHiddenNotification++;
                     continue;
                 }
-                Notification notif = statusNotif.notification;
+                Notification notif = statusNotif.getNotification();
                 if (notif == null) continue;
                 CharSequence tickerText = notif.tickerText;
                 if (tickerText == null) continue;
