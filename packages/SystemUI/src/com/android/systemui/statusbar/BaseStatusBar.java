@@ -813,13 +813,10 @@ public abstract class BaseStatusBar extends SystemUI implements
             } catch (NameNotFoundException ex) {
                 Slog.e(TAG, "Failed looking up ApplicationInfo for " + sbn.pkg, ex);
             }
-            try {
-                if (version > 0 && version < Build.VERSION_CODES.GINGERBREAD) {
-                    content.setBackgroundResource(R.drawable.notification_row_legacy_bg);
-                } else {
-                    content.setBackgroundResource(com.android.internal.R.drawable.notification_bg);
-                }
-            } catch (NotFoundException ignore) {
+            if (version > 0 && version < Build.VERSION_CODES.GINGERBREAD) {
+                content.setBackgroundResource(R.drawable.notification_row_legacy_bg);
+            } else {
+                content.setBackgroundResource(com.android.internal.R.drawable.notification_bg);
             }
         }
     }
@@ -1302,7 +1299,7 @@ public abstract class BaseStatusBar extends SystemUI implements
             mTag = tag;
             mId = id;
         }
-        
+
         public void makeFloating(boolean floating) {
             mFloat = floating;
         }
@@ -1493,7 +1490,7 @@ public abstract class BaseStatusBar extends SystemUI implements
             handleNotificationError(key, notification, "Couldn't create icon: " + ic);
             return null;
         }
-        
+
         NotificationData.Entry entry = new NotificationData.Entry(key, notification, iconView,
                 createRoundIcon(notification));
         entry.hide = entry.notification.pkg.equals("com.mokee.halo");
@@ -1504,7 +1501,7 @@ public abstract class BaseStatusBar extends SystemUI implements
                     notification.pkg, notification.tag, notification.id);
             entry.floatingIntent.makeFloating(true);
         }
-        
+
         // Construct the expanded view.
         if (!inflateViews(entry, mPile)) {
             handleNotificationError(key, notification, "Couldn't expand RemoteViews for: "
@@ -1645,6 +1642,7 @@ public abstract class BaseStatusBar extends SystemUI implements
                 if (contentIntent != null) {
                     final View.OnClickListener listener = makeClicker(contentIntent,
                             notification.pkg, notification.tag, notification.id);
+                    oldEntry.content.setOnClickListener(listener);
                     oldEntry.floatingIntent = makeClicker(contentIntent,
                             notification.pkg, notification.tag, notification.id);
                     oldEntry.floatingIntent.makeFloating(true);
@@ -1652,8 +1650,10 @@ public abstract class BaseStatusBar extends SystemUI implements
                     oldEntry.content.setOnClickListener(null);
                     oldEntry.floatingIntent = null;
                 }
-                // Update the icon.
+                // Update the roundIcon
                 oldEntry.roundIcon = createRoundIcon(notification);
+
+                // Update the icon.
                 final StatusBarIcon ic = new StatusBarIcon(notification.pkg,
                         notification.user,
                         notification.notification.icon, notification.notification.iconLevel,
