@@ -77,7 +77,7 @@
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
-    
+
     <!--Halo-->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
@@ -266,7 +266,7 @@
                 <category android:name="android.intent.category.DESK_DOCK" />
             </intent-filter>
         </activity>
-        
+
         <activity android:name="com.android.systemui.Transparent"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
