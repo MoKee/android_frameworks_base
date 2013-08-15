@@ -32,23 +32,21 @@
         android:layout_height="match_parent"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
-        android:background="@drawable/ic_notify_button_bg"
-        android:enabled="false"
         >
         <com.android.systemui.statusbar.policy.Clock
             android:id="@+id/clock"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_height="match_parent"
+            android:paddingEnd="4dp"
             android:singleLine="true"
             android:textAppearance="@style/TextAppearance.StatusBar.Expanded.Clock"
-            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
             android:clickable="true"
             />
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/clock"           
             >	
@@ -88,7 +86,7 @@
         android:textColor="#00A040"
         android:padding="2dp"
         />
-        
+
     <ImageView android:id="@+id/halo_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
