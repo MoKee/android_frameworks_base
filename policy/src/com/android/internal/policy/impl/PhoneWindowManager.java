@@ -3184,8 +3184,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     mStableBottom = mStableFullscreenBottom = mTmpNavigationFrame.top;
                     if (navVisible) {
                         mNavigationBar.showLw(true);
-                        mSystemBottom = mDockBottom = mTmpNavigationFrame.bottom - mRestrictedScreenTop;
-                        //mRestrictedOverscanScreenHeight = mDockBottom - mRestrictedOverscanScreenTop;
+                        mDockBottom = mTmpNavigationFrame.top;
+                        mRestrictedScreenHeight = mDockBottom - mRestrictedScreenTop;
+                        mRestrictedOverscanScreenHeight = mDockBottom - mRestrictedOverscanScreenTop;
                     } else {
                         // We currently want to hide the navigation UI.
                         mNavigationBar.hideLw(true);
@@ -3194,9 +3195,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                         // If the nav bar is currently requested to be visible,
                         // and not in the process of animating on or off, then
                         // we can tell the app that it is covered by it.
-                        mSystemBottom = displayHeight;
-                        mRestrictedScreenHeight = mTmpNavigationFrame.top - mRestrictedScreenTop;
-						mRestrictedOverscanScreenHeight = mTmpNavigationFrame.top - mRestrictedOverscanScreenTop;
+                        mSystemBottom = mTmpNavigationFrame.top;
                     }
                 } else {
                     // Landscape screen; nav bar goes to the right.
@@ -3206,8 +3205,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     mStableRight = mStableFullscreenRight = mTmpNavigationFrame.left;
                     if (navVisible) {
                         mNavigationBar.showLw(true);
-                        mSystemRight = mDockRight = mTmpNavigationFrame.left - mRestrictedScreenLeft;
-                        //mRestrictedOverscanScreenWidth = mDockRight - mRestrictedOverscanScreenLeft;
+                        mDockRight = mTmpNavigationFrame.left;
+                        mRestrictedScreenWidth = mDockRight - mRestrictedScreenLeft;
+                        mRestrictedOverscanScreenWidth = mDockRight - mRestrictedOverscanScreenLeft;
                     } else {
                         // We currently want to hide the navigation UI.
                         mNavigationBar.hideLw(true);
@@ -3216,9 +3216,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                         // If the nav bar is currently requested to be visible,
                         // and not in the process of animating on or off, then
                         // we can tell the app that it is covered by it.
-                        mSystemRight = displayWidth;
-                        mRestrictedScreenWidth = mTmpNavigationFrame.left - mRestrictedScreenLeft;
-						mRestrictedOverscanScreenWidth = mTmpNavigationFrame.left - mRestrictedOverscanScreenLeft;
+                        mSystemRight = mTmpNavigationFrame.left;
                     }
                 }
                 // Make sure the content and current rectangles are updated to
@@ -3248,10 +3246,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 vf.top = mStableTop;
                 vf.right = mStableRight;
                 vf.bottom = mStableBottom;
-
-                if(navVisible && !mNavigationBarOnBottom) {
-                    pf.right = df.right = vf.right = mTmpNavigationFrame.left;
-                }
 
                 mStatusBarLayer = mStatusBar.getSurfaceLayer();
 
@@ -3289,11 +3283,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     // If the status bar is currently requested to be visible,
                     // and not in the process of animating on or off, then
                     // we can tell the app that it is covered by it.
-                    mSystemTop = mUnrestrictedScreenTop;
+                    mSystemTop = mUnrestrictedScreenTop + mStatusBarHeight;
                 }
             }
-            mDockBottom = navVisible ? mRestrictedScreenTop + mRestrictedScreenHeight : mDockBottom;
-            mDockRight = navVisible ? mRestrictedScreenLeft + mRestrictedScreenWidth : mDockRight;
         }
     }
 
@@ -3430,11 +3422,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             // IM dock windows always go to the bottom of the screen.
             attrs.gravity = Gravity.BOTTOM;
             mDockLayer = win.getSurfaceLayer();
-        } else if (attrs.type == TYPE_WALLPAPER) {
-            pf.left = df.left = cf.left = vf.left = getWallpaperLeft(mUserRotation);
-            pf.top = df.top = cf.top = vf.top = getWallpaperTop(mUserRotation);
-            pf.right = df.right = cf.right = vf.right = getWallpaperRight(mUserRotation);
-            pf.bottom = df.bottom = cf.bottom = vf.bottom = getWallpaperBottom(mUserRotation);
         } else {
             if ((fl & (FLAG_LAYOUT_IN_SCREEN | FLAG_LAYOUT_INSET_DECOR))
                     == (FLAG_LAYOUT_IN_SCREEN | FLAG_LAYOUT_INSET_DECOR)) {
@@ -3694,16 +3681,16 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                         df.right = of.right = cf.right = mDockRight;
                         df.bottom = of.bottom = cf.bottom = mDockBottom;
                     } else {
-                        df.left = of.left = cf.left = mRestrictedScreenLeft;
-                        df.top = of.top = cf.top = mRestrictedScreenTop;
-                        df.right = of.right = cf.right = mRestrictedScreenLeft + mRestrictedScreenWidth;
-                        df.bottom = of.bottom = cf.bottom = mRestrictedScreenTop + mRestrictedScreenHeight;
+                        df.left = of.left = cf.left = mContentLeft;
+                        df.top = of.top = cf.top = mContentTop;
+                        df.right = of.right = cf.right = mContentRight;
+                        df.bottom = of.bottom = cf.bottom = mContentBottom;
                     }
                     if (adjust != SOFT_INPUT_ADJUST_NOTHING) {
-                        vf.left = mRestrictedScreenLeft;
-                        vf.top =  mRestrictedScreenTop;
-                        vf.right = mRestrictedScreenLeft + mRestrictedScreenWidth;
-                        vf.bottom = mRestrictedScreenTop + mRestrictedScreenHeight;
+                        vf.left = mCurLeft;
+                        vf.top = mCurTop;
+                        vf.right = mCurRight;
+                        vf.bottom = mCurBottom;
                     } else {
                         vf.set(cf);
                     }
