@@ -404,7 +404,7 @@ final class ActivityRecord {
                         ? android.R.style.Theme
                         : android.R.style.Theme_Holo;
             }
-            
+
             // This is where the package gets its first context from the attribute-cache
             // In order to hook its attributes we set up our check for floating mutil windows here.
             topIntent = true;
@@ -450,7 +450,7 @@ final class ActivityRecord {
             } else {
                 intent.setFlags(intent.getFlags() & ~Intent.FLAG_FLOATING_WINDOW);
             }
-            
+
             if ((aInfo.flags&ActivityInfo.FLAG_HARDWARE_ACCELERATED) != 0) {
                 windowFlags |= WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED;
             }

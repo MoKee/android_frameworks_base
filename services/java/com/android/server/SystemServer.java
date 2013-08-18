@@ -1103,7 +1103,7 @@ class ServerThread extends Thread {
 
     static final void startSystemUi(Context context) {
         // restore fast charge state before starting systemui
-        boolean enabled = Settings.System.getInt(context.getContentResolver(), Settings.System.FCHARGE_ENABLED, 0) == 1;
+        boolean enabled = Settings.System.getIntForUser(context.getContentResolver(), Settings.System.FCHARGE_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
             try {
                     File fastcharge = new File(FAST_CHARGE_DIR, FAST_CHARGE_FILE);
                     if (fastcharge.exists()) {

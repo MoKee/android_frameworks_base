@@ -1073,6 +1073,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
     public boolean performItemClick(View view, int position, long id) {
         boolean handled = false;
         boolean dispatchItemClick = true;
+
         if (mChoiceMode != CHOICE_MODE_NONE) {
             handled = true;
             boolean checkedStateChanged = false;
@@ -4199,7 +4200,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
 
             reportScrollStateChange(OnScrollListener.SCROLL_STATE_IDLE);
             if (clearCache)
-                clearScrollingCache();
+            clearScrollingCache();
             mScroller.abortAnimation();
 
             if (mFlingStrictSpan != null) {

@@ -51,7 +51,6 @@ import android.os.PowerManager;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemClock;
-import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.WorkSource;
 import android.provider.Settings;
@@ -1007,10 +1006,9 @@ public class GpsLocationProvider implements LocationProviderInterface {
             mStarted = true;
             mSingleShot = singleShot;
             mPositionMode = GPS_POSITION_MODE_STANDALONE;
-            boolean mAGPSAllow = SystemProperties.getBoolean("ro.agps.allow",true);
 
              if (Settings.Global.getInt(mContext.getContentResolver(),
-                    Settings.Global.ASSISTED_GPS_ENABLED, 1) != 0 && mAGPSAllow) {
+                    Settings.Global.ASSISTED_GPS_ENABLED, 1) != 0) {
                 if (singleShot && hasCapability(GPS_CAPABILITY_MSA)) {
                     mPositionMode = GPS_POSITION_MODE_MS_ASSISTED;
                 } else if (hasCapability(GPS_CAPABILITY_MSB)) {
