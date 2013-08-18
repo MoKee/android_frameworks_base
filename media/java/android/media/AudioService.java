@@ -1015,8 +1015,14 @@ public class AudioService extends IAudioService.Stub implements OnFinished {
                 (mStreamVolumeAlias[streamType] == getMasterStreamType())) {
             int newRingerMode;
             if (index == 0) {
-                newRingerMode = mHasVibrator ? AudioManager.RINGER_MODE_VIBRATE
-                                              : AudioManager.RINGER_MODE_SILENT;
+                synchronized (mSettingsLock) {
+                    if (mLastSilentRingerMode != -1) {
+                        newRingerMode = mLastSilentRingerMode;
+                    } else {
+                        newRingerMode = mHasVibrator ? AudioManager.RINGER_MODE_VIBRATE
+                                : AudioManager.RINGER_MODE_SILENT;
+                    }
+                }
             } else {
                 newRingerMode = AudioManager.RINGER_MODE_NORMAL;
             }
@@ -2143,6 +2149,19 @@ public class AudioService extends IAudioService.Stub implements OnFinished {
                                 mScoAudioMode =
                                         (targetSdkVersion < Build.VERSION_CODES.JELLY_BEAN_MR2) ?
                                                 SCO_MODE_VIRTUAL_CALL : SCO_MODE_RAW;
+                                /*
+                                 * Raw mode causes some issues on HFP head units,
+                                 * apparently when doing PBAP, so disregard it on
+                                 * those for now and keep using VIRTUAL_CALL
+                                 */
+                                if (mBluetoothHeadsetDevice != null) {
+                                    BluetoothClass btClass = mBluetoothHeadsetDevice.getBluetoothClass();
+                                    if (btClass.getDeviceClass() ==
+                                        BluetoothClass.Device.AUDIO_VIDEO_HANDSFREE  &&
+                                        btClass.hasService(BluetoothClass.Service.OBJECT_TRANSFER)) {
+                                            mScoAudioMode = SCO_MODE_VIRTUAL_CALL;
+                                    }
+                                }
                                 if (mBluetoothHeadset != null && mBluetoothHeadsetDevice != null) {
                                     boolean status;
                                     if (mScoAudioMode == SCO_MODE_RAW) {
