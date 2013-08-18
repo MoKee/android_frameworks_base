@@ -96,6 +96,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.view.WindowManagerGlobal;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
@@ -686,7 +687,7 @@ public abstract class BaseStatusBar extends SystemUI implements
         }
     }
 
-    private void addPieInLocation(int gravity) {                
+    private void addPieInLocation(int gravity) {
         // Quick navigation bar panel
         mPieControlPanel = (PieControlPanel) View.inflate(mContext,
                 R.layout.pie_control_panel, null);
@@ -777,13 +778,13 @@ public abstract class BaseStatusBar extends SystemUI implements
     }
     @Override
     protected void onConfigurationChanged(Configuration newConfig) {
+        if (mPieControlPanel != null) mPieControlPanel.bumpConfiguration();
         final Locale newLocale = mContext.getResources().getConfiguration().locale;
         if (! newLocale.equals(mLocale)) {
             mLocale = newLocale;
             mLayoutDirection = TextUtils.getLayoutDirectionFromLocale(mLocale);
             refreshLayout(mLayoutDirection);
         }
-		if (mPieControlPanel != null) mPieControlPanel.bumpConfiguration();
     }
 
     protected View updateNotificationVetoButton(View row, StatusBarNotification n) {
@@ -1441,9 +1442,30 @@ public abstract class BaseStatusBar extends SystemUI implements
         }
     }
 
-    private Bitmap createRoundIcon(StatusBarNotification notification) {
+    public void prepareHaloNotification(NotificationData.Entry entry, StatusBarNotification notification, boolean update) {
 
         Notification notif = notification.getNotification();
+
+        // Get the remote view
+        try {
+
+            if (!update) {
+                ViewGroup mainView = (ViewGroup)notif.contentView.apply(mContext, null, mOnClickHandler);
+
+                if (mainView instanceof FrameLayout) {
+                    entry.haloContent = mainView.getChildAt(1);
+                    mainView.removeViewAt(1);
+                } else {
+                    entry.haloContent = mainView;
+                }
+            } else {
+                notif.contentView.reapply(mContext, entry.haloContent, mOnClickHandler);
+            }
+
+        } catch (Exception e) {
+            // Non uniform content?
+            android.util.Log.d("PARANOID", "   Non uniform content?");
+        }
 
         // Construct the round icon
         final float haloSize = Settings.System.getFloatForUser(mContext.getContentResolver(),
@@ -1484,7 +1506,7 @@ public abstract class BaseStatusBar extends SystemUI implements
                 // NameNotFoundException
             }
         }
-        return roundIcon;
+        entry.roundIcon = roundIcon;
     }
 
     protected StatusBarIconView addNotificationViews(IBinder key,
@@ -1509,8 +1531,8 @@ public abstract class BaseStatusBar extends SystemUI implements
             return null;
         }
 
-        NotificationData.Entry entry = new NotificationData.Entry(key, notification, iconView,
-                createRoundIcon(notification));
+        NotificationData.Entry entry = new NotificationData.Entry(key, notification, iconView);
+        prepareHaloNotification(entry, notification, false);
         entry.hide = entry.notification.getPackageName().equals("com.mokee.halo");
 
         final PendingIntent contentIntent = notification.getNotification().contentIntent;
@@ -1669,7 +1691,7 @@ public abstract class BaseStatusBar extends SystemUI implements
                     oldEntry.floatingIntent = null;
                 }
                 // Update the roundIcon
-                oldEntry.roundIcon = createRoundIcon(notification);
+                prepareHaloNotification(oldEntry, notification, true);
 
                 // Update the icon.
                 final StatusBarIcon ic = new StatusBarIcon(notification.getPackageName(),
@@ -1732,6 +1754,9 @@ public abstract class BaseStatusBar extends SystemUI implements
                 mHandler.sendEmptyMessage(MSG_HIDE_INTRUDER);
             }
         }
+
+        // Update halo
+        if (mHalo != null) mHalo.update();
     }
 
     // Q: What kinds of notifications should show during setup?

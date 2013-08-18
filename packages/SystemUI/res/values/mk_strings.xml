@@ -33,9 +33,10 @@
     <string name="accessibility_halo">Create notification halo.</string>
     <string name="halo_dismiss">Dismiss notification</string>
     <string name="halo_hide">Hide</string>
-    <string name="halo_clear_all">Clear all notifications</string>
-    <string name="halo_silence">Hide and silence until woken</string>
-    <string name="halo_tutorial1">I am HALO</string>
-    <string name="halo_tutorial2">Double-tap-drag to move me around, drag to switch tasks</string>
-    <string name="halo_tutorial3">Change my behavior in the settings</string>
+    <string name="halo_clear_all">Dismiss all notifications</string>
+    <string name="halo_silence">Hide &amp; silence until woken</string>
+    <string name="halo_tutorial1">This is HALO</string>
+    <string name="halo_tutorial2">Move me: 2x-tap &amp; drag</string>
+    <string name="halo_tutorial3">Browse tasks: Horizontal drag</string>
+
 </resources>
