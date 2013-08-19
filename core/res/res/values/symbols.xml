@@ -2025,6 +2025,9 @@
   <java-symbol type="string" name="symbol_picker_z" />
   <java-symbol type="string" name="symbol_picker_Z" />
 
+  <!-- Electron Beam -->
+  <java-symbol type="bool" name="config_screenOffAnimation" />
+
   <!-- Privacy Guard -->
   <java-symbol type="string" name="privacy_guard_notification" />
   <java-symbol type="string" name="privacy_guard_notification_detail" />
