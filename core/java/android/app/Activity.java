@@ -5099,7 +5099,7 @@ public class Activity extends ContextThemeWrapper
         attachBaseContext(context);
 
         mFragments.attachActivity(this, mContainer, null);
-        
+
         boolean floating = (intent.getFlags()&Intent.FLAG_FLOATING_WINDOW) == Intent.FLAG_FLOATING_WINDOW;
         boolean history = (intent.getFlags()&Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) == Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY;
         if (intent != null && floating && !history) {
@@ -5138,7 +5138,7 @@ public class Activity extends ContextThemeWrapper
         } else {
             mWindow = PolicyManager.makeNewWindow(this);
         }
-        
+
         mWindow.setCallback(this);
         mWindow.getLayoutInflater().setPrivateFactory(this);
         if (info.softInputMode != WindowManager.LayoutParams.SOFT_INPUT_STATE_UNSPECIFIED) {
@@ -5172,7 +5172,7 @@ public class Activity extends ContextThemeWrapper
         mWindowManager = mWindow.getWindowManager();
         mCurrentConfig = config;
     }
-    
+
     private void scaleFloatingWindow(Context context) {
         if (!mWindow.mIsFloatingWindow) {
             return;
@@ -5316,7 +5316,7 @@ public class Activity extends ContextThemeWrapper
         onUserInteraction();
         onUserLeaveHint();
     }
-    
+
     final void performStop() {
         if (mLoadersStarted) {
             mLoadersStarted = false;
