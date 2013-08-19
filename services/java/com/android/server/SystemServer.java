@@ -1119,7 +1119,7 @@ class ServerThread extends Thread {
                     Settings.System.putInt(context.getContentResolver(),
                          Settings.System.FCHARGE_ENABLED, 0);
                 }
- 
+
         Intent intent = new Intent();
         intent.setComponent(new ComponentName("com.android.systemui",
                     "com.android.systemui.SystemUIService"));

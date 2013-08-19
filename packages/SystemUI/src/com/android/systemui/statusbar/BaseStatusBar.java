@@ -1,3 +1,4 @@
+
 /*
  * Copyright (C) 2013 The MoKee OpenSource Project
  *
@@ -148,8 +149,11 @@ public abstract class BaseStatusBar extends SystemUI implements
 
     // Search panel
     protected SearchPanelView mSearchPanelView;
+
     protected PopupMenu mNotificationBlamePopup;
+
     protected int mCurrentUserId = 0;
+
     protected FrameLayout mStatusBarContainer;
 
     // Pie controls
@@ -1530,7 +1534,7 @@ public abstract class BaseStatusBar extends SystemUI implements
             handleNotificationError(key, notification, "Couldn't create icon: " + ic);
             return null;
         }
-
+        // Construct the expanded view.
         NotificationData.Entry entry = new NotificationData.Entry(key, notification, iconView);
         prepareHaloNotification(entry, notification, false);
         entry.hide = entry.notification.getPackageName().equals("com.mokee.halo");
@@ -1779,6 +1783,17 @@ public abstract class BaseStatusBar extends SystemUI implements
     public boolean inKeyguardRestrictedInputMode() {
         KeyguardManager km = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
         return km.inKeyguardRestrictedInputMode();
+    }
+
+    public int getExpandedDesktopMode() {
+        ContentResolver resolver = mContext.getContentResolver();
+        boolean expanded = Settings.System.getIntForUser(resolver,
+                Settings.System.EXPANDED_DESKTOP_STATE, 0, UserHandle.USER_CURRENT) == 1;
+        if (expanded) {
+            return Settings.System.getIntForUser(resolver,
+                    Settings.System.EXPANDED_DESKTOP_STYLE, 0, UserHandle.USER_CURRENT);
+        }
+        return 0;
     }
 
     public void addNavigationBarCallback(NavigationBarCallback callback) {
