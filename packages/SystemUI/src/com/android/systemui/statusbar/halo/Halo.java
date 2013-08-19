@@ -1518,7 +1518,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
                     }
                     final int c = getHaloMsgCount()-getHidden() < 0 ? 0 : getHaloMsgCount()-getHidden();
                     mEffect.setHaloMessageNumber(c);
-                    if (mState != State.HIDDEN) {
+                    if (mState == State.IDLE) {
                         mEffect.nap(1500);
                         if (mHideTicker) mEffect.sleep(HaloEffect.NAP_TIME + 3000, HaloEffect.SLEEP_TIME, false);
                     }
