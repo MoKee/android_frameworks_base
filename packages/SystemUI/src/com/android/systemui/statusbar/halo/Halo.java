@@ -1181,6 +1181,11 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
 
         CustomObjectAnimator contentYAnimator = new CustomObjectAnimator(this);
 
+        CustomObjectAnimator contentFlipAnimator = new CustomObjectAnimator(this);        
+
+            contentFlipAnimator.animate(ObjectAnimator.ofFloat(mHaloTickerWrapper, "rotationY",
+                    mTickerLeft ? -180 : 180, 0).setDuration(duration), new DecelerateInterpolator(), null, delay, null);
+
         int tickerX, tickerY;
 
         @Override        
