@@ -43,6 +43,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.media.RemoteControlClient;
 import android.os.Bundle;
 import android.os.Looper;
@@ -449,6 +450,9 @@ public class KeyguardHostView extends KeyguardViewBase {
         }
 
         Drawable back = null;
+        int bgAlpha = (int)((1 - (Settings.System.getFloatForUser(getContext().getContentResolver(),
+                Settings.System.LOCKSCREEN_ALPHA, 0.0f, UserHandle.USER_CURRENT))) * 255);
+        
         if (!background.isEmpty()) {
             try {
                 back = new ColorDrawable(Integer.parseInt(background));
@@ -466,8 +470,14 @@ public class KeyguardHostView extends KeyguardViewBase {
             }
         }
         if (back != null) {
-            back.setColorFilter(BACKGROUND_COLOR, PorterDuff.Mode.SRC_ATOP);
-            setBackground(back);
+            back.setAlpha(bgAlpha);
+            Drawable overlay = new ColorDrawable(BACKGROUND_COLOR);
+            Drawable[] layers = new Drawable[] {
+                back,
+                overlay
+            };
+            LayerDrawable layerDrawable = new LayerDrawable(layers);
+            setBackground(layerDrawable);
         }
     }
 
