@@ -308,9 +308,11 @@ public class PieStatusPanel {
     }
 
     public static void ResetPanels(boolean reset) {
-        hidePanel(mNotificationPanel);
-        hidePanel(mQS);
-        if (reset) mCurrentViewState = -1;
+        if (mNotificationPanel != null && mQS != null) {
+            hidePanel(mNotificationPanel);
+            hidePanel(mQS);
+            if (reset) mCurrentViewState = -1;
+        }
     }
 
     public void swapPanels() {
