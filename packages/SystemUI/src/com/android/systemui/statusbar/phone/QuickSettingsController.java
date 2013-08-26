@@ -123,6 +123,7 @@ public class QuickSettingsController {
     public PhoneStatusBar mStatusBarService;
     private final String mSettingsString;
     private boolean mHideLiveTiles;
+    private boolean mHideLiveTileLabels;
 
     private InputMethodTile mIMETile;
 
@@ -346,6 +347,11 @@ public class QuickSettingsController {
         loadTiles();
         setupBroadcastReceiver();
         setupContentObserver();
+        if (mHideLiveTileLabels) {
+            for (QuickSettingsTile t : mQuickSettingsTiles) {
+                t.setLabelVisibility(false);
+            }
+        }
     }
 
     void setupContentObserver() {
@@ -441,10 +447,8 @@ public class QuickSettingsController {
         }
     }
 
-    public void setTileTitleVisibility(boolean visible) {
-        for (QuickSettingsTile t : mQuickSettingsTiles) {
-            t.setLabelVisibility(visible);
-        }
+    public void hideLiveTileLabels(boolean hide) {
+        mHideLiveTileLabels = hide;
     }
 
     public void hideLiveTiles(boolean hide) {
