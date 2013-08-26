@@ -300,8 +300,11 @@ public abstract class BaseStatusBar extends SystemUI implements
         public void onChange(boolean selfChange) {
             updatePieControls();
             if (Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.PIE_CONTROLS, 0, UserHandle.USER_CURRENT) == 0) {
+                    PieStatusPanel.ResetPanels(true);
+            } else if (Settings.System.getIntForUser(mContext.getContentResolver(),
                 Settings.System.PIE_STICK, 0, UserHandle.USER_CURRENT) == 0) {
-                updatePieControls();
+                    updatePieControls();
             }
         }
     }
