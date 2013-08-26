@@ -200,7 +200,7 @@ public class PieStatusPanel {
                         break;
                     case MotionEvent.ACTION_UP:
                         if(!hasScrolled) {
-                            hidePanels(true);
+                            ResetPanels(true);
                         }
                         break;
                 }
@@ -304,6 +304,12 @@ public class PieStatusPanel {
         } else if (mCurrentViewState == QUICK_SETTINGS_PANEL) {
             hidePanel(mQS);
         }
+        if (reset) mCurrentViewState = -1;
+    }
+
+    public void ResetPanels(boolean reset) {
+        hidePanel(mNotificationPanel);
+        hidePanel(mQS);
         if (reset) mCurrentViewState = -1;
     }
 
