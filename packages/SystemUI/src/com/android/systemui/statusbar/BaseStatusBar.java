@@ -157,7 +157,6 @@ public abstract class BaseStatusBar extends SystemUI implements
     protected FrameLayout mStatusBarContainer;
 
     // Pie controls
-
     public PieControlPanel mPieControlPanel;
     public View mPieControlsTrigger;
     public PieExpandPanel mContainer;
@@ -277,7 +276,19 @@ public abstract class BaseStatusBar extends SystemUI implements
         return mDeviceProvisioned;
     }
 
-    private final class PieSettingsObserver extends ContentObserver {
+    private ContentObserver mProvisioningObserver = new ContentObserver(mHandler) {
+        @Override
+        public void onChange(boolean selfChange) {
+            final boolean provisioned = 0 != Settings.Global.getInt(
+                    mContext.getContentResolver(), Settings.Global.DEVICE_PROVISIONED, 0);
+            if (provisioned != mDeviceProvisioned) {
+                mDeviceProvisioned = provisioned;
+                updateNotificationIcons();
+            }
+        }
+    };
+
+    private class PieSettingsObserver extends ContentObserver {
         PieSettingsObserver(Handler handler) {
             super(handler);
         }
@@ -302,24 +313,9 @@ public abstract class BaseStatusBar extends SystemUI implements
             if (Settings.System.getIntForUser(mContext.getContentResolver(),
                 Settings.System.PIE_CONTROLS, 0, UserHandle.USER_CURRENT) == 0) {
                     PieStatusPanel.ResetPanels(true);
-            } else if (Settings.System.getIntForUser(mContext.getContentResolver(),
-                Settings.System.PIE_STICK, 0, UserHandle.USER_CURRENT) == 0) {
-                    updatePieControls();
             }
         }
     }
-
-    private ContentObserver mProvisioningObserver = new ContentObserver(mHandler) {
-        @Override
-        public void onChange(boolean selfChange) {
-            final boolean provisioned = 0 != Settings.Global.getInt(
-                    mContext.getContentResolver(), Settings.Global.DEVICE_PROVISIONED, 0);
-            if (provisioned != mDeviceProvisioned) {
-                mDeviceProvisioned = provisioned;
-                updateNotificationIcons();
-            }
-        }
-    };
 
     private class SettingsObserver extends ContentObserver {
         public SettingsObserver(Handler handler) {
@@ -347,6 +343,8 @@ public abstract class BaseStatusBar extends SystemUI implements
     };
 
     private SettingsObserver mSettingsObserver = new SettingsObserver(mHandler);
+
+    private PieSettingsObserver mPieSettingsObserver = new PieSettingsObserver(mHandler);
 
     private RemoteViews.OnClickHandler mOnClickHandler = new RemoteViews.OnClickHandler() {
         @Override
@@ -441,6 +439,8 @@ public abstract class BaseStatusBar extends SystemUI implements
                 mProvisioningObserver);
 
         mSettingsObserver.observe();
+
+        mPieSettingsObserver.observe();
 
         mBarService = IStatusBarService.Stub.asInterface(
                 ServiceManager.getService(Context.STATUS_BAR_SERVICE));
@@ -559,9 +559,6 @@ public abstract class BaseStatusBar extends SystemUI implements
             }});
 
         updateHalo();
-
-        PieSettingsObserver settingsObserver = new PieSettingsObserver(new Handler());
-        settingsObserver.observe();
     }
 
     public void setHaloTaskerActive(boolean haloTaskerActive, boolean updateNotificationIcons) {
@@ -647,10 +644,10 @@ public abstract class BaseStatusBar extends SystemUI implements
 
     public void updatePieControls() {
         if (mPieControlsTrigger != null) mWindowManager.removeView(mPieControlsTrigger);
-        if (mPieControlPanel != null)  mWindowManager.removeView(mPieControlPanel);
+        if (mPieControlPanel != null) mWindowManager.removeView(mPieControlPanel);
 
         for (int i = 0; i < 4; i++) {
-            if (mPieDummyTrigger[i] != null)  mWindowManager.removeView(mPieDummyTrigger[i]);
+            if (mPieDummyTrigger[i] != null) mWindowManager.removeView(mPieDummyTrigger[i]);
         }
 
         attachPie();
@@ -783,15 +780,16 @@ public abstract class BaseStatusBar extends SystemUI implements
         return notificationUserId == UserHandle.USER_ALL
                 || thisUserId == notificationUserId;
     }
+
     @Override
     protected void onConfigurationChanged(Configuration newConfig) {
-        if (mPieControlPanel != null) mPieControlPanel.bumpConfiguration();
         final Locale newLocale = mContext.getResources().getConfiguration().locale;
         if (! newLocale.equals(mLocale)) {
             mLocale = newLocale;
             mLayoutDirection = TextUtils.getLayoutDirectionFromLocale(mLocale);
             refreshLayout(mLayoutDirection);
         }
+        if (mPieControlPanel != null) mPieControlPanel.bumpConfiguration();
     }
 
     protected View updateNotificationVetoButton(View row, StatusBarNotification n) {
