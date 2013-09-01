@@ -819,8 +819,8 @@ public class PhoneStatusBar extends BaseStatusBar {
 
         // listen for USER_SETUP_COMPLETE setting (per-user)
         resetUserSetupObserver();
-        mTransparencyManager.setStatusbar(mStatusBarView);
 
+        mTransparencyManager.setStatusbar(mStatusBarView);
 
         mVelocityTracker = VelocityTracker.obtain();
 
