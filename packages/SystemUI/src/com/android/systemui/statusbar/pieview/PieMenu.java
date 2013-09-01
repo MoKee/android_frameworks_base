@@ -197,8 +197,6 @@ public class PieMenu extends FrameLayout {
     private float mEndBattery;
     private int mBatteryLevel;
 
-    Handler mHandler;
-
     private class SnapPoint {
         public SnapPoint(int snapX, int snapY, int snapRadius, int snapAlpha, int snapGravity) {
             x = snapX;
@@ -611,8 +609,8 @@ public class PieMenu extends FrameLayout {
             }
         });
 
-        SettingsObserver settingsObserver = new SettingsObserver(new Handler());
-        settingsObserver.observe();
+
+        mPieSettingsObserver.observe();
 
         // Get all dimensions
         getDimensions();
@@ -629,6 +627,8 @@ public class PieMenu extends FrameLayout {
             }
         }, intentFilter);
     }
+
+    private PieSettingsObserver mPieSettingsObserver = new PieSettingsObserver(new Handler());
 
     public void init() {
         mStatusPanel = new PieStatusPanel(mContext, mPanel);
@@ -1161,9 +1161,9 @@ public class PieMenu extends FrameLayout {
         && (item.getStartAngle() + item.getSweep() > polar);
     }
 
-    //setup observer to do stuff!
-    class SettingsObserver extends ContentObserver {
-        SettingsObserver(Handler handler) {
+    // setup observer to do stuff!
+    private class PieSettingsObserver extends ContentObserver {
+        PieSettingsObserver(Handler handler) {
             super(handler);
         }
 
@@ -1186,7 +1186,6 @@ public class PieMenu extends FrameLayout {
                     Settings.System.PIE_CHEVRON_RIGHT), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.PIE_JUICE), false, this);
-            getDimensions();
         }
 
         @Override

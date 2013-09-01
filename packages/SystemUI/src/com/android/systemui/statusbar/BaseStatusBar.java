@@ -785,13 +785,13 @@ public abstract class BaseStatusBar extends SystemUI implements
 
     @Override
     protected void onConfigurationChanged(Configuration newConfig) {
+        if (mPieControlPanel != null) mPieControlPanel.bumpConfiguration();
         final Locale newLocale = mContext.getResources().getConfiguration().locale;
         if (! newLocale.equals(mLocale)) {
             mLocale = newLocale;
             mLayoutDirection = TextUtils.getLayoutDirectionFromLocale(mLocale);
             refreshLayout(mLayoutDirection);
         }
-        if (mPieControlPanel != null) mPieControlPanel.bumpConfiguration();
     }
 
     protected View updateNotificationVetoButton(View row, StatusBarNotification n) {
@@ -1202,11 +1202,11 @@ public abstract class BaseStatusBar extends SystemUI implements
                  mContext.sendBroadcastAsUser(intent, new UserHandle(UserHandle.USER_CURRENT));
                  break;
              case MSG_PRELOAD_RECENT_APPS:
-                  preloadRecentTasksList();
-                  break;
+                 preloadRecentTasksList();
+                 break;
              case MSG_CANCEL_PRELOAD_RECENT_APPS:
-                  cancelPreloadingRecentTasksList();
-                  break;
+                 cancelPreloadingRecentTasksList();
+                 break;
              case MSG_OPEN_SEARCH_PANEL:
                  if (DEBUG) Slog.d(TAG, "opening search panel");
                  if (mSearchPanelView != null && mSearchPanelView.isAssistantAvailable()) {
