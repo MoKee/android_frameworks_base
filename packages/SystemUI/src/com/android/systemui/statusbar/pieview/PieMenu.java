@@ -609,11 +609,7 @@ public class PieMenu extends FrameLayout {
             }
         });
 
-
         mPieSettingsObserver.observe();
-
-        // Get all dimensions
-        getDimensions();
 
         //MoKeeLauncher showPIENotificationsPanel
         IntentFilter intentFilter = new IntentFilter();
@@ -1186,6 +1182,9 @@ public class PieMenu extends FrameLayout {
                     Settings.System.PIE_CHEVRON_RIGHT), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.PIE_JUICE), false, this);
+
+            // Get all dimensions
+            getDimensions();
         }
 
         @Override
