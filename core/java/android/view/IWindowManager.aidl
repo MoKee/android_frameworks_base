@@ -295,4 +295,13 @@ interface IWindowManager
      * Update the application display metrics
      */
     void updateDisplayMetrics();
+
+    /** SPLIT VIEW START **/
+    boolean isTaskSplitView(int taskId);
+    void setTaskSplitView(int taskId, boolean split);
+    void setTaskChildSplit(IBinder token, boolean split);
+    Rect getSplitViewRect(int taskId, boolean resetLocation);
+    void notifyActivityTouched(IBinder token, boolean force);
+
+    /** SPLIT VIEW END **/
 }
