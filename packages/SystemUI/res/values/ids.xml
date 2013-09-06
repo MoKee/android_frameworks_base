@@ -21,4 +21,5 @@
     <item type="id" name="user_lock_tag" />
     <item type="id" name="user_dismissed_tag" />
     <item type="id" name="status_bar_cling_stub" />
+    <item type="id" name="screen_lock_button">false</item>
 </resources>
