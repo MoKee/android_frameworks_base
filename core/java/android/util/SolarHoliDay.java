@@ -23,9 +23,9 @@ import com.android.internal.R;
 
 public class SolarHoliDay {
 	public static String getSolarHoliDay(int currentMonth, int currentDayForMonth, Context context){
-		String num_date= String.format("%02d", currentMonth + 1)+""+ String.format("%02d", currentDayForMonth);
-        String[] solarHolidayArray=context.getResources().getStringArray(R.array.solar_holiday);
-        for(int i=0;i<solarHolidayArray.length;i++)
+        String num_date = String.format("%02d", currentMonth + 1) + "" + String.format("%02d", currentDayForMonth);
+        String[] solarHolidayArray = context.getResources().getStringArray(R.array.solar_holiday);
+        for(int i = 0; i < solarHolidayArray.length; i++)
         {
         	String[] solarHolidayDateStr = solarHolidayArray[i].split(" ");
         	if(solarHolidayDateStr[0].equals(num_date))

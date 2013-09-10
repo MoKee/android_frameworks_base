@@ -23,11 +23,11 @@ import com.android.internal.R;
 public class LunarFestival {
 	public static String getLunarFestival(String chinadate, Context context){
 		String [] lunarFestivalArray = context.getResources().getStringArray(R.array.lunar_festival);
-		chinadate = chinadate.substring(chinadate.length()-4,chinadate.length());
-		for(int i = 0;i<lunarFestivalArray.length;i++)
+		chinadate = chinadate.substring(chinadate.length() - 4, chinadate.length());
+		for(int i = 0; i < lunarFestivalArray.length;i++)
 		{
 			String [] lunar_str=lunarFestivalArray[i].split(" ");
-			if(lunar_str[0].equals(chinadate))
+			if(lunar_str[0].contains(chinadate))
 				return lunar_str[1];
 		}
 		return "";
