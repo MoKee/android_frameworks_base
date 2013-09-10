@@ -753,6 +753,18 @@ public class TabletStatusBar extends BaseStatusBar implements
     }
 
     @Override
+    public void toggleNotificationShade() {
+        int msg = (mNotificationPanel.isShowing())
+                ? MSG_CLOSE_NOTIFICATION_PANEL : MSG_OPEN_NOTIFICATION_PANEL;
+        mHandler.removeMessages(msg);
+        mHandler.sendEmptyMessage(msg);
+    }
+
+    @Override
+    public void toggleStatusBar(boolean enable) {
+    }
+
+    @Override
     protected void updateSearchPanel() {
         super.updateSearchPanel();
         mSearchPanelView.setStatusBarView(mStatusBarView);

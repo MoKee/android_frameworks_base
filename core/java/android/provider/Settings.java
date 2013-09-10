@@ -3304,6 +3304,22 @@ public final class Settings {
         public static final String POWER_MENU_SCREENSHOT_ENABLED = "power_menu_screenshot_enabled";
 
         /**
+         * Whether Status Bar is currently hidden or not for notification
+         * toggle notification shade
+         *
+         * @hide
+         */
+        public static final String TOGGLE_NOTIFICATION_SHADE = "toggle_notification_shade";
+
+        /**
+         * Peek at stausbar when it is hidden by swiping down from top
+         * end of the screen
+         *
+         * @hide
+         */
+        public static final String STATUSBAR_PEEK = "statusbar_peek";
+
+        /**
          * Whether power menu expanded desktop is enabled
          * @hide
          */

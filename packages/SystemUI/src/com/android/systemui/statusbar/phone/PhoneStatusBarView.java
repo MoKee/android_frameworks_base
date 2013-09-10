@@ -194,6 +194,9 @@ public class PhoneStatusBarView extends PanelBar {
         mBar.makeExpandedInvisibleSoon();
         mFadingPanel = null;
         mLastFullyOpenedPanel = null;
+
+        Settings.System.putInt(mContext.getContentResolver(),
+            Settings.System.TOGGLE_NOTIFICATION_SHADE, 0);
     }
 
     @Override
