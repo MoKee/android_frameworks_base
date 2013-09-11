@@ -56,7 +56,7 @@ public class BugReportTile extends QuickSettingsTile{
 
     private synchronized void updateTile() {
         mLabel = mContext.getString(R.string.quick_settings_report_bug);
-        mDrawable = com.android.internal.R.drawable.stat_sys_adb;
+        mDrawable = com.mokee.internal.R.drawable.stat_sys_adb;
         final ContentResolver cr = mContext.getContentResolver();
         try {
             enabled = (Settings.Secure.getInt(cr, Settings.Secure.BUGREPORT_IN_POWER_MENU) != 0);
