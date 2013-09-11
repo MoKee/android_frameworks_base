@@ -49,14 +49,14 @@ public class DateUtils
     public static final long WEEK_IN_MILLIS = DAY_IN_MILLIS * 7;
 
     private static final int []sAmPmCN=new int[]{
-    	com.android.internal.R.string.lc,
-        com.android.internal.R.string.lm,
-        com.android.internal.R.string.zc,
-        com.android.internal.R.string.sw,
-        com.android.internal.R.string.zw,
-        com.android.internal.R.string.xw,
-        com.android.internal.R.string.bw,
-        com.android.internal.R.string.sy
+    	com.mokee.internal.R.string.lc,
+        com.mokee.internal.R.string.lm,
+        com.mokee.internal.R.string.zc,
+        com.mokee.internal.R.string.sw,
+        com.mokee.internal.R.string.zw,
+        com.mokee.internal.R.string.xw,
+        com.mokee.internal.R.string.bw,
+        com.mokee.internal.R.string.sy
     };
 
     /**
