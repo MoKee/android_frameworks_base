@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2012-2013 The MoKee OpenSource Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Super Pie -->
+    <string name="pie_date_format">M月d日E</string>
+
+    <!-- Power Button -->
+    <string name="navbar_power_button">電源按鍵</string>
+    <string name="accessibility_power">電源</string>
+
+    <!-- Quick Settings -->
+    <string name="quick_settings_fcharge">快速充電</string>
+
+    <!-- HALO -->
+    <string name="accessibility_halo">打開HALO</string>
+    <string name="halo_dismiss">取消通知</string>
+    <string name="halo_hide">隱藏</string>
+    <string name="halo_clear_all">清除全部通知</string>
+    <string name="halo_silence">隱藏並靜默，直到喚醒</string>
+    <string name="halo_tutorial1">我是HALO</string>
+    <string name="halo_tutorial2">通過雙擊並按住拖動來更換位置，單擊並拖動來切換程序</string>
+    <string name="halo_tutorial3">在設置中更改我的行為</string>
+
+    <!-- Title shown in notification popup for launching notification in floating mode -->
+    <string name="status_bar_notification_floating_item_title">浮動模式</string>
+
+    <!-- Title shown in recents popup for showing app in floating mode -->
+    <string name="status_bar_recent_floating_item_title">浮動模式</string>
+</resources>

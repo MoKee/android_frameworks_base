@@ -33,8 +33,8 @@
     <string name="global_actions_expanded_desktop_mode_on_status">啟用</string>
     <string name="global_actions_expanded_desktop_mode_off_status">禁用</string>
     <string name="reboot_reboot">重新啟動</string>
-    <string name="reboot_recovery">Recovery</string>
-    <string name="reboot_bootloader">Bootloader</string>
+    <string name="reboot_recovery">恢復模式</string>
+    <string name="reboot_bootloader">引導程序</string>
     <string name="reboot_bootmenu">Bootmenu</string>
     <string name="reboot_fastboot">Fastboot</string>
     <string name="reboot_download">Download</string>
