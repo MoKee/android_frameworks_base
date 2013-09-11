@@ -1113,7 +1113,7 @@ class ServerThread extends Thread {
         boolean enabled = Settings.System.getIntForUser(context.getContentResolver(), Settings.System.FCHARGE_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
             try {
                     String fchargePath = context.getResources()
-                            .getString(com.android.internal.R.string.config_fastChargePath);
+                            .getString(com.mokee.internal.R.string.config_fastChargePath);
                     if (!fchargePath.isEmpty()) {
                         File fastcharge = new File(fchargePath);
                         if (fastcharge.exists()) {

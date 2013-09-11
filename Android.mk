@@ -25,6 +25,7 @@ LOCAL_PATH := $(call my-dir)
 # R.java file as a prerequisite.
 # TODO: find a more appropriate way to do this.
 framework_res_source_path := APPS/framework-res_intermediates/src
+mokee_res_source_path := APPS/mokee-res_intermediates/src
 
 include $(CLEAR_VARS)
 
@@ -262,7 +263,9 @@ LOCAL_AIDL_INCLUDES += $(FRAMEWORKS_BASE_JAVA_SRC_DIRS)
 LOCAL_INTERMEDIATE_SOURCES := \
 			$(framework_res_source_path)/android/R.java \
 			$(framework_res_source_path)/android/Manifest.java \
-			$(framework_res_source_path)/com/android/internal/R.java
+			$(framework_res_source_path)/com/android/internal/R.java \
+                        $(mokee_res_source_path)/mokee/R.java \
+                        $(mokee_res_source_path)/com/mokee/internal/R.java
 
 LOCAL_NO_STANDARD_LIBRARIES := true
 LOCAL_JAVA_LIBRARIES := bouncycastle core core-junit ext
@@ -285,8 +288,13 @@ framework_res_R_stamp := \
 	$(call intermediates-dir-for,APPS,framework-res,,COMMON)/src/R.stamp
 $(full_classes_compiled_jar): $(framework_res_R_stamp)
 
+mokee_res_R_stamp := \
+        $(call intermediates-dir-for,APPS,mokee-res,,COMMON)/src/R.stamp
+$(full_classes_compiled_jar): $(mokee_res_R_stamp)
+
 # Make sure that framework-res is installed when framework is.
 $(LOCAL_INSTALLED_MODULE): | $(dir $(LOCAL_INSTALLED_MODULE))framework-res.apk
+$(LOCAL_INSTALLED_MODULE): | $(dir $(LOCAL_INSTALLED_MODULE))mokee-res.apk
 
 framework_built := $(call java-lib-deps,framework)
 

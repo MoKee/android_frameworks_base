@@ -94,7 +94,7 @@ public class PlatLogoActivity extends Activity {
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
         mContent = new ImageView(this);
-        mContent.setImageResource(mIsCid ? com.android.internal.R.drawable.cidlogo
+        mContent.setImageResource(mIsCid ? com.mokee.internal.R.drawable.cidlogo
             : com.android.internal.R.drawable.platlogo_alt);
         mContent.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         
@@ -105,7 +105,7 @@ public class PlatLogoActivity extends Activity {
             @Override
             public void onClick(View v) {
                 mToast.show();
-                mContent.setImageResource(mIsCid ? com.android.internal.R.drawable.cidlogo_alt
+                mContent.setImageResource(mIsCid ? com.mokee.internal.R.drawable.cidlogo_alt
                     : com.android.internal.R.drawable.platlogo);
             }
         });

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2013 The MoKee OpenSource Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,9 +15,6 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-
-    <!-- ScreenShort Trash -->
-    <string name="trash">"放棄"</string>
 
     <!-- On the unlock gesture screen, shown at the top of the unlock screen to tell the user what to do. Below this text is the place for the user to draw the gesture. -->
     <string name="lockscreen_gesture_instructions">繪製解鎖手勢</string>

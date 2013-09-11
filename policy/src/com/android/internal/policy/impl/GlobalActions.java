@@ -411,7 +411,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                 Settings.Global.BUGREPORT_IN_POWER_MENU, 0) != 0;
         if (showBugReport) {
             mItems.add(
-                new SinglePressAction(com.android.internal.R.drawable.stat_sys_adb,
+                new SinglePressAction(com.mokee.internal.R.drawable.stat_sys_adb,
                         R.string.global_action_bug_report) {
 
                     public void onPress() {
@@ -895,7 +895,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
             }
 
             if (icon != null) {
-                icon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_lock_profile));
+                icon.setImageDrawable(context.getResources().getDrawable(com.mokee.internal.R.drawable.ic_lock_profile));
             }
 
             if (messageView != null) {

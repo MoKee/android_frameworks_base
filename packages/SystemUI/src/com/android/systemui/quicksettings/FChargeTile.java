@@ -60,7 +60,7 @@ public class FChargeTile extends QuickSettingsTile {
                 try {
                         enabled = !isFastChargeOn();
                         String fchargePath = mContext.getResources()
-                                .getString(com.android.internal.R.string.config_fastChargePath);
+                                .getString(com.mokee.internal.R.string.config_fastChargePath);
                         if (!fchargePath.isEmpty()) {
                             File fastcharge = new File(fchargePath);
                             if (fastcharge.exists()) {
@@ -94,7 +94,7 @@ public class FChargeTile extends QuickSettingsTile {
     public boolean isFastChargeOn() {
         try {
             String fchargePath = mContext.getResources()
-                    .getString(com.android.internal.R.string.config_fastChargePath);
+                    .getString(com.mokee.internal.R.string.config_fastChargePath);
             if (!fchargePath.isEmpty()) {
                 File fastcharge = new File(fchargePath);
                 if (fastcharge.exists()) {

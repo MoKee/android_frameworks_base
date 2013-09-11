@@ -16,20 +16,6 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Lunar -->    
-    <string name="status_year"  translatable="false">年</string>
-    <string name="status_month"  translatable="false">月</string>
-    <string name="status_day"  translatable="false">日</string>
-    <string name="status_leap"  translatable="false">闰</string> 
-    <string name="status_chushi"  translatable="false">初十</string>
-    <string name="status_ershi"  translatable="false">二十</string>
-    <string name="status_sanshi"  translatable="false">三十</string>
-    <string name="status_format1"  translatable="false">yyyy年MM月dd日</string>
-    <string name="status_format2"  translatable="false">1900年1月31日</string>
-
-    <!-- ScreenShort Trash -->
-    <string name="trash">Trash</string>
-
     <!-- On the unlock gesture screen, shown at the top of the unlock screen to tell the user what to do. Below this text is the place for the user to draw the gesture. -->
     <string name="lockscreen_gesture_instructions">Draw gesture to unlock</string>
     <!-- Shown to confirm that the user entered their lock gesture correctly. -->
