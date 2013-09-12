@@ -224,7 +224,7 @@
     <!-- The margin adjusment of the text items of the battery cluster -->
     <dimen name="status_bar_battery_cluster_text_margin">-1dip</dimen>
 
-    <!-- MOKEE ADD START -->
+    <!-- MOKEE MODIFY START -->
     <!-- Pie control panel -->
     <dimen name="pie_trigger_height">12dp</dimen>
     <dimen name="pie_radius_start">65dp</dimen>
@@ -253,16 +253,17 @@
     <dimen name="pie_tab_title_height">24dp</dimen>
     <dimen name="pie_item_size">40dp</dimen>
     <dimen name="pie_panel_padding">20dp</dimen>
-    <!-- halo -->
+    <!-- HALO -->
     <dimen name="halo_bubble_size">75dp</dimen>
     <dimen name="halo_number_size">24dp</dimen>
     <dimen name="halo_number_icon_size">18dp</dimen>
     <dimen name="halo_number_text_size">14sp</dimen>
     <dimen name="halo_speech_text_size">16sp</dimen>
+    <dimen name="halo_status_text_size">16sp</dimen>
     <dimen name="halo_speech_hpadding_short">4dp</dimen>
     <dimen name="halo_speech_hpadding_wide">13dp</dimen>
     <dimen name="halo_speech_vpadding_top">3dp</dimen>
     <dimen name="halo_speech_vpadding_bottom">3dp</dimen>
     <dimen name="halo_content_max_width">250dp</dimen>
-    <!-- MOKEE ADD END -->
+    <!-- MOKEE MODIFY END -->
 </resources>
