@@ -2439,8 +2439,8 @@ public class Activity extends ContextThemeWrapper
         final int action = ev.getAction();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                if (Settings.System.getInt(getContentResolver(),
-                    Settings.System.STATUSBAR_PEEK, 0) == 1) {
+                if (Settings.System.getIntForUser(getContentResolver(),
+                    Settings.System.STATUSBAR_PEEK, 0) == 1, UserHandle.USER_CURRENT) {
                     if (ev.getY() < getStatusBarHeight()) {
                         mQuickPeekInitialY = ev.getY();
                         mQuickPeekAction = true;
