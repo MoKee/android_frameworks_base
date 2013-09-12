@@ -492,7 +492,6 @@ public class HaloProperties extends FrameLayout implements BatteryStateChangeCal
         return dayOfMonth.format(new Date()).toUpperCase();
     }
 
-    @Override
     public void onBatteryLevelChanged(int level, boolean pluggedIn) {
         mBatteryLevel = level;
         mCharging = pluggedIn;
@@ -636,5 +635,11 @@ public class HaloProperties extends FrameLayout implements BatteryStateChangeCal
             string = string.substring(0, length - 1);
         }
         return string;
+    }
+
+    @Override
+    public void onBatteryLevelChanged(int level, int status) {
+        // TODO Auto-generated method stub
+        
     }
 }
