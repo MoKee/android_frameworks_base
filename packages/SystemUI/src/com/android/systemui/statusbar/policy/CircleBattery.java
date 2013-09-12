@@ -69,6 +69,7 @@ public class CircleBattery extends ImageView implements BatteryController.Batter
     private Paint   mPaintGray;
     private Paint   mPaintSystem;
     private Paint   mPaintRed;
+    private Paint   mPaintGreen;
 
     // runnable to invalidate view via mHandler.postDelayed() call
     private final Runnable mInvalidate = new Runnable() {
@@ -133,6 +134,7 @@ public class CircleBattery extends ImageView implements BatteryController.Batter
         mPaintGray = new Paint(mPaintFont);
         mPaintSystem = new Paint(mPaintFont);
         mPaintRed = new Paint(mPaintFont);
+        mPaintGreen = new Paint(mPaintFont);
 
         mPaintGray.setStrokeCap(Paint.Cap.BUTT);
         mPaintSystem.setStrokeCap(Paint.Cap.BUTT);
@@ -144,6 +146,7 @@ public class CircleBattery extends ImageView implements BatteryController.Batter
         // do not want to use static 0x404040 color value. would break theming.
         mPaintGray.setColor(res.getColor(R.color.darker_gray));
         mPaintRed.setColor(res.getColor(R.color.holo_red_light));
+        mPaintGreen.setColor(res.getColor(R.color.holo_green_dark));
 
         // font needs some extra settings
         mPaintFont.setTextAlign(Align.CENTER);
@@ -232,6 +235,7 @@ public class CircleBattery extends ImageView implements BatteryController.Batter
         } else if (level < mWarningLevel) {
             usePaint = mPaintRed;
         } else if (getBatteryStatus() == BatteryManager.BATTERY_STATUS_FULL) {
+            usePaint = mPaintGreen;
             level = 100;
         }
 
@@ -306,6 +310,7 @@ public class CircleBattery extends ImageView implements BatteryController.Batter
 
         float strokeWidth = mCircleSize / 6.5f;
         mPaintRed.setStrokeWidth(strokeWidth);
+        mPaintGreen.setStrokeWidth(strokeWidth);
         mPaintSystem.setStrokeWidth(strokeWidth);
         mPaintGray.setStrokeWidth(strokeWidth / 3.5f);
 
