@@ -51,6 +51,7 @@ public class TransparencyManager {
     private SomeInfo mStatusbarInfo = new SomeInfo();
 
     private final Context mContext;
+    private ContentResolver resolver;
 
     private Handler mHandler = new Handler();
 
@@ -76,6 +77,7 @@ public class TransparencyManager {
 
     public TransparencyManager(Context context) {
         mContext = context;
+        resolver = mContext.getContentResolver();
 
         mKeyguardManager = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
         mActivityManager = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
@@ -131,7 +133,7 @@ public class TransparencyManager {
                     if (mNavbarInfo.tempDisable) {
                         mNavbar.setBackgroundAlpha(1);
                         mNavbarInfo.tempDisable = false;
-                    } else if (mIsKeyguardShowing && mIsHomeShowing) {
+                    } else if (mIsKeyguardShowing && mIsHomeShowing || mIsKeyguardShowing && !mIsHomeShowing) {
                         if (mAlphaMode == 1) {
                             mNavbar.setBackgroundAlpha(mNavbarInfo.keyguardAlpha);
                         } else {
@@ -147,7 +149,7 @@ public class TransparencyManager {
                     if (mStatusbarInfo.tempDisable) {
                         mStatusbar.setBackgroundAlpha(1);
                         mStatusbarInfo.tempDisable = false;
-                    } else if (mIsKeyguardShowing && mIsHomeShowing) {
+                    } else if (mIsKeyguardShowing && mIsHomeShowing || mIsKeyguardShowing && !mIsHomeShowing) {
                         if (mAlphaMode == 1) {
                             mStatusbar.setBackgroundAlpha(mStatusbarInfo.keyguardAlpha);
                         } else {
@@ -209,8 +211,6 @@ public class TransparencyManager {
         }
 
         void observe() {
-            ContentResolver resolver = mContext.getContentResolver();
-
             resolver.registerContentObserver(
                     Settings.System.getUriFor(Settings.System.NAVIGATION_BAR_ALPHA), false,
                     this, UserHandle.USER_ALL);
@@ -230,8 +230,6 @@ public class TransparencyManager {
     }
 
     protected void updateSettings() {
-        ContentResolver resolver = mContext.getContentResolver();
-
         final float defaultAlpha = Float.valueOf(mContext.getResources().getInteger(R.integer.navigation_bar_transparency)) / 255;
         String alphas[];
         String settingValue = Settings.System.getStringForUser(resolver,
@@ -264,7 +262,6 @@ public class TransparencyManager {
                 mStatusbarInfo.keyguardAlpha = Float.parseFloat(alphas[1]) / 255;
             }
         }
-
         update();
     }
 }
