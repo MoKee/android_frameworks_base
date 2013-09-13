@@ -35,18 +35,18 @@
     <string name="halo_tutorial1">我是HALO</string>
     <string name="halo_tutorial2">通过双击并按住拖动来更换位置，单击并拖动来切换程序</string>
     <string name="halo_tutorial3">在设置中更改我的行为</string>
-    <string name="halo_battery_plugged">CHARGING</string>
-    <string name="halo_battery_unplugged">REMAINING</string>
-    <string name="halo_battery_full">FULL</string>
-    <string name="halo_aeroplane1">AEROPLANE</string>
-    <string name="halo_aeroplane2">MODE</string>
-    <string name="halo_wifi_on">WI-FI ON</string>
-    <string name="halo_wifi_off">WI-FI OFF</string>
-    <string name="halo_signal_bars_4">FULL</string>
-    <string name="halo_signal_bars_3">THREE BARS</string>
-    <string name="halo_signal_bars_2">TWO BARS</string>
-    <string name="halo_signal_bars_1">ONE BAR</string>
-    <string name="halo_signal_bars_none">NO BARS</string>
+    <string name="halo_battery_plugged">充电</string>
+    <string name="halo_battery_unplugged">剩余</string>
+    <string name="halo_battery_full">充满</string>
+    <string name="halo_aeroplane1">飞行</string>
+    <string name="halo_aeroplane2">模式</string>
+    <string name="halo_wifi_on">WI-FI 开启</string>
+    <string name="halo_wifi_off">WI-FI 关闭</string>
+    <string name="halo_signal_bars_4">满</string>
+    <string name="halo_signal_bars_3">三格</string>
+    <string name="halo_signal_bars_2">两格</string>
+    <string name="halo_signal_bars_1">一格</string>
+    <string name="halo_signal_bars_none">无</string>
 
     <!-- Title shown in notification popup for launching notification in floating mode -->
     <string name="status_bar_notification_floating_item_title">浮动模式</string>
