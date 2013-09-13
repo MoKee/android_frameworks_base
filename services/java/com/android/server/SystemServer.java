@@ -1127,8 +1127,8 @@ class ServerThread extends Thread {
                     }
                 } catch (IOException e) {
                     Log.e("FChargeToggle", "Couldn't write fast_charge file");
-                    Settings.System.putInt(context.getContentResolver(),
-                         Settings.System.FCHARGE_ENABLED, 0);
+                    Settings.System.putIntForUser(context.getContentResolver(),
+                         Settings.System.FCHARGE_ENABLED, 0, UserHandle.USER_CURRENT);
                 }
 
         Intent intent = new Intent();
