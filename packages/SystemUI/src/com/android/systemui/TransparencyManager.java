@@ -1,3 +1,18 @@
+/*
+ * Copyright (C) 2013 MoKee OpenSource Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 package com.android.systemui;
 
@@ -29,18 +44,22 @@ public class TransparencyManager {
 
     private static final String TAG = TransparencyManager.class.getSimpleName();
 
-    NavigationBarView mNavbar;
-    PanelBar mStatusbar;
+    private NavigationBarView mNavbar;
+    private PanelBar mStatusbar;
 
-    SomeInfo mNavbarInfo = new SomeInfo();
-    SomeInfo mStatusbarInfo = new SomeInfo();
+    private SomeInfo mNavbarInfo = new SomeInfo();
+    private SomeInfo mStatusbarInfo = new SomeInfo();
 
-    final Context mContext;
+    private final Context mContext;
 
-    Handler mHandler = new Handler();
+    private Handler mHandler = new Handler();
 
-    boolean mIsHomeShowing;
-    boolean mIsKeyguardShowing;
+    private boolean mIsHomeShowing;
+    private boolean mIsKeyguardShowing;
+    private int mAlphaMode;
+
+    private KeyguardManager mKeyguardManager;
+    private ActivityManager mActivityManager;
 
     private class SomeInfo {
         float keyguardAlpha;
@@ -57,6 +76,9 @@ public class TransparencyManager {
 
     public TransparencyManager(Context context) {
         mContext = context;
+
+        mKeyguardManager = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
+        mActivityManager = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
 
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
@@ -109,9 +131,13 @@ public class TransparencyManager {
                     if (mNavbarInfo.tempDisable) {
                         mNavbar.setBackgroundAlpha(1);
                         mNavbarInfo.tempDisable = false;
-                    } else if (mIsKeyguardShowing) {
-                        mNavbar.setBackgroundAlpha(mNavbarInfo.keyguardAlpha);
-                    } else if (mIsHomeShowing) {
+                    } else if (mIsKeyguardShowing && mIsHomeShowing) {
+                        if (mAlphaMode == 1) {
+                            mNavbar.setBackgroundAlpha(mNavbarInfo.keyguardAlpha);
+                        } else {
+                            mNavbar.setBackgroundAlpha(1);
+                        }
+                    } else if (mIsHomeShowing && !mIsKeyguardShowing) {
                         mNavbar.setBackgroundAlpha(mNavbarInfo.homeAlpha);
                     } else {
                         mNavbar.setBackgroundAlpha(1);
@@ -121,9 +147,13 @@ public class TransparencyManager {
                     if (mStatusbarInfo.tempDisable) {
                         mStatusbar.setBackgroundAlpha(1);
                         mStatusbarInfo.tempDisable = false;
-                    } else if (mIsKeyguardShowing) {
-                        mStatusbar.setBackgroundAlpha(mStatusbarInfo.keyguardAlpha);
-                    } else if (mIsHomeShowing) {
+                    } else if (mIsKeyguardShowing && mIsHomeShowing) {
+                        if (mAlphaMode == 1) {
+                            mStatusbar.setBackgroundAlpha(mStatusbarInfo.keyguardAlpha);
+                        } else {
+                            mStatusbar.setBackgroundAlpha(1);
+                        }
+                    } else if (mIsHomeShowing && !mIsKeyguardShowing) {
                         mStatusbar.setBackgroundAlpha(mStatusbarInfo.homeAlpha);
                     } else {
                         mStatusbar.setBackgroundAlpha(1);
@@ -135,9 +165,8 @@ public class TransparencyManager {
 
     private boolean isLauncherShowing() {
         try {
-            ActivityManager am = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
-            final List<ActivityManager.RecentTaskInfo> recentTasks = am
-                    .getRecentTasksForUser(
+            final List<ActivityManager.RecentTaskInfo> recentTasks =
+                mActivityManager.getRecentTasksForUser(
                             1, ActivityManager.RECENT_WITH_EXCLUDED,
                             UserHandle.CURRENT.getIdentifier());
             if (recentTasks.size() > 0) {
@@ -158,10 +187,10 @@ public class TransparencyManager {
     }
 
     private boolean isKeyguardShowing() {
-        KeyguardManager km = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
-        if (km == null)
+        if (mKeyguardManager == null) {
             return false;
-        return km.isKeyguardLocked();
+        }
+        return mKeyguardManager.isKeyguardLocked();
     }
 
     private boolean isCurrentHomeActivity(ComponentName component, ActivityInfo homeInfo) {
@@ -183,11 +212,14 @@ public class TransparencyManager {
             ContentResolver resolver = mContext.getContentResolver();
 
             resolver.registerContentObserver(
-                    Settings.System.getUriFor(Settings.System.NAVIGATION_BAR_ALPHA_CONFIG), false,
-                    this);
+                    Settings.System.getUriFor(Settings.System.NAVIGATION_BAR_ALPHA), false,
+                    this, UserHandle.USER_ALL);
             resolver.registerContentObserver(
-                    Settings.System.getUriFor(Settings.System.STATUS_BAR_ALPHA_CONFIG), false,
-                    this);
+                    Settings.System.getUriFor(Settings.System.STATUS_BAR_ALPHA), false,
+                    this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(
+                    Settings.System.getUriFor(Settings.System.STATUS_NAV_BAR_ALPHA_MODE), false,
+                    this, UserHandle.USER_ALL);
             updateSettings();
         }
 
@@ -203,7 +235,10 @@ public class TransparencyManager {
         final float defaultAlpha = Float.valueOf(mContext.getResources().getInteger(R.integer.navigation_bar_transparency)) / 255;
         String alphas[];
         String settingValue = Settings.System.getStringForUser(resolver,
-                Settings.System.NAVIGATION_BAR_ALPHA_CONFIG, UserHandle.USER_CURRENT);
+                Settings.System.NAVIGATION_BAR_ALPHA, UserHandle.USER_CURRENT);
+        mAlphaMode = Settings.System.getIntForUser(resolver,
+                Settings.System.STATUS_NAV_BAR_ALPHA_MODE, 1, UserHandle.USER_CURRENT);
+
         //Log.e(TAG, "nav bar config: " + settingValue);
         if (settingValue == null) {
             mNavbarInfo.homeAlpha = defaultAlpha;
@@ -217,7 +252,7 @@ public class TransparencyManager {
         }
 
         settingValue = Settings.System.getStringForUser(resolver,
-                Settings.System.STATUS_BAR_ALPHA_CONFIG, UserHandle.USER_CURRENT);
+                Settings.System.STATUS_BAR_ALPHA, UserHandle.USER_CURRENT);
         //Log.e(TAG, "status bar config: " + settingValue);
         if (settingValue == null) {
             mStatusbarInfo.homeAlpha = defaultAlpha;

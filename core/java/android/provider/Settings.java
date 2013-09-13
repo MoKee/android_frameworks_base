@@ -2869,12 +2869,14 @@ public final class Settings {
         /**
          * @hide
          */
-        public static final String NAVIGATION_BAR_ALPHA_CONFIG = "navigation_bar_alpha_config";
+        public static final String STATUS_BAR_ALPHA = "status_bar_alpha";
 
         /**
+         * Sets transparency mode of status and navigation bar
+         * 0 = only home, 1 = keyguard and home (default)
          * @hide
          */
-        public static final String STATUS_BAR_ALPHA_CONFIG = "status_bar_alpha_config";
+        public static final String STATUS_NAV_BAR_ALPHA_MODE = "status_nav_bar_alpha_mode";
 
         /**
          * Pie controls, should enough to dumb users
