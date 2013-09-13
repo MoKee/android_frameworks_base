@@ -549,7 +549,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
 
             mStatusTextSize = mContext.getResources().getDimensionPixelSize(R.dimen.halo_status_text_size) * mHaloSize;
 
-            if (expanded) {
+            if (expanded && mState == State.IDLE) {
                 mEffect.mHaloStatusText.setTextAlign(Paint.Align.CENTER);
                 mEffect.statusBubblesShow();
                 statusAnimation = true;
