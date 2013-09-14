@@ -14,12 +14,9 @@
      limitations under the License.
 -->
 
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
 
-    <!-- Date format for display: should match the lockscreen in /policy.  -->
-    <string name="abbrev_wday_month_day_no_year">@*android:string/abbrev_wday_month_day_no_year</string>
-
-    <!-- Active Display -->
-    <string name="ad_date_pattern">eeeMMMd</string>
+    <!-- Minimum prediction score required to pass a gesture as recognized -->
+    <integer name="min_gesture_prediction_score">2</integer>
 
 </resources>

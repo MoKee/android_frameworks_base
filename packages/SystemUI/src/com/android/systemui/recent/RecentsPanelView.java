@@ -492,6 +492,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
 
         mRecentsScrim = findViewById(R.id.recents_bg_protect);
         mRecentsNoApps = findViewById(R.id.recents_no_apps);
+
         mClearRecents = (ImageView) findViewById(R.id.recents_clear);
         mShortcutBar = (ScrollView) findViewById(R.id.shortcut_bar);
         mAlarmClock = (ImageView) findViewById(R.id.shortcut_alarmclock);
@@ -621,7 +622,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
 		case R.id.shortcut_fuubo:
 			startApplication("me.imid.fuubo","me.imid.fuubo.ui.Fuubo");
 			break;
-	}	
+    	}	
     }
 
     public void setMinSwipeAlpha(float minAlpha) {

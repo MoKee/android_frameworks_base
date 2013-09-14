@@ -14,12 +14,9 @@
      limitations under the License.
 -->
 
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-
-    <!-- Date format for display: should match the lockscreen in /policy.  -->
-    <string name="abbrev_wday_month_day_no_year">@*android:string/abbrev_wday_month_day_no_year</string>
-
-    <!-- Active Display -->
-    <string name="ad_date_pattern">eeeMMMd</string>
-
-</resources>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/glow_pad_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+</merge>

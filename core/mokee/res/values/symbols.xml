@@ -113,4 +113,9 @@
   <java-symbol type="anim" name="slide_out_right_no_fade" />
   <java-symbol type="anim" name="slide_in_left_no_fade" />
   <java-symbol type="anim" name="slide_out_left_no_fade" />
+
+  <!-- Active Display -->
+  <java-symbol type="dimen" name="glowpad_notification_font_size" />
+  <java-symbol type="dimen" name="glowpad_notification_text_radius" />
+
 </resources>

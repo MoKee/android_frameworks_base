@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2012-2013 The MoKee OpenSource Project
+<!-- Copyright (C) 2013 The MoKee OpenSource Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -44,6 +44,7 @@
     <dimen name="pie_tab_title_height">24dp</dimen>
     <dimen name="pie_item_size">40dp</dimen>
     <dimen name="pie_panel_padding">20dp</dimen>
+
     <!-- HALO -->
     <dimen name="halo_bubble_size">75dp</dimen>
     <dimen name="halo_number_size">24dp</dimen>
@@ -56,5 +57,25 @@
     <dimen name="halo_speech_vpadding_top">3dp</dimen>
     <dimen name="halo_speech_vpadding_bottom">3dp</dimen>
     <dimen name="halo_content_max_width">250dp</dimen>
+
+    <!-- Active Display -->
+    <!-- Top margin for overflow notifications shown in the P.O.R.N. view -->
+    <dimen name="glowpad_overflow_notifications_margin_top">48dp</dimen>
+    <!-- Top margin for overflow notifications container shown in the active display view -->
+    <dimen name="ad_clock_margin_bottom">60dp</dimen>
+    <!-- left/right margin for extra notifications in ActiveDisplayView -->
+    <dimen name="ad_notification_margin">4dp</dimen>
+    <!-- Active display overflow notification icon size -->
+    <dimen name="overflow_icon_size">28dp</dimen>
+    <!-- Active display Handle notification icon size -->
+    <dimen name="handle_icon_size">32dp</dimen>
+    <!-- Active display overflow notification padding -->
+    <dimen name="overflow_icon_padding">2dp</dimen>
+    <!-- Active display clock font size -->
+    <dimen name="ad_clock_font_size">75dp</dimen>
+    <!-- Active display date font size -->
+    <dimen name="ad_date_font_size">18dp</dimen>
+    <!-- AM/PM size in active display -->
+    <dimen name="ad_ampm_font_size">32dp</dimen>
 
 </resources>
