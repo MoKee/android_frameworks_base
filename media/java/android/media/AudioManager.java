@@ -222,6 +222,8 @@ public class AudioManager {
     public static final int STREAM_DTMF = AudioSystem.STREAM_DTMF;
     /** @hide The audio stream for text to speech (TTS) */
     public static final int STREAM_TTS = AudioSystem.STREAM_TTS;
+    /** @hide The audio stream for FM Radio */
+    public static final int STREAM_FM = AudioSystem.STREAM_FM;
     /** @hide The audio stream for incall music delivery */
     public static final int STREAM_INCALL_MUSIC = AudioSystem.STREAM_INCALL_MUSIC;
     /** Number of audio streams */
@@ -243,6 +245,7 @@ public class AudioManager {
         7,  // STREAM_SYSTEM_ENFORCED
         11, // STREAM_DTMF
         11, // STREAM_TTS
+        7,  // STREAM_FM
         4   // STREAM_INCALL_MUSIC
     };
 
@@ -1614,6 +1617,22 @@ public class AudioManager {
      */
     public boolean isMusicActive() {
         return AudioSystem.isStreamActive(STREAM_MUSIC, 0);
+    }
+
+    /**
+     * Checked whether FM radio is active.
+     *
+     * @return true if FM radio is active
+     * @hide
+     */
+    public boolean isFmActive() {
+        IAudioService service = getService();
+        try {
+            return service.isFmActive();
+        } catch (RemoteException e) {
+            Log.e(TAG, "Dead object in isFmActive", e);
+        }
+        return false;
     }
 
     /**
