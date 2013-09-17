@@ -1195,4 +1195,23 @@ public interface WindowManagerPolicy {
      * @return True if the window is a top level one.
      */
     public boolean isTopLevelWindow(int windowType);
+
+    /**
+     * Determine the animation to run for a transition after display
+     * metrics changed.
+     *
+     * @param anim The exiting animation resource id is stored in anim[0], the
+     * entering animation resource id is stored in anim[1].
+     */
+    public void selectDisplayMetricsUpdateAnimationLw(int anim[]);
+
+    /**
+     * A window animation has been scheduled
+     */
+    public void windowAnimationStarted();
+
+    /**
+     * Animating windows has finished
+     */
+    public void windowAnimationFinished();
 }
