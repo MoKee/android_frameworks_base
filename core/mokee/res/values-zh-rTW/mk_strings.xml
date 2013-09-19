@@ -19,4 +19,20 @@
     <!-- ScreenShort Trash -->
     <string name="trash">"放棄"</string>
 
+    <!-- Custom system animations -->
+    <string name="animation_fade">淡出</string>
+    <string name="animation_slide_right">向右滑動</string>
+    <string name="animation_slide_left">向左滑動</string>
+    <string name="animation_slide_right_no_fade">向右滑動 (無淡出效果)</string>
+    <string name="animation_slide_left_no_fade">向左滑動 (無淡出效果)</string>
+    <string name="animation_slide_up">向下滑動</string>
+    <string name="animation_slide_down">向上滑動</string>
+    <string name="animation_default">預設</string>
+    <string name="animation_translucent">半透明</string>
+    <string name="animation_grow_shrink">從頂部展開</string>
+    <string name="animation_grow_shrink_center">從中間展開</string>
+    <string name="animation_grow_shrink_bottom">從底部展開</string>
+    <string name="animation_grow_shrink_left">從左側展開</string>
+    <string name="animation_grow_shrink_right">從右側展開</string>
+    <string name="action_null">空</string>
 </resources>
