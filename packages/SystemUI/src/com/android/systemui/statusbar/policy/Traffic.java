@@ -16,8 +16,6 @@
 
 package com.android.systemui.statusbar.policy;
 
-import java.text.DecimalFormat;
-
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -25,7 +23,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
 import android.net.ConnectivityManager;
-import android.net.TrafficStats;
 import android.os.Handler;
 import android.os.Message;
 import android.os.UserHandle;
@@ -34,140 +31,179 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.text.DecimalFormat;
+
 public class Traffic extends TextView {
-	private boolean mAttached;
-	TrafficStats mTrafficStats;
-	boolean showTraffic;
-	Handler mHandler;
-	Handler mTrafficHandler;
-	float speed;
-	float totalRxBytes;
+    private boolean mAttached;
+    private boolean showTraffic;
+    private Handler mHandler;
+    private Handler mTrafficHandler;
+    private float speed;
+    private float totalRxBytes;
 
-	class SettingsObserver extends ContentObserver {
-		SettingsObserver(Handler handler) {
-			super(handler);
-		}
+    private BufferedReader in;
 
-		void observe() {
-			ContentResolver resolver = mContext.getContentResolver();
-			resolver.registerContentObserver(Settings.System
-					.getUriFor(Settings.System.STATUS_BAR_TRAFFIC), false, this);
-		}
+    class SettingsObserver extends ContentObserver {
+        SettingsObserver(Handler handler) {
+            super(handler);
+        }
 
-		@Override
-		public void onChange(boolean selfChange) {
-			updateSettings();
-		}
-	}
+        void observe() {
+            ContentResolver resolver = mContext.getContentResolver();
+            resolver.registerContentObserver(Settings.System
+                    .getUriFor(Settings.System.STATUS_BAR_TRAFFIC), false, this);
+        }
 
-	public Traffic(Context context) {
-		this(context, null);
-	}
+        @Override
+        public void onChange(boolean selfChange) {
+            updateSettings();
+        }
+    }
 
-	public Traffic(Context context, AttributeSet attrs) {
-		this(context, attrs, 0);
-	}
+    public Traffic(Context context) {
+        this(context, null);
+    }
 
-	public Traffic(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-		mHandler = new Handler();
-		SettingsObserver settingsObserver = new SettingsObserver(mHandler);
-		mTrafficStats = new TrafficStats();
-		settingsObserver.observe();
-		updateSettings();
-	}
+    public Traffic(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
 
-	@Override
-	protected void onAttachedToWindow() {
-		super.onAttachedToWindow();
+    public Traffic(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        mHandler = new Handler();
+        SettingsObserver settingsObserver = new SettingsObserver(mHandler);
+        settingsObserver.observe();
+        updateSettings();
+    }
 
-		if (!mAttached) {
-			mAttached = true;
-			IntentFilter filter = new IntentFilter();
-			filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-			getContext().registerReceiver(mIntentReceiver, filter, null,
-					getHandler());
-		}
-		updateSettings();
-	}
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
 
-	@Override
-	protected void onDetachedFromWindow() {
-		super.onDetachedFromWindow();
-		if (mAttached) {
-			getContext().unregisterReceiver(mIntentReceiver);
-			mAttached = false;
-		}
-	}
+        if (!mAttached) {
+            mAttached = true;
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+            getContext().registerReceiver(mIntentReceiver, filter, null,
+                    getHandler());
+        }
+        updateSettings();
+    }
 
-	private final BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			String action = intent.getAction();
-			if (action.equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
-				updateSettings();
-			}
-		}
-	};
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (mAttached) {
+            getContext().unregisterReceiver(mIntentReceiver);
+            mAttached = false;
+        }
+    }
 
-	public void updateTraffic() {
-		mTrafficHandler = new Handler() {
-			@Override
-			public void handleMessage(Message msg) {
-				speed = (mTrafficStats.getTotalRxBytes() - totalRxBytes) / 1024 / 3;
-				totalRxBytes = mTrafficStats.getTotalRxBytes();
-				DecimalFormat DecimalFormatfnum = new DecimalFormat("##0.00");
-				if (speed / 1024 >= 1) {
-					setText(DecimalFormatfnum.format(speed / 1024) + "MB/s");
-				} else if (speed <= 0.01) {
-					setText(DecimalFormatfnum.format(speed * 1024) + "B/s");
-				} else {
-					setText(DecimalFormatfnum.format(speed) + "KB/s");
-				}
-				update();
-				super.handleMessage(msg);
-			}
-		};
-		totalRxBytes = mTrafficStats.getTotalRxBytes();
-		mTrafficHandler.sendEmptyMessage(0);
-	}
+    private final BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (action.equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
+                updateSettings();
+            }
+        }
+    };
 
-	private boolean getConnectAvailable() {
-		try {
-			ConnectivityManager connectivityManager = (ConnectivityManager) mContext
-					.getSystemService(Context.CONNECTIVITY_SERVICE);
-			if (connectivityManager.getActiveNetworkInfo().isConnected())
-				return true;
-			else
-				return false;
-		} catch (Exception ex) {
-		}
-		return false;
-	}
+    public void updateTraffic() {
+        mTrafficHandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                speed = (getTotalReceivedBytes() - totalRxBytes) / 1024;
+                totalRxBytes = getTotalReceivedBytes();
 
-	public void update() {
-		mTrafficHandler.removeCallbacks(mRunnable);
-		mTrafficHandler.postDelayed(mRunnable, 3000);
-	}
+                DecimalFormat DecimalFormatfnum = new DecimalFormat("##0.00");
+                if (speed / 1024 >= 1) {
+                    setText(DecimalFormatfnum.format(speed / 1024) + "MB/s");
+                } else if (speed <= 0.01) {
+                    setText(DecimalFormatfnum.format(speed * 1024) + "B/s");
+                } else {
+                    setText(DecimalFormatfnum.format(speed) + "KB/s");
+                }
+                update();
+                super.handleMessage(msg);
+            }
+        };
+        totalRxBytes = getTotalReceivedBytes();
+        mTrafficHandler.sendEmptyMessage(0);
+    }
 
-	Runnable mRunnable = new Runnable() {
-		@Override
-		public void run() {
-			mTrafficHandler.sendEmptyMessage(0);
-		}
-	};
+    private int getTotalReceivedBytes() {
+        String line;
+        String[] segs;
+        int received = 0;
+        int i;
+        int tmp = 0;
+        boolean isNum;
+        try {
+            FileReader fr = new FileReader("/proc/net/dev");
+            in = new BufferedReader(fr, 500);
+            while ((line = in.readLine()) != null) {
+                line = line.trim();
+                if (line.startsWith("rmnet") || line.startsWith("eth") || line.startsWith("wlan")) {
+                    segs = line.split(":")[1].split(" ");
+                    for (i = 0; i < segs.length; i++) {
+                        isNum = true;
+                        try {
+                            tmp = Integer.parseInt(segs[i]);
+                        } catch (Exception e) {
+                            isNum = false;
+                        }
+                        if (isNum == true) {
+                            received = received + tmp;
+                            break;
+                        }
+                    }
+                }
+            }
+        } catch (IOException e) {
+            return -1;
+        }
+        return received;
+    }
 
-	private void updateSettings() {
-		ContentResolver resolver = mContext.getContentResolver();
-		showTraffic = (Settings.System.getIntForUser(resolver,
-				Settings.System.STATUS_BAR_TRAFFIC, 0, UserHandle.USER_CURRENT) == 1);
-		if (showTraffic && getConnectAvailable()) {
-			if (mAttached) {
-				updateTraffic();
-			}
-			setVisibility(View.VISIBLE);
-		} else
-			setVisibility(View.GONE);
-	}
+    private boolean getConnectAvailable() {
+        try {
+            ConnectivityManager connectivityManager = (ConnectivityManager) mContext
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+            if (connectivityManager.getActiveNetworkInfo().isConnected())
+                return true;
+            else
+                return false;
+        } catch (Exception ex) {
+        }
+        return false;
+    }
+
+    public void update() {
+        mTrafficHandler.removeCallbacks(mRunnable);
+        mTrafficHandler.postDelayed(mRunnable, 3000);
+    }
+
+    Runnable mRunnable = new Runnable() {
+        @Override
+        public void run() {
+            mTrafficHandler.sendEmptyMessage(0);
+        }
+    };
+
+    private void updateSettings() {
+        ContentResolver resolver = mContext.getContentResolver();
+        showTraffic = (Settings.System.getIntForUser(resolver,
+                Settings.System.STATUS_BAR_TRAFFIC, 0, UserHandle.USER_CURRENT) == 1);
+        if (showTraffic && getConnectAvailable()) {
+            if (mAttached) {
+                updateTraffic();
+            }
+            setVisibility(View.VISIBLE);
+        } else
+            setVisibility(View.GONE);
+    }
 }
-
