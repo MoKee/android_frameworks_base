@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2012-2013 The MoKee OpenSource Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,6 +35,18 @@
     <string name="halo_tutorial1">我是HALO</string>
     <string name="halo_tutorial2">通過雙擊並按住拖動來更換位置，單擊並拖動來切換程序</string>
     <string name="halo_tutorial3">在設置中更改我的行為</string>
+    <string name="halo_battery_plugged">充電</string>
+    <string name="halo_battery_unplugged">剩餘</string>
+    <string name="halo_battery_full">充滿</string>
+    <string name="halo_aeroplane1">飛行</string>
+    <string name="halo_aeroplane2">模式</string>
+    <string name="halo_wifi_on">WI-FI 開啟</string>
+    <string name="halo_wifi_off">WI-FI 關閉</string>
+    <string name="halo_signal_bars_4">滿</string>
+    <string name="halo_signal_bars_3">三格</string>
+    <string name="halo_signal_bars_2">兩格</string>
+    <string name="halo_signal_bars_1">一格</string>
+    <string name="halo_signal_bars_none">無</string>
 
     <!-- Title shown in notification popup for launching notification in floating mode -->
     <string name="status_bar_notification_floating_item_title">浮動模式</string>
