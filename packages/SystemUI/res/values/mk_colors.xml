@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2012-2013 The MoKee OpenSource Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+
+    <!-- Transparency nav bar -->
+    <drawable name="nav_bar_bg">#ff000000</drawable>
+
+    <!-- PIE -->
+    <color name="qs_tile_user_label">#CC000000</color>
+    
+    <!-- QuickSettings colors -->
+    <color name="quicksettings_text_color_light">#ff333333</color>
+    <color name="quicksettings_text_color_dark">#ffCCCCCC</color>
+    <color name="quicksettings_text_background_light">#ccffffff</color>
+    <color name="quicksettings_text_background_dark">#cc000000</color>
+    
+    <!-- Quick Nav Panel -->
+    <color name="qcMenuBackground">#C0000000</color>
+    <color name="qc_tab_nr">#F033B5E5</color>
+    
+    <!-- Pie control panel -->
+    <color name="pie_menu_background">#C0000000</color>
+    <color name="alpha_mask">#aa000000</color>
+    <color name="opaque_mask">#ff000000</color>
+    <color name="snap_background">#ffffffff</color>
+    <color name="pie_background">#e006b5f5</color>
+    <color name="pie_button">#b2ffffff</color>
+    <color name="pie_select">#aa333333</color>
+    <color name="pie_outlines">#00000000</color>
+    <color name="chevron_left">#0999cc</color>
+    <color name="chevron_right">#53d5e5</color>
+    <color name="battery_juice">#008abc</color>
+    <color name="battery_juice_low">#ffbb33</color>
+    <color name="battery_juice_critical">#ff4444</color>
+    <color name="battery_background">#ffffff</color>
+    <color name="status">#ffffff</color>
+    <color name="toggle_text">#ffffffff</color>
+    <color name="toggle_text_changing_state_color">#ff787878</color>
+    <color name="toggle_image_changing_state_overlay">@color/toggle_text_changing_state_color</color>
+
+</resources>
