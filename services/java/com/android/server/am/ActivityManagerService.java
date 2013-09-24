@@ -127,7 +127,6 @@ import android.os.SystemProperties;
 import android.os.UpdateLock;
 import android.os.UserHandle;
 import android.provider.Settings;
-import android.provider.Telephony.Sms.Intents;
 import android.text.format.Time;
 import android.util.EventLog;
 import android.util.Log;
@@ -1407,6 +1406,21 @@ public final class ActivityManagerService  extends ActivityManagerNative
                 timeoutUserSwitch((UserStartedState)msg.obj, msg.arg1, msg.arg2);
                 break;
             }
+            case IMMERSIVE_MODE_LOCK_MSG: {
+                final boolean nextState = (msg.arg1 != 0);
+                if (mUpdateLock.isHeld() != nextState) {
+                    if (DEBUG_IMMERSIVE) {
+                        final ActivityRecord r = (ActivityRecord) msg.obj;
+                        Slog.d(TAG, "Applying new update lock state '" + nextState + "' for " + r);
+                    }
+                    if (nextState) {
+                        mUpdateLock.acquire();
+                    } else {
+                        mUpdateLock.release();
+                    }
+                }
+                break;
+            }
             case POST_PRIVACY_NOTIFICATION_MSG: {
                 INotificationManager inm = NotificationManager.getService();
                 if (inm == null) {
@@ -1470,21 +1484,6 @@ public final class ActivityManagerService  extends ActivityManagerNative
                 } catch (RemoteException e) {
                 }
             } break;
-            case IMMERSIVE_MODE_LOCK_MSG: {
-                final boolean nextState = (msg.arg1 != 0);
-                if (mUpdateLock.isHeld() != nextState) {
-                    if (DEBUG_IMMERSIVE) {
-                        final ActivityRecord r = (ActivityRecord) msg.obj;
-                        Slog.d(TAG, "Applying new update lock state '" + nextState + "' for " + r);
-                    }
-                    if (nextState) {
-                        mUpdateLock.acquire();
-                    } else {
-                        mUpdateLock.release();
-                    }
-                }
-                break;
-            }
             }
         }
     };
@@ -7740,30 +7739,6 @@ public final class ActivityManagerService  extends ActivityManagerNative
             pae.haveResult = true;
             pae.notifyAll();
         }
-    }
-
-    public boolean isPrivacyGuardEnabledForProcess(int pid) {
-        ProcessRecord proc;
-        synchronized (mPidsSelfLocked) {
-            proc = mPidsSelfLocked.get(pid);
-        }
-        if (proc == null) {
-            return false;
-        }
-        try {
-            return AppGlobals.getPackageManager().getPrivacyGuardSetting(
-                    proc.info.packageName, proc.userId);
-        } catch (RemoteException e) {
-            Log.e(TAG, e.getMessage(), e);
-        }
-        return false;
-    }
-
-    public boolean isFilteredByPrivacyGuard(String intent) {
-        return  Intents.SMS_RECEIVED_ACTION.equals(intent) ||
-                Intents.DATA_SMS_RECEIVED_ACTION.equals(intent) ||
-                Intents.SMS_EMERGENCY_CB_RECEIVED_ACTION.equals(intent) ||
-                Intents.SMS_CB_RECEIVED_ACTION.equals(intent);
     }
 
     public void registerProcessObserver(IProcessObserver observer) {
