@@ -188,7 +188,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private static final int KEY_MASK_ASSIST = 0x08;
     private static final int KEY_MASK_APP_SWITCH = 0x10;
     private static final int KEY_MASK_CAMERA = 0x20;
-    private static final int KEY_MASK_SLEEP = 0x40;
 
     /**
      * These are the system UI flags that, when changing, can cause the layout
@@ -990,7 +989,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 triggerVirtualKeypress(KeyEvent.KEYCODE_CAMERA);
                 break;
             case KEY_ACTION_SLEEP:
-                triggerVirtualKeypress(KeyEvent.KEYCODE_POWER);
+                mPowerManager.goToSleep(SystemClock.uptimeMillis());
                 break;
             default:
                 break;
@@ -1185,7 +1184,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         final boolean hasAssist = (mDeviceHardwareKeys & KEY_MASK_ASSIST) != 0;
         final boolean hasAppSwitch = (mDeviceHardwareKeys & KEY_MASK_APP_SWITCH) != 0;
         final boolean hasCamera = (mDeviceHardwareKeys & KEY_MASK_CAMERA) != 0;
-        final boolean hasSleep = (mDeviceHardwareKeys & KEY_MASK_SLEEP) != 0;
         final ContentResolver resolver = mContext.getContentResolver();
 
         // initialize all assignments to sane defaults
