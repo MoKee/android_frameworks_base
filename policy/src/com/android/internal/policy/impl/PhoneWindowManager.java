@@ -177,7 +177,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private static final int KEY_ACTION_SEARCH = 3;
     private static final int KEY_ACTION_VOICE_SEARCH = 4;
     private static final int KEY_ACTION_IN_APP_SEARCH = 5;
-    private static final int KEY_ACTION_SLEEP = 6;
+    private static final int KEY_ACTION_LAUNCH_CAMERA = 6;
+    private static final int KEY_ACTION_SLEEP = 7;
 
     // Masks for checking presence of hardware keys.
     // Must match values in core/res/res/values/config.xml
@@ -186,6 +187,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private static final int KEY_MASK_MENU = 0x04;
     private static final int KEY_MASK_ASSIST = 0x08;
     private static final int KEY_MASK_APP_SWITCH = 0x10;
+    private static final int KEY_MASK_CAMERA = 0x20;
+    private static final int KEY_MASK_SLEEP = 0x40;
 
     /**
      * These are the system UI flags that, when changing, can cause the layout
@@ -662,7 +665,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     Settings.System.NAVIGATION_BAR_HEIGHT), false, this,
 					UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.AUTO_HIDE_STATUSBAR), false, this, UserHandle.USER_ALL);
+                    Settings.System.AUTO_HIDE_STATUSBAR), false, this,
+					UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.TOGGLE_NOTIFICATION_SHADE), false, this);
 
@@ -982,8 +986,11 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             case KEY_ACTION_IN_APP_SEARCH:
                 triggerVirtualKeypress(KeyEvent.KEYCODE_SEARCH);
                 break;
+            case KEY_ACTION_LAUNCH_CAMERA:
+                triggerVirtualKeypress(KeyEvent.KEYCODE_CAMERA);
+                break;
             case KEY_ACTION_SLEEP:
-                mPowerManager.goToSleep(SystemClock.uptimeMillis());
+                triggerVirtualKeypress(KeyEvent.KEYCODE_POWER);
                 break;
             default:
                 break;
@@ -1177,6 +1184,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         final boolean hasHome = (mDeviceHardwareKeys & KEY_MASK_HOME) != 0;
         final boolean hasAssist = (mDeviceHardwareKeys & KEY_MASK_ASSIST) != 0;
         final boolean hasAppSwitch = (mDeviceHardwareKeys & KEY_MASK_APP_SWITCH) != 0;
+        final boolean hasCamera = (mDeviceHardwareKeys & KEY_MASK_CAMERA) != 0;
+        final boolean hasSleep = (mDeviceHardwareKeys & KEY_MASK_SLEEP) != 0;
         final ContentResolver resolver = mContext.getContentResolver();
 
         // initialize all assignments to sane defaults
@@ -1403,7 +1412,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     Settings.System.VOLUME_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1);
             mVolBtnMusicControls = (Settings.System.getIntForUser(resolver,
                     Settings.System.VOLBTN_MUSIC_CONTROLS, 1, UserHandle.USER_CURRENT) == 1);
-					
+
             // Height of the navigation bar when presented horizontally at bottom	
             int mNavButtonsHeight = Settings.System.getIntForUser(resolver,
                     Settings.System.NAVIGATION_BAR_HEIGHT, 48, UserHandle.USER_CURRENT);
@@ -1413,7 +1422,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             	mNavigationBarHeightForRotation[mLandscapeRotation] =
             	mNavigationBarHeightForRotation[mSeascapeRotation] =
                 mNavButtonsHeight * DisplayMetrics.DENSITY_DEVICE/DisplayMetrics.DENSITY_DEFAULT;
-					
+
             // Width of the navigation bar when presented vertically along one side
             	mNavigationBarWidthForRotation[mPortraitRotation] =
             	mNavigationBarWidthForRotation[mUpsideDownRotation] =
