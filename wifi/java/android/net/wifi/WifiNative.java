@@ -212,7 +212,7 @@ public class WifiNative {
      * RANGE=ID- gets results from ID
      * MASK=<N> see wpa_supplicant/src/common/wpa_ctrl.h for details
      */
-    public String scanResults(int sid) {
+    public String scanResults (int sid) {
         return doStringCommand("BSS RANGE=" + sid + "- MASK=0x21987");
     }
 
@@ -837,6 +837,27 @@ public class WifiNative {
     }
 
     public native static boolean setMode(int mode);
+
+    /**Create P2P GO on the operating frequency*/
+    public boolean p2pGroupAddOnSpecifiedFreq(int freq) {
+        return doBooleanCommand("P2P_GROUP_ADD" + " freq=" + freq);
+    }
+
+    /**Set Channel preferrence eg., p2p_pref_chan=81:1,81:2,81:3,81:4,81:5,81:6*/
+    public boolean setPreferredChannel(int startChannel, int endChannel) {
+      int i = 0;
+      if ((startChannel == 0) || (endChannel == 0)) return false;
+          StringBuffer strBuf = new StringBuffer();
+          String command = "SET p2p_pref_chan ";
+          for (i = startChannel; i<=endChannel; i++) {
+              strBuf.append("81:" + i);
+              strBuf.append(",");
+          }
+       strBuf.deleteCharAt(strBuf.length() - 1);
+       command += strBuf;
+       Log.d(mTAG, "setPreferredChannel Command that goes to Supplicant is=" + command);
+       return doBooleanCommand(command) && doBooleanCommand("SAVE_CONFIG");
+    }
 
     /* Set the current mode of miracast operation.
      *  0 = disabled
