@@ -22,6 +22,9 @@
     <!-- Wether device has dash charging support -->
     <bool name="config_hasDashCharger">false</bool>
 
+    <!-- True if the gesture service should be started at system start -->
+    <bool name="config_enableGestureService">false</bool>
+
     <!-- EdgeGesture service -->
     <java-symbol type="dimen" name="edge_gesture_trigger_distance" />
     <java-symbol type="dimen" name="edge_gesture_perpendicular_distance" />
