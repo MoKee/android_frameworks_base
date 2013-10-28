@@ -299,15 +299,20 @@ public abstract class BaseStatusBar extends SystemUI implements
         void observe() {
             ContentResolver resolver = mContext.getContentResolver();
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.EXPANDED_DESKTOP_STATE), false, this);
+                    Settings.System.EXPANDED_DESKTOP_STATE), false, this,
+                    UserHandle.USER_CURRENT);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.EXPANDED_DESKTOP_STYLE), false, this);
+                    Settings.System.EXPANDED_DESKTOP_STYLE), false, this,
+                    UserHandle.USER_CURRENT);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.PIE_CONTROLS), false, this);
+                    Settings.System.PIE_CONTROLS), false, this,
+                    UserHandle.USER_CURRENT);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.PIE_GRAVITY), false, this);
+                    Settings.System.PIE_GRAVITY), false, this,
+                    UserHandle.USER_CURRENT);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.PIE_TRIGGER), false, this);
+                    Settings.System.PIE_TRIGGER), false, this,
+                    UserHandle.USER_CURRENT);
         }
 
         @Override
@@ -328,7 +333,8 @@ public abstract class BaseStatusBar extends SystemUI implements
         public void observe() {
             ContentResolver resolver = mContext.getContentResolver();
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.STATUS_BAR_COLLAPSE_ON_DISMISS), false, this);
+                    Settings.System.STATUS_BAR_COLLAPSE_ON_DISMISS), false, this,
+                    UserHandle.USER_CURRENT);
             update();
         }
 
@@ -875,8 +881,8 @@ public abstract class BaseStatusBar extends SystemUI implements
 
                 final String packageNameF = sbn.getPackageName();
                 final PendingIntent contentIntent = sbn.getNotification().contentIntent;
-                boolean expanded = Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.EXPANDED_DESKTOP_STATE, 0) == 1;
+                boolean expanded = Settings.System.getIntForUser(mContext.getContentResolver(),
+                        Settings.System.EXPANDED_DESKTOP_STATE, 0, UserHandle.USER_CURRENT) == 1;
 
                 if (packageNameF == null) return false;
                 if (v.getWindowToken() == null) return false;

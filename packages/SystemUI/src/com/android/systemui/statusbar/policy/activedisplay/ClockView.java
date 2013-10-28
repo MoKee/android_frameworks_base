@@ -165,10 +165,11 @@ public class ClockView extends RelativeLayout {
         void observe() {
             ContentResolver resolver = mContext.getContentResolver();
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.ACTIVE_DISPLAY_SHOW_AMPM), false, this);
+                    Settings.System.ACTIVE_DISPLAY_SHOW_AMPM), false, this,
+                    UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.ACTIVE_DISPLAY_SHOW_DATE), false, this);
-
+                    Settings.System.ACTIVE_DISPLAY_SHOW_DATE), false, this,
+                    UserHandle.USER_ALL);
             update();
         }
 

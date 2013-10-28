@@ -209,15 +209,20 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
         void observe() {
             ContentResolver resolver = mContext.getContentResolver();
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.HALO_REVERSED), false, this);
+                    Settings.System.HALO_REVERSED), false, this,
+                    UserHandle.USER_CURRENT);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.HALO_HIDE), false, this);
+                    Settings.System.HALO_HIDE), false, this,
+                    UserHandle.USER_CURRENT);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.HALO_NINJA), false, this);
+                    Settings.System.HALO_NINJA), false, this,
+                    UserHandle.USER_CURRENT);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.HALO_NOTIFY_COUNT), false, this);
+                    Settings.System.HALO_NOTIFY_COUNT), false, this,
+                    UserHandle.USER_CURRENT);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.HAPTIC_FEEDBACK_ENABLED), false, this);
+                    Settings.System.HAPTIC_FEEDBACK_ENABLED), false, this,
+                    UserHandle.USER_CURRENT);
         }
 
         @Override

@@ -1167,21 +1167,29 @@ public class PieMenu extends FrameLayout {
             ContentResolver resolver = mContext.getContentResolver();
 
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.PIE_BACKGROUND), false, this);
+                    Settings.System.PIE_BACKGROUND), false, this,
+                    UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.PIE_SELECT), false, this);
+                    Settings.System.PIE_SELECT), false, this,
+                    UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.PIE_OUTLINES), false, this);
+                    Settings.System.PIE_OUTLINES), false, this,
+                    UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.PIE_STATUS_CLOCK), false, this);
+                    Settings.System.PIE_STATUS_CLOCK), false, this,
+                    UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.PIE_STATUS), false, this);
+                    Settings.System.PIE_STATUS), false, this,
+                    UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.PIE_CHEVRON_LEFT), false, this);
+                    Settings.System.PIE_CHEVRON_LEFT), false, this,
+                    UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.PIE_CHEVRON_RIGHT), false, this);
+                    Settings.System.PIE_CHEVRON_RIGHT), false, this,
+                    UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.PIE_JUICE), false, this);
+                    Settings.System.PIE_JUICE), false, this,
+                    UserHandle.USER_ALL);
 
             // Get all dimensions
             getDimensions();
