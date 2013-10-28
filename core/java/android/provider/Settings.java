@@ -2311,12 +2311,6 @@ public final class Settings {
         public static final String DTMF_TONE_WHEN_DIALING = "dtmf_tone";
 
         /**
-         * direct call by the dialer. The value is
-         * boolean (1 or 0).
-         */
-        public static final String DIALER_DIRECT_CALL = "dialer_direct_call";
-
-        /**
          * CDMA only settings
          * DTMF tone type played by the dialer when dialing.
          *                 0 = Normal
@@ -2609,21 +2603,6 @@ public final class Settings {
          */
         @Deprecated
         public static final String UNLOCK_SOUND = Global.UNLOCK_SOUND;
-
-        /**
-         * Always turn on screen after call ignoring proximity?
-         * 0 = no
-         * 1 = yes
-         * @hide
-         */
-        public static final String INACCURATE_PROXIMITY_WORKAROUND = "inaccurate_proximity_sensor";
-
-        /**
-         * Holds the text for the Carrier label. An empty string
-         * will bring the default text back.
-         * @hide
-         */
-        public static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
 
         /**
          * Receive incoming SIP calls?
@@ -3106,19 +3085,6 @@ public final class Settings {
         public static final String STATUS_BAR_IME_SWITCHER = "status_bar_ime_switcher";
 
         /**
-         * Whether Status bar should be hiidden when there are no
-         * notifications
-         * @hide
-         */
-        public static final String AUTO_HIDE_STATUSBAR = "auto_hide_statusbar";
-
-        /**
-         * Whether Status Bar is currently hidden or not
-         * @hide
-         */
-        public static final String HIDE_STATUSBAR = "hide_statusbar";
-
-        /**
          * Whether to collapse the notification area after dismissing the last notification
          * @hide
          */
@@ -3142,12 +3108,6 @@ public final class Settings {
          * @hide
          */
         public static final String EXPANDED_DESKTOP_STYLE = "expanded_desktop_style";
-
-        /**
-         * Whether fcharge is enabled or not if kernel supports it
-         * @hide
-         */
-        public static final String FCHARGE_ENABLED = "fcharge_enabled";
 
         /**
          * Whether to use a separate delay for "slide to unlock" and security
@@ -3202,14 +3162,44 @@ public final class Settings {
         public static final String VOLUME_WAKE_SCREEN = "volume_wake_screen";
 
         /**
+         * Always turn on screen after call ignoring proximity?
+         * 0 = no
+         * 1 = yes
          * @hide
          */
-        public static final String SYSTEM_POWER_ENABLE_CRT_OFF = "system_power_enable_crt_off";
+        public static final String INACCURATE_PROXIMITY_WORKAROUND = "inaccurate_proximity_sensor";
 
         /**
+         * Holds the text for the Carrier label. An empty string
+         * will bring the default text back.
          * @hide
          */
-        public static final String SYSTEM_POWER_ENABLE_CRT_ON = "system_power_enable_crt_on";
+        public static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
+
+        /**
+         * direct call by the dialer. The value is
+         * boolean (1 or 0).
+         */
+        public static final String DIALER_DIRECT_CALL = "dialer_direct_call";
+
+        /**
+         * Whether Status bar should be hiidden when there are no
+         * notifications
+         * @hide
+         */
+        public static final String AUTO_HIDE_STATUSBAR = "auto_hide_statusbar";
+
+        /**
+         * Whether Status Bar is currently hidden or not
+         * @hide
+         */
+        public static final String HIDE_STATUSBAR = "hide_statusbar";
+
+        /**
+         * Whether fcharge is enabled or not if kernel supports it
+         * @hide
+         */
+        public static final String FCHARGE_ENABLED = "fcharge_enabled";
 
         /**
          * Whether or not volume button music controls should be enabled to seek media tracks
