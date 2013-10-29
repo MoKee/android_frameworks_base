@@ -308,29 +308,29 @@ public class ActiveDisplayView extends FrameLayout {
             ContentResolver resolver =
                     ActiveDisplayView.this.mContext.getContentResolver();
 
-            mDisplayNotifications = Settings.System.getInt(
-                    resolver, Settings.System.ENABLE_ACTIVE_DISPLAY, 0) == 1;
-            mDisplayNotificationText = Settings.System.getInt(
-                    resolver, Settings.System.ACTIVE_DISPLAY_TEXT, 0) == 1;
-            mShowAllNotifications = Settings.System.getInt(
-                    resolver, Settings.System.ACTIVE_DISPLAY_ALL_NOTIFICATIONS, 0) == 1;
-            mHideLowPriorityNotifications = Settings.System.getInt(
-                    resolver, Settings.System.ACTIVE_DISPLAY_HIDE_LOW_PRIORITY_NOTIFICATIONS, 0) == 1;
-            mPocketModeEnabled = Settings.System.getInt(
-                    resolver, Settings.System.ACTIVE_DISPLAY_POCKET_MODE, 0) == 1;
-            mRedisplayTimeout = Settings.System.getLong(
-                    resolver, Settings.System.ACTIVE_DISPLAY_REDISPLAY, 0L);
-            mInitialBrightness = Settings.System.getInt(
-                    resolver, Settings.System.ACTIVE_DISPLAY_BRIGHTNESS, 100) / 100f;
-            mSunlightModeEnabled = Settings.System.getInt(
-                    resolver, Settings.System.ACTIVE_DISPLAY_SUNLIGHT_MODE, 0) == 1;
-            String excludedApps = Settings.System.getString(resolver,
-                    Settings.System.ACTIVE_DISPLAY_EXCLUDED_APPS);
+            mDisplayNotifications = Settings.System.getIntForUser(
+                    resolver, Settings.System.ENABLE_ACTIVE_DISPLAY, 0, UserHandle.USER_CURRENT) == 1;
+            mDisplayNotificationText = Settings.System.getIntForUser(
+                    resolver, Settings.System.ACTIVE_DISPLAY_TEXT, 0, UserHandle.USER_CURRENT) == 1;
+            mShowAllNotifications = Settings.System.getIntForUser(
+                    resolver, Settings.System.ACTIVE_DISPLAY_ALL_NOTIFICATIONS, 0, UserHandle.USER_CURRENT) == 1;
+            mHideLowPriorityNotifications = Settings.System.getIntForUser(
+                    resolver, Settings.System.ACTIVE_DISPLAY_HIDE_LOW_PRIORITY_NOTIFICATIONS, 0, UserHandle.USER_CURRENT) == 1;
+            mPocketModeEnabled = Settings.System.getIntForUser(
+                    resolver, Settings.System.ACTIVE_DISPLAY_POCKET_MODE, 0, UserHandle.USER_CURRENT) == 1;
+            mRedisplayTimeout = Settings.System.getLongForUser(
+                    resolver, Settings.System.ACTIVE_DISPLAY_REDISPLAY, 0L, UserHandle.USER_CURRENT);
+            mInitialBrightness = Settings.System.getIntForUser(
+                    resolver, Settings.System.ACTIVE_DISPLAY_BRIGHTNESS, 100, UserHandle.USER_CURRENT) / 100f;
+            mSunlightModeEnabled = Settings.System.getIntForUser(
+                    resolver, Settings.System.ACTIVE_DISPLAY_SUNLIGHT_MODE, 0, UserHandle.USER_CURRENT) == 1;
+            String excludedApps = Settings.System.getStringForUser(resolver,
+                    Settings.System.ACTIVE_DISPLAY_EXCLUDED_APPS, UserHandle.USER_CURRENT);
 
             createExcludedAppsSet(excludedApps);
 
-            int brightnessMode = Settings.System.getInt(
-                    resolver, Settings.System.SCREEN_BRIGHTNESS_MODE, -1);
+            int brightnessMode = Settings.System.getIntForUser(
+                    resolver, Settings.System.SCREEN_BRIGHTNESS_MODE, -1, UserHandle.USER_CURRENT);
             if (mBrightnessMode != brightnessMode) {
                 mBrightnessMode = brightnessMode;
                 mUserBrightnessLevel = -1;
@@ -719,18 +719,18 @@ public class ActiveDisplayView extends FrameLayout {
 
     private void restoreNavButtonsHeight() {
         final ContentResolver resolver = mContext.getContentResolver();
-        int statusNavButtonsHeight = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.ACTIVE_DISPLAY_NAVIGATION_BAR_HEIGHT, 48);
+        int statusNavButtonsHeight = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.ACTIVE_DISPLAY_NAVIGATION_BAR_HEIGHT, 48, UserHandle.USER_CURRENT);
         Settings.System.putInt(resolver, Settings.System.NAVIGATION_BAR_HEIGHT, statusNavButtonsHeight);
     }
 
     private void setBrightness(float brightness) {
         final ContentResolver resolver = mContext.getContentResolver();
-        mBrightnessMode = Settings.System.getInt(resolver, Settings.System.SCREEN_BRIGHTNESS_MODE,
-                Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC);
+        mBrightnessMode = Settings.System.getIntForUser(resolver, Settings.System.SCREEN_BRIGHTNESS_MODE,
+                Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC, UserHandle.USER_CURRENT);
         if (mBrightnessMode != Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
-            mUserBrightnessLevel = Settings.System.getInt(resolver, Settings.System.SCREEN_BRIGHTNESS,
-                    android.os.PowerManager.BRIGHTNESS_ON);
+            mUserBrightnessLevel = Settings.System.getIntForUser(resolver, Settings.System.SCREEN_BRIGHTNESS,
+                    android.os.PowerManager.BRIGHTNESS_ON, UserHandle.USER_CURRENT);
             final int dim = getResources().getInteger(
                     com.android.internal.R.integer.config_screenBrightnessDim);
             int level = (int)((android.os.PowerManager.BRIGHTNESS_ON - dim) * brightness) + dim;

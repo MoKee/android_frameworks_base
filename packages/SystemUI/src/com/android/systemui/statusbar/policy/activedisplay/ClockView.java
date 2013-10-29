@@ -184,10 +184,10 @@ public class ClockView extends RelativeLayout {
             ContentResolver resolver =
                     ClockView.this.mContext.getContentResolver();
 
-            boolean showAmPm = Settings.System.getInt(
-                    resolver, Settings.System.ACTIVE_DISPLAY_SHOW_AMPM, 0) == 1;
-            boolean showDate = Settings.System.getInt(
-                    resolver, Settings.System.ACTIVE_DISPLAY_SHOW_DATE, 0) == 1;
+            boolean showAmPm = Settings.System.getIntForUser(
+                    resolver, Settings.System.ACTIVE_DISPLAY_SHOW_AMPM, 0, UserHandle.USER_CURRENT) == 1;
+            boolean showDate = Settings.System.getIntForUser(
+                    resolver, Settings.System.ACTIVE_DISPLAY_SHOW_DATE, 0, UserHandle.USER_CURRENT) == 1;
 
             mAmPm.setShowAmPm(showAmPm);
             mDateView.setVisibility(showDate ? View.VISIBLE : View.INVISIBLE);
