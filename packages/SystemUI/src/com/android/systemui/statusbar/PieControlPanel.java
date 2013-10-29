@@ -147,28 +147,6 @@ public class PieControlPanel extends FrameLayout implements StatusBarPanel, OnNa
     }
 
     public void bumpConfiguration() {
-        if (Settings.System.getIntForUser(mContext.getContentResolver(),
-                    Settings.System.PIE_STICK, 0, UserHandle.USER_CURRENT) == 1) {
-
-            // Get original offset
-            int gravityIndex = findGravityOffset(convertPieGravitytoGravity(
-                    Settings.System.getIntForUser(mContext.getContentResolver(),
-                    Settings.System.PIE_GRAVITY, 3, UserHandle.USER_CURRENT)));
-            
-            // Orient Pie to that place
-            reorient(gravityArray[gravityIndex], false);
-
-            // Now re-orient it for landscape orientation
-            switch(mDisplay.getRotation()) {
-                case Surface.ROTATION_270:
-                    reorient(gravityArray[gravityIndex + 1], false);
-                    break;
-                case Surface.ROTATION_90:
-                    reorient(gravityArray[gravityIndex - 1], false);
-                    break;
-            }
-        }
-
         show(false);
         if (mPieControl != null) mPieControl.onConfigurationChanged();
     }
