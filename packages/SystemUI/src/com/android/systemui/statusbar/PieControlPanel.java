@@ -185,22 +185,6 @@ public class PieControlPanel extends FrameLayout implements StatusBarPanel, OnNa
         show(mShowing);
         if (storeSetting) {
             int gravityOffset = mOrientation;
-            if (Settings.System.getIntForUser(mContext.getContentResolver(),
-                    Settings.System.PIE_STICK, 0, UserHandle.USER_CURRENT) == 1) {
-
-                gravityOffset = findGravityOffset(mOrientation);
-                switch(mDisplay.getRotation()) {
-                    case Surface.ROTATION_270:
-                        gravityOffset = gravityArray[gravityOffset - 1];
-                        break;
-                    case Surface.ROTATION_90:
-                        gravityOffset = gravityArray[gravityOffset + 1];
-                        break;
-                    default:
-                        gravityOffset = mOrientation;
-                        break;
-                }
-            }
             Settings.System.putIntForUser(mContext.getContentResolver(),
                     Settings.System.PIE_GRAVITY, convertGravitytoPieGravity(gravityOffset), UserHandle.USER_CURRENT);
         }

@@ -61,6 +61,8 @@ public class ClockView extends RelativeLayout {
     private ContentObserver mFormatChangeObserver;
     private int mAttached = 0; // for debugging - tells us whether attach/detach is unbalanced
 
+    private boolean isM12;
+
     /* called by system on minute ticks */
     private final Handler mHandler = new Handler();
     private BroadcastReceiver mIntentReceiver;
@@ -140,7 +142,7 @@ public class ClockView extends RelativeLayout {
         public void onChange(boolean selfChange) {
             ClockView digitalClock = mClock.get();
             if (digitalClock != null) {
-                digitalClock.setDateFormat();
+                digitalClock.setTimeFormat();
                 digitalClock.updateTime();
             } else {
                 try {
@@ -161,18 +163,17 @@ public class ClockView extends RelativeLayout {
         }
 
         void observe() {
-            ContentResolver resolver =
-                    ClockView.this.mContext.getContentResolver();
+            ContentResolver resolver = mContext.getContentResolver();
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.ACTIVE_DISPLAY_SHOW_AMPM), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.ACTIVE_DISPLAY_SHOW_DATE), false, this);
+
             update();
         }
 
-        void unobserve() {
-            ClockView.this.mContext.getContentResolver()
-                    .unregisterContentObserver(this);
+        void unobserve() { 
+            mContext.getContentResolver().unregisterContentObserver(this);
         }
 
         @Override
@@ -181,15 +182,15 @@ public class ClockView extends RelativeLayout {
         }
 
         public void update() {
-            ContentResolver resolver =
-                    ClockView.this.mContext.getContentResolver();
+            ContentResolver resolver = mContext.getContentResolver();
 
             boolean showAmPm = Settings.System.getIntForUser(
                     resolver, Settings.System.ACTIVE_DISPLAY_SHOW_AMPM, 0, UserHandle.USER_CURRENT) == 1;
             boolean showDate = Settings.System.getIntForUser(
                     resolver, Settings.System.ACTIVE_DISPLAY_SHOW_DATE, 0, UserHandle.USER_CURRENT) == 1;
 
-            mAmPm.setShowAmPm(showAmPm);
+            boolean isM12 = !android.text.format.DateFormat.is24HourFormat(mContext);
+            mAmPm.setShowAmPm(showAmPm && isM12);
             mDateView.setVisibility(showDate ? View.VISIBLE : View.INVISIBLE);
         }
     }
@@ -209,7 +210,7 @@ public class ClockView extends RelativeLayout {
         mDateView = (TextView) findViewById(R.id.date);
         mAmPm = new AmPm(this, null);
         mCalendar = Calendar.getInstance();
-        setDateFormat();
+        setTimeFormat();
     }
 
     @Override
@@ -286,8 +287,7 @@ public class ClockView extends RelativeLayout {
         mDateView.setText(sdf.format(new Date()));
     }
 
-    private void setDateFormat() {
-        mFormat = android.text.format.DateFormat.is24HourFormat(getContext()) ? M24 : M12;
-        mAmPm.setShowAmPm(mFormat.equals(M12));
+    private void setTimeFormat() {
+        mFormat = isM12 ? M12 : M24;
     }
 }
