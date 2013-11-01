@@ -652,8 +652,8 @@ public class ActiveDisplayView extends FrameLayout {
             mKeyguardLock = mKeyguardManager.newKeyguardLock("active_display");
             mKeyguardLock.disableKeyguard();
         }
-        setVisibility(View.VISIBLE);
         setNavButtonsHeight();
+        setVisibility(View.VISIBLE);
         // delay hiding system ui a bit because if the keyguard has not dismissed
         // yet it will end up changing the visibility which we don't want
         mHandler.postDelayed(new Runnable() {
@@ -670,8 +670,8 @@ public class ActiveDisplayView extends FrameLayout {
             mKeyguardLock.reenableKeyguard();
             mKeyguardLock = null;
         }
-        setVisibility(View.GONE);
         restoreNavButtonsHeight();
+        setVisibility(View.GONE);
         restoreBrightness();
         mWakedByPocketMode = false;
         mBar.disable(0);
