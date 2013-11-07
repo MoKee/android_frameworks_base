@@ -95,6 +95,9 @@
             android:process=":screenshot"
             android:exported="false" />
 
+        <receiver
+            android:name=".screenshot.TrashScreenshot" />
+
         <service android:name=".LoadAverageService"
                 android:exported="true" />
 

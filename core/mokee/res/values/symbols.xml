@@ -25,11 +25,21 @@
   <!-- Adb -->
   <java-symbol type="drawable" name="stat_sys_adb" />
 
-  <!-- Lock Profile -->
-  <java-symbol type="drawable" name="ic_lock_profile" />
-
   <!-- Default Wallpaper -->
   <java-symbol type="drawable" name="default_wallpaper" />
+
+  <!-- Exact Time -->
+  <java-symbol type="string" name="lc" />
+  <java-symbol type="string" name="lm" />
+  <java-symbol type="string" name="zc" />
+  <java-symbol type="string" name="sw" />
+  <java-symbol type="string" name="zw" />
+  <java-symbol type="string" name="xw" />
+  <java-symbol type="string" name="bw" />
+  <java-symbol type="string" name="sy" />
+
+  <!-- Lock Profile -->
+  <java-symbol type="drawable" name="ic_lock_profile" />
 
   <!-- Lunar Date -->
   <java-symbol type="array" name="animals" />
@@ -51,14 +61,7 @@
   <java-symbol type="string" name="status_year" />
   <java-symbol type="string" name="status_day" />
 
-  <!-- Exact Time -->
-  <java-symbol type="string" name="lc" />
-  <java-symbol type="string" name="lm" />
-  <java-symbol type="string" name="zc" />
-  <java-symbol type="string" name="sw" />
-  <java-symbol type="string" name="zw" />
-  <java-symbol type="string" name="xw" />
-  <java-symbol type="string" name="bw" />
-  <java-symbol type="string" name="sy" />
+  <!-- Screenshort Trash -->
+  <java-symbol type="string" name="trash" />
 
 </resources>
