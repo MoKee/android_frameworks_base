@@ -697,7 +697,7 @@ class QuickSettings {
         // Bug reports
         final QuickSettingsBasicTile bugreportTile
                 = new QuickSettingsBasicTile(mContext);
-        bugreportTile.setImageResource(com.android.internal.R.drawable.stat_sys_adb);
+        bugreportTile.setImageResource(com.mokee.internal.R.drawable.stat_sys_adb);
         bugreportTile.setTextResource(com.android.internal.R.string.bugreport_title);
         bugreportTile.setOnClickListener(new View.OnClickListener() {
             @Override

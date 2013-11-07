@@ -110,7 +110,7 @@ public abstract class OverlayBaseTest extends AndroidTestCase {
 
     public void testAsset() throws Throwable {
         // drawable/default_background.jpg has overlay (default config)
-        final int resId = com.android.internal.R.drawable.default_wallpaper;
+        final int resId = com.mokee.internal.R.drawable.default_wallpaper;
         int actual = calculateRawResourceChecksum(resId);
         int expected = mWithOverlay ? 0x000051da : 0x0014ebce;
         assertEquals(expected, actual);
