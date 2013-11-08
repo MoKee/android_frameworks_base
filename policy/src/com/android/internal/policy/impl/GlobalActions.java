@@ -869,7 +869,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
             }
 
             if (icon != null) {
-                icon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_lock_profile));
+                icon.setImageDrawable(context.getResources().getDrawable(com.mokee.internal.R.drawable.ic_lock_profile));
             }
 
             if (messageView != null) {
