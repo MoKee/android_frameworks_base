@@ -17,6 +17,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Exact time Display -->
     <string name="lc">AM</string>
     <string name="lm">AM</string>
     <string name="zc">AM</string>
@@ -25,5 +26,8 @@
     <string name="xw">PM</string>
     <string name="bw">PM</string>
     <string name="sy">PM</string>
+
+    <!-- Lunar string format -->
+    <string name="abbrev_wday_month_day_year">EEE, MMM d, yyyy</string>
 
 </resources>

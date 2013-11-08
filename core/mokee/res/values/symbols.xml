@@ -25,6 +25,9 @@
   <!-- Adb -->
   <java-symbol type="drawable" name="stat_sys_adb" />
 
+  <!-- Date Format -->
+  <java-symbol type="string" name="abbrev_wday_month_day_year" />
+
   <!-- Default Wallpaper -->
   <java-symbol type="drawable" name="default_wallpaper" />
 
