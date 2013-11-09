@@ -144,6 +144,7 @@ import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -2819,8 +2820,11 @@ public class ConnectivityService extends IConnectivityManager.Stub {
                     if (ConnectivityManager.isNetworkTypeMobile(info.getType())
                             && (0 != Settings.Global.getInt(mContext.getContentResolver(),
                                         Settings.Global.DEVICE_PROVISIONED, 0))
-                            && ((state == NetworkInfo.State.CONNECTED)
-                                    || info.isConnectedToProvisioningNetwork())) {
+                            && (((state == NetworkInfo.State.CONNECTED)
+                                    && (info.getType() == ConnectivityManager.TYPE_MOBILE))
+                                || info.isConnectedToProvisioningNetwork())) {
+                        log("ConnectivityChange checkMobileProvisioning for"
+                                + " TYPE_MOBILE or ProvisioningNetwork");
                         checkMobileProvisioning(CheckMp.MAX_TIMEOUT_MS);
                     }
 
@@ -3675,39 +3679,41 @@ public class ConnectivityService extends IConnectivityManager.Stub {
 
     /**
      * No connection was possible to the network.
+     * This is NOT a warm sim.
      */
-    public static final int CMP_RESULT_CODE_NO_CONNECTION = 0;
+    private static final int CMP_RESULT_CODE_NO_CONNECTION = 0;
 
     /**
      * A connection was made to the internet, all is well.
+     * This is NOT a warm sim.
      */
-    public static final int CMP_RESULT_CODE_CONNECTABLE = 1;
-
-    /**
-     * A connection was made but there was a redirection, we appear to be in walled garden.
-     * This is an indication of a warm sim on a mobile network.
-     */
-    public static final int CMP_RESULT_CODE_REDIRECTED = 2;
+    private static final int CMP_RESULT_CODE_CONNECTABLE = 1;
 
     /**
      * A connection was made but no dns server was available to resolve a name to address.
-     * This is an indication of a warm sim on a mobile network.
+     * This is NOT a warm sim since provisioning network is supported.
      */
-    public static final int CMP_RESULT_CODE_NO_DNS = 3;
+    private static final int CMP_RESULT_CODE_NO_DNS = 2;
 
     /**
      * A connection was made but could not open a TCP connection.
-     * This is an indication of a warm sim on a mobile network.
+     * This is NOT a warm sim since provisioning network is supported.
      */
-    public static final int CMP_RESULT_CODE_NO_TCP_CONNECTION = 4;
+    private static final int CMP_RESULT_CODE_NO_TCP_CONNECTION = 3;
+
+    /**
+     * A connection was made but there was a redirection, we appear to be in walled garden.
+     * This is an indication of a warm sim on a mobile network such as T-Mobile.
+     */
+    private static final int CMP_RESULT_CODE_REDIRECTED = 4;
 
     /**
      * The mobile network is a provisioning network.
-     * This is an indication of a warm sim on a mobile network.
+     * This is an indication of a warm sim on a mobile network such as AT&T.
      */
-    public static final int CMP_RESULT_CODE_PROVISIONING_NETWORK = 5;
+    private static final int CMP_RESULT_CODE_PROVISIONING_NETWORK = 5;
 
-    AtomicBoolean mIsCheckingMobileProvisioning = new AtomicBoolean(false);
+    private AtomicBoolean mIsCheckingMobileProvisioning = new AtomicBoolean(false);
 
     @Override
     public int checkMobileProvisioning(int suggestedTimeOutMs) {
@@ -3736,42 +3742,8 @@ public class ConnectivityService extends IConnectivityManager.Stub {
                 return timeOutMs;
             }
 
-            // Start off with notification off
-            setProvNotificationVisible(false, ConnectivityManager.TYPE_NONE, null, null);
-
-            // See if we've alreadying determined if we've got a provsioning connection
-            // if so we don't need to do anything active
-            MobileDataStateTracker mdstDefault = (MobileDataStateTracker)
-                    mNetTrackers[ConnectivityManager.TYPE_MOBILE];
-            boolean isDefaultProvisioning = mdstDefault.isProvisioningNetwork();
-
-            MobileDataStateTracker mdstHipri = (MobileDataStateTracker)
-                    mNetTrackers[ConnectivityManager.TYPE_MOBILE_HIPRI];
-            boolean isHipriProvisioning = mdstHipri.isProvisioningNetwork();
-
-            if (isDefaultProvisioning || isHipriProvisioning) {
-                if (mIsNotificationVisible) {
-                    if (DBG) {
-                        log("checkMobileProvisioning: provisioning-ignore notification is visible");
-                    }
-                } else {
-                    NetworkInfo ni = null;
-                    if (isDefaultProvisioning) {
-                        ni = mdstDefault.getNetworkInfo();
-                    }
-                    if (isHipriProvisioning) {
-                        ni = mdstHipri.getNetworkInfo();
-                    }
-                    String url = getMobileProvisioningUrl();
-                    if ((ni != null) && (!TextUtils.isEmpty(url))) {
-                        setProvNotificationVisible(true, ni.getType(), ni.getExtraInfo(), url);
-                    } else {
-                        if (DBG) log("checkMobileProvisioning: provisioning but no url, ignore");
-                    }
-                }
-                mIsCheckingMobileProvisioning.set(false);
-                return timeOutMs;
-            }
+            // Start off with mobile notification off
+            setProvNotificationVisible(false, ConnectivityManager.TYPE_MOBILE_HIPRI, null, null);
 
             CheckMp checkMp = new CheckMp(mContext, this);
             CheckMp.CallBack cb = new CheckMp.CallBack() {
@@ -3782,7 +3754,9 @@ public class ConnectivityService extends IConnectivityManager.Stub {
                             mNetTrackers[ConnectivityManager.TYPE_MOBILE_HIPRI].getNetworkInfo();
                     switch(result) {
                         case CMP_RESULT_CODE_CONNECTABLE:
-                        case CMP_RESULT_CODE_NO_CONNECTION: {
+                        case CMP_RESULT_CODE_NO_CONNECTION:
+                        case CMP_RESULT_CODE_NO_DNS:
+                        case CMP_RESULT_CODE_NO_TCP_CONNECTION: {
                             if (DBG) log("CheckMp.onComplete: ignore, connected or no connection");
                             break;
                         }
@@ -3794,19 +3768,20 @@ public class ConnectivityService extends IConnectivityManager.Stub {
                             }
                             if (TextUtils.isEmpty(url) == false) {
                                 if (DBG) log("CheckMp.onComplete: warm (redirected), url=" + url);
-                                setProvNotificationVisible(true, ni.getType(), ni.getExtraInfo(),
+                                setProvNotificationVisible(true,
+                                        ConnectivityManager.TYPE_MOBILE_HIPRI, ni.getExtraInfo(),
                                         url);
                             } else {
                                 if (DBG) log("CheckMp.onComplete: warm (redirected), no url");
                             }
                             break;
                         }
-                        case CMP_RESULT_CODE_NO_DNS:
-                        case CMP_RESULT_CODE_NO_TCP_CONNECTION: {
+                        case CMP_RESULT_CODE_PROVISIONING_NETWORK: {
                             String url = getMobileProvisioningUrl();
                             if (TextUtils.isEmpty(url) == false) {
                                 if (DBG) log("CheckMp.onComplete: warm (no dns/tcp), url=" + url);
-                                setProvNotificationVisible(true, ni.getType(), ni.getExtraInfo(),
+                                setProvNotificationVisible(true,
+                                        ConnectivityManager.TYPE_MOBILE_HIPRI, ni.getExtraInfo(),
                                         url);
                             } else {
                                 if (DBG) log("CheckMp.onComplete: warm (no dns/tcp), no url");
@@ -3905,8 +3880,26 @@ public class ConnectivityService extends IConnectivityManager.Stub {
             mParams = params;
 
             if (mCs.isNetworkSupported(ConnectivityManager.TYPE_MOBILE) == false) {
-                log("isMobileOk: not mobile capable");
                 result = CMP_RESULT_CODE_NO_CONNECTION;
+                log("isMobileOk: X not mobile capable result=" + result);
+                return result;
+            }
+
+            // See if we've already determined we've got a provisioning connection,
+            // if so we don't need to do anything active.
+            MobileDataStateTracker mdstDefault = (MobileDataStateTracker)
+                    mCs.mNetTrackers[ConnectivityManager.TYPE_MOBILE];
+            boolean isDefaultProvisioning = mdstDefault.isProvisioningNetwork();
+            log("isMobileOk: isDefaultProvisioning=" + isDefaultProvisioning);
+
+            MobileDataStateTracker mdstHipri = (MobileDataStateTracker)
+                    mCs.mNetTrackers[ConnectivityManager.TYPE_MOBILE_HIPRI];
+            boolean isHipriProvisioning = mdstHipri.isProvisioningNetwork();
+            log("isMobileOk: isHipriProvisioning=" + isHipriProvisioning);
+
+            if (isDefaultProvisioning || isHipriProvisioning) {
+                result = CMP_RESULT_CODE_PROVISIONING_NETWORK;
+                log("isMobileOk: X default || hipri is provisioning result=" + result);
                 return result;
             }
 
@@ -3968,8 +3961,8 @@ public class ConnectivityService extends IConnectivityManager.Stub {
                         MobileDataStateTracker mdst = (MobileDataStateTracker)
                                 mCs.mNetTrackers[ConnectivityManager.TYPE_MOBILE_HIPRI];
                         if (mdst.isProvisioningNetwork()) {
-                            if (DBG) log("isMobileOk: isProvisioningNetwork is true, no TCP conn");
-                            result = CMP_RESULT_CODE_NO_TCP_CONNECTION;
+                            result = CMP_RESULT_CODE_PROVISIONING_NETWORK;
+                            if (DBG) log("isMobileOk: X isProvisioningNetwork result=" + result);
                             return result;
                         } else {
                             if (DBG) log("isMobileOk: isProvisioningNetwork is false, continue");
@@ -3984,8 +3977,8 @@ public class ConnectivityService extends IConnectivityManager.Stub {
                         try {
                             addresses = InetAddress.getAllByName(orgUri.getHost());
                         } catch (UnknownHostException e) {
-                            log("isMobileOk: UnknownHostException");
                             result = CMP_RESULT_CODE_NO_DNS;
+                            log("isMobileOk: X UnknownHostException result=" + result);
                             return result;
                         }
                         log("isMobileOk: addresses=" + inetAddressesToString(addresses));
@@ -4007,6 +4000,9 @@ public class ConnectivityService extends IConnectivityManager.Stub {
                                 addrTried ++) {
 
                             // Choose the address at random but make sure its type is supported
+                            // TODO: This doesn't work 100% of the time, because we may end up
+                            // trying the same invalid address more than once and ignoring one
+                            // of the valid addresses.
                             InetAddress hostAddr = addresses[rand.nextInt(addresses.length)];
                             if (((hostAddr instanceof Inet4Address) && linkHasIpv4)
                                     || ((hostAddr instanceof Inet6Address) && linkHasIpv6)) {
@@ -4031,10 +4027,8 @@ public class ConnectivityService extends IConnectivityManager.Stub {
                             }
 
                             // Rewrite the url to have numeric address to use the specific route.
-                            // I also set the "Connection" to "Close" as by default "Keep-Alive"
-                            // is used which is useless in this case.
-                            URL newUrl = new URL(orgUri.getScheme() + "://"
-                                    + hostAddr.getHostAddress() + orgUri.getPath());
+                            URL newUrl = new URL(orgUri.getScheme(),
+                                    hostAddr.getHostAddress(), orgUri.getPath());
                             log("isMobileOk: newUrl=" + newUrl);
 
                             HttpURLConnection urlConn = null;
@@ -4047,27 +4041,42 @@ public class ConnectivityService extends IConnectivityManager.Stub {
                                 urlConn.setReadTimeout(SOCKET_TIMEOUT_MS);
                                 urlConn.setUseCaches(false);
                                 urlConn.setAllowUserInteraction(false);
+                                // Set the "Connection" to "Close" as by default "Keep-Alive"
+                                // is used which is useless in this case.
                                 urlConn.setRequestProperty("Connection", "close");
                                 int responseCode = urlConn.getResponseCode();
-                                if (responseCode == 204) {
-                                    result = CMP_RESULT_CODE_CONNECTABLE;
-                                } else {
-                                    result = CMP_RESULT_CODE_REDIRECTED;
-                                }
-                                log("isMobileOk: connected responseCode=" + responseCode);
+
+                                // For debug display the headers
+                                Map<String, List<String>> headers = urlConn.getHeaderFields();
+                                log("isMobileOk: headers=" + headers);
+
+                                // Close the connection
                                 urlConn.disconnect();
                                 urlConn = null;
-                                return result;
+
+                                if (responseCode == 204) {
+                                    // Return
+                                    result = CMP_RESULT_CODE_CONNECTABLE;
+                                    log("isMobileOk: X expected responseCode=" + responseCode
+                                            + " result=" + result);
+                                    return result;
+                                } else {
+                                    // Retry to be sure this was redirected, we've gotten
+                                    // occasions where a server returned 200 even though
+                                    // the device didn't have a "warm" sim.
+                                    log("isMobileOk: not expected responseCode=" + responseCode);
+                                    result = CMP_RESULT_CODE_REDIRECTED;
+                                }
                             } catch (Exception e) {
                                 log("isMobileOk: HttpURLConnection Exception e=" + e);
+                                result = CMP_RESULT_CODE_NO_TCP_CONNECTION;
                                 if (urlConn != null) {
                                     urlConn.disconnect();
                                     urlConn = null;
                                 }
                             }
                         }
-                        result = CMP_RESULT_CODE_NO_TCP_CONNECTION;
-                        log("isMobileOk: loops|timed out");
+                        log("isMobileOk: X loops|timed out result=" + result);
                         return result;
                     } catch (Exception e) {
                         log("isMobileOk: Exception e=" + e);
@@ -4191,7 +4200,7 @@ public class ConnectivityService extends IConnectivityManager.Stub {
 
     private void handleMobileProvisioningAction(String url) {
         // Notication mark notification as not visible
-        setProvNotificationVisible(false, ConnectivityManager.TYPE_NONE, null, null);
+        setProvNotificationVisible(false, ConnectivityManager.TYPE_MOBILE_HIPRI, null, null);
 
         // If provisioning network handle as a special case,
         // otherwise launch browser with the intent directly.
@@ -4277,14 +4286,14 @@ public class ConnectivityService extends IConnectivityManager.Stub {
             notification.setLatestEventInfo(mContext, title, details, notification.contentIntent);
 
             try {
-                notificationManager.notify(NOTIFICATION_ID, 1, notification);
+                notificationManager.notify(NOTIFICATION_ID, networkType, notification);
             } catch (NullPointerException npe) {
                 loge("setNotificaitionVisible: visible notificationManager npe=" + npe);
                 npe.printStackTrace();
             }
         } else {
             try {
-                notificationManager.cancel(NOTIFICATION_ID, 1);
+                notificationManager.cancel(NOTIFICATION_ID, networkType);
             } catch (NullPointerException npe) {
                 loge("setNotificaitionVisible: cancel notificationManager npe=" + npe);
                 npe.printStackTrace();
