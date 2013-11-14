@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2014-2018 The MoKee Open Source Project
+     Copyright (C) 2016 Screw'd AOSP
+     Copyright (C) 2018 The MoKee Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -16,14 +17,14 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Allow Opa (Pixel navbar) layout -->
-    <bool name="config_allowOpaLayout">true</bool>
+   <!-- EdgeGesture service: Distance a swipe must travel to be recognized as swipe. -->
+    <dimen name="edge_gesture_trigger_distance">12dp</dimen>
 
-    <!-- Wether device has dash charging support -->
-    <bool name="config_hasDashCharger">false</bool>
+    <!-- EdgeGesture service: This is the distance a swipe can travel orthogonally to its actual swipe
+         direction to be still recognized as swipe. -->
+    <dimen name="edge_gesture_perpendicular_distance">15dp</dimen>
 
-    <!-- EdgeGesture service -->
-    <java-symbol type="dimen" name="edge_gesture_trigger_distance" />
-    <java-symbol type="dimen" name="edge_gesture_perpendicular_distance" />
-    <java-symbol type="dimen" name="edge_gesture_trigger_thickness" />
+    <!-- EdgeGesture service: Thickness of the active trigger fields around the screen border -->
+    <dimen name="edge_gesture_trigger_thickness">12dp</dimen>
+
 </resources>
