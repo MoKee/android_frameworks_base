@@ -63,6 +63,7 @@
   <java-symbol type="string" name="status_month" />
   <java-symbol type="string" name="status_year" />
   <java-symbol type="string" name="status_day" />
+  <java-symbol type="string" name="system_ui_date_pattern" />
 
   <!-- Screenshort Trash -->
   <java-symbol type="string" name="trash" />
