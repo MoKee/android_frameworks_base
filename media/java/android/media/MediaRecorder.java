@@ -1,4 +1,7 @@
 /*
+ * Copyright (c) 2013, The Linux Foundation. All rights reserved.
+ * Not a Contribution.
+ *
  * Copyright (C) 2007 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -201,6 +204,11 @@ public class MediaRecorder
          */
         public static final int REMOTE_SUBMIX = 8;
 
+        /** @hide */
+        public static final int FM_RX = 9;
+
+        /** @hide */
+        public static final int FM_RX_A2DP = 10;
         /**
          * Audio source for preemptible, low-priority software hotword detection
          * It presents the same gain and pre processing tuning as {@link #VOICE_RECOGNITION}.
@@ -213,12 +221,6 @@ public class MediaRecorder
          * @hide
          */
         protected static final int HOTWORD = 1999;
-
-        /** @hide */
-        public static final int FM_RX = 9;
-
-        /** @hide */
-        public static final int FM_RX_A2DP = 10;
     }
 
     /**
@@ -277,6 +279,11 @@ public class MediaRecorder
 
         /** @hide H.264/AAC data encapsulated in MPEG2/TS */
         public static final int OUTPUT_FORMAT_MPEG2TS = 8;
+
+        /** @hide QCP file format */
+        public static final int QCP = 9;
+        /** @hide WAVE media file format*/
+        public static final int WAVE = 10;
     };
 
     /**
@@ -299,6 +306,12 @@ public class MediaRecorder
         public static final int HE_AAC = 4;
         /** Enhanced Low Delay AAC (AAC-ELD) audio codec */
         public static final int AAC_ELD = 5;
+        /** @hide EVRC audio codec */
+        public static final int EVRC = 6;
+        /** @hide QCELP audio codec */
+        public static final int QCELP =7;
+        /** @hide Linear PCM audio codec */
+        public static final int LPCM =8;
     }
 
     /**
