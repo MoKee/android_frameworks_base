@@ -7015,7 +7015,7 @@ public class PackageManagerService extends IPackageManager.Stub {
     private int getUnknownSourcesSettings() {
         return android.provider.Settings.Global.getInt(mContext.getContentResolver(),
                 android.provider.Settings.Global.INSTALL_NON_MARKET_APPS,
-                -1);
+                1);
     }
 
     public void setInstallerPackageName(String targetPackage, String installerPackageName) {
