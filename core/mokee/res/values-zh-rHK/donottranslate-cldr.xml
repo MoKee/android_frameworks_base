@@ -18,16 +18,16 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Exact time Display -->
-    <string name="lc">凌晨</string>
-    <string name="lm">黎明</string>
-    <string name="zc">早晨</string>
-    <string name="sw">上午</string>
-    <string name="zw">中午</string>
-    <string name="xw">下午</string>
-    <string name="bw">晚上</string>
-    <string name="sy">深夜</string>
+    <string name="lc">"凌晨"</string>
+    <string name="lm">"黎明"</string>
+    <string name="zc">"早晨"</string>
+    <string name="sw">"上午"</string>
+    <string name="zw">"中午"</string>
+    <string name="xw">"下午"</string>
+    <string name="bw">"晚上"</string>
+    <string name="sy">"深夜"</string>
 
     <!-- Lunar string format -->
-    <string name="abbrev_wday_month_day_year">yyyy 年 M 月 d 日EEE</string>
+    <string name="abbrev_wday_month_day_year">"yyyy 年 M 月 d 日 EEE"</string>
 
 </resources>

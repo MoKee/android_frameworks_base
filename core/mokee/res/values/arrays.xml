@@ -16,8 +16,8 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Lunar -->  
-    <string-array name="animals"  translatable="false">
+    <!-- Lunar -->
+    <string-array name="animals">
         <item>鼠</item>
         <item>牛</item>
         <item>虎</item>
@@ -32,7 +32,7 @@
         <item>猪</item>
     </string-array>
 
-    <string-array name="gan"  translatable="false">
+    <string-array name="gan" translatable="false">
         <item>甲</item>
         <item>乙</item>
         <item>丙</item>
@@ -45,7 +45,7 @@
         <item>癸</item>
     </string-array>
 
-    <string-array name="zhi"  translatable="false">
+    <string-array name="zhi" translatable="false">
         <item>子</item>
         <item>丑</item>
         <item>寅</item>
@@ -60,7 +60,7 @@
         <item>亥</item>
     </string-array>
 
-    <string-array name="chinesenumber"  translatable="false">
+    <string-array name="chinesenumber" translatable="false">
         <item>一</item>
         <item>二</item>
         <item>三</item>
@@ -75,15 +75,15 @@
         <item>十二</item>
     </string-array>
 
-    <string-array name="chineseten"  translatable="false">
+    <string-array name="chineseten" translatable="false">
         <item>初</item>
         <item>十</item>
         <item>廿</item>
         <item>卅</item>
     </string-array>
 
-    <string-array name="solar_term">
-        <item></item>           
+    <string-array name="solar_term" translatable="false">
+        <item></item>
         <item>小寒</item>
         <item>大寒</item>
         <item>立春</item>
@@ -140,7 +140,7 @@
         <item>腊月廿三 小年</item>
     </string-array>
 
-    <string-array name="lunar_month_name">
+    <string-array name="lunar_month_name" translatable="false">
         <item>正</item>
         <item>二</item>
         <item>三</item>
