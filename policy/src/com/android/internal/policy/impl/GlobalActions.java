@@ -233,6 +233,15 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                 R.string.global_actions_expanded_desktop_mode_off_status) {
 
             void onToggle(boolean on) {
+                boolean isPieAutoEnable = Settings.System.getIntForUser(mContext.getContentResolver(),
+                        Settings.System.PIE_AUTO_ENABLE, 0, UserHandle.USER_CURRENT) == 1;
+		//Auto enable/disable PIE
+                if(isPieAutoEnable){
+                        Settings.System.putIntForUser(
+                                mContext.getContentResolver(),
+                                Settings.System.PIE_CONTROLS,
+                                on ? 1 : 0, UserHandle.USER_CURRENT);
+                }
                 changeExpandDesktopModeSystemSetting(on);
             }
 
