@@ -2865,6 +2865,12 @@ public final class Settings {
         public static final String PIE_CONTROLS = "pie_controls";
 
         /**
+         * Auto enable/disable pie when expanded desktop mode state changed.
+         * @hide
+         */
+        public static final String PIE_AUTO_ENABLE = "pie_auto_enable";
+
+        /**
          * Pie menu, should default to 1 (yes, show)
          * @hide
          */
