@@ -118,4 +118,7 @@
   <java-symbol type="dimen" name="glowpad_notification_font_size" />
   <java-symbol type="dimen" name="glowpad_notification_text_radius" />
 
+  <!-- Privacy Guard -->
+  <java-symbol type="drawable" name="stat_notify_privacy_guard" />
+
 </resources>
