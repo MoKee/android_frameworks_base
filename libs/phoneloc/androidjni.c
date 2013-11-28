@@ -22,8 +22,8 @@
 //#define DEBUG
 
 #ifdef DEBUG
-    #include <android/log.h>
-    #define TAG_JNI = "jnireg"
+#include <android/log.h>
+#define TAG_JNI = "jnireg"
 #endif
 
 
@@ -31,18 +31,20 @@
  * Register several native methods for one class.
  */
 static int registerNativeMethods(JNIEnv* env, const char* className,
-    JNINativeMethod* gMethods, int numMethods)
+                                 JNINativeMethod* gMethods, int numMethods)
 {
     jclass clazz;
 
     clazz = (*env)->FindClass(env, className);
-    if (clazz == NULL) {
+    if (clazz == NULL)
+    {
 #ifdef DEBUG
         __android_log_print(ANDROID_LOG_DEBUG, TAG_JNI, "class not exist!");
 #endif
         return JNI_FALSE;
     }
-    if ((*env)->RegisterNatives(env, clazz, gMethods, numMethods) < 0) {
+    if ((*env)->RegisterNatives(env, clazz, gMethods, numMethods) < 0)
+    {
 #ifdef DEBUG
         __android_log_print(ANDROID_LOG_DEBUG, TAG_JNI, "method not exist!");
 #endif
@@ -59,8 +61,8 @@ static int registerNativeMethods(JNIEnv* env, const char* className,
 static int registerNatives(JNIEnv* env)
 {
     if (!registerNativeMethods(env,
-            JNIREG_CLASS,
-            gMethods, sizeof(gMethods) / sizeof(gMethods[0])))
+                               JNIREG_CLASS,
+                               gMethods, sizeof(gMethods) / sizeof(gMethods[0])))
         return JNI_FALSE;
 
     return JNI_TRUE;
@@ -76,17 +78,19 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* reserved)
     JNIEnv* env = NULL;
     jint result = -1;
 
-    if ((*vm)->GetEnv(vm, (void**) &env, JNI_VERSION_1_4) != JNI_OK) {
+    if ((*vm)->GetEnv(vm, (void**) &env, JNI_VERSION_1_4) != JNI_OK)
+    {
         return -1;
     }
     assert(env != NULL);
-    
-    if (!registerNatives(env)) {
+
+    if (!registerNatives(env))
+    {
         return -1;
     }
     /* success -- return valid version number */
     result = JNI_VERSION_1_4;
- 
+
     return result;
 }
 
