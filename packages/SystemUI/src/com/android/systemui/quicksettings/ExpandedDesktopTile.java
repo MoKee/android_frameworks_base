@@ -24,6 +24,14 @@ public class ExpandedDesktopTile extends QuickSettingsTile {
         mOnClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean isPieAutoEnable = Settings.System.getIntForUser(mContext.getContentResolver(),
+                        Settings.System.PIE_AUTO_ENABLE, 0, UserHandle.USER_CURRENT) == 1;
+		//Auto enable/disable PIE
+                if(isPieAutoEnable){
+                        Settings.System.putIntForUser(mContext.getContentResolver(),
+                                Settings.System.PIE_CONTROLS, mEnabled ? 0 : 1,
+                                UserHandle.USER_CURRENT);
+                }
                 // Change the system setting
                 Settings.System.putIntForUser(mContext.getContentResolver(),
                         Settings.System.EXPANDED_DESKTOP_STATE, mEnabled ? 0 : 1,
