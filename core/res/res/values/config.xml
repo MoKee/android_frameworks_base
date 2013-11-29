@@ -1323,6 +1323,9 @@
          The default value is false which represents AOSP behavior. -->
     <bool name="config_smsUseExpectMore">false</bool>
 
+    <!-- Disable lockscreen translucent decor by default -->
+    <bool name="config_enableLockScreenTranslucentDecor">true</bool>
+
     <!-- Defines the system property to set for performance profile xe: sys.cpu.modes. Leave it
          blank if the device do not support performance profiles -->
     <string name="config_perf_profile_prop" translatable="false"></string>
