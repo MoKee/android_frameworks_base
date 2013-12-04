@@ -3078,6 +3078,12 @@ public final class Settings {
         public static final String DIALER_DIRECT_CALL = "dialer_direct_call";
 
         /**
+         * show traffic in statusbar. The value is
+         * boolean (1 or 0).
+         */
+        public static final String STATUS_BAR_TRAFFIC = "status_bar_traffic";
+
+        /**
          * Always turn on screen after call ignoring proximity?
          * 0 = no
          * 1 = yes
