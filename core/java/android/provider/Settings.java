@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006 The Android Open Source Project
+ * Copyright (C) 2014 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3076,6 +3077,18 @@ public final class Settings {
          * boolean (1 or 0).
          */
         public static final String DIALER_DIRECT_CALL = "dialer_direct_call";
+
+        /**
+         * show carrier in statusbar. The value is
+         * boolean (1 or 0).
+         */
+        public static final String STATUS_BAR_CARRIER = "status_bar_carrier";
+
+        /**
+         * custom carrier label. The value is
+         * String.
+         */
+        public static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
 
         /**
          * show traffic in statusbar. The value is

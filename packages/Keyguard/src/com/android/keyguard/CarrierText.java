@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (C) 2014 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +18,8 @@
 package com.android.keyguard;
 
 import android.content.Context;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.TextView;
@@ -80,7 +83,13 @@ public class CarrierText extends TextView {
     }
 
     protected void updateCarrierText(State simState, CharSequence plmn, CharSequence spn) {
-        setText(getCarrierTextForSimState(simState, plmn, spn));
+        String customCarrierLabel = Settings.System.getStringForUser(getContext().getContentResolver(),
+            Settings.System.CUSTOM_CARRIER_LABEL, UserHandle.USER_CURRENT);
+        if (!TextUtils.isEmpty(customCarrierLabel)) {
+            setText(customCarrierLabel);
+        } else {
+            setText(getCarrierTextForSimState(simState, plmn, spn));
+        }
     }
 
     @Override
