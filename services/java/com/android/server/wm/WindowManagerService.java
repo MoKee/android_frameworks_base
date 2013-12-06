@@ -299,6 +299,8 @@ public class WindowManagerService extends IWindowManager.Stub
 
     private final boolean mHeadless;
 
+    private final int mSfHwRotation;
+
     private BroadcastReceiver mThemeChangeReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             mUiContext = null;
@@ -822,6 +824,9 @@ public class WindowManagerService extends IWindowManager.Stub
         }
 
         ThemeUtils.registerThemeChangeReceiver(mContext, mThemeChangeReceiver);
+
+        // Load hardware rotation from prop
+        mSfHwRotation = android.os.SystemProperties.getInt("ro.sf.hwrotation",0) / 90;
     }
 
     private Context getUiContext() {
@@ -5686,6 +5691,9 @@ public class WindowManagerService extends IWindowManager.Stub
 
                 // The screenshot API does not apply the current screen rotation.
                 rot = getDefaultDisplayContentLocked().getDisplay().getRotation();
+                // Allow for abnormal hardware orientation
+                rot = (rot + mSfHwRotation) % 4;
+
                 int fw = frame.width();
                 int fh = frame.height();
 
