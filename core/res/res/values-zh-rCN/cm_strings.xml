@@ -72,4 +72,7 @@
     <string name="policydesc_enforceSelinux">切换 SELinux 策略为强制执行或许可模式.</string>
     <string name="policylab_enforceMmac">强制执行 MMAC</string>
     <string name="policydesc_enforceMmac">切换 MMAC 策略为强制执行或许可模式.</string>
+    <string name="perf_profile_pwrsv">省电</string>
+    <string name="perf_profile_bal">平衡</string>
+    <string name="perf_profile_perf">性能</string>
 </resources>
