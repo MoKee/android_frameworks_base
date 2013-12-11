@@ -2053,6 +2053,8 @@
   <public type="style" name="Theme.DeviceDefault.NoActionBar.Overscan" id="0x010301df" />
   <public type="style" name="Theme.DeviceDefault.Light.NoActionBar.Overscan" id="0x010301e0" />
 
+  <java-symbol type="array" name="config_vendorServices" />
+
 <!-- ===============================================================
     Resources added in version 19 of the platform (KitKat)
     =============================================================== -->
