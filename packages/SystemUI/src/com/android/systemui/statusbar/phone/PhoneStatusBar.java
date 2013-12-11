@@ -2883,7 +2883,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
                 resolver, Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1;
 
         int batteryStyle = Settings.System.getInt(resolver,
-                Settings.System.STATUS_BAR_BATTERY, BATTERY_STYLE_NORMAL);
+                Settings.System.STATUS_BAR_BATTERY, BATTERY_STYLE_CIRCLE_PERCENT);
         boolean meterVisible = batteryStyle == BATTERY_STYLE_NORMAL;
         boolean circleVisible = batteryStyle == BATTERY_STYLE_CIRCLE
                 || batteryStyle == BATTERY_STYLE_CIRCLE_PERCENT;
