@@ -132,7 +132,7 @@
 			    android:layout_height="43dp"
 			    android:scaleType="center"
 			    android:src="@drawable/ic_shortcut_sinaweibo" />
-			    
+
 			<ImageView
 			    android:id="@+id/shortcut_fuubo"
 			    android:clickable="true"

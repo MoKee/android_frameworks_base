@@ -59,7 +59,7 @@
 
         </com.android.systemui.recent.RecentsVerticalScrollView>
 
-        <ScrollView 
+        <ScrollView
             xmlns:android="http://schemas.android.com/apk/res/android"
 	    android:id="@+id/shortcut_bar"
             android:layout_width="43dp"
@@ -136,7 +136,7 @@
 			    android:layout_height="43dp"
 			    android:scaleType="center"
 			    android:src="@drawable/ic_shortcut_sinaweibo" />
-			    
+
 			<ImageView
 			    android:id="@+id/shortcut_fuubo"
 			    android:clickable="true"
