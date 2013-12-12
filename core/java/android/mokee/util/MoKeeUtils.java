@@ -16,12 +16,34 @@
 
 package android.mokee.util;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 
 import java.util.Locale;
 
 public class MoKeeUtils {
+
     public static boolean isChineseLanguage() {
+
        return Resources.getSystem().getConfiguration().locale.getLanguage().startsWith(Locale.CHINESE.getLanguage());
+
+    }
+
+    public static boolean isApkInstalled(String packagename, Context context) {
+        PackageInfo packageInfo;
+
+        try {
+            packageInfo = context.getPackageManager().getPackageInfo(packagename, 0);
+        } catch (NameNotFoundException e) {
+            packageInfo = null;
+        }
+
+        if (packageInfo == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
