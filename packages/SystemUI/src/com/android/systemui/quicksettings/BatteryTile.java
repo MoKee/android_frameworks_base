@@ -46,7 +46,7 @@ public class BatteryTile extends QuickSettingsTile implements BatteryStateChange
         mBatteryView.setMode(BatteryMeterMode.BATTERY_METER_ICON_PORTRAIT);
         if (mQsc.isRibbonMode()) {
             boolean showPercent = Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.STATUS_BAR_BATTERY_SHOW_PERCENT, 0) == 1;
+                    Settings.System.STATUS_BAR_BATTERY_SHOW_PERCENT, 1) == 1;
             mBatteryView.setShowPercent(showPercent);
         } else {
             mBatteryView.setShowPercent(false);
