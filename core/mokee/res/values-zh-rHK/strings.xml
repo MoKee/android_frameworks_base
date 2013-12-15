@@ -16,9 +16,6 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Lunar -->
-    <string name="status_leap">"閏"</string>
-
     <!-- ScreenShort Trash -->
     <string name="trash">"放棄"</string>
 
