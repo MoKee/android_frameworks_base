@@ -14,9 +14,10 @@
      limitations under the License.
 -->
 
+<!-- These resources are around just to allow their values to be customized
+     for different hardware and product builds.  Do not translate. -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- ScreenShort Trash -->
-    <string name="trash">"放棄"</string>
+    <integer name="config_networkSpeedIndicatorRefreshTimeout">3000</integer>
 
 </resources>

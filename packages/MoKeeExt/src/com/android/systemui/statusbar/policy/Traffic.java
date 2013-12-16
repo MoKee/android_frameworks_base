@@ -33,6 +33,7 @@ import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
+import android.os.SystemClock;
 
 public class Traffic extends TextView {
     private boolean mAttached;
@@ -41,8 +42,9 @@ public class Traffic extends TextView {
     Handler mHandler;
     Handler mTrafficHandler;
     float speed;
-    float totalRxBytes;
-
+    long totalRxBytes;
+    long lastUpdateTime;
+    DecimalFormat decimalFormat = new DecimalFormat("##0.00");
     class SettingsObserver extends ContentObserver {
         SettingsObserver(Handler handler) {
             super(handler);
@@ -51,7 +53,7 @@ public class Traffic extends TextView {
         void observe() {
             ContentResolver resolver = mContext.getContentResolver();
             resolver.registerContentObserver(Settings.System
-                    .getUriFor(Settings.System.STATUS_BAR_TRAFFIC), false, this);
+                .getUriFor(Settings.System.STATUS_BAR_TRAFFIC), false, this);
         }
 
         @Override
@@ -86,7 +88,7 @@ public class Traffic extends TextView {
             IntentFilter filter = new IntentFilter();
             filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
             getContext().registerReceiver(mIntentReceiver, filter, null,
-                    getHandler());
+                getHandler());
         }
         updateSettings();
     }
@@ -114,28 +116,36 @@ public class Traffic extends TextView {
         mTrafficHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                speed = (mTrafficStats.getTotalRxBytes() - totalRxBytes) / 1024 / 3;
+                long td = SystemClock.elapsedRealtime() - lastUpdateTime;
+                if (td == 0) {
+                    // we just updated the view, nothing further to do
+                    return;
+                }
+
+                speed = (float)((mTrafficStats.getTotalRxBytes() - totalRxBytes) * 1024 / td);
                 totalRxBytes = mTrafficStats.getTotalRxBytes();
-                DecimalFormat DecimalFormatfnum = new DecimalFormat("##0.00");
-                if (speed / 1024 >= 1) {
-                    setText(DecimalFormatfnum.format(speed / 1024) + "MB/s");
-                } else if (speed > 0.01) {
-                    setText(DecimalFormatfnum.format(speed) + "KB/s");
-                } else if (speed <= 0.01 && speed >= 0) {
-                    setText(DecimalFormatfnum.format(speed * 1024) + "B/s");
+                lastUpdateTime = SystemClock.elapsedRealtime();
+
+                if (speed / 1048576 >= 1) { // 1024 * 1024
+                    setText(decimalFormat.format(speed / 1048576f) + "MB/s");
+                } else if (speed / 1024f >= 1) {
+                    setText(decimalFormat.format(speed / 1024f) + "KB/s");
+                } else {
+                    setText(speed > 0 ? (int)speed + "B/s" : "");
                 }
                 update();
                 super.handleMessage(msg);
             }
         };
         totalRxBytes = mTrafficStats.getTotalRxBytes();
+        lastUpdateTime = SystemClock.elapsedRealtime();
         mTrafficHandler.sendEmptyMessage(0);
     }
 
     private boolean getConnectAvailable() {
         try {
             ConnectivityManager connectivityManager = (ConnectivityManager) mContext
-                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
             if (connectivityManager.getActiveNetworkInfo().isConnected())
                 return true;
             else
@@ -147,7 +157,8 @@ public class Traffic extends TextView {
 
     public void update() {
         mTrafficHandler.removeCallbacks(mRunnable);
-        mTrafficHandler.postDelayed(mRunnable, 3000);
+        mTrafficHandler.postDelayed(mRunnable, mContext.getResources().getInteger(
+		com.mokee.internal.R.integer.config_networkSpeedIndicatorRefreshTimeout));
     }
 
     Runnable mRunnable = new Runnable() {
@@ -166,7 +177,8 @@ public class Traffic extends TextView {
                 updateTraffic();
             }
             setVisibility(View.VISIBLE);
-        } else
+        } else {
             setVisibility(View.GONE);
+        }
     }
 }

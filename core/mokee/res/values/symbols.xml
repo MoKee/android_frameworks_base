@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-/* Copyright 2013, The MoKee OpenSource Project
+/* Copyright 2014, The MoKee OpenSource Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -65,10 +65,13 @@
   <java-symbol type="string" name="status_day" />
   <java-symbol type="string" name="system_ui_date_pattern" />
 
-  <!-- Screenshort Trash -->
-  <java-symbol type="string" name="trash" />
+  <!-- Network Speed Indicator -->
+  <java-symbol type="integer" name="config_networkSpeedIndicatorRefreshTimeout" />
 
   <!-- Privacy Guard -->
   <java-symbol type="drawable" name="stat_notify_privacy_guard" />
+
+  <!-- Screenshort Trash -->
+  <java-symbol type="string" name="trash" />
 
 </resources>
