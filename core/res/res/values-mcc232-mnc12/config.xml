@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-/* //device/apps/common/assets/res/any/dimens.xml
-**
+          /*
 ** Copyright 2013, The Android Open Source Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,19 +16,11 @@
 ** limitations under the License.
 */
 -->
-<resources>
 
-    <!-- Height of the sliding KeyguardSecurityContainer (includes 2x
-         keyguard_security_view_margin) -->
-    <dimen name="keyguard_security_height">400dp</dimen>
-
-    <!-- Height of the sliding KeyguardSecurityContainer with hidden widget (includes 2x keyguard_security_view_margin) -->
-    <dimen name="keyguard_security_no_widget_height">400dp</dimen>
-
-    <!-- Left padding of num pad key on keyguard -->
-    <dimen name="kg_num_pad_key_padding_left">20dp</dimen>
-
-    <!-- The bottom margin for the GlowPadView container -->
-    <dimen name="glowpadcontainer_bottom_margin">-48dp</dimen>
-
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Don't use roaming icon for considered operators -->
+    <string-array translatable="false" name="config_operatorConsideredNonRoaming">
+        <item>23201</item>
+    </string-array>
 </resources>
+
