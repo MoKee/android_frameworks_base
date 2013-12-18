@@ -89,8 +89,10 @@ public class BatteryMeterView extends View implements DemoMode {
 
                 setContentDescription(
                         context.getString(R.string.accessibility_battery_level, level));
-                setVisibility(View.VISIBLE);
-                invalidateIfVisible();
+                if (mBatteryMeterDrawable != null) {
+                    setVisibility(View.VISIBLE);
+                    invalidateIfVisible();
+                }
             } else if (action.equals(ACTION_LEVEL_TEST)) {
                 testmode = true;
                 post(new Runnable() {
@@ -245,7 +247,9 @@ public class BatteryMeterView extends View implements DemoMode {
         mHeight = h;
         mWidth = w;
         synchronized (mLock) {
-            mBatteryMeterDrawable.onSizeChanged(w, h, oldw, oldh);
+            if (mBatteryMeterDrawable != null) {
+                mBatteryMeterDrawable.onSizeChanged(w, h, oldw, oldh);
+            }
         }
     }
 
@@ -284,6 +288,9 @@ public class BatteryMeterView extends View implements DemoMode {
         mMeterMode = mode;
         if (mode == BatteryMeterMode.BATTERY_METER_GONE) {
             setVisibility(View.GONE);
+            synchronized (mLock) {
+                mBatteryMeterDrawable = null;
+            }
         } else {
             synchronized (mLock) {
                 if (mBatteryMeterDrawable != null) {
@@ -305,7 +312,9 @@ public class BatteryMeterView extends View implements DemoMode {
     @Override
     public void draw(Canvas c) {
         synchronized (mLock) {
-            mBatteryMeterDrawable.onDraw(c);
+            if (mBatteryMeterDrawable != null) {
+                mBatteryMeterDrawable.onDraw(c);
+            }
         }
     }
 
@@ -605,7 +614,7 @@ public class BatteryMeterView extends View implements DemoMode {
             Resources res = getResources();
 
             mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-            mTextPaint.setColor(0xFFFFFFFF);
+            mTextPaint.setColor(res.getColor(R.color.status_bar_clock_color));
             Typeface font = Typeface.create("sans-serif-condensed", Typeface.NORMAL);
             mTextPaint.setTypeface(font);
             mTextPaint.setTextAlign(Paint.Align.CENTER);
@@ -784,9 +793,9 @@ public class BatteryMeterView extends View implements DemoMode {
             Rect bounds = new Rect();
             mTextPaint.getTextBounds("99", 0, "99".length(), bounds);
             mTextX = mCircleSize / 2.0f + getPaddingLeft();
-            // the +1 at end of formula balances out rounding issues. works out on all resolutions
-            mTextY = mCircleSize / 2.0f + (bounds.bottom - bounds.top) / 2.0f + bounds.bottom
-                    - strokeWidth / 2.0f + 1;
+            // the +1dp at end of formula balances out rounding issues.works out on all resolutions
+            mTextY = mCircleSize / 2.0f + (bounds.bottom - bounds.top) / 2.0f
+                    - strokeWidth / 2.0f + getResources().getDisplayMetrics().density;
         }
     }
 }
