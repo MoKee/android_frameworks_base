@@ -4382,7 +4382,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     private void performScreenRecord() {
         final Intent recordIntent = new Intent("com.mokee.action.NOTIFY_RECORD_SERVICE");
-        mContext.sendBroadcast(recordIntent, android.Manifest.permission.RECORD_SCREEN);
+        mContext.sendBroadcast(recordIntent, "android.permission.RECORD_SCREEN");
     }
 
     /** {@inheritDoc} */
