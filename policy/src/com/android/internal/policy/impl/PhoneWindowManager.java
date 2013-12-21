@@ -513,7 +513,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     // Screenshot/screen record trigger states
     // Time to volume and power must be pressed within this interval of each other.
     private static final long ACTION_CHORD_DEBOUNCE_DELAY_MILLIS = 150;
-	private static final long SCREENSHOT_CHORD_DEBOUNCE_DELAY_MILLIS = 150;
+    private static final long SCREENSHOT_CHORD_DEBOUNCE_DELAY_MILLIS = 150;
     // Increase the chord delay when taking a screenshot from the keyguard
     private static final float KEYGUARD_SCREENSHOT_CHORD_DELAY_MULTIPLIER = 2.5f;
     private boolean mScreenshotChordEnabled;
@@ -877,7 +877,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         mHandler.removeCallbacks(mRingerChordLongPress);
     }
 
-	private void interceptScreenRecordChord() {
+    private void interceptScreenRecordChord() {
         if (mScreenRecordChordEnabled
                 && mVolumeUpKeyTriggered && mPowerKeyTriggered && !mVolumeDownKeyTriggered) {
             final long now = SystemClock.uptimeMillis();
@@ -4531,20 +4531,20 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                                 && (event.getFlags() & KeyEvent.FLAG_FALLBACK) == 0) {
                             mVolumeUpKeyTriggered = true;
                             mVolumeUpKeyTime = event.getDownTime();
-							mVolumeUpKeyConsumedByScreenRecordChord = false;
+                            mVolumeUpKeyConsumedByScreenRecordChord = false;
                             mVolumeUpKeyConsumedByChord = false;
                             cancelPendingPowerKeyAction();
                             cancelPendingScreenshotChordAction();
                             interceptRingerChord();
                             interceptScreencastChord();
-							interceptScreenRecordChord();
+                            interceptScreenRecordChord();
                         }
                     } else {
                         mVolumeUpKeyTriggered = false;
                         cancelPendingScreenshotChordAction();
                         cancelPendingRingerChordAction();
                         cancelPendingScreencastChordAction();
-						cancelPendingScreenRecordChordAction();
+                        cancelPendingScreenRecordChordAction();
                     }
                 }
                 if (down) {
