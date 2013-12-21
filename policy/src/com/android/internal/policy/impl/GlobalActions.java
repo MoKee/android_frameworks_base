@@ -37,7 +37,6 @@ import android.content.IntentFilter;
 import android.content.pm.UserInfo;
 import android.database.ContentObserver;
 import android.graphics.drawable.Drawable;
-import android.Manifest;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
@@ -391,10 +390,10 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
         // next: screenrecord
         // only shown if enabled, disabled by default
         boolean showScreenrecord = Settings.System.getIntForUser(cr,
-                Settings.System.POWER_MENU_SCREENRECORD_ENABLED, 1, UserHandle.USER_CURRENT) == 1;
+                Settings.System.POWER_MENU_SCREENRECORD_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
         if (showScreenrecord) {
             mItems.add(
-                new SinglePressAction(R.drawable.ic_lock_screen_record, R.string.global_action_screen_record) {
+                new SinglePressAction(com.mokee.internal.R.drawable.ic_lock_screen_record, com.mokee.internal.R.string.global_action_screen_record) {
                     public void onPress() {
                         toggleScreenRecord();
                     }
@@ -408,6 +407,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                     }
                 });
         }
+
         // next: expanded desktop toggle
         // only shown if enabled and expanded desktop is enabled, disabled by default
         boolean showExpandedDesktop =
@@ -687,7 +687,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
 
     private void toggleScreenRecord() {
         final Intent recordIntent = new Intent("com.mokee.action.NOTIFY_RECORD_SERVICE");
-        mContext.sendBroadcast(recordIntent, Manifest.permission.RECORD_SCREEN);
+        mContext.sendBroadcast(recordIntent, android.Manifest.permission.RECORD_SCREEN);
     }
 
     private void prepareDialog() {

@@ -30,4 +30,8 @@
     <!-- ScreenShort Trash -->
     <string name="trash">Trash</string>
 
+    <!-- ScreenRecord -->
+    <!-- label for screen record item in phone options dialog -->
+    <string name="global_action_screen_record">Screen record</string>
+
 </resources>

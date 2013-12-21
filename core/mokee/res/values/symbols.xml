@@ -71,7 +71,11 @@
   <!-- Privacy Guard -->
   <java-symbol type="drawable" name="stat_notify_privacy_guard" />
 
-  <!-- Screenshort Trash -->
+  <!-- ScreenShort Trash -->
   <java-symbol type="string" name="trash" />
+
+  <!-- ScreenRecord -->
+  <java-symbol type="string" name="global_action_screen_record" />
+  <java-symbol type="drawable" name="ic_lock_screen_record" />
 
 </resources>

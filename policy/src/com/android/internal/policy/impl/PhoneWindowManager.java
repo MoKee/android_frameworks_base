@@ -48,7 +48,6 @@ import android.database.ContentObserver;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.hardware.input.InputManager;
-import android.Manifest;
 import android.media.AudioManager;
 import android.media.AudioSystem;
 import android.media.IAudioService;
@@ -521,10 +520,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private boolean mScreenRecordChordEnabled = true;
     private boolean mVolumeDownKeyTriggered;
     private long mVolumeDownKeyTime;
+    private long mVolumeUpKeyTime;
     private boolean mVolumeDownKeyConsumedByChord;
     private boolean mVolumeUpKeyConsumedByChord;
     private boolean mVolumeUpKeyTriggered;
-    private long mVolumeUpKeyTime;
     private boolean mVolumeUpKeyConsumedByScreenRecordChord;
     private boolean mPowerKeyTriggered;
     private long mPowerKeyTime;
@@ -877,7 +876,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private void cancelPendingRingerChordAction() {
         mHandler.removeCallbacks(mRingerChordLongPress);
     }
-	
+
 	private void interceptScreenRecordChord() {
         if (mScreenRecordChordEnabled
                 && mVolumeUpKeyTriggered && mPowerKeyTriggered && !mVolumeDownKeyTriggered) {
@@ -946,14 +945,14 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             takeScreenshot();
         }
     };
-	
+
 	private final Runnable mScreenRecordRunnable = new Runnable() {
         @Override
         public void run() {
             performScreenRecord();
         }
     };
-	
+
     private final Runnable mScreencastRunnable = new Runnable() {
         @Override
         public void run() {
@@ -2384,7 +2383,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             }
         }
 
-		 // If we think we might have a volume up & power key chord on the way
+        // If we think we might have a volume up & power key chord on the way
         // but we're not sure, then tell the dispatcher to wait a little while and
         // try again later before dispatching.
         if (mScreenRecordChordEnabled && (flags & KeyEvent.FLAG_FALLBACK) == 0) {
@@ -4383,7 +4382,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     private void performScreenRecord() {
         final Intent recordIntent = new Intent("com.mokee.action.NOTIFY_RECORD_SERVICE");
-        mContext.sendBroadcast(recordIntent, Manifest.permission.RECORD_SCREEN);
+        mContext.sendBroadcast(recordIntent, android.Manifest.permission.RECORD_SCREEN);
     }
 
     /** {@inheritDoc} */

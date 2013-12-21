@@ -22,4 +22,7 @@
     <!-- ScreenShort Trash -->
     <string name="trash">"放棄"</string>
 
+    <!-- ScreenRecord -->
+    <string name="global_action_screen_record">屏幕錄像</string>
+
 </resources>
