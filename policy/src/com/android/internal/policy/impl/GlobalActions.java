@@ -686,7 +686,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
     }
 
     private void toggleScreenRecord() {
-        final Intent recordIntent = new Intent("org.chameleonos.action.NOTIFY_RECORD_SERVICE");
+        final Intent recordIntent = new Intent("com.mokee.action.NOTIFY_RECORD_SERVICE");
         mContext.sendBroadcast(recordIntent, Manifest.permission.RECORD_SCREEN);
     }
 
