@@ -23,7 +23,7 @@
  *
  * Created by cytown martincz
  * Last edited 2013.3.24
- * 
+ *
  */
 
 /**
@@ -38,8 +38,10 @@ getPhoneLocationJni( JNIEnv* env, jclass thiz, jstring phone );
  * Table of methods associated with a single class.
  */
 static JNINativeMethod gMethods[] = {
-    { "getPhoneLocationJni", "(Ljava/lang/String;)Ljava/lang/String;",
-            (void*) getPhoneLocationJni },
+    {
+        "getPhoneLocationJni", "(Ljava/lang/String;)Ljava/lang/String;",
+        (void*) getPhoneLocationJni
+    },
     /* <<----Functions for sync end--------------------------------- */
 };
 #endif

@@ -20,49 +20,45 @@
 #pragma pack (1)
 
 //链表节点类
-class StringNode
-{
+class StringNode {
 public:
     unsigned short cityCode;
-	char * value;
-	int length;
-	unsigned short offset;
-	StringNode * next;
+    char * value;
+    int length;
+    unsigned short offset;
+    StringNode * next;
 
-	StringNode(const char * val, unsigned short cityCode);
-	StringNode();
-	~StringNode();
+    StringNode(const char * val, unsigned short cityCode);
+    StringNode();
+    ~StringNode();
 };
 
 
 //索引表节点类
-class IndexNode
-{
+class IndexNode {
 public:
-	int NumStart;
-	int NumEnd;
-	StringNode * Address;
-	IndexNode * next;
+    int NumStart;
+    int NumEnd;
+    StringNode * Address;
+    IndexNode * next;
 
-	IndexNode();
-	IndexNode(int ns, int ne, StringNode * ad=NULL);
+    IndexNode();
+    IndexNode(int ns, int ne, StringNode * ad=NULL);
 };
 
 //索引记录结构体
-typedef struct _IndexStruct
-{
-	int NumStart;
-	int NumEnd;
-	unsigned short Offset;
+typedef struct _IndexStruct {
+    int NumStart;
+    int NumEnd;
+    unsigned short Offset;
 } IndexStruct;
 
 //手机归属地结构体类型
-typedef struct _MpLocation
-{
-	int NumStart;
-	int NumEnd;
-	char Location[48];
-	int locationCode;
+typedef struct _MpLocation {
+    int NumStart;
+    int NumEnd;
+    char Location[48];
+    int locationCode;
 } MpLocation;
 
 #endif

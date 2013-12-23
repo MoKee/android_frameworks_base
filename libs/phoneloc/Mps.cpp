@@ -20,8 +20,7 @@
 #include "Global.h"
 
 //获取号码段记录在文件中的偏移量
-inline int getIndexOffset(FILE * fp, int fo, int lo, int num)
-{
+inline int getIndexOffset(FILE * fp, int fo, int lo, int num) {
     int mo;    //中间偏移量
     int mv,smv;    //中间值
     int fv = 0,lv = 0; //边界值
@@ -41,8 +40,7 @@ inline int getIndexOffset(FILE * fp, int fo, int lo, int num)
     else if(num>llv)
         return -1;
     //使用"二分法"确定记录偏移量
-    do
-    {
+    do {
         mo=fo+(lo-fo)/(sizeof(IndexStruct)-2)/2*(sizeof(IndexStruct)-2);
         fseek(fp,mo,SEEK_SET);
         fread(&smv,sizeof(smv) - 1,1,fp);
@@ -54,24 +52,20 @@ inline int getIndexOffset(FILE * fp, int fo, int lo, int num)
         if(num >= smv && num <=mv)
             return mo;
         //如果比中间值的end大,则改更头,往前移动
-        if(num>=mv)
-        {
+        if(num>=mv) {
             fo=mo + (sizeof(IndexStruct) - 2) ;
         }
         //如果比中间值的end小,并且不在这个区间(即比头小),则改更尾
-        else
-        {
+        else {
             lo=mo - (sizeof(IndexStruct) - 2);
         }
         mo = -1;
-    }
-    while(fo <= lo);
+    } while(fo <= lo);
     return mo;
 }
 
 //查询号码,返回号码段和归属地信息
-MpLocation GetMpLocation(const char * fn, int num)
-{
+MpLocation GetMpLocation(const char * fn, int num) {
     FILE * fp=fopen(fn,"rb");
     MpLocation mpl;
     mpl.locationCode = 0;
@@ -79,8 +73,7 @@ MpLocation GetMpLocation(const char * fn, int num)
     mpl.NumEnd=0;
     strcpy(mpl.Location," ");
 
-    if(fp == NULL)
-    {
+    if(fp == NULL) {
         return mpl;
     }
 
@@ -89,8 +82,7 @@ MpLocation GetMpLocation(const char * fn, int num)
     fread(&fo,sizeof(fo),1,fp);
     fread(&lo,sizeof(lo),1,fp);
     int rcOffset=getIndexOffset(fp,fo,lo,num);
-    if(rcOffset>=0)
-    {
+    if(rcOffset>=0) {
         fseek(fp,rcOffset,SEEK_SET);
         //读取号码段起始地址和结束地址
         fread(&mpl.NumStart,sizeof(mpl.NumStart) -1,1,fp);
@@ -98,14 +90,11 @@ MpLocation GetMpLocation(const char * fn, int num)
         mpl.NumStart&=0x00ffffff;
         mpl.NumEnd&=0x00ffffff;
         //如果查询的号码处于中间空段
-        if(num>mpl.NumEnd)
-        {
+        if(num>mpl.NumEnd) {
             mpl.NumStart=0;
             mpl.NumEnd=0;
             strcpy(mpl.Location," ");
-        }
-        else
-        {
+        } else {
             //读取字符串偏移量,3字节!
             unsigned short lstrOffset=0;
             fread(&lstrOffset,sizeof(unsigned short),1,fp);
@@ -136,8 +125,7 @@ extern "C" {
 #endif
 #include<stdlib.h>
 
-void getLocationInfo(char *dataFile, int num, char * location, char * cityCode)
-{
+void getLocationInfo(char *dataFile, int num, char * location, char * cityCode) {
 
     if(location == NULL || dataFile == NULL || cityCode == NULL)
         return ;
@@ -145,11 +133,9 @@ void getLocationInfo(char *dataFile, int num, char * location, char * cityCode)
     strcpy(location,mpl.Location);
 
     //Not found the entry
-    if(mpl.locationCode == 0)
-    {
+    if(mpl.locationCode == 0) {
         sprintf(cityCode, " ");
-    }
-    else if(mpl.locationCode < 100)
+    } else if(mpl.locationCode < 100)
         sprintf(cityCode,"%03d",mpl.locationCode);
     else
         sprintf(cityCode,"%04d",mpl.locationCode);
