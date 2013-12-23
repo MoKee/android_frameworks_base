@@ -20,7 +20,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
-
+import java.text.DecimalFormat;
 import java.util.Locale;
 
 public class MoKeeUtils {
@@ -45,5 +45,26 @@ public class MoKeeUtils {
         } else {
             return true;
         }
+    }
+
+    /**
+     * 转换文件大小
+     * 
+     * @param size
+     * @return
+     */
+    public static String formetFileSize(long size) {
+        DecimalFormat df = new DecimalFormat("#0.00");
+        String fileSizeString = "";
+        if (size < 1024) {
+            fileSizeString = df.format((double) size) + "B";
+        } else if (size < 1048576) {
+            fileSizeString = df.format((double) size / 1024) + "K";
+        } else if (size < 1073741824) {
+            fileSizeString = df.format((double) size / 1048576) + "M";
+        } else {
+            fileSizeString = df.format((double) size / 1073741824) + "G";
+        }
+        return fileSizeString;
     }
 }
