@@ -95,28 +95,27 @@ void formatPhone(char* phone, int len, char* nphone) { //得到电话号码的�
         if (strncmp(nphone, "+00", 3) != 0) {
             memmove(nphone + 2, nphone + 1, len);
             memmove(nphone, "00", 2);
-            if(len>=6) {
-                if(nphone[4]=='0'&&nphone[5]!='0') { //输入错误区号，如+860535,多输入一个0
-                    memmove(nphone+5, "0", 1);
+            if (len >= 6) {
+                if (nphone[4] == '0' && nphone[5] != '0') { //输入错误区号，如+860535,多输入一个0
+                    memmove(nphone + 5, "0", 1);
+                    memmove(nphone + 5, nphone + 4, len);
+                    memmove(nphone + 4, "0", 1);//86353,86换成
+                } else if (nphone[4] != '0' && nphone[4] != '1' && nphone[5] != '0') { //应该把手机号除了
                     memmove(nphone +5, nphone + 4, len);
-                    memmove(nphone+4, "0", 1);//86353,86换成了
-
-                } else if(nphone[4] != '0' && nphone[4] != '1' && nphone[5] != '0') { //应该把手机号除了
-                    memmove(nphone +5, nphone + 4, len);
-                    memmove(nphone+4, "0", 1);//86353,86换成了
-                } else if(nphone[4]=='1'&&nphone[5]=='0'&&nphone[6]!='0') { //特指北京,三排除10086之类
-                    memmove(nphone +5, nphone + 4, len);
-                    memmove(nphone+4, "0", 1);//86353,86换成了
+                    memmove(nphone + 4, "0", 1);//86353,86换成了
+                } else if (nphone[4] == '1' && nphone[5]=='0' && nphone[6] != '0') { //特指北京,三排除10086之类
+                    memmove(nphone + 5, nphone + 4, len);
+                    memmove(nphone + 4, "0", 1);//86353,86换成了
                 }
             }
         } else {
             memmove(nphone, nphone + 1, len);
         }
     }
-    if(nphone[0]!='0'&&nphone[0]!='1'&& nphone[0]!='9')//国内的固定电话,9是银行等的开头把这些也除去
-        memmove(nphone+1, "0", 1);//把第二位也置为0，这样在数据库就找不到
-    if(nphone[1]=='0'&&nphone[0]=='1'&&nphone[2]!='0')//北京做特殊处理
-        memmove(nphone+1, "0", 1);//把第二位也置为0，这样在数据库就找不到
+    if (nphone[0] != '0' && nphone[0] != '1' && nphone[0] != '9')//国内的固定电话,9是银行等的开头把这些也除去
+        memmove(nphone + 1, "0", 1);//把第二位也置为0，这样在数据库就找不到
+    if (nphone[1] == '0' && nphone[0] == '1' && nphone[2] != '0')//北京做特殊处理
+        memmove(nphone + 1, "0", 1);//把第二位也置为0，这样在数据库就找不到
     strncpy(phone, nphone, len);
     strncpy(phone, nphone, len);
     int i;
