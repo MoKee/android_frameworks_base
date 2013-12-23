@@ -48,7 +48,7 @@ public class MoKeeUtils {
     }
 
     /**
-     * 转换文件大小
+     * Convert filesize unit
      * 
      * @param size
      * @return
