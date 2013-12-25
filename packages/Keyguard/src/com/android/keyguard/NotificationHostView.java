@@ -260,41 +260,42 @@ public class NotificationHostView extends FrameLayout {
 
     @Override
     public void onFinishInflate() {
-        if (NotificationViewManager.NotificationListener != null) {
-            mNotifications.clear();
-            mNotificationsToAdd.clear();
-            mNotificationsToRemove.clear();
-            mShownNotifications = 0;
-            try {
-                StatusBarNotification[] sbns = mNotificationManager.getActiveNotificationsFromListener(NotificationViewManager.NotificationListener);
-                StatusBarNotification dismissedSbn;
-                for (StatusBarNotification sbn : sbns) {
-                    if ((dismissedSbn = mDismissedNotifications.get(describeNotification(sbn))) == null || dismissedSbn.getPostTime() != sbn.getPostTime())
-                        addNotification(sbn);
+        mNotifications.clear();
+        mNotificationsToAdd.clear();
+        mNotificationsToRemove.clear();
+        mShownNotifications = 0;
+        setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent ev) {
+                if (mShownNotifications > 0) {
+                    hideAllNotifications();
                 }
-            } catch (RemoteException e) {
-                Log.e(TAG, "Failed to get active notifications!");
+                return false;
             }
+        });
+        Point p = new Point();
+        mWindowManager.getDefaultDisplay().getSize(p);
+        mDisplayWidth = p.x;
+        mDisplayHeight = p.y;
+        mNotifView = (LinearLayout) findViewById(R.id.linearlayout);
+        mScrollView = (TouchModalScrollView) findViewById(R.id.scrollview);
+        mScrollView.setHostView(this);
+        mScrollView.setY(mDisplayHeight * OFFSET_TOP);
+        mScrollView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
+                Math.round(mDisplayHeight - mDisplayHeight * OFFSET_TOP)));
+    }
 
-            setOnTouchListener(new OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent ev) {
-                    if (mShownNotifications > 0) {
-                        hideAllNotifications();
-                    }
-                    return false;
-                }
-            });
-            Point p = new Point();
-            mWindowManager.getDefaultDisplay().getSize(p);
-            mDisplayWidth = p.x;
-            mDisplayHeight = p.y;
-            mNotifView = (LinearLayout) findViewById(R.id.linearlayout);
-            mScrollView = (TouchModalScrollView) findViewById(R.id.scrollview);
-            mScrollView.setHostView(this);
-            mScrollView.setY(mDisplayHeight * OFFSET_TOP);
-            mScrollView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
-                    Math.round(mDisplayHeight - mDisplayHeight * OFFSET_TOP)));
+    public void addNotifications() {
+        try {
+            StatusBarNotification[] sbns = mNotificationManager.getActiveNotificationsFromListener(NotificationViewManager.NotificationListener);
+            StatusBarNotification dismissedSbn;
+            for (StatusBarNotification sbn : sbns) {
+                if ((dismissedSbn = mDismissedNotifications.get(describeNotification(sbn))) == null || dismissedSbn.getPostTime() != sbn.getPostTime())
+                    addNotification(sbn);
+            }
+            bringToFront();
+        } catch (RemoteException e) {
+            Log.e(TAG, "Failed to get active notifications!");
         }
     }
 
