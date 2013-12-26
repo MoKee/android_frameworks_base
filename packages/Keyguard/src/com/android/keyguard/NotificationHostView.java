@@ -281,8 +281,9 @@ public class NotificationHostView extends FrameLayout {
         mScrollView = (TouchModalScrollView) findViewById(R.id.scrollview);
         mScrollView.setHostView(this);
         mScrollView.setY(mDisplayHeight * OFFSET_TOP);
+        int maxHeight = Math.round(mDisplayHeight - mDisplayHeight * OFFSET_TOP);
         mScrollView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
-                Math.round(mDisplayHeight - mDisplayHeight * OFFSET_TOP)));
+                Math.min(maxHeight, NotificationViewManager.config.notificationsHeight * mNotificationMinRowHeight)));
     }
 
     public void addNotifications() {

@@ -52,6 +52,7 @@ public class NotificationViewManager {
         public boolean expandedView = true;
         public boolean forceExpandedView = false;
         public boolean wakeOnNotification = false;
+        public int notificationsHeight = 4;
 
         public Configuration(Handler handler) {
             super(handler);
@@ -76,6 +77,8 @@ public class NotificationViewManager {
                     Settings.System.LOCKSCREEN_NOTIFICATIONS_FORCE_EXPANDED_VIEW), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.LOCKSCREEN_NOTIFICATIONS_WAKE_ON_NOTIFICATION), false, this);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.LOCKSCREEN_NOTIFICATIONS_HEIGHT), false, this);
         }
 
         @Override
@@ -100,6 +103,8 @@ public class NotificationViewManager {
                     Settings.System.LOCKSCREEN_NOTIFICATIONS_FORCE_EXPANDED_VIEW, forceExpandedView ? 1 : 0) == 1;
             wakeOnNotification = Settings.System.getInt(mContext.getContentResolver(),
                     Settings.System.LOCKSCREEN_NOTIFICATIONS_WAKE_ON_NOTIFICATION, forceExpandedView ? 1 : 0) == 1;
+            notificationsHeight = Settings.System.getInt(mContext.getContentResolver(),
+                    Settings.System.LOCKSCREEN_NOTIFICATIONS_HEIGHT, notificationsHeight);
         }
     }
 
