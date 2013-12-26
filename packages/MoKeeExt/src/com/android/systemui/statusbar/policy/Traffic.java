@@ -122,7 +122,7 @@ public class Traffic extends TextView {
                     return;
                 }
 
-                speed = (float)((mTrafficStats.getTotalRxBytes() - totalRxBytes) * 1024 / td / 3);
+                speed = (float)((mTrafficStats.getTotalRxBytes() - totalRxBytes) * 1024 / td);
                 totalRxBytes = mTrafficStats.getTotalRxBytes();
                 lastUpdateTime = SystemClock.elapsedRealtime();
 
