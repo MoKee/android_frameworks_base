@@ -70,6 +70,8 @@
 
   <!-- Network Speed Indicator -->
   <java-symbol type="integer" name="config_networkSpeedIndicatorRefreshTimeout" />
+  <java-symbol type="integer" name="config_networkSpeedIndicatorSingleLineFontSize" />
+  <java-symbol type="integer" name="config_networkSpeedIndicatorDualLineFontSize" />
 
   <!-- Privacy Guard -->
   <java-symbol type="drawable" name="stat_notify_privacy_guard" />

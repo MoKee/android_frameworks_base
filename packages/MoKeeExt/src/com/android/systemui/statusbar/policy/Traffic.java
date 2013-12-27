@@ -26,6 +26,7 @@ import android.content.IntentFilter;
 import android.database.ContentObserver;
 import android.net.ConnectivityManager;
 import android.net.TrafficStats;
+import android.os.SystemClock;
 import android.os.Handler;
 import android.os.Message;
 import android.os.UserHandle;
@@ -33,18 +34,23 @@ import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
-import android.os.SystemClock;
 
 public class Traffic extends TextView {
     private boolean mAttached;
     TrafficStats mTrafficStats;
-    boolean showTraffic;
+    int showTraffic;
     Handler mHandler;
     Handler mTrafficHandler;
-    float speed;
+
+    float speedRx;
+    float speedTx;
     long totalRxBytes;
+    long totalTxBytes;
     long lastUpdateTime;
+    String strText;
+
     DecimalFormat decimalFormat = new DecimalFormat("##0.00");
+
     class SettingsObserver extends ContentObserver {
         SettingsObserver(Handler handler) {
             super(handler);
@@ -53,7 +59,7 @@ public class Traffic extends TextView {
         void observe() {
             ContentResolver resolver = mContext.getContentResolver();
             resolver.registerContentObserver(Settings.System
-                .getUriFor(Settings.System.STATUS_BAR_TRAFFIC), false, this);
+                    .getUriFor(Settings.System.STATUS_BAR_TRAFFIC_STYLE), false, this);
         }
 
         @Override
@@ -76,6 +82,8 @@ public class Traffic extends TextView {
         SettingsObserver settingsObserver = new SettingsObserver(mHandler);
         mTrafficStats = new TrafficStats();
         settingsObserver.observe();
+
+        strText = new String();
         updateSettings();
     }
 
@@ -88,7 +96,7 @@ public class Traffic extends TextView {
             IntentFilter filter = new IntentFilter();
             filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
             getContext().registerReceiver(mIntentReceiver, filter, null,
-                getHandler());
+                    getHandler());
         }
         updateSettings();
     }
@@ -121,23 +129,46 @@ public class Traffic extends TextView {
                     // we just updated the view, nothing further to do
                     return;
                 }
-
-                speed = (float)((mTrafficStats.getTotalRxBytes() - totalRxBytes) * 1024 / td);
-                totalRxBytes = mTrafficStats.getTotalRxBytes();
                 lastUpdateTime = SystemClock.elapsedRealtime();
 
-                if (speed / 1048576 >= 1) { // 1024 * 1024
-                    setText(decimalFormat.format(speed / 1048576f) + "MB/s");
-                } else if (speed / 1024f >= 1) {
-                    setText(decimalFormat.format(speed / 1024f) + "KB/s");
+                strText = ""; // empty the string.
+                if (showTraffic == 2) // Do not show "DL"/"UL" if only DL user choose to show the RX only.
+                    strText = "DL: ";
+                speedRx = (float) ((mTrafficStats.getTotalRxBytes() - totalRxBytes) * 1000 / td);
+                if (speedRx / 1048576 >= 1) { // 1024 * 1024
+                    strText += decimalFormat.format(speedRx / 1048576f) + "MB/s";
+                } else if (speedRx / 1024f >= 1) {
+                    strText += decimalFormat.format(speedRx / 1024f) + "KB/s";
                 } else {
-                    setText(speed > 0 ? (int)speed + "B/s" : "");
+                    strText += speedRx > 0 ? (int) speedRx + "B/s" : showTraffic == 2 ? "0B/s" : "";
                 }
+                totalRxBytes = mTrafficStats.getTotalRxBytes();
+
+                if (showTraffic == 2) {// If both RX/TX needed.
+                    strText += ("\nUL: ");
+                    speedTx = (float) ((mTrafficStats.getTotalTxBytes() - totalTxBytes) * 1000 / td);
+
+                    if (speedTx / 1048576 >= 1) { // 1024 * 1024
+                        strText += decimalFormat.format(speedTx / 1048576f) + "MB/s";
+                    } else if (speedTx / 1024f >= 1) {
+                        strText += decimalFormat.format(speedTx / 1024f) + "KB/s";
+                    } else {
+                        strText += speedTx > 0 ? (int) speedTx + "B/s" : "0B/s";
+                    }
+                }
+                totalTxBytes = mTrafficStats.getTotalTxBytes();
+
+                strText = strText.replace("\\n", "\n");
+                setText(speedRx <= 0 && speedTx <= 0 ? "" : strText);
+
                 update();
                 super.handleMessage(msg);
             }
         };
+
         totalRxBytes = mTrafficStats.getTotalRxBytes();
+        totalTxBytes = mTrafficStats.getTotalTxBytes();
+
         lastUpdateTime = SystemClock.elapsedRealtime();
         mTrafficHandler.sendEmptyMessage(0);
     }
@@ -145,7 +176,7 @@ public class Traffic extends TextView {
     private boolean getConnectAvailable() {
         try {
             ConnectivityManager connectivityManager = (ConnectivityManager) mContext
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
             if (connectivityManager.getActiveNetworkInfo().isConnected())
                 return true;
             else
@@ -158,7 +189,7 @@ public class Traffic extends TextView {
     public void update() {
         mTrafficHandler.removeCallbacks(mRunnable);
         mTrafficHandler.postDelayed(mRunnable, mContext.getResources().getInteger(
-		com.mokee.internal.R.integer.config_networkSpeedIndicatorRefreshTimeout));
+                com.mokee.internal.R.integer.config_networkSpeedIndicatorRefreshTimeout));
     }
 
     Runnable mRunnable = new Runnable() {
@@ -170,13 +201,24 @@ public class Traffic extends TextView {
 
     private void updateSettings() {
         ContentResolver resolver = mContext.getContentResolver();
-        showTraffic = (Settings.System.getIntForUser(resolver,
-                Settings.System.STATUS_BAR_TRAFFIC, 0, UserHandle.USER_CURRENT) == 1);
-        if (showTraffic && getConnectAvailable()) {
+        showTraffic = Settings.System.getIntForUser(resolver,
+                Settings.System.STATUS_BAR_TRAFFIC_STYLE,
+                0, UserHandle.USER_CURRENT);
+        if (showTraffic > 0 && getConnectAvailable()) {
             if (mAttached) {
                 updateTraffic();
             }
             setVisibility(View.VISIBLE);
+
+            setText("");
+            if (showTraffic == 2) {
+                setTextSize(mContext.getResources().getInteger(
+                        com.mokee.internal.R.integer.config_networkSpeedIndicatorDualLineFontSize));
+            } else {
+                setTextSize(mContext.getResources().getInteger(
+                        com.mokee.internal.R.integer.config_networkSpeedIndicatorSingleLineFontSize));
+            }
+
         } else {
             setVisibility(View.GONE);
         }
