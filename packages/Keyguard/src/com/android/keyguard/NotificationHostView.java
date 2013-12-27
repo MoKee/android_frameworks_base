@@ -548,6 +548,7 @@ public class NotificationHostView extends FrameLayout {
 
     public void bringToFront() {
         mNotifView.bringToFront();
+        mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
         super.bringToFront();
     }
 
