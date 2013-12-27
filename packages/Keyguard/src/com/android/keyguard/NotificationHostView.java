@@ -337,7 +337,14 @@ public class NotificationHostView extends FrameLayout {
         final StatusBarNotification sbn = nv.statusBarNotification;
         mDismissedNotifications.remove(describeNotification(sbn));
 
-        boolean bigContentView = sbn.getNotification().bigContentView != null && NotificationViewManager.config.expandedView;
+        if (sbn.getNotification().contentView == null) {
+            if (sbn.getNotification().bigContentView == null) {
+                return;
+            }
+            forceBigContentView = true;
+        }
+        boolean bigContentView = sbn.getNotification().bigContentView != null &&
+                (NotificationViewManager.config.expandedView || sbn.getNotification().contentView == null);
         RemoteViews rv = forceBigContentView && bigContentView ? sbn.getNotification().bigContentView : sbn.getNotification().contentView;
         final View remoteView = rv.apply(mContext, null);
         int x = Math.round(mDisplayWidth - mNotificationMinHeight);
@@ -347,7 +354,7 @@ public class NotificationHostView extends FrameLayout {
             setBackgroundRecursive((ViewGroup)remoteView);
         }
         remoteView.setAlpha(1f);
-        if (bigContentView) {
+        if (bigContentView && sbn.getNotification().contentView != null) {
             if (forceBigContentView) {
                 remoteView.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
