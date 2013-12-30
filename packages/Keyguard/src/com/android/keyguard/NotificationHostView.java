@@ -490,6 +490,7 @@ public class NotificationHostView extends FrameLayout {
         for (NotificationView nv : mNotifications.values()) {
             showNotification (nv);
         }
+        mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
     }
 
     public void hideAllNotifications() {
@@ -557,7 +558,6 @@ public class NotificationHostView extends FrameLayout {
 
     public void bringToFront() {
         mNotifView.bringToFront();
-        mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
         super.bringToFront();
     }
 
