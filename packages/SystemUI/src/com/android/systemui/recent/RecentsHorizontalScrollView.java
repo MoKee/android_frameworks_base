@@ -196,7 +196,7 @@ public class RecentsHorizontalScrollView extends HorizontalScrollView
             }, delayCounter * 150);
         }
     }
-    
+
     /**
      * Returns the child count of mLinearLayout
      * @return

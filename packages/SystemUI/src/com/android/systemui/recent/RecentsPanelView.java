@@ -659,7 +659,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
         int value = v.getId();
         switch (v.getId()) {
         case R.id.recents_clear:
-           // mRecentsContainer.removeAllViewsInLayout();
+            // mRecentsContainer.removeAllViewsInLayout();
             clearAllNonLocked();
             break;
         case R.id.shortcut_alarmclock:
@@ -700,7 +700,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
             break;
         }
     }
-    
+
     /**
      * Iterates over all the children in the recents scroll view linear layout and does not
      * remove a view if isLocked is true.
@@ -739,7 +739,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
                 }
             }
         }
-    
+
     public void setMinSwipeAlpha(float minAlpha) {
         mRecentsContainer.setMinSwipeAlpha(minAlpha);
     }
@@ -839,7 +839,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
             final TimeInterpolator cubic = new DecelerateInterpolator(1.5f);
             FirstFrameAnimatorHelper.initializeDrawListener(holder.iconView);
             for (View v :
-                new View[] { holder.iconView, holder.labelView, holder.calloutLine,holder.lockedIcon }) {
+                new View[] { holder.iconView, holder.labelView, holder.calloutLine, holder.lockedIcon }) {
                 if (v != null) {
                     ViewPropertyAnimator vpa = v.animate().translationX(0).translationY(0)
                             .alpha(1f).setStartDelay(startDelay)
@@ -1136,8 +1136,8 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
         final PopupMenu popup =
             new PopupMenu(mContext, anchorView == null ? selectedView : anchorView);
         mPopup = popup;
-        
         popup.getMenuInflater().inflate(R.menu.recent_popup_menu, popup.getMenu());
+
         final ContentResolver cr = mContext.getContentResolver();
         if (Settings.Secure.getInt(cr,
             Settings.Secure.DEVELOPMENT_SHORTCUT, 0) == 0) {
@@ -1205,9 +1205,9 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
                 } else if (item.getItemId() == R.id.recent_add_split_view) {
                     // Either start a new activity in split view, or move the current task
                     // to front, but resized
-                    ViewHolder viewHolder = (ViewHolder)selectedView.getTag();
-                    openInSplitView(viewHolder, -1);
-                }  else {
+                    ViewHolder holder = (ViewHolder)selectedView.getTag();
+                    openInSplitView(holder, -1);
+                } else {
                     return false;
                 }
                 return true;
@@ -1247,6 +1247,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
             }
         }
     }
+
     @Override
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);

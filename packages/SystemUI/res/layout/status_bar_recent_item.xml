@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:layout_gravity="top|right"
-                 />
+            />
         </FrameLayout>
         <View android:id="@+id/recents_callout_line"
             android:layout_width="@dimen/status_bar_recents_app_label_width"
