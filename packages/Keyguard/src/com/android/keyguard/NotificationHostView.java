@@ -260,30 +260,32 @@ public class NotificationHostView extends FrameLayout {
 
     @Override
     public void onFinishInflate() {
-        mNotifications.clear();
-        mNotificationsToAdd.clear();
-        mNotificationsToRemove.clear();
-        mShownNotifications = 0;
-        setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent ev) {
-                if (mShownNotifications > 0) {
-                    hideAllNotifications();
+        if (NotificationViewManager.config != null) {
+            mNotifications.clear();
+            mNotificationsToAdd.clear();
+            mNotificationsToRemove.clear();
+            mShownNotifications = 0;
+            setOnTouchListener(new OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent ev) {
+                    if (mShownNotifications > 0) {
+                        hideAllNotifications();
+                    }
+                    return false;
                 }
-                return false;
-            }
-        });
-        Point p = new Point();
-        mWindowManager.getDefaultDisplay().getSize(p);
-        mDisplayWidth = p.x;
-        mDisplayHeight = p.y;
-        mNotifView = (LinearLayout) findViewById(R.id.linearlayout);
-        mScrollView = (TouchModalScrollView) findViewById(R.id.scrollview);
-        mScrollView.setHostView(this);
-        mScrollView.setY(mDisplayHeight * NotificationViewManager.config.offsetTop);
-        int maxHeight = Math.round(mDisplayHeight - mDisplayHeight * NotificationViewManager.config.offsetTop);
-        mScrollView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
-                Math.min(maxHeight, NotificationViewManager.config.notificationsHeight * mNotificationMinRowHeight)));
+            });
+            Point p = new Point();
+            mWindowManager.getDefaultDisplay().getSize(p);
+            mDisplayWidth = p.x;
+            mDisplayHeight = p.y;
+            mNotifView = (LinearLayout) findViewById(R.id.linearlayout);
+            mScrollView = (TouchModalScrollView) findViewById(R.id.scrollview);
+            mScrollView.setHostView(this);
+            mScrollView.setY(mDisplayHeight * NotificationViewManager.config.offsetTop);
+            int maxHeight = Math.round(mDisplayHeight - mDisplayHeight * NotificationViewManager.config.offsetTop);
+            mScrollView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
+                    Math.min(maxHeight, NotificationViewManager.config.notificationsHeight * mNotificationMinRowHeight)));
+        }
     }
 
     public void addNotifications() {
