@@ -200,7 +200,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
             holder.labelView = (TextView) convertView.findViewById(R.id.app_label);
             holder.calloutLine = convertView.findViewById(R.id.recents_callout_line);
             holder.descriptionView = (TextView) convertView.findViewById(R.id.app_description);
-            holder.lockedIcon = (ImageView) convertView.findViewById(R.id.locked);
+            holder.lockedIcon = (ImageView) convertView.findViewById(R.id.locked); 
             convertView.setTag(holder);
             return convertView;
         }
@@ -271,7 +271,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
                     }
                 }
             }
-            holder.lockedIcon.setVisibility(td.isLocked() ? VISIBLE : INVISIBLE);
+            holder.lockedIcon.setImageResource(td.isLocked()?R.drawable.ic_recent_app_locked:R.drawable.ic_recent_app_unlock);
             holder.thumbnailView.setTag(td);
             holder.thumbnailView.setOnLongClickListener(new OnLongClickDelegate(convertView));
             holder.thumbnailView.setOnTouchListener(new OnTouchListener() {
@@ -281,6 +281,8 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
                 }
             });
             holder.taskDescription = td;
+            holder.lockedIcon.setTag(td);
+            holder.lockedIcon.setOnClickListener(onClickListener);
             return convertView;
         }
 
@@ -314,6 +316,21 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
             holder.taskDescription = null;
             holder.loadedThumbnailAndIcon = false;
         }
+        private OnClickListener onClickListener=new OnClickListener() {//lock
+            @Override
+            public void onClick(View v) {
+                TaskDescription taskDescription= (TaskDescription) v.getTag();
+                if (taskDescription != null) {
+                  if (taskDescription.isLocked()) {
+                      taskDescription.setLocked(false);
+                      ((ImageView)v).setImageResource(R.drawable.ic_recent_app_unlock);
+                  } else {
+                      taskDescription.setLocked(true);
+                      ((ImageView)v).setImageResource(R.drawable.ic_recent_app_locked);
+                  }
+                }
+            }
+        };
     }
 
     public RecentsPanelView(Context context, AttributeSet attrs) {
@@ -695,7 +712,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
             for (int i = 0; i < count; i++) {
                 final View child = ((RecentsVerticalScrollView) mRecentsContainer)
                         .getLinearLayoutChildAt(i);
-                final ViewHolder holder = (ViewHolder) child.getTag();
+                 ViewHolder holder = (ViewHolder) child.getTag();
                 if (holder == null || !holder.taskDescription.isLocked()) {
                     ((RecentsVerticalScrollView) mRecentsContainer).postDelayed(new Runnable() {
                         @Override
@@ -710,7 +727,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
             for (int i = 0; i < count; i++) {
                 final View child = ((RecentsHorizontalScrollView) mRecentsContainer)
                         .getLinearLayoutChildAt(i);
-                final ViewHolder holder = (ViewHolder) child.getTag();
+                 ViewHolder holder = (ViewHolder) child.getTag();
                 if (holder == null || !holder.taskDescription.isLocked()) {
                     ((RecentsHorizontalScrollView) mRecentsContainer).postDelayed(new Runnable() {
                         @Override
@@ -822,7 +839,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
             final TimeInterpolator cubic = new DecelerateInterpolator(1.5f);
             FirstFrameAnimatorHelper.initializeDrawListener(holder.iconView);
             for (View v :
-                new View[] { holder.iconView, holder.labelView, holder.calloutLine }) {
+                new View[] { holder.iconView, holder.labelView, holder.calloutLine,holder.lockedIcon }) {
                 if (v != null) {
                     ViewPropertyAnimator vpa = v.animate().translationX(0).translationY(0)
                             .alpha(1f).setStartDelay(startDelay)
@@ -1119,19 +1136,15 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
         final PopupMenu popup =
             new PopupMenu(mContext, anchorView == null ? selectedView : anchorView);
         mPopup = popup;
-        final ViewHolder viewHolder = (ViewHolder) selectedView.getTag();
+        
         popup.getMenuInflater().inflate(R.menu.recent_popup_menu, popup.getMenu());
-        if (viewHolder != null && viewHolder.taskDescription.isLocked() == true) {
-            MenuItem item = popup.getMenu().findItem(R.id.recent_lock_item);
-            item.setTitle(R.string.status_bar_recent_unlock_item_title);
-        }
         final ContentResolver cr = mContext.getContentResolver();
         if (Settings.Secure.getInt(cr,
             Settings.Secure.DEVELOPMENT_SHORTCUT, 0) == 0) {
             popup.getMenu().findItem(R.id.recent_force_stop).setVisible(false);
             popup.getMenu().findItem(R.id.recent_wipe_app).setVisible(false);
         } else {
-            //ViewHolder viewHolder = (ViewHolder) selectedView.getTag();
+            ViewHolder viewHolder = (ViewHolder) selectedView.getTag();
             if (viewHolder != null) {
                 final TaskDescription ad = viewHolder.taskDescription;
                 try {
@@ -1158,7 +1171,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
                 if (item.getItemId() == R.id.recent_remove_item) {
                     ((ViewGroup) mRecentsContainer).removeViewInLayout(selectedView);
                 } else if (item.getItemId() == R.id.recent_inspect_item) {
-                    //ViewHolder viewHolder = (ViewHolder) selectedView.getTag();
+                    ViewHolder viewHolder = (ViewHolder) selectedView.getTag();
                     if (viewHolder != null) {
                         final TaskDescription ad = viewHolder.taskDescription;
                         startApplicationDetailsActivity(ad.packageName);
@@ -1167,7 +1180,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
                         throw new IllegalStateException("Oops, no tag on view " + selectedView);
                     }
                 } else if (item.getItemId() == R.id.recent_force_stop) {
-                   // ViewHolder viewHolder = (ViewHolder) selectedView.getTag();
+                    ViewHolder viewHolder = (ViewHolder) selectedView.getTag();
                     if (viewHolder != null) {
                         final TaskDescription ad = viewHolder.taskDescription;
                         ActivityManager am = (ActivityManager)mContext.getSystemService(
@@ -1178,7 +1191,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
                         throw new IllegalStateException("Oops, no tag on view " + selectedView);
                     }
                 } else if (item.getItemId() == R.id.recent_wipe_app) {
-                   // ViewHolder viewHolder = (ViewHolder) selectedView.getTag();
+                    ViewHolder viewHolder = (ViewHolder) selectedView.getTag();
                     if (viewHolder != null) {
                         final TaskDescription ad = viewHolder.taskDescription;
                         ActivityManager am = (ActivityManager) mContext.
@@ -1189,22 +1202,10 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
                     } else {
                         throw new IllegalStateException("Oops, no tag on view " + selectedView);
                     }
-                } else if(item.getItemId() == R.id.recent_lock_item){//lock
-                    if (viewHolder != null) {
-                        if (viewHolder.taskDescription.isLocked()) {
-                            viewHolder.taskDescription.setLocked(false);
-                            viewHolder.lockedIcon.setVisibility(View.INVISIBLE);
-                        } else {
-                            viewHolder.taskDescription.setLocked(true);
-                            viewHolder.lockedIcon.setVisibility(View.VISIBLE);
-                        }
-                    } else {
-                        throw new IllegalStateException("Oops, no tag on view " + selectedView);
-                    }
                 } else if (item.getItemId() == R.id.recent_add_split_view) {
                     // Either start a new activity in split view, or move the current task
                     // to front, but resized
-                    //ViewHolder holder = (ViewHolder)selectedView.getTag();
+                    ViewHolder viewHolder = (ViewHolder)selectedView.getTag();
                     openInSplitView(viewHolder, -1);
                 }  else {
                     return false;
