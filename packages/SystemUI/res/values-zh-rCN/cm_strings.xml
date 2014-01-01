@@ -81,8 +81,4 @@
     <!-- Development shortcut -->
     <string name="advanced_dev_option_wipe_app">清除数据</string>
     <string name="advanced_dev_option_force_stop">强行停止</string>
-    <!-- Title shown in recents popup for locking an app from being cleared -->
-    <string name="status_bar_recent_lock_item_title">锁定</string>
-    <!-- Title shown in recents popup for unlocking an app from being cleared -->
-    <string name="status_bar_recent_unlock_item_title">解锁</string>
 </resources>
