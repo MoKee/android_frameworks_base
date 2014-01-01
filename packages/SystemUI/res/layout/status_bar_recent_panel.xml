@@ -60,7 +60,6 @@
         </com.android.systemui.recent.RecentsVerticalScrollView>
 
         <ScrollView
-            xmlns:android="http://schemas.android.com/apk/res/android"
 	    android:id="@+id/shortcut_bar"
             android:layout_width="43dp"
             android:layout_height="match_parent"
@@ -69,9 +68,9 @@
 	    android:gravity="center_horizontal">
 
 		<LinearLayout
-		    android:layout_width="wrap_content"
-		    android:layout_height="match_parent"
-		    android:orientation="vertical">
+		    android:orientation="vertical"
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent">
 
 			<ImageView
 			    android:id="@+id/recents_clear"
