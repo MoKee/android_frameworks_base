@@ -3103,6 +3103,12 @@ public final class Settings {
         public static final String DIALER_DIRECT_CALL = "dialer_direct_call";
 
         /**
+         * Height of navigation bar buttons
+         * @hide
+         */
+        public static final String NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
+
+        /**
          * show carrier in statusbar. The value is
          * boolean (1 or 0).
          */
