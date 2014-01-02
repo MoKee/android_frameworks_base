@@ -1137,14 +1137,21 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
             new PopupMenu(mContext, anchorView == null ? selectedView : anchorView);
         mPopup = popup;
         popup.getMenuInflater().inflate(R.menu.recent_popup_menu, popup.getMenu());
-
+        final ViewHolder viewHolder = (ViewHolder) selectedView.getTag();
+        if(viewHolder != null)
+        {
+            TaskDescription ad = viewHolder.taskDescription;
+            if(ad != null && ad.isLocked())
+            {
+                popup.getMenu().removeItem(R.id.recent_remove_item);
+            }
+        }
         final ContentResolver cr = mContext.getContentResolver();
         if (Settings.Secure.getInt(cr,
             Settings.Secure.DEVELOPMENT_SHORTCUT, 0) == 0) {
             popup.getMenu().findItem(R.id.recent_force_stop).setVisible(false);
             popup.getMenu().findItem(R.id.recent_wipe_app).setVisible(false);
         } else {
-            ViewHolder viewHolder = (ViewHolder) selectedView.getTag();
             if (viewHolder != null) {
                 final TaskDescription ad = viewHolder.taskDescription;
                 try {
@@ -1171,7 +1178,6 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
                 if (item.getItemId() == R.id.recent_remove_item) {
                     ((ViewGroup) mRecentsContainer).removeViewInLayout(selectedView);
                 } else if (item.getItemId() == R.id.recent_inspect_item) {
-                    ViewHolder viewHolder = (ViewHolder) selectedView.getTag();
                     if (viewHolder != null) {
                         final TaskDescription ad = viewHolder.taskDescription;
                         startApplicationDetailsActivity(ad.packageName);
@@ -1180,7 +1186,6 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
                         throw new IllegalStateException("Oops, no tag on view " + selectedView);
                     }
                 } else if (item.getItemId() == R.id.recent_force_stop) {
-                    ViewHolder viewHolder = (ViewHolder) selectedView.getTag();
                     if (viewHolder != null) {
                         final TaskDescription ad = viewHolder.taskDescription;
                         ActivityManager am = (ActivityManager)mContext.getSystemService(
@@ -1191,7 +1196,6 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
                         throw new IllegalStateException("Oops, no tag on view " + selectedView);
                     }
                 } else if (item.getItemId() == R.id.recent_wipe_app) {
-                    ViewHolder viewHolder = (ViewHolder) selectedView.getTag();
                     if (viewHolder != null) {
                         final TaskDescription ad = viewHolder.taskDescription;
                         ActivityManager am = (ActivityManager) mContext.
@@ -1205,8 +1209,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
                 } else if (item.getItemId() == R.id.recent_add_split_view) {
                     // Either start a new activity in split view, or move the current task
                     // to front, but resized
-                    ViewHolder holder = (ViewHolder)selectedView.getTag();
-                    openInSplitView(holder, -1);
+                    openInSplitView(viewHolder, -1);
                 } else {
                     return false;
                 }
