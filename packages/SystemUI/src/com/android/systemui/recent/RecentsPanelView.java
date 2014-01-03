@@ -321,13 +321,13 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
             public void onClick(View v) {
                 TaskDescription taskDescription= (TaskDescription) v.getTag();
                 if (taskDescription != null) {
-                  if (taskDescription.isLocked()) {
-                      taskDescription.setLocked(false);
-                      ((ImageView)v).setImageResource(R.drawable.ic_recent_app_unlock);
-                  } else {
-                      taskDescription.setLocked(true);
-                      ((ImageView)v).setImageResource(R.drawable.ic_recent_app_locked);
-                  }
+                    if (taskDescription.isLocked()) {
+                        taskDescription.setLocked(false);
+                        ((ImageView)v).setImageResource(R.drawable.ic_recent_app_unlock);
+                    } else {
+                        taskDescription.setLocked(true);
+                        ((ImageView)v).setImageResource(R.drawable.ic_recent_app_locked);
+                    }
                 }
             }
         };
@@ -735,10 +735,10 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
                             ((RecentsHorizontalScrollView) mRecentsContainer).removeViewInLayout(child);
                         }
                     }, i * 150);
-                    }
                 }
             }
         }
+    }
 
     public void setMinSwipeAlpha(float minAlpha) {
         mRecentsContainer.setMinSwipeAlpha(minAlpha);
@@ -959,7 +959,6 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
                         holder.thumbnailViewImage, bm, 0, 0, null).toBundle();
 
         show(false);
-
         if (ad.taskId >= 0) {
             // This is an active task; it should just go to the foreground.
             // If that task was split viewed, a normal press wil resume it to
@@ -1138,11 +1137,9 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
         mPopup = popup;
         popup.getMenuInflater().inflate(R.menu.recent_popup_menu, popup.getMenu());
         final ViewHolder viewHolder = (ViewHolder) selectedView.getTag();
-        if(viewHolder != null)
-        {
+        if (viewHolder != null) {
             TaskDescription ad = viewHolder.taskDescription;
-            if(ad != null && ad.isLocked())
-            {
+            if (ad != null && ad.isLocked()) {
                 popup.getMenu().removeItem(R.id.recent_remove_item);
             }
         }
