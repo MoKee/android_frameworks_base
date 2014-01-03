@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
+import android.mokee.util.MoKeeUtils;
 import android.net.ConnectivityManager;
 import android.net.TrafficStats;
 import android.os.SystemClock;
@@ -133,7 +134,7 @@ public class Traffic extends TextView {
 
                 strText = ""; // empty the string.
                 if (showTraffic == 2) // Do not show "DL"/"UL" if only DL user choose to show the RX only.
-                    strText = "DL: ";
+                    strText = "↓↓ ";
                 speedRx = (float) ((mTrafficStats.getTotalRxBytes() - totalRxBytes) * 1000 / td);
                 if (speedRx / 1048576 >= 1) { // 1024 * 1024
                     strText += decimalFormat.format(speedRx / 1048576f) + "MB/s";
@@ -145,7 +146,7 @@ public class Traffic extends TextView {
                 totalRxBytes = mTrafficStats.getTotalRxBytes();
 
                 if (showTraffic == 2) {// If both RX/TX needed.
-                    strText += ("\nUL: ");
+                    strText += ("\n↑↑ ");
                     speedTx = (float) ((mTrafficStats.getTotalTxBytes() - totalTxBytes) * 1000 / td);
 
                     if (speedTx / 1048576 >= 1) { // 1024 * 1024
@@ -173,19 +174,6 @@ public class Traffic extends TextView {
         mTrafficHandler.sendEmptyMessage(0);
     }
 
-    private boolean getConnectAvailable() {
-        try {
-            ConnectivityManager connectivityManager = (ConnectivityManager) mContext
-                    .getSystemService(Context.CONNECTIVITY_SERVICE);
-            if (connectivityManager.getActiveNetworkInfo().isConnected())
-                return true;
-            else
-                return false;
-        } catch (Exception ex) {
-        }
-        return false;
-    }
-
     public void update() {
         mTrafficHandler.removeCallbacks(mRunnable);
         mTrafficHandler.postDelayed(mRunnable, mContext.getResources().getInteger(
@@ -201,10 +189,9 @@ public class Traffic extends TextView {
 
     private void updateSettings() {
         ContentResolver resolver = mContext.getContentResolver();
-        showTraffic = Settings.System.getIntForUser(resolver,
-                Settings.System.STATUS_BAR_TRAFFIC_STYLE,
+        showTraffic = Settings.System.getIntForUser(resolver, Settings.System.STATUS_BAR_TRAFFIC_STYLE,
                 0, UserHandle.USER_CURRENT);
-        if (showTraffic > 0 && getConnectAvailable()) {
+        if (showTraffic > 0 && MoKeeUtils.isOnline(mContext)) {
             if (mAttached) {
                 updateTraffic();
             }
