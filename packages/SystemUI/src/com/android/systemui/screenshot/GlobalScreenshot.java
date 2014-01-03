@@ -318,7 +318,7 @@ class SaveImageInBackgroundTask extends AsyncTask<SaveImageInBackgroundData, Voi
 class GlobalScreenshot {
     private static final String TAG = "GlobalScreenshot";
 
-    public static final int SCREENSHOT_NOTIFICATION_ID = 789;
+    protected static final int SCREENSHOT_NOTIFICATION_ID = 789;
     private static final int SCREENSHOT_FLASH_TO_PEAK_DURATION = 130;
     private static final int SCREENSHOT_DROP_IN_DURATION = 430;
     private static final int SCREENSHOT_DROP_OUT_DELAY = 500;
