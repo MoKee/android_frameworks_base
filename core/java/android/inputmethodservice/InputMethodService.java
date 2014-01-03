@@ -991,7 +991,11 @@ public class InputMethodService extends AbstractInputMethodService {
         }
         return true;
     }
-    
+
+    /**
+     * Splitview stuff - FIXME: This needs a proper doc entry
+     * @hide
+     */
     public boolean onEvaluateSplitView() {
         if (mCandidatesFrame.getChildCount() > 0) {
             Context candidateContext = mCandidatesFrame.getChildAt(0).getContext();

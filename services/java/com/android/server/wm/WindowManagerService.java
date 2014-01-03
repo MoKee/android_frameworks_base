@@ -11053,6 +11053,7 @@ public class WindowManagerService extends IWindowManager.Stub
             final long origId = Binder.clearCallingIdentity();
             try {
                 mActivityManager.moveTaskToFront(mActivityManager.getTaskForActivity(token, false), 0, null);
+                Log.e("XPLOD", "Moved activity to front because TOUCH!");
             } catch (RemoteException e) {
                 Log.e(TAG, "Cannot move the activity to front", e);
             }
@@ -11077,7 +11078,7 @@ public class WindowManagerService extends IWindowManager.Stub
      * @return A rect of the final window metrics
      */
     public Rect getSplitViewRect(int taskId, boolean resetLocation) {
-		Log.e("XPLOD", "Debug Activity " + taskId + " asked for split view rect");
+        Log.e("XPLOD", "Debug Activity " + taskId + " asked for split view rect");
         mSplitViewTasks[mNextSplitViewLocation] = taskId;
         mIsTaskSplitted.put(taskId, true);
 
@@ -11091,7 +11092,7 @@ public class WindowManagerService extends IWindowManager.Stub
                 displayContent.mBaseDisplayHeight : displayContent.mBaseDisplayWidth;
         final int realdh = rotated ?
                 displayContent.mBaseDisplayWidth : displayContent.mBaseDisplayHeight;
-	final boolean nativeLandscape =
+        final boolean nativeLandscape =
                 (displayContent.mBaseDisplayHeight < displayContent.mBaseDisplayWidth);
 
         int dw = realdw;
