@@ -134,7 +134,7 @@ public class Traffic extends TextView {
 
                 strText = ""; // empty the string.
                 if (showTraffic == 2) // Do not show "DL"/"UL" if only DL user choose to show the RX only.
-                    strText = "↓↓ ";
+                    strText = "DL: ";
                 speedRx = (float) ((mTrafficStats.getTotalRxBytes() - totalRxBytes) * 1000 / td);
                 if (speedRx / 1048576 >= 1) { // 1024 * 1024
                     strText += decimalFormat.format(speedRx / 1048576f) + "MB/s";
@@ -146,7 +146,7 @@ public class Traffic extends TextView {
                 totalRxBytes = mTrafficStats.getTotalRxBytes();
 
                 if (showTraffic == 2) {// If both RX/TX needed.
-                    strText += ("\n↑↑ ");
+                    strText += ("\nUL: ");
                     speedTx = (float) ((mTrafficStats.getTotalTxBytes() - totalTxBytes) * 1000 / td);
 
                     if (speedTx / 1048576 >= 1) { // 1024 * 1024
