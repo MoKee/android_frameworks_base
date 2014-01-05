@@ -70,6 +70,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RemoteViews;
 
+import com.android.internal.util.cm.QuietHoursUtils;
 import com.android.internal.widget.multiwaveview.GlowPadView;
 import com.android.internal.widget.multiwaveview.GlowPadView.OnTriggerListener;
 import com.android.internal.widget.multiwaveview.TargetDrawable;
@@ -708,7 +709,7 @@ public class ActiveDisplayView extends FrameLayout {
     }
 
     private void handleShowNotification(boolean ping) {
-        if (!mDisplayNotifications || mNotification == null) return;
+        if (!mDisplayNotifications || mNotification == null || inQuietHoursDim()) return;
         handleShowNotificationView();
         setActiveNotification(mNotification, true);
         inflateRemoteView(mNotification);
@@ -1160,6 +1161,10 @@ public class ActiveDisplayView extends FrameLayout {
         }
     }
 
+    private boolean inQuietHoursDim() {
+        return QuietHoursUtils.inQuietHours(mContext, Settings.System.QUIET_HOURS_DIM);
+    }
+
     private SensorEventListener mSensorListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
@@ -1168,7 +1173,8 @@ public class ActiveDisplayView extends FrameLayout {
                 boolean isFar = value >= mProximitySensor.getMaximumRange();
                 if (isFar) {
                     mProximityIsFar = true;
-                    if (!isScreenOn() && mPocketMode != POCKET_MODE_OFF && !isOnCall() && mDisplayNotifications) {
+                    if (!isScreenOn() && mPocketMode != POCKET_MODE_OFF
+                        && !isOnCall() && mDisplayNotifications && !inQuietHoursDim()) {
                         if (System.currentTimeMillis() >= (mPocketTime + mProximityThreshold) && mPocketTime != 0){
 
                             if (mNotification == null) {
