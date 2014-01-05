@@ -316,7 +316,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
             holder.taskDescription = null;
             holder.loadedThumbnailAndIcon = false;
         }
-        private OnClickListener onClickListener=new OnClickListener() {//lock
+        private OnClickListener onClickListener=new OnClickListener() { // lock
             @Override
             public void onClick(View v) {
                 TaskDescription taskDescription= (TaskDescription) v.getTag();
@@ -1123,6 +1123,12 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
                 } catch (SecurityException e) {
                     Log.e(TAG, "Recents does not have the permission to launch " + intent, e);
                 }
+            }
+
+            try {
+                ActivityManagerNative.getDefault().notifySplitViewLayoutChanged();
+            } catch (RemoteException e) {
+                Log.e(TAG, "Could not notify split view layout", e);
             }
         } else {
             throw new IllegalStateException("Oops, no tag on view to split!");

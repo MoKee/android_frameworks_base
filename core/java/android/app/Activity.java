@@ -5245,7 +5245,7 @@ public class Activity extends ContextThemeWrapper
     public final IBinder getActivityToken() {
         return mParent != null ? mParent.getActivityToken() : mToken;
     }
-    
+
     /** @hide */
     public final void setSplitViewRect(int l, int t, int r, int b) {
         final IWindowManager wm = (IWindowManager) WindowManagerGlobal.getWindowManagerService();
@@ -5268,7 +5268,7 @@ public class Activity extends ContextThemeWrapper
             // Also update the parent activities, don't let the windows hanging
             mParent.updateSplitViewMetrics(shouldReset);
         }
-        
+
         final IWindowManager wm = (IWindowManager) WindowManagerGlobal.getWindowManagerService();
 
         try {
@@ -5298,7 +5298,7 @@ public class Activity extends ContextThemeWrapper
                     mOriginalBounds.right = params.x + params.width;
                     mOriginalBounds.bottom = params.y + params.height;
                 }
-                
+
                 /*try {
                     wm.setSplitViewRect(mOriginalBounds.left, mOriginalBounds.top, mOriginalBounds.right, mOriginalBounds.bottom);
                 } catch (RemoteException e) {
