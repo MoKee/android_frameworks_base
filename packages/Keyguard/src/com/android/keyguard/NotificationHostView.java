@@ -290,16 +290,18 @@ public class NotificationHostView extends FrameLayout {
     }
 
     public void addNotifications() {
-        try {
-            StatusBarNotification[] sbns = mNotificationManager.getActiveNotificationsFromListener(NotificationViewManager.NotificationListener);
-            StatusBarNotification dismissedSbn;
-            for (StatusBarNotification sbn : sbns) {
-                if ((dismissedSbn = mDismissedNotifications.get(describeNotification(sbn))) == null || dismissedSbn.getPostTime() != sbn.getPostTime())
-                    addNotification(sbn);
+        if (NotificationViewManager.NotificationListener != null) {
+            try {
+                StatusBarNotification[] sbns = mNotificationManager.getActiveNotificationsFromListener(NotificationViewManager.NotificationListener);
+                StatusBarNotification dismissedSbn;
+                for (StatusBarNotification sbn : sbns) {
+                    if ((dismissedSbn = mDismissedNotifications.get(describeNotification(sbn))) == null || dismissedSbn.getPostTime() != sbn.getPostTime())
+                        addNotification(sbn);
+                }
+                bringToFront();
+            } catch (RemoteException e) {
+                Log.e(TAG, "Failed to get active notifications!");
             }
-            bringToFront();
-        } catch (RemoteException e) {
-            Log.e(TAG, "Failed to get active notifications!");
         }
     }
 
