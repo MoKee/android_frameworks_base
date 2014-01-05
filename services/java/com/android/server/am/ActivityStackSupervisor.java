@@ -822,6 +822,13 @@ public final class ActivityStackSupervisor {
         final long origId = Binder.clearCallingIdentity();
         try {
             synchronized (mService) {
+
+                // we must resolve if the last intent in the stack is floating to give the flag to the previous
+                boolean floating = false;
+                if (intents.length > 0) {
+                    floating = (intents[intents.length - 1].getFlags()&Intent.FLAG_FLOATING_WINDOW) == Intent.FLAG_FLOATING_WINDOW;
+                }
+
                 ActivityRecord[] outActivity = new ActivityRecord[1];
                 for (int i=0; i<intents.length; i++) {
                     Intent intent = intents[i];
@@ -850,6 +857,10 @@ public final class ActivityStackSupervisor {
                                     != 0) {
                         throw new IllegalArgumentException(
                                 "FLAG_CANT_SAVE_STATE not supported here");
+                    }
+
+                    if (floating) {
+                        intent.addFlags(Intent.FLAG_FLOATING_WINDOW);
                     }
 
                     Bundle theseOptions;
@@ -1417,7 +1428,8 @@ public final class ActivityStackSupervisor {
             sourceStack = null;
         }
 
-        if (r.resultTo != null && (launchFlags&Intent.FLAG_ACTIVITY_NEW_TASK) != 0) {
+        if (r.resultTo != null && (launchFlags&Intent.FLAG_ACTIVITY_NEW_TASK) != 0 &&
+                (launchFlags&Intent.FLAG_FLOATING_WINDOW) == 0) {
             // For whatever reason this activity is being launched into a new
             // task...  yet the caller has requested a result back.  Well, that
             // is pretty messed up, so instead immediately send back a cancel
@@ -1692,9 +1704,12 @@ public final class ActivityStackSupervisor {
                 if ((launchFlags &
                         (Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_TASK_ON_HOME))
                         == (Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_TASK_ON_HOME)) {
-                    // Caller wants to appear on home activity, so before starting
-                    // their own activity we will bring home to the front.
-                    r.task.mOnTopOfHome = true;
+                    boolean floating = (launchFlags&Intent.FLAG_FLOATING_WINDOW) == Intent.FLAG_FLOATING_WINDOW;
+                    if (!floating) {
+                        // Caller wants to appear on home activity, so before starting
+                        // their own activity we will bring home to the front.
+                        r.task.mOnTopOfHome = true;
+                    }
                 }
             }
         } else if (sourceRecord != null) {

@@ -74,6 +74,7 @@ import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.os.Trace;
 import android.os.UserHandle;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.EventLog;
 import android.util.Log;
@@ -152,7 +153,7 @@ final class ActivityStack {
      * The back history of all previous (and possibly still
      * running) activities.  It contains #TaskRecord objects.
      */
-    private ArrayList<TaskRecord> mTaskHistory = new ArrayList<TaskRecord>();
+    ArrayList<TaskRecord> mTaskHistory = new ArrayList<TaskRecord>();
 
     /**
      * Used for validating app tokens with window manager.
@@ -1419,7 +1420,7 @@ final class ActivityStack {
         // We need to start pausing the current activity so the top one
         // can be resumed...
         boolean pausing = mStackSupervisor.pauseBackStacks(userLeaving);
-        if (mResumedActivity != null) {
+        if (mResumedActivity != null && (pauseActiveAppWhenUsingHalo() || !next.floatingWindow)) {
             pausing = true;
             startPausingLocked(userLeaving, false);
             if (DEBUG_STATES) Slog.d(TAG, "resumeTopActivityLocked: Pausing " + mResumedActivity);
@@ -1501,7 +1502,7 @@ final class ActivityStack {
             if (prev.finishing) {
                 if (DEBUG_TRANSITION) Slog.v(TAG,
                         "Prepare close transition: prev=" + prev);
-                if (mNoAnimActivities.contains(prev)) {
+                if (mNoAnimActivities.contains(prev) || next.floatingWindow) {
                     anim = false;
                     mWindowManager.prepareAppTransition(AppTransition.TRANSIT_NONE, false);
                 } else {
@@ -1513,7 +1514,7 @@ final class ActivityStack {
                 mWindowManager.setAppVisibility(prev.appToken, false);
             } else {
                 if (DEBUG_TRANSITION) Slog.v(TAG, "Prepare open transition: prev=" + prev);
-                if (mNoAnimActivities.contains(next)) {
+                if (mNoAnimActivities.contains(next) || next.floatingWindow) {
                     anim = false;
                     mWindowManager.prepareAppTransition(AppTransition.TRANSIT_NONE, false);
                 } else {
@@ -1645,7 +1646,7 @@ final class ActivityStack {
                 if (!next.hasBeenLaunched) {
                     next.hasBeenLaunched = true;
                 } else  if (SHOW_APP_STARTING_PREVIEW && lastStack != null &&
-                        mStackSupervisor.isFrontStack(lastStack)) {
+                        mStackSupervisor.isFrontStack(lastStack) && !next.floatingWindow) {
                     mWindowManager.setAppStartingWindow(
                             next.appToken, next.packageName, next.theme,
                             mService.compatibilityInfoForPackageLocked(next.info.applicationInfo),
@@ -1678,7 +1679,7 @@ final class ActivityStack {
             if (!next.hasBeenLaunched) {
                 next.hasBeenLaunched = true;
             } else {
-                if (SHOW_APP_STARTING_PREVIEW) {
+                if (SHOW_APP_STARTING_PREVIEW && !next.floatingWindow) {
                     mWindowManager.setAppStartingWindow(
                             next.appToken, next.packageName, next.theme,
                             mService.compatibilityInfoForPackageLocked(
@@ -1695,6 +1696,12 @@ final class ActivityStack {
 
         if (DEBUG_STACK) mStackSupervisor.validateTopActivitiesLocked();
         return true;
+    }
+
+    private boolean pauseActiveAppWhenUsingHalo() {
+        int isLowRAM = (!ActivityManager.isLowRamDeviceStatic()) ? 0 : 1;
+        return Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.HALO_PAUSE, isLowRAM, UserHandle.USER_CURRENT) == 1;
     }
 
     private void insertTaskAtTop(TaskRecord task) {
@@ -1825,11 +1832,11 @@ final class ActivityStack {
             }
             if (DEBUG_TRANSITION) Slog.v(TAG,
                     "Prepare open transition: starting " + r);
-            if ((r.intent.getFlags()&Intent.FLAG_ACTIVITY_NO_ANIMATION) != 0) {
+            if (((r.intent.getFlags()&Intent.FLAG_ACTIVITY_NO_ANIMATION) != 0) || (r.floatingWindow && !r.topIntent)) {
                 mWindowManager.prepareAppTransition(AppTransition.TRANSIT_NONE, keepCurTransition);
                 mNoAnimActivities.add(r);
             } else {
-                mWindowManager.prepareAppTransition(newTask
+                mWindowManager.prepareAppTransition(newTask && !r.floatingWindow
                         ? AppTransition.TRANSIT_TASK_OPEN
                         : AppTransition.TRANSIT_ACTIVITY_OPEN, keepCurTransition);
                 mNoAnimActivities.remove(r);
@@ -1852,7 +1859,7 @@ final class ActivityStack {
                     doShow = topRunningNonDelayedActivityLocked(null) == r;
                 }
             }
-            if (SHOW_APP_STARTING_PREVIEW && doShow) {
+            if (SHOW_APP_STARTING_PREVIEW && doShow && !r.floatingWindow) {
                 // Figure out if we are transitioning from another activity that is
                 // "has the same starting icon" as the next one.  This allows the
                 // window manager to keep the previous window it had previously
@@ -2501,7 +2508,7 @@ final class ActivityStack {
             boolean endTask = index <= 0;
             if (DEBUG_VISBILITY || DEBUG_TRANSITION) Slog.v(TAG,
                     "Prepare close transition: finishing " + r);
-            mWindowManager.prepareAppTransition(endTask
+            mWindowManager.prepareAppTransition(endTask && !r.floatingWindow
                     ? AppTransition.TRANSIT_TASK_CLOSE
                     : AppTransition.TRANSIT_ACTIVITY_CLOSE, false);
 
@@ -3101,7 +3108,7 @@ final class ActivityStack {
         if (numTasks == 0 || index < 0)  {
             // nothing to do!
             if (reason != null &&
-                    (reason.intent.getFlags()&Intent.FLAG_ACTIVITY_NO_ANIMATION) != 0) {
+                    ((reason.intent.getFlags()&Intent.FLAG_ACTIVITY_NO_ANIMATION) != 0 || reason.floatingWindow)) {
                 ActivityOptions.abort(options);
             } else {
                 updateTransitLocked(AppTransition.TRANSIT_TASK_TO_FRONT, options);
@@ -3117,7 +3124,7 @@ final class ActivityStack {
 
         if (DEBUG_TRANSITION) Slog.v(TAG, "Prepare to front transition: task=" + tr);
         if (reason != null &&
-                (reason.intent.getFlags()&Intent.FLAG_ACTIVITY_NO_ANIMATION) != 0) {
+                ((reason.intent.getFlags()&Intent.FLAG_ACTIVITY_NO_ANIMATION) != 0 || reason.floatingWindow)) {
             mWindowManager.prepareAppTransition(AppTransition.TRANSIT_NONE, false);
             ActivityRecord r = topRunningActivityLocked(null);
             if (r != null) {
@@ -3202,7 +3209,7 @@ final class ActivityStack {
         }
 
         if (reason != null &&
-                (reason.intent.getFlags() & Intent.FLAG_ACTIVITY_NO_ANIMATION) != 0) {
+                ((reason.intent.getFlags() & Intent.FLAG_ACTIVITY_NO_ANIMATION) != 0 || reason.floatingWindow)) {
             mWindowManager.prepareAppTransition(AppTransition.TRANSIT_NONE, false);
             ActivityRecord r = topRunningActivityLocked(null);
             if (r != null) {
