@@ -24,7 +24,7 @@ LOCAL_MODULE    := libmokee-phoneloc-jni
 LOCAL_SRC_FILES := Global.cpp Mps.cpp phoneloc.c androidjni.c
 LOCAL_C_INCLUDES += $(JNI_H_INCLUDE)
 LOCAL_PRELINK_MODULE := false
-LOCAL_LDLIBS := -L${SYSROOT}/usr/f -llog
+LOCAL_STATIC_LIBRARIES += liblog
 LOCAL_MODULE_TAGS := optional
 
 

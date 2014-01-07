@@ -99,13 +99,13 @@ void formatPhone(char* phone, int len, char* nphone) { //得到电话号码的�
                 if (nphone[4] == '0' && nphone[5] != '0') { //输入错误区号，如+860535,多输入一个0
                     memmove(nphone + 5, "0", 1);
                     memmove(nphone + 5, nphone + 4, len);
-                    memmove(nphone + 4, "0", 1);//86353,86换成
-                } else if (nphone[4] != '0' && nphone[4] != '1' && nphone[5] != '0') { //应该把手机号除了
+                    memmove(nphone + 4, "0", 1);
+                } else if (nphone[3] != '5' && nphone[4] != '2' && nphone[4] != '3' && nphone[4] != '0' && nphone[4] != '1' && nphone[5] != '0') { //去除手机号和香港澳门处理
                     memmove(nphone +5, nphone + 4, len);
-                    memmove(nphone + 4, "0", 1);//86353,86换成了
+                    memmove(nphone + 4, "0", 1);
                 } else if (nphone[4] == '1' && nphone[5]=='0' && nphone[6] != '0') { //特指北京,三排除10086之类
                     memmove(nphone + 5, nphone + 4, len);
-                    memmove(nphone + 4, "0", 1);//86353,86换成了
+                    memmove(nphone + 4, "0", 1);
                 }
             }
         } else {
@@ -116,7 +116,6 @@ void formatPhone(char* phone, int len, char* nphone) { //得到电话号码的�
         memmove(nphone + 1, "0", 1);//把第二位也置为0，这样在数据库就找不到
     if (nphone[1] == '0' && nphone[0] == '1' && nphone[2] != '0')//北京做特殊处理
         memmove(nphone + 1, "0", 1);//把第二位也置为0，这样在数据库就找不到
-    strncpy(phone, nphone, len);
     strncpy(phone, nphone, len);
     int i;
     for (i = 0; i < KNOWN_PREFIX_LEN; i++) {
