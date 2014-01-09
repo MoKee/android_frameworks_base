@@ -284,7 +284,7 @@ class SaveImageInBackgroundTask extends AsyncTask<SaveImageInBackgroundData, Voi
                     | Intent.FLAG_ACTIVITY_NEW_TASK);
 
             mNotificationBuilder.addAction(R.drawable.ic_menu_trash,
-                     r.getString(com.mokee.internal.R.string.trash),
+                     r.getString(R.string.trash),
                      PendingIntent.getBroadcast(params.context, 0, trashIntent,
                         PendingIntent.FLAG_UPDATE_CURRENT));
 

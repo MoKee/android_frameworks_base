@@ -53,7 +53,7 @@ public class TrashScreenshot extends BroadcastReceiver {
                 (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(GlobalScreenshot.SCREENSHOT_NOTIFICATION_ID);
 
-        Toast.makeText(context, com.mokee.internal.R.string.screenshot_trash_confirmation, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, R.string.screenshot_trash_confirmation, Toast.LENGTH_SHORT).show();
     }
 
 }
