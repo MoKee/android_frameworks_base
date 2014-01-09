@@ -22,7 +22,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.android.systemui.R;
 import com.android.systemui.screenshot.GlobalScreenshot;
 
 public class TrashScreenshot extends BroadcastReceiver {
@@ -50,6 +52,8 @@ public class TrashScreenshot extends BroadcastReceiver {
         NotificationManager notificationManager =
                 (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(GlobalScreenshot.SCREENSHOT_NOTIFICATION_ID);
+
+        Toast.makeText(context, com.mokee.internal.R.string.screenshot_trash_confirmation, Toast.LENGTH_SHORT).show();
     }
 
 }

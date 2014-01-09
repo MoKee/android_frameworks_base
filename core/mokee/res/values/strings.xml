@@ -29,6 +29,7 @@
 
     <!-- ScreenShort Trash -->
     <string name="trash">Trash</string>
+    <string name="screenshot_trash_confirmation">Screenshot trashed.</string>
 
     <!-- ScreenRecord -->
     <!-- label for screen record item in phone options dialog -->

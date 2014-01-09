@@ -21,8 +21,9 @@
 
     <!-- ScreenShort Trash -->
     <string name="trash">"放棄"</string>
+    <string name="screenshot_trash_confirmation">"已放棄保存屏幕截圖."</string>
 
     <!-- ScreenRecord -->
-    <string name="global_action_screen_record">屏幕錄像</string>
+    <string name="global_action_screen_record">"屏幕錄像"</string>
 
 </resources>
