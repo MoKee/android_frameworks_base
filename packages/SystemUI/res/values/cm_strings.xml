@@ -110,4 +110,7 @@
     <!-- Content description of the dock battery level icon for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
     <string name="accessibility_dock_battery_level">Dock Battery <xliff:g id="number">%d</xliff:g> percent.</string>
 
+    <!-- Hide Icon on Statusbar -->
+    <string name="status_bar_notification_hide_icon_packages">Hide app\'s notification icon(s)</string>
+
 </resources>
