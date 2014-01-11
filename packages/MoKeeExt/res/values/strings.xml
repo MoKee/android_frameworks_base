@@ -45,4 +45,7 @@
     <string name="halo_signal_bars_1">ONE BAR</string>
     <string name="halo_signal_bars_none">NO BARS</string>
 
+    <!-- Hide Icon on Statusbar -->
+    <string name="status_bar_notification_hide_icon_packages">Hide app\'s notification icon(s)</string>
+
 </resources>
