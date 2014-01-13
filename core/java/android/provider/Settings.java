@@ -3202,11 +3202,27 @@ public final class Settings {
         public static final String INACCURATE_PROXIMITY_WORKAROUND = "inaccurate_proximity_sensor";
 
         /**
+         * Whether power saver is enabled
+         * @hide
+         */
+        public static final String POWER_SAVER_ENABLED = "power_saver_enabled";
+
+        /**
+         * @hide
+         */
+        public static final String POWER_SAVER_GPS = "power_saver_gps";
+
+        /**
+         * @hide
+         */
+        public static final String POWER_SAVER_MOBILE_DATA = "power_saver_mobile_data";
+
+        /**
          * Whether power menu screen record is enabled
          * @hide
          */
-
         public static final String POWER_MENU_SCREENRECORD_ENABLED = "power_menu_screenrecord_enabled";
+
         /**
          * Width and height of output vide expressed in WxH
          * @hide

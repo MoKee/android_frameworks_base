@@ -275,5 +275,12 @@
             android:theme="@style/Theme.DummyActivity">
         </activity>
 
+        <service android:name=".powersaver.PowerSaverService"
+            android:exported="true" >
+            <intent-filter>
+                <android name="android.intent.action.POWER_SAVER_SERVICE_UPDATE"/>
+            </intent-filter>
+        </service>
+
     </application>
 </manifest>
