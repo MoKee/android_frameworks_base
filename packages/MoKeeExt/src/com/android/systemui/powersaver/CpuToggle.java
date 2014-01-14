@@ -17,24 +17,24 @@
 package com.android.systemui.powersaver;
 
 import android.content.Context;
+import android.location.LocationManager;
 import android.provider.Settings;
-import android.net.ConnectivityManager;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Log;
 
-public class MobileDataToggle extends PowerSaverToggle {
+import com.android.systemui.powersaver.Utils;
 
-    private static final String TAG = "PowerSaverService_MobileDataToggle";
+public class CpuToggle extends PowerSaverToggle {
 
-    public MobileDataToggle(Context context) {
+    private static final String TAG = "PowerSaverService_CpuToggle";
+
+    public CpuToggle(Context context) {
         super(context);
     }
 
     protected boolean isEnabled() {
-        ConnectivityManager cm = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (!cm.isNetworkSupported(ConnectivityManager.TYPE_MOBILE)) {
-            return false;
-        }
-        return Settings.System.getInt(mContext.getContentResolver(), Settings.System.POWER_SAVER_MOBILE_DATA, 0) != 0;
+        return Settings.System.getInt(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU, 0) != 0;
     }
 
     protected boolean doScreenOnAction() {
@@ -42,7 +42,7 @@ public class MobileDataToggle extends PowerSaverToggle {
     }
 
     protected boolean doScreenOffAction() {
-        if (isMobileDataEnabled()) {
+        if (needSwtich()) {
             mDoAction = true;
         } else {
             mDoAction = false;
@@ -50,31 +50,32 @@ public class MobileDataToggle extends PowerSaverToggle {
         return mDoAction;
     }
 
-    private boolean isMobileDataEnabled() {
-        ConnectivityManager cm =
-                (ConnectivityManager)mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-        return cm.getMobileDataEnabled();
+    private boolean needSwtich() {
+        String defGov = Settings.System.getString(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_DEFAULT);
+        String remGov = Utils.getRecommendGovernor();
+        if (TextUtils.isEmpty(remGov) || TextUtils.isEmpty(defGov))
+            return false;
+        return !defGov.equals(remGov);
     }
 
     protected Runnable getScreenOffAction() {
         return new Runnable() {
             @Override
             public void run() {
-                ConnectivityManager cm =
-                    (ConnectivityManager)mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-                cm.setMobileDataEnabled(false);
-                Log.d(TAG, "mobileData = false");
+                String remGov = Utils.getRecommendGovernor();
+                Utils.fileWriteOneLine(Utils.GOV_FILE, remGov);
+                Log.d(TAG, "cpu = " + remGov);
             }
         };
     }
+
     protected Runnable getScreenOnAction() {
         return new Runnable() {
             @Override
             public void run() {
-                ConnectivityManager cm =
-                    (ConnectivityManager)mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-                cm.setMobileDataEnabled(true);
-                Log.d(TAG, "mobileData = true");
+                String defGov = Settings.System.getString(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_DEFAULT);
+                Utils.fileWriteOneLine(Utils.GOV_FILE, defGov);
+                Log.d(TAG, "cpu = " + defGov);
             }
         };
     }

@@ -32,10 +32,13 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import com.android.systemui.powersaver.Utils;
+
 public class PowerSaverService extends Service  {
 
     private static final String TAG = "PowerSaverService";
     private BroadcastReceiver mPowerKeyReceiver;
+    private CpuToggle mCpuToggle;
     private GpsToggle mGpsToggle;
     private MobileDataToggle mMobileDataToggle;
     private boolean mEnabled = true;
@@ -51,7 +54,7 @@ public class PowerSaverService extends Service  {
     @Override
     public void onDestroy() {
         Log.d(TAG, "onDestroy");
-        if (mEnabled){
+        if (mEnabled) {
             unregisterReceiver();
         }
     }
@@ -64,11 +67,13 @@ public class PowerSaverService extends Service  {
         // firewall
         mEnabled = Settings.System.getInt(mContext.getContentResolver(), Settings.System.POWER_SAVER_ENABLED, 0) != 0;
 
-        if (mEnabled){
+        if (mEnabled) {
             registerBroadcastReceiver();
         }
 
         fAllToggles = new ArrayList<PowerSaverToggle>();
+        mCpuToggle = new CpuToggle(mContext);
+        fAllToggles.add(mCpuToggle);
         mGpsToggle = new GpsToggle(mContext);
         fAllToggles.add(mGpsToggle);
         mMobileDataToggle = new MobileDataToggle(mContext);
@@ -89,23 +94,23 @@ public class PowerSaverService extends Service  {
             public void onReceive(Context context, Intent intent) {
                 String strAction = intent.getAction();
 
-                if (strAction.equals(Intent.ACTION_SCREEN_OFF)){
-                    Log.d(TAG, "scren off");
+                if (strAction.equals(Intent.ACTION_SCREEN_OFF)) {
+                    Log.d(TAG, "screen off");
                     Iterator<PowerSaverToggle> nextToggle = fEnabledToggles.iterator();
-                    while(nextToggle.hasNext()){
+                    while(nextToggle.hasNext()) {
                         PowerSaverToggle toggle = nextToggle.next();
                         toggle.doScreenOff();
                     }
                 }
                 if (strAction.equals(Intent.ACTION_SCREEN_ON)) {
-                    Log.d(TAG, "scren on");
+                    Log.d(TAG, "screen on");
                     Iterator<PowerSaverToggle> nextToggle = fEnabledToggles.iterator();
-                    while(nextToggle.hasNext()){
+                    while(nextToggle.hasNext()) {
                         PowerSaverToggle toggle = nextToggle.next();
                         toggle.doScreenOn();
                     }
                 }
-                if (strAction.equals("android.intent.action.POWER_SAVER_SERVICE_UPDATE")){
+                if (strAction.equals("android.intent.action.POWER_SAVER_SERVICE_UPDATE")) {
                     Log.d(TAG, "update enabled toggles");
                     updateEnabledToggles();
                 }
@@ -129,11 +134,14 @@ public class PowerSaverService extends Service  {
     private void updateEnabledToggles() {
         fEnabledToggles = new ArrayList<PowerSaverToggle>();
         Iterator<PowerSaverToggle> nextToggle = fAllToggles.iterator();
-        while(nextToggle.hasNext()){
+        while(nextToggle.hasNext()) {
             PowerSaverToggle toggle = nextToggle.next();
-            if (toggle.isEnabled()){
+            if (toggle.isEnabled()) {
                 Log.d(TAG, "active toggle "+ toggle.getClass().getName());
                 fEnabledToggles.add(toggle);
+                if (toggle.getClass().getName().contains("CpuToggle")) {
+                    Settings.System.putString(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_DEFAULT, Utils.getDefalutGovernor());
+                }
             }
         }
     }

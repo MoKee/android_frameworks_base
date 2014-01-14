@@ -3211,6 +3211,16 @@ public final class Settings {
         /**
          * @hide
          */
+        public static final String POWER_SAVER_CPU = "power_saver_cpu";
+
+        /**
+         * @hide
+         */
+        public static final String POWER_SAVER_CPU_DEFAULT = "power_saver_cpu_default";
+
+        /**
+         * @hide
+         */
         public static final String POWER_SAVER_GPS = "power_saver_gps";
 
         /**

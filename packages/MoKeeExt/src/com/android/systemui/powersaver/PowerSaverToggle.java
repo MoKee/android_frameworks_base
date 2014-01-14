@@ -22,15 +22,16 @@ import android.telephony.TelephonyManager;
 import android.os.Looper;
 
 public abstract class PowerSaverToggle {
+
     protected Context mContext;
     protected boolean mDoAction = false;
     protected PowerSaverService mService;
 
-    public PowerSaverToggle(Context context){
+    public PowerSaverToggle(Context context) {
         mContext = context;
     }
 
-    protected boolean runInThread(){
+    protected boolean runInThread() {
         return true;
     }
 
@@ -40,37 +41,33 @@ public abstract class PowerSaverToggle {
     protected abstract Runnable getScreenOffAction();
     protected abstract Runnable getScreenOnAction();
 
-    public void doScreenOff(){
-        if(isEnabled() && doScreenOffAction()){
+    public void doScreenOff() {
+        if (isEnabled() && doScreenOffAction()) {
             final Runnable r = getScreenOffAction();
-            if(runInThread()){
-                Thread thread = new Thread()
-                {
+            if (runInThread()) {
+                Thread thread = new Thread() {
                     @Override
                     public void run() {
                         r.run();
                     }
                 };
-
                 thread.start();
             } else {
                 r.run();
             }
         }
-
     }
-    public void doScreenOn(){
-        if(isEnabled() && doScreenOnAction()){
+
+    public void doScreenOn() {
+        if (isEnabled() && doScreenOnAction()) {
             final Runnable r = getScreenOnAction();
-            if(runInThread()){
-                Thread thread = new Thread()
-                {
+            if (runInThread()) {
+                Thread thread = new Thread() {
                     @Override
                     public void run() {
                         r.run();
                     }
                 };
-
                 thread.start();
             } else {
                 r.run();

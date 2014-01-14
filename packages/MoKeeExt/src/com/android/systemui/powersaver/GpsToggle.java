@@ -23,22 +23,23 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 
 public class GpsToggle extends PowerSaverToggle {
+
     private static final String TAG = "PowerSaverService_GpsToggle";
 
-    public GpsToggle(Context context){
+    public GpsToggle(Context context) {
         super(context);
     }
 
-    protected boolean isEnabled(){
+    protected boolean isEnabled() {
         return Settings.System.getInt(mContext.getContentResolver(), Settings.System.POWER_SAVER_GPS, 0) != 0;
     }
 
-    protected boolean doScreenOnAction(){
+    protected boolean doScreenOnAction() {
         return mDoAction;
     }
 
-    protected boolean doScreenOffAction(){
-        if (isGpsEnabled()){
+    protected boolean doScreenOffAction() {
+        if (isGpsEnabled()) {
             mDoAction = true;
         } else {
             mDoAction = false;
@@ -46,14 +47,14 @@ public class GpsToggle extends PowerSaverToggle {
         return mDoAction;
     }
 
-    private boolean isGpsEnabled(){
+    private boolean isGpsEnabled() {
         // TODO: check if gps is available on this device?
         return Settings.Secure.isLocationProviderEnabled(
                 mContext.getContentResolver(), LocationManager.GPS_PROVIDER);
 
     }
 
-    protected Runnable getScreenOffAction(){
+    protected Runnable getScreenOffAction() {
         return new Runnable() {
             @Override
             public void run() {
@@ -63,7 +64,8 @@ public class GpsToggle extends PowerSaverToggle {
             }
         };
     }
-    protected Runnable getScreenOnAction(){
+
+    protected Runnable getScreenOnAction() {
         return new Runnable() {
             @Override
             public void run() {
