@@ -24,4 +24,7 @@
     <!-- Radius of notification text -->
     <dimen name="glowpad_notification_text_radius">60dp</dimen>
 
+    <!-- Top margin for overflow notifications shown in the P.O.R.N. view -->
+    <dimen name="glowpad_overflow_notifications_margin_top">48dp</dimen>
+
 </resources>
