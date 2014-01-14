@@ -41,7 +41,7 @@ public class BootReceiver extends BroadcastReceiver {
             }
 
             // start the power saver service if activated
-            if (Settings.System.getInt(res, Settings.System.POWER_SAVER_ENABLED, 0) != 0) {
+            if (Settings.System.getInt(res, Settings.System.POWER_SAVER_ENABLED, 1) != 0) {
                 Intent powersaver = new Intent(context, com.android.systemui.powersaver.PowerSaverService.class);
                 context.startService(powersaver);
             }
