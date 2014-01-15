@@ -34,7 +34,7 @@ public class CpuToggle extends PowerSaverToggle {
     }
 
     protected boolean isEnabled() {
-        return Settings.System.getInt(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU, 1) != 0;
+        return Settings.System.getInt(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU, 0) != 0;
     }
 
     protected boolean doScreenOnAction() {

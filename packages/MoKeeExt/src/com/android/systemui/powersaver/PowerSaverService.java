@@ -65,7 +65,7 @@ public class PowerSaverService extends Service  {
         mContext = getApplicationContext();
 
         // firewall
-        mEnabled = Settings.System.getInt(mContext.getContentResolver(), Settings.System.POWER_SAVER_ENABLED, 1) != 0;
+        mEnabled = Settings.System.getInt(mContext.getContentResolver(), Settings.System.POWER_SAVER_ENABLED, 0) != 0;
 
         if (mEnabled) {
             registerBroadcastReceiver();
