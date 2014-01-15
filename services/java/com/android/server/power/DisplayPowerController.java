@@ -370,6 +370,7 @@ final class DisplayPowerController {
     private static final int SCREEN_OFF_FADE = 0;
     private static final int SCREEN_OFF_CRT = 1;
     private static final int SCREEN_OFF_SCALE = 2;
+    private static final int SCREEN_OFF_TURNOFF = 3;
     private int mScreenOffAnimation;
 
     /**
@@ -1553,6 +1554,6 @@ final class DisplayPowerController {
 
     private boolean useScreenOffAnimation() {
         return Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.SCREEN_OFF_ANIMATION, 1) == 1;
+                Settings.System.SCREEN_OFF_ANIMATION, SCREEN_OFF_CRT) != SCREEN_OFF_TURNOFF;
     }
 }
