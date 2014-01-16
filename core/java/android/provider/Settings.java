@@ -2647,6 +2647,24 @@ public final class Settings {
         @Deprecated
         public static final String LOW_BATTERY_SOUND = Global.LOW_BATTERY_SOUND;
 
+         /**
+         * Allows to show the background activity back the lockscreen
+         * @hide
+         */
+        public static final String LOCKSCREEN_SEE_THROUGH = "lockscreen_see_through";
+
+        /**
+         * Whether camera should be shown on lockscreen
+         * @hide
+         */
+        public static final String LOCKSCREEN_ENABLE_CAMERA = "lockscreen_enable_camera";
+
+        /**
+         * This preference enables showing the power menu on LockScreen.
+         * @hide
+         */
+        public static final String LOCKSCREEN_ENABLE_POWER_MENU = "lockscreen_enable_power_menu";
+
         /**
          * @deprecated Use {@link android.provider.Settings.Global#DESK_DOCK_SOUND}
          * instead
