@@ -1794,6 +1794,7 @@
 
   <!-- Hardware Key ReMapping -->
   <java-symbol type="integer" name="config_deviceHardwareKeys" />
+  <java-symbol type="bool" name="config_singleStageCameraKey" />
 
   <!-- Notification and battery light -->
   <java-symbol type="bool" name="config_intrusiveBatteryLed" />
@@ -1945,5 +1946,8 @@
   <java-symbol type="string" name="symbol_picker_Y" />
   <java-symbol type="string" name="symbol_picker_z" />
   <java-symbol type="string" name="symbol_picker_Z" />
+
+  <!-- Lock screen always show battery -->
+  <java-symbol type="string" name="lockscreen_discharging" />
 
 </resources>
