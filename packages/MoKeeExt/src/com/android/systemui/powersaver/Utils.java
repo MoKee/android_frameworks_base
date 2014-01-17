@@ -36,7 +36,7 @@ public class Utils {
     private static String recommendGovernor;
     private static String[] availableGovernors = new String[0];
     private static String[] recommendGovernors = {
-            "powersave", "conservative", "ondemand", "interactive"
+            "conservative", "ondemand", "interactive"
     };
 
     public static String getDefalutGovernor() {
