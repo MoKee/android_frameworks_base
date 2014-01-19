@@ -368,6 +368,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     boolean mCameraKeyPressable = false;
     private boolean mClearedBecauseOfForceShow;
 
+    boolean mForceShowNavBar;
+
     private final class PointerLocationPointerEventListener implements PointerEventListener {
         @Override
         public void onPointerEvent(MotionEvent motionEvent) {
@@ -541,6 +543,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private static final int BRIGHTNESS_STEPS = 10;
 
     SettingsObserver mSettingsObserver;
+    ForceShowNavBarObserver mForceShowNavBarObserver;
     ShortcutManager mShortcutManager;
     PowerManager.WakeLock mBroadcastWakeLock;
     boolean mHavePendingMediaKeyRepeatWithWakeLock;
@@ -688,6 +691,32 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         @Override public void onChange(boolean selfChange) {
             updateSettings();
             updateRotation(false);
+        }
+    }
+
+    class ForceShowNavBarObserver extends ContentObserver {
+        ForceShowNavBarObserver(Handler handler) {
+            super(handler);
+        }
+
+        void observe() {
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.FORCE_SHOW_NAVIGATION_BAR), false, this,
+                    UserHandle.USER_ALL);
+        }
+
+        @Override public void onChange(boolean selfChange) {
+            closeApplication("com.android.systemui");
+        }
+    }
+
+    private void closeApplication(String packageName) {
+        try {
+            ActivityManagerNative.getDefault().killApplicationProcess(
+                    packageName, AppGlobals.getPackageManager().getPackageUid(
+                    packageName, UserHandle.myUserId()));
+        } catch (RemoteException e) {
+            // Good luck next time!
         }
     }
 
@@ -1444,12 +1473,16 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         mNavigationBarCanMove = shortSizeDp < 600;
 
         mHasNavigationBar = res.getBoolean(com.android.internal.R.bool.config_showNavigationBar);
+        if (!mHasNavigationBar) {
+            mForceShowNavBarObserver = new ForceShowNavBarObserver(mHandler);
+            mForceShowNavBarObserver.observe();
+        }
         // Allow a system property to override this. Used by the emulator.
         // See also hasNavigationBar().
         String navBarOverride = SystemProperties.get("qemu.hw.mainkeys");
-        if ("1".equals(navBarOverride)) {
+        if ("1".equals(navBarOverride) && !mForceShowNavBar) {
             mHasNavigationBar = false;
-        } else if ("0".equals(navBarOverride)) {
+        } else if ("0".equals(navBarOverride) || mForceShowNavBar) {
             mHasNavigationBar = true;
         }
 
@@ -1525,6 +1558,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mCameraMusicControls = ((Settings.System.getIntForUser(resolver,
                     Settings.System.CAMERA_MUSIC_CONTROLS, 1, UserHandle.USER_CURRENT) == 1)
                     && !mCameraWakeScreen);
+            mForceShowNavBar = (Settings.System.getIntForUser(resolver,
+                    Settings.System.FORCE_SHOW_NAVIGATION_BAR, 0, UserHandle.USER_CURRENT) == 1);
             int mNavButtonsHeight = Settings.System.getIntForUser(resolver,
                     Settings.System.NAVIGATION_BAR_HEIGHT, 48, UserHandle.USER_CURRENT);
             // Height of the navigation bar when presented horizontally at bottom
@@ -4971,7 +5006,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 // and then updates our own bookkeeping based on the now-
                 // current user.
                 mSettingsObserver.onChange(false);
-
+                ForceShowNavBarObserver.onChange(false);
                 // force a re-application of focused window sysui visibility.
                 // the window may never have been shown for this user
                 // e.g. the keyguard when going through the new-user setup flow
