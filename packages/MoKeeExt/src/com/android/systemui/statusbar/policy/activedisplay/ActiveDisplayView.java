@@ -149,7 +149,6 @@ public class ActiveDisplayView extends FrameLayout {
     private int mIconMargin;
     private int mIconPadding;
     private long mPocketTime = 0;
-    private long mLockScreenTimeOut = 0;
     private LinearLayout.LayoutParams mOverflowLayoutParams;
     private boolean mCallbacksRegistered = false;
 
@@ -168,8 +167,6 @@ public class ActiveDisplayView extends FrameLayout {
     private long mDisplayTimeout = 8000L;
     private long mProximityThreshold = 5000L;
     private boolean mTurnOffModeEnabled = false;
-    private boolean mIsActiveDisplay = false;
-    private boolean mIsActiveUnlock = false;
 
     /**
      * Simple class that listens to changes in notifications
@@ -233,7 +230,6 @@ public class ActiveDisplayView extends FrameLayout {
                 ObjectAnimator.ofFloat(mClock, "alpha", 1f).start();
             }
             // user stopped interacting so kick off the timeout timer
-            mIsActiveUnlock = false;
             updateTimeoutTimer();
         }
 
@@ -293,8 +289,6 @@ public class ActiveDisplayView extends FrameLayout {
                     Settings.System.ACTIVE_DISPLAY_TURNOFF_MODE), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.ACTIVE_DISPLAY_THRESHOLD), false, this);
-            resolver.registerContentObserver(Settings.Secure.getUriFor(
-                    Settings.Secure.LOCK_SCREEN_LOCK_AFTER_TIMEOUT), false, this);
             update();
         }
 
@@ -339,8 +333,6 @@ public class ActiveDisplayView extends FrameLayout {
                     resolver, Settings.System.ACTIVE_DISPLAY_TURNOFF_MODE, 0) == 1;
             mProximityThreshold = Settings.System.getLong(
                     resolver, Settings.System.ACTIVE_DISPLAY_THRESHOLD, 8000L);
-            mLockScreenTimeOut = Settings.Secure.getLong(
-                    resolver, Settings.Secure.LOCK_SCREEN_LOCK_AFTER_TIMEOUT, 5000);
 
             createExcludedAppsSet(excludedApps);
 
@@ -618,13 +610,11 @@ public class ActiveDisplayView extends FrameLayout {
         msg.arg1 = ping ? 1 : 0;
         mHandler.removeMessages(MSG_SHOW_NOTIFICATION);
         mHandler.sendMessage(msg);
-        mIsActiveDisplay = true;
     }
 
     private void showTime() {
         mHandler.removeMessages(MSG_SHOW_TIME);
         mHandler.sendEmptyMessage(MSG_SHOW_TIME);
-        mIsActiveDisplay = true;
     }
 
     private void dismissNotification() {
@@ -639,16 +629,8 @@ public class ActiveDisplayView extends FrameLayout {
     }
 
     private final Runnable runSystemUiVisibilty = new Runnable() {
-        @Override
         public void run() {
             adjustStatusBarLocked(1);
-        }
-    };
-
-    private final Runnable runRestoreSystemUiVisibilty = new Runnable() {
-        @Override
-        public void run() {
-            adjustStatusBarLocked(0);
         }
     };
 
@@ -696,20 +678,13 @@ public class ActiveDisplayView extends FrameLayout {
     }
 
     private void handleShowNotificationView() {
-        if (!mIsActiveDisplay && mLockScreenTimeOut != 0) {
-            mHandler.removeCallbacks(runRestoreSystemUiVisibilty);
-        }
         setVisibility(View.VISIBLE);
         setSystemUIVisibility(false);
         mHandler.postDelayed(runSystemUiVisibilty, 100);
-        mIsActiveDisplay = true;
         registerSensorListener(mLightSensor);
     }
 
     private void handleHideNotificationView() {
-        if (mIsActiveDisplay && mLockScreenTimeOut != 0) {
-            mHandler.removeCallbacks(runRestoreSystemUiVisibilty);
-        }
         mHandler.removeCallbacks(runSystemUiVisibilty);
         setVisibility(View.GONE);
         restoreBrightness();
@@ -720,25 +695,16 @@ public class ActiveDisplayView extends FrameLayout {
         } else {
             adjustStatusBarLocked(2);
         }
-        mIsActiveDisplay = false;
         unregisterSensorListener(mLightSensor);
     }
 
     private void handleForceHideNotificationView() {
-        if (mIsActiveDisplay && mLockScreenTimeOut != 0) {
-            mHandler.removeCallbacks(runRestoreSystemUiVisibilty);
-        }
         mHandler.removeCallbacks(runSystemUiVisibilty);
         setVisibility(View.GONE);
         restoreBrightness();
         mWakedByPocketMode = false;
         cancelTimeoutTimer();
         adjustStatusBarLocked(0);
-        mIsActiveDisplay = false;
-        mIsActiveUnlock = true;
-        if (!isScreenOn()) {
-            turnScreenOn();
-        }
         unregisterSensorListener(mLightSensor);
     }
 
@@ -774,7 +740,6 @@ public class ActiveDisplayView extends FrameLayout {
                 return;
             }
         }
-        mIsActiveUnlock = false;
         // no other notifications to display so turn screen off
         turnScreenOff();
     }
@@ -794,10 +759,6 @@ public class ActiveDisplayView extends FrameLayout {
     }
 
     private void onScreenTurnedOn() {
-        if (!mIsActiveDisplay && mLockScreenTimeOut != 0) {
-            mHandler.removeCallbacks(runRestoreSystemUiVisibilty);
-            mHandler.postDelayed(runRestoreSystemUiVisibilty, 200);
-        }
         cancelRedisplayTimer();
     }
 
@@ -812,7 +773,6 @@ public class ActiveDisplayView extends FrameLayout {
     private void turnScreenOff() {
         mHandler.removeCallbacks(runWakeDevice);
         mWakedByPocketMode = false;
-        mIsActiveDisplay = false;
         Log.i(TAG, "ActiveDisplay: turn screen off");
         try {
             mPM.goToSleep(SystemClock.uptimeMillis(), 0);
@@ -828,7 +788,6 @@ public class ActiveDisplayView extends FrameLayout {
     }
 
     private final Runnable runWakeDevice = new Runnable() {
-        @Override
         public void run() {
             setBrightness(mInitialBrightness);
             wakeDevice();
@@ -1281,20 +1240,18 @@ public class ActiveDisplayView extends FrameLayout {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            if (action.equals(ACTION_REDISPLAY_NOTIFICATION)) {
+            if (ACTION_REDISPLAY_NOTIFICATION.equals(action)) {
                 if (mNotification == null) {
                     mNotification = getNextAvailableNotification();
                 }
                 if (mNotification != null) showNotification(mNotification, true);
-            } else if (action.equals(ACTION_DISPLAY_TIMEOUT)) {
-                if (!mIsActiveUnlock && ActiveDisplayView.this.getVisibility() == View.VISIBLE) {
-                    turnScreenOff();
-                }
-            } else if (action.equals(Intent.ACTION_SCREEN_OFF)) {
+            } else if (ACTION_DISPLAY_TIMEOUT.equals(action)) {
+                turnScreenOff();
+            } else if (Intent.ACTION_SCREEN_OFF.equals(action)) {
                 onScreenTurnedOff();
-            } else if (action.equals(Intent.ACTION_SCREEN_ON)) {
+            } else if (Intent.ACTION_SCREEN_ON.equals(action)) {
                 onScreenTurnedOn();
-            } else if (action.equals(ACTION_FORCE_DISPLAY)) {
+            } else if (ACTION_FORCE_DISPLAY.equals(action)) {
                 if (mNotification == null) {
                     mNotification = getNextAvailableNotification();
                 }
@@ -1377,11 +1334,5 @@ public class ActiveDisplayView extends FrameLayout {
         LockPatternUtils utils = new LockPatternUtils(mContext);
         utils.setCurrentUser(UserHandle.USER_OWNER);
         return utils.isLockScreenDisabled();
-    }
-
-    private boolean getPowerButtonInstantlyLocks() {
-        LockPatternUtils utils = new LockPatternUtils(mContext);
-        utils.setCurrentUser(UserHandle.USER_OWNER);
-        return utils.getPowerButtonInstantlyLocks();
     }
 }
