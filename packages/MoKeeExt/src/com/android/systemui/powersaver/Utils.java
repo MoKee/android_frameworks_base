@@ -35,15 +35,19 @@ public class Utils {
     private static String availableGovernorsLine;
     private static String recommendGovernor;
     private static String[] availableGovernors = new String[0];
-    private static String[] recommendGovernors = {
-            "conservative", "ondemand", "interactive"
-    };
 
     public static String getDefalutGovernor() {
         return fileReadOneLine(Utils.GOV_FILE);
     }
 
     public static String getRecommendGovernor() {
+        String [] recommendGovernors = { "conservative", "wheatley", "hotplug", "ondemand", "interactive" };
+
+        boolean isExynos = SystemProperties.get("ro.board.platform").toLowerCase().contains("exynos");
+        if (isExynos) {
+            recommendGovernors = new String [] { "zzmoove", "pegasusq", "conservative", "wheatley", "hotplug", "ondemand", "interactive" };
+        }
+
         availableGovernorsLine = fileReadOneLine(GOV_LIST_FILE);
         availableGovernors = availableGovernorsLine.split(" ");
         for (int i = 0; i < recommendGovernors.length; i++) {
