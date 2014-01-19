@@ -62,7 +62,7 @@ public class MoKeeUtils {
      * @param size
      * @return
      */
-    public static String formetFileSize(long size) {
+    public static String formatFileSize(long size) {
         DecimalFormat df = new DecimalFormat("#0.00");
         String fileSizeString = "";
         if (size < 1024) {
