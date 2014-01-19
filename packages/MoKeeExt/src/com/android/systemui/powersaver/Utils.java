@@ -23,6 +23,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
+import android.os.SystemProperties;
 import android.util.Log;
 
 public class Utils {
