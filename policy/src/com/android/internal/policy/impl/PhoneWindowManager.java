@@ -368,6 +368,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     boolean mCameraKeyPressable = false;
     private boolean mClearedBecauseOfForceShow;
 
+    boolean mForceShowNavBar;
+
     private final class PointerLocationPointerEventListener implements PointerEventListener {
         @Override
         public void onPointerEvent(MotionEvent motionEvent) {
@@ -1447,9 +1449,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         // Allow a system property to override this. Used by the emulator.
         // See also hasNavigationBar().
         String navBarOverride = SystemProperties.get("qemu.hw.mainkeys");
-        if ("1".equals(navBarOverride)) {
+        if ("1".equals(navBarOverride) && !mForceShowNavBar) {
             mHasNavigationBar = false;
-        } else if ("0".equals(navBarOverride)) {
+        } else if ("0".equals(navBarOverride) || mForceShowNavBar) {
             mHasNavigationBar = true;
         }
 
@@ -1525,6 +1527,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mCameraMusicControls = ((Settings.System.getIntForUser(resolver,
                     Settings.System.CAMERA_MUSIC_CONTROLS, 1, UserHandle.USER_CURRENT) == 1)
                     && !mCameraWakeScreen);
+            mForceShowNavBar = (Settings.System.getIntForUser(resolver,
+                    Settings.System.FORCE_SHOW_NAVIGATION_BAR, 0, UserHandle.USER_CURRENT) == 1);
             int mNavButtonsHeight = Settings.System.getIntForUser(resolver,
                     Settings.System.NAVIGATION_BAR_HEIGHT, 48, UserHandle.USER_CURRENT);
             // Height of the navigation bar when presented horizontally at bottom
