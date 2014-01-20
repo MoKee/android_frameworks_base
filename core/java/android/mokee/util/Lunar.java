@@ -22,7 +22,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 import android.content.res.Resources;
-import android.text.TextUtils;
 
 import com.android.internal.R;
 

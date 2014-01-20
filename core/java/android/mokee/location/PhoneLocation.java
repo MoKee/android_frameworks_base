@@ -16,6 +16,8 @@
 
 package android.mokee.location;
 
+import android.text.TextUtils;
+
 public final class PhoneLocation {
 
     private static String PHONE;
@@ -60,10 +62,11 @@ public final class PhoneLocation {
     }
 
     public static String getCityFromPhone(String num) {
-	num=(num.replace("-", "")).replace(" ", "");
+        if (TextUtils.isEmpty(num))
+            return "";
+	num = (num.replace("-", "")).replace(" ", "");
         String PhoneLocationStr=getPosFromPhone(num, 1);  		
-        return (null == PhoneLocationStr ? "" : PhoneLocationStr);
-
+        return (TextUtils.isEmpty(PhoneLocationStr) ? "" : PhoneLocationStr);
     }
 }
 
