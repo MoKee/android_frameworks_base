@@ -52,7 +52,7 @@ public class CpuToggle extends PowerSaverToggle {
 
     private boolean needSwtich() {
         String defGov = Settings.System.getString(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_DEFAULT);
-        String remGov = Utils.getRecommendGovernor();
+        String remGov = Utils.getRecommendGovernor(mContext);
         if (TextUtils.isEmpty(remGov) || TextUtils.isEmpty(defGov))
             return false;
         return !defGov.equals(remGov);
@@ -62,7 +62,7 @@ public class CpuToggle extends PowerSaverToggle {
         return new Runnable() {
             @Override
             public void run() {
-                String remGov = Utils.getRecommendGovernor();
+                String remGov = Utils.getRecommendGovernor(mContext);
                 Utils.fileWriteOneLine(Utils.GOV_FILE, remGov);
                 Log.d(TAG, "cpu = " + remGov);
             }

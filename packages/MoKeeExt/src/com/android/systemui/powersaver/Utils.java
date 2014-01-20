@@ -22,9 +22,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
+import android.content.Context;
 import android.os.SystemProperties;
+import android.provider.Settings;
 import android.util.Log;
+
+import com.android.systemui.R;
 
 public class Utils {
 
@@ -41,19 +46,24 @@ public class Utils {
         return fileReadOneLine(Utils.GOV_FILE);
     }
 
-    public static String getRecommendGovernor() {
-        String [] recommendGovernors = { "conservative", "wheatley", "hotplug", "ondemand", "interactive" };
+    public static String getRecommendGovernor(Context mContext) {
+        String [] recommendGovernors = mContext.getResources().getStringArray(R.array.recommend_governors);
 
         boolean isExynos = SystemProperties.get("ro.board.platform").toLowerCase().contains("exynos");
         if (isExynos) {
-            recommendGovernors = new String [] { "zzmoove", "pegasusq", "conservative", "wheatley", "hotplug", "ondemand", "interactive" };
+            String [] blacklistGovernors = mContext.getResources().getStringArray(R.array.exynos_blacklist_governors);
+            String defGov = Settings.System.getString(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_DEFAULT);
+            List<String> blackList = Arrays.asList(blacklistGovernors);
+            if (blackList.contains(defGov)) {
+                return null;
+            }
         }
 
         availableGovernorsLine = fileReadOneLine(GOV_LIST_FILE);
         availableGovernors = availableGovernorsLine.split(" ");
         for (int i = 0; i < recommendGovernors.length; i++) {
-            int index = Arrays.binarySearch(availableGovernors, recommendGovernors[i]);
-            if (index != -1) {
+            List<String> govList = Arrays.asList(availableGovernors);
+            if (govList.contains(recommendGovernors[i])) {
                 recommendGovernor = recommendGovernors[i];
                 break;
             }
