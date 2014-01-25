@@ -799,6 +799,10 @@ public class ActiveDisplayView extends FrameLayout {
             mHandler.postDelayed(runRestoreSystemUiVisibilty, 200);
         }
         cancelRedisplayTimer();
+        // Only keep watching for pocketing if woken up by pocket mode.
+        if (!mWakedByPocketMode) {
+            disableProximitySensor();
+        }
     }
 
     private void onScreenTurnedOff() {
