@@ -3228,6 +3228,12 @@ public final class Settings {
         public static final String DIALER_DIRECT_CALL = "dialer_direct_call";
 
         /**
+         * non intrusive incall. The value is
+         * boolean (1 or 0).
+         */
+        public static final String NON_INTRUSIVE_INCALL = "non_intrusive_incall";
+
+        /**
          * Height of navigation bar buttons
          * @hide
          */
