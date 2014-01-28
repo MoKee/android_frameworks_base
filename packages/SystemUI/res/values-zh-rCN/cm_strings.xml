@@ -16,7 +16,7 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="accessibility_quick_settings_ringer">声音 <xliff:g id="state" example="Off">%s</xliff:g>.</string>
-    <string name="accessibility_quick_settings_vibration">震动 <xliff:g id="state" example="Off">%s</xliff:g>.</string>
+    <string name="accessibility_quick_settings_vibration">振动 <xliff:g id="state" example="Off">%s</xliff:g>.</string>
 
     <string name="bean_dream_settings_cid_title">使用 Cid 的头像</string>
     <string name="bean_dream_settings_cid_summary">在大乱舞内使用 Cid 的头像替代奇巧</string>
@@ -33,8 +33,8 @@
     <string name="quick_settings_screen_sleep">进入睡眠</string>
     <string name="quick_settings_ringer_on">声音开启</string>
     <string name="quick_settings_ringer_off">声音关闭</string>
-    <string name="quick_settings_vibration_on">震动已开启</string>
-    <string name="quick_settings_vibration_off">震动已关闭</string>
+    <string name="quick_settings_vibration_on">振动已开启</string>
+    <string name="quick_settings_vibration_off">振动已关闭</string>
     <string name="quick_settings_label_enabled">已开启</string>
     <string name="quick_settings_label_disabled">已关闭</string>
     <string name="quick_settings_ringer_normal">声音</string>
