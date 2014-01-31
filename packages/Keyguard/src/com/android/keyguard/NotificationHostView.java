@@ -59,7 +59,6 @@ public class NotificationHostView extends FrameLayout {
     private HashMap<String, NotificationView> mNotifications = new HashMap<String, NotificationView>();
     private INotificationManager mNotificationManager;
     private WindowManager mWindowManager;
-    private IStatusBarService mStatusBar;
     private int mNotificationMinHeight, mNotificationMinRowHeight;
     private int mDisplayWidth, mDisplayHeight;
     private int mShownNotifications = 0;
@@ -268,8 +267,6 @@ public class NotificationHostView extends FrameLayout {
         mNotificationManager = INotificationManager.Stub.asInterface(
                 ServiceManager.getService(Context.NOTIFICATION_SERVICE));
         mDynamicWidth = getResources().getBoolean(R.bool.config_lnDynamicWidth);
-        mStatusBar = IStatusBarService.Stub.asInterface(
-                ServiceManager.getService(Context.STATUS_BAR_SERVICE));
     }
 
     @Override
@@ -565,13 +562,15 @@ public class NotificationHostView extends FrameLayout {
     }
 
     private void setButtonDrawable() {
+        IStatusBarService statusBar = IStatusBarService.Stub.asInterface(
+                ServiceManager.getService(Context.STATUS_BAR_SERVICE));
         try {
             if (mNotifications.size() == 0) {
-                mStatusBar.setButtonDrawable(0, 0);
+                statusBar.setButtonDrawable(0, 0);
             } else if (mShownNotifications == mNotifications.size()) {
-                mStatusBar.setButtonDrawable(0, 2);
+                statusBar.setButtonDrawable(0, 2);
             } else {
-                mStatusBar.setButtonDrawable(0, 1);
+                statusBar.setButtonDrawable(0, 1);
             }
         } catch (RemoteException ex) {}
     }
