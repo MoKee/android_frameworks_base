@@ -45,4 +45,8 @@
     <string name="halo_signal_bars_1">ONE BAR</string>
     <string name="halo_signal_bars_none">NO BARS</string>
 
+    <!-- MoKee PlatLogo -->
+    <string name="dessert_case_settings_mk_title">Show MoKee\'s mascot</string>
+    <string name="dessert_case_settings_mk_summary">Show MoKee\'s mascot instead of Android\'s desserts inside the dream</string>
+
 </resources>
