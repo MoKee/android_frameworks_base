@@ -25,6 +25,7 @@ import android.provider.Settings;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemProperties;
 import android.text.method.AllCapsTransformationMethod;
 import android.text.method.TransformationMethod;
 import android.util.DisplayMetrics;
@@ -45,11 +46,14 @@ public class PlatLogoActivity extends Activity {
     int mCount;
     final Handler mHandler = new Handler();
     static final int BGCOLOR = 0xffed1d24;
+    private boolean mIsMoKee;
+    static final int BGCOLOR2 = 0xff0078a9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mIsMoKee = getIntent().hasExtra("is_mk");
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
@@ -58,28 +62,33 @@ public class PlatLogoActivity extends Activity {
 
         mContent = new FrameLayout(this);
         mContent.setBackgroundColor(0xC0000000);
-        
         final FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.WRAP_CONTENT,
                 FrameLayout.LayoutParams.WRAP_CONTENT);
         lp.gravity = Gravity.CENTER;
 
+        // Add some padding to the platlogo for devices where the
+        // width of the logo is bigger than the device width
+        int p = (int) (20 * metrics.density);
+
         final ImageView logo = new ImageView(this);
-        logo.setImageResource(com.android.internal.R.drawable.platlogo);
+        logo.setImageResource(mIsMoKee
+                ? com.android.internal.R.drawable.mk_platlogo
+                : com.android.internal.R.drawable.platlogo);
         logo.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         logo.setVisibility(View.INVISIBLE);
 
         final View bg = new View(this);
-        bg.setBackgroundColor(BGCOLOR);
+        bg.setBackgroundColor(mIsMoKee ? BGCOLOR2 : BGCOLOR);
         bg.setAlpha(0f);
 
         final TextView letter = new TextView(this);
 
         letter.setTypeface(bold);
-        letter.setTextSize(300);
-        letter.setTextColor(0xFFFFFFFF);
+        letter.setTextSize(mIsMoKee ? 100 : 300);
+        letter.setTextColor(mIsMoKee ? 0xff0078a9 : 0xFFFFFFFF);
         letter.setGravity(Gravity.CENTER);
-        letter.setText(String.valueOf(Build.ID).substring(0, 1));
+        letter.setText(mIsMoKee ? "MoKee" : "K");
 
         final int p = (int)(4 * metrics.density);
 
@@ -90,7 +99,7 @@ public class PlatLogoActivity extends Activity {
         tv.setTextColor(0xFFFFFFFF);
         tv.setGravity(Gravity.CENTER);
         tv.setTransformationMethod(new AllCapsTransformationMethod(this));
-        tv.setText("Android " + Build.VERSION.RELEASE);
+        tv.setText(mIsMoKee ? "MoKee " + Build.VERSION.RELEASE : "ANDROID " + Build.VERSION.RELEASE);
         tv.setVisibility(View.INVISIBLE);
 
         mContent.addView(bg);
@@ -164,6 +173,7 @@ public class PlatLogoActivity extends Activity {
                         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                             | Intent.FLAG_ACTIVITY_CLEAR_TASK
                             | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
+                        .putExtra("is_mk", mIsMoKee)
                         .addCategory("com.android.internal.category.PLATLOGO"));
                 } catch (ActivityNotFoundException ex) {
                     android.util.Log.e("PlatLogoActivity", "Couldn't catch a break.");
