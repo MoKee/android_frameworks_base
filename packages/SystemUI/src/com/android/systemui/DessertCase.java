@@ -24,12 +24,15 @@ import android.os.Handler;
 import android.util.Slog;
 import android.view.animation.DecelerateInterpolator;
 
+import com.android.systemui.mk.MoKeeCaseView;
+
 public class DessertCase extends Activity {
     DessertCaseView mView;
 
     @Override
     public void onStart() {
         super.onStart();
+        final boolean isMoKee = getIntent().getBooleanExtra("is_mk", false);
 
         PackageManager pm = getPackageManager();
         final ComponentName cn = new ComponentName(this, DessertCaseDream.class);
@@ -40,7 +43,12 @@ public class DessertCase extends Activity {
                     PackageManager.DONT_KILL_APP);
         }
 
+        if (isMoKee) {
+            mView = new MoKeeCaseView(this);
+            Slog.v("DessertCase", "MoKee Open Source Project enabled!");
+        } else {
         mView = new DessertCaseView(this);
+        }
 
         DessertCaseView.RescalingContainer container = new DessertCaseView.RescalingContainer(this);
 
