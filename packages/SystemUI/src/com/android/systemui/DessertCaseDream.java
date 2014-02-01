@@ -16,7 +16,12 @@
 
 package com.android.systemui;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.service.dreams.DreamService;
+import android.util.Slog;
+
+import com.android.systemui.mk.MoKeeCaseView;
 
 public class DessertCaseDream extends DreamService {
     private DessertCaseView mView;
@@ -27,13 +32,22 @@ public class DessertCaseDream extends DreamService {
         super.onAttachedToWindow();
         setInteractive(false);
 
-        mView = new DessertCaseView(this);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        final boolean isMoKee = prefs.getBoolean("dessert_case_mk", false);
+
+        if (isMoKee) {
+            mView = new MoKeeCaseView(this);
+            Slog.v("DessertCaseDream", "MoKee Open Source Project enabled!");
+        } else {
+            mView = new DessertCaseView(this);
+        }
 
         mContainer = new DessertCaseView.RescalingContainer(this);
 
         mContainer.setView(mView);
 
         setContentView(mContainer);
+
     }
 
     @Override
