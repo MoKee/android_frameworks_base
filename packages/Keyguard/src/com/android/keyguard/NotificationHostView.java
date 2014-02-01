@@ -564,15 +564,17 @@ public class NotificationHostView extends FrameLayout {
     private void setButtonDrawable() {
         IStatusBarService statusBar = IStatusBarService.Stub.asInterface(
                 ServiceManager.getService(Context.STATUS_BAR_SERVICE));
-        try {
-            if (mNotifications.size() == 0) {
-                statusBar.setButtonDrawable(0, 0);
-            } else if (mShownNotifications == mNotifications.size()) {
-                statusBar.setButtonDrawable(0, 2);
-            } else {
-                statusBar.setButtonDrawable(0, 1);
-            }
-        } catch (RemoteException ex) {}
+        if (statusBar != null) {
+            try {
+                if (mNotifications.size() == 0) {
+                    statusBar.setButtonDrawable(0, 0);
+                } else if (mShownNotifications == mNotifications.size()) {
+                    statusBar.setButtonDrawable(0, 2);
+                } else {
+                    statusBar.setButtonDrawable(0, 1);
+                }
+            } catch (RemoteException ex) {}
+        }
     }
 
     private void animateBackgroundColor(final int targetColor) {
