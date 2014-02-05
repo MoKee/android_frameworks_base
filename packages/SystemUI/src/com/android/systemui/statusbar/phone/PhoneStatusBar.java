@@ -243,6 +243,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     View mNotificationPanelHeader;
     View mDateTimeView;
     View mClearButton;
+    View mActionButtonHolder;
     ImageView mAddTileButton;
     ImageView mSettingsButton, mNotificationButton;
 
@@ -642,6 +643,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         mClearButton.setAlpha(0f);
         mClearButton.setVisibility(View.GONE);
         mClearButton.setEnabled(false);
+
+        mActionButtonHolder = mStatusBarWindow.findViewById(R.id.action_button_holder);
+
         mDateView = (DateView)mStatusBarWindow.findViewById(R.id.date);
 
         mHasSettingsPanel = res.getBoolean(R.bool.config_hasSettingsPanel);
@@ -678,6 +682,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             mHaloButtonVisible = true;
             updateHaloButton();
         }
+
         if (mHasFlipSettings) {
             mNotificationButton = (ImageView) mStatusBarWindow.findViewById(R.id.notification_button);
             mAddTileButton = (ImageView) mStatusBarWindow.findViewById(R.id.add_tile_button);
@@ -1388,6 +1393,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 && mScrollView.getVisibility() != View.VISIBLE) {
             // the flip settings panel is unequivocally showing; we should not be shown
             mClearButton.setVisibility(View.GONE);
+            mActionButtonHolder.setVisibility(View.VISIBLE);
         } else if (mClearButton.isShown()) {
             if (clearable != (mClearButton.getAlpha() == 1.0f)) {
                 ObjectAnimator clearAnimation = ObjectAnimator.ofFloat(
@@ -1412,6 +1418,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         } else {
             mClearButton.setAlpha(clearable ? 1.0f : 0.0f);
             mClearButton.setVisibility(clearable ? View.VISIBLE : View.GONE);
+            mActionButtonHolder.setVisibility(clearable ? View.VISIBLE : View.GONE);
         }
         mClearButton.setEnabled(clearable);
 
@@ -1885,6 +1892,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         mAddTileButton.setVisibility(View.VISIBLE);
         mAddTileButton.setAlpha(1f);
         mClearButton.setVisibility(View.GONE);
+        mActionButtonHolder.setVisibility(View.VISIBLE);
     }
 
     public boolean isShowingSettings() {
@@ -2011,6 +2019,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         mNotificationButtonAnim = start(
             ObjectAnimator.ofFloat(mNotificationButton, View.ALPHA, 1f)
                 .setDuration(FLIP_DURATION));
+        mActionButtonHolder.setVisibility(View.VISIBLE);
         mAddTileButton.setVisibility(View.VISIBLE);
         mAddTileButtonAnim = start(
             ObjectAnimator.ofFloat(mAddTileButton, View.ALPHA, 1f)
