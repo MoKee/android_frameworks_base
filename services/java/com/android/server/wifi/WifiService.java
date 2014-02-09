@@ -37,6 +37,7 @@ import android.net.wifi.BatchedScanSettings;
 import android.net.wifi.WifiChannel;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiConfiguration.ProxySettings;
+import android.net.wifi.WifiSsid;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.net.wifi.WifiStateMachine;
@@ -814,12 +815,20 @@ public final class WifiService extends IWifiManager.Stub {
      * See {@link android.net.wifi.WifiManager#getConnectionInfo()}
      * @return the Wi-Fi information, contained in {@link WifiInfo}.
      */
-    public WifiInfo getConnectionInfo() {
+    public WifiInfo getConnectionInfo(String callingPackage) {
         enforceAccessPermission();
         /*
          * Make sure we have the latest information, by sending
          * a status request to the supplicant.
          */
+        if (mAppOps.noteOp(AppOpsManager.OP_WIFI_SCAN, Binder.getCallingUid(),
+               callingPackage) != AppOpsManager.MODE_ALLOWED) {
+            WifiInfo wifiInfos=new WifiInfo(mWifiStateMachine.syncRequestConnectionInfo());
+            wifiInfos.setMacAddress("By:Mo:Ke:eT:ea:ms");
+            wifiInfos.setSSID(WifiSsid.createFromAsciiEncoded("Mokee OpenSource"));
+            wifiInfos.setBSSID("By:Mo:Ke:eT:ea:ms");
+            return wifiInfos;
+        }
         return mWifiStateMachine.syncRequestConnectionInfo();
     }
 

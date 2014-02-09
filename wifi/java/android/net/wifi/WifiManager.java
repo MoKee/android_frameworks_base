@@ -881,7 +881,7 @@ public class WifiManager {
      */
     public WifiInfo getConnectionInfo() {
         try {
-            return mService.getConnectionInfo();
+            return mService.getConnectionInfo(mContext.getOpPackageName());
         } catch (RemoteException e) {
             return null;
         }
