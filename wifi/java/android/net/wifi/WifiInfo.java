@@ -107,8 +107,8 @@ public class WifiInfo implements Parcelable {
             mMeteredHint = source.mMeteredHint;
         }
     }
-
-    void setSSID(WifiSsid wifiSsid) {
+    /** {@hide} */
+    public void setSSID(WifiSsid wifiSsid) {
         mWifiSsid = wifiSsid;
         // network is considered not hidden by default
         mHiddenSSID = false;
@@ -137,8 +137,8 @@ public class WifiInfo implements Parcelable {
     public WifiSsid getWifiSsid() {
         return mWifiSsid;
     }
-
-    void setBSSID(String BSSID) {
+    /** {@hide} */
+    public void setBSSID(String BSSID) {
         mBSSID = BSSID;
     }
 
@@ -182,7 +182,8 @@ public class WifiInfo implements Parcelable {
      * Record the MAC address of the WLAN interface
      * @param macAddress the MAC address in {@code XX:XX:XX:XX:XX:XX} form
      */
-    void setMacAddress(String macAddress) {
+    /** {@hide} */
+    public void setMacAddress(String macAddress) {
         this.mMacAddress = macAddress;
     }
 

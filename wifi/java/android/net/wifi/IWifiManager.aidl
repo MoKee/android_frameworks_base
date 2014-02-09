@@ -56,7 +56,7 @@ interface IWifiManager
 
     void reassociate();
 
-    WifiInfo getConnectionInfo();
+    WifiInfo getConnectionInfo(String callingPackage);
 
     boolean setWifiEnabled(String callingPackage, boolean enable);
 
