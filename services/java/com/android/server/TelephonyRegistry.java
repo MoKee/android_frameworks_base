@@ -16,6 +16,7 @@
 
 package com.android.server;
 
+import android.app.AppOpsManager;
 import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -125,6 +126,8 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
 
     private List<CellInfo> mCellInfo = null;
 
+    AppOpsManager mAppOps;
+
     static final int PHONE_STATE_PERMISSION_MASK =
                 PhoneStateListener.LISTEN_CALL_FORWARDING_INDICATOR |
                 PhoneStateListener.LISTEN_CALL_STATE |
@@ -176,6 +179,7 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
         mContext = context;
         mBatteryStats = BatteryStatsService.getService();
         mConnectedApns = new ArrayList<String>();
+        mAppOps = (AppOpsManager)context.getSystemService(Context.APP_OPS_SERVICE);
     }
 
     public void systemRunning() {
@@ -189,6 +193,15 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
     @Override
     public void listen(String pkgForDebug, IPhoneStateListener callback, int events,
             boolean notifyNow) {
+        if (mAppOps.noteOp(AppOpsManager.OP_NEIGHBORING_CELLS, Binder.getCallingUid(),
+                pkgForDebug) != AppOpsManager.MODE_ALLOWED) {
+            if ((events & PhoneStateListener.LISTEN_CELL_LOCATION) != 0) {
+                return ;
+            }
+            if ((events & PhoneStateListener.LISTEN_CELL_INFO) != 0) {
+                return ;
+            }
+        }
         int callerUid = UserHandle.getCallingUserId();
         int myUid = UserHandle.myUserId();
         if (DBG) {
