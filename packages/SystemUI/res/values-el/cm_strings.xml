@@ -79,5 +79,6 @@
     <string name="accessibility_dock_battery_level">Μπαταρία βάσης σύνδεσης <xliff:g id="number">%d</xliff:g> τοις εκατό.</string>
     <string name="screenshot_delete_action">Διαγραφή</string>
     <string name="screenshot_delete_confirmation">Το στιγμιότυπο οθόνης διαγράφηκε.</string>
+    <string name="accessibility_desc_add_quick_settings">Προσθήκη Γρήγορων ρυθμίσεων.</string>
     <string name="accessibility_battery_level">Μπαταρία <xliff:g id="NUMBER">%d</xliff:g> τοις εκατό.</string>
 </resources>
