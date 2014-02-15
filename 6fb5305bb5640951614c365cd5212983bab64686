@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa69d971_ea93074e",
+        "filename": "services/java/com/android/server/TelephonyRegistry.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 325
+      },
+      "writtenOn": "2014-02-15T17:38:33Z",
+      "side": 1,
+      "message": "clear this",
+      "revId": "6fb5305bb5640951614c365cd5212983bab64686",
+      "serverId": "83d63960-fecf-4fd1-a7f6-e01518638a62",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa69d971_8a984b6c",
+        "filename": "services/java/com/android/server/TelephonyRegistry.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 325
+      },
+      "writtenOn": "2014-02-15T17:38:33Z",
+      "side": 1,
+      "message": "ad this, and i dont see anything wrong with it :-)",
+      "revId": "6fb5305bb5640951614c365cd5212983bab64686",
+      "serverId": "83d63960-fecf-4fd1-a7f6-e01518638a62",
+      "unresolved": false
+    }
+  ]
+}
