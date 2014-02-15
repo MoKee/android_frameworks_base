@@ -193,15 +193,6 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
     @Override
     public void listen(String pkgForDebug, IPhoneStateListener callback, int events,
             boolean notifyNow) {
-        if (mAppOps.noteOp(AppOpsManager.OP_NEIGHBORING_CELLS, Binder.getCallingUid(),
-                pkgForDebug) != AppOpsManager.MODE_ALLOWED) {
-            if ((events & PhoneStateListener.LISTEN_CELL_LOCATION) != 0) {
-                return ;
-            }
-            if ((events & PhoneStateListener.LISTEN_CELL_INFO) != 0) {
-                return ;
-            }
-        }
         int callerUid = UserHandle.getCallingUserId();
         int myUid = UserHandle.myUserId();
         if (DBG) {
@@ -267,11 +258,14 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
                         }
                     }
                     if (validateEventsAndUserLocked(r, PhoneStateListener.LISTEN_CELL_LOCATION)) {
-                        try {
+                        if (mAppOps.noteOp(AppOpsManager.OP_NEIGHBORING_CELLS, Binder.getCallingUid(),
+                                pkgForDebug) == AppOpsManager.MODE_ALLOWED) {
+                            try {
                             if (DBG_LOC) Slog.d(TAG, "listen: mCellLocation=" + mCellLocation);
-                            r.callback.onCellLocationChanged(new Bundle(mCellLocation));
-                        } catch (RemoteException ex) {
-                            remove(r.binder);
+                                r.callback.onCellLocationChanged(new Bundle(mCellLocation));
+                            } catch (RemoteException ex) {
+                                remove(r.binder);
+                            }
                         }
                     }
                     if ((events & PhoneStateListener.LISTEN_CALL_STATE) != 0) {
@@ -311,11 +305,14 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
                         }
                     }
                     if (validateEventsAndUserLocked(r, PhoneStateListener.LISTEN_CELL_INFO)) {
-                        try {
-                            if (DBG_LOC) Slog.d(TAG, "listen: mCellInfo=" + mCellInfo);
-                            r.callback.onCellInfoChanged(mCellInfo);
-                        } catch (RemoteException ex) {
-                            remove(r.binder);
+                        if (mAppOps.noteOp(AppOpsManager.OP_NEIGHBORING_CELLS, Binder.getCallingUid(),
+                                pkgForDebug) == AppOpsManager.MODE_ALLOWED) {
+                            try {
+                                if (DBG_LOC) Slog.d(TAG, "listen: mCellInfo=" + mCellInfo);
+                                r.callback.onCellInfoChanged(mCellInfo);
+                            } catch (RemoteException ex) {
+                                remove(r.binder);
+                            }
                         }
                     }
                 }
