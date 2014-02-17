@@ -1176,8 +1176,10 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
                           | ApplicationInfo.FLAG_ALLOW_CLEAR_USER_DATA))
                           == ApplicationInfo.FLAG_SYSTEM
                           || mDpm.packageHasActiveAdmins(ad.packageName)) {
-                        popup.getMenu()
-                        .findItem(R.id.notification_inspect_item_wipe_app).setEnabled(false);
+                        MenuItem mItem=popup.getMenu().findItem(R.id.notification_inspect_item_wipe_app);
+                        if(mItem!=null){
+                            mItem.setEnabled(false);
+                        }
                     } else {
                         Log.d(TAG, "Not a 'special' application");
                     }
