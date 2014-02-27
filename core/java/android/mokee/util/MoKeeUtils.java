@@ -17,6 +17,7 @@
 package android.mokee.util;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
@@ -53,6 +54,22 @@ public class MoKeeUtils {
             return false;
         } else {
             return true;
+        }
+    }
+
+    public static boolean isSystemApp(String packagename, Context context) {
+        PackageInfo packageInfo;
+
+        try {
+            packageInfo = context.getPackageManager().getPackageInfo(packagename, 0);
+        } catch (NameNotFoundException e) {
+            packageInfo = null;
+        }
+
+        if (packageInfo == null) {
+            return false;
+        } else {
+            return ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
         }
     }
 
