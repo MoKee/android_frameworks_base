@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import android.hardware.Camera;
 import android.hardware.display.DisplayManager;
 import android.hardware.display.WifiDisplayStatus;
+import android.hardware.SensorManager;
 import android.net.ConnectivityManager;
 import android.nfc.NfcAdapter;
 import android.os.BatteryManager;
@@ -17,6 +18,8 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
 import com.android.internal.telephony.PhoneConstants;
+import static android.hardware.Sensor.TYPE_LIGHT;
+import static android.hardware.Sensor.TYPE_PROXIMITY;
 
 public class QSUtils {
         public static boolean deviceSupportsImeSwitcher(Context ctx) {
@@ -83,6 +86,16 @@ public class QSUtils {
 
         public static boolean deviceSupportsTorch(Context context) {
             return context.getResources().getBoolean(com.android.internal.R.bool.config_enableTorch);
+        }
+
+        public static boolean deviceSupportsProximitySensor(Context context) {
+            SensorManager sm = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+            return sm.getDefaultSensor(TYPE_PROXIMITY) != null;
+        }
+
+        public static boolean deviceSupportsLightSensor(Context context) {
+            SensorManager sm = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+            return sm.getDefaultSensor(TYPE_LIGHT) != null;
         }
 
         public static boolean adbEnabled(ContentResolver resolver) {

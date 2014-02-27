@@ -16,22 +16,24 @@
 
 package com.android.systemui.statusbar.policy.activedisplay;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
+import android.graphics.Bitmap;
 
-public class DummyActivity extends Activity {
+/**
+ * The list of currently displaying notifications.
+ */
+public class NotificationData {
+    public Bitmap iconApp;
+    public Bitmap iconAppSmall;
+    public CharSequence titleText;
+    public CharSequence messageText;
+    public CharSequence largeMessageText;
+    public CharSequence infoText;
+    public CharSequence subText;
+    public CharSequence summaryText;
+    public CharSequence tickerText;
+    public int number;
 
-    @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-        setContentView(new View(this));
-    }
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus)
-            finish();
+    public CharSequence getLargeMessage() {
+        return largeMessageText == null ? messageText : largeMessageText;
     }
 }
