@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 MoKee OpenSource Project
+ * Copyright (C) 2012-2014 MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,6 +57,7 @@ public class ClockView extends RelativeLayout {
     private TextView mTimeView;
     private TextView mDateView;
     private AmPm mAmPm;
+    private boolean showAmPm = false;
     private SettingsObserver mSettingsObserver;
     private ContentObserver mFormatChangeObserver;
     private int mAttached = 0; // for debugging - tells us whether attach/detach is unbalanced
@@ -184,12 +185,12 @@ public class ClockView extends RelativeLayout {
             ContentResolver resolver =
                     ClockView.this.mContext.getContentResolver();
 
-            boolean showAmPm = Settings.System.getInt(
+            showAmPm = Settings.System.getInt(
                     resolver, Settings.System.ACTIVE_DISPLAY_SHOW_AMPM, 0) == 1;
             boolean showDate = Settings.System.getInt(
                     resolver, Settings.System.ACTIVE_DISPLAY_SHOW_DATE, 0) == 1;
 
-            mAmPm.setShowAmPm(showAmPm);
+            setDateFormat();
             mDateView.setVisibility(showDate ? View.VISIBLE : View.INVISIBLE);
         }
     }
@@ -217,7 +218,6 @@ public class ClockView extends RelativeLayout {
         super.onAttachedToWindow();
 
         mAttached++;
-
         /* monitor time ticks, time changed, timezone */
         if (mIntentReceiver == null) {
             mIntentReceiver = new TimeChangedReceiver(this);
@@ -227,7 +227,6 @@ public class ClockView extends RelativeLayout {
             filter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
             mContext.registerReceiverAsUser(mIntentReceiver, UserHandle.OWNER, filter, null, null );
         }
-
         /* monitor 12/24-hour display preference */
         if (mFormatChangeObserver == null) {
             mFormatChangeObserver = new FormatChangeObserver(this);
@@ -247,7 +246,6 @@ public class ClockView extends RelativeLayout {
         super.onDetachedFromWindow();
 
         mAttached--;
-
         if (mIntentReceiver != null) {
             mContext.unregisterReceiver(mIntentReceiver);
         }
@@ -258,7 +256,6 @@ public class ClockView extends RelativeLayout {
         if (mSettingsObserver != null) {
             mSettingsObserver.unobserve();
         }
-
         mSettingsObserver = null;
         mFormatChangeObserver = null;
         mIntentReceiver = null;
@@ -271,7 +268,6 @@ public class ClockView extends RelativeLayout {
 
     public void updateTime() {
         mCalendar.setTimeInMillis(System.currentTimeMillis());
-
         String newTime = DateFormat.format(mFormat, mCalendar).toString();
         SpannableString span = new SpannableString(newTime);
         int colonIndex = newTime.indexOf(':');
@@ -288,6 +284,6 @@ public class ClockView extends RelativeLayout {
 
     private void setDateFormat() {
         mFormat = android.text.format.DateFormat.is24HourFormat(getContext()) ? M24 : M12;
-        mAmPm.setShowAmPm(mFormat.equals(M12));
+        mAmPm.setShowAmPm(mFormat.equals(M12) && showAmPm);
     }
 }
