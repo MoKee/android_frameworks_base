@@ -45,4 +45,7 @@
     <string name="halo_signal_bars_1">一格</string>
     <string name="halo_signal_bars_none">无</string>
 
+    <!-- Active Display -->
+    <string name="active_display_privacy_content">因为启用了隐私模式，信息内容将不予显示。</string>
+
 </resources>
