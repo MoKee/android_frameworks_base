@@ -39,6 +39,7 @@ public class PowerSaverService extends Service  {
     private static final String TAG = "PowerSaverService";
     private BroadcastReceiver mPowerKeyReceiver;
     private CpuGovernorToggle mCpuGovernorToggle;
+    private CpuCoreToggle mCpuCoreToggle;
     private GpsToggle mGpsToggle;
     private MobileDataToggle mMobileDataToggle;
     private boolean mEnabled = true;
@@ -74,6 +75,8 @@ public class PowerSaverService extends Service  {
         fAllToggles = new ArrayList<PowerSaverToggle>();
         mCpuGovernorToggle = new CpuGovernorToggle(mContext);
         fAllToggles.add(mCpuGovernorToggle);
+        mCpuCoreToggle = new CpuCoreToggle(mContext);
+        fAllToggles.add(mCpuCoreToggle);
         mGpsToggle = new GpsToggle(mContext);
         fAllToggles.add(mGpsToggle);
         mMobileDataToggle = new MobileDataToggle(mContext);

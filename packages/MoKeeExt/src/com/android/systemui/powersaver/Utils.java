@@ -37,6 +37,7 @@ public class Utils {
 
     public static final String GOV_FILE = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor";
     private static final String GOV_LIST_FILE = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors";
+    private static final String CPU_CORE_DIR = "/sys/devices/system/cpu";
 
     private static String availableGovernorsLine;
     private static String recommendGovernor;
@@ -69,6 +70,27 @@ public class Utils {
             }
         }
         return recommendGovernor;
+    }
+
+    public static String setRecommendCPUCore() {
+
+    }
+
+    public static int getCPUCoreCount (String fileDir) {
+        File cpuCoreDir = new File(fileDir);
+        File[] cpuCoreFiles = cpuCoreDir.listFiles(new FilenameFilter() {
+
+            @Override
+            public boolean accept(File file, String filename) {
+                boolean isNum = filename.substring(filename.length() - 1, filename.length()).matches("\\d");
+                if (filename.contains("cpu") && file.isDirectory() && isNum) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+        return cpuCoreFiles.length;
     }
 
     public static String fileReadOneLine(String fname) {
