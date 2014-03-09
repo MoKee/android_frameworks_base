@@ -38,7 +38,7 @@ public class PowerSaverService extends Service  {
 
     private static final String TAG = "PowerSaverService";
     private BroadcastReceiver mPowerKeyReceiver;
-    private CpuToggle mCpuToggle;
+    private CpuGovernorToggle mCpuGovernorToggle;
     private GpsToggle mGpsToggle;
     private MobileDataToggle mMobileDataToggle;
     private boolean mEnabled = true;
@@ -72,8 +72,8 @@ public class PowerSaverService extends Service  {
         }
 
         fAllToggles = new ArrayList<PowerSaverToggle>();
-        mCpuToggle = new CpuToggle(mContext);
-        fAllToggles.add(mCpuToggle);
+        mCpuGovernorToggle = new CpuGovernorToggle(mContext);
+        fAllToggles.add(mCpuGovernorToggle);
         mGpsToggle = new GpsToggle(mContext);
         fAllToggles.add(mGpsToggle);
         mMobileDataToggle = new MobileDataToggle(mContext);
@@ -139,8 +139,8 @@ public class PowerSaverService extends Service  {
             if (toggle.isEnabled()) {
                 Log.d(TAG, "active toggle "+ toggle.getClass().getName());
                 fEnabledToggles.add(toggle);
-                if (toggle.getClass().getName().contains("CpuToggle")) {
-                    Settings.System.putString(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_DEFAULT, Utils.getDefalutGovernor());
+                if (toggle.getClass().getName().contains("CpuGovernorToggle")) {
+                    Settings.System.putString(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR_DEFAULT, Utils.getDefalutGovernor());
                 }
             }
         }
