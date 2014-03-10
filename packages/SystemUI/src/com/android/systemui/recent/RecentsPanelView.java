@@ -512,7 +512,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
     }
 
     public void dismissAndDoNothing() {
-        ((RecentsActivity) mContext).dismissAndDoNothing();
+        mRecentsActivity.dismissAndDoNothing();
     }
 
     public void onAnimationCancel(Animator animation) {
