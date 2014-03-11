@@ -119,6 +119,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
     private ScrollView mShortcutBar;
     private ImageView mAlarmClock;
     private ImageView mCalculator;
+    private ImageView mCamera;
     private ImageView mCalendar;
     private ImageView mMaps;
     private ImageView mMusic;
@@ -587,6 +588,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
         mShortcutBar = (ScrollView) findViewById(R.id.shortcut_bar);
         mAlarmClock = (ImageView) findViewById(R.id.shortcut_alarmclock);
         mCalculator = (ImageView) findViewById(R.id.shortcut_calculator);
+        mCamera = (ImageView) findViewById(R.id.shortcut_camera);
         mCalendar = (ImageView) findViewById(R.id.shortcut_calendar);
         mMaps = (ImageView) findViewById(R.id.shortcut_maps);
         mMusic = (ImageView) findViewById(R.id.shortcut_music);
@@ -601,8 +603,10 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
         if (mClearRecents != null){
             mClearRecents.setOnClickListener(this);
         }
+
         setShortcurtEnable(mAlarmClock, "com.android.deskclock");
         setShortcurtEnable(mCalculator, "com.android.calculator2");
+        setShortcurtEnable(mCamera, "com.android.camera2");
         setShortcurtEnable(mCalendar, "com.android.calendar");
         setShortcurtEnable(mMaps, "com.google.android.apps.maps");
         setShortcurtEnable(mMusic, "com.andrew.apollo");
@@ -670,6 +674,9 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
             break;
         case R.id.shortcut_calculator:
             startApplicationActivity("com.android.calculator2","com.android.calculator2.Calculator");
+            break;
+        case R.id.shortcut_camera:
+            startApplicationActivity("com.android.camera2","com.android.camera.CameraLauncher");
             break;
         case R.id.shortcut_calendar:
             startApplicationActivity("com.android.calendar","com.android.calendar.LaunchActivity");

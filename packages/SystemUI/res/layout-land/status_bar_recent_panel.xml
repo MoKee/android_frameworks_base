@@ -93,6 +93,14 @@
 			    android:src="@drawable/ic_shortcut_calculator" />
 
 			<ImageView
+			    android:id="@+id/shortcut_camera"
+			    android:clickable="true"
+			    android:layout_width="43dp"
+			    android:layout_height="43dp"
+			    android:scaleType="center"
+			    android:src="@drawable/ic_shortcut_camera" />
+
+			<ImageView
 			    android:id="@+id/shortcut_calendar"
 			    android:clickable="true"
 			    android:layout_width="43dp"
