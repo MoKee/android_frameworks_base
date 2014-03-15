@@ -12,6 +12,7 @@ LOCAL_SRC_FILES := $(call all-java-files-under, src) \
 LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res $(LOCAL_PATH)/../MoKeeExt/res
 
 LOCAL_JAVA_LIBRARIES := telephony-common
+LOCAL_STATIC_JAVA_LIBRARIES := guava
 
 LOCAL_PACKAGE_NAME := SystemUI
 LOCAL_CERTIFICATE := platform
