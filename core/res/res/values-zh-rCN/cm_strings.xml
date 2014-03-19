@@ -19,6 +19,7 @@
     <string name="profileNameHome">住宅</string>
     <string name="profileNameSilent">静音</string>
     <string name="profileNameNight">夜晚</string>
+    <string name="profileNameAutomobile">车载</string>
     <string name="profileGroupPhone">电话</string>
     <string name="profileGroupCalendar">日历</string>
     <string name="profileGroupGmail">Gmail</string>
