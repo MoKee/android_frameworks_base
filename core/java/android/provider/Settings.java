@@ -2336,6 +2336,12 @@ public final class Settings {
         public static final String ANIMATOR_DURATION_SCALE = Global.ANIMATOR_DURATION_SCALE;
 
         /**
+         * Control whether is possible to see through lockscreen.
+         * @hide
+         */
+        public static final String LOCKSCREEN_SEE_THROUGH = "lockscreen_see_through";
+
+        /**
          * Control whether the accelerometer will be used to change screen
          * orientation.  If 0, it will not be used unless explicitly requested
          * by the application; if 1, it will be used by default unless explicitly
