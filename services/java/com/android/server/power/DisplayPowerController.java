@@ -141,7 +141,7 @@ final class DisplayPowerController {
     private static final float TYPICAL_PROXIMITY_THRESHOLD = 5.0f;
 
     // Light sensor event rate in milliseconds.
-    private static final int LIGHT_SENSOR_RATE_MILLIS = 1000;
+    private static final int LIGHT_SENSOR_RATE_MILLIS = 500;
 
     // A rate for generating synthetic light sensor events in the case where the light
     // sensor hasn't reported any new data in a while and we need it to update the
@@ -1107,7 +1107,7 @@ final class DisplayPowerController {
                 int updateRateMillis = (int)
                         (mPowerRequest.responsitivityFactor * LIGHT_SENSOR_RATE_MILLIS);
                 mSensorManager.registerListener(mLightSensorListener, mLightSensor,
-                        updateRateMillis * 1000, mHandler);
+                        updateRateMillis * 10, mHandler);
             }
         } else {
             if (mLightSensorEnabled) {
