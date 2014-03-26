@@ -264,15 +264,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.android.systemui.Transparent"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
         <activity android:name=".statusbar.policy.activedisplay.DummyActivity"
-            android:label=""
-            android:taskAffinity=""
-            android:excludeFromRecents="true"
-            android:exported="true"
-            android:theme="@style/Theme.DummyActivity">
+                android:label=""
+                android:taskAffinity=""
+                android:excludeFromRecents="true"
+                android:exported="true"
+                android:theme="@style/Theme.DummyActivity">
         </activity>
 
         <service android:name=".powersaver.PowerSaverService"
