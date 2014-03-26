@@ -60,6 +60,12 @@
     <string name="quick_settings_network_adb_disabled_label">禁用</string>
     <string name="quick_settings_network_adb_enabled_label">启用</string>
 
+    <!-- Location settings screen -->
+    <string name="location_mode_high_accuracy_title">高精确度</string>
+    <string name="location_mode_battery_saving_title">节省电量</string>
+    <string name="location_mode_sensors_only_title">仅限设备</string>
+    <string name="location_mode_location_off_title">关闭定位</string>
+
     <!-- Expanded desktop strings break the rules a bit - the icon identifies the feature, the string indicates current state -->
     <string name="quick_settings_expanded_desktop">已扩展</string>
     <string name="quick_settings_expanded_desktop_off">正常</string>
