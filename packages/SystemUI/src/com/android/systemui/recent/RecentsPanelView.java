@@ -133,8 +133,6 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
     private int mDragPositionX;
     private int mDragPositionY;
 
-    private RecentsActivity mRecentsActivity;
-
     public static interface RecentsScrollView {
         public int numItemsInOneScreenful();
         public void setAdapter(TaskDescriptionAdapter adapter);
@@ -348,7 +346,6 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
 
         mRecentItemLayoutId = a.getResourceId(R.styleable.RecentsPanelView_recentItemLayout, 0);
         mRecentTasksLoader = RecentTasksLoader.getInstance(context);
-        mRecentsActivity = (RecentsActivity) context;
         a.recycle();
     }
 
@@ -504,11 +501,11 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
     }
 
     public void dismiss() {
-        mRecentsActivity.dismissAndGoHome();
+        ((RecentsActivity) mContext).dismissAndGoHome();
     }
 
     public void dismissAndGoBack() {
-        mRecentsActivity.dismissAndGoBack();
+        ((RecentsActivity) mContext).dismissAndGoBack();
     }
 
     public void dismissAndDoNothing() {
@@ -902,7 +899,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
         } else {
             mRecentTaskDescriptions.addAll(tasks);
         }
-        if (mRecentsActivity.isActivityShowing()) {
+        if (((RecentsActivity) mContext).isActivityShowing()) {
             refreshViews();
         }
     }
@@ -962,9 +959,7 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
                         holder.thumbnailViewImage, bm, 0, 0, null).toBundle();
 
         show(false);
-        Intent intent = ad.intent;
-        boolean floating = (intent.getFlags() & Intent.FLAG_FLOATING_WINDOW) == Intent.FLAG_FLOATING_WINDOW;
-        if (ad.taskId >= 0 && !floating) {
+        if (ad.taskId >= 0) {
             // This is an active task; it should just go to the foreground.
             // If that task was split viewed, a normal press wil resume it to
             // normal fullscreen view
@@ -979,19 +974,14 @@ public class RecentsPanelView extends FrameLayout implements OnClickListener, On
             am.moveTaskToFront(ad.taskId, ActivityManager.MOVE_TASK_WITH_HOME,
                     opts);
         } else {
-            boolean backPressed = mRecentsActivity != null && mRecentsActivity.mBackPressed;
-            if (!floating || !backPressed) {
-                intent.addFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY
-                        | Intent.FLAG_ACTIVITY_TASK_ON_HOME
-                        | Intent.FLAG_ACTIVITY_NEW_TASK);
-            }
+            Intent intent = ad.intent;
+            intent.addFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY
+                    | Intent.FLAG_ACTIVITY_TASK_ON_HOME
+                    | Intent.FLAG_ACTIVITY_NEW_TASK);
             if (DEBUG) Log.v(TAG, "Starting activity " + intent);
             try {
                 context.startActivityAsUser(intent, opts,
                         new UserHandle(UserHandle.USER_CURRENT));
-                if (floating && mRecentsActivity != null) {
-                        mRecentsActivity.finish();
-                }
             } catch (SecurityException e) {
                 Log.e(TAG, "Recents does not have the permission to launch " + intent, e);
             } catch (ActivityNotFoundException e) {
