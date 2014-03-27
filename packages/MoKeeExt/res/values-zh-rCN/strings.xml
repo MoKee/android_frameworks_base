@@ -16,9 +16,6 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Title shown in recents popup for adding an application to the split view -->
-    <string name="status_bar_recent_add_to_split_view">添加到拆分视图</string>
-
     <!-- ScreenShort Trash -->
     <string name="trash">"删除"</string>
     <string name="screenshot_trash_confirmation">"已放弃保存屏幕截图."</string>
