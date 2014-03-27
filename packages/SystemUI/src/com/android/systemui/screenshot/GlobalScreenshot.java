@@ -57,7 +57,7 @@ import android.view.animation.Interpolator;
 import android.widget.ImageView;
 
 import com.android.systemui.R;
-import com.android.systemui.screenshot.TrashScreenshot;
+import com.android.systemui.screenshot.DeleteScreenshot;
 
 import java.io.File;
 import java.io.OutputStream;
@@ -276,16 +276,16 @@ class SaveImageInBackgroundTask extends AsyncTask<SaveImageInBackgroundData, Voi
             // Show the final notification to indicate screenshot saved
             Resources r = params.context.getResources();
 
-            // Trash Image
-            Intent trashIntent = new Intent();
-            trashIntent.setClass(params.context, TrashScreenshot.class);
-            trashIntent.putExtra(TrashScreenshot.SCREENSHOT_URI, params.imageUri.toString());
-            trashIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK 
+            // Delete Image
+            Intent deleteIntent = new Intent();
+            deleteIntent.setClass(params.context, DeleteScreenshot.class);
+            deleteIntent.putExtra(DeleteScreenshot.SCREENSHOT_URI, params.imageUri.toString());
+            deleteIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK 
                     | Intent.FLAG_ACTIVITY_NEW_TASK);
 
-            mNotificationBuilder.addAction(R.drawable.ic_menu_trash,
-                     r.getString(R.string.trash),
-                     PendingIntent.getBroadcast(params.context, 0, trashIntent,
+            mNotificationBuilder.addAction(R.drawable.ic_menu_delete,
+                     r.getString(R.string.screenshot_delete),
+                     PendingIntent.getBroadcast(params.context, 0, deleteIntent,
                         PendingIntent.FLAG_UPDATE_CURRENT));
 
             // Create the intent to show the screenshot in gallery

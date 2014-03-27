@@ -27,8 +27,8 @@ import android.widget.Toast;
 import com.android.systemui.R;
 import com.android.systemui.screenshot.GlobalScreenshot;
 
-public class TrashScreenshot extends BroadcastReceiver {
-    private static final String LOG_TAG = "TrashScreenshot";
+public class DeleteScreenshot extends BroadcastReceiver {
+    private static final String LOG_TAG = "DeleteScreenshot";
 
     // Intent extra fields
     public static final String SCREENSHOT_URI =
@@ -53,7 +53,7 @@ public class TrashScreenshot extends BroadcastReceiver {
                 (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(GlobalScreenshot.SCREENSHOT_NOTIFICATION_ID);
 
-        Toast.makeText(context, R.string.screenshot_trash_confirmation, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, R.string.screenshot_delete_confirmation, Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -19,9 +19,9 @@
     <!-- Title shown in recents popup for adding an application to the split view -->
     <string name="status_bar_recent_add_to_split_view">Add to Split View</string>
 
-    <!-- ScreenShort Trash -->
-    <string name="trash">Delete</string>
-    <string name="screenshot_trash_confirmation">Screenshot trashed.</string>
+    <!-- ScreenShort Delete -->
+    <string name="screenshot_delete">Delete</string>
+    <string name="screenshot_delete_confirmation">Screenshot deleted.</string>
 
     <!-- Active Display -->
     <string name="active_display_privacy_content">Content message not showing because privacy mode enabled</string>
