@@ -74,4 +74,8 @@
     <string name="screenshot_delete_action">Apagar</string>
     <string name="screenshot_delete_confirmation">A captura de tela foi apagada.</string>
     <string name="accessibility_desc_add_quick_settings">Adicionar configurações rápidas.</string>
+    <string name="location_mode_high_accuracy_title">Alta precisão</string>
+    <string name="location_mode_battery_saving_title">Economia de bateria</string>
+    <string name="location_mode_sensors_only_title">Somente no dispositivo</string>
+    <string name="location_mode_location_off_title">Localização desligada</string>
 </resources>
