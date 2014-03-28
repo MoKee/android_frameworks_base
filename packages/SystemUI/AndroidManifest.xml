@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:androidprv="http://schemas.android.com/apk/prv/res/android"
         package="com.android.systemui"
-        android:sharedUserId="android.uid.system"
+        android:sharedUserId="android.uid.systemui"
         coreApp="true">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -113,7 +113,7 @@
             android:exported="false" />
 
         <receiver android:name=".screenshot.DeleteScreenshot"
-            android:exported="true"/>
+                android:exported="true" />
 
         <service android:name=".LoadAverageService"
                 android:exported="true" />
