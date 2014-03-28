@@ -152,6 +152,11 @@ public class KeyguardViewManager {
         mViewManager = viewManager;
         mViewMediatorCallback = callback;
         mLockPatternUtils = lockPatternUtils;
+
+        SettingsObserver observer = new SettingsObserver(new Handler());
+        observer.observe();
+
+        updateSettings();
     }
 
     /**
@@ -565,7 +570,6 @@ public class KeyguardViewManager {
         if (v != null) {
             mKeyguardHost.removeView(v);
         }
-
         final LayoutInflater inflater = LayoutInflater.from(mContext);
         View view = inflater.inflate(R.layout.keyguard_host_view, mKeyguardHost, true);
         mKeyguardView = (KeyguardHostView) view.findViewById(R.id.keyguard_host_view);
@@ -585,6 +589,9 @@ public class KeyguardViewManager {
         // The keyguard view will have set up window flags in onFinishInflate before we set
         // the view mediator callback. Make sure it knows the correct IME state.
         if (mViewMediatorCallback != null) {
+            if (mLockscreenNotifications)
+                mNotificationView.setViewMediator(mViewMediatorCallback);
+
             KeyguardPasswordView kpv = (KeyguardPasswordView) mKeyguardView.findViewById(
                     R.id.keyguard_password_view);
 
@@ -679,6 +686,7 @@ public class KeyguardViewManager {
         if (mKeyguardView != null) {
             mKeyguardView.onScreenTurnedOff();
         }
+
         if (mLockscreenNotifications) {
             mNotificationViewManager.onScreenTurnedOff();
         }
@@ -687,10 +695,6 @@ public class KeyguardViewManager {
     public synchronized void onScreenTurnedOn(final IKeyguardShowCallback callback) {
         if (DEBUG) Log.d(TAG, "onScreenTurnedOn()");
         mScreenOn = true;
-
-        if (mLockscreenNotifications) {
-            mNotificationViewManager.onScreenTurnedOn();
-        }
 
         // If keyguard is not showing, we need to inform PhoneWindowManager with a null
         // token so it doesn't wait for us to draw...
@@ -732,6 +736,10 @@ public class KeyguardViewManager {
             } catch (RemoteException e) {
                 Slog.w(TAG, "Exception calling onShown():", e);
             }
+        }
+
+        if (mLockscreenNotifications) {
+            mNotificationViewManager.onScreenTurnedOn();
         }
     }
 

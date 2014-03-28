@@ -3378,6 +3378,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     public void setButtonDrawable(int buttonId, int iconId) {
         mNavigationBarView.setButtonDrawable(buttonId, iconId);
     }
+
     //
     // tracing
     //

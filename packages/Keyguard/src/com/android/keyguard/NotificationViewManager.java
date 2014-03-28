@@ -25,8 +25,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.android.internal.util.slim.QuietHoursHelper;
-
 public class NotificationViewManager {
     private final static String TAG = "Keyguard:NotificationViewManager";
 
@@ -126,7 +124,7 @@ public class NotificationViewManager {
                     Settings.System.LOCKSCREEN_NOTIFICATIONS_FORCE_EXPANDED_VIEW, forceExpandedView ? 1 : 0) == 1
                     && !privacyMode;
             wakeOnNotification = Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.LOCKSCREEN_NOTIFICATIONS_WAKE_ON_NOTIFICATION, forceExpandedView ? 1 : 0) == 1;
+                    Settings.System.LOCKSCREEN_NOTIFICATIONS_WAKE_ON_NOTIFICATION, wakeOnNotification ? 1 : 0) == 1;
             notificationsHeight = Settings.System.getInt(mContext.getContentResolver(),
                     Settings.System.LOCKSCREEN_NOTIFICATIONS_HEIGHT, notificationsHeight);
             offsetTop = Settings.System.getFloat(mContext.getContentResolver(),
@@ -146,8 +144,7 @@ public class NotificationViewManager {
                 if (!mIsScreenOn) {
                     if (event.values[0] >= ProximitySensor.getMaximumRange()) {
                         if (config.pocketMode && mTimeCovered != 0 && (config.showAlways || mHostView.getNotificationCount() > 0)
-                                && System.currentTimeMillis() - mTimeCovered > MIN_TIME_COVERED
-                                && !QuietHoursHelper.inQuietHours(mContext, Settings.System.QUIET_HOURS_DIM)) {
+                                && System.currentTimeMillis() - mTimeCovered > MIN_TIME_COVERED) {
                             wakeDevice();
                             mWokenByPocketMode = true;
                             mHostView.showAllNotifications();
@@ -273,6 +270,7 @@ public class NotificationViewManager {
     public void onScreenTurnedOn() {
         mIsScreenOn = true;
         mTimeCovered = 0;
+        if (mHostView != null) mHostView.bringToFront();
     }
 
     public void onDismiss() {

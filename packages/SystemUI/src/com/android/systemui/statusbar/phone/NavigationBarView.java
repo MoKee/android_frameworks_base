@@ -191,13 +191,6 @@ public class NavigationBarView extends LinearLayout {
         }
     };
 
-    private final OnClickListener mNavBarClickListener = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            KeyguardTouchDelegate.getInstance(getContext()).dispatchButtonClick(0);
-        }
-    };
-
     private class H extends Handler {
         public void handleMessage(Message m) {
             switch (m.what) {
@@ -449,6 +442,7 @@ public class NavigationBarView extends LinearLayout {
             }
         });
     }
+
     public int getNavigationIconHints() {
         return mNavigationIconHints;
     }
