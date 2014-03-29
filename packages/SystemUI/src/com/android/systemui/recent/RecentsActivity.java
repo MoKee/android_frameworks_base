@@ -44,6 +44,7 @@ public class RecentsActivity extends Activity {
     public static final String WAITING_FOR_WINDOW_ANIMATION_PARAM = "com.android.systemui.recent.WAITING_FOR_WINDOW_ANIMATION";
     public static final String PACKAGE_ADDED = "android.intent.action.PACKAGE_ADDED";
     public static final String PACKAGE_REMOVED = "android.intent.action.PACKAGE_REMOVED";
+    public static final String PACKAGE_CHANGED = "android.intent.action.PACKAGE_CHANGED";
     private static final String WAS_SHOWING = "was_showing";
 
     private RecentsPanelView mRecentsPanel;
@@ -66,7 +67,7 @@ public class RecentsActivity extends Activity {
                 if (mRecentsPanel != null) {
                     mRecentsPanel.onWindowAnimationStart();
                 }
-            } else if (PACKAGE_ADDED.equals(action) || PACKAGE_REMOVED.equals(action)) {
+            } else if (PACKAGE_ADDED.equals(action) || PACKAGE_REMOVED.equals(action) || PACKAGE_CHANGED.equals(action)) {
                 if (mRecentsPanel != null) {
                     mRecentsPanel.refreshViews();
                 }

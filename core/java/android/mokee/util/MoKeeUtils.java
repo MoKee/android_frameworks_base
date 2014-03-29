@@ -19,10 +19,12 @@ package android.mokee.util;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+
 import java.text.DecimalFormat;
 import java.util.Locale;
 
@@ -39,6 +41,23 @@ public class MoKeeUtils {
             return true;
         }
         return false;
+    }
+
+    public static boolean isApkInstalledAndEnabled(String packagename, Context context) {
+        PackageInfo packageInfo;
+
+        try {
+            packageInfo = context.getPackageManager().getPackageInfo(packagename, 0);
+        } catch (NameNotFoundException e) {
+            packageInfo = null;
+        }
+
+        if (packageInfo == null) {
+            return false;
+        } else {
+            int state = context.getPackageManager().getApplicationEnabledSetting(packagename);
+            return state != PackageManager.COMPONENT_ENABLED_STATE_DISABLED && state != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER ? true : false;
+        }
     }
 
     public static boolean isApkInstalled(String packagename, Context context) {
