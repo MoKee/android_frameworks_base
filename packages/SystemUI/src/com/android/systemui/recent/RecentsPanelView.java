@@ -51,6 +51,7 @@ import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.UserHandle;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Display;
@@ -577,18 +578,48 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
         mShortcutBar = (ScrollView) findViewById(R.id.shortcut_bar);
         mShortcutList = (LinearLayout) findViewById(R.id.shortcut_list);
 
-        // Shortcut list
-        String[] mShortcutListItems = mContext.getResources().getStringArray(R.array.shortcut_list_items);
-        TypedArray mTypedArrayDrawables = mContext.getResources().obtainTypedArray(R.array.shortcut_list_drawables);
-        // mShortcutList.removeAllViews();
+        // Shortcut items init
+        String shortcutItemString = Settings.System.getStringForUser(mContext.getContentResolver(), Settings.System.SHORTCUT_ITEMS, UserHandle.USER_CURRENT);
+        String [] mShortcutListItems;
+        if (!TextUtils.isEmpty(shortcutItemString)) {
+            mShortcutListItems = shortcutItemString.split(",");
+        } else {
+            mShortcutListItems = mContext.getResources().getStringArray(com.mokee.internal.R.array.shortcut_list_items);
+            shortcutItemString = "";
+            for (String item : mShortcutListItems) {
+                shortcutItemString = shortcutItemString + item + ",";
+            }
+            shortcutItemString = shortcutItemString.substring(0, shortcutItemString.length() - 1);
+            Settings.System.putStringForUser(mContext.getContentResolver(), Settings.System.SHORTCUT_ITEMS, shortcutItemString, UserHandle.USER_CURRENT);
+        }
         for (int i = 0; i < mShortcutListItems.length; i++) {
+            final String packageName = mShortcutListItems[i].split("\\|")[0];
+            final String className = mShortcutListItems[i].split("\\|")[1];
             ImageView mShortCutView = new ImageView(mContext);
             mShortCutView.setClickable(true);
             mShortCutView.setScaleType(ScaleType.CENTER);
-            mShortCutView.setImageResource(mTypedArrayDrawables.getResourceId(i, 0));
+            final PackageManager pm = mContext.getPackageManager();
+            Resources mSystemUiResources = null;
+            if (pm != null ) {
+                try {
+                    mSystemUiResources = pm.getResourcesForApplication("com.android.systemui");
+                } catch (NameNotFoundException e) {
+                }
+            }
+            if (mSystemUiResources != null) {
+                String [] resPathArray = mContext.getResources().getStringArray(com.mokee.internal.R.array.shortcut_list_drawables_in_systemui);
+                String resPath = "";
+                for (String resPathStr : resPathArray) {
+                    String[] resItem = resPathStr.split("\\|");
+                    if (resItem[0].equals(packageName)) {
+                        resPath = resItem[1];
+                    }
+                }
+                int resId = mSystemUiResources.getIdentifier(resPath, null, null);
+                Drawable d = mSystemUiResources.getDrawable(resId);
+                mShortCutView.setImageDrawable(d);
+            }
             mShortCutView.setLayoutParams(new ViewGroup.LayoutParams(mShortcutBar.getLayoutParams().width, mShortcutBar.getLayoutParams().width));
-            final String packageName = mShortcutListItems[i].split("\\|")[0];
-            final String className = mShortcutListItems[i].split("\\|")[1];
             if (!packageName.equals("clear") && !MoKeeUtils.isApkInstalledAndEnabled(packageName, mContext)) {
                 mShortCutView.setVisibility(ImageView.GONE);
             } else {

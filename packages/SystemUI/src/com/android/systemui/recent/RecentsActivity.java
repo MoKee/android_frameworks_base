@@ -20,11 +20,15 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.WallpaperManager;
 import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.ContentObserver;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.UserHandle;
+import android.provider.Settings;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -52,6 +56,8 @@ public class RecentsActivity extends Activity {
     private boolean mShowing;
     private boolean mForeground;
 
+    SettingsObserver mSettingsObserver;
+
     private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -74,6 +80,26 @@ public class RecentsActivity extends Activity {
             }
         }
     };
+
+    class SettingsObserver extends ContentObserver {
+        SettingsObserver(Handler handler) {
+            super(handler);
+        }
+
+        void observe() {
+            // Observe all users' changes
+            ContentResolver resolver = getContentResolver();
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.SHORTCUT_ITEMS), false, this,
+                    UserHandle.USER_ALL);
+        }
+
+        @Override public void onChange(boolean selfChange) {
+            if (mRecentsPanel != null) {
+                mRecentsPanel.refreshViews();
+            }
+        }
+    }
 
     public class TouchOutsideListener implements View.OnTouchListener {
         private StatusBarPanel mPanel;
@@ -217,7 +243,10 @@ public class RecentsActivity extends Activity {
         mIntentFilter.addAction(WINDOW_ANIMATION_START_INTENT);
         mIntentFilter.addAction(PACKAGE_ADDED);
         mIntentFilter.addAction(PACKAGE_REMOVED);
+        mIntentFilter.addAction(PACKAGE_CHANGED);
         registerReceiver(mIntentReceiver, mIntentFilter);
+        mSettingsObserver = new SettingsObserver(new Handler());
+        mSettingsObserver.observe();
         super.onCreate(savedInstanceState);
     }
 
@@ -230,6 +259,7 @@ public class RecentsActivity extends Activity {
     protected void onDestroy() {
         RecentTasksLoader.getInstance(this).setRecentsPanel(null, mRecentsPanel);
         unregisterReceiver(mIntentReceiver);
+        getContentResolver().unregisterContentObserver(mSettingsObserver);
         super.onDestroy();
     }
 

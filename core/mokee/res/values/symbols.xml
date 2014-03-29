@@ -80,4 +80,8 @@
   <java-symbol type="string" name="global_action_screen_record" />
   <java-symbol type="drawable" name="ic_lock_screen_record" />
 
+  <!-- Shortcuts List -->
+  <java-symbol type="array" name="shortcut_list_drawables_in_systemui" />
+  <java-symbol type="array" name="shortcut_list_items" />
+
 </resources>

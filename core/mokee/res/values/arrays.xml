@@ -16,6 +16,41 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Shortcuts List -->
+    <string-array name="shortcut_list_drawables_in_systemui" translatable="false">
+        <item>clear|com.android.systemui:drawable/ic_recents_clear</item>
+        <item>com.android.deskclock|com.android.systemui:drawable/ic_shortcut_alarmclock</item>
+        <item>com.android.calculator2|com.android.systemui:drawable/ic_shortcut_calculator</item>
+        <item>com.android.camera2|com.android.systemui:drawable/ic_shortcut_camera</item>
+        <item>com.android.calendar|com.android.systemui:drawable/ic_shortcut_calendar</item>
+        <item>com.google.android.apps.maps|com.android.systemui:drawable/ic_shortcut_maps</item>
+        <item>com.andrew.apollo|com.android.systemui:drawable/ic_shortcut_music</item>
+        <item>com.tencent.mobileqq|com.android.systemui:drawable/ic_shortcut_qq</item>
+        <item>com.sina.weibo|com.android.systemui:drawable/ic_shortcut_sinaweibo</item>
+        <item>me.imid.fuubo|com.android.systemui:drawable/ic_shortcut_fuubo</item>
+        <item>com.tencent.mm|com.android.systemui:drawable/ic_shortcut_wechat</item>
+        <item>com.facebook.katana|com.android.systemui:drawable/ic_shortcut_facebook</item>
+        <item>com.twitter.android|com.android.systemui:drawable/ic_shortcut_twitter</item>
+        <item>com.google.android.apps.plus|com.android.systemui:drawable/ic_shortcut_googleplus</item>
+    </string-array>
+
+    <string-array name="shortcut_list_items" translatable="false">
+        <item>clear|clear</item>
+        <item>com.android.deskclock|com.android.deskclock.DeskClock</item>
+        <item>com.android.calculator2|com.android.calculator2.Calculator</item>
+        <item>com.android.camera2|com.android.camera.CameraLauncher</item>
+        <item>com.android.calendar|com.android.calendar.LaunchActivity</item>
+        <item>com.google.android.apps.maps|com.google.android.maps.MapsActivity</item>
+        <item>com.andrew.apollo|com.andrew.apollo.ui.activities.HomeActivity</item>
+        <item>com.tencent.mobileqq|com.tencent.mobileqq.activity.SplashActivity</item>
+        <item>com.sina.weibo|com.sina.weibo.SplashActivity</item>
+        <item>me.imid.fuubo|me.imid.fuubo.ui.Fuubo</item>
+        <item>com.tencent.mm|com.tencent.mm.ui.LauncherUI</item>
+        <item>com.facebook.katana|com.facebook.katana.LoginActivity</item>
+        <item>com.twitter.android|com.twitter.android.StartActivity</item>
+        <item>com.google.android.apps.plus|com.google.android.apps.plus.phone.HomeActivity</item>
+    </string-array>
+
     <!-- Lunar -->
     <string-array name="animals">
         <item>鼠</item>
