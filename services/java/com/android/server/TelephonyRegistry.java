@@ -259,15 +259,25 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
                         }
                     }
                     if (validateEventsAndUserLocked(r, PhoneStateListener.LISTEN_CELL_LOCATION)) {
-                        if (mAppOps.noteOp(AppOpsManager.OP_NEIGHBORING_CELLS, Binder.getCallingUid(),
+                        if("com.android.settings".equals(pkgForDebug)) {
+                           try {
+                                if (DBG_LOC) Slog.d(TAG, "listen: mCellLocation=" + mCellLocation);
+                                    r.callback.onCellLocationChanged(new Bundle(mCellLocation));
+                                } catch (RemoteException ex) {
+                                    remove(r.binder);
+                            }
+                        } else {
+                             if (mAppOps.noteOp(AppOpsManager.OP_NEIGHBORING_CELLS, Binder.getCallingUid(),
                                 pkgForDebug) == AppOpsManager.MODE_ALLOWED) {
                             try {
-                            if (DBG_LOC) Slog.d(TAG, "listen: mCellLocation=" + mCellLocation);
-                                r.callback.onCellLocationChanged(new Bundle(mCellLocation));
-                            } catch (RemoteException ex) {
-                                remove(r.binder);
+                                if (DBG_LOC) Slog.d(TAG, "listen: mCellLocation=" + mCellLocation);
+                                    r.callback.onCellLocationChanged(new Bundle(mCellLocation));
+                                } catch (RemoteException ex) {
+                                    remove(r.binder);
                             }
+                            }   
                         }
+                        
                     }
                     if ((events & PhoneStateListener.LISTEN_CALL_STATE) != 0) {
                         try {
@@ -306,14 +316,23 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
                         }
                     }
                     if (validateEventsAndUserLocked(r, PhoneStateListener.LISTEN_CELL_INFO)) {
-                        if (mAppOps.noteOp(AppOpsManager.OP_NEIGHBORING_CELLS, Binder.getCallingUid(),
+                         if("com.android.settings".equals(pkgForDebug)) {
+                           try {
+                                if (DBG_LOC) Slog.d(TAG, "listen: mCellInfo=" + mCellInfo);
+                                    r.callback.onCellInfoChanged(mCellInfo);
+                                } catch (RemoteException ex) {
+                                    remove(r.binder);
+                            }
+                        } else {
+                             if (mAppOps.noteOp(AppOpsManager.OP_NEIGHBORING_CELLS, Binder.getCallingUid(),
                                 pkgForDebug) == AppOpsManager.MODE_ALLOWED) {
                             try {
                                 if (DBG_LOC) Slog.d(TAG, "listen: mCellInfo=" + mCellInfo);
-                                r.callback.onCellInfoChanged(mCellInfo);
-                            } catch (RemoteException ex) {
-                                remove(r.binder);
+                                    r.callback.onCellInfoChanged(mCellInfo);
+                                } catch (RemoteException ex) {
+                                    remove(r.binder);
                             }
+                            }   
                         }
                     }
                 }
