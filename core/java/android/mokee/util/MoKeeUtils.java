@@ -44,52 +44,33 @@ public class MoKeeUtils {
     }
 
     public static boolean isApkInstalledAndEnabled(String packagename, Context context) {
-        PackageInfo packageInfo;
-
+        int state;
         try {
-            packageInfo = context.getPackageManager().getPackageInfo(packagename, 0);
+            context.getPackageManager().getPackageInfo(packagename, 0);
+            state = context.getPackageManager().getApplicationEnabledSetting(packagename);
         } catch (NameNotFoundException e) {
-            packageInfo = null;
-        }
-
-        if (packageInfo == null) {
             return false;
-        } else {
-            int state = context.getPackageManager().getApplicationEnabledSetting(packagename);
-            return state != PackageManager.COMPONENT_ENABLED_STATE_DISABLED && state != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER ? true : false;
         }
+        return state != PackageManager.COMPONENT_ENABLED_STATE_DISABLED && state != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER ? true : false;
     }
 
     public static boolean isApkInstalled(String packagename, Context context) {
-        PackageInfo packageInfo;
-
         try {
-            packageInfo = context.getPackageManager().getPackageInfo(packagename, 0);
+            context.getPackageManager().getPackageInfo(packagename, 0);
         } catch (NameNotFoundException e) {
-            packageInfo = null;
-        }
-
-        if (packageInfo == null) {
             return false;
-        } else {
-            return true;
         }
+        return true;
     }
 
     public static boolean isSystemApp(String packagename, Context context) {
         PackageInfo packageInfo;
-
         try {
             packageInfo = context.getPackageManager().getPackageInfo(packagename, 0);
         } catch (NameNotFoundException e) {
-            packageInfo = null;
-        }
-
-        if (packageInfo == null) {
             return false;
-        } else {
-            return ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
         }
+        return ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
     }
 
     /**
