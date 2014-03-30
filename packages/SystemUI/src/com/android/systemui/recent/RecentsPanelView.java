@@ -635,11 +635,10 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                     mShortCutView.setOnClickListener(new OnClickListener(){
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(Intent.ACTION_MAIN);
-                            intent.setPackage(packageName);
-                            intent.addCategory(Intent.CATEGORY_LAUNCHER);
-                            ComponentName cn = intent.resolveActivity(pm);
-                            startApplicationActivity(packageName, cn.getClassName());
+                            Intent intent = pm.getLaunchIntentForPackage(packageName);
+                            ComponentName cn = intent.getComponent();
+                            String className = cn.getClassName();
+                            startApplicationActivity(packageName, className);
                         }});
                 }
                 mShortcutList.addView(mShortCutView);
