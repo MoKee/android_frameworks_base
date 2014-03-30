@@ -116,6 +116,7 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
     private int mRecentItemLayoutId;
     private boolean mHighEndGfx;
     private ImageView mClearRecents;
+    private ImageView mFirstShortcut;
 
     private ScrollView mShortcutBar;
     private LinearLayout mShortcutList;
@@ -411,9 +412,9 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
             mShortcutBar.setVisibility(noApps ? View.GONE : View.VISIBLE);
             mRecentsNoApps.setAlpha(1f);
             mRecentsNoApps.setVisibility(noApps ? View.VISIBLE : View.INVISIBLE);
-            if (mClearRecents != null) {
+            /* if (mClearRecents != null) {
                 mClearRecents.setVisibility(noApps ? View.GONE : View.VISIBLE);
-            }
+            } */
             onAnimationEnd(null);
             setFocusable(true);
             setFocusableInTouchMode(true);
@@ -592,6 +593,7 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
             shortcutItemString = shortcutItemString.substring(0, shortcutItemString.length() - 1);
             Settings.System.putStringForUser(mContext.getContentResolver(), Settings.System.SHORTCUT_ITEMS, shortcutItemString, UserHandle.USER_CURRENT);
         }
+        Log.i("MOKEEEEEEEEEEEEEEEEEEEEEEEEE", "test");
         for (int i = 0; i < mShortcutListItems.length; i++) {
             final String packageName = mShortcutListItems[i];
             ImageView mShortCutView = new ImageView(mContext);
@@ -620,7 +622,7 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
             }
             mShortCutView.setLayoutParams(new ViewGroup.LayoutParams(mShortcutBar.getLayoutParams().width, mShortcutBar.getLayoutParams().width));
             String excluded = Settings.System.getString(mContext.getContentResolver(), Settings.System.SHORTCUT_ITEMS_EXCLUDED_APPS);
-            if (!packageName.equals("clear") && !MoKeeUtils.isApkInstalledAndEnabled(packageName, mContext) && !excluded.contains(packageName)) {
+            if (!packageName.equals("clear") && !MoKeeUtils.isApkInstalledAndEnabled(packageName, mContext) || excluded.contains(packageName)) {
                 mShortCutView.setVisibility(ImageView.GONE);
             } else {
                 if (packageName.equals("clear")) {
@@ -629,7 +631,6 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                         @Override
                         public void onClick(View view) {
                             clearAllNonLocked();
-                            mShortcutBar.setVisibility(View.GONE);
                         }});
                 } else {
                     mShortCutView.setOnClickListener(new OnClickListener(){
@@ -640,6 +641,9 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                             String className = cn.getClassName();
                             startApplicationActivity(packageName, className);
                         }});
+                }
+                if (mFirstShortcut == null) {
+                    mFirstShortcut = mShortCutView;
                 }
                 mShortcutList.addView(mShortCutView);
             }
@@ -702,6 +706,7 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                     }, i * 150);
                 }
             }
+            count = ((RecentsVerticalScrollView) mRecentsContainer).getLinearLayoutChildCount();
         } else if (mRecentsContainer instanceof RecentsHorizontalScrollView) {
             count = ((RecentsHorizontalScrollView) mRecentsContainer).getLinearLayoutChildCount();
             for (int i = 0; i < count; i++) {
@@ -717,6 +722,10 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                     }, i * 150);
                 }
             }
+            count = ((RecentsHorizontalScrollView) mRecentsContainer).getLinearLayoutChildCount();
+        }
+        if (count == 0) {
+            mShortcutBar.setVisibility(View.GONE);
         }
     }
 
@@ -1260,11 +1269,11 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
 
     @Override
     protected boolean fitSystemWindows(Rect insets) {
-        if (mClearRecents != null) {
-            MarginLayoutParams lp = (MarginLayoutParams) mClearRecents.getLayoutParams();
+        if (mFirstShortcut != null) {
+            MarginLayoutParams lp = (MarginLayoutParams) mFirstShortcut.getLayoutParams();
             lp.topMargin = insets.top;
             lp.rightMargin = insets.right;
-            mClearRecents.setLayoutParams(lp);
+            mFirstShortcut.setLayoutParams(lp);
         }
 
         return super.fitSystemWindows(insets);

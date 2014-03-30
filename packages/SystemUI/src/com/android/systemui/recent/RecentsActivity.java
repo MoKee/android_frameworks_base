@@ -24,7 +24,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.UserHandle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -42,10 +44,6 @@ public class RecentsActivity extends Activity {
     public static final String WINDOW_ANIMATION_START_INTENT = "com.android.systemui.recent.action.WINDOW_ANIMATION_START";
     public static final String PRELOAD_PERMISSION = "com.android.systemui.recent.permission.PRELOAD";
     public static final String WAITING_FOR_WINDOW_ANIMATION_PARAM = "com.android.systemui.recent.WAITING_FOR_WINDOW_ANIMATION";
-    public static final String PACKAGE_ADDED = "android.intent.action.PACKAGE_ADDED";
-    public static final String PACKAGE_REMOVED = "android.intent.action.PACKAGE_REMOVED";
-    public static final String PACKAGE_CHANGED = "android.intent.action.PACKAGE_CHANGED";
-    public static final String ITEMS_CHANGED = "android.intent.action.SHORTCUT_ITEMS";
     private static final String WAS_SHOWING = "was_showing";
 
     private RecentsPanelView mRecentsPanel;
@@ -68,10 +66,11 @@ public class RecentsActivity extends Activity {
                 if (mRecentsPanel != null) {
                     mRecentsPanel.onWindowAnimationStart();
                 }
-            } else if (PACKAGE_ADDED.equals(action) || PACKAGE_REMOVED.equals(action)
-                    || PACKAGE_CHANGED.equals(action) || ITEMS_CHANGED.equals(action)) {
+            } else if (Intent.ACTION_PACKAGE_ADDED.equals(action) || Intent.ACTION_PACKAGE_REMOVED.equals(action)
+                    || Intent.ACTION_PACKAGE_CHANGED.equals(action) || Intent.ACTION_SHORTCUT_ITEMS_CHANGED.equals(action)) {
+                Log.i("MOKEEEEEEEEEEEEEEEEEEEEEEEEE", "enter");
                 if (mRecentsPanel != null) {
-                    mRecentsPanel.refreshViews();
+                    dismissAndDoNothing();
                 }
             }
         }
@@ -217,10 +216,10 @@ public class RecentsActivity extends Activity {
         mIntentFilter = new IntentFilter();
         mIntentFilter.addAction(CLOSE_RECENTS_INTENT);
         mIntentFilter.addAction(WINDOW_ANIMATION_START_INTENT);
-        mIntentFilter.addAction(PACKAGE_ADDED);
-        mIntentFilter.addAction(PACKAGE_REMOVED);
-        mIntentFilter.addAction(PACKAGE_CHANGED);
-        mIntentFilter.addAction(ITEMS_CHANGED);
+        mIntentFilter.addAction(Intent.ACTION_PACKAGE_ADDED);
+        mIntentFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
+        mIntentFilter.addAction(Intent.ACTION_PACKAGE_CHANGED);
+        mIntentFilter.addAction(Intent.ACTION_SHORTCUT_ITEMS_CHANGED);
         registerReceiver(mIntentReceiver, mIntentFilter);
         super.onCreate(savedInstanceState);
     }
