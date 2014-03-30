@@ -593,8 +593,7 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
             Settings.System.putStringForUser(mContext.getContentResolver(), Settings.System.SHORTCUT_ITEMS, shortcutItemString, UserHandle.USER_CURRENT);
         }
         for (int i = 0; i < mShortcutListItems.length; i++) {
-            final String packageName = mShortcutListItems[i].split("\\|")[0];
-            final String className = mShortcutListItems[i].split("\\|")[1];
+            final String packageName = mShortcutListItems[i];
             ImageView mShortCutView = new ImageView(mContext);
             mShortCutView.setClickable(true);
             mShortCutView.setScaleType(ScaleType.CENTER);
@@ -636,7 +635,11 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                     mShortCutView.setOnClickListener(new OnClickListener(){
                         @Override
                         public void onClick(View view) {
-                            startApplicationActivity(packageName, className);
+                            Intent intent = new Intent(Intent.ACTION_MAIN);
+                            intent.setPackage(packageName);
+                            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+                            ComponentName cn = intent.resolveActivity(pm);
+                            startApplicationActivity(packageName, cn.getClassName());
                         }});
                 }
                 mShortcutList.addView(mShortCutView);
