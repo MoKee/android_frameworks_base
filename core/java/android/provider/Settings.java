@@ -3225,6 +3225,13 @@ public final class Settings {
         public static final String SHORTCUT_ITEMS = "short_items";
 
         /**
+         * Shortcut Items exclude app
+         *
+         * @hide
+         */
+        public static final String SHORTCUT_ITEMS_EXCLUDED_APPS = "short_items_excluded_apps";
+
+        /**
          * direct call by the dialer. The value is
          * boolean (1 or 0).
          */

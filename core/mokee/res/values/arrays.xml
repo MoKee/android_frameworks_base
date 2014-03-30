@@ -18,20 +18,20 @@
 
     <!-- Shortcuts List -->
     <string-array name="shortcut_list_drawables_in_systemui" translatable="false">
-        <item>clear|com.android.systemui:drawable/ic_recents_clear</item>
-        <item>com.android.deskclock|com.android.systemui:drawable/ic_shortcut_alarmclock</item>
-        <item>com.android.calculator2|com.android.systemui:drawable/ic_shortcut_calculator</item>
-        <item>com.android.camera2|com.android.systemui:drawable/ic_shortcut_camera</item>
-        <item>com.android.calendar|com.android.systemui:drawable/ic_shortcut_calendar</item>
-        <item>com.google.android.apps.maps|com.android.systemui:drawable/ic_shortcut_maps</item>
-        <item>com.andrew.apollo|com.android.systemui:drawable/ic_shortcut_music</item>
-        <item>com.tencent.mobileqq|com.android.systemui:drawable/ic_shortcut_qq</item>
-        <item>com.sina.weibo|com.android.systemui:drawable/ic_shortcut_sinaweibo</item>
-        <item>me.imid.fuubo|com.android.systemui:drawable/ic_shortcut_fuubo</item>
-        <item>com.tencent.mm|com.android.systemui:drawable/ic_shortcut_wechat</item>
-        <item>com.facebook.katana|com.android.systemui:drawable/ic_shortcut_facebook</item>
-        <item>com.twitter.android|com.android.systemui:drawable/ic_shortcut_twitter</item>
-        <item>com.google.android.apps.plus|com.android.systemui:drawable/ic_shortcut_googleplus</item>
+        <item>clear|com.android.systemui:drawable/ic_recents_clear_normal</item>
+        <item>com.android.deskclock|com.android.systemui:drawable/ic_shortcut_alarmclock_normal</item>
+        <item>com.android.calculator2|com.android.systemui:drawable/ic_shortcut_calculator_normal</item>
+        <item>com.android.camera2|com.android.systemui:drawable/ic_shortcut_camera_normal</item>
+        <item>com.android.calendar|com.android.systemui:drawable/ic_shortcut_calendar_normal</item>
+        <item>com.google.android.apps.maps|com.android.systemui:drawable/ic_shortcut_maps_normal</item>
+        <item>com.andrew.apollo|com.android.systemui:drawable/ic_shortcut_music_normal</item>
+        <item>com.tencent.mobileqq|com.android.systemui:drawable/ic_shortcut_qq_normal</item>
+        <item>com.sina.weibo|com.android.systemui:drawable/ic_shortcut_sinaweibo_normal</item>
+        <item>me.imid.fuubo|com.android.systemui:drawable/ic_shortcut_fuubo_normal</item>
+        <item>com.tencent.mm|com.android.systemui:drawable/ic_shortcut_wechat_normal</item>
+        <item>com.facebook.katana|com.android.systemui:drawable/ic_shortcut_facebook_normal</item>
+        <item>com.twitter.android|com.android.systemui:drawable/ic_shortcut_twitter_normal</item>
+        <item>com.google.android.apps.plus|com.android.systemui:drawable/ic_shortcut_googleplus_normal</item>
     </string-array>
 
     <string-array name="shortcut_list_items" translatable="false">

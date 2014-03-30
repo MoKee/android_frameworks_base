@@ -620,7 +620,8 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                 mShortCutView.setImageDrawable(d);
             }
             mShortCutView.setLayoutParams(new ViewGroup.LayoutParams(mShortcutBar.getLayoutParams().width, mShortcutBar.getLayoutParams().width));
-            if (!packageName.equals("clear") && !MoKeeUtils.isApkInstalledAndEnabled(packageName, mContext)) {
+            String excluded = Settings.System.getString(mContext.getContentResolver(), Settings.System.SHORTCUT_ITEMS_EXCLUDED_APPS);
+            if (!packageName.equals("clear") && !MoKeeUtils.isApkInstalledAndEnabled(packageName, mContext) && !excluded.contains(packageName)) {
                 mShortCutView.setVisibility(ImageView.GONE);
             } else {
                 if (packageName.equals("clear")) {

@@ -20,15 +20,11 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.WallpaperManager;
 import android.content.BroadcastReceiver;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.ContentObserver;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.UserHandle;
-import android.provider.Settings;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -49,14 +45,13 @@ public class RecentsActivity extends Activity {
     public static final String PACKAGE_ADDED = "android.intent.action.PACKAGE_ADDED";
     public static final String PACKAGE_REMOVED = "android.intent.action.PACKAGE_REMOVED";
     public static final String PACKAGE_CHANGED = "android.intent.action.PACKAGE_CHANGED";
+    public static final String ITEMS_CHANGED = "android.intent.action.SHORTCUT_ITEMS";
     private static final String WAS_SHOWING = "was_showing";
 
     private RecentsPanelView mRecentsPanel;
     private IntentFilter mIntentFilter;
     private boolean mShowing;
     private boolean mForeground;
-
-    SettingsObserver mSettingsObserver;
 
     private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
         @Override
@@ -73,33 +68,14 @@ public class RecentsActivity extends Activity {
                 if (mRecentsPanel != null) {
                     mRecentsPanel.onWindowAnimationStart();
                 }
-            } else if (PACKAGE_ADDED.equals(action) || PACKAGE_REMOVED.equals(action) || PACKAGE_CHANGED.equals(action)) {
+            } else if (PACKAGE_ADDED.equals(action) || PACKAGE_REMOVED.equals(action)
+                    || PACKAGE_CHANGED.equals(action) || ITEMS_CHANGED.equals(action)) {
                 if (mRecentsPanel != null) {
                     mRecentsPanel.refreshViews();
                 }
             }
         }
     };
-
-    class SettingsObserver extends ContentObserver {
-        SettingsObserver(Handler handler) {
-            super(handler);
-        }
-
-        void observe() {
-            // Observe all users' changes
-            ContentResolver resolver = getContentResolver();
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.SHORTCUT_ITEMS), false, this,
-                    UserHandle.USER_ALL);
-        }
-
-        @Override public void onChange(boolean selfChange) {
-            if (mRecentsPanel != null) {
-                mRecentsPanel.refreshViews();
-            }
-        }
-    }
 
     public class TouchOutsideListener implements View.OnTouchListener {
         private StatusBarPanel mPanel;
@@ -244,9 +220,8 @@ public class RecentsActivity extends Activity {
         mIntentFilter.addAction(PACKAGE_ADDED);
         mIntentFilter.addAction(PACKAGE_REMOVED);
         mIntentFilter.addAction(PACKAGE_CHANGED);
+        mIntentFilter.addAction(ITEMS_CHANGED);
         registerReceiver(mIntentReceiver, mIntentFilter);
-        mSettingsObserver = new SettingsObserver(new Handler());
-        mSettingsObserver.observe();
         super.onCreate(savedInstanceState);
     }
 
@@ -259,7 +234,6 @@ public class RecentsActivity extends Activity {
     protected void onDestroy() {
         RecentTasksLoader.getInstance(this).setRecentsPanel(null, mRecentsPanel);
         unregisterReceiver(mIntentReceiver);
-        getContentResolver().unregisterContentObserver(mSettingsObserver);
         super.onDestroy();
     }
 
