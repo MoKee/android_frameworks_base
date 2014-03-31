@@ -65,7 +65,7 @@
             android:layout_height="match_parent"
             android:scrollbars="vertical"
             android:layout_gravity="top|right"
-	    android:visibility="invisible"
+            android:visibility="invisible"
             android:gravity="center_horizontal">
 
 		<LinearLayout
