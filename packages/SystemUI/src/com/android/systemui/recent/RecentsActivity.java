@@ -24,9 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.UserHandle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -54,23 +52,16 @@ public class RecentsActivity extends Activity {
     private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (CLOSE_RECENTS_INTENT.equals(action)) {
+            if (CLOSE_RECENTS_INTENT.equals(intent.getAction())) {
                 if (mRecentsPanel != null && mRecentsPanel.isShowing()) {
                     if (mShowing && !mForeground) {
                         // Captures the case right before we transition to another activity
                         mRecentsPanel.show(false);
                     }
                 }
-            } else if (WINDOW_ANIMATION_START_INTENT.equals(action)) {
+            } else if (WINDOW_ANIMATION_START_INTENT.equals(intent.getAction())) {
                 if (mRecentsPanel != null) {
                     mRecentsPanel.onWindowAnimationStart();
-                }
-            } else if (Intent.ACTION_PACKAGE_ADDED.equals(action) || Intent.ACTION_PACKAGE_REMOVED.equals(action)
-                    || Intent.ACTION_PACKAGE_CHANGED.equals(action) || Intent.ACTION_SHORTCUT_ITEMS_CHANGED.equals(action)) {
-                Log.i("MOKEEEEEEEEEEEEEEEEEEEEEEEEE", "enter");
-                if (mRecentsPanel != null) {
-                    dismissAndDoNothing();
                 }
             }
         }
@@ -216,10 +207,6 @@ public class RecentsActivity extends Activity {
         mIntentFilter = new IntentFilter();
         mIntentFilter.addAction(CLOSE_RECENTS_INTENT);
         mIntentFilter.addAction(WINDOW_ANIMATION_START_INTENT);
-        mIntentFilter.addAction(Intent.ACTION_PACKAGE_ADDED);
-        mIntentFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
-        mIntentFilter.addAction(Intent.ACTION_PACKAGE_CHANGED);
-        mIntentFilter.addAction(Intent.ACTION_SHORTCUT_ITEMS_CHANGED);
         registerReceiver(mIntentReceiver, mIntentFilter);
         super.onCreate(savedInstanceState);
     }

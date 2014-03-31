@@ -375,6 +375,7 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
             mWaitingForWindowAnimation = animateIconOfFirstTask;
         }
         if (show) {
+            refreshShortcutList();
             mWaitingToShow = true;
             refreshRecentTasksList(recentTaskDescriptions, firstScreenful);
             showIfReady();
@@ -578,8 +579,22 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
 
         mShortcutBar = (ScrollView) findViewById(R.id.shortcut_bar);
         mShortcutList = (LinearLayout) findViewById(R.id.shortcut_list);
+        refreshShortcutList();
+        
+        if (mRecentsScrim != null) {
+            mHighEndGfx = ActivityManager.isHighEndGfx();
+            if (!mHighEndGfx) {
+                mRecentsScrim.setBackground(null);
+            } else if (mRecentsScrim.getBackground() instanceof BitmapDrawable) {
+                // In order to save space, we make the background texture repeat in the Y direction
+                ((BitmapDrawable) mRecentsScrim.getBackground()).setTileModeY(TileMode.REPEAT);
+            }
+        }
+    }
 
+    private void refreshShortcutList(){
         // Shortcut items init
+        mShortcutList.removeAllViews();
         String shortcutItemString = Settings.System.getStringForUser(mContext.getContentResolver(), Settings.System.SHORTCUT_ITEMS, UserHandle.USER_CURRENT);
         String [] mShortcutListItems;
         if (!TextUtils.isEmpty(shortcutItemString)) {
@@ -593,38 +608,34 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
             shortcutItemString = shortcutItemString.substring(0, shortcutItemString.length() - 1);
             Settings.System.putStringForUser(mContext.getContentResolver(), Settings.System.SHORTCUT_ITEMS, shortcutItemString, UserHandle.USER_CURRENT);
         }
-        Log.i("MOKEEEEEEEEEEEEEEEEEEEEEEEEE", "test");
         for (int i = 0; i < mShortcutListItems.length; i++) {
             final String packageName = mShortcutListItems[i];
-            ImageView mShortCutView = new ImageView(mContext);
-            mShortCutView.setClickable(true);
-            mShortCutView.setScaleType(ScaleType.CENTER);
-            final PackageManager pm = mContext.getPackageManager();
-            Resources mSystemUiResources = null;
-            if (pm != null ) {
+            String excluded = Settings.System.getString(mContext.getContentResolver(), Settings.System.SHORTCUT_ITEMS_EXCLUDED_APPS);
+            if (!packageName.equals("clear") && !MoKeeUtils.isApkInstalledAndEnabled(packageName, mContext) || excluded.contains(packageName)) {
+            } else {
+                ImageView mShortCutView = new ImageView(mContext);
+                mShortCutView.setClickable(true);
+                mShortCutView.setScaleType(ScaleType.CENTER);
+                final PackageManager pm = mContext.getPackageManager();
+                Resources mSystemUiResources = null;
                 try {
                     mSystemUiResources = pm.getResourcesForApplication("com.android.systemui");
                 } catch (NameNotFoundException e) {
                 }
-            }
-            if (mSystemUiResources != null) {
-                String [] resPathArray = mContext.getResources().getStringArray(com.mokee.internal.R.array.shortcut_list_drawables_in_systemui);
-                String resPath = "";
-                for (String resPathStr : resPathArray) {
-                    String[] resItem = resPathStr.split("\\|");
-                    if (resItem[0].equals(packageName)) {
-                        resPath = resItem[1];
+                if (mSystemUiResources != null) {
+                    String [] resPathArray = mContext.getResources().getStringArray(com.mokee.internal.R.array.shortcut_list_drawables_in_systemui);
+                    String resPath = "";
+                    for (String resPathStr : resPathArray) {
+                        String[] resItem = resPathStr.split("\\|");
+                        if (resItem[0].equals(packageName)) {
+                            resPath = resItem[1];
+                        }
                     }
+                    int resId = mSystemUiResources.getIdentifier(resPath, null, null);
+                    Drawable d = mSystemUiResources.getDrawable(resId);
+                    mShortCutView.setImageDrawable(d);
                 }
-                int resId = mSystemUiResources.getIdentifier(resPath, null, null);
-                Drawable d = mSystemUiResources.getDrawable(resId);
-                mShortCutView.setImageDrawable(d);
-            }
-            mShortCutView.setLayoutParams(new ViewGroup.LayoutParams(mShortcutBar.getLayoutParams().width, mShortcutBar.getLayoutParams().width));
-            String excluded = Settings.System.getString(mContext.getContentResolver(), Settings.System.SHORTCUT_ITEMS_EXCLUDED_APPS);
-            if (!packageName.equals("clear") && !MoKeeUtils.isApkInstalledAndEnabled(packageName, mContext) || excluded.contains(packageName)) {
-                mShortCutView.setVisibility(ImageView.GONE);
-            } else {
+                mShortCutView.setLayoutParams(new ViewGroup.LayoutParams(mShortcutBar.getLayoutParams().width, mShortcutBar.getLayoutParams().width));
                 if (packageName.equals("clear")) {
                     mClearRecents = mShortCutView;
                     mShortCutView.setOnClickListener(new OnClickListener(){
@@ -642,23 +653,15 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                             startApplicationActivity(packageName, className);
                         }});
                 }
-                if (mFirstShortcut == null) {
+                
+                if (i == 0) {
                     mFirstShortcut = mShortCutView;
+                    requestFitSystemWindows();
                 }
                 mShortcutList.addView(mShortCutView);
             }
         }
-
-        if (mRecentsScrim != null) {
-            mHighEndGfx = ActivityManager.isHighEndGfx();
-            if (!mHighEndGfx) {
-                mRecentsScrim.setBackground(null);
-            } else if (mRecentsScrim.getBackground() instanceof BitmapDrawable) {
-                // In order to save space, we make the background texture repeat in the Y direction
-                ((BitmapDrawable) mRecentsScrim.getBackground()).setTileModeY(TileMode.REPEAT);
-            }
-        }
-    }
+    };
 
     private void startApplicationActivity(String packageName, String loginMain) {
         if (mRecentTaskDescriptions != null && (mRecentTaskDescriptions.size() != 0)) {
