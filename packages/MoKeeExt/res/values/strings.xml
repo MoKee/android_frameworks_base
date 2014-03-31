@@ -26,4 +26,8 @@
     <!-- Active Display -->
     <string name="active_display_privacy_content">Content message not showing because privacy mode enabled</string>
 
+    <!-- Stay awake quick tile -->
+    <string name="quick_settings_screen_timeout_summary_awake">Stay awake</string>
+    <string name="powerwidget_screen_timeout_never_toast">Screen set to always on</string>
+
 </resources>
