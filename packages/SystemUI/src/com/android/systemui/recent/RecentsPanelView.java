@@ -611,6 +611,7 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
         for (int i = 0; i < mShortcutListItems.length; i++) {
             final String packageName = mShortcutListItems[i];
             String excluded = Settings.System.getString(mContext.getContentResolver(), Settings.System.SHORTCUT_ITEMS_EXCLUDED_APPS);
+            excluded = TextUtils.isEmpty(excluded) ? "none excluded apps" : excluded;
             if (!packageName.equals("clear") && !MoKeeUtils.isApkInstalledAndEnabled(packageName, mContext) || excluded.contains(packageName)) {
             } else {
                 ImageView mShortCutView = new ImageView(mContext);
