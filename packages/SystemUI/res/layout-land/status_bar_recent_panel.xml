@@ -62,7 +62,8 @@
             android:scrollbars="vertical"
             android:layout_gravity="top|left"
             android:visibility="invisible"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:fillViewport="true">
 
 		<LinearLayout
 		    android:id="@+id/shortcut_list"
