@@ -55,6 +55,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.IWindowManager;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -595,7 +596,8 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
     private void refreshShortcutList(){
         // Shortcut items init
         mShortcutList.removeAllViews();
-        String shortcutItemString = Settings.System.getStringForUser(mContext.getContentResolver(), Settings.System.SHORTCUT_ITEMS, UserHandle.USER_CURRENT);
+        ContentResolver mContentResolver = mContext.getContentResolver();
+        String shortcutItemString = Settings.System.getStringForUser(mContentResolver, Settings.System.SHORTCUT_ITEMS, UserHandle.USER_CURRENT);
         String [] mShortcutListItems;
         if (!TextUtils.isEmpty(shortcutItemString)) {
             mShortcutListItems = shortcutItemString.split(",");
@@ -606,62 +608,99 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                 shortcutItemString = shortcutItemString + item + ",";
             }
             shortcutItemString = shortcutItemString.substring(0, shortcutItemString.length() - 1);
-            Settings.System.putStringForUser(mContext.getContentResolver(), Settings.System.SHORTCUT_ITEMS, shortcutItemString, UserHandle.USER_CURRENT);
+            Settings.System.putStringForUser(mContentResolver, Settings.System.SHORTCUT_ITEMS, shortcutItemString, UserHandle.USER_CURRENT);
         }
-        for (int i = 0; i < mShortcutListItems.length; i++) {
-            final String packageName = mShortcutListItems[i];
-            String excluded = Settings.System.getString(mContext.getContentResolver(), Settings.System.SHORTCUT_ITEMS_EXCLUDED_APPS);
-            excluded = TextUtils.isEmpty(excluded) ? "none excluded apps" : excluded;
-            if (!packageName.equals("clear") && !MoKeeUtils.isApkInstalledAndEnabled(packageName, mContext) || excluded.contains(packageName)) {
-            } else {
-                ImageView mShortCutView = new ImageView(mContext);
-                mShortCutView.setClickable(true);
-                mShortCutView.setScaleType(ScaleType.CENTER_INSIDE);
-                final PackageManager pm = mContext.getPackageManager();
-                Resources mSystemUiResources = null;
-                try {
-                    mSystemUiResources = pm.getResourcesForApplication("com.android.systemui");
-                } catch (NameNotFoundException e) {
-                }
-                if (mSystemUiResources != null) {
-                    String [] resPathArray = mContext.getResources().getStringArray(com.mokee.internal.R.array.shortcut_list_drawables_in_systemui);
-                    String resPath = "";
-                    for (String resPathStr : resPathArray) {
-                        String[] resItem = resPathStr.split("\\|");
-                        if (resItem[0].equals(packageName)) {
-                            resPath = resItem[1];
-                        }
-                    }
-                    int resId = mSystemUiResources.getIdentifier(resPath, null, null);
-                    Drawable d = mSystemUiResources.getDrawable(resId);
-                    mShortCutView.setImageDrawable(d);
-                }
-                mShortCutView.setLayoutParams(new ViewGroup.LayoutParams(mShortcutBar.getLayoutParams().width, mShortcutBar.getLayoutParams().width));
-                if (packageName.equals("clear")) {
-                    mClearRecents = mShortCutView;
-                    mShortCutView.setOnClickListener(new OnClickListener(){
-                        @Override
-                        public void onClick(View view) {
-                            clearAllNonLocked();
-                        }});
-                } else {
-                    mShortCutView.setOnClickListener(new OnClickListener(){
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = pm.getLaunchIntentForPackage(packageName);
-                            ComponentName cn = intent.getComponent();
-                            String className = cn.getClassName();
-                            startApplicationActivity(packageName, className);
-                        }});
-                }
-                mShortcutList.addView(mShortCutView);
-                if (i == 0 || mShortcutList.getChildCount() == 1) {
-                    mFirstShortcut = mShortCutView;
-                    requestFitSystemWindows();
-                }
+        if (mContext.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            ScrollView.LayoutParams layoutParams = new ScrollView.LayoutParams(mShortcutBar.getLayoutParams());
+            int layoutGravity = Settings.System.getIntForUser(mContentResolver, Settings.System.SHORTCUT_ITEMS_GRAVITY, 0, UserHandle.USER_CURRENT);
+            switch (layoutGravity) {
+                case 0:
+                    layoutParams.gravity = Gravity.TOP | Gravity.RIGHT;
+                    setShortcutListInTop(mShortcutListItems, mContentResolver);
+                    break;
+                case 1:
+                    layoutParams.gravity = Gravity.BOTTOM | Gravity.RIGHT;
+                    setShortcutListInBottom(mShortcutListItems, mContentResolver);
+                    break;
+                case 2:
+                    layoutParams.gravity = Gravity.TOP | Gravity.LEFT;
+                    setShortcutListInTop(mShortcutListItems, mContentResolver);
+                    break;
+                case 3:
+                    layoutParams.gravity = Gravity.BOTTOM | Gravity.LEFT;
+                    setShortcutListInBottom(mShortcutListItems, mContentResolver);
+                    break;
             }
+            mShortcutBar.setLayoutParams(layoutParams);
         }
     };
+
+    private void setShortcutListInTop(String[] mShortcutListItems, ContentResolver mContentResolver) {
+        for (int i = 0; i < mShortcutListItems.length; i++) {
+            setShortcutList(mShortcutListItems, mContentResolver, i);
+        }
+    }
+
+    private void setShortcutListInBottom(String[] mShortcutListItems, ContentResolver mContentResolver) {
+        for (int i = mShortcutListItems.length - 1; i >= 0; i--){
+            setShortcutList(mShortcutListItems, mContentResolver, i);
+            mShortcutBar.fullScroll(ScrollView.FOCUS_DOWN);
+        }
+    }
+
+    private void setShortcutList(String[] mShortcutListItems, ContentResolver mContentResolver, int i){
+        final String packageName = mShortcutListItems[i];
+        String excluded = Settings.System.getString(mContentResolver, Settings.System.SHORTCUT_ITEMS_EXCLUDED_APPS);
+        excluded = TextUtils.isEmpty(excluded) ? "none excluded apps" : excluded;
+        if (!packageName.equals("clear") && !MoKeeUtils.isApkInstalledAndEnabled(packageName, mContext) || excluded.contains(packageName)) {
+        } else {
+            ImageView mShortCutView = new ImageView(mContext);
+            mShortCutView.setClickable(true);
+            mShortCutView.setScaleType(ScaleType.CENTER_INSIDE);
+            final PackageManager pm = mContext.getPackageManager();
+            Resources mSystemUiResources = null;
+            try {
+                mSystemUiResources = pm.getResourcesForApplication("com.android.systemui");
+            } catch (NameNotFoundException e) {
+            }
+            if (mSystemUiResources != null) {
+                String [] resPathArray = mContext.getResources().getStringArray(com.mokee.internal.R.array.shortcut_list_drawables_in_systemui);
+                String resPath = "";
+                for (String resPathStr : resPathArray) {
+                    String[] resItem = resPathStr.split("\\|");
+                    if (resItem[0].equals(packageName)) {
+                        resPath = resItem[1];
+                    }
+                }
+                int resId = mSystemUiResources.getIdentifier(resPath, null, null);
+                Drawable d = mSystemUiResources.getDrawable(resId);
+                mShortCutView.setImageDrawable(d);
+            }
+            mShortCutView.setLayoutParams(new ViewGroup.LayoutParams(mShortcutBar.getLayoutParams().width, mShortcutBar.getLayoutParams().width));
+            if (packageName.equals("clear")) {
+                mClearRecents = mShortCutView;
+                mShortCutView.setOnClickListener(new OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        clearAllNonLocked();
+                    }});
+            } else {
+                mShortCutView.setOnClickListener(new OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = pm.getLaunchIntentForPackage(packageName);
+                        ComponentName cn = intent.getComponent();
+                        String className = cn.getClassName();
+                        startApplicationActivity(packageName, className);
+                    }});
+            }
+            mShortcutList.addView(mShortCutView);
+            if (i == 0 || mShortcutList.getChildCount() == 1) {
+                mFirstShortcut = mShortCutView;
+                requestFitSystemWindows();
+            }
+        }
+    }
 
     private void startApplicationActivity(String packageName, String loginMain) {
         if (mRecentTaskDescriptions != null && (mRecentTaskDescriptions.size() != 0)) {

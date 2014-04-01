@@ -3230,6 +3230,18 @@ public final class Settings {
         public static final String SHORTCUT_ITEMS = "short_items";
 
         /**
+         * Shortcut Items Gravity
+         *
+         * 0 right | top
+         * 1 right | bottom
+         * 2 left | top
+         * 3 left | bottom
+         *
+         * @hide
+         */
+        public static final int SHORTCUT_ITEMS_GRAVITY = 0;
+
+        /**
          * Shortcut Items exclude app
          *
          * @hide
