@@ -1831,6 +1831,11 @@ public final class Settings {
         public static final String SCREEN_OFF_TIMEOUT = "screen_off_timeout";
 
         /**
+         * The last timeout before the screen turns off option used.
+         */
+        public static final String SCREEN_OFF_TIMEOUT_OLD = "screen_off_timeout_old";
+
+        /**
          * The screen backlight brightness between 0 and 255.
          */
         public static final String SCREEN_BRIGHTNESS = "screen_brightness";

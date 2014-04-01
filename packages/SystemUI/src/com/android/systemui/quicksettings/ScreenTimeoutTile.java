@@ -44,10 +44,7 @@ public class ScreenTimeoutTile extends QuickSettingsTile {
         mOnLongClick = new OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Settings.System.putIntForUser(
-                        mContext.getContentResolver(),
-                        Settings.System.SCREEN_OFF_TIMEOUT, SCREEN_TIMEOUT_AWAKE,
-                        UserHandle.USER_CURRENT);
+                toggleAwakeState();
                 updateResources();
                 return true;
             }
@@ -77,21 +74,17 @@ public class ScreenTimeoutTile extends QuickSettingsTile {
     private synchronized void updateTile() {
         int timeout = getScreenTimeout();
         mLabel = makeTimeoutSummaryString(mContext, timeout);
-        mDrawable = R.drawable.ic_qs_screen_timeout_off;
 
-        /* TODO: Determine if we need an on and off state
-        if (timeout <= SCREEN_TIMEOUT_LOW) {
-            mDrawable = R.drawable.ic_qs_screen_timeout_off;
-        } else if (timeout <= SCREEN_TIMEOUT_HIGH) {
-            mDrawable = R.drawable.ic_qs_screen_timeout_off;
-        } else {
+        if (timeout == SCREEN_TIMEOUT_AWAKE) {
             mDrawable = R.drawable.ic_qs_screen_timeout_on;
+        } else {
+            mDrawable = R.drawable.ic_qs_screen_timeout_off;
         }
-        */
     }
 
     protected void toggleState() {
         int screenTimeout = getScreenTimeout();
+        int screenTimeoutOld = screenTimeout;
         int currentMode = getCurrentCMMode();
 
         if (screenTimeout < SCREEN_TIMEOUT_MIN) {
@@ -131,6 +124,33 @@ public class ScreenTimeoutTile extends QuickSettingsTile {
         Settings.System.putIntForUser(
                 mContext.getContentResolver(),
                 Settings.System.SCREEN_OFF_TIMEOUT, screenTimeout, UserHandle.USER_CURRENT);
+        if (screenTimeoutOld != SCREEN_TIMEOUT_AWAKE) {
+            Settings.System.putIntForUser(
+                    mContext.getContentResolver(),
+                    Settings.System.SCREEN_OFF_TIMEOUT_OLD, screenTimeoutOld,
+                    UserHandle.USER_CURRENT);
+        }
+    }
+
+    protected void toggleAwakeState() {
+        int screenTimeout = getScreenTimeout();
+        int screenTimeoutOld = getScreenTimeoutOld();
+
+        if (screenTimeout == SCREEN_TIMEOUT_AWAKE) {
+            Settings.System.putIntForUser(
+                        mContext.getContentResolver(),
+                        Settings.System.SCREEN_OFF_TIMEOUT, screenTimeoutOld,
+                        UserHandle.USER_CURRENT);
+        } else {
+            Settings.System.putIntForUser(
+                        mContext.getContentResolver(),
+                        Settings.System.SCREEN_OFF_TIMEOUT_OLD, screenTimeout,
+                        UserHandle.USER_CURRENT);
+            Settings.System.putIntForUser(
+                        mContext.getContentResolver(),
+                        Settings.System.SCREEN_OFF_TIMEOUT, SCREEN_TIMEOUT_AWAKE,
+                        UserHandle.USER_CURRENT);
+        }
     }
 
     private String makeTimeoutSummaryString(Context context, int timeout) {
@@ -174,6 +194,11 @@ public class ScreenTimeoutTile extends QuickSettingsTile {
     private int getScreenTimeout() {
         return Settings.System.getIntForUser(mContext.getContentResolver(),
                 Settings.System.SCREEN_OFF_TIMEOUT, 0, UserHandle.USER_CURRENT);
+    }
+
+    private int getScreenTimeoutOld() {
+        return Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.SCREEN_OFF_TIMEOUT_OLD, 0, UserHandle.USER_CURRENT);
     }
 
     private int getCurrentCMMode() {
