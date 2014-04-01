@@ -654,12 +654,11 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                             startApplicationActivity(packageName, className);
                         }});
                 }
-                
-                if (i == 0) {
+                mShortcutList.addView(mShortCutView);
+                if (i == 0 || mShortcutList.getChildCount() == 1) {
                     mFirstShortcut = mShortCutView;
                     requestFitSystemWindows();
                 }
-                mShortcutList.addView(mShortCutView);
             }
         }
     };
