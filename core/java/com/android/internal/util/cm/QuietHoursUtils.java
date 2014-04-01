@@ -23,26 +23,44 @@ import android.provider.Settings;
 import java.util.Calendar;
 
 public class QuietHoursUtils {
+
     public static boolean inQuietHours(Context context, String option) {
+        if (Settings.System.getIntForUser(context.getContentResolver(),
+                Settings.System.QUIET_HOURS_FORCED, 0, UserHandle.USER_CURRENT_OR_SELF) != 0) {
+            // If Quiet hours is forced return immediately
+            return true;
+        }
+
+        // Check if we are in timed Quiet hours mode
         boolean quietHoursEnabled = Settings.System.getIntForUser(context.getContentResolver(),
                 Settings.System.QUIET_HOURS_ENABLED, 0, UserHandle.USER_CURRENT_OR_SELF) != 0;
-        int quietHoursStart = Settings.System.getIntForUser(context.getContentResolver(),
-                Settings.System.QUIET_HOURS_START, 0, UserHandle.USER_CURRENT_OR_SELF);
-        int quietHoursEnd = Settings.System.getIntForUser(context.getContentResolver(),
-                Settings.System.QUIET_HOURS_END, 0, UserHandle.USER_CURRENT_OR_SELF);
         boolean quietHoursOption = Settings.System.getIntForUser(context.getContentResolver(),
                 option, 0, UserHandle.USER_CURRENT_OR_SELF) != 0;
-        if (quietHoursEnabled && quietHoursOption && (quietHoursStart != quietHoursEnd)) {
-                // Get the date in "quiet hours" format.
-                Calendar calendar = Calendar.getInstance();
-                int minutes = calendar.get(Calendar.HOUR_OF_DAY) * 60
-                                           + calendar.get(Calendar.MINUTE);
-                if (quietHoursEnd < quietHoursStart) {
-                    // Starts at night, ends in the morning.
-                    return (minutes > quietHoursStart) || (minutes < quietHoursEnd);
-                } else {
-                    return (minutes > quietHoursStart) && (minutes < quietHoursEnd);
-                }
+
+        if (quietHoursEnabled && quietHoursOption) {
+            int quietHoursStart = Settings.System.getIntForUser(context.getContentResolver(),
+                    Settings.System.QUIET_HOURS_START, 0, UserHandle.USER_CURRENT_OR_SELF);
+            int quietHoursEnd = Settings.System.getIntForUser(context.getContentResolver(),
+                    Settings.System.QUIET_HOURS_END, 0, UserHandle.USER_CURRENT_OR_SELF);
+            return inQuietHours(quietHoursStart, quietHoursEnd);
+        }
+
+        return false;
+    }
+
+    public static boolean inQuietHours(int quietHoursStart, int quietHoursEnd) {
+        if (quietHoursStart != quietHoursEnd) {
+            // Get the date in "quiet hours" format.
+            Calendar cal = Calendar.getInstance();
+            int minutes = cal.get(Calendar.HOUR_OF_DAY) * 60 + cal.get(Calendar.MINUTE);
+
+            if (quietHoursEnd < quietHoursStart) {
+                // Starts at night, ends in the morning.
+                return (minutes > quietHoursStart) || (minutes < quietHoursEnd);
+            } else {
+                // Starts in the morning, ends at night.
+                return (minutes > quietHoursStart) && (minutes < quietHoursEnd);
+            }
         }
         return false;
     }
