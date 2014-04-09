@@ -16,6 +16,9 @@
 
 package com.android.systemui.powersaver;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -28,13 +31,17 @@ import android.util.Log;
 import android.database.ContentObserver;
 import android.content.ContentResolver;
 import android.os.Handler;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.android.systemui.powersaver.Utils;
+import com.android.systemui.R;
 
 public class PowerSaverService extends Service  {
+
+    protected static final int POWERSAVER_NOTIFICATION_ID = 888;
 
     private static final String TAG = "PowerSaverService";
     private BroadcastReceiver mPowerKeyReceiver;
@@ -45,6 +52,7 @@ public class PowerSaverService extends Service  {
     private Context mContext;
     private List<PowerSaverToggle> fEnabledToggles;
     private List<PowerSaverToggle> fAllToggles;
+    private NotificationManager nm;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -56,6 +64,7 @@ public class PowerSaverService extends Service  {
         Log.d(TAG, "onDestroy");
         if (mEnabled) {
             unregisterReceiver();
+            nm.cancel(POWERSAVER_NOTIFICATION_ID);
         }
     }
 
@@ -69,6 +78,14 @@ public class PowerSaverService extends Service  {
 
         if (mEnabled) {
             registerBroadcastReceiver();
+            nm = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+            Intent mIntent = new Intent();
+            mIntent.setClassName("com.android.settings", "com.android.settings.Settings$PowerSaverSettingsActivity");
+            PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0, mIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            Notification.Builder notification = new Notification.Builder(mContext).setContentIntent(contentIntent).setTicker(mContext.getString(R.string.power_saver_notification_ticker))
+                    .setContentTitle(mContext.getString(R.string.power_saver_notification_title)).setSmallIcon(R.drawable.ic_notification_powersaver).setWhen(0).setOngoing(true)
+                    .setContentText(mContext.getString(R.string.power_saver_notification_text));
+            nm.notify(POWERSAVER_NOTIFICATION_ID, notification.build());
         }
 
         fAllToggles = new ArrayList<PowerSaverToggle>();

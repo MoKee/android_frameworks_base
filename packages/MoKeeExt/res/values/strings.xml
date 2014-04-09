@@ -30,4 +30,9 @@
     <string name="quick_settings_screen_timeout_summary_awake">Stay awake</string>
     <string name="powerwidget_screen_timeout_never_toast">Screen set to always on</string>
 
+    <!-- Powersaver -->
+    <string name="power_saver_notification_title">Power Saver is running</string>
+    <string name="power_saver_notification_ticker">Power Saver is running</string>
+    <string name="power_saver_notification_text">We are working to optimize battery life</string>
+
 </resources>
