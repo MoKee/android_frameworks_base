@@ -3340,6 +3340,11 @@ public final class Settings {
         public static final String POWER_SAVER_MOBILE_DATA = "power_saver_mobile_data";
 
         /**
+         * @hide
+         */
+        public static final String POWER_SAVER_NOTIFICATION = "power_saver_notification";
+
+        /**
          * Whether power menu screen record is enabled
          * @hide
          */

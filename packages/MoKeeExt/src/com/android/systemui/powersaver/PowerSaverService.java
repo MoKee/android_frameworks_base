@@ -49,6 +49,7 @@ public class PowerSaverService extends Service  {
     private GpsToggle mGpsToggle;
     private MobileDataToggle mMobileDataToggle;
     private boolean mEnabled = true;
+    private boolean mNotification;
     private Context mContext;
     private List<PowerSaverToggle> fEnabledToggles;
     private List<PowerSaverToggle> fAllToggles;
@@ -64,7 +65,9 @@ public class PowerSaverService extends Service  {
         Log.d(TAG, "onDestroy");
         if (mEnabled) {
             unregisterReceiver();
-            nm.cancel(POWERSAVER_NOTIFICATION_ID);
+            if (mNotification) {
+                nm.cancel(POWERSAVER_NOTIFICATION_ID);
+            }
         }
     }
 
@@ -75,10 +78,13 @@ public class PowerSaverService extends Service  {
 
         // firewall
         mEnabled = Settings.System.getInt(mContext.getContentResolver(), Settings.System.POWER_SAVER_ENABLED, 1) != 0;
+        mNotification = Settings.System.getInt(mContext.getContentResolver(), Settings.System.POWER_SAVER_NOTIFICATION, 1) != 0;
 
         if (mEnabled) {
             registerBroadcastReceiver();
-            addNotification();
+            if (mNotification) {
+                addNotification();
+            }
         }
 
         fAllToggles = new ArrayList<PowerSaverToggle>();
