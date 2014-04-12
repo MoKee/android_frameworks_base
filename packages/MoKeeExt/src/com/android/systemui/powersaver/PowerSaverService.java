@@ -62,7 +62,7 @@ public class PowerSaverService extends Service  {
 
     @Override
     public void onDestroy() {
-        Log.d(TAG, "onDestroy");
+        // Log.d(TAG, "onDestroy");
         if (mEnabled) {
             unregisterReceiver();
             if (mNotification) {
@@ -73,7 +73,7 @@ public class PowerSaverService extends Service  {
 
     @Override
     public void onStart(Intent intent, int startid) {
-        Log.d(TAG, "onStart");
+        // Log.d(TAG, "onStart");
         mContext = getApplicationContext();
 
         // firewall
@@ -134,7 +134,7 @@ public class PowerSaverService extends Service  {
                 String strAction = intent.getAction();
 
                 if (strAction.equals(Intent.ACTION_SCREEN_OFF)) {
-                    Log.d(TAG, "screen off");
+                    // Log.d(TAG, "screen off");
                     Iterator<PowerSaverToggle> nextToggle = fEnabledToggles.iterator();
                     while(nextToggle.hasNext()) {
                         PowerSaverToggle toggle = nextToggle.next();
@@ -142,7 +142,7 @@ public class PowerSaverService extends Service  {
                     }
                 }
                 if (strAction.equals(Intent.ACTION_SCREEN_ON)) {
-                    Log.d(TAG, "screen on");
+                    // Log.d(TAG, "screen on");
                     Iterator<PowerSaverToggle> nextToggle = fEnabledToggles.iterator();
                     while(nextToggle.hasNext()) {
                         PowerSaverToggle toggle = nextToggle.next();
@@ -150,19 +150,26 @@ public class PowerSaverService extends Service  {
                     }
                 }
                 if (strAction.equals("android.intent.action.POWER_SAVER_SERVICE_UPDATE")) {
-                    Log.d(TAG, "update enabled toggles");
+                    // Log.d(TAG, "update enabled toggles");
                     updateEnabledToggles();
+                } else if (strAction.equals("android.intent.action.POWER_SAVER_NOTIFICATION")) {
+                    mNotification = Settings.System.getInt(mContext.getContentResolver(), Settings.System.POWER_SAVER_NOTIFICATION, 1) != 0;
+                    if (mNotification) {
+                        addNotification();
+                    } else {
+                        nm.cancel(POWERSAVER_NOTIFICATION_ID);
+                    }
                 }
             }
         };
 
-        Log.d(TAG, "registerBroadcastReceiver");
+        // Log.d(TAG, "registerBroadcastReceiver");
         mContext.registerReceiver(mPowerKeyReceiver, theFilter);
     }
 
     private void unregisterReceiver() {
         try {
-            Log.d(TAG, "unregisterReceiver");
+            // Log.d(TAG, "unregisterReceiver");
             mContext.unregisterReceiver(mPowerKeyReceiver);
         }
         catch (IllegalArgumentException e) {
@@ -176,7 +183,7 @@ public class PowerSaverService extends Service  {
         while(nextToggle.hasNext()) {
             PowerSaverToggle toggle = nextToggle.next();
             if (toggle.isEnabled()) {
-                Log.d(TAG, "active toggle "+ toggle.getClass().getName());
+                // Log.d(TAG, "active toggle "+ toggle.getClass().getName());
                 fEnabledToggles.add(toggle);
                 if (toggle.getClass().getName().contains("CpuGovernorToggle")) {
                     Settings.System.putString(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR_DEFAULT, Utils.getDefalutGovernor());
