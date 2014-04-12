@@ -276,6 +276,7 @@
             android:exported="true" >
             <intent-filter>
                 <android name="android.intent.action.POWER_SAVER_SERVICE_UPDATE"/>
+                <android name="android.intent.action.POWER_SAVER_NOTIFICATION"/>
             </intent-filter>
         </service>
 
