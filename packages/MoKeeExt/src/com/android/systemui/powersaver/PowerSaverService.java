@@ -127,6 +127,7 @@ public class PowerSaverService extends Service  {
         theFilter.addAction(Intent.ACTION_SCREEN_ON);
         theFilter.addAction(Intent.ACTION_SCREEN_OFF);
         theFilter.addAction("android.intent.action.POWER_SAVER_SERVICE_UPDATE");
+        theFilter.addAction("android.intent.action.POWER_SAVER_NOTIFICATION");
 
         mPowerKeyReceiver = new BroadcastReceiver() {
             @Override
