@@ -102,7 +102,7 @@ public class DateView extends TextView implements OnClickListener, OnLongClickLi
         boolean isCN = MoKeeUtils.isChineseLanguage();
         if (mDateFormat == null) {
             final String weekdayFormat = getContext().getString(R.string.system_ui_weekday_pattern);
-            final String dateFormat = getContext().getString(isCN ? com.mokee.internal.R.string.system_ui_date_pattern : R.string.system_ui_date_pattern);
+            final String dateFormat = getContext().getString(isCN ? com.android.internal.R.string.system_ui_date_pattern : R.string.system_ui_date_pattern);
             final Locale l = Locale.getDefault();
             String weekdayFmt = ICU.getBestDateTimePattern(weekdayFormat, l.toString());
             String dateFmt = ICU.getBestDateTimePattern(dateFormat, l.toString());

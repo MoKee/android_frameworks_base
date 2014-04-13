@@ -603,7 +603,7 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
         if (!TextUtils.isEmpty(shortcutItemString)) {
             mShortcutListItems = shortcutItemString.split(",");
         } else {
-            mShortcutListItems = mContext.getResources().getStringArray(com.mokee.internal.R.array.shortcut_list_items);
+            mShortcutListItems = mContext.getResources().getStringArray(com.android.internal.R.array.shortcut_list_items);
             shortcutItemString = "";
             for (String item : mShortcutListItems) {
                 shortcutItemString = shortcutItemString + item + ",";
@@ -674,7 +674,7 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
             } catch (NameNotFoundException e) {
             }
             if (mSystemUiResources != null) {
-                String [] resPathArray = mContext.getResources().getStringArray(com.mokee.internal.R.array.shortcut_list_drawables_in_systemui);
+                String [] resPathArray = mContext.getResources().getStringArray(com.android.internal.R.array.shortcut_list_drawables_in_systemui);
                 String resPath = "";
                 for (String resPathStr : resPathArray) {
                     String[] resItem = resPathStr.split("\\|");

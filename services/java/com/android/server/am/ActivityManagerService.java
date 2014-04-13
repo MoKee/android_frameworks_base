@@ -1362,7 +1362,7 @@ public final class ActivityManagerService extends ActivityManagerNative
                     String text = mContext.getString(R.string.heavy_weight_notification,
                             context.getApplicationInfo().loadLabel(context.getPackageManager()));
                     Notification notification = new Notification();
-                    notification.icon = com.mokee.internal.R.drawable.stat_sys_adb; //context.getApplicationInfo().icon;
+                    notification.icon = com.android.internal.R.drawable.stat_sys_adb; //context.getApplicationInfo().icon;
                     notification.when = 0;
                     notification.flags = Notification.FLAG_ONGOING_EVENT;
                     notification.tickerText = text;
@@ -1701,7 +1701,7 @@ public final class ActivityManagerService extends ActivityManagerNative
                             Uri.fromParts("package", root.packageName, null));
 
                     Notification notification = new Notification();
-                    notification.icon = com.mokee.internal.R.drawable.stat_notify_privacy_guard;
+                    notification.icon = com.android.internal.R.drawable.stat_notify_privacy_guard;
                     notification.when = 0;
                     notification.flags = Notification.FLAG_ONGOING_EVENT;
                     notification.priority = Notification.PRIORITY_LOW;

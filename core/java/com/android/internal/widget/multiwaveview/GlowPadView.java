@@ -311,8 +311,8 @@ public class GlowPadView extends View {
         mPaintText.setTextAlign(Align.CENTER);
         mPaintText.setStyle(Paint.Style.FILL_AND_STROKE);
         mPaintText.setFakeBoldText(true);
-        mPaintText.setTextSize(res.getDimensionPixelSize(com.mokee.internal.R.dimen.glowpad_notification_font_size));
-        mTextRadius = res.getDimensionPixelSize(com.mokee.internal.R.dimen.glowpad_notification_text_radius);
+        mPaintText.setTextSize(res.getDimensionPixelSize(com.android.internal.R.dimen.glowpad_notification_font_size));
+        mTextRadius = res.getDimensionPixelSize(com.android.internal.R.dimen.glowpad_notification_text_radius);
         mMaxTextArcLength = mTextRadius * MAX_TEXT_ARC_RADIANS;
     }
 

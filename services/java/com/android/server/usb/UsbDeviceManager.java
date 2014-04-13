@@ -755,7 +755,7 @@ public class UsbDeviceManager {
                             com.android.internal.R.string.adb_active_notification_message);
 
                     Notification notification = new Notification();
-                    notification.icon = com.mokee.internal.R.drawable.stat_sys_adb;
+                    notification.icon = com.android.internal.R.drawable.stat_sys_adb;
                     notification.when = 0;
                     notification.flags = Notification.FLAG_ONGOING_EVENT;
                     notification.tickerText = title;

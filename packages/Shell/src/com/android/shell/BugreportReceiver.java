@@ -85,7 +85,7 @@ public class BugreportReceiver extends BroadcastReceiver {
         notifIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         final Notification.Builder builder = new Notification.Builder(context);
-        builder.setSmallIcon(com.mokee.internal.R.drawable.stat_sys_adb);
+        builder.setSmallIcon(com.android.internal.R.drawable.stat_sys_adb);
         builder.setContentTitle(context.getString(R.string.bugreport_finished_title));
         builder.setTicker(context.getString(R.string.bugreport_finished_title));
         builder.setContentText(context.getString(R.string.bugreport_finished_text));

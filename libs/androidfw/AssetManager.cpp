@@ -74,7 +74,6 @@ static const char* kDefaultVendor = "default";
 static const char* kAssetsRoot = "assets";
 static const char* kAppZipName = NULL; //"classes.jar";
 static const char* kSystemAssets = "framework/framework-res.apk";
-static const char* kMoKeeAssets = "framework/mokee-res.apk";
 static const char* kResourceCache = "resource-cache";
 
 static const char* kExcludeExtension = ".EXCLUDE";
@@ -486,13 +485,7 @@ bool AssetManager::addDefaultAssets()
     String8 path(root);
     path.appendPath(kSystemAssets);
 
-    if (!addAssetPath(path, NULL)) {
-        return false;
-    }
-
-    String8 pathExt(root);
-    pathExt.appendPath(kMoKeeAssets);
-    return addAssetPath(pathExt, NULL);
+    return addAssetPath(path, NULL);
 }
 
 void* AssetManager::nextAssetPath(void* cookie) const

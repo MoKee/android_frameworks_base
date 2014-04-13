@@ -718,7 +718,7 @@ public class ActiveDisplayView extends FrameLayout
     public void updateResources() {
         ArrayList<TargetDrawable> storedDraw = new ArrayList<TargetDrawable>();
         final Resources res = getResources();
-        final int targetInset = res.getDimensionPixelSize(com.mokee.internal.R.dimen.lockscreen_target_inset);
+        final int targetInset = res.getDimensionPixelSize(com.android.internal.R.dimen.lockscreen_target_inset);
         final Drawable blankActiveDrawable =
                 res.getDrawable(R.drawable.ic_lockscreen_target_activated);
         final InsetDrawable activeBack = new InsetDrawable(blankActiveDrawable, 0, 0, 0, 0);

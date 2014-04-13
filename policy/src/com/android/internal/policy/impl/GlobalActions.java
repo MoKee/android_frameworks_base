@@ -423,7 +423,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                 Settings.System.POWER_MENU_SCREENRECORD_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
         if (showScreenrecord) {
             mItems.add(
-                new SinglePressAction(com.mokee.internal.R.drawable.ic_lock_screen_record, com.mokee.internal.R.string.global_action_screen_record) {
+                new SinglePressAction(com.android.internal.R.drawable.ic_lock_screen_record, com.android.internal.R.string.global_action_screen_record) {
                     public void onPress() {
                         toggleScreenRecord();
                     }
@@ -462,7 +462,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                 Settings.Global.BUGREPORT_IN_POWER_MENU, 0) != 0 && isCurrentUserOwner());
         if (showBugReport) {
             mItems.add(
-                new SinglePressAction(com.mokee.internal.R.drawable.stat_sys_adb,
+                new SinglePressAction(com.android.internal.R.drawable.stat_sys_adb,
                         R.string.global_action_bug_report) {
 
                     public void onPress() {
@@ -959,7 +959,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
             }
 
             if (icon != null) {
-                icon.setImageDrawable(context.getResources().getDrawable(com.mokee.internal.R.drawable.ic_lock_profile));
+                icon.setImageDrawable(context.getResources().getDrawable(com.android.internal.R.drawable.ic_lock_profile));
             }
 
             if (messageView != null) {

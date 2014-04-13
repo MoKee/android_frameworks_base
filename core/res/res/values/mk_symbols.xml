@@ -16,10 +16,6 @@
 
 <resources>
 
-  <!-- We don't want to publish private symbols in mokee.R as part of the
-       SDK.  Instead, put them here. -->
-  <private-symbols package="com.mokee.internal" />
-
   <!-- Active Display -->
   <java-symbol type="dimen" name="lockscreen_target_inset" />
   <java-symbol type="dimen" name="glowpad_notification_font_size" />
@@ -66,7 +62,6 @@
   <java-symbol type="string" name="status_month" />
   <java-symbol type="string" name="status_year" />
   <java-symbol type="string" name="status_day" />
-  <java-symbol type="string" name="system_ui_date_pattern" />
 
   <!-- Network Speed Indicator -->
   <java-symbol type="integer" name="config_networkSpeedIndicatorRefreshTimeout" />

@@ -177,7 +177,7 @@ public class Traffic extends TextView {
     public void update() {
         mTrafficHandler.removeCallbacks(mRunnable);
         mTrafficHandler.postDelayed(mRunnable, mContext.getResources().getInteger(
-                com.mokee.internal.R.integer.config_networkSpeedIndicatorRefreshTimeout));
+                com.android.internal.R.integer.config_networkSpeedIndicatorRefreshTimeout));
     }
 
     Runnable mRunnable = new Runnable() {
@@ -200,10 +200,10 @@ public class Traffic extends TextView {
             setText("");
             if (showTraffic == 2) {
                 setTextSize(mContext.getResources().getInteger(
-                        com.mokee.internal.R.integer.config_networkSpeedIndicatorDualLineFontSize));
+                        com.android.internal.R.integer.config_networkSpeedIndicatorDualLineFontSize));
             } else {
                 setTextSize(mContext.getResources().getInteger(
-                        com.mokee.internal.R.integer.config_networkSpeedIndicatorSingleLineFontSize));
+                        com.android.internal.R.integer.config_networkSpeedIndicatorSingleLineFontSize));
             }
 
         } else {

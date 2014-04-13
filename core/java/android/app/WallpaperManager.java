@@ -318,7 +318,7 @@ public class WallpaperManager {
         private Bitmap getDefaultWallpaperLocked(Context context) {
             try {
                 InputStream is = context.getResources().openRawResource(
-                        com.mokee.internal.R.drawable.default_wallpaper);
+                        com.android.internal.R.drawable.default_wallpaper);
                 if (is != null) {
                     int width = mService.getWidthHint();
                     int height = mService.getHeightHint();
@@ -424,7 +424,7 @@ public class WallpaperManager {
         verticalAlignment = Math.max(0, Math.min(1, verticalAlignment));
 
         InputStream is = new BufferedInputStream(
-                resources.openRawResource(com.mokee.internal.R.drawable.default_wallpaper));
+                resources.openRawResource(com.android.internal.R.drawable.default_wallpaper));
 
         if (is == null) {
             Log.e(TAG, "default wallpaper input stream is null");
@@ -450,7 +450,7 @@ public class WallpaperManager {
                 }
 
                 is = new BufferedInputStream(resources.openRawResource(
-                        com.mokee.internal.R.drawable.default_wallpaper));
+                        com.android.internal.R.drawable.default_wallpaper));
 
                 RectF cropRectF;
 
@@ -500,7 +500,7 @@ public class WallpaperManager {
                 if (crop == null) {
                     // BitmapRegionDecoder has failed, try to crop in-memory
                     is = new BufferedInputStream(resources.openRawResource(
-                            com.mokee.internal.R.drawable.default_wallpaper));
+                            com.android.internal.R.drawable.default_wallpaper));
                     Bitmap fullSize = null;
                     if (is != null) {
                         BitmapFactory.Options options = new BitmapFactory.Options();
@@ -1064,7 +1064,7 @@ public class WallpaperManager {
      * wallpaper.
      */
     public void clear() throws IOException {
-        setResource(com.mokee.internal.R.drawable.default_wallpaper);
+        setResource(com.android.internal.R.drawable.default_wallpaper);
     }
     
     static Bitmap generateBitmap(Context context, Bitmap bm, int width, int height) {
