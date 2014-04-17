@@ -16,8 +16,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="accessibility_quick_settings_ringer">声音 <xliff:g id="state" example="Off"> %s </xliff:g>。</string>
-  <string name="accessibility_quick_settings_vibration">震动 <xliff:g id="state" example="Off"> %s </xliff:g>。</string>
+  <string name="accessibility_quick_settings_ringer">声音 <xliff:g id="state" example="Off">%s</xliff:g>。</string>
+  <string name="accessibility_quick_settings_vibration">震动 <xliff:g id="state" example="Off">%s</xliff:g>。</string>
   <string name="bean_dream_settings_cid_title">使用 Cid 的头像</string>
   <string name="bean_dream_settings_cid_summary">在大乱舞内使用 Cid 的头像替代奇巧</string>
   <string name="quick_settings_profile_label">情景模式</string>
