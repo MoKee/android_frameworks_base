@@ -103,6 +103,9 @@ public class PhoneStatusBarPolicy {
             else if (action.equals(TtyIntent.TTY_ENABLED_CHANGE_ACTION)) {
                 updateTTY(intent);
             }
+            else if (action.equals(Intent.ACTION_HEADSET_PLUG)) {
+                updateHeadset(intent);
+            }
         }
     };
 
@@ -119,6 +122,7 @@ public class PhoneStatusBarPolicy {
         filter.addAction(BluetoothAdapter.ACTION_CONNECTION_STATE_CHANGED);
         filter.addAction(TelephonyIntents.ACTION_SIM_STATE_CHANGED);
         filter.addAction(TtyIntent.TTY_ENABLED_CHANGE_ACTION);
+        filter.addAction(Intent.ACTION_HEADSET_PLUG);
         mContext.registerReceiver(mIntentReceiver, filter, null, mHandler);
 
         int numPhones = MSimTelephonyManager.getDefault().getPhoneCount();
@@ -160,6 +164,10 @@ public class PhoneStatusBarPolicy {
         mService.setIcon("volume", R.drawable.stat_sys_ringer_silent, 0, null);
         mService.setIconVisibility("volume", false);
         updateVolume();
+
+        // Headset
+        mService.setIcon("headset", R.drawable.stat_sys_headset, 0, null);
+        mService.setIconVisibility("headset", false);
     }
 
     private final void updateAlarm(Intent intent) {
@@ -231,6 +239,11 @@ public class PhoneStatusBarPolicy {
             mService.setIconVisibility("volume", visible);
             mVolumeVisible = visible;
         }
+    }
+
+    private final void updateHeadset(Intent intent) {
+        int state = intent.getIntExtra("state", 0);
+        mService.setIconVisibility("headset", state == 1 ? true : false);
     }
 
     private final void updateBluetooth(Intent intent) {
