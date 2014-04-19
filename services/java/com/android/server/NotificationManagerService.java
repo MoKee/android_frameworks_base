@@ -651,8 +651,8 @@ public class NotificationManagerService extends INotificationManager.Stub
             final int oldUser = info.userid;
             if (!info.isSystem) {
                 Slog.v(TAG, "disabling notification listener for user " + oldUser + ": " + component);
-                // Do not un-register ActiveDisplay, we un-register only when HALO is closed
-                if (!component.getPackageName().equals("ActiveDisplayComponent")) unregisterListenerService(component, info.userid);
+                // Do not un-register ActiveDisplay, we un-register only when Lockscreen Notification is closed
+                if (!component.getPackageName().equals("ActiveDisplayComponent") && !component.getPackageName().equals("LockscreenNotificationComponent")) unregisterListenerService(component, info.userid);
             }
         }
 
@@ -674,10 +674,12 @@ public class NotificationManagerService extends INotificationManager.Stub
     @Override
     public void registerListener(final INotificationListener listener,
             final ComponentName component, final int userid) {
+
         final int permission = mContext.checkCallingPermission(
                 android.Manifest.permission.SYSTEM_NOTIFICATION_LISTENER);
-        if (permission == PackageManager.PERMISSION_DENIED || !component.getPackageName().equals("ActiveDisplayComponent"))
+        if (permission == PackageManager.PERMISSION_DENIED || !component.getPackageName().equals("ActiveDisplayComponent") && !component.getPackageName().equals("LockscreenNotificationComponent"))
             checkCallerIsSystem();
+
         synchronized (mNotificationList) {
             try {
                 NotificationListenerInfo info
