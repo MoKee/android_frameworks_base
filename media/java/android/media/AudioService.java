@@ -467,6 +467,8 @@ public class AudioService extends IAudioService.Stub {
 
     private boolean mVolumeKeysControlRingStream;
 
+    private boolean mVolumeKeysWillNotExitSilentMode;
+
     ///////////////////////////////////////////////////////////////////////////
     // Construction
     ///////////////////////////////////////////////////////////////////////////
@@ -763,6 +765,10 @@ public class AudioService extends IAudioService.Stub {
 
             mVolumeKeysControlRingStream = Settings.System.getIntForUser(cr,
                     Settings.System.VOLUME_KEYS_CONTROL_RING_STREAM, 1, UserHandle.USER_CURRENT) == 1;
+
+            mVolumeKeysWillNotExitSilentMode = Settings.System.getIntForUser(cr,
+                    Settings.System.VOLUME_KEYS_WILL_NOT_EXIT_SILENT_MODE, 0, UserHandle.USER_CURRENT) == 1;
+
         }
 
         mLinkNotificationWithVolume = Settings.System.getIntForUser(cr,
@@ -2615,7 +2621,7 @@ public class AudioService extends IAudioService.Stub {
                 if (mPrevVolDirection != AudioManager.ADJUST_LOWER) {
                     ringerMode = RINGER_MODE_SILENT;
                 }
-            } else if (direction == AudioManager.ADJUST_RAISE) {
+            } else if (direction == AudioManager.ADJUST_RAISE && !mVolumeKeysWillNotExitSilentMode) {
                 ringerMode = RINGER_MODE_NORMAL;
             }
             adjustVolumeIndex = false;
@@ -2624,7 +2630,7 @@ public class AudioService extends IAudioService.Stub {
             if (direction == AudioManager.ADJUST_RAISE) {
                 if (mHasVibrator) {
                     ringerMode = RINGER_MODE_VIBRATE;
-                } else {
+                } else if(!mVolumeKeysWillNotExitSilentMode) {
                     ringerMode = RINGER_MODE_NORMAL;
                 }
             }
@@ -3819,6 +3825,8 @@ public class AudioService extends IAudioService.Stub {
                 Settings.System.SAFE_HEADSET_VOLUME), false, this);
             mContentResolver.registerContentObserver(Settings.System.getUriFor(
                 Settings.System.VOLUME_KEYS_CONTROL_RING_STREAM), false, this);
+            mContentResolver.registerContentObserver(Settings.System.getUriFor(
+                Settings.System.VOLUME_KEYS_WILL_NOT_EXIT_SILENT_MODE), false, this);
         }
 
         @Override
@@ -3876,6 +3884,9 @@ public class AudioService extends IAudioService.Stub {
                 } else if (uri.equals(Settings.System.getUriFor(Settings.System.VOLUME_KEYS_CONTROL_RING_STREAM))) {
                     mVolumeKeysControlRingStream = Settings.System.getIntForUser(mContentResolver,
                             Settings.System.VOLUME_KEYS_CONTROL_RING_STREAM, 1, UserHandle.USER_CURRENT) == 1;
+                } else if (uri.equals(Settings.System.getUriFor(Settings.System.VOLUME_KEYS_WILL_NOT_EXIT_SILENT_MODE))) {
+                    mVolumeKeysWillNotExitSilentMode = Settings.System.getIntForUser(mContentResolver,
+                            Settings.System.VOLUME_KEYS_WILL_NOT_EXIT_SILENT_MODE, 1, UserHandle.USER_CURRENT) == 1;
                 }
             }
         }

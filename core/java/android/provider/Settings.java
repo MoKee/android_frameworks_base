@@ -3776,6 +3776,13 @@ public final class Settings {
         public static final String VOLUME_KEYS_CONTROL_RING_STREAM = "volume_keys_control_ring_stream";
 
         /**
+         * Avoid exiting silent mode via volume key
+         *
+         * @hide
+         */
+        public static final String VOLUME_KEYS_WILL_NOT_EXIT_SILENT_MODE = "volume_keys_will_not_exit_silent_mode";
+
+        /**
          * Action to perform when the home key is long-pressed.
          * (Default can be configured via config_longPressOnHomeBehavior)
          * 0 - Nothing
