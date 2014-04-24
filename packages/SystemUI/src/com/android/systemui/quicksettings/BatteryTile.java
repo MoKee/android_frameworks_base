@@ -3,6 +3,7 @@ package com.android.systemui.quicksettings;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 
@@ -108,7 +109,11 @@ public class BatteryTile extends QuickSettingsTile implements BatteryStateChange
     @Override
     void updateQuickSettings() {
         TextView tv = (TextView) mTile.findViewById(R.id.text);
-        tv.setText(mLabel);
+        if (tv != null) {
+            tv.setText(mLabel);
+            tv.setTextSize(mTileTextSize);
+            tv.setPadding(0, mTileTextPadding, 0, 0);
+        }
     }
 
 }

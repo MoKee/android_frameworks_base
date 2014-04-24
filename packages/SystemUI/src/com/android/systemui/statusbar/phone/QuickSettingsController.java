@@ -395,16 +395,12 @@ public class QuickSettingsController {
         loadTiles();
         setupBroadcastReceiver();
         setupContentObserver();
-        ContentResolver resolver = mContext.getContentResolver();
-        boolean smallIcons = Settings.System.getIntForUser(resolver,
-                Settings.System.QUICK_SETTINGS_SMALL_ICONS, 0, UserHandle.USER_CURRENT) == 1;
-        if (mRibbonMode || smallIcons) {
+        //ContentResolver resolver = mContext.getContentResolver();
+        //boolean tilesPerRow = Settings.System.getIntForUser(resolver,
+        //        Settings.System.QUICK_TILES_PER_ROW, 0, UserHandle.USER_CURRENT) == 0;
+        if (mRibbonMode/* || !tilesPerRow*/) {
             for (QuickSettingsTile t : mQuickSettingsTiles) {
-                if (mRibbonMode) {
-                    t.switchToRibbonMode();
-                } else {
-                    t.switchToSmallIcons();
-                }
+                t.switchToRibbonMode();
             }
         }
     }
