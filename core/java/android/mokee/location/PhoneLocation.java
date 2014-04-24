@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 The MoKee OpenSource Project
+ * Copyright (C) 2012 - 2014 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,7 +65,7 @@ public final class PhoneLocation {
         if (TextUtils.isEmpty(num))
             return "";
 	num = (num.replace("-", "")).replace(" ", "");
-        String PhoneLocationStr=getPosFromPhone(num, 1);  		
+        String PhoneLocationStr = getPosFromPhone(num, 1);  		
         return (TextUtils.isEmpty(PhoneLocationStr) ? "" : PhoneLocationStr);
     }
 }
