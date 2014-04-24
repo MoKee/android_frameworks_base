@@ -106,18 +106,14 @@ public class PowerSaverService extends Service  {
                 "com.android.settings.Settings$PowerSaverSettingsActivity");
         PendingIntent contentIntent = PendingIntent.getActivity(mContext,
                 0, mIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        Notification.Builder notification = new Notification.Builder(
-                mContext)
+        Notification.Builder notification = new Notification.Builder(mContext)
                 .setContentIntent(contentIntent)
-                .setTicker(
-                        mContext.getString(R.string.power_saver_notification_ticker))
-                .setContentTitle(
-                        mContext.getString(R.string.power_saver_notification_title))
+                .setTicker(mContext.getString(R.string.power_saver_notification_ticker))
+                .setContentTitle(mContext.getString(R.string.power_saver_notification_title))
                 .setSmallIcon(R.drawable.ic_notification_powersaver)
                 .setWhen(0)
                 .setOngoing(true)
-                .setContentText(
-                        mContext.getString(R.string.power_saver_notification_text));
+                .setContentText(mContext.getString(R.string.power_saver_notification_text));
         nm.notify(POWERSAVER_NOTIFICATION_ID, notification.build());
     }
 
