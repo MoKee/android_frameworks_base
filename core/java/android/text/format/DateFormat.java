@@ -17,13 +17,14 @@
 package android.text.format;
 
 import android.content.Context;
-import android.mokee.util.MoKeeUtils;
 import android.provider.Settings;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.SpannedString;
 
 import com.android.internal.R;
+
+import org.mokee.util.MoKeeUtils;
 
 import java.util.Calendar;
 import java.util.Date;

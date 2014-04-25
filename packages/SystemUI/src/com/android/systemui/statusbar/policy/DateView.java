@@ -23,7 +23,6 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.mokee.util.MoKeeUtils;
 import android.net.Uri;
 import android.provider.CalendarContract;
 import android.text.format.DateFormat;
@@ -36,6 +35,8 @@ import android.view.ViewParent;
 import android.widget.TextView;
 
 import com.android.systemui.R;
+
+import org.mokee.util.MoKeeUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

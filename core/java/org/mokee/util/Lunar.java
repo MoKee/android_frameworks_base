@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.mokee.util;
+package org.mokee.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -604,7 +604,6 @@ android.media.SoundPool
 android.media.ToneGenerator
 android.media.videoeditor.MediaArtistNativeHelper
 android.media.videoeditor.VideoEditorProfile
-android.mokee.location.PhoneLocation
 android.mtp.MtpDatabase
 android.mtp.MtpDevice
 android.mtp.MtpDeviceInfo
@@ -2768,6 +2767,8 @@ org.json.JSONStringer$Scope
 org.json.JSONTokener
 org.kxml2.io.KXmlParser
 org.kxml2.io.KXmlParser$ValueContext
+org.mokee.location.PhoneLocation
+org.mokee.util.MoKeeUtils
 org.xml.sax.Attributes
 org.xml.sax.ContentHandler
 org.xml.sax.DTDHandler

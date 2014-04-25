@@ -22,14 +22,14 @@
  * Global header for android jni call
  *
  * Created by cytown martincz
- * Last edited 2013.3.24
+ * Last edited 2014.04.25
  *
  */
 
 /**
  * This define the reg class for jni call
  */
-#define JNIREG_CLASS "android/mokee/location/PhoneLocation"
+#define JNIREG_CLASS "org/mokee/location/PhoneLocation"
 
 JNIEXPORT jstring JNICALL
 getPhoneLocationJni( JNIEnv* env, jclass thiz, jstring phone );

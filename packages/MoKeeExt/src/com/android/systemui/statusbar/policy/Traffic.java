@@ -24,7 +24,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
-import android.mokee.util.MoKeeUtils;
 import android.net.ConnectivityManager;
 import android.net.TrafficStats;
 import android.os.SystemClock;
@@ -35,6 +34,8 @@ import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
+
+import org.mokee.util.MoKeeUtils;
 
 public class Traffic extends TextView {
     private boolean mAttached;

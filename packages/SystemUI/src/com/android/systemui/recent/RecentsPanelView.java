@@ -45,7 +45,6 @@ import android.graphics.Rect;
 import android.graphics.Shader.TileMode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.mokee.util.MoKeeUtils;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.RemoteException;
@@ -85,6 +84,8 @@ import com.android.systemui.R;
 import com.android.systemui.statusbar.BaseStatusBar;
 import com.android.systemui.statusbar.StatusBarPanel;
 import com.android.systemui.statusbar.phone.PhoneStatusBar;
+
+import org.mokee.util.MoKeeUtils;
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -20,7 +20,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.mokee.util.MoKeeUtils;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
@@ -33,6 +32,8 @@ import android.widget.TextView;
 import com.android.internal.telephony.TelephonyIntents;
 
 import com.android.systemui.statusbar.util.SpnOverride;
+
+import org.mokee.util.MoKeeUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

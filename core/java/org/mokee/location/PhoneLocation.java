@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.mokee.location;
+package org.mokee.location;
 
 import android.text.TextUtils;
 

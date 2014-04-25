@@ -354,12 +354,35 @@ LOCAL_JAR_PACKAGES := com\* javax\*
 include $(BUILD_JAVA_LIBRARY)
 framework2_module := $(LOCAL_INSTALLED_MODULE)
 
+ifdef MK_VERSION
+# Build part 3 of the framework library.
+# ============================================================
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := org.mokee.framework
+LOCAL_MODULE_CLASS := JAVA_LIBRARIES
+LOCAL_NO_STANDARD_LIBRARIES := true
+LOCAL_STATIC_JAVA_LIBRARIES := framework-base
+LOCAL_DX_FLAGS := --core-library
+
+# Packages to include, use \* wildcard to include descendants.
+LOCAL_JAR_PACKAGES := org\*
+
+include $(BUILD_JAVA_LIBRARY)
+org_mokee_framework_module := $(LOCAL_INSTALLED_MODULE)
+endif
+
 # Make sure that all framework modules are installed when framework is.
 # ============================================================
 $(framework_module): | $(dir $(framework_module))framework-res.apk
 $(framework_module): | $(dir $(framework_module))framework2.jar
 
+ifdef MK_VERSION
+$(framework_module): | $(dir $(framework_module))org.mokee.framework.jar
+framework_built := $(call java-lib-deps,framework framework2 org.mokee.framework)
+else
 framework_built := $(call java-lib-deps,framework framework2)
+endif
 
 # Copy AIDL files to be preprocessed and included in the SDK,
 # specified relative to the root of the build tree.
@@ -426,7 +449,7 @@ aidl_files := \
 	frameworks/base/telephony/java/com/android/internal/telephony/IPhoneSubInfo.aidl \
 	frameworks/base/telephony/java/com/android/internal/telephony/msim/IPhoneSubInfoMSim.aidl \
 	frameworks/base/telephony/java/com/android/internal/telephony/ITelephony.aidl \
-    frameworks/base/telephony/java/com/android/internal/telephony/msim/ITelephonyMSim.aidl \
+	frameworks/base/telephony/java/com/android/internal/telephony/msim/ITelephonyMSim.aidl \
 	frameworks/base/wifi/java/android/net/wifi/BatchedScanSettings.aidl \
 	frameworks/base/wifi/java/android/net/wifi/BatchedScanResult.aidl \
 
@@ -517,6 +540,7 @@ framework_docs_LOCAL_INTERMEDIATE_SOURCES := \
 
 framework_docs_LOCAL_API_CHECK_JAVA_LIBRARIES := \
 	bouncycastle \
+	org.mokee.framework \
 	conscrypt \
 	core \
 	okhttp \

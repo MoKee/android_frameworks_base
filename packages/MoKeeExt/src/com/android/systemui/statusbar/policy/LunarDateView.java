@@ -25,8 +25,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.graphics.Canvas;
-import android.mokee.util.Lunar;
-import android.mokee.util.MoKeeUtils;
 import android.net.Uri;
 import android.provider.CalendarContract;
 import android.text.format.DateFormat;
@@ -39,6 +37,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.systemui.R;
+
+import org.mokee.util.Lunar;
+import org.mokee.util.MoKeeUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
