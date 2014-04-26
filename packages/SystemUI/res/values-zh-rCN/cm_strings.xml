@@ -68,7 +68,7 @@
   <string name="navbar_recent_button">任务键</string>
   <string name="navbar_search_button">搜索键</string>
   <string name="navbar_back_button">返回键</string>
-  <string name="navbar_empty_button">空白键</string>
+  <string name="navbar_empty_button">留空</string>
   <string name="navbar_menu_conditional_button">菜单键 (自动隐藏)</string>
   <string name="navbar_menu_always_button">菜单键 (总是显示)</string>
   <string name="navbar_menu_big_button">菜单键</string>
