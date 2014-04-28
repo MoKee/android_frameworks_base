@@ -26,6 +26,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.os.SystemProperties;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.Log;
 
@@ -52,7 +53,7 @@ public class Utils {
         boolean isExynos = SystemProperties.get("ro.board.platform").toLowerCase().contains("exynos");
         if (isExynos) {
             String [] blacklistGovernors = mContext.getResources().getStringArray(R.array.exynos_blacklist_governors);
-            String defGov = Settings.System.getString(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR_DEFAULT);
+            String defGov = Settings.System.getStringForUser(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR_DEFAULT, UserHandle.USER_CURRENT_OR_SELF);
             List<String> blackList = Arrays.asList(blacklistGovernors);
             if (blackList.contains(defGov)) {
                 return null;

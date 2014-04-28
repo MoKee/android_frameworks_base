@@ -18,6 +18,7 @@ package com.android.systemui.powersaver;
 
 import android.content.Context;
 import android.location.LocationManager;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -34,7 +35,7 @@ public class CpuGovernorToggle extends PowerSaverToggle {
     }
 
     protected boolean isEnabled() {
-        return Settings.System.getInt(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR, 1) != 0;
+        return Settings.System.getIntForUser(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR, 1, UserHandle.USER_CURRENT_OR_SELF) != 0;
     }
 
     protected boolean doScreenOnAction() {
@@ -51,7 +52,7 @@ public class CpuGovernorToggle extends PowerSaverToggle {
     }
 
     private boolean needSwtich() {
-        String defGov = Settings.System.getString(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR_DEFAULT);
+        String defGov = Settings.System.getStringForUser(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR_DEFAULT, UserHandle.USER_CURRENT_OR_SELF);
         String remGov = Utils.getRecommendGovernor(mContext);
         if (TextUtils.isEmpty(remGov) || TextUtils.isEmpty(defGov))
             return false;
@@ -73,7 +74,7 @@ public class CpuGovernorToggle extends PowerSaverToggle {
         return new Runnable() {
             @Override
             public void run() {
-                String defGov = Settings.System.getString(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR_DEFAULT);
+                String defGov = Settings.System.getStringForUser(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR_DEFAULT, UserHandle.USER_CURRENT_OR_SELF);
                 Utils.fileWriteOneLine(Utils.GOV_FILE, defGov);
                 Log.d(TAG, "cpu = " + defGov);
             }

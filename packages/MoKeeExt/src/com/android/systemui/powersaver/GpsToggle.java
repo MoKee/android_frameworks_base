@@ -18,6 +18,7 @@ package com.android.systemui.powersaver;
 
 import android.content.Context;
 import android.location.LocationManager;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -31,7 +32,7 @@ public class GpsToggle extends PowerSaverToggle {
     }
 
     protected boolean isEnabled() {
-        return Settings.System.getInt(mContext.getContentResolver(), Settings.System.POWER_SAVER_GPS, 0) != 0;
+        return Settings.System.getIntForUser(mContext.getContentResolver(), Settings.System.POWER_SAVER_GPS, 0, UserHandle.USER_CURRENT_OR_SELF) != 0;
     }
 
     protected boolean doScreenOnAction() {

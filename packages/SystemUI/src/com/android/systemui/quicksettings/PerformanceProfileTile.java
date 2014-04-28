@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.net.Uri;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.view.View;
 
@@ -79,17 +80,17 @@ public class PerformanceProfileTile extends QuickSettingsTile {
         if (current >= mPerfProfileValues.length) {
             current = 0;
         }
-        Settings.System.putString(mContext.getContentResolver(),
-                Settings.System.PERFORMANCE_PROFILE, mPerfProfileValues[current]);
+        Settings.System.putStringForUser(mContext.getContentResolver(),
+                Settings.System.PERFORMANCE_PROFILE, mPerfProfileValues[current], UserHandle.USER_CURRENT_OR_SELF);
         // We need update value
-        if (Settings.System.getInt(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR, 1) != 0) {
-                Settings.System.putString(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR_DEFAULT, mPerfProfileValues[current]);
+        if (Settings.System.getIntForUser(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR, 1, UserHandle.USER_CURRENT_OR_SELF) != 0) {
+                Settings.System.putStringForUser(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR_DEFAULT, mPerfProfileValues[current], UserHandle.USER_CURRENT_OR_SELF);
         }
     }
 
     private void updateCurrentValue() {
-        String perfProfile = Settings.System.getString(mContext.getContentResolver(),
-                Settings.System.PERFORMANCE_PROFILE);
+        String perfProfile = Settings.System.getStringForUser(mContext.getContentResolver(),
+                Settings.System.PERFORMANCE_PROFILE, UserHandle.USER_CURRENT_OR_SELF);
         if (perfProfile == null) {
             perfProfile = mPerfProfileDefaultEntry;
         }

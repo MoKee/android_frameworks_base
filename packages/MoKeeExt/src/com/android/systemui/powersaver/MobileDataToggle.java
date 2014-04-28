@@ -17,6 +17,7 @@
 package com.android.systemui.powersaver;
 
 import android.content.Context;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.net.ConnectivityManager;
 import android.util.Log;
@@ -34,7 +35,7 @@ public class MobileDataToggle extends PowerSaverToggle {
         if (!cm.isNetworkSupported(ConnectivityManager.TYPE_MOBILE)) {
             return false;
         }
-        return Settings.System.getInt(mContext.getContentResolver(), Settings.System.POWER_SAVER_MOBILE_DATA, 0) != 0;
+        return Settings.System.getIntForUser(mContext.getContentResolver(), Settings.System.POWER_SAVER_MOBILE_DATA, 0, UserHandle.USER_CURRENT_OR_SELF) != 0;
     }
 
     protected boolean doScreenOnAction() {
