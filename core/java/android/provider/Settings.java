@@ -3180,6 +3180,12 @@ public final class Settings {
         public static final String QUIET_HOURS_FORCED = "quiet_hours_forced";
 
         /**
+         * Whether to wait quiet hours regardless of the timer.
+         * @hide
+         */
+        public static final String QUIET_HOURS_WAITED = "quiet_hours_waited";
+
+        /**
          * Whether to enable quiet hours.
          * @hide
          */
