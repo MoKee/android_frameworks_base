@@ -81,6 +81,10 @@ public class PerformanceProfileTile extends QuickSettingsTile {
         }
         Settings.System.putString(mContext.getContentResolver(),
                 Settings.System.PERFORMANCE_PROFILE, mPerfProfileValues[current]);
+        // We need update value
+        if (Settings.System.getInt(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR, 1) != 0) {
+                Settings.System.putString(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR_DEFAULT, mPerfProfileValues[current]);
+        }
     }
 
     private void updateCurrentValue() {
