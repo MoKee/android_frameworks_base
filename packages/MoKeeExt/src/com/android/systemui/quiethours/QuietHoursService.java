@@ -115,7 +115,7 @@ public class QuietHoursService extends Service  {
             handler.removeCallbacks(stopRunnable);
             handler.post(stopRunnable);
             return;
-        } else if (quietHoursEnabled && !QuietHoursUtils.inQuietHours(quietHoursStart, quietHoursEnd)) {
+        } else if (quietHoursEnabled && !QuietHoursUtils.inQuietHours(quietHoursStart, quietHoursEnd) && !quietHoursForced) {
             handler.removeCallbacks(stopRunnable);
             handler.post(stopRunnable);
         } else {
@@ -230,6 +230,8 @@ public class QuietHoursService extends Service  {
                     if (quietHoursForced) {
                         Settings.System.putIntForUser(mContentResolver,
                                 Settings.System.QUIET_HOURS_FORCED, 0, UserHandle.USER_CURRENT_OR_SELF);
+                        Settings.System.putIntForUser(mContentResolver,
+                                Settings.System.QUIET_HOURS_WAITED, 1, UserHandle.USER_CURRENT_OR_SELF);
                     }
                     handler.removeCallbacks(stopRunnable);
                     handler.post(stopRunnable);
