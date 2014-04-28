@@ -31,6 +31,12 @@ public class QuietHoursUtils {
             return true;
         }
 
+        if (Settings.System.getIntForUser(context.getContentResolver(),
+                Settings.System.QUIET_HOURS_WAITED, 0, UserHandle.USER_CURRENT_OR_SELF) != 0) {
+            // If Quiet hours is waited return immediately
+            return false;
+        }
+
         // Check if we are in timed Quiet hours mode
         boolean quietHoursEnabled = Settings.System.getIntForUser(context.getContentResolver(),
                 Settings.System.QUIET_HOURS_ENABLED, 0, UserHandle.USER_CURRENT_OR_SELF) != 0;

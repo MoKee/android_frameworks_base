@@ -40,11 +40,16 @@ public class BootReceiver extends BroadcastReceiver {
                 context.startService(loadavg);
             }
 
-            // start the power saver service if activated
+            // Start the powersaver service if enabled
             if (Settings.System.getInt(res, Settings.System.POWER_SAVER_ENABLED, 1) != 0) {
                 Intent powersaver = new Intent(context, com.android.systemui.powersaver.PowerSaverService.class);
                 context.startService(powersaver);
             }
+
+            // Start the quiethours service if enabled
+            Intent quietHours = new Intent(context, com.android.systemui.quiethours.QuietHoursService.class);
+            context.startService(quietHours);
+
         } catch (Exception e) {
             Log.e(TAG, "Can't start load average service", e);
         }
