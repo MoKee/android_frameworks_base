@@ -35,4 +35,10 @@
     <string name="power_saver_notification_ticker">Power Saver is running</string>
     <string name="power_saver_notification_text">We are working to optimize battery life</string>
 
+    <!-- QuietHours -->
+    <string name="quiet_hours_notification_title">Sleeping</string>
+    <string name="quiet_hours_notification_ticker">Sleeping</string>
+    <string name="quiet_hours_notification_text">Active</string>
+    <string name="quiet_hours_notification_wait">I\'m not sleeping</string>
+
 </resources>

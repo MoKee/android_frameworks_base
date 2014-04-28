@@ -35,4 +35,10 @@
     <string name="power_saver_notification_ticker">省电模式正在运行</string>
     <string name="power_saver_notification_text">我们正在为您优化续航时间</string>
 
+    <!-- QuietHours -->
+    <string name="quiet_hours_notification_title">安静时段</string>
+    <string name="quiet_hours_notification_ticker">安静时段</string>
+    <string name="quiet_hours_notification_text">已激活</string>
+    <string name="quiet_hours_notification_wait">我还没有休息</string>
+
 </resources>

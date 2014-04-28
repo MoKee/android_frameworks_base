@@ -1389,6 +1389,11 @@ public class NotificationManagerService extends INotificationManager.Stub
         }
     }
 
+    private void updateQuietHoursNotification() {
+        Intent intent = new Intent("android.intent.action.QUITE_HOURS_SERVICE_UPDATE");
+        mContext.sendBroadcastAsUser(intent, UserHandle.ALL);
+    }
+
     class QuietHoursSettingsObserver extends ContentObserver {
         QuietHoursSettingsObserver(Handler handler) {
             super(handler);
@@ -1398,6 +1403,8 @@ public class NotificationManagerService extends INotificationManager.Stub
             ContentResolver resolver = mContext.getContentResolver();
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.QUIET_HOURS_ENABLED), false, this);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QUIET_HOURS_FORCED), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.QUIET_HOURS_START), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
@@ -1414,6 +1421,7 @@ public class NotificationManagerService extends INotificationManager.Stub
         @Override public void onChange(boolean selfChange) {
             update();
             updateNotificationPulse();
+            updateQuietHoursNotification();
         }
 
         public void update() {
