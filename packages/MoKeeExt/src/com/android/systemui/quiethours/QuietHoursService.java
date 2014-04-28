@@ -225,6 +225,12 @@ public class QuietHoursService extends Service  {
                 } else if (action.equals("android.intent.action.QUITE_HOURS_SERVICE_WAITED")) {
                     Settings.System.putIntForUser(mContentResolver,
                             Settings.System.QUIET_HOURS_WAITED, 1, UserHandle.USER_CURRENT_OR_SELF);
+                    quietHoursForced = Settings.System.getIntForUser(mContentResolver,
+                            Settings.System.QUIET_HOURS_FORCED, 0, UserHandle.USER_CURRENT_OR_SELF) != 0;
+                    if (quietHoursForced) {
+                        Settings.System.putIntForUser(mContentResolver,
+                                Settings.System.QUIET_HOURS_FORCED, 0, UserHandle.USER_CURRENT_OR_SELF);
+                    }
                     handler.removeCallbacks(stopRunnable);
                     handler.post(stopRunnable);
                     handler.removeCallbacks(waitRunnable);
