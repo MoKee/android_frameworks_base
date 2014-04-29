@@ -193,7 +193,7 @@ public class QuietHoursService extends Service  {
                         Settings.System.QUIET_HOURS_WAITED, 0, UserHandle.USER_CURRENT_OR_SELF);
 				updateNotification();
             } else {
-                handler.postDelayed(waitRunnable, 1800000);
+                handler.postDelayed(waitRunnable, 1000 * 60 * 15);
             }
         }
     };
@@ -236,7 +236,7 @@ public class QuietHoursService extends Service  {
                     handler.removeCallbacks(stopRunnable);
                     handler.post(stopRunnable);
                     handler.removeCallbacks(waitRunnable);
-                    handler.postDelayed(waitRunnable, 1800000);
+                    handler.postDelayed(waitRunnable, 1000 * 60 * 15);
                 }
             }
         };
