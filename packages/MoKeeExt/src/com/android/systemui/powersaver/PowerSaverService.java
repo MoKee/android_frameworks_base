@@ -53,6 +53,7 @@ public class PowerSaverService extends Service  {
     private boolean mNotification;
     private Context mContext;
     private ContentResolver mContentResolver;
+    private PowerManager pm;
     private List<PowerSaverToggle> fEnabledToggles;
     private List<PowerSaverToggle> fAllToggles;
     private NotificationManager nm;
@@ -79,6 +80,7 @@ public class PowerSaverService extends Service  {
         // Log.d(TAG, "onStart");
         mContext = getApplicationContext();
         mContentResolver = mContext.getContentResolver();
+        pm = (PowerManager)mContext.getSystemService(Context.POWER_SERVICE);
         // firewall
         mEnabled = Settings.System.getIntForUser(mContentResolver, Settings.System.POWER_SAVER_ENABLED, 1, UserHandle.USER_CURRENT_OR_SELF) != 0;
         mNotification = Settings.System.getIntForUser(mContentResolver, Settings.System.POWER_SAVER_NOTIFICATION, 1, UserHandle.USER_CURRENT_OR_SELF) != 0;
@@ -194,7 +196,7 @@ public class PowerSaverService extends Service  {
             if (toggle.isEnabled()) {
                 // Log.d(TAG, "active toggle "+ toggle.getClass().getName());
                 fEnabledToggles.add(toggle);
-                if (toggle.getClass().getName().contains("CpuGovernorToggle")) {
+                if (toggle.getClass().getName().contains("CpuGovernorToggle") && !pm.isScreenOn()) {
                     Settings.System.putStringForUser(mContentResolver, Settings.System.POWER_SAVER_CPU_GOVERNOR_DEFAULT, Utils.getDefalutGovernor(), UserHandle.USER_CURRENT_OR_SELF);
                 }
             }
