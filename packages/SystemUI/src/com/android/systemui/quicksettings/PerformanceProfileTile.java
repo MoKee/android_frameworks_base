@@ -27,7 +27,6 @@ import android.provider.Settings;
 import android.view.View;
 
 import com.android.systemui.R;
-import com.android.systemui.powersaver.Utils;
 import com.android.systemui.statusbar.phone.QuickSettingsController;
 
 public class PerformanceProfileTile extends QuickSettingsTile {
@@ -85,7 +84,7 @@ public class PerformanceProfileTile extends QuickSettingsTile {
                 Settings.System.PERFORMANCE_PROFILE, mPerfProfileValues[current], UserHandle.USER_CURRENT_OR_SELF);
         // We need update value
         if (Settings.System.getIntForUser(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR, 1, UserHandle.USER_CURRENT_OR_SELF) != 0) {
-                Settings.System.putStringForUser(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR_DEFAULT, Utils.getDefalutGovernor(), UserHandle.USER_CURRENT_OR_SELF);
+                Settings.System.putStringForUser(mContext.getContentResolver(), Settings.System.POWER_SAVER_CPU_GOVERNOR_DEFAULT, mPerfProfileValues[current], UserHandle.USER_CURRENT_OR_SELF);
         }
     }
 
