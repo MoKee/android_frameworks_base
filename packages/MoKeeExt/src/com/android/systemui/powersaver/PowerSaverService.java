@@ -88,8 +88,8 @@ public class PowerSaverService extends Service  {
             if (mNotification) {
                 addNotification();
             }
-            boolean mPowerSaveEnabled = Settings.System.getIntForUser(mContentResolver, Settings.System.PERFORMANCE_PROFILE, 0, UserHandle.USER_CURRENT_OR_SELF) != 0;
-            if (mPowerSaveEnabled) {
+            boolean mActivePowerSaveEnabled = Settings.System.getIntForUser(mContentResolver, Settings.System.POWER_SAVER_CPU_PROFILE, 0, UserHandle.USER_CURRENT_OR_SELF) != 0;
+            if (mActivePowerSaveEnabled) {
                 updatePowerSaveProfile(true);
             }
         }
