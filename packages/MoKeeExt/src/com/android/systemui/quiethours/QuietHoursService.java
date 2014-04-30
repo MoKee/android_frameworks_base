@@ -47,6 +47,7 @@ public class QuietHoursService extends Service  {
     private ContentResolver mContentResolver;
     private NotificationManager nm;
     private Handler handler = new Handler();
+    private Calendar cal;
     private boolean quietHoursEnabled;
     private boolean quietHoursForced;
     private boolean quietHoursWaited;
@@ -68,6 +69,7 @@ public class QuietHoursService extends Service  {
         mContext = getApplicationContext();
         mContentResolver = mContext.getContentResolver();
         nm = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+        cal = Calendar.getInstance();
         registerBroadcastReceiver();
 
         // init notification
@@ -77,10 +79,6 @@ public class QuietHoursService extends Service  {
                 Settings.System.QUIET_HOURS_FORCED, 0, UserHandle.USER_CURRENT_OR_SELF) != 0;
         quietHoursWaited = Settings.System.getIntForUser(mContentResolver,
                 Settings.System.QUIET_HOURS_WAITED, 0, UserHandle.USER_CURRENT_OR_SELF) != 0;
-        quietHoursStart = Settings.System.getIntForUser(mContentResolver,
-                Settings.System.QUIET_HOURS_START, 0, UserHandle.USER_CURRENT_OR_SELF);
-        quietHoursEnd = Settings.System.getIntForUser(mContentResolver,
-                Settings.System.QUIET_HOURS_END, 0, UserHandle.USER_CURRENT_OR_SELF);
 
         // reset value
         if (quietHoursForced) {
@@ -92,10 +90,7 @@ public class QuietHoursService extends Service  {
                     Settings.System.QUIET_HOURS_WAITED, 0, UserHandle.USER_CURRENT_OR_SELF);
         }
 
-        if (quietHoursEnabled && QuietHoursUtils.inQuietHours(quietHoursStart, quietHoursEnd) || quietHoursForced) {
-            addNotification();
-            updateNotification();
-        }
+        updateNotification();
     }
 
     private void updateNotification() {
@@ -122,13 +117,8 @@ public class QuietHoursService extends Service  {
             addNotification();
         }
 
-        Calendar cal = Calendar.getInstance();
         int minutes = cal.get(Calendar.HOUR_OF_DAY) * 60 + cal.get(Calendar.MINUTE);
         int second = cal.get(Calendar.SECOND);
-        quietHoursStart = Settings.System.getIntForUser(mContentResolver,
-                Settings.System.QUIET_HOURS_START, 0, UserHandle.USER_CURRENT_OR_SELF);
-        quietHoursEnd = Settings.System.getIntForUser(mContentResolver,
-                Settings.System.QUIET_HOURS_END, 0, UserHandle.USER_CURRENT_OR_SELF);
         boolean inQuietHours = false;
         if (quietHoursEnd < quietHoursStart) {
             // Starts at night, ends in the morning.
@@ -193,7 +183,7 @@ public class QuietHoursService extends Service  {
                         Settings.System.QUIET_HOURS_WAITED, 0, UserHandle.USER_CURRENT_OR_SELF);
 				updateNotification();
             } else {
-                handler.postDelayed(waitRunnable, 1000 * 60 * 15);
+                handler.postDelayed(waitRunnable, 1000 * 60 * 10);
             }
         }
     };
@@ -202,7 +192,8 @@ public class QuietHoursService extends Service  {
         final IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_TIME_CHANGED);
         filter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
-        filter.addAction(Intent.ACTION_LOCALE_CHANGED);
+        filter.addAction(Intent.ACTION_SCREEN_OFF);
+        filter.addAction(Intent.ACTION_SCREEN_ON);
         filter.addAction("android.intent.action.QUITE_HOURS_SERVICE_UPDATE");
         filter.addAction("android.intent.action.QUITE_HOURS_SERVICE_WAITED");
 
@@ -213,7 +204,6 @@ public class QuietHoursService extends Service  {
                 String action = intent.getAction();
                 if (action.equals(Intent.ACTION_TIME_CHANGED)
                         || action.equals(Intent.ACTION_TIMEZONE_CHANGED)
-                        || action.equals(Intent.ACTION_LOCALE_CHANGED)
                         || action.equals("android.intent.action.QUITE_HOURS_SERVICE_UPDATE")) {
                     quietHoursWaited = Settings.System.getIntForUser(mContentResolver,
                             Settings.System.QUIET_HOURS_WAITED, 0, UserHandle.USER_CURRENT_OR_SELF) != 0;
@@ -236,7 +226,12 @@ public class QuietHoursService extends Service  {
                     handler.removeCallbacks(stopRunnable);
                     handler.post(stopRunnable);
                     handler.removeCallbacks(waitRunnable);
-                    handler.postDelayed(waitRunnable, 1000 * 60 * 15);
+                    handler.postDelayed(waitRunnable, 1000 * 60 * 10);
+                } else if (action.equals(Intent.ACTION_SCREEN_OFF)) {
+                    handler.removeCallbacks(stopRunnable);
+                    handler.removeCallbacks(startRunnable);
+                } else if (action.equals(Intent.ACTION_SCREEN_ON)) {
+                    updateNotification();
                 }
             }
         };
