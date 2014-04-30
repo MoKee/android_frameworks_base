@@ -69,7 +69,6 @@ public class QuietHoursService extends Service  {
         mContext = getApplicationContext();
         mContentResolver = mContext.getContentResolver();
         nm = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-        cal = Calendar.getInstance();
         registerBroadcastReceiver();
 
         // init notification
@@ -117,6 +116,7 @@ public class QuietHoursService extends Service  {
             addNotification();
         }
 
+        cal = Calendar.getInstance();
         int minutes = cal.get(Calendar.HOUR_OF_DAY) * 60 + cal.get(Calendar.MINUTE);
         int second = cal.get(Calendar.SECOND);
         boolean inQuietHours = false;
