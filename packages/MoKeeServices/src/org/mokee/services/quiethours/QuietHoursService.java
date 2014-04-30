@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.systemui.quiethours;
+package org.mokee.services.quiethours;
 
 import java.util.Calendar;
 
@@ -35,7 +35,7 @@ import android.provider.Settings;
 import android.util.Log;
 
 import com.android.internal.util.cm.QuietHoursUtils;
-import com.android.systemui.R;
+import org.mokee.services.R;
 
 public class QuietHoursService extends Service  {
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.systemui.powersaver;
+package org.mokee.services.powersaver;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -30,7 +30,7 @@ import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.Log;
 
-import com.android.systemui.R;
+import org.mokee.services.R;
 
 public class Utils {
 

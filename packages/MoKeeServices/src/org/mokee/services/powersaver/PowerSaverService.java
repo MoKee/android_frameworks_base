@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.systemui.powersaver;
+package org.mokee.services.powersaver;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -37,8 +37,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.android.systemui.powersaver.Utils;
-import com.android.systemui.R;
+import org.mokee.services.powersaver.Utils;
+import org.mokee.services.R;
 
 public class PowerSaverService extends Service  {
 

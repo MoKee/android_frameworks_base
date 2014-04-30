@@ -16,8 +16,18 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <array name="ad_targets_unlock_only">
-        <item>@drawable/ic_ad_target_unlock</item>
-    </array>
+    <!-- Name of the status bar as seen in the applications info settings page. [CHAR LIMIT=12] -->
+    <string name="app_label">MoKee services</string>
+
+    <!-- Powersaver -->
+    <string name="power_saver_notification_title">Power Saver is running</string>
+    <string name="power_saver_notification_ticker">Power Saver is running</string>
+    <string name="power_saver_notification_text">We are working to optimize battery life</string>
+
+    <!-- QuietHours -->
+    <string name="quiet_hours_notification_title">Sleeping</string>
+    <string name="quiet_hours_notification_ticker">Sleeping</string>
+    <string name="quiet_hours_notification_text">Active</string>
+    <string name="quiet_hours_notification_wait">I\'m not sleeping</string>
 
 </resources>

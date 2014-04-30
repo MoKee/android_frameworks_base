@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2011 The Android Open Source Project
+ * Copyright (C) 2014 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package com.android.systemui;
+package org.mokee.services;
 
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.Log;
 
@@ -28,19 +29,20 @@ import android.util.Log;
  * after the system has finished booting.
  */
 public class BootReceiver extends BroadcastReceiver {
-    private static final String TAG = "SystemUIBootReceiver";
+    private static final String TAG = "MoKeeServicesBootReceiver";
 
     @Override
     public void onReceive(final Context context, Intent intent) {
-        try {
-            // Start the load average overlay, if activated
-            ContentResolver res = context.getContentResolver();
-            if (Settings.Global.getInt(res, Settings.Global.SHOW_PROCESSES, 0) != 0) {
-                Intent loadavg = new Intent(context, com.android.systemui.LoadAverageService.class);
-                context.startService(loadavg);
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "Can't start load average service", e);
+
+        ContentResolver res = context.getContentResolver();
+        // Start the powersaver service if enabled
+        if (Settings.System.getIntForUser(res, Settings.System.POWER_SAVER_ENABLED, 1, UserHandle.USER_CURRENT_OR_SELF) != 0) {
+            Intent powersaver = new Intent(context, org.mokee.services.powersaver.PowerSaverService.class);
+            context.startService(powersaver);
         }
+
+        // Start the quiethours service if enabled
+        Intent quietHours = new Intent(context, org.mokee.services.quiethours.QuietHoursService.class);
+        context.startService(quietHours);
     }
 }

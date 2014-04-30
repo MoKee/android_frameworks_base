@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.systemui.powersaver;
+package org.mokee.services.powersaver;
 
 import android.content.Context;
 import android.provider.Settings;

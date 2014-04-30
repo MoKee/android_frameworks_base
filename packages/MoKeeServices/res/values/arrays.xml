@@ -16,8 +16,17 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <array name="ad_targets_unlock_only">
-        <item>@drawable/ic_ad_target_unlock</item>
-    </array>
+    <string-array name="recommend_governors" translatable="false">
+        <item>conservative</item>
+        <item>wheatley</item>
+        <item>hotplug</item>
+        <item>ondemand</item>
+        <item>interactive</item>
+    </string-array>
+
+    <string-array name="exynos_blacklist_governors" translatable="false">
+        <item>zzmoove</item>
+        <item>pegasusq</item>
+    </string-array>
 
 </resources>

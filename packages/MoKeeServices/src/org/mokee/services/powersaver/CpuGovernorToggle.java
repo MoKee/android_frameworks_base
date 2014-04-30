@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.systemui.powersaver;
+package org.mokee.services.powersaver;
 
 import android.content.Context;
 import android.location.LocationManager;
@@ -24,7 +24,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.android.systemui.powersaver.Utils;
+import org.mokee.services.powersaver.Utils;
 
 public class CpuGovernorToggle extends PowerSaverToggle {
 

@@ -14,28 +14,25 @@
  * limitations under the License.
  */
 
-package com.android.systemui.powersaver;
+package org.mokee.services.powersaver;
 
 import android.content.Context;
+import android.location.LocationManager;
 import android.os.UserHandle;
 import android.provider.Settings;
-import android.net.ConnectivityManager;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 
-public class MobileDataToggle extends PowerSaverToggle {
+public class GpsToggle extends PowerSaverToggle {
 
-    private static final String TAG = "PowerSaverService_MobileDataToggle";
+    private static final String TAG = "PowerSaverService_GpsToggle";
 
-    public MobileDataToggle(Context context) {
+    public GpsToggle(Context context) {
         super(context);
     }
 
     protected boolean isEnabled() {
-        ConnectivityManager cm = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (!cm.isNetworkSupported(ConnectivityManager.TYPE_MOBILE)) {
-            return false;
-        }
-        return Settings.System.getIntForUser(mContext.getContentResolver(), Settings.System.POWER_SAVER_MOBILE_DATA, 0, UserHandle.USER_CURRENT_OR_SELF) != 0;
+        return Settings.System.getIntForUser(mContext.getContentResolver(), Settings.System.POWER_SAVER_GPS, 0, UserHandle.USER_CURRENT_OR_SELF) != 0;
     }
 
     protected boolean doScreenOnAction() {
@@ -43,7 +40,7 @@ public class MobileDataToggle extends PowerSaverToggle {
     }
 
     protected boolean doScreenOffAction() {
-        if (isMobileDataEnabled()) {
+        if (isGpsEnabled()) {
             mDoAction = true;
         } else {
             mDoAction = false;
@@ -51,31 +48,31 @@ public class MobileDataToggle extends PowerSaverToggle {
         return mDoAction;
     }
 
-    private boolean isMobileDataEnabled() {
-        ConnectivityManager cm =
-                (ConnectivityManager)mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-        return cm.getMobileDataEnabled();
+    private boolean isGpsEnabled() {
+        // TODO: check if gps is available on this device?
+        return Settings.Secure.isLocationProviderEnabled(
+                mContext.getContentResolver(), LocationManager.GPS_PROVIDER);
+
     }
 
     protected Runnable getScreenOffAction() {
         return new Runnable() {
             @Override
             public void run() {
-                ConnectivityManager cm =
-                    (ConnectivityManager)mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-                cm.setMobileDataEnabled(false);
-                Log.d(TAG, "mobileData = false");
+                Settings.Secure.setLocationProviderEnabled(mContext.getContentResolver(),
+                        LocationManager.GPS_PROVIDER, false);
+                Log.d(TAG, "gps = false");
             }
         };
     }
+
     protected Runnable getScreenOnAction() {
         return new Runnable() {
             @Override
             public void run() {
-                ConnectivityManager cm =
-                    (ConnectivityManager)mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-                cm.setMobileDataEnabled(true);
-                Log.d(TAG, "mobileData = true");
+                Settings.Secure.setLocationProviderEnabled(mContext.getContentResolver(),
+                        LocationManager.GPS_PROVIDER, true);
+                Log.d(TAG, "gps = true");
             }
         };
     }
