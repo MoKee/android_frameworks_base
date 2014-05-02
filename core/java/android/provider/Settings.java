@@ -3334,14 +3334,6 @@ public final class Settings {
         public static final String INACCURATE_PROXIMITY_WORKAROUND = "inaccurate_proximity_sensor";
 
         /**
-         * Force display navigation bar
-         * 0 = no
-         * 1 = yes
-         * @hide
-         */
-        public static final String FORCE_SHOW_NAVIGATION_BAR = "force_show_navigation_bar";
-
-        /**
          * Whether power saver is enabled
          * @hide
          */
