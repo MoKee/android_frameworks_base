@@ -3582,14 +3582,6 @@ public final class Settings {
          */
         public static final String LISTVIEW_INTERPOLATOR = "listview_interpolator";
 
-        /**
-         * Sets the lockscreen background style. Integer.
-         * @see LockscreenBackgroundUtil#LOCKSCREEN_STYLE_DEFAULT
-         * @see LockscreenBackgroundUtil#LOCKSCREEN_STYLE_IMAGE
-         * @hide
-         */
-        public static final String LOCKSCREEN_BACKGROUND_STYLE = "lockscreen_background_style";
-
          /**
          * Action for long-pressing back button on lock screen
          * @hide

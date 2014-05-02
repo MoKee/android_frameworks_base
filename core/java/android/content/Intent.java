@@ -6225,6 +6225,9 @@ public class Intent implements Parcelable, Cloneable {
      * @see #removeExtra
      */
     public Intent putExtras(Bundle extras) {
+        if (extras == null) {
+            return this;
+        }
         if (mExtras == null) {
             mExtras = new Bundle();
         }
