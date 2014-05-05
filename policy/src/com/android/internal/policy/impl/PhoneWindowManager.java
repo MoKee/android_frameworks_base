@@ -3773,6 +3773,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 if ((sysUiFl & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0
                         && (fl & WindowManager.LayoutParams.FLAG_FULLSCREEN) == 0
                         && (fl & WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS) == 0
+                        && Settings.System.getIntForUser(mContext.getContentResolver(),
+                                Settings.System.FORCE_TRANSLUCENT_STATUS_BAR, 0,
+                                UserHandle.USER_CURRENT) == 0
                         && !mTopIsFullscreen) {
                     // Ensure policy decor includes status bar:
                     // The visibility of Status bar and its translucent flags come from
@@ -3781,7 +3784,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     dcf.top = mStableTop;
                 }
                 if ((fl & WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION) == 0
-                        && (sysUiFl & View.SYSTEM_UI_FLAG_HIDE_NAVIGATION) == 0) {
+                        && (sysUiFl & View.SYSTEM_UI_FLAG_HIDE_NAVIGATION) == 0
+                        && Settings.System.getIntForUser(mContext.getContentResolver(),
+                                Settings.System.FORCE_TRANSLUCENT_NAV_BAR, 0,
+                                UserHandle.USER_CURRENT) == 0) {
                     // Ensure policy decor includes navigation bar
                     dcf.bottom = mStableBottom;
                     dcf.right = mStableRight;

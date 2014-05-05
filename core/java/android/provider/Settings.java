@@ -3301,6 +3301,18 @@ public final class Settings {
         public static final String NON_INTRUSIVE_INCALL = "non_intrusive_incall";
 
         /**
+         * Force translucent status bar
+         * @hide
+         */
+        public static final String FORCE_TRANSLUCENT_STATUS_BAR = "force_translucent_status_bar";
+
+        /**
+         * Force translucent navigation bar
+         * @hide
+         */
+        public static final String FORCE_TRANSLUCENT_NAV_BAR = "force_translucent_nav_bar";
+
+        /**
          * Height of navigation bar buttons
          * @hide
          */

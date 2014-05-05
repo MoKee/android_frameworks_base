@@ -50,6 +50,8 @@ import android.os.RemoteException;
 import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.os.Trace;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.util.AndroidRuntimeException;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -1050,10 +1052,14 @@ public final class ViewRootImpl implements ViewParent,
     private int getImpliedSystemUiVisibility(WindowManager.LayoutParams params) {
         int vis = 0;
         // Translucent decor window flags imply stable system ui visibility.
-        if ((params.flags & WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS) != 0) {
+        if ((params.flags & WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS) != 0
+                || Settings.System.getIntForUser(mContext.getContentResolver(),
+                        Settings.System.FORCE_TRANSLUCENT_STATUS_BAR, 0, UserHandle.USER_CURRENT) != 0) {
             vis |= View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
         }
-        if ((params.flags & WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION) != 0) {
+        if ((params.flags & WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION) != 0
+                || Settings.System.getIntForUser(mContext.getContentResolver(),
+                        Settings.System.FORCE_TRANSLUCENT_NAV_BAR, 0, UserHandle.USER_CURRENT) != 0) {
             vis |= View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
         }
         return vis;
