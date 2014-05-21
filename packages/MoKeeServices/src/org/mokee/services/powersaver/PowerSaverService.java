@@ -56,6 +56,8 @@ public class PowerSaverService extends Service  {
     private List<PowerSaverToggle> fEnabledToggles;
     private List<PowerSaverToggle> fAllToggles;
     private NotificationManager nm;
+    private PowerManager mPowerManager;
+    private boolean mActivePowerSaveEnabled;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -70,7 +72,9 @@ public class PowerSaverService extends Service  {
             if (mNotification) {
                 nm.cancel(POWERSAVER_NOTIFICATION_ID);
             }
-            updatePowerSaveProfile(false);
+            if (mActivePowerSaveEnabled) {
+                updatePowerSaveProfile(false);
+			}
         }
     }
 
@@ -79,6 +83,8 @@ public class PowerSaverService extends Service  {
         // Log.d(TAG, "onStart");
         mContext = getApplicationContext();
         mContentResolver = mContext.getContentResolver();
+        mPowerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+
         // firewall
         mEnabled = Settings.System.getIntForUser(mContentResolver, Settings.System.POWER_SAVER_ENABLED, 1, UserHandle.USER_CURRENT_OR_SELF) != 0;
         mNotification = Settings.System.getIntForUser(mContentResolver, Settings.System.POWER_SAVER_NOTIFICATION, 1, UserHandle.USER_CURRENT_OR_SELF) != 0;
@@ -88,7 +94,7 @@ public class PowerSaverService extends Service  {
             if (mNotification) {
                 addNotification();
             }
-            boolean mActivePowerSaveEnabled = Settings.System.getIntForUser(mContentResolver, Settings.System.POWER_SAVER_CPU_PROFILE, 0, UserHandle.USER_CURRENT_OR_SELF) != 0;
+            mActivePowerSaveEnabled = Settings.System.getIntForUser(mContentResolver, Settings.System.POWER_SAVER_CPU_PROFILE, 0, UserHandle.USER_CURRENT_OR_SELF) != 0;
             if (mActivePowerSaveEnabled) {
                 updatePowerSaveProfile(true);
             }
@@ -183,7 +189,7 @@ public class PowerSaverService extends Service  {
 
     private void updatePowerSaveProfile(boolean enabled) {
         String [] pwrsvValue = getResources().getStringArray(com.android.internal.R.array.perf_profile_values);
-        Settings.System.putStringForUser(mContentResolver, Settings.System.PERFORMANCE_PROFILE, enabled ? pwrsvValue[0] : pwrsvValue[1], UserHandle.USER_CURRENT_OR_SELF);
+        mPowerManager.setPowerProfile(enabled ? pwrsvValue[0] : pwrsvValue[1]);
     }
 
     private void updateEnabledToggles() {

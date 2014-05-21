@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.net.Uri;
+import android.os.PowerManager;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.view.View;
@@ -38,22 +39,26 @@ public class PerformanceProfileTile extends QuickSettingsTile {
     private String mPerfProfileDefaultEntry;
     private String[] mPerfProfileValues;
 
+    private final PowerManager mPm;
+
     public PerformanceProfileTile(Context context, QuickSettingsController qsc) {
         super(context, qsc);
+
+        mPm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
 
         Resources res = context.getResources();
         mEntries = res.getStringArray(com.android.internal.R.array.perf_profile_entries);
         mTypedArrayDrawables = res.obtainTypedArray(R.array.perf_profile_drawables);
 
-        mPerfProfileDefaultEntry = res.getString(
-                com.android.internal.R.string.config_perf_profile_default_entry);
+        mPerfProfileDefaultEntry = mPm.getDefaultPowerProfile();
         mPerfProfileValues = res.getStringArray(com.android.internal.R.array.perf_profile_values);
 
         updateCurrentValue();
 
         // Register a callback to detect changes in system properties
-        qsc.registerObservedContent(Settings.System.getUriFor(
-                Settings.System.PERFORMANCE_PROFILE), this);
+        // FIXME: Make this a broadcast
+        qsc.registerObservedContent(Settings.Secure.getUriFor(
+                Settings.Secure.PERFORMANCE_PROFILE), this);
 
         mOnClick = new View.OnClickListener() {
             @Override
@@ -80,13 +85,11 @@ public class PerformanceProfileTile extends QuickSettingsTile {
         if (current >= mPerfProfileValues.length) {
             current = 0;
         }
-        Settings.System.putStringForUser(mContext.getContentResolver(),
-                Settings.System.PERFORMANCE_PROFILE, mPerfProfileValues[current], UserHandle.USER_CURRENT_OR_SELF);
+        mPm.setPowerProfile(mPerfProfileValues[current]);
     }
 
     private void updateCurrentValue() {
-        String perfProfile = Settings.System.getStringForUser(mContext.getContentResolver(),
-                Settings.System.PERFORMANCE_PROFILE, UserHandle.USER_CURRENT_OR_SELF);
+        String perfProfile = mPm.getPowerProfile();
         if (perfProfile == null) {
             perfProfile = mPerfProfileDefaultEntry;
         }

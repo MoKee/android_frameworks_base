@@ -1396,6 +1396,7 @@
   <java-symbol type="integer" name="config_lidNavigationAccessibility" />
   <java-symbol type="integer" name="config_lidOpenRotation" />
   <java-symbol type="integer" name="config_longPressOnHomeBehavior" />
+  <java-symbol type="integer" name="config_longPressOnMenuBehavior" />
   <java-symbol type="layout" name="global_actions_item" />
   <java-symbol type="layout" name="global_actions_silent_mode" />
   <java-symbol type="layout" name="recent_apps_dialog" />
@@ -2004,4 +2005,7 @@
 
   <!-- Label for the Android system components when they are shown to the user. -->
   <java-symbol type="string" name="android_system_label" />
+
+  <!-- Array of default activities with custom power management -->
+  <java-symbol type="array" name="config_auto_perf_activities" />
 </resources>
