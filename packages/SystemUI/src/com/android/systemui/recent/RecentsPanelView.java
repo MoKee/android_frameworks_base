@@ -742,6 +742,12 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
         int count = 0;
         int cleaned = 0;
         if (mRecentsContainer instanceof RecentsVerticalScrollView) {
+            ((RecentsVerticalScrollView) mRecentsContainer).post(new Runnable(){
+
+                @Override
+                public void run() {
+                    ((RecentsVerticalScrollView) mRecentsContainer).smoothScrollTo(0, 0);
+                }});
             count = ((RecentsVerticalScrollView) mRecentsContainer).getLinearLayoutChildCount();
             for (int i = 0; i < count; i++) {
                 final View child = ((RecentsVerticalScrollView) mRecentsContainer)
@@ -764,6 +770,12 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                 }
             }, cleaned * 150);
         } else if (mRecentsContainer instanceof RecentsHorizontalScrollView) {
+            ((RecentsHorizontalScrollView) mRecentsContainer).post(new Runnable(){
+
+                @Override
+                public void run() {
+                    ((RecentsHorizontalScrollView) mRecentsContainer).smoothScrollTo(0, 0);
+                }});
             count = ((RecentsHorizontalScrollView) mRecentsContainer).getLinearLayoutChildCount();
             for (int i = 0; i < count; i++) {
                 final View child = ((RecentsHorizontalScrollView) mRecentsContainer)
