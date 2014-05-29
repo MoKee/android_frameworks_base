@@ -78,7 +78,7 @@ public class ThemeService extends IThemeService.Stub {
     private static final String TAG = ThemeService.class.getName();
 
     private static final String GOOGLE_SETUPWIZARD_PACKAGE = "com.google.android.setupwizard";
-    private static final String CM_SETUPWIZARD_PACKAGE = "com.cyanogenmod.account";
+    private static final String CM_SETUPWIZARD_PACKAGE = "com.mokee.setupwizard";
 
     private HandlerThread mWorker;
     private ThemeWorkerHandler mHandler;
