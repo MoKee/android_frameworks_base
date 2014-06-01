@@ -18,11 +18,11 @@ package com.android.systemui.statusbar.phone;
 
 import android.animation.LayoutTransition;
 import android.content.Context;
-import android.content.res.Configuration; 
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.UserHandle;
-import android.provider.Settings; 
+import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +40,7 @@ public class QuickSettingsContainerView extends FrameLayout {
     private int mNumFinalColumns;
 
     // Duplicate number of columns in the QuickSettings grid on landscape view
-    private boolean mDuplicateColumnsLandscape; 
+    private boolean mDuplicateColumnsLandscape;
     private boolean mHasFlipSettingsPanel;
 
     private float mPadding5Tiles = 17.0f;
@@ -175,7 +175,7 @@ public class QuickSettingsContainerView extends FrameLayout {
             mNumFinalColumns = mNumColumns * 2;
         } else {
             mNumFinalColumns = mNumColumns;
-        } 
+        }
 
         for (int i = 0; i < N; ++i) {
             QuickSettingsTileView child = (QuickSettingsTileView) getChildAt(i);
