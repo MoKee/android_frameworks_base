@@ -230,7 +230,7 @@ public class KeyguardSelectorView extends LinearLayout implements KeyguardSecuri
             });
         }
 
-	final boolean lockBeforeUnlock = Settings.Secure.getIntForUser(
+        final boolean lockBeforeUnlock = Settings.Secure.getIntForUser(
                 mContext.getContentResolver(),
                 Settings.Secure.LOCK_BEFORE_UNLOCK, 0,
                 UserHandle.USER_CURRENT) == 1;
