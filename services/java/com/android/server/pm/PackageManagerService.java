@@ -3647,34 +3647,6 @@ public class PackageManagerService extends IPackageManager.Stub {
 
         return finalList;
     }
-
-    private boolean createIdmapsForPackageLI(PackageParser.Package pkg) {
-        HashMap<String, PackageParser.Package> overlays = mOverlays.get(pkg.packageName);
-        final String pkgName = pkg.packageName;
-        if (overlays == null) {
-            Log.w(TAG, "Unable to create idmap for " + pkgName + ": no overlay packages");
-            return false;
-        }
-        for (PackageParser.Package opkg : overlays.values()) {
-            for(String overlayTarget : opkg.mOverlayTargets) {
-                if (overlayTarget.equals(pkgName)) {
-                    try {
-                        if (opkg.mIsLegacyThemeApk) {
-                            generateIdmapForLegacyTheme(pkgName, opkg);
-                        } else {
-                            generateIdmap(pkgName, opkg);
-                        }
-                    } catch (Exception e) {
-                        Log.w(TAG, "Unable to create idmap for " + pkgName
-                                + ": no overlay packages", e);
-                        return false;
-                    }
-                }
-            }
-        }
-        return true;
-    }
-
     private boolean createIdmapForPackagePairLI(PackageParser.Package pkg,
             PackageParser.Package opkg, String redirectionsPath) {
         if (DEBUG_PACKAGE_SCANNING) Log.d(TAG, "Generating idmaps between " + pkg.packageName + ":" + opkg.packageName);
@@ -5468,7 +5440,16 @@ public class PackageManagerService extends IPackageManager.Stub {
             return;
         }
 
-        compileResourcesIfNeeded(targetPkg.packageName, themePkg);
+
+        // Always use the manifest's pkgName when compiling resources
+        // the member value of "packageName" is dependent on whether this was a clean install
+        // or an upgrade w/  If the app is an upgrade then the original package name is used.
+        // because libandroidfw uses the manifests's pkgName during idmap creation we must
+        // be consistent here and use the same name, otherwise idmap will look in the wrong place
+        // for the resource table.
+        String pkgName = targetPkg.mRealPackage != null ?
+                targetPkg.mRealPackage : targetPkg.packageName;
+        compileResourcesIfNeeded(pkgName, themePkg);
         generateIdmap(targetPkg.packageName, themePkg);
     }
 
@@ -5613,6 +5594,10 @@ public class PackageManagerService extends IPackageManager.Stub {
                 map.remove(opkg.packageName);
             }
 
+            if (map.isEmpty()) {
+                mOverlays.remove(target);
+            }
+
             PackageParser.Package targetPkg = mPackages.get(target);
             if (targetPkg != null) {
                 String idmapPath = getIdmapPath(targetPkg, opkg);
@@ -5623,6 +5608,10 @@ public class PackageManagerService extends IPackageManager.Stub {
             String resPath = ThemeUtils.getResDir(target, opkg);
             recursiveDelete(new File(resPath));
         }
+
+        // Cleanup icons
+        String iconResources = ThemeUtils.getIconPackDir(opkg.packageName);
+        recursiveDelete(new File(iconResources));
     }
 
     private void uninstallThemeForApp(PackageParser.Package appPkg) {
@@ -5633,6 +5622,7 @@ public class PackageManagerService extends IPackageManager.Stub {
            String idmapPath = getIdmapPath(appPkg, opkg);
            new File(idmapPath).delete();
         }
+        mOverlays.remove(appPkg.packageName);
     }
 
     private void recursiveDelete(File f) {
