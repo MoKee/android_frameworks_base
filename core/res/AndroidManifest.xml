@@ -1075,8 +1075,9 @@
         android:permissionGroupFlags="personalInfo"
         android:priority="370" />
 
-    <!-- Allows an application to monitor, modify, or abort outgoing
-         calls. -->
+    <!-- Allows an application to see the number being dialed during an outgoing
+         call with the option to redirect the call to a different number or
+         abort the call altogether. -->
     <permission android:name="android.permission.PROCESS_OUTGOING_CALLS"
         android:permissionGroup="android.permission-group.PHONE_CALLS"
         android:protectionLevel="dangerous"
@@ -1210,7 +1211,7 @@
         android:permissionGroup="android.permission-group.STORAGE"
         android:label="@string/permlab_manageDocs"
         android:description="@string/permdesc_manageDocs"
-        android:protectionLevel="signature|system" />
+        android:protectionLevel="signature" />
 
     <!-- ================================== -->
     <!-- Permissions for screenlock         -->
@@ -1553,7 +1554,7 @@
         @hide -->
     <permission android:name="android.permission.FORCE_STOP_PACKAGES"
         android:permissionGroup="android.permission-group.SYSTEM_TOOLS"
-        android:protectionLevel="signature"
+        android:protectionLevel="signature|system"
         android:label="@string/permlab_forceStopPackages"
         android:description="@string/permdesc_forceStopPackages" />
 
@@ -2619,6 +2620,15 @@
         android:label="@string/permlab_writeThemes"
         android:description="@string/permdesc_writeThemesDesc"
         android:protectionLevel="signature" />
+
+    <!-- Allows an application access the CM hardware abstraction framework (DANGEROUS)
+         <p>Not for use by third-party applications.
+         @hide -->
+    <permission android:name="android.permission.HARDWARE_ABSTRACTION_ACCESS"
+        android:label="@string/permlab_useHardwareFramework"
+        android:description="@string/permdesc_useHardwareFramework"
+        android:protectionLevel="signature" />
+
 
     <!-- The system process is explicitly the only one allowed to launch the
          confirmation UI for full backup/restore -->
