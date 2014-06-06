@@ -20,4 +20,8 @@
         <item>@drawable/ic_ad_target_unlock</item>
     </array>
 
+    <array name="hover_blacklisted_packages">
+        <item>com.google.android.googlequicksearchbox</item>
+    </array>
+
 </resources>

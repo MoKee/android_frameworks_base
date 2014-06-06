@@ -199,8 +199,9 @@ public class NotificationManagerService extends INotificationManager.Stub
     private HashSet<String> mEnabledListenerPackageNames = new HashSet<String>();
 
     // Notification control database. For now just contains disabled packages.
-    private AtomicFile mPolicyFile;
+    private AtomicFile mPolicyFile, mHoverPolicyFile;
     private HashSet<String> mBlockedPackages = new HashSet<String>();
+    private HashSet<String> mHoverBlacklist = new HashSet<String>();
 
     private static final int DB_VERSION = 1;
 
@@ -210,6 +211,7 @@ public class NotificationManagerService extends INotificationManager.Stub
     private static final String TAG_BLOCKED_PKGS = "blocked-packages";
     private static final String TAG_PACKAGE = "package";
     private static final String ATTR_NAME = "name";
+    private static final String HOVER_POLICY = "hover_policy.xml";
 
     private final ArrayList<NotificationScorer> mScorers = new ArrayList<NotificationScorer>();
 
@@ -438,6 +440,63 @@ public class NotificationManagerService extends INotificationManager.Stub
         }
     }
 
+    private void loadHoverBlockDb() {
+        synchronized(mHoverBlacklist) {
+            if (mHoverPolicyFile == null) {
+                mHoverPolicyFile = new AtomicFile(new File(SYSTEM_FOLDER, HOVER_POLICY));
+                mHoverBlacklist.clear();
+                readPolicy(mHoverPolicyFile, TAG_BLOCKED_PKGS, mHoverBlacklist);
+            }
+        }
+    }
+
+    private void writeHoverBlockDb() {
+        synchronized(mHoverBlacklist) {
+            FileOutputStream outfile = null;
+            try {
+                outfile = mHoverPolicyFile.startWrite();
+
+                XmlSerializer out = new FastXmlSerializer();
+                out.setOutput(outfile, "utf-8");
+
+                out.startDocument(null, true);
+
+                out.startTag(null, TAG_BODY); {
+                    out.attribute(null, ATTR_VERSION, String.valueOf(DB_VERSION));
+                    out.startTag(null, TAG_BLOCKED_PKGS); {
+                        // write all known network policies
+                        for (String pkg : mHoverBlacklist) {
+                            out.startTag(null, TAG_PACKAGE); {
+                                out.attribute(null, ATTR_NAME, pkg);
+                            } out.endTag(null, TAG_PACKAGE);
+                        }
+                    } out.endTag(null, TAG_BLOCKED_PKGS);
+                } out.endTag(null, TAG_BODY);
+
+                out.endDocument();
+
+                mHoverPolicyFile.finishWrite(outfile);
+            } catch (IOException e) {
+                if (outfile != null) {
+                    mHoverPolicyFile.failWrite(outfile);
+                }
+            }
+        }
+    }
+
+    public void setHoverBlacklistStatus(String pkg, boolean status) {
+        if (status) {
+            mHoverBlacklist.add(pkg);
+        } else {
+            mHoverBlacklist.remove(pkg);
+        }
+        writeHoverBlockDb();
+    }
+
+    public boolean isPackageAllowedForHover(String pkg) {
+        return !mHoverBlacklist.contains(pkg);
+    }
+
     /**
      * Use this when you just want to know if notifications are OK for this package.
      */
@@ -472,6 +531,7 @@ public class NotificationManagerService extends INotificationManager.Stub
         if (ENABLE_BLOCKED_NOTIFICATIONS && !enabled) {
             cancelAllNotificationsInt(pkg, 0, 0, true, UserHandle.getUserId(uid));
         }
+        writeHoverBlockDb();
     }
 
 
@@ -1570,6 +1630,7 @@ public class NotificationManagerService extends INotificationManager.Stub
      */
     private void importOldBlockDb() {
         loadBlockDb();
+        loadHoverBlockDb();
 
         PackageManager pm = mContext.getPackageManager();
         for (String pkg : mBlockedPackages) {

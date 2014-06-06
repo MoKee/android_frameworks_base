@@ -4010,6 +4010,17 @@ public final class Settings {
         public static final String WAKELOCK_BLOCKING_LIST = "wakelock_blocking_list";
 
         /**
+         * Hover, default is 0 (off).
+         * 0 = disabled
+         * 1 = enabled
+         * @hide
+         */
+        public static final String HOVER_STATE = "hover_state";
+
+        /** @hide */
+        public static final String HOVER_FIRST_TIME = "hover_first_time";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
