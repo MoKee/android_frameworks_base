@@ -143,8 +143,8 @@ public class KeyguardViewManager {
     }
 
     private void updateSettings() {
-        mLockscreenNotifications = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.LOCKSCREEN_NOTIFICATIONS, 1) == 1;
+        mLockscreenNotifications = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.LOCKSCREEN_NOTIFICATIONS, 1, UserHandle.USER_CURRENT_OR_SELF) == 1;
 
         // FIX: turn off Lockscreen Notification if ActiveDisplay enable
         boolean mActiveDisplayEnabled = Settings.System.getIntForUser(mContext.getContentResolver(), Settings.System.ENABLE_ACTIVE_DISPLAY, 0,
