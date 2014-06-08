@@ -7,9 +7,9 @@ LOCAL_AAPT_INCLUDE_ALL_RESOURCES := true
 LOCAL_AAPT_FLAGS += --auto-add-overlay
 
 LOCAL_SRC_FILES := $(call all-java-files-under, src) \
-    src/com/android/systemui/EventLogTags.logtags $(call all-java-files-under,../MoKeeExt/src)
+    src/com/android/systemui/EventLogTags.logtags $(call all-java-files-under,../SystemUIExt/src)
 
-LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res $(LOCAL_PATH)/../MoKeeExt/res
+LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res $(LOCAL_PATH)/../SystemUIExt/res
 
 LOCAL_JAVA_LIBRARIES := telephony-common
 LOCAL_STATIC_JAVA_LIBRARIES := android-visualizer guava

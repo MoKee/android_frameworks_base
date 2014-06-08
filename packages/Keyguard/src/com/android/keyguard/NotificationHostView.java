@@ -174,6 +174,7 @@ public class NotificationHostView extends FrameLayout {
         }
 
         private void startIntent() {
+            hideAllNotifications();
             PendingIntent i = statusBarNotification.getNotification().contentIntent;
             if (i != null) {
                 try {
