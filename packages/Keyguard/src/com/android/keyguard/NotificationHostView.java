@@ -186,8 +186,13 @@ public class NotificationHostView extends FrameLayout {
             hideAllNotifications();
             PendingIntent i = statusBarNotification.getNotification().contentIntent;
             if (i != null) {
-                Intent intent = i.getIntent();
-                mActivityLauncher.launchActivity(intent, false, true, null, null);
+                try {
+                    Intent intent = i.getIntent();
+                    ActivityManagerNative.getDefault().dismissKeyguardOnNextActivity();
+                    mActivityLauncher.launchActivityForLockscreenNotification(i, intent, false, true, null, null);
+                } catch (RemoteException ex) {
+                    Log.e(TAG, "failed to dimiss keyguard!");
+                }
             }
         }
 

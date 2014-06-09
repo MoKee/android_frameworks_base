@@ -21,6 +21,8 @@ import com.android.internal.widget.LockPatternUtils;
 import android.app.ActivityManagerNative;
 import android.app.ActivityOptions;
 import android.app.IActivityManager.WaitResult;
+import android.app.PendingIntent;
+import android.app.PendingIntent.CanceledException;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProviderInfo;
 import android.content.ActivityNotFoundException;
@@ -196,6 +198,59 @@ public abstract class KeyguardActivityLauncher {
                 public boolean onDismiss() {
                     dismissKeyguardOnNextActivity();
                     startActivityForCurrentUser(intent, animation, worker, onStarted);
+                    return true;
+                }
+            });
+            callback.dismiss(false);
+        }
+    }
+
+    public void launchActivityForLockscreenNotification(PendingIntent i, final Intent intent,
+            boolean showsWhileLocked,
+            boolean useDefaultAnimations,
+            final Handler worker,
+            final Runnable onStarted) {
+
+        final Context context = getContext();
+        final Bundle animation = useDefaultAnimations ? null
+                : ActivityOptions.makeCustomAnimation(context, 0, 0).toBundle();
+        launchActivityWithAnimationForLockscreenNotification(i, intent, showsWhileLocked, animation, worker, onStarted);
+    }
+
+    public void launchActivityWithAnimationForLockscreenNotification(final PendingIntent i, final Intent intent,
+            boolean showsWhileLocked,
+            final Bundle animation,
+            final Handler worker,
+            final Runnable onStarted) {
+
+        LockPatternUtils lockPatternUtils = getLockPatternUtils();
+        intent.addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK
+                | Intent.FLAG_ACTIVITY_SINGLE_TOP
+                | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        boolean isSecure = lockPatternUtils.isSecure();
+        if (!isSecure || showsWhileLocked) {
+            try {
+                if (DEBUG) Log.d(TAG, String.format("Starting activity for intent %s at %s",
+                        intent, SystemClock.uptimeMillis()));
+                i.send();
+            } catch (ActivityNotFoundException e) {
+                Log.w(TAG, "Activity not found for intent + " + intent.getAction());
+            } catch (CanceledException e) {
+                e.printStackTrace();
+            }
+        } else {
+            // Create a runnable to start the activity and ask the user to enter their
+            // credentials.
+            KeyguardSecurityCallback callback = getCallback();
+            callback.setOnDismissAction(new OnDismissAction() {
+                @Override
+                public boolean onDismiss() {
+                    try {
+                        i.send();
+                    } catch (CanceledException e) {
+                        e.printStackTrace();
+                    }
                     return true;
                 }
             });
