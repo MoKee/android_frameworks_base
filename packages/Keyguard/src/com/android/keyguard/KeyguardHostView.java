@@ -422,6 +422,15 @@ public class KeyguardHostView extends KeyguardViewBase {
         if (mExpandChallengeView != null) {
             mExpandChallengeView.setOnLongClickListener(mFastUnlockClickListener);
         }
+
+        boolean mLockscreenNotifications = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.LOCKSCREEN_NOTIFICATIONS, 1, UserHandle.USER_CURRENT_OR_SELF) == 1;
+        if (mLockscreenNotifications) {
+            NotificationHostView mNotificationView = (NotificationHostView) findViewById(R.id.notification_host_view);
+            if (mNotificationView != null) {
+                mNotificationView.setKeyguardCallback(mCallback);
+            }
+        }
     }
 
     private final OnLongClickListener mFastUnlockClickListener = new OnLongClickListener() {
