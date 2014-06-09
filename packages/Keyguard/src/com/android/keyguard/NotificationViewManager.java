@@ -72,7 +72,7 @@ public class NotificationViewManager {
         public boolean showAlways = true;
         public boolean pocketMode = true;
         public boolean hideLowPriority = false;
-        public boolean hideNonClearable = false;
+        public boolean hideNonClearable = true;
         public boolean dismissAll = true;
         public boolean expandedView = true;
         public boolean forceExpandedView = false;
