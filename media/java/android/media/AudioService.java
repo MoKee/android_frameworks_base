@@ -962,6 +962,12 @@ public class AudioService extends IAudioService.Stub {
 
         int oldIndex = mStreamStates[streamType].getIndex(device);
 
+        // (oldIndex < step) is equivalent to (old UI index == 0)
+        if (direction == AudioManager.ADJUST_RAISE &&
+            oldIndex < step && mVolumeKeysWillNotExitSilentMode) {
+            adjustVolume = false;
+        }
+
         if (adjustVolume && (direction != AudioManager.ADJUST_SAME)) {
 
             // Check if volume update should be send to AVRCP
