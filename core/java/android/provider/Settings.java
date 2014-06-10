@@ -3835,6 +3835,15 @@ public final class Settings {
         public static final String KEY_MENU_ACTION = "key_menu_action";
 
         /**
+         * Control the display of the action overflow button within app UI.
+         * 0 = use system default
+         * 1 = force hide
+         * @hide
+         */
+
+        public static final String UI_FORCE_HIDE_OVERFLOW_BUTTON = "ui_force_hide_overflow_button";
+
+        /**
          * Enables/disables lockscreen notifications
          * @hide
          */
