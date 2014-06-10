@@ -273,6 +273,24 @@ public class NotificationHostView extends FrameLayout {
                         longpress = false;
                         break;
                 }
+            } else {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        initialX = event.getX();
+                        delta = initialX - v.getX();
+                        pointerDown = true;
+                        velocityTracker = VelocityTracker.obtain();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        if (!swipeGesture && !longpress) {
+                            startIntent();
+                        }
+                        velocityTracker.recycle();
+                        swipeGesture = false;
+                        pointerDown = false;
+                        longpress = false;
+                        break;
+                }
             }
             return super.dispatchTouchEvent(event);
         }
