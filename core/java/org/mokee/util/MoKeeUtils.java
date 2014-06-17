@@ -34,6 +34,10 @@ public class MoKeeUtils {
        return Resources.getSystem().getConfiguration().locale.getLanguage().startsWith(Locale.CHINESE.getLanguage());
     }
 
+    public static boolean isTWLanguage() {
+        return Resources.getSystem().getConfiguration().locale.getCountry().equals("TW");
+    }
+
     public static boolean isOnline(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
