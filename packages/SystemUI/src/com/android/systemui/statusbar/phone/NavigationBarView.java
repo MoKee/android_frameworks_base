@@ -104,6 +104,7 @@ public class NavigationBarView extends LinearLayout {
     private Drawable mBackIcon, mBackLandIcon, mBackAltIcon, mBackAltLandIcon;
     private Drawable mRecentIcon;
     private Drawable mRecentLandIcon;
+    private Drawable mHomeIcon, mHomeLandIcon;
     // Used in Lockscreen notifications navbar clear all notifs.
     private Drawable mRecentAltIcon, mRecentAltLandIcon;
 
@@ -112,7 +113,14 @@ public class NavigationBarView extends LinearLayout {
     private final NavigationBarTransitions mBarTransitions;
 
     private boolean mModLockDisabled = true;
+    private boolean mShowDpadArrowKeys = true;
     private SettingsObserver mObserver;
+
+    // Visibility of R.id.one view prior to swapping it for a left arrow key
+    public int mSlotOneVisibility = -1;
+
+    // Visibility of R.id.six view prior to swapping it for a right arrow key
+    public int mSlotSixVisibility = -1;
 
     // workaround for LayoutTransitions leaving the nav buttons in a weird state (bug 5549288)
     final static boolean WORKAROUND_INVALID_LAYOUT = true;
@@ -123,6 +131,8 @@ public class NavigationBarView extends LinearLayout {
 
     // performs manual animation in sync with layout transitions
     private final NavTransitionListener mTransitionListener = new NavTransitionListener();
+
+    private Resources mThemedResources;
 
     private class NavTransitionListener implements TransitionListener {
         private boolean mBackTransitioning;
@@ -380,10 +390,13 @@ public class NavigationBarView extends LinearLayout {
         mRecentLandIcon = res.getDrawable(R.drawable.ic_sysbar_recent_land);
         mRecentAltIcon = res.getDrawable(R.drawable.ic_sysbar_recent_clear);
         mRecentAltLandIcon = res.getDrawable(R.drawable.ic_sysbar_recent_clear_land);
+        mHomeIcon = res.getDrawable(R.drawable.ic_sysbar_home);
+        mHomeLandIcon = res.getDrawable(R.drawable.ic_sysbar_home_land);
     }
 
-    public void updateResources() {
-        getIcons(mContext.getResources());
+    public void updateResources(Resources res) {
+        mThemedResources = res;
+        getIcons(mThemedResources);
         for (int i = 0; i < mRotatedViews.length; i++) {
             ViewGroup container = (ViewGroup) mRotatedViews[i];
             if (container != null) {
@@ -400,17 +413,17 @@ public class NavigationBarView extends LinearLayout {
             for (int i = 0; i < nChildren; i++) {
                 final View child = midNavButtons.getChildAt(i);
                 if (child instanceof KeyButtonView) {
-                    ((KeyButtonView) child).updateResources();
+                    ((KeyButtonView) child).updateResources(mThemedResources);
                 }
             }
         }
         KeyButtonView kbv = (KeyButtonView) findViewById(R.id.one);
         if (kbv != null) {
-            kbv.updateResources();
+            kbv.updateResources(mThemedResources);
         }
         kbv = (KeyButtonView) findViewById(R.id.six);
         if (kbv != null) {
-            kbv.updateResources();
+            kbv.updateResources(mThemedResources);
         }
     }
 
@@ -426,7 +439,8 @@ public class NavigationBarView extends LinearLayout {
                     // ImageView keeps track of the resource ID and if it is the same
                     // it will not update the drawable.
                     iv.setImageDrawable(null);
-                    iv.setImageResource(R.drawable.ic_sysbar_lights_out_dot_large);
+                    iv.setImageDrawable(mThemedResources.getDrawable(
+                            R.drawable.ic_sysbar_lights_out_dot_large));
                 }
             }
         }
@@ -434,7 +448,7 @@ public class NavigationBarView extends LinearLayout {
 
     @Override
     public void setLayoutDirection(int layoutDirection) {
-        getIcons(mContext.getResources());
+        if (mThemedResources != null) getIcons(mThemedResources);
 
         super.setLayoutDirection(layoutDirection);
     }
@@ -492,6 +506,7 @@ public class NavigationBarView extends LinearLayout {
 
         ImageView backView = (ImageView) findButton(NavbarEditor.NAVBAR_BACK);
         ImageView recentView = (ImageView) findButton(NavbarEditor.NAVBAR_RECENT);
+        ImageView homeView = (ImageView) findButton(NavbarEditor.NAVBAR_HOME);
 
         if (backView != null) {
             backView.setImageDrawable(backAlt
@@ -503,7 +518,35 @@ public class NavigationBarView extends LinearLayout {
             recentView.setImageDrawable(mVertical ? mRecentLandIcon : mRecentIcon);
         }
 
+        if (homeView != null) {
+            homeView.setImageDrawable(mVertical ? mHomeLandIcon : mHomeIcon);
+        }
+
         setDisabledFlags(mDisabledFlags, true);
+
+        if (mShowDpadArrowKeys) {
+            final boolean showingIme = ((mNavigationIconHints
+                    & StatusBarManager.NAVIGATION_HINT_BACK_ALT) != 0);
+
+            setVisibleOrGone(getCurrentView().findViewById(R.id.dpad_left), showingIme);
+            setVisibleOrGone(getCurrentView().findViewById(R.id.dpad_right), showingIme);
+
+            View one = getCurrentView().findViewById(mVertical ? R.id.six : R.id.one);
+            View six = getCurrentView().findViewById(mVertical ? R.id.one : R.id.six);
+            if (showingIme) {
+                mSlotOneVisibility = one.getVisibility();
+                mSlotSixVisibility = six.getVisibility();
+                setVisibleOrGone(one, false);
+                setVisibleOrGone(six, false);
+            } else {
+                if (mSlotOneVisibility != -1) {
+                    one.setVisibility(mSlotOneVisibility);
+                }
+                if (mSlotSixVisibility != -1) {
+                    six.setVisibility(mSlotSixVisibility);
+                }
+            }
+        }
     }
 
     public void setButtonDrawable(int buttonId, final int iconId) {
@@ -917,6 +960,12 @@ public class NavigationBarView extends LinearLayout {
             resolver.registerContentObserver(
                 Settings.System.getUriFor(Settings.System.LOCKSCREEN_MODLOCK_ENABLED),
                 false, this);
+            resolver.registerContentObserver(
+                    Settings.System.getUriFor(Settings.System.NAVIGATION_BAR_MENU_ARROW_KEYS),
+                    false, this);
+            resolver.registerContentObserver(
+                    Settings.System.getUriFor(Settings.System.NAV_BUTTONS),
+                    false, this);
 
             // intialize mModlockDisabled
             onChange(false);
@@ -933,7 +982,11 @@ public class NavigationBarView extends LinearLayout {
         public void onChange(boolean selfChange) {
             mModLockDisabled = Settings.System.getInt(mContext.getContentResolver(),
                     Settings.System.LOCKSCREEN_MODLOCK_ENABLED, 1) == 0;
-            setDisabledFlags(mDisabledFlags, true /* force */);
+            mShowDpadArrowKeys = Settings.System.getInt(mContext.getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_MENU_ARROW_KEYS, 1) != 0;
+            mSlotOneVisibility = -1;
+            mSlotSixVisibility = -1;
+            setNavigationIconHints(mNavigationIconHints, true);
         }
     }
 }

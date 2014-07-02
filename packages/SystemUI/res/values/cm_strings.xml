@@ -24,6 +24,8 @@
 
     <string name="accessibility_quick_settings_ringer">Sound <xliff:g id="state" example="Off">%s</xliff:g>.</string>
     <string name="accessibility_quick_settings_vibration">Vibration <xliff:g id="state" example="Off">%s</xliff:g>.</string>
+    <string name="accessibility_dpad_left">Cursor left</string>
+    <string name="accessibility_dpad_right">Cursor right</string>
 
     <string name="bean_dream_settings_cid_title">Use Cid\'s head</string>
     <string name="bean_dream_settings_cid_summary">Use Cid\'s head instead of jellybeans inside the dream</string>
