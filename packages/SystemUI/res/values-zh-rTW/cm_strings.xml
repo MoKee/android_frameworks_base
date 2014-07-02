@@ -18,8 +18,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="accessibility_quick_settings_ringer"><xliff:g id="state" example="Off">%s</xliff:g>音效。</string>
   <string name="accessibility_quick_settings_vibration"><xliff:g id="state" example="Off">%s</xliff:g>震動。</string>
-  <string name="dessert_case_settings_cm_title">顯示 CM 的吉祥物</string>
-  <string name="dessert_case_settings_cm_summary">在休眠模式內顯示 CM 的吉祥物以及 Android 的甜點</string>
   <string name="quick_settings_profile_label">設定檔</string>
   <string name="powerwidget_screen_timeout_toast">螢幕自動關閉時間已設為：%1$d %2$s</string>
   <string name="quick_settings_gps">GPS</string>

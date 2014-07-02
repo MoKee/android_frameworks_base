@@ -19,8 +19,6 @@
   <string name="accessibility_quick_settings_ringer">دەنگە <xliff:g id="قسەکردن" نمونە="کوژانەوە">%s</xliff:g>
 </string>
   <string name="accessibility_quick_settings_vibration">لەرینەوە <xliff:g id="state" نمونە="کوژانەوە">%s</xliff:g>.</string>
-  <string name="dessert_case_settings_cm_title">نیشاندانی بەختێکی باشی ساینۆجنمۆد</string>
-  <string name="dessert_case_settings_cm_summary">نیشاندانی بەختێکی باشی CM لەگەڵ ئارەزوەکانی خەونی ئەندرۆید</string>
   <string name="quick_settings_profile_label">پرۆفایل</string>
   <string name="powerwidget_screen_timeout_toast">دانانی کات بۆ سەرشاشە %1$d %2$s</string>
   <string name="quick_settings_gps">GPS</string>

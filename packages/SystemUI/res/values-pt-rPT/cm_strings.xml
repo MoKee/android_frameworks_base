@@ -18,8 +18,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="accessibility_quick_settings_ringer">Som <xliff:g id="state" example="Off">%s</xliff:g>.</string>
   <string name="accessibility_quick_settings_vibration">Vibração <xliff:g id="state" example="Off">%s</xliff:g>.</string>
-  <string name="dessert_case_settings_cm_title">Mostrar mascotes da CM</string>
-  <string name="dessert_case_settings_cm_summary">Mostrar mascotes da CM junto com as sobremesas do Android dentro do sonho.</string>
   <string name="quick_settings_profile_label">Perfil</string>
   <string name="powerwidget_screen_timeout_toast">Suspensão de ecrã definida para: %1$d %2$s</string>
   <string name="quick_settings_gps">GPS</string>

@@ -18,8 +18,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="accessibility_quick_settings_ringer">Klingelton <xliff:g id="state">%s</xliff:g>.</string>
   <string name="accessibility_quick_settings_vibration">Vibration <xliff:g id="state">%s</xliff:g>.</string>
-  <string name="dessert_case_settings_cm_title">CM-Maskottchen anzeigen</string>
-  <string name="dessert_case_settings_cm_summary">Sowohl die CM-Maskottchen als auch die Android-Süßspeisen im \'Dream\' anzeigen</string>
   <string name="quick_settings_profile_label">Profile</string>
   <string name="powerwidget_screen_timeout_toast">Bildschirmsperre nach: %1$d %2$s</string>
   <string name="quick_settings_gps">GPS</string>
@@ -77,8 +75,6 @@
   <string name="navbar_menu_conditional_button">Menü (automatisch ausblenden)</string>
   <string name="navbar_menu_always_button">Menü (immer sichtbar)</string>
   <string name="navbar_menu_big_button">Menü</string>
-  <string name="bean_dream_settings_cid_title">Cid\'s Kopf verwenden</string>
-  <string name="bean_dream_settings_cid_summary">Den Kopf des MoKee OpenSource-Maskottchens anstelle der \"Jellybeans\" im Daydream verwenden</string>
   <string name="advanced_dev_option_wipe_app">Anwendungsdaten löschen</string>
   <string name="advanced_dev_option_force_stop">Beenden erzwingen</string>
   <string name="accessibility_dock_battery_level">Dock-Akku <xliff:g id="number">%d</xliff:g> Prozent</string>

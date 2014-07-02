@@ -18,8 +18,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="accessibility_quick_settings_ringer">音<xliff:g id="state" example="Off">%s</xliff:g></string>
   <string name="accessibility_quick_settings_vibration">バイブレーション<xliff:g id="state" example="Off">%s</xliff:g></string>
-  <string name="dessert_case_settings_cm_title">CMのマスコットを表示</string>
-  <string name="dessert_case_settings_cm_summary">イースターエッグにAndroidのデザートと一緒にCMのマスコットを表示する</string>
   <string name="quick_settings_profile_label">プロファイル</string>
   <string name="powerwidget_screen_timeout_toast">画面のタイムアウトを%1$d%2$sに設定しました</string>
   <string name="quick_settings_gps">GPS</string>
