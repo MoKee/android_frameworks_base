@@ -2628,12 +2628,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     return -1;
                 }
 
-                // If an incoming call is ringing, HOME is totally disabled.
+                // If an incoming call is ringing and not ignore non-intrusive, HOME is totally disabled.
                 // (The user is already on the InCallScreen at this point,
                 // and his ONLY options are to answer or reject the call.)
                 try {
                     ITelephony telephonyService = getTelephonyService();
-                    if (telephonyService != null && telephonyService.isRinging()) {
+                    if (telephonyService != null && telephonyService.isRinging() && !telephonyService.getIgnoreCallState()) {
                         if ((mRingHomeBehavior
                                 & Settings.Secure.RING_HOME_BUTTON_BEHAVIOR_ANSWER) != 0) {
                             Log.i(TAG, "Answering with HOME button.");

@@ -383,5 +383,10 @@ interface ITelephony {
       void removeListener(ITelephonyListener listener);
 
       int getLteOnGsmMode();
+
+      /**
+       * get Ignore a ringing call state.
+       */
+      boolean getIgnoreCallState();
 }
 

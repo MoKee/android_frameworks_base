@@ -1991,4 +1991,15 @@ public class TelephonyManager {
             Log.e(TAG, "Error calling ITelephony#removeListener", e);
         }
     }
+
+    /** @hide */
+    @PrivateApi
+    public boolean getIgnoreCallState() {
+        try {
+            return getITelephony().getIgnoreCallState();
+        } catch (RemoteException e) {
+            Log.e(TAG, "Error calling ITelephony#getIgnoreCallState", e);
+        }
+        return false;
+    }
 }
