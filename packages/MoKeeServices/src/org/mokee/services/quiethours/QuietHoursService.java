@@ -122,10 +122,10 @@ public class QuietHoursService extends Service  {
         boolean inQuietHours = false;
         if (quietHoursEnd < quietHoursStart) {
             // Starts at night, ends in the morning.
-            inQuietHours =  (minutes > quietHoursStart) || (minutes < quietHoursEnd);
+            inQuietHours =  (minutes >= quietHoursStart) || (minutes < quietHoursEnd);
         } else {
             // Starts in the morning, ends at night.
-            inQuietHours =  (minutes > quietHoursStart) && (minutes < quietHoursEnd);
+            inQuietHours =  (minutes >= quietHoursStart) && (minutes < quietHoursEnd);
         }
 
         if (inQuietHours) {
