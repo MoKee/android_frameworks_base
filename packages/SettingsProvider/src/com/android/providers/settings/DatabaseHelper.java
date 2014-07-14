@@ -2158,7 +2158,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     R.integer.def_double_tap_sleep_gesture);
 
             //loadIntegerSetting(stmt, Settings.System.SCREEN_ANIMATION_STYLE,
-                    R.integer.def_screen_animation_style);
+                    //R.integer.def_screen_animation_style);
 
             //loadDefaultAnimationSettings(stmt);
 
