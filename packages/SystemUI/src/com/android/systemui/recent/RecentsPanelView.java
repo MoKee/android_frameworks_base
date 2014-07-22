@@ -583,7 +583,7 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
         mShortcutBar = (ScrollView) findViewById(R.id.shortcut_bar);
         mShortcutList = (LinearLayout) findViewById(R.id.shortcut_list);
         refreshShortcutList();
-        
+
         if (mRecentsScrim != null) {
             mHighEndGfx = ActivityManager.isHighEndGfx();
             if (!mHighEndGfx) {
@@ -715,7 +715,7 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                 if (i.packageName.equals(packageName) && i.taskId >= 0) {
                     IWindowManager wm = (IWindowManager) WindowManagerGlobal.getWindowManagerService();
                     try {
-				        if (DEBUG) Log.v(TAG, "Restoring window full screen after split, because of normal tap");
+                        if (DEBUG) Log.v(TAG, "Restoring window full screen after split, because of normal tap");
                             wm.setTaskSplitView(i.taskId, false);
                         } catch (RemoteException e) {
                             Log.e(TAG, "Could not setTaskSplitView to fullscreen", e);

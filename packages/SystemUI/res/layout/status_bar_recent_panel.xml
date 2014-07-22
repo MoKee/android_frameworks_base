@@ -69,12 +69,12 @@
             android:gravity="center_horizontal"
             android:fillViewport="true">
 
-		<LinearLayout
-		    android:id="@+id/shortcut_list"
-		    android:orientation="vertical"
-		    android:layout_width="match_parent"
-		    android:layout_height="match_parent">
-		</LinearLayout>
+                <LinearLayout
+                    android:id="@+id/shortcut_list"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </LinearLayout>
 
         </ScrollView>
 
