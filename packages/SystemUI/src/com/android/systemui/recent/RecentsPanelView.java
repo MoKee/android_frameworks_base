@@ -612,9 +612,9 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
             shortcutItemString = shortcutItemString.substring(0, shortcutItemString.length() - 1);
             Settings.System.putStringForUser(mContentResolver, Settings.System.SHORTCUT_ITEMS, shortcutItemString, UserHandle.USER_CURRENT);
         }
+        int layoutGravity = Settings.System.getIntForUser(mContentResolver, Settings.System.SHORTCUT_ITEMS_GRAVITY, 0, UserHandle.USER_CURRENT);
+        ScrollView.LayoutParams layoutParams = new ScrollView.LayoutParams(mShortcutBar.getLayoutParams());
         if (mContext.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            ScrollView.LayoutParams layoutParams = new ScrollView.LayoutParams(mShortcutBar.getLayoutParams());
-            int layoutGravity = Settings.System.getIntForUser(mContentResolver, Settings.System.SHORTCUT_ITEMS_GRAVITY, 0, UserHandle.USER_CURRENT);
             switch (layoutGravity) {
                 case 0:
                     layoutParams.gravity = Gravity.TOP | Gravity.RIGHT;
@@ -638,13 +638,28 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                     break;
             }
             mShortcutBar.setLayoutParams(layoutParams);
+        } else if (isTablet(mContext)){
+            switch (layoutGravity) {
+                case 1:
+                case 3:
+                    layoutParams.gravity = Gravity.BOTTOM | Gravity.LEFT;
+                    mShortcutList.setGravity(Gravity.BOTTOM);
+                    setShortcutListInBottom(mShortcutListItems, mContentResolver);
+                    break;
+                default:
+                    layoutParams.gravity = Gravity.TOP | Gravity.LEFT;
+                    mShortcutList.setGravity(Gravity.TOP);
+                    setShortcutListInTop(mShortcutListItems, mContentResolver);
+                    break;
+            }
+            mShortcutBar.setLayoutParams(layoutParams);
         } else {
             setShortcutListInTop(mShortcutListItems, mContentResolver);
         }
         mFirstShortcut = (ImageView)mShortcutList.getChildAt(0);
         mLastShortcut = (ImageView)mShortcutList.getChildAt(mShortcutList.getChildCount() - 1);
         requestFitSystemWindows();
-    };
+    }
 
     private void setShortcutListInTop(String[] mShortcutListItems, ContentResolver mContentResolver) {
         for (int i = 0; i < mShortcutListItems.length; i++) {
@@ -707,6 +722,10 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
             }
             mShortcutList.addView(mShortCutView);
         }
+    }
+
+    public static boolean isTablet(Context context) {
+        return (context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
     private void startApplicationActivity(String packageName, String loginMain) {
