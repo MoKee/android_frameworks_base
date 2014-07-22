@@ -1664,6 +1664,10 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 mClockView = (Clock) mStatusBarView.findViewById(R.id.center_clock);
                 mStatusBarView.findViewById(R.id.clock).setVisibility(View.GONE);
                 break;
+            default:
+                mStatusBarView.findViewById(R.id.center_clock).setVisibility(View.GONE);
+                mStatusBarView.findViewById(R.id.clock).setVisibility(View.GONE);
+                break;
         }
 
         updateClockVisibility();
