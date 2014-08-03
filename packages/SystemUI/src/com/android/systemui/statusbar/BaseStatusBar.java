@@ -528,7 +528,7 @@ public abstract class BaseStatusBar extends SystemUI implements
                 if (packageNameF.equals("com.android.settings")) {
                     mNotificationBlamePopup.getMenu().findItem(R.id.notification_spam_item).setVisible(false);
                 }
-                
+
                 mNotificationBlamePopup
                 .setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
