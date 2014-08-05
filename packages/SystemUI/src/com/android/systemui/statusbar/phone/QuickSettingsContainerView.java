@@ -151,8 +151,8 @@ public class QuickSettingsContainerView extends FrameLayout {
                 }
             }
         } else {
-            availableWidth -= (mNumColumns - 1) * cellGap;
-            cellWidth = (float) Math.floor(availableWidth / mNumColumns);
+            availableWidth -= (mNumFinalColumns - 1) * cellGap;
+            cellWidth = (float) Math.floor(availableWidth / mNumFinalColumns);
             cellHeight = getResources().getDimensionPixelSize(R.dimen.quick_settings_cell_height);
         }
 
