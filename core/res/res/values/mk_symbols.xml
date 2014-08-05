@@ -63,11 +63,6 @@
   <java-symbol type="string" name="status_year" />
   <java-symbol type="string" name="status_day" />
 
-  <!-- Network Speed Indicator -->
-  <java-symbol type="integer" name="config_networkSpeedIndicatorRefreshTimeout" />
-  <java-symbol type="integer" name="config_networkSpeedIndicatorSingleLineFontSize" />
-  <java-symbol type="integer" name="config_networkSpeedIndicatorDualLineFontSize" />
-
   <!-- Privacy Guard -->
   <java-symbol type="drawable" name="stat_notify_privacy_guard" />
 
