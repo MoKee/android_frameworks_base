@@ -3351,7 +3351,7 @@ public final class Settings {
          * show traffic in statusbar. The value is
          * int (0: Hide  or 1: Only Rx 2: Rx&Tx).
          */
-        public static final String STATUS_BAR_TRAFFIC_STYLE = "status_bar_traffic_style";
+        public static final String STATUS_BAR_NETWORK_TRAFFIC_STYLE = "STATUS_BAR_NETWORK_TRAFFIC_STYLE";
 
         /**
          * Always turn on screen after call ignoring proximity?
