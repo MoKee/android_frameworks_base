@@ -24,8 +24,15 @@
         android:layout_width="@dimen/qs_tile_icon_size"
         android:layout_height="@dimen/qs_tile_icon_size"
         android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/ic_qs_battery_bg" >
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top|center_horizontal"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_qs_battery_bg" />
 
         <com.android.systemui.BatteryMeterView
             android:id="@+id/battery"
