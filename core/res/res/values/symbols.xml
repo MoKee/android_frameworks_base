@@ -2028,4 +2028,9 @@
 
   <!-- Proximity check timeout -->
   <java-symbol type="integer" name="config_proximityCheckTimeout" />
+
+  <!-- Last app switch animations -->
+   <java-symbol type="anim" name="last_app_in" />
+   <java-symbol type="anim" name="last_app_out" />
+
 </resources>
