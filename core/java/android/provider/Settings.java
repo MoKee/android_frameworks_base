@@ -3365,7 +3365,7 @@ public final class Settings {
          * 1 = yes
          * @hide
          */
-        public static final String INCALL_PROXIMITY_SENSOR_DISABLED = "incall_proximity_sensor_disabled";
+        public static final String INACCURATE_PROXIMITY_WORKAROUND = "inaccurate_proximity_sensor";
 
         /**
          * Whether power saver is enabled
