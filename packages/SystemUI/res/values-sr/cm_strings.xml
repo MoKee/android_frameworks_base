@@ -20,8 +20,6 @@
   <string name="accessibility_quick_settings_vibration">Вибрација <xliff:g id="state" example="Off">%s</xliff:g>.</string>
   <string name="accessibility_dpad_left">Курсор лево</string>
   <string name="accessibility_dpad_right">Курсор десно</string>
-  <string name="dessert_case_settings_cm_title">Прикажи CM маскоте</string>
-  <string name="dessert_case_settings_cm_summary">Прикажи CM маскоте заједно са Android-овим</string>
   <string name="quick_settings_profile_label">Профил</string>
   <string name="powerwidget_screen_timeout_toast">Гашење екрана за: %1$d %2$s</string>
   <string name="quick_settings_gps">GPS</string>
