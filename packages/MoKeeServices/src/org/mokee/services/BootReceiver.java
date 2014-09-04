@@ -36,7 +36,7 @@ public class BootReceiver extends BroadcastReceiver {
 
         ContentResolver res = context.getContentResolver();
         // Start the powersaver service if enabled
-        if (Settings.System.getIntForUser(res, Settings.System.POWER_SAVER_ENABLED, 1, UserHandle.USER_CURRENT_OR_SELF) != 0) {
+        if (Settings.System.getIntForUser(res, Settings.System.POWER_SAVER_ENABLED, 0, UserHandle.USER_CURRENT_OR_SELF) != 0) {
             Intent powersaver = new Intent(context, org.mokee.services.powersaver.PowerSaverService.class);
             context.startService(powersaver);
         }

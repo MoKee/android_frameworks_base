@@ -86,7 +86,7 @@ public class PowerSaverService extends Service  {
         mPowerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
 
         // firewall
-        mEnabled = Settings.System.getIntForUser(mContentResolver, Settings.System.POWER_SAVER_ENABLED, 1, UserHandle.USER_CURRENT_OR_SELF) != 0;
+        mEnabled = Settings.System.getIntForUser(mContentResolver, Settings.System.POWER_SAVER_ENABLED, 0, UserHandle.USER_CURRENT_OR_SELF) != 0;
         mNotification = Settings.System.getIntForUser(mContentResolver, Settings.System.POWER_SAVER_NOTIFICATION, 1, UserHandle.USER_CURRENT_OR_SELF) != 0;
 
         if (mEnabled) {
