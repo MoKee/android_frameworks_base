@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2013-2014 The CyanogenMod Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.android.systemui.quicksettings;
 
 import android.content.ComponentName;
@@ -5,17 +21,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
-import android.util.TypedValue;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.internal.util.cm.QSUtils;
 import com.android.systemui.R;
 import com.android.systemui.statusbar.phone.QuickSettingsController;
 import com.android.systemui.statusbar.policy.NetworkController;
-
-import static com.android.internal.util.cm.QSUtils.deviceSupportsMobileData;
 
 public class MobileNetworkTile extends NetworkTile {
     private static final int NO_OVERLAY = 0;
@@ -24,13 +37,14 @@ public class MobileNetworkTile extends NetworkTile {
     private boolean mEnabled;
     private String mDescription;
     private int mDataTypeIconId = NO_OVERLAY;
-    private String dataContentDescription;
-    private String signalContentDescription;
+    private String mDataContentDescription;
+    private String mSignalContentDescription;
     private boolean mWifiOn = false;
 
     private ConnectivityManager mCm;
 
-    public MobileNetworkTile(Context context, QuickSettingsController qsc, NetworkController controller) {
+    public MobileNetworkTile(Context context, QuickSettingsController qsc,
+            NetworkController controller) {
         super(context, qsc, controller, R.layout.quick_settings_tile_rssi);
 
         mCm = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -39,7 +53,8 @@ public class MobileNetworkTile extends NetworkTile {
             @Override
             public void onClick(View v) {
                 if (!mCm.getMobileDataEnabled()) {
-                    updateOverlayImage(NO_OVERLAY); // None, onMobileDataSignalChanged will set final overlay image
+                    // None, onMobileDataSignalChanged will set final overlay image
+                    updateOverlayImage(NO_OVERLAY);
                     mCm.setMobileDataEnabled(true);
                 } else {
                     updateOverlayImage(DISABLED_OVERLAY);
@@ -47,8 +62,7 @@ public class MobileNetworkTile extends NetworkTile {
                 }
             }
         };
-
-        mOnLongClick = new OnLongClickListener() {
+        mOnLongClick = new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 Intent intent = new Intent();
@@ -64,8 +78,8 @@ public class MobileNetworkTile extends NetworkTile {
     @Override
     protected void updateTile() {
         Resources r = mContext.getResources();
-        dataContentDescription = mEnabled && (mDataTypeIconId > 0) && !mWifiOn
-                ? dataContentDescription
+        mDataContentDescription = mEnabled && mDataTypeIconId > 0 && !mWifiOn
+                ? mDataContentDescription
                 : r.getString(R.string.accessibility_no_data);
         mLabel = mEnabled
                 ? mDescription
@@ -84,31 +98,33 @@ public class MobileNetworkTile extends NetworkTile {
             int mobileSignalIconId, String mobileSignalContentDescriptionId,
             int dataTypeIconId, boolean activityIn, boolean activityOut,
             String dataTypeContentDescriptionId, String description) {
-        if (deviceSupportsMobileData(mContext)) {
-            // TODO: If view is in awaiting state, disable
-            Resources r = mContext.getResources();
-            mDrawable = enabled && (mobileSignalIconId > 0)
-                    ? mobileSignalIconId
-                    : R.drawable.ic_qs_signal_no_signal;
-            signalContentDescription = enabled && (mobileSignalIconId > 0)
-                    ? signalContentDescription
-                    : r.getString(R.string.accessibility_no_signal);
-
-            // Determine the overlay image
-            if (enabled && (dataTypeIconId > 0) && !mWifiOn) {
-                mDataTypeIconId = dataTypeIconId;
-            } else if (!mCm.getMobileDataEnabled()) {
-                mDataTypeIconId = DISABLED_OVERLAY;
-            } else {
-                mDataTypeIconId = NO_OVERLAY;
-            }
-
-            mEnabled = enabled;
-            mDescription = removeTrailingPeriod(description);
-
-            setActivity(activityIn, activityOut);
-            updateResources();
+        if (!QSUtils.deviceSupportsMobileData(mContext)) {
+            return;
         }
+
+        // TODO: If view is in awaiting state, disable
+        Resources r = mContext.getResources();
+        mDrawable = enabled && mobileSignalIconId > 0
+                ? mobileSignalIconId
+                : R.drawable.ic_qs_signal_no_signal;
+        mSignalContentDescription = enabled && mobileSignalIconId > 0
+                ? mSignalContentDescription
+                : r.getString(R.string.accessibility_no_signal);
+
+        // Determine the overlay image
+        if (enabled && dataTypeIconId > 0 && !mWifiOn) {
+            mDataTypeIconId = dataTypeIconId;
+        } else if (!mCm.getMobileDataEnabled()) {
+            mDataTypeIconId = DISABLED_OVERLAY;
+        } else {
+            mDataTypeIconId = NO_OVERLAY;
+        }
+
+        mEnabled = enabled;
+        mDescription = removeTrailingPeriod(description);
+
+        setActivity(activityIn, activityOut);
+        updateResources();
     }
 
     @Override
@@ -116,19 +132,18 @@ public class MobileNetworkTile extends NetworkTile {
     }
 
     @Override
+    protected View getImageView() {
+        return mTile.findViewById(R.id.rssi_image);
+    }
+
+    @Override
     void updateQuickSettings() {
-        TextView tv = (TextView) mTile.findViewById(R.id.text);
-        ImageView iv = (ImageView) mTile.findViewById(R.id.rssi_image);
-        if (tv != null) {
-            tv.setText(mLabel);
-            tv.setTextSize(mTileTextSize);
-            tv.setPadding(0, mTileTextPadding, 0, 0);
-        }
-        iv.setImageResource(mDrawable);
+        super.updateQuickSettings();
+
         updateOverlayImage(mDataTypeIconId);
         mTile.setContentDescription(mContext.getResources().getString(
                 R.string.accessibility_quick_settings_mobile,
-                signalContentDescription, dataContentDescription,
+                mSignalContentDescription, mDataContentDescription,
                 mLabel));
     }
 
@@ -144,14 +159,12 @@ public class MobileNetworkTile extends NetworkTile {
     }
 
     // Remove the period from the network name
-    public static String removeTrailingPeriod(String string) {
+    private static String removeTrailingPeriod(String string) {
         if (string == null) return null;
         final String aux = string.trim();
-        final int length = aux.length();
         if (aux.endsWith(".")) {
-            return aux.substring(0, length - 1);
+            return aux.substring(0, aux.length() - 1);
         }
         return aux;
     }
-
 }
