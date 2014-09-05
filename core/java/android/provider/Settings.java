@@ -3417,14 +3417,6 @@ public final class Settings {
         public static final String STATUS_BAR_NETWORK_TRAFFIC_STYLE = "STATUS_BAR_NETWORK_TRAFFIC_STYLE";
 
         /**
-         * Always turn on screen after call ignoring proximity?
-         * 0 = no
-         * 1 = yes
-         * @hide
-         */
-        public static final String INCALL_PROXIMITY_SENSOR_DISABLED = "incall_proximity_sensor_disabled";
-
-        /**
          * Whether power saver is enabled
          * @hide
          */
