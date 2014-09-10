@@ -33,6 +33,7 @@ import android.widget.TextView;
 import com.android.internal.telephony.MSimConstants;
 import com.android.systemui.statusbar.policy.NetworkController;
 import com.android.systemui.statusbar.policy.MSimNetworkController;
+import com.android.systemui.statusbar.phone.PhoneStatusBar;
 
 import com.android.systemui.R;
 
@@ -87,6 +88,8 @@ public class MSimSignalClusterView
     private int[] mNoSimSlotResourceId = {R.id.no_sim, R.id.no_sim_slot2, R.id.no_sim_slot3};
     private int mNumPhones = MSimTelephonyManager.getDefault().getPhoneCount();
 
+    private PhoneStatusBar mStatusBar;
+
     public MSimSignalClusterView(Context context) {
         this(context, null);
     }
@@ -116,6 +119,10 @@ public class MSimSignalClusterView
         }
     }
 
+    public void setStatusBar(PhoneStatusBar phoneStatusBar) {
+        mStatusBar = phoneStatusBar;
+    }
+
     public void setNetworkController(MSimNetworkController nc) {
         if (DEBUG) Slog.d(TAG, "MSimNetworkController=" + nc);
         mMSimNC = nc;
@@ -131,6 +138,9 @@ public class MSimSignalClusterView
         mSpacer         =             findViewById(R.id.spacer);
         mAirplane       = (ImageView) findViewById(R.id.airplane);
 
+        mStatusBar.addIconToColor(mWifi);
+        mStatusBar.addIconToColor(mWifiActivity);
+
         for (int i = 0; i < mNumPhones; i++) {
             mMobileGroup[i]    = (ViewGroup) findViewById(mMobileGroupResourceId[i]);
             mMobileSlot[i]     = (TextView) findViewById(mMobileSlotResourceId[i]);
@@ -138,7 +148,13 @@ public class MSimSignalClusterView
             mMobileActivity[i] = (ImageView) findViewById(mMobileActResourceId[i]);
             mMobileType[i]     = (ImageView) findViewById(mMobileTypeResourceId[i]);
             mNoSimSlot[i]      = (ImageView) findViewById(mNoSimSlotResourceId[i]);
+            
+            mStatusBar.addIconToColor(mMobile[i]);
+            mStatusBar.addIconToColor(mMobileActivity[i]);
+            mStatusBar.addIconToColor(mMobileType[i]);
+            mStatusBar.addIconToColor(mNoSimSlot[i]);
         }
+
         applySubscription(MSimTelephonyManager.getDefault().getDefaultSubscription());
     }
 

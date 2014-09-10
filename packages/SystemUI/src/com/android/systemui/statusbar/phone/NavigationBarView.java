@@ -553,6 +553,7 @@ public class NavigationBarView extends LinearLayout {
         }
 
         setDisabledFlags(mDisabledFlags, true);
+        mBarTransitions.resetColorBackground(backAlt);
 
         if (mShowDpadArrowKeys) {
             final boolean showingIme = ((mNavigationIconHints

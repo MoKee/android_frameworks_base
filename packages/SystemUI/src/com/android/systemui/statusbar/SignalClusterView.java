@@ -29,6 +29,7 @@ import android.widget.LinearLayout;
 
 import com.android.systemui.R;
 import com.android.systemui.statusbar.policy.NetworkController;
+import com.android.systemui.statusbar.phone.PhoneStatusBar;
 
 // Intimately tied to the design of res/layout/signal_cluster_view.xml
 public class SignalClusterView
@@ -62,6 +63,8 @@ public class SignalClusterView
         mEthernet;
     View mSpacer;
 
+    private PhoneStatusBar mStatusBar;
+
     public SignalClusterView(Context context) {
         this(context, null);
     }
@@ -72,6 +75,10 @@ public class SignalClusterView
 
     public SignalClusterView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+    }
+
+    public void setStatusBar(PhoneStatusBar phoneStatusBar) {
+        mStatusBar = phoneStatusBar;
     }
 
     public void setNetworkController(NetworkController nc) {
@@ -94,6 +101,14 @@ public class SignalClusterView
         mSpacer         =             findViewById(R.id.spacer);
         mAirplane       = (ImageView) findViewById(R.id.airplane);
         mEthernet       = (ImageView) findViewById(R.id.ethernet);
+        mStatusBar.addIconToColor(mWifi);
+        mStatusBar.addIconToColor(mWifiActivity);
+        mStatusBar.addIconToColor(mMobile);
+        mStatusBar.addIconToColor(mMobileActivity);
+        mStatusBar.addIconToColor(mMobileType);
+        mStatusBar.addIconToColor(mNoSimSlot);
+        mStatusBar.addIconToColor(mAirplane);
+        mStatusBar.addIconToColor(mEthernet);
 
         apply();
     }

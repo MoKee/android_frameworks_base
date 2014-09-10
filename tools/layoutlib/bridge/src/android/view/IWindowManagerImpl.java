@@ -503,4 +503,9 @@ public class IWindowManagerImpl implements IWindowManager {
     public boolean hasMenuKeyEnabled() {
         return true;
     }
+
+    @Override
+    public Bitmap getScreenshotFromApplications(IBinder appToken) {
+        return null;
+    }
 }

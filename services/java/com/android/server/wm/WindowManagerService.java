@@ -11276,6 +11276,47 @@ public class WindowManagerService extends IWindowManager.Stub
         }
 
     }
-
     /** END SPLIT VIEW **/
+
+    @Override
+    public Bitmap getScreenshotFromApplications(IBinder appToken) {
+        if (!checkCallingPermission(android.Manifest.permission.READ_FRAME_BUFFER,
+                "screenshotApplications()")) {
+            return null;
+        }
+
+        final DisplayContent displayContent = getDefaultDisplayContentLocked();
+        final boolean rotated = (mRotation == Surface.ROTATION_90
+                || mRotation == Surface.ROTATION_270);
+        final int realdw = rotated ?
+                displayContent.mBaseDisplayHeight : displayContent.mBaseDisplayWidth;
+        final int realdh = rotated ?
+                displayContent.mBaseDisplayWidth : displayContent.mBaseDisplayHeight;
+
+        int dw = realdw;
+        int dh = realdh;
+
+        // Get application display metrics.
+        int appWidth = mPolicy.getNonDecorDisplayWidth(dw, dh, mRotation);
+        int appHeight = mPolicy.getNonDecorDisplayHeight(dw, dh, mRotation);
+
+        Bitmap bitmap = SurfaceControl.screenshot(appWidth, appHeight, 0, 22000);
+        if (bitmap == null) {
+            return null;
+        }
+        Bitmap ss = Bitmap.createBitmap(appWidth, appHeight, Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(ss);
+        c.drawBitmap(bitmap, 0, 0, null);
+        c.setBitmap(null);
+
+        // Recycle the previous bitmap
+        bitmap.recycle();
+        bitmap = ss;
+
+        // Optimizations
+        bitmap.setHasAlpha(false);
+        bitmap.prepareToDraw();
+
+        return bitmap;
+    }
 }

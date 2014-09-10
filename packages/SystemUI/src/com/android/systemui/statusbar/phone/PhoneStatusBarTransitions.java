@@ -21,9 +21,16 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.res.Resources;
 import android.telephony.MSimTelephonyManager;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.systemui.R;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public final class PhoneStatusBarTransitions extends BarTransitions {
     private static final float ICON_ALPHA_WHEN_NOT_OPAQUE = 1;
@@ -32,6 +39,9 @@ public final class PhoneStatusBarTransitions extends BarTransitions {
 
     private final PhoneStatusBarView mView;
     private final float mIconAlphaWhenOpaque;
+
+    private ArrayList<ImageView> mIcons = new ArrayList<ImageView>();
+    private ArrayList<TextView> mTexts = new ArrayList<TextView>();
 
     private View mLeftSide, mStatusIcons, mSignalCluster, mClock, mCenterClock, mNetworkTraffic;
     private View mBattery, mDockBattery;
@@ -77,14 +87,71 @@ public final class PhoneStatusBarTransitions extends BarTransitions {
                 : getNonBatteryClockAlphaFor(mode);
     }
 
-    private boolean isOpaque(int mode) {
+    public boolean isOpaque(int mode) {
         return !(mode == MODE_SEMI_TRANSPARENT || mode == MODE_TRANSLUCENT);
+    }
+
+    @Override
+    public void transitionTo(int mode, boolean animate) {
+        if (mode == MODE_SEMI_TRANSPARENT || mode == MODE_TRANSLUCENT) {
+            changeColorIconBackground(-3, -3);
+        }
+        super.transitionTo(mode, animate);
     }
 
     @Override
     protected void onTransition(int oldMode, int newMode, boolean animate) {
         super.onTransition(oldMode, newMode, animate);
         applyMode(newMode, animate);
+    }
+
+    public void addIcon(ImageView iv) {
+        if (!mIcons.contains(iv)) {
+            mIcons.add(iv);
+        }
+    }
+
+    public void addText(TextView tv) {
+        if (!mTexts.contains(tv)) {
+            mTexts.add(tv);
+        }
+    }
+
+    @Override
+    public void changeColorIconBackground(int bg_color, int ic_color) {
+        super.changeColorIconBackground(bg_color, ic_color);
+        if (getMode() == MODE_SEMI_TRANSPARENT || getMode() == MODE_TRANSLUCENT) {
+            return;
+        }
+        if (isBrightColor(bg_color)) {
+            ic_color = Color.BLACK;
+        }
+
+        for (Iterator <ImageView> ivIterator = mIcons.iterator(); ivIterator.hasNext();) {
+            ImageView icon = ivIterator.next();
+            if (icon != null) {
+                if (ic_color == -3) {
+                    icon.clearColorFilter();
+                } else {
+                    icon.setColorFilter(ic_color, PorterDuff.Mode.SRC_ATOP);
+                }
+            } else {
+                ivIterator.remove();
+            }
+        }
+
+        for (Iterator <TextView> tvIterator = mTexts.iterator(); tvIterator.hasNext();) {
+            TextView tv = tvIterator.next();
+            if (tv != null) {
+                if (ic_color == -3) {
+                    tv.setTextColor(Color.WHITE);
+                } else {
+                    tv.setTextColor(ic_color);
+                }
+            } else {
+                tvIterator.remove();
+            }
+        }
     }
 
     private void applyMode(int mode, boolean animate) {
