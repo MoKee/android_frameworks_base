@@ -29,7 +29,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.os.Looper;
@@ -196,17 +195,10 @@ public class NotificationHostView extends FrameLayout {
         public void onClick(View v) {
             PendingIntent i = statusBarNotification.getNotification().contentIntent;
             if (!swipeGesture && !longpress && i != null) {
-                if ((statusBarNotification.getNotification().flags & Notification.FLAG_AUTO_CANCEL) != 0) {
-                    dismiss(statusBarNotification);
-                }
                 try {
                     Intent intent = i.getIntent();
                     ActivityManagerNative.getDefault().dismissKeyguardOnNextActivity();
                     mActivityLauncher.launchActivityForLockscreenNotification(i, intent, false, true, null, null);
-                    i.send();
-                    hideAllNotifications();
-                } catch (CanceledException ex) {
-                    Log.e(TAG, "intent canceled!");
                 } catch (RemoteException ex) {
                     Log.e(TAG, "failed to dimiss keyguard!");
                 }
@@ -227,6 +219,10 @@ public class NotificationHostView extends FrameLayout {
 
             @Override
             protected void dismissKeyguardOnNextActivity() {
+                if ((statusBarNotification.getNotification().flags & Notification.FLAG_AUTO_CANCEL) != 0) {
+                    dismiss(statusBarNotification);
+                }
+                hideAllNotifications();
                 getCallback().dismiss(false);
             }
 
