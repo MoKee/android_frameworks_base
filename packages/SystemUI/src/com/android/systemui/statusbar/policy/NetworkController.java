@@ -1069,7 +1069,7 @@ public class NetworkController extends BroadcastReceiver implements DemoMode {
         }
     }
 
-    private String huntForSsid(WifiInfo info) {
+    String huntForSsid(WifiInfo info) { // PIE
         String ssid = info.getSSID();
         if (ssid != null) {
             return ssid;
