@@ -330,12 +330,16 @@ public class MediaScanner
     private boolean mWasEmptyPriorToScan = false;
     /** Whether the scanner has set a default sound for the ringer ringtone. */
     private boolean mDefaultRingtoneSet;
+    /** Whether the scanner has set a default sound for the SIM-2 ringer ringtone. */
+    private boolean mDefaultRingtoneSet_2;
     /** Whether the scanner has set a default sound for the notification ringtone. */
     private boolean mDefaultNotificationSet;
     /** Whether the scanner has set a default sound for the alarm ringtone. */
     private boolean mDefaultAlarmSet;
     /** The filename for the default sound for the ringer ringtone. */
     private String mDefaultRingtoneFilename;
+    /** The filename for the default sound for the SIM-2 ringer ringtone. */
+    private String mDefaultRingtoneFilename_2;
     /** The filename for the default sound for the notification ringtone. */
     private String mDefaultNotificationFilename;
     /** The filename for the default sound for the alarm ringtone. */
@@ -405,6 +409,8 @@ public class MediaScanner
     private void setDefaultRingtoneFileNames() {
         mDefaultRingtoneFilename = SystemProperties.get(DEFAULT_RINGTONE_PROPERTY_PREFIX
                 + Settings.System.RINGTONE);
+        mDefaultRingtoneFilename_2 = SystemProperties.get(DEFAULT_RINGTONE_PROPERTY_PREFIX
+                + Settings.System.RINGTONE_2);
         mDefaultNotificationFilename = SystemProperties.get(DEFAULT_RINGTONE_PROPERTY_PREFIX
                 + Settings.System.NOTIFICATION_SOUND);
         mDefaultAlarmAlertFilename = SystemProperties.get(DEFAULT_RINGTONE_PROPERTY_PREFIX
@@ -814,6 +820,8 @@ public class MediaScanner
         private Uri endFile(FileEntry entry, boolean ringtones, boolean notifications,
                 boolean alarms, boolean music, boolean podcasts)
                 throws RemoteException {
+            boolean isRingtone_2 = false;
+            
             // update database
 
             // use album artist if artist is missing
@@ -948,6 +956,12 @@ public class MediaScanner
                                 doesPathHaveFilename(entry.mPath, mDefaultRingtoneFilename)) {
                             needToSetSettings = true;
                         }
+                    } else if (ringtones && !mDefaultRingtoneSet_2) {
+                        if (TextUtils.isEmpty(mDefaultRingtoneFilename_2) ||
+                                doesPathHaveFilename(entry.mPath, mDefaultRingtoneFilename_2)) {
+                            needToSetSettings = true;
+                            isRingtone_2 = true;
+                        }
                     } else if (alarms && !mDefaultAlarmSet) {
                         if (TextUtils.isEmpty(mDefaultAlarmAlertFilename) ||
                                 doesPathHaveFilename(entry.mPath, mDefaultAlarmAlertFilename)) {
@@ -1005,15 +1019,18 @@ public class MediaScanner
                     setSettingIfNotSet(Settings.System.NOTIFICATION_SOUND, tableUri, rowId);
                     mDefaultNotificationSet = true;
                 } else if (ringtones) {
-                    setSettingIfNotSet(Settings.System.RINGTONE, tableUri, rowId);
-                    if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
-                        int phoneCount = MSimTelephonyManager.getDefault().getPhoneCount();
-                        for (int i = MSimConstants.SUB2; i < phoneCount; i++) {
-                            // Set the default setting to the given URI for multi SIMs
-                            setSettingIfNotSet((Settings.System.RINGTONE + (i+1)), tableUri, rowId);
+                    if (!isRingtone_2) {
+                        setSettingIfNotSet(Settings.System.RINGTONE, tableUri, rowId);
+                        mDefaultRingtoneSet = true;
+                    } else {
+                        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+                            int phoneCount = MSimTelephonyManager.getDefault().getPhoneCount();
+                            for (int i = MSimConstants.SUB2; i < phoneCount; i++) {                            
+                                setSettingIfNotSet((Settings.System.RINGTONE + "_" + (i+1)), tableUri, rowId);
+                            }
+                            mDefaultRingtoneSet_2 = true;
                         }
                     }
-                    mDefaultRingtoneSet = true;
                 } else if (alarms) {
                     setSettingIfNotSet(Settings.System.ALARM_ALERT, tableUri, rowId);
                     mDefaultAlarmSet = true;
