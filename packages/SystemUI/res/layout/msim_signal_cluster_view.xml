@@ -90,12 +90,6 @@
                 android:layout_width="3dp"
                 android:id="@+id/spacer"
                 />
-            <TextView android:layout_gravity="bottom|right|center"
-                android:id="@+id/mobile_slot_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextAppearance.StatusBar.SimSlotLabel"
-                />
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -138,12 +132,6 @@
                 android:layout_width="3dp"
                 android:id="@+id/spacer"
                 />
-            <TextView android:layout_gravity="bottom|right|center"
-                android:id="@+id/mobile_slot_label_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextAppearance.StatusBar.SimSlotLabel"
-                />
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -185,12 +173,6 @@
                 android:layout_height="6dp"
                 android:layout_width="3dp"
                 android:id="@+id/spacer"
-                />
-            <TextView android:layout_gravity="bottom|right|center"
-                android:id="@+id/mobile_slot_label_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextAppearance.StatusBar.SimSlotLabel"
                 />
             <FrameLayout
                 android:layout_width="wrap_content"
