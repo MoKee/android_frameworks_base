@@ -318,6 +318,7 @@
   <java-symbol type="integer" name="config_wifi_framework_scan_interval" />
   <java-symbol type="integer" name="config_wifi_supplicant_scan_interval" />
   <java-symbol type="integer" name="config_wifi_scan_interval_p2p_connected" />
+  <java-symbol type="integer" name="config_wifi_scan_interval_wfd_connected" />
   <java-symbol type="integer" name="db_connection_pool_size" />
   <java-symbol type="integer" name="db_journal_size_limit" />
   <java-symbol type="integer" name="db_wal_autocheckpoint" />
@@ -2078,4 +2079,6 @@
   <java-symbol type="string" name="theme_install_error_title" />
   <java-symbol type="string" name="theme_install_error_message" />
 
+  <!-- for wifi auto connection -->
+  <java-symbol type="bool" name="wifi_autocon" />
 </resources>
