@@ -80,7 +80,7 @@ public class BugReportTile extends QuickSettingsTile {
 
     private void updateTile() {
         mLabel = mContext.getString(R.string.quick_settings_report_bug);
-        mDrawable = R.drawable.ic_qs_bug_report;
+        mDrawable = com.android.internal.R.drawable.stat_sys_adb;
         mEnabled = Settings.Global.getInt(mContext.getContentResolver(),
                 Settings.Global.BUGREPORT_IN_POWER_MENU, 0) != 0;
     }
