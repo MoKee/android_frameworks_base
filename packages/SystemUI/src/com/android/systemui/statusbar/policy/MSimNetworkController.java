@@ -18,6 +18,9 @@
 
 package com.android.systemui.statusbar.policy;
 
+import static android.telephony.TelephonyManager.SIM_STATE_ABSENT;
+import static android.telephony.TelephonyManager.SIM_STATE_READY;
+
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -352,16 +355,6 @@ public class MSimNetworkController extends NetworkController {
             mCarrierTextSub[sub] = mContext.getString(textResId);
         }
     }
-
-    private void setCarrierText() {
-        String carrierName = mCarrierTextSub[MSimConstants.SUB1] + "-1"
-                  + "    " + mCarrierTextSub[MSimConstants.SUB2] + "-2";
-        for (int i = 0; i < mSubsLabelViews.size(); i++) {
-            TextView v = mSubsLabelViews.get(i);
-            v.setText(carrierName);
-        }
-    }
-
 
     // ===== Telephony ==============================================================
 
@@ -1242,11 +1235,20 @@ public class MSimNetworkController extends NetworkController {
         }
 
         // mobile label
-        setCarrierText();
         N = mMobileLabelViews.size();
+        String carrierName;
+        MSimTelephonyManager mtm = MSimTelephonyManager.getDefault();
+        int mSub1Status = mtm.getSimState(MSimConstants.SUB1);
+        int mSub2Status = mtm.getSimState(MSimConstants.SUB2);
+        if (mSub1Status == SIM_STATE_ABSENT && mSub2Status == SIM_STATE_ABSENT
+                || mSub1Status == SIM_STATE_READY && mSub2Status == SIM_STATE_READY) {
+            carrierName = mCarrierTextSub[MSimConstants.SUB1] + "    " + mCarrierTextSub[MSimConstants.SUB2];
+        } else {
+            carrierName = mSub1Status == SIM_STATE_READY ? mCarrierTextSub[MSimConstants.SUB1] + "" : mCarrierTextSub[MSimConstants.SUB2] + "";
+        }
         for (int i=0; i<N; i++) {
             TextView v = mMobileLabelViews.get(i);
-            v.setText(mobileLabel);
+            v.setText(carrierName);
             if ("".equals(mobileLabel)) {
                 v.setVisibility(View.GONE);
             } else {
