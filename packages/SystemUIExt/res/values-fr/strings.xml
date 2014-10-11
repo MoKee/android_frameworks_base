@@ -15,10 +15,5 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="status_bar_recent_add_to_split_view">添加到拆分视图</string>
-  <string name="screenshot_delete">删除</string>
-  <string name="screenshot_delete_confirmation">屏幕截图已删除.</string>
-  <string name="active_display_privacy_content">因为启用了隐私模式，信息内容将不予显示。</string>
-  <string name="quick_settings_screen_timeout_summary_awake">保持唤醒</string>
-  <string name="powerwidget_screen_timeout_never_toast">屏幕将保持唤醒不会休眠</string>
+  <string name="screenshot_delete">Supprimer</string>
 </resources>
