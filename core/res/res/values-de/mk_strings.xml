@@ -15,8 +15,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="status_leap">闰</string>
-  <string name="permlab_recordScreen">Record content being displayed</string>
-  <string name="permdesc_recordScreen">Allows the app to record the users screen.</string>
-  <string name="global_action_screen_record">Screen record</string>
+  <string name="status_leap">Starten</string>
+  <string name="permlab_recordScreen">Aufgezeichneter Inhalt wird angezeigt</string>
+  <string name="permdesc_recordScreen">Erlaubt der Anwendung den Bildschirminhalt aufzuzeichnen.</string>
+  <string name="global_action_screen_record">Bildschirmaufnahme</string>
 </resources>

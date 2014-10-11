@@ -16,7 +16,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="status_leap">闰</string>
-  <string name="permlab_recordScreen">Record content being displayed</string>
-  <string name="permdesc_recordScreen">Allows the app to record the users screen.</string>
-  <string name="global_action_screen_record">Screen record</string>
+  <string name="permlab_recordScreen">Записываемое содержимое отображается</string>
+  <string name="permdesc_recordScreen">Приложение сможет записывать изображение экрана пользователя.</string>
+  <string name="global_action_screen_record">Запись изображения экрана</string>
 </resources>
