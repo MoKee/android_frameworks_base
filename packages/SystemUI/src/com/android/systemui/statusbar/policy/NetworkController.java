@@ -1176,7 +1176,8 @@ public class NetworkController extends BroadcastReceiver implements DemoMode {
             // We want to show the carrier name if in service and either:
             //   - We are connected to mobile data, or
             //   - We are not connected to mobile data, as long as the *reason* packets are not
-            //     being routed over that link is that we have better connectivity via wifi.
+            //     being routed over that link is that we have better connectivity via wifi
+            //     or wimax.
             // If data is disconnected for some other reason but wifi (or ethernet/bluetooth)
             // is connected, we show nothing.
             // Otherwise (nothing connected) we show "No internet connection".
@@ -1184,7 +1185,7 @@ public class NetworkController extends BroadcastReceiver implements DemoMode {
             if (mDataConnected) {
                 mobileLabel = mNetworkName;
             } else if (mConnected || emergencyOnly) {
-                if (hasService() || emergencyOnly) {
+                if (hasService() || mWimaxConnected || emergencyOnly) {
                     // The isEmergencyOnly test covers the case of a phone with no SIM
                     mobileLabel = mNetworkName;
                 } else {
@@ -1314,7 +1315,8 @@ public class NetworkController extends BroadcastReceiver implements DemoMode {
                 ? mContentDescriptionDataType : mContentDescriptionWifi;
         }
 
-        if (!mDataConnected) {
+        // wimax operates independently of mobile data but shares the same icon space
+        if (!mDataConnected && !mWimaxConnected) {
             mDataTypeIconId = 0;
             mQSDataTypeIconId = 0;
             if (isCdma()) {
