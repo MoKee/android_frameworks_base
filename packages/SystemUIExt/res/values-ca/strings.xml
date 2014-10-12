@@ -15,12 +15,10 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="app_label">魔趣核心服务</string>
-  <string name="power_saver_notification_title">省电模式正在运行</string>
-  <string name="power_saver_notification_ticker">省电模式正在运行</string>
-  <string name="power_saver_notification_text">我们正在为您优化续航时间</string>
-  <string name="quiet_hours_notification_title">安静时段</string>
-  <string name="quiet_hours_notification_ticker">安静时段</string>
-  <string name="quiet_hours_notification_text">已激活</string>
-  <string name="quiet_hours_notification_wait">我还没有休息</string>
+  <string name="status_bar_recent_add_to_split_view">Afegir per dividir la vista</string>
+  <string name="screenshot_delete">suprimir</string>
+  <string name="screenshot_delete_confirmation">Captura de pantalla esborrada.</string>
+  <string name="active_display_privacy_content">Missatge contingut no mostrant perquè permetia mode d\'intimitat</string>
+  <string name="quick_settings_screen_timeout_summary_awake">Mantén-te actiu</string>
+  <string name="powerwidget_screen_timeout_never_toast">Pantalla endureixi per sempre en</string>
 </resources>
