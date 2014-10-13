@@ -496,9 +496,10 @@ public class CallLog {
 
         private static void removeExpiredEntries(Context context) {
             final ContentResolver resolver = context.getContentResolver();
+            int count = Settings.System.getInt(resolver, Settings.System.CALL_LOG_DELETE_LIMIT, 500);
             resolver.delete(CONTENT_URI, "_id IN " +
                     "(SELECT _id FROM calls ORDER BY " + DEFAULT_SORT_ORDER
-                    + " LIMIT -1 OFFSET 500)", null);
+                    + " LIMIT -1 OFFSET " + count +")", null);
         }
     }
 }
