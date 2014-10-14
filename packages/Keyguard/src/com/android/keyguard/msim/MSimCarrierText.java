@@ -27,15 +27,20 @@ import android.util.Log;
 
 import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.IccCardConstants.State;
+import com.android.internal.telephony.MSimConstants;
 import com.android.internal.widget.LockPatternUtils;
 
 import android.telephony.MSimTelephonyManager;
+
+import static android.telephony.TelephonyManager.SIM_STATE_ABSENT;
+import static android.telephony.TelephonyManager.SIM_STATE_READY;
 
 public class MSimCarrierText extends CarrierText {
     private static final String TAG = "MSimCarrierText";
     private CharSequence []mPlmn;
     private CharSequence []mSpn;
     private State []mSimState;
+    private MSimTelephonyManager mtm;
 
     private KeyguardUpdateMonitorCallback mMSimCallback = new KeyguardUpdateMonitorCallback() {
 
@@ -54,7 +59,8 @@ public class MSimCarrierText extends CarrierText {
     };
 
     private void initialize() {
-        int numPhones = MSimTelephonyManager.getDefault().getPhoneCount();
+        mtm = MSimTelephonyManager.getDefault();
+        int numPhones = mtm.getPhoneCount();
         mPlmn = new CharSequence[numPhones];
         mSpn = new CharSequence[numPhones];
         mSimState = new State[numPhones];
@@ -71,15 +77,29 @@ public class MSimCarrierText extends CarrierText {
 
     protected void updateCarrierText(State []simState, CharSequence []plmn, CharSequence []spn) {
         CharSequence text = "";
-        for (int i = 0; i < simState.length; i++) {
-            CharSequence displayText = getCarrierTextForSimState(simState[i], plmn[i], spn[i]);
-            if (mContext.getResources().getBoolean(R.bool.kg_use_all_caps)) {
-                displayText = (displayText != null ? displayText.toString().toUpperCase() : "");
+        int mSub1Status = mtm.getSimState(MSimConstants.SUB1);
+        int mSub2Status = mtm.getSimState(MSimConstants.SUB2);
+        if (mSub1Status == SIM_STATE_ABSENT && mSub2Status == SIM_STATE_ABSENT
+                || mSub1Status == SIM_STATE_READY && mSub2Status == SIM_STATE_READY) {
+            for (int i = 0; i < simState.length; i++) {
+                CharSequence displayText = getCarrierTextForSimState(simState[i], plmn[i], spn[i]);
+                if (mContext.getResources().getBoolean(R.bool.kg_use_all_caps)) {
+                    displayText = (displayText != null ? displayText.toString().toUpperCase() : "");
+                }
+                text = (TextUtils.isEmpty(text)
+                        ? displayText
+                        : getContext().getString(R.string.msim_carrier_text_format, text, displayText));
             }
-            text = (TextUtils.isEmpty(text)
-                    ? displayText
-                    : getContext().getString(R.string.msim_carrier_text_format, text, displayText));
+        } else {
+            CharSequence displayText;
+            if (mSub1Status != SIM_STATE_ABSENT) {
+                displayText = getCarrierTextForSimState(simState[MSimConstants.SUB1], plmn[MSimConstants.SUB1], spn[MSimConstants.SUB1]);
+            } else {
+                displayText = getCarrierTextForSimState(simState[MSimConstants.SUB2], plmn[MSimConstants.SUB2], spn[MSimConstants.SUB2]);
+            }
+            text = displayText;
         }
+
         Log.d(TAG, "updateCarrierText: text = " + text);
         setText(text);
     }
