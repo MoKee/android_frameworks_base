@@ -15,10 +15,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="status_bar_recent_add_to_split_view">Ajouter à la vue fractionnée</string>
-  <string name="screenshot_delete">Supprimer</string>
-  <string name="screenshot_delete_confirmation">Capture d\'écran supprimée.</string>
-  <string name="active_display_privacy_content">Le contenu du message ne peut être affiché car le mode privé est activé</string>
-  <string name="quick_settings_screen_timeout_summary_awake">Rester activé</string>
-  <string name="powerwidget_screen_timeout_never_toast">Ecran réglé sur \" toujours allumé \"</string>
+  <string name="app_label">Services MoKee</string>
+  <string name="power_saver_notification_title">L\'économiseur d\'énergie est en cours d\'exécution</string>
+  <string name="power_saver_notification_ticker">L\'économiseur d\'énergie est en cours d\'exécution</string>
+  <string name="power_saver_notification_text">Nous travaillons à optimiser l\'autonomie</string>
+  <string name="quiet_hours_notification_title">Veille</string>
+  <string name="quiet_hours_notification_ticker">Veille</string>
+  <string name="quiet_hours_notification_text">Actif</string>
+  <string name="quiet_hours_notification_wait">Je ne suis pas en veille</string>
 </resources>
