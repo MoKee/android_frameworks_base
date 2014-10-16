@@ -15,12 +15,10 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="app_label">Сервисы MoKee</string>
-  <string name="power_saver_notification_title">Режим экономии энергии</string>
-  <string name="power_saver_notification_ticker">Режим экономии энергии</string>
-  <string name="power_saver_notification_text">Мы работаем над оптимизацией расхода батареи</string>
-  <string name="quiet_hours_notification_title">Тихие часы</string>
-  <string name="quiet_hours_notification_ticker">Тихие часы</string>
-  <string name="quiet_hours_notification_text">Активный режим</string>
-  <string name="quiet_hours_notification_wait">Я не сплю</string>
+  <string name="status_bar_recent_add_to_split_view">Добавить в Split View</string>
+  <string name="screenshot_delete">Удалить</string>
+  <string name="screenshot_delete_confirmation">Скриншот удален.</string>
+  <string name="active_display_privacy_content">Содержимое сообщение не показано, потому что включен режим конфиденциальности</string>
+  <string name="quick_settings_screen_timeout_summary_awake">Не выключать экран</string>
+  <string name="powerwidget_screen_timeout_never_toast">Экран всегда включен</string>
 </resources>
