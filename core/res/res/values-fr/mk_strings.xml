@@ -15,8 +15,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="status_leap">iniciar</string>
-  <string name="permlab_recordScreen">Registre continguts que es mostren</string>
-  <string name="permdesc_recordScreen">Permet l\'app enregistrar la pantalla d\'usuaris.</string>
-  <string name="global_action_screen_record">Gravació de pantalla</string>
+  <string name="permlab_recordScreen">Enregistrement vidéo du contenu afficher à l\'écran</string>
+  <string name="permdesc_recordScreen">Autoriser l\'application à enregistrer l\'écran de l\'utilisateur.</string>
+  <string name="global_action_screen_record">Enregistrement vidéo de l\'écran</string>
 </resources>
