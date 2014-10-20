@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The Android Open Source Project
+ * Copyright (C) 2014 ParanoidAndroid Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,26 +21,25 @@ import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextSwitcher;
-import android.widget.TextView;
+import android.widget.ImageSwitcher;
+import android.widget.ImageView;
 
 import com.android.systemui.R;
 
 import java.util.ArrayList;
 
-public class TickerView extends TextSwitcher {
-    Ticker mTicker;
-
+public class TickerImageView extends ImageSwitcher {
     private final Handler mHandler;
     private final int mDSBDuration;
-    private final int mDefaultTextColor = 0xffffffff; // TODO use the resource value instead
-    private int mOverrideTextColor = 0;
+    private int mPreviousOverrideIconColor = 0;
+    private int mOverrideIconColor = 0;
 
-    public TickerView(Context context, AttributeSet attrs) {
+    public TickerImageView(final Context context, final AttributeSet attrs) {
         super(context, attrs);
         mHandler = new Handler();
         mDSBDuration = context.getResources().getInteger(R.integer.dsb_transition_duration);
@@ -49,19 +48,29 @@ public class TickerView extends TextSwitcher {
             @Override
             public AnimatorSet onUpdateStatusBarIconColor(final int previousIconColor,
                     final int iconColor) {
-                mOverrideTextColor = iconColor;
+                mPreviousOverrideIconColor = previousIconColor;
+                mOverrideIconColor = iconColor;
 
                 final ArrayList<Animator> anims = new ArrayList<Animator>();
-                final int targetColor = mOverrideTextColor == 0 ?
-                        mDefaultTextColor : mOverrideTextColor;
 
                 final int childCount = getChildCount();
                 for (int i = 0; i < childCount; i++) {
-                    final TextView tv = (TextView) getChildAt(i);
-                    if (tv != null) {
-                        final int currentColor = tv.getTextColors().getDefaultColor();
-                        anims.add(ObjectAnimator.ofObject(tv, "textColor", new ArgbEvaluator(),
-                            currentColor, targetColor).setDuration(mDSBDuration));
+                    final ImageView iv = (ImageView) getChildAt(i);
+                    if (iv != null) {
+                        if (mOverrideIconColor == 0) {
+                            mHandler.post(new Runnable() {
+
+                                @Override
+                                public void run() {
+                                    iv.setColorFilter(null);
+                                }
+
+                            });
+                        } else {
+                            anims.add(ObjectAnimator.ofObject(iv, "colorFilter",
+                                    new ArgbEvaluator(), mPreviousOverrideIconColor,
+                                    mOverrideIconColor).setDuration(mDSBDuration));
+                        }
                     }
                 }
 
@@ -77,26 +86,21 @@ public class TickerView extends TextSwitcher {
         });
     }
 
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        mTicker.reflowText();
-    }
-
-    public void setTicker(Ticker t) {
-        mTicker = t;
-    }
-
     /**
      * {@inheritDoc}
      */
     @Override
     public void addView(final View child, final int index, final ViewGroup.LayoutParams params) {
-        if (child instanceof TextView) {
-            ((TextView) child).setTextColor(mOverrideTextColor == 0 ?
-                    mDefaultTextColor : mOverrideTextColor);
+        if (child instanceof ImageView) {
+            if (mOverrideIconColor == 0) {
+                ((ImageView) child).setColorFilter(null);
+            } else {
+                ((ImageView) child).setColorFilter(mOverrideIconColor,
+                        PorterDuff.Mode.MULTIPLY);
+            }
         }
 
         super.addView(child, index, params);
     }
+
 }

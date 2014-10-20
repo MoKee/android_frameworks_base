@@ -135,8 +135,7 @@
                     android:visibility="gone"
                     />
             </LinearLayout>
-
-            <com.android.systemui.statusbar.policy.Clock
+            <com.android.systemui.statusbar.policy.PhoneStatusBarClock
                 android:id="@+id/clock"
                 android:textAppearance="@style/TextAppearance.StatusBar.Clock"
                 android:layout_width="wrap_content"
@@ -166,7 +165,7 @@
         android:paddingStart="6dip"
         android:animationCache="false"
         android:orientation="horizontal" >
-        <ImageSwitcher android:id="@+id/tickerIcon"
+        <com.android.systemui.statusbar.phone.TickerImageView android:id="@+id/tickerIcon"
             android:layout_width="@dimen/status_bar_icon_size"
             android:layout_height="@dimen/status_bar_icon_size"
             android:layout_marginEnd="4dip"
@@ -181,7 +180,7 @@
                 android:layout_height="@dimen/status_bar_icon_size"
                 android:scaleType="center"
                 />
-        </ImageSwitcher>
+        </com.android.systemui.statusbar.phone.TickerImageView>
         <com.android.systemui.statusbar.phone.TickerView android:id="@+id/tickerText"
             android:layout_width="0dip"
             android:layout_weight="1"
