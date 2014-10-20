@@ -110,5 +110,8 @@
 
     <!-- milliseconds before the heads up notification accepts touches. -->
     <integer name="heads_up_sensitivity_delay">700</integer>
+
+    <!-- DSB color transiion duration (ms) -->
+    <integer name="dsb_transition_duration">500</integer>
 </resources>
 
