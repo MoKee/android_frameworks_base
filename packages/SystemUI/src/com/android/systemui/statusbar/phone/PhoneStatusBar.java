@@ -841,11 +841,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             }
 
             mCarrierLabel = (TextView)mStatusBarWindow.findViewById(R.id.carrier_label);
-            int numPhones = MSimTelephonyManager.getDefault().getPhoneCount();
-            if (numPhones == 3) {
-                mSubsLabel.findViewById(R.id.sub2_separator).setVisibility(View.VISIBLE);
-                mSubsLabel.findViewById(R.id.sub3_label).setVisibility(View.VISIBLE);
-            }
             mShowCarrierInPanel = (mCarrierLabel != null);
 
             if (DEBUG) Log.v(TAG, "carrierlabel=" + mCarrierLabel + " show=" + mShowCarrierInPanel);
