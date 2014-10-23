@@ -463,7 +463,6 @@ public class NetworkController extends BroadcastReceiver implements DemoMode {
     @Override
     public void onReceive(Context context, Intent intent) {
         final String action = intent.getAction();
-        Log.d(TAG, "onReceive() " + action);
         if (action.equals(WifiManager.RSSI_CHANGED_ACTION)
                 || action.equals(WifiManager.WIFI_STATE_CHANGED_ACTION)
                 || action.equals(WifiManager.NETWORK_STATE_CHANGED_ACTION)) {
@@ -960,16 +959,18 @@ public class NetworkController extends BroadcastReceiver implements DemoMode {
             str.append(plmn);
             something = true;
         }
-        if (showSpn && spn != null &&
-                !spn.equals(plmn) &&
-                !mEmergencyCallOnlyLabel.equals(plmn)) {
-            if (something) {
+        if (showSpn && spn != null) {
+            if (something && showPlmn
+                    && !spn.equals(plmn) &&
+                    !mEmergencyCallOnlyLabel.equals(plmn)) {
                 str.append("  ");
                 str.append(mNetworkNameSeparator);
                 str.append("  ");
+                str.append(spn);
+            } else if (!showPlmn) {
+                str.append(spn);
+                something = true;
             }
-            str.append(spn);
-            something = true;
         }
         if (something) {
             mNetworkName = str.toString();
