@@ -3476,6 +3476,13 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private void recreateStatusBar() {
         mRecreating = true;
 
+        if (mMSimNetworkController != null) {
+            mMSimNetworkController.clearSubsLabelView();
+            mContext.unregisterReceiver(mMSimNetworkController);
+        } else if (mNetworkController != null) {
+            mContext.unregisterReceiver(mNetworkController);
+        }
+
         removeHeadsUpView();
 
         mStatusBarContainer.removeAllViews();
