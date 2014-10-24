@@ -341,6 +341,7 @@ public class NavigationBarView extends LinearLayout {
             (ImageView) (mCurrentView == null ? null : mCurrentView.findViewWithTag(NavbarEditor.NAVBAR_CONDITIONAL_MENU)),
             (ImageView) (mCurrentView == null ? null : mCurrentView.findViewWithTag(NavbarEditor.NAVBAR_ALWAYS_MENU)),
             (ImageView) (mCurrentView == null ? null : mCurrentView.findViewWithTag(NavbarEditor.NAVBAR_MENU_BIG)),
+            (ImageView) (mCurrentView == null ? null : mCurrentView.findViewWithTag(NavbarEditor.NAVBAR_SEARCH)),
             (ImageView) getSearchLight(),
             (ImageView) getCameraButton(),
             (ImageView) getNotifsButton()
