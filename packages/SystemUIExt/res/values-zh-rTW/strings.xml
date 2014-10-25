@@ -15,6 +15,10 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="status_bar_recent_add_to_split_view">添加到分割檢視</string>
   <string name="screenshot_delete">刪除</string>
   <string name="screenshot_delete_confirmation">屏幕截圖已刪除.</string>
+  <string name="active_display_privacy_content">未顯示訊息內容因為隱私模式已啟動</string>
+  <string name="quick_settings_screen_timeout_summary_awake">保持開啟</string>
+  <string name="powerwidget_screen_timeout_never_toast">螢幕始終開啟</string>
 </resources>

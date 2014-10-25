@@ -15,6 +15,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="status_bar_recent_add_to_split_view">Agg. a Split View</string>
   <string name="screenshot_delete">Elimina</string>
   <string name="screenshot_delete_confirmation">Screenshot eliminato.</string>
   <string name="active_display_privacy_content">Il contenuto del messaggio non è mostrato perché la modalità privacy è attivata</string>
