@@ -85,12 +85,7 @@ public class ScreenTimeoutTile extends QuickSettingsTile {
     private synchronized void updateTile() {
         int timeout = getScreenTimeout();
         mLabel = makeTimeoutSummaryString(mContext, timeout);
-
-        if (timeout == SCREEN_TIMEOUT_AWAKE) {
-            mDrawable = R.drawable.ic_qs_screen_timeout_on;
-        } else {
-            mDrawable = R.drawable.ic_qs_screen_timeout_off;
-        }
+        mDrawable = R.drawable.ic_qs_screen_timeout_on;
     }
 
     protected void toggleState() {
@@ -180,22 +175,15 @@ public class ScreenTimeoutTile extends QuickSettingsTile {
                 if (timeout >= 60 && timeout % 60 == 0) {
                     /* minutes -> hours */
                     timeout /= 60;
-                    resId = timeout == 1
-                            ? com.android.internal.R.string.hour
-                            : com.android.internal.R.string.hours;
+                    resId = com.android.internal.R.plurals.duration_hours;
                 } else {
-                    resId = timeout == 1
-                            ? com.android.internal.R.string.minute
-                            : com.android.internal.R.string.minutes;
+                    resId = com.android.internal.R.plurals.duration_minutes;
                 }
             } else {
-                resId = timeout == 1
-                        ? com.android.internal.R.string.second
-                        : com.android.internal.R.string.seconds;
+                resId = com.android.internal.R.plurals.duration_seconds;
             }
 
-            timeoutSummary = res.getString(R.string.quick_settings_screen_timeout_summary,
-                    timeout, res.getString(resId));
+            timeoutSummary = res.getQuantityString(resId, timeout, timeout);
         }
 
         return timeoutSummary;
