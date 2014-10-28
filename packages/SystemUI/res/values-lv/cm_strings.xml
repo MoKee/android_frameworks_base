@@ -18,7 +18,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="accessibility_dpad_left">Kursoru pa kreisi</string>
   <string name="accessibility_dpad_right">Kursoru pa labi</string>
-  <string name="quick_settings_screen_sleep">Iet gulēt</string>
+  <string name="quick_settings_screen_sleep">Iemidzināt</string>
   <string name="quick_settings_label_enabled">Ieslēgts</string>
   <string name="quick_settings_ringer_normal">Skaņa</string>
   <string name="quick_settings_lockscreen">Slēgt ekrānu</string>
@@ -33,8 +33,6 @@
   <string name="quick_settings_usb_tether_off_label">Atvalgots</string>
   <string name="quick_settings_usb_tether_connected_label">Pievalgošana izslēgta</string>
   <string name="quick_settings_usb_tether_on_label">Pievalgots</string>
-  <string name="quick_settings_wifiap">WiFi AP</string>
-  <string name="quick_settings_wifiap_off">WiFi AP izslēgts</string>
   <string name="quick_settings_quiethours">Klusās stundas</string>
   <string name="quick_settings_quiethours_off">Klusās stundas atslēgtas</string>
   <string name="quick_settings_lte">LTE</string>

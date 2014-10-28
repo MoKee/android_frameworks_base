@@ -121,6 +121,7 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
     private ImageView mFirstShortcut;
     private ImageView mLastShortcut;
 
+
     private ScrollView mShortcutBar;
     private LinearLayout mShortcutList;
 
