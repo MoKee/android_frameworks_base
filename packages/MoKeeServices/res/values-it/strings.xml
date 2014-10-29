@@ -15,7 +15,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="app_label">MoKee servizi</string>
   <string name="power_saver_notification_title">Modalità Risparmio Energetico Attiva</string>
   <string name="power_saver_notification_ticker">Modalità Risparmio Energetico Attiva</string>
   <string name="power_saver_notification_text">Stiamo lavorando per ottimizzare la durata della batteria</string>
+  <string name="quiet_hours_notification_title">Notte</string>
+  <string name="quiet_hours_notification_ticker">Notte</string>
+  <string name="quiet_hours_notification_text">Attivo</string>
+  <string name="quiet_hours_notification_wait">Non sto dormendo</string>
 </resources>

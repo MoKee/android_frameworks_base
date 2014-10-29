@@ -20,4 +20,5 @@
   <string name="screenshot_delete_confirmation">Ekran görüntüsü silindi.</string>
   <string name="active_display_privacy_content">Gizlilik modu etkin olduğundan içerik iletisi gösterilemiyor</string>
   <string name="quick_settings_screen_timeout_summary_awake">Uyanık kal</string>
+  <string name="powerwidget_screen_timeout_never_toast">Ekranı her zaman açık olarak ayarla</string>
 </resources>
