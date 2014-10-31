@@ -15,8 +15,10 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="status_bar_recent_add_to_split_view">Додати до розділеного режиму</string>
   <string name="screenshot_delete">Видалити</string>
   <string name="screenshot_delete_confirmation">Скріншот видалено.</string>
   <string name="active_display_privacy_content">Зміст повідомлення не відображається, оскільки ввімкнуто режим конфіденційності</string>
   <string name="quick_settings_screen_timeout_summary_awake">Не засинати</string>
+  <string name="powerwidget_screen_timeout_never_toast">Екран завжди ввімкнуто</string>
 </resources>
