@@ -48,4 +48,9 @@
 
   <!-- MoKee PlatLogo -->
   <java-symbol type="drawable" name="mk_platlogo" />
+
+  <!-- Config Power Menu -->
+  <java-symbol type="drawable" name="ic_lock_screen_record" />
+  <java-symbol type="string" name="global_action_screen_record" />
+  <java-symbol type="bool" name="config_enableScreenrecordChord" />
 </resources>
