@@ -2078,10 +2078,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void loadProtectedSmsSetting(SQLiteStatement stmt) {
-        String regAddresses = mContext.getResources()
-                .getString(R.array.def_protected_sms_list_values);
-        if (!TextUtils.isEmpty(regAddresses)) {
-            loadSetting(stmt, Settings.Secure.PROTECTED_SMS_ADDRESSES, regAddresses);
+        String[] regAddresses = mContext.getResources()
+                .getStringArray(R.array.def_protected_sms_list_values);
+        if (regAddresses.length > 0) {
+            loadSetting(stmt, Settings.Secure.PROTECTED_SMS_ADDRESSES, TextUtils.join("|", regAddresses));
         }
     }
 
@@ -2166,10 +2166,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             loadIntegerSetting(stmt, Settings.System.DOUBLE_TAP_SLEEP_GESTURE,
                     R.integer.def_double_tap_sleep_gesture);
 
-            //loadIntegerSetting(stmt, Settings.System.SCREEN_ANIMATION_STYLE,
-                    //R.integer.def_screen_animation_style);
+            // loadIntegerSetting(stmt, Settings.System.SCREEN_ANIMATION_STYLE,
+                    // R.integer.def_screen_animation_style);
 
-            //loadDefaultAnimationSettings(stmt);
+            loadIntegerSetting(stmt, Settings.System.ENABLE_PEOPLE_LOOKUP,
+                    R.integer.def_people_lookup);
+
+            // loadDefaultAnimationSettings(stmt);
 
             loadRibbonSetting(stmt);
 
