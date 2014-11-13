@@ -143,7 +143,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <com.android.systemui.statusbar.policy.Clock
+    <com.android.systemui.statusbar.policy.PhoneStatusBarClock
         android:id="@+id/center_clock"
         android:textAppearance="@style/TextAppearance.StatusBar.Clock"
         android:layout_width="wrap_content"
