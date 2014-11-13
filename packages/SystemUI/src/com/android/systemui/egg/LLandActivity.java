@@ -27,10 +27,19 @@ public class LLandActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lland);
-        LLand world = (LLand) findViewById(R.id.world);
-        world.setScoreField((TextView) findViewById(R.id.score));
-        world.setSplash(findViewById(R.id.welcome));
-        Log.v(LLand.TAG, "focus: " + world.requestFocus());
+        final boolean isMK = getIntent().getBooleanExtra("is_mk", false);
+        if (isMK) {
+            setContentView(R.layout.mkland);
+            MKLand world = (MKLand) findViewById(R.id.world);
+            world.setScoreField((TextView) findViewById(R.id.score));
+            world.setSplash(findViewById(R.id.welcome));
+            Log.v(MKLand.TAG, "focus: " + world.requestFocus());
+        } else {
+            setContentView(R.layout.lland);
+            LLand world = (LLand) findViewById(R.id.world);
+            world.setScoreField((TextView) findViewById(R.id.score));
+            world.setSplash(findViewById(R.id.welcome));
+            Log.v(LLand.TAG, "focus: " + world.requestFocus());
+        }
     }
 }
