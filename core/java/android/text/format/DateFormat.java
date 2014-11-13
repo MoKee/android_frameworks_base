@@ -17,6 +17,7 @@
 package android.text.format;
 
 import android.content.Context;
+import android.mokee.utils.MoKeeUtils;
 import android.provider.Settings;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -454,7 +455,11 @@ public class DateFormat {
             switch (c) {
                 case 'A':
                 case 'a':
-                    replacement = localeData.amPm[inDate.get(Calendar.AM_PM) - Calendar.AM];
+                    if (MoKeeUtils.isChineseLanguage(false)) {
+                        replacement = DateUtils.getAMPMCNString(inDate.get(Calendar.HOUR), inDate.get(Calendar.AM_PM));
+                    } else {
+                        replacement = localeData.amPm[inDate.get(Calendar.AM_PM) - Calendar.AM];
+                    }
                     break;
                 case 'd':
                     replacement = zeroPad(inDate.get(Calendar.DATE), count);

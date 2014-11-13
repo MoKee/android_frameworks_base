@@ -63,7 +63,7 @@ public final class PhoneLocation {
 
     public static String getCityFromPhone(CharSequence number) {
         if (TextUtils.isEmpty(number)) return "";
-        String phoneLocation = getPosFromPhone(number.toString().replaceAll("(?:-| )", ""), 1);         
+        String phoneLocation = getPosFromPhone(number.toString().replaceAll("(?:-| )", ""), 1);
         return (TextUtils.isEmpty(phoneLocation) ? "" : phoneLocation);
     }
 }
