@@ -46,4 +46,6 @@
   <java-symbol type="string" name="status_year" />
   <java-symbol type="string" name="status_day" />
 
+  <!-- MoKee PlatLogo -->
+  <java-symbol type="drawable" name="mk_platlogo" />
 </resources>
