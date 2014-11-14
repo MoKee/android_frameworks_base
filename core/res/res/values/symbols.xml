@@ -1475,7 +1475,6 @@
   <java-symbol type="array" name="config_tether_upstream_types" />
   <java-symbol type="array" name="config_tether_usb_regexs" />
   <java-symbol type="array" name="config_tether_wifi_regexs" />
-  <java-symbol type="array" name="config_tether_p2p_regexs" />
   <java-symbol type="array" name="config_usbHostBlacklist" />
   <java-symbol type="array" name="config_serialPorts" />
   <java-symbol type="array" name="radioAttributes" />
@@ -2033,6 +2032,8 @@
 
   <!-- Proximity check timeout -->
   <java-symbol type="integer" name="config_proximityCheckTimeout" />
+
+  <java-symbol type="array" name="config_ignored_sms_packages" />
 
   <!-- Last app switch animations -->
    <java-symbol type="anim" name="last_app_in" />
