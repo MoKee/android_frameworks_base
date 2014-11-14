@@ -24,5 +24,5 @@
   <string name="kg_forgot_gesture_button_text">Forgot Gesture</string>
   <string name="kg_wrong_gesture">Wrong Gesture</string>
   <string name="kg_gesture_instructions">Draw your gesture</string>
-  <string name="kg_too_many_failed_gesture_attempts_dialog_message">You have incorrectly drawn your unlock gesture <xliff: g id = "number" >%d</xliff: g> times.\n\nTry again in <xliff: g id = "number" >%d</xliff: g> seconds.     </string>
+  <string name="kg_too_many_failed_gesture_attempts_dialog_message">You have incorrectly drawn your unlock gesture <xliff:g id="number">%d</xliff:g> times.\n\nTry again in <xliff:g id="number">%d</xliff:g> seconds.</string>
 </resources>

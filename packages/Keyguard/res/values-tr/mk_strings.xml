@@ -27,5 +27,5 @@
   <string name="kg_too_many_failed_gesture_attempts_dialog_message">
         Kikit deseninizi <xliff:g id="number">%d</xliff:g> kez yanlış girdiniz.
         \n\nTekrar denemek için <xliff:g id="number">%d</xliff:g> saniye bekleyiniz.
-    <xliff:g id="number"></string>
+  </string>
 </resources>
