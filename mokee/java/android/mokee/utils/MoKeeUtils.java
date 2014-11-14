@@ -17,11 +17,16 @@
 package android.mokee.utils;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import java.text.DecimalFormat;
 import java.util.Locale;
 
 /**
@@ -48,6 +53,51 @@ public class MoKeeUtils {
             return true;
         }
         return false;
+    }
+
+    public static boolean isApkInstalledAndEnabled(String packagename, Context context) {
+        int state;
+        try {
+            context.getPackageManager().getPackageInfo(packagename, 0);
+            state = context.getPackageManager().getApplicationEnabledSetting(packagename);
+        } catch (NameNotFoundException e) {
+            return false;
+        }
+        return state != PackageManager.COMPONENT_ENABLED_STATE_DISABLED && state != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER ? true : false;
+    }
+
+    public static boolean isApkInstalled(String packagename, Context context) {
+        try {
+            context.getPackageManager().getPackageInfo(packagename, 0);
+        } catch (NameNotFoundException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isSystemApp(String packagename, Context context) {
+        PackageInfo packageInfo;
+        try {
+            packageInfo = context.getPackageManager().getPackageInfo(packagename, 0);
+        } catch (NameNotFoundException e) {
+            return false;
+        }
+        return ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
+    }
+
+    public static String formatFileSize(long size) {
+        DecimalFormat df = new DecimalFormat("#0.00");
+        String fileSizeString = "";
+        if (size < 1024) {
+            fileSizeString = df.format((double) size) + "B";
+        } else if (size < 1048576) {
+            fileSizeString = df.format((double) size / 1024) + "K";
+        } else if (size < 1073741824) {
+            fileSizeString = df.format((double) size / 1048576) + "M";
+        } else {
+            fileSizeString = df.format((double) size / 1073741824) + "G";
+        }
+        return fileSizeString;
     }
 
 }
