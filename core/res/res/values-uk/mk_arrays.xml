@@ -29,4 +29,21 @@
     <item>Собаки</item>
     <item>Свині</item>
   </string-array>
+  <string-array name="solar_holiday">
+    <item>0101 Новий Рік</item>
+    <item>0214 День Св. Валентина</item>
+    <item>0308 День Жінки</item>
+    <item>0312 День Посадки Дерев</item>
+    <item>0401 День Сміху</item>
+    <item>0501 День Праці</item>
+    <item>0504 День Молоді</item>
+    <item>0601 День захисту дітей</item>
+    <item>0701 Свято заснування міста</item>
+    <item>0801 День армії</item>
+    <item>0910 День вчителя</item>
+    <item>1001 Національний день</item>
+    <item>1031 Хелловін</item>
+    <item>1111 День холостяків</item>
+    <item>1225 圣诞节</item>
+  </string-array>
 </resources>

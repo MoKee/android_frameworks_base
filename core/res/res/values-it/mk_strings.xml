@@ -15,5 +15,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="status_leap">avvia</string>
+  <string name="permlab_recordScreen">Il contenuto visualizzato e\' stato salvato</string>
+  <string name="permdesc_recordScreen">permetti all\'applicazione di registrare lo schermo dell\'utente.</string>
   <string name="global_action_screen_record">Registrazione schermo</string>
 </resources>

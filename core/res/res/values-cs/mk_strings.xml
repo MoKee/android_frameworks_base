@@ -15,8 +15,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="status_leap">閏</string>
-  <string name="permlab_recordScreen">正在顯示的錄製內容</string>
-  <string name="permdesc_recordScreen">允許應用程式錄製使用者畫面。</string>
-  <string name="global_action_screen_record">屏幕錄像</string>
+  <string name="status_leap">přestupný rok</string>
+  <string name="permlab_recordScreen">Nahrávat obsah zobrazovaný displejem</string>
+  <string name="permdesc_recordScreen">Povolit aplikaci nahrávat uživatelovu obrazovku.</string>
+  <string name="global_action_screen_record">Záznam obrazovky</string>
 </resources>

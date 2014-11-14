@@ -16,16 +16,16 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="lockscreen_gesture_instructions">Disegnare gesture per sbloccare</string>
-  <string name="lockscreen_gesture_correct">Corretto!</string>
-  <string name="lockscreen_gesture_wrong">Riprova</string>
-  <string name="keyguard_accessibility_gesture_unlock">Sblocco con un gesto.</string>
-  <string name="keyguard_accessibility_gesture_area">Zona della gesture.</string>
-  <string name="kg_forgot_gesture_button_text">Gesture dimenticata</string>
-  <string name="kg_wrong_gesture">Gesture errata</string>
-  <string name="kg_gesture_instructions">Disegna la tua gesture</string>
+  <string name="lockscreen_gesture_instructions">Draw gesture to unlock</string>
+  <string name="lockscreen_gesture_correct">Correct!</string>
+  <string name="lockscreen_gesture_wrong">Try again</string>
+  <string name="keyguard_accessibility_gesture_unlock">Gesture unlock.</string>
+  <string name="keyguard_accessibility_gesture_area">Gesture area.</string>
+  <string name="kg_forgot_gesture_button_text">Forgot Gesture</string>
+  <string name="kg_wrong_gesture">Wrong Gesture</string>
+  <string name="kg_gesture_instructions">Draw your gesture</string>
   <string name="kg_too_many_failed_gesture_attempts_dialog_message">
-        Hai disegnato la gesture di sblocco in modo errato <xliff:g id="number">%d</xliff:g> volte.
-        \n\nProva ancora in <xliff:g id="number">%d</xliff:g> secondi.
+        You have incorrectly drawn your unlock gesture <xliff:g id="number">%d</xliff:g> times.
+        \n\nTry again in <xliff:g id="number">%d</xliff:g> seconds.
     </string>
 </resources>

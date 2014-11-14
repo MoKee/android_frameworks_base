@@ -16,16 +16,16 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="lockscreen_gesture_instructions">Disegnare gesture per sbloccare</string>
-  <string name="lockscreen_gesture_correct">Corretto!</string>
-  <string name="lockscreen_gesture_wrong">Riprova</string>
-  <string name="keyguard_accessibility_gesture_unlock">Sblocco con un gesto.</string>
-  <string name="keyguard_accessibility_gesture_area">Zona della gesture.</string>
-  <string name="kg_forgot_gesture_button_text">Gesture dimenticata</string>
-  <string name="kg_wrong_gesture">Gesture errata</string>
-  <string name="kg_gesture_instructions">Disegna la tua gesture</string>
+  <string name="lockscreen_gesture_instructions">繪製手勢以解鎖</string>
+  <string name="lockscreen_gesture_correct">正確！</string>
+  <string name="lockscreen_gesture_wrong">請重試</string>
+  <string name="keyguard_accessibility_gesture_unlock">手勢解鎖</string>
+  <string name="keyguard_accessibility_gesture_area">手勢區</string>
+  <string name="kg_forgot_gesture_button_text">忘記手勢</string>
+  <string name="kg_wrong_gesture">手勢錯誤</string>
+  <string name="kg_gesture_instructions">繪製您的手勢</string>
   <string name="kg_too_many_failed_gesture_attempts_dialog_message">
-        Hai disegnato la gesture di sblocco in modo errato <xliff:g id="number">%d</xliff:g> volte.
-        \n\nProva ancora in <xliff:g id="number">%d</xliff:g> secondi.
+        你的手勢已畫錯  <xliff:g id="number">%d</xliff:g>  次。
+        \n\n請在 <xliff:g id="number">%d</xliff:g> 秒後再試。
     </string>
 </resources>

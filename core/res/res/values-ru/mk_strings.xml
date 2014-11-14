@@ -15,6 +15,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="status_leap">Начать</string>
   <string name="permlab_recordScreen">Записываемое содержимое отображается</string>
   <string name="permdesc_recordScreen">Приложение сможет записывать изображение экрана пользователя.</string>
   <string name="global_action_screen_record">Запись изображения экрана</string>

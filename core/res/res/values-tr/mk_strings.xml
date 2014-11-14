@@ -15,5 +15,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="status_leap">闰</string>
+  <string name="permlab_recordScreen">Görüntülenen içeriği kaydet</string>
+  <string name="permdesc_recordScreen">Uygulamanın kullanıcı ekranını kaydetmesine izin verir.</string>
   <string name="global_action_screen_record">Ekran Kaydı</string>
 </resources>
