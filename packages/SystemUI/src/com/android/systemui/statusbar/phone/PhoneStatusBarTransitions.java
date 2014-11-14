@@ -19,7 +19,13 @@ package com.android.systemui.statusbar.phone;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.Context;
 import android.content.res.Resources;
+import android.database.ContentObserver;
+import android.net.Uri;
+import android.os.Handler;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.telephony.MSimTelephonyManager;
 import android.view.View;
 
@@ -38,8 +44,7 @@ public final class PhoneStatusBarTransitions extends BarTransitions {
     private Animator mCurrentAnimation;
 
     public PhoneStatusBarTransitions(PhoneStatusBarView view) {
-        super(view, R.drawable.status_background, R.color.status_bar_background_opaque,
-                R.color.status_bar_background_semi_transparent);
+        super(view, new PhoneStatusBarBackgroundDrawable(view.getContext()));
         mView = view;
         final Resources res = mView.getContext().getResources();
         mIconAlphaWhenOpaque = res.getFraction(R.dimen.status_bar_icon_drawing_alpha, 1, 1);
@@ -120,6 +125,89 @@ public final class PhoneStatusBarTransitions extends BarTransitions {
             mBattery.setAlpha(newAlphaBC);
             mClock.setAlpha(newAlphaBC);
             mCenterClock.setAlpha(newAlphaBC);
+        }
+    }
+
+    protected static class PhoneStatusBarBackgroundDrawable
+            extends BarTransitions.BarBackgroundDrawable {
+        private final Context mContext;
+
+        private int mOverrideColor = 0;
+        private int mOverrideGradientAlpha = 0;
+
+        public PhoneStatusBarBackgroundDrawable(final Context context) {
+            super(context,
+                    R.color.status_bar_background_opaque,
+                    R.color.status_bar_background_semi_transparent,
+                    R.drawable.status_background);
+
+            mContext = context;
+
+            final GradientObserver obs = new GradientObserver(this, new Handler());
+            (mContext.getContentResolver()).registerContentObserver(
+                    GradientObserver.DYNAMIC_SYSTEM_BARS_GRADIENT_URI,
+                    false, obs, UserHandle.USER_ALL);
+
+            mOverrideGradientAlpha = Settings.System.getInt(mContext.getContentResolver(),
+                    Settings.System.DYNAMIC_SYSTEM_BARS_GRADIENT_STATE, 0) == 1 ?
+                            0xff : 0;
+
+            BarBackgroundUpdater.addListener(new BarBackgroundUpdater.UpdateListener(this) {
+
+                @Override
+                public Animator onUpdateStatusBarColor(final int previousColor, final int color) {
+                    mOverrideColor = color;
+                    return generateAnimator();
+                }
+
+            });
+            BarBackgroundUpdater.init(context);
+        }
+
+        @Override
+        protected int getColorOpaque() {
+            return mOverrideColor == 0 ? super.getColorOpaque() : mOverrideColor;
+        }
+
+        @Override
+        protected int getColorSemiTransparent() {
+            return mOverrideColor == 0 ? super.getColorSemiTransparent() :
+                    (mOverrideColor & 0x00ffffff | 0x7f000000);
+        }
+
+        @Override
+        protected int getGradientAlphaOpaque() {
+            return mOverrideGradientAlpha;
+        }
+
+        @Override
+        protected int getGradientAlphaSemiTransparent() {
+            return mOverrideGradientAlpha & 0x7f;
+        }
+
+        public void setOverrideGradientAlpha(final int alpha) {
+            mOverrideGradientAlpha = alpha;
+            generateAnimator().start();
+        }
+    }
+
+    private static final class GradientObserver extends ContentObserver {
+        private static final Uri DYNAMIC_SYSTEM_BARS_GRADIENT_URI = Settings.System.getUriFor(
+                Settings.System.DYNAMIC_SYSTEM_BARS_GRADIENT_STATE);
+
+        private final PhoneStatusBarBackgroundDrawable mDrawable;
+
+        private GradientObserver(final PhoneStatusBarBackgroundDrawable drawable,
+                final Handler handler) {
+            super(handler);
+            mDrawable = drawable;
+        }
+
+        @Override
+        public void onChange(final boolean selfChange) {
+            mDrawable.setOverrideGradientAlpha(Settings.System.getInt(
+                    mDrawable.mContext.getContentResolver(),
+                    Settings.System.DYNAMIC_SYSTEM_BARS_GRADIENT_STATE, 0) == 1 ? 0xff : 0);
         }
     }
 }
