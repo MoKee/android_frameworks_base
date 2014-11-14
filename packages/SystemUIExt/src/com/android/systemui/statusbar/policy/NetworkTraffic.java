@@ -72,6 +72,8 @@ public class NetworkTraffic extends TextView {
     private int KB = KILOBYTE;
     private int MB = KB * KB;
     private int GB = MB * KB;
+    private String mUp = "↑";
+    private String mDown = "↓";
 
     private Handler mTrafficHandler = new Handler() {
         @Override
@@ -103,6 +105,7 @@ public class NetworkTraffic extends TextView {
             String output = "";
             if (isSet(mState, MASK_UP)) {
                 output = formatOutput(timeDelta, txData, symbol);
+                output += mUp;
             }
 
             // Ensure text size is where it needs to be
@@ -117,6 +120,7 @@ public class NetworkTraffic extends TextView {
             // Add information for downlink if it's called for
             if (isSet(mState, MASK_DOWN)) {
                 output += formatOutput(timeDelta, rxData, symbol);
+                output += mDown;
             }
 
             // Update view if there's anything new to show
@@ -246,7 +250,6 @@ public class NetworkTraffic extends TextView {
                     mTrafficHandler.sendEmptyMessage(1);
                 }
                 setVisibility(View.VISIBLE);
-                updateTrafficDrawable();
                 return;
             }
         } else {
@@ -268,19 +271,5 @@ public class NetworkTraffic extends TextView {
         mTrafficHandler.removeCallbacks(mRunnable);
         mTrafficHandler.removeMessages(0);
         mTrafficHandler.removeMessages(1);
-    }
-
-    private void updateTrafficDrawable() {
-        int intTrafficDrawable;
-        if (isSet(mState, MASK_UP + MASK_DOWN)) {
-            intTrafficDrawable = R.drawable.stat_sys_network_traffic_updown;
-        } else if (isSet(mState, MASK_UP)) {
-            intTrafficDrawable = R.drawable.stat_sys_network_traffic_up;
-        } else if (isSet(mState, MASK_DOWN)) {
-            intTrafficDrawable = R.drawable.stat_sys_network_traffic_down;
-        } else {
-            intTrafficDrawable = 0;
-        }
-        setCompoundDrawablesWithIntrinsicBounds(0, 0, intTrafficDrawable, 0);
     }
 }
