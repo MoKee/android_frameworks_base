@@ -81,15 +81,15 @@ public class PieMenu extends FrameLayout {
 
     private static final int COLOR_OPAQUE_MASK = 0xff000000;
     private static final int COLOR_SNAP_BACKGROUND = 0xffffffff;
-    private static final int COLOR_PIE_BACKGROUND = 0xaa000000;
+    private static final int COLOR_PIE_BACKGROUND = 0xaa333333;
     private static final int COLOR_PIE_BUTTON = 0xb2ffffff;
-    private static final int COLOR_PIE_SELECT = 0xaaffffff;
-    private static final int COLOR_PIE_OUTLINES = 0x55ffffff;
-    private static final int COLOR_CHEVRON_LEFT = 0x0999cc;
-    private static final int COLOR_CHEVRON_RIGHT = 0x53d5e5;
-    private static final int COLOR_BATTERY_JUICE = 0x33b5e5;
-    private static final int COLOR_BATTERY_BACKGROUND = 0xffffff;
-    private static final int COLOR_STATUS = 0xffffff;
+    private static final int COLOR_PIE_SELECT = 0xdfffffff;
+    private static final int COLOR_PIE_OUTLINES = 0xffffffff;
+    private static final int COLOR_CHEVRON_LEFT = 0x00ffffff;
+    private static final int COLOR_CHEVRON_RIGHT = 0x00ffffff;
+    private static final int COLOR_BATTERY_JUICE = 0xffa5a5a5;
+    private static final int COLOR_BATTERY_BACKGROUND = 0xffffffff;
+    private static final int COLOR_STATUS = 0xffffffff;
     private static final int BASE_SPEED = 500;
     private static final int CHEVRON_FRAGMENTS = 16;
     private static final float SIZE_BASE = 1.0f;
