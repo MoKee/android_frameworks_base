@@ -464,6 +464,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     int mExpandedDesktopStyle = -1;
     boolean mDevForceNavbar = false;
+    boolean mPie = false;
 
     // States of keyguard dismiss.
     private static final int DISMISS_KEYGUARD_NONE = 0; // Keyguard not being dismissed.
@@ -710,6 +711,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.DEV_FORCE_SHOW_NAVBAR), false, this,
+                    UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.PA_PIE_CONTROLS), false, this,
                     UserHandle.USER_ALL);
 
             updateSettings();
@@ -1719,6 +1723,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     Settings.System.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
             if (devForceNavbar != mDevForceNavbar) {
                 mDevForceNavbar = devForceNavbar;
+            }
+
+            boolean pie = Settings.System.getIntForUser(resolver,
+                    Settings.System.PA_PIE_CONTROLS, 0, UserHandle.USER_CURRENT) == 1;
+             if (pie != mPie) {
+                mPie = pie;
             }
 
             updateKeyAssignments();
@@ -6396,6 +6406,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     // overridden by qemu.hw.mainkeys in the emulator.
     @Override
     public boolean hasNavigationBar() {
+        if (mPie) {
+            return false;
+        }
         return mHasNavigationBar || mDevForceNavbar;
     }
 

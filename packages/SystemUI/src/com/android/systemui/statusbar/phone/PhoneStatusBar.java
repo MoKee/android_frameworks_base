@@ -252,6 +252,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private TilesChangedObserver mTilesChangedObserver;
     private SettingsObserver mSettingsObserver;
     private DevForceNavbarObserver mDevForceNavbarObserver;
+    private PieNavObserver mPieNavObserver;
 
     // Ribbon settings
     private boolean mHasQuickAccessSettings;
@@ -441,13 +442,42 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             ContentResolver resolver = mContext.getContentResolver();
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.DEV_FORCE_SHOW_NAVBAR), false, this);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.PA_PIE_CONTROLS), false, this);
         }
 
         @Override
         public void onChange(boolean selfChange) {
             boolean visible = Settings.System.getIntForUser(mContext.getContentResolver(),
                     Settings.System.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
-            if (visible) {
+            boolean mPie = Settings.System.getIntForUser(mContext.getContentResolver(),
+                    Settings.System.PA_PIE_CONTROLS, 0, UserHandle.USER_CURRENT) == 1;
+            if (visible && mPie) {
+                removeNavigationBar();
+            } else if (visible) {
+                forceAddNavigationBar();
+            } else {
+                removeNavigationBar();
+            }
+        }
+    }
+
+    class PieNavObserver extends ContentObserver {
+        PieNavObserver(Handler handler) {
+            super(handler);
+        }
+
+        void observe() {
+            ContentResolver resolver = mContext.getContentResolver();
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.PA_PIE_CONTROLS), false, this);
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            boolean mPie = Settings.System.getIntForUser(mContext.getContentResolver(),
+                    Settings.System.PA_PIE_CONTROLS, 0, UserHandle.USER_CURRENT) == 1;
+            if (!mPie) {
                 forceAddNavigationBar();
             } else {
                 removeNavigationBar();
@@ -571,6 +601,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             if (!needsNav) {
                 mDevForceNavbarObserver = new DevForceNavbarObserver(mHandler);
                 mDevForceNavbarObserver.observe();
+            } else {
+                mPieNavObserver = new PieNavObserver(mHandler);
+                mPieNavObserver.observe();
             }
         } catch (RemoteException ex) {
             // no window manager? good luck with that
