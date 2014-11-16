@@ -23,7 +23,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Build;
-import android.os.UserHandle;
 import android.provider.Settings;
 import android.view.ViewConfiguration;
 
@@ -47,10 +46,10 @@ public class ActionBarPolicy {
     }
 
     public boolean showsOverflowMenuButton() {
-        if (Settings.System.getIntForUser(mContext.getContentResolver(),
-                Settings.System.UI_FORCE_HIDE_OVERFLOW_BUTTON, 0, UserHandle.USER_CURRENT) == 1) {
-            return (Settings.System.getIntForUser(mContext.getContentResolver(),
-                    Settings.System.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1);
+        if (Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.UI_FORCE_HIDE_OVERFLOW_BUTTON, 0) == 1) {
+            return (Settings.System.getInt(mContext.getContentResolver(),
+                    Settings.System.DEV_FORCE_SHOW_NAVBAR, 0) == 1);
         } else {
             return true;
         }
