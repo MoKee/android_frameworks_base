@@ -2864,6 +2864,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     public void topAppWindowChanged(boolean showMenu) {
         if (mPieControlPanel != null)
             mPieControlPanel.setMenu(showMenu);
+        if (mPieControlsTrigger != null)
+            mPieControlsTrigger.setVisibility(!mPieControlPanel.getKeyguardStatus() ? View.VISIBLE : View.GONE);
 
         if (DEBUG) {
             Log.d(TAG, (showMenu?"showing":"hiding") + " the MENU button");

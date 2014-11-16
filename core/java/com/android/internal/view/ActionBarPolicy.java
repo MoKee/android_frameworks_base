@@ -48,8 +48,10 @@ public class ActionBarPolicy {
     public boolean showsOverflowMenuButton() {
         if (Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.UI_FORCE_HIDE_OVERFLOW_BUTTON, 0) == 1) {
-            return Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.DEV_FORCE_SHOW_NAVBAR, 0) == 1;
+            return (Settings.System.getInt(mContext.getContentResolver(),
+                    Settings.System.DEV_FORCE_SHOW_NAVBAR, 0) == 1) ||
+                   (Settings.System.getInt(mContext.getContentResolver(),
+                    Settings.System.PA_PIE_CONTROLS, 0) == 1);
         } else {
             return true;
         }

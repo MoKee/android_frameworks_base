@@ -79,6 +79,8 @@ public class PieMenu extends FrameLayout {
     private static int ANIMATOR_SNAP_GROW = ANIMATOR_ACC_INC_15 + 2;
     private static int ANIMATOR_END = ANIMATOR_SNAP_GROW;
 
+    private static final int COLOR_OUTLINES_MASK = 0x22000000;
+    private static final int COLOR_ALPHA_MASK = 0xaa000000;
     private static final int COLOR_OPAQUE_MASK = 0xff000000;
     private static final int COLOR_SNAP_BACKGROUND = 0xffffffff;
     private static final int COLOR_PIE_BACKGROUND = 0xaa333333;
@@ -200,6 +202,7 @@ public class PieMenu extends FrameLayout {
     private boolean mUseMenuAlways;
     private boolean mUseSearch;
     private boolean mHapticFeedback;
+    private boolean mUsePower;
 
     // Animations
     private int mGlowOffsetLeft = 150;
@@ -248,6 +251,8 @@ public class PieMenu extends FrameLayout {
                 Settings.System.PA_PIE_MENU, 1) == 1;
         mUseSearch = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.PA_PIE_SEARCH, 1) == 1;
+        mUsePower = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.PA_PIE_POWER, 0) == 1;
         mStatusMode = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.PA_PIE_MODE, 1);
         mPieSize = Settings.System.getFloat(mContext.getContentResolver(),
@@ -361,11 +366,11 @@ public class PieMenu extends FrameLayout {
 
         if (mEnableColor) {
             mPieBackground.setColor(Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.PA_PIE_BACKGROUND, COLOR_PIE_BACKGROUND));
+                    Settings.System.PA_PIE_BACKGROUND, COLOR_PIE_BACKGROUND) | COLOR_ALPHA_MASK);
             mPieSelected.setColor(Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.PA_PIE_SELECT, COLOR_PIE_SELECT));
+                    Settings.System.PA_PIE_SELECT, COLOR_PIE_SELECT) | COLOR_ALPHA_MASK);
             mPieOutlines.setColor(Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.PA_PIE_OUTLINES, COLOR_PIE_OUTLINES));
+                    Settings.System.PA_PIE_OUTLINES, COLOR_PIE_OUTLINES) | COLOR_OUTLINES_MASK );
             mClockPaint.setColor(Settings.System.getInt(mContext.getContentResolver(),
                     Settings.System.PA_PIE_STATUS_CLOCK, COLOR_STATUS));
             mAmPmPaint.setColor(Settings.System.getInt(mContext.getContentResolver(),
@@ -666,7 +671,8 @@ public class PieMenu extends FrameLayout {
     private boolean canItemDisplay(PieItem item) {
         return !(item.getName().equals(PieControl.MENU_BUTTON) && !mPanel.currentAppUsesMenu() && !mUseMenuAlways)
                 &&
-                !(item.getName().equals(PieControl.SEARCH_BUTTON) && !mUseSearch);
+                !(item.getName().equals(PieControl.SEARCH_BUTTON) && !mUseSearch) &&
+                !(item.getName().equals(PieControl.POWER_BUTTON) && !mUsePower);
     }
 
     private void layoutPie() {
@@ -678,6 +684,8 @@ public class PieMenu extends FrameLayout {
         if (!mPanel.currentAppUsesMenu() && !mUseMenuAlways)
             itemCount--;
         if (!mUseSearch)
+            itemCount--;
+        if (!mUsePower)
             itemCount--;
 
         int lesserSweepCount = 0;
@@ -822,8 +830,7 @@ public class PieMenu extends FrameLayout {
                             * (200 - snap.alpha) / (mSnapRadius * 7)) : snap.alpha;
 
                     mSnapBackground.setAlpha((int) (snapTouch));
-                    int len = (int) (snap.radius * 1.3f + (snap.active ? mAnimators[ANIMATOR_SNAP_GROW].fraction * 500
-                            : 0));
+                    int len = (int)(snap.radius * 1.3f);
                     int thick = (int) (len * 0.2f);
 
                     Path plus = new Path();
@@ -868,98 +875,94 @@ public class PieMenu extends FrameLayout {
                     canvas.restoreToCount(state);
                 }
 
-                // Better not show inverted junk for top pies
-                if (mPanelOrientation != Gravity.TOP) {
+                // Draw Battery
+                mBatteryBackground
+                        .setAlpha((int) (mAnimators[ANIMATOR_DEC_SPEED15].fraction * 0x22));
+                mBatteryJuice
+                        .setAlpha((int) (mAnimators[ANIMATOR_ACC_SPEED15].fraction * 0x88));
 
-                    // Draw Battery
-                    mBatteryBackground
-                            .setAlpha((int) (mAnimators[ANIMATOR_DEC_SPEED15].fraction * 0x22));
-                    mBatteryJuice
-                            .setAlpha((int) (mAnimators[ANIMATOR_ACC_SPEED15].fraction * 0x88));
+                state = canvas.save();
+                canvas.rotate(90 + (1 - mAnimators[ANIMATOR_ACC_INC_1].fraction) * 500,
+                        mCenter.x, mCenter.y);
+                canvas.drawPath(mBatteryPathBackground, mBatteryBackground);
+                canvas.restoreToCount(state);
 
-                    state = canvas.save();
-                    canvas.rotate(90 + (1 - mAnimators[ANIMATOR_ACC_INC_1].fraction) * 500,
-                            mCenter.x, mCenter.y);
-                    canvas.drawPath(mBatteryPathBackground, mBatteryBackground);
-                    canvas.restoreToCount(state);
+                state = canvas.save();
+                canvas.rotate(90, mCenter.x, mCenter.y);
+                canvas.drawPath(mBatteryPathJuice, mBatteryJuice);
+                canvas.restoreToCount(state);
 
-                    state = canvas.save();
-                    canvas.rotate(90, mCenter.x, mCenter.y);
-                    canvas.drawPath(mBatteryPathJuice, mBatteryJuice);
-                    canvas.restoreToCount(state);
+                // Draw clock && AM/PM
+                state = canvas.save();
+                canvas.rotate(mClockTextRotation
+                        - (1 - mAnimators[ANIMATOR_DEC_SPEED15].fraction) * 90, mCenter.x,
+                        mCenter.y);
 
-                    // Draw clock && AM/PM
-                    state = canvas.save();
-                    canvas.rotate(mClockTextRotation
-                            - (1 - mAnimators[ANIMATOR_DEC_SPEED15].fraction) * 90, mCenter.x,
-                            mCenter.y);
-
-                    mClockPaint.setAlpha((int) (mAnimators[ANIMATOR_DEC_SPEED15].fraction * 0xcc));
-                    float lastPos = 0;
-                    for (int i = 0; i < mClockText.length(); i++) {
-                        canvas.drawTextOnPath("" + mClockText.charAt(i), mStatusPath, lastPos,
-                                mClockOffset, mClockPaint);
-                        lastPos += mClockTextOffsets[i];
-                    }
-
-                    mAmPmPaint.setAlpha((int) (mAnimators[ANIMATOR_DEC_SPEED15].fraction * 0xaa));
-                    canvas.drawTextOnPath(mClockTextAmPm, mStatusPath,
-                            lastPos - mClockTextAmPmSize, mAmPmOffset, mAmPmPaint);
-                    canvas.restoreToCount(state);
-
-                    // Device status information and date
-                    BaseStatusBar bar = mPanel.getBar();
-
-                    mStatusPaint.setAlpha((int) (mAnimators[ANIMATOR_ACC_SPEED15].fraction * 0xaa));
-
-                    state = canvas.save();
-                    canvas.rotate(mPanel.getDegree() + 180
-                            + (1 - mAnimators[ANIMATOR_DEC_SPEED15].fraction) * 90, mCenter.x,
-                            mCenter.y);
-                    if (mPolicy.supportsTelephony()) {
-                        canvas.drawTextOnPath(mPolicy.getNetworkProvider(), mStatusPath, 0,
-                                mStatusOffset * 4, mStatusPaint);
-                    }
-                    canvas.drawTextOnPath(mPolicy.getSimpleDate(), mStatusPath, 0,
-                            mStatusOffset * 3, mStatusPaint);
-                    canvas.drawTextOnPath(bar.mNotificationData.size() + " ONGOING EVENTS",
-                            mStatusPath, 0, mStatusOffset * 2, mStatusPaint);
-                    canvas.drawTextOnPath(
-                            "CONNECTION: " + mPolicy.getWifiSsid(((PhoneStatusBar) bar).mNetworkController),
-                            mStatusPath, 0, mStatusOffset * 1, mStatusPaint);
-                    canvas.drawTextOnPath(mPolicy.getBatteryLevelReadable(), mStatusPath, 0,
-                            mStatusOffset * 0, mStatusPaint);
-                    canvas.restoreToCount(state);
-
-                    state = canvas.save();
-                    canvas.rotate(mPanel.getDegree() + 180, mCenter.x, mCenter.y);
-
-                    // Notifications
-                    if (mStatusPanel.getCurrentViewState() != PieStatusPanel.NOTIFICATIONS_PANEL) {
-
-                        for (int i = 0; i < mNotificationCount && i < 10; i++) {
-                            mNotificationPaint
-                                    .setAlpha((int) (mAnimators[ANIMATOR_ACC_INC_1 + i].fraction * mGlowOffsetRight));
-
-                            canvas.drawTextOnPath(mNotificationText[i], mNotificationPath[i], 0, 0,
-                                    mNotificationPaint);
-
-                            int IconState = canvas.save();
-                            int posX = (int) (mCenter.x + mNotificationsRadius + i
-                                    * mNotificationsRowSize);
-                            int posY = (int) (mCenter.y - mNotificationIconSize * 1.4f);
-                            int iconCenter = mNotificationIconSize / 2;
-
-                            canvas.rotate(90, posX + iconCenter, posY + iconCenter);
-                            canvas.drawBitmap(mNotificationIcon[i], null, new Rect(posX, posY, posX
-                                    +
-                                    mNotificationIconSize, posY + mNotificationIconSize),
-                                    mNotificationPaint);
-                            canvas.restoreToCount(IconState);
-                        }
-                    }
-                    canvas.restoreToCount(state);
+                mClockPaint.setAlpha((int) (mAnimators[ANIMATOR_DEC_SPEED15].fraction * 0xcc));
+                float lastPos = 0;
+                for (int i = 0; i < mClockText.length(); i++) {
+                    canvas.drawTextOnPath("" + mClockText.charAt(i), mStatusPath, lastPos,
+                            mClockOffset, mClockPaint);
+                    lastPos += mClockTextOffsets[i];
                 }
+
+                mAmPmPaint.setAlpha((int) (mAnimators[ANIMATOR_DEC_SPEED15].fraction * 0xaa));
+                canvas.drawTextOnPath(mClockTextAmPm, mStatusPath,
+                        lastPos - mClockTextAmPmSize, mAmPmOffset, mAmPmPaint);
+                canvas.restoreToCount(state);
+
+                // Device status information and date
+                BaseStatusBar bar = mPanel.getBar();
+
+                mStatusPaint.setAlpha((int) (mAnimators[ANIMATOR_ACC_SPEED15].fraction * 0xaa));
+
+                state = canvas.save();
+                canvas.rotate(mPanel.getDegree() + 180
+                        + (1 - mAnimators[ANIMATOR_DEC_SPEED15].fraction) * 90, mCenter.x,
+                        mCenter.y);
+                if (mPolicy.supportsTelephony()) {
+                    canvas.drawTextOnPath(mPolicy.getNetworkProvider(), mStatusPath, 0,
+                            mStatusOffset * 4, mStatusPaint);
+                }
+                canvas.drawTextOnPath(mPolicy.getSimpleDate(), mStatusPath, 0,
+                        mStatusOffset * 3, mStatusPaint);
+                canvas.drawTextOnPath(bar.mNotificationData.size() + " ONGOING EVENTS",
+                        mStatusPath, 0, mStatusOffset * 2, mStatusPaint);
+                canvas.drawTextOnPath(
+                        "CONNECTION: " + mPolicy.getWifiSsid(((PhoneStatusBar) bar).mNetworkController),
+                        mStatusPath, 0, mStatusOffset * 1, mStatusPaint);
+                canvas.drawTextOnPath(mPolicy.getBatteryLevelReadable(), mStatusPath, 0,
+                        mStatusOffset * 0, mStatusPaint);
+                canvas.restoreToCount(state);
+
+                state = canvas.save();
+                canvas.rotate(mPanel.getDegree() + 180, mCenter.x, mCenter.y);
+
+                // Notifications
+                if (mStatusPanel.getCurrentViewState() != PieStatusPanel.NOTIFICATIONS_PANEL) {
+
+                    for (int i = 0; i < mNotificationCount && i < 10; i++) {
+                        mNotificationPaint
+                                .setAlpha((int) (mAnimators[ANIMATOR_ACC_INC_1 + i].fraction * mGlowOffsetRight));
+
+                        canvas.drawTextOnPath(mNotificationText[i], mNotificationPath[i], 0, 0,
+                                mNotificationPaint);
+
+                        int IconState = canvas.save();
+                        int posX = (int) (mCenter.x + mNotificationsRadius + i
+                                * mNotificationsRowSize);
+                        int posY = (int) (mCenter.y - mNotificationIconSize * 1.4f);
+                        int iconCenter = mNotificationIconSize / 2;
+
+                        canvas.rotate(90, posX + iconCenter, posY + iconCenter);
+                        canvas.drawBitmap(mNotificationIcon[i], null, new Rect(posX, posY, posX
+                                +
+                                mNotificationIconSize, posY + mNotificationIconSize),
+                                mNotificationPaint);
+                        canvas.restoreToCount(IconState);
+                    }
+                }
+                canvas.restoreToCount(state);
             }
         }
     }

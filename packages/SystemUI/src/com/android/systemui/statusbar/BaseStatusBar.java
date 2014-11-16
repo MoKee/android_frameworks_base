@@ -1416,7 +1416,6 @@ public abstract class BaseStatusBar extends SystemUI implements
     public boolean mPieEnabled;
     public float mPieTriggerSize;
     public int mPieGravity;
-    public boolean mPieStick;
     public boolean mPieCenter;
 
     private void pieOnStart() {
@@ -1430,8 +1429,6 @@ public abstract class BaseStatusBar extends SystemUI implements
         resolver.registerContentObserver(Settings.System.getUriFor(
                 Settings.System.PA_PIE_GRAVITY), false, mPieObserver);
         resolver.registerContentObserver(Settings.System.getUriFor(
-                Settings.System.PA_PIE_STICK), false, mPieObserver);
-        resolver.registerContentObserver(Settings.System.getUriFor(
                 Settings.System.PA_PIE_CENTER), false, mPieObserver);
 
         pieRefreshSettings();
@@ -1443,7 +1440,6 @@ public abstract class BaseStatusBar extends SystemUI implements
         mPieEnabled = Settings.System.getInt(resolver, Settings.System.PA_PIE_CONTROLS, 0) != 0;
         mPieGravity = Settings.System.getInt(resolver, Settings.System.PA_PIE_GRAVITY, 3);
         mPieTriggerSize = Settings.System.getFloat(resolver, Settings.System.PA_PIE_TRIGGER, 2f);
-        mPieStick = Settings.System.getInt(resolver, Settings.System.PA_PIE_STICK, 1) != 0;
         mPieCenter = Settings.System.getInt(resolver, Settings.System.PA_PIE_CENTER, 1) != 0;
 
         pieRemove();
@@ -1466,45 +1462,36 @@ public abstract class BaseStatusBar extends SystemUI implements
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             final int action = event.getAction();
-
-            // The fact we got a touch event means it was enabled before.
-            // Abort if we got disabled.
-            if (!mPieEnabled) {
-                pieRemove();
-                return false;
-            }
-
-            if (!mPieControlPanel.isShowing() && !mPieControlPanel.getKeyguardStatus()) {
-                switch (action) {
-                    case MotionEvent.ACTION_DOWN:
-                        centerPie = mPieCenter;
-                        actionDown = true;
-                        initialX = event.getX();
-                        initialY = event.getY();
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        if (actionDown != true)
+            if(!mPieControlPanel.getKeyguardStatus()) {
+                if (!mPieControlPanel.isShowing()) {
+                    switch(action) {
+                        case MotionEvent.ACTION_DOWN:
+                            centerPie = Settings.System.getInt(mContext.getContentResolver(), Settings.System.PA_PIE_CENTER, 1) == 1;
+                            actionDown = true;
+                            initialX = event.getX();
+                            initialY = event.getY();
                             break;
+                        case MotionEvent.ACTION_MOVE:
+                            if (actionDown != true) break;
 
-                        float deltaX = Math.abs(event.getX() - initialX);
-                        float deltaY = Math.abs(event.getY() - initialY);
-                        float distance = orient == Gravity.BOTTOM ||
-                                orient == Gravity.TOP ? deltaY : deltaX;
-                        // Swipe up
-                        if (distance > 10) {
-                            orient = mPieControlPanel.getOrientation();
-                            mPieControlPanel.show(centerPie ? -1
-                                    : (int) (orient == Gravity.BOTTOM ||
-                                            orient == Gravity.TOP ? initialX : initialY));
-                            event.setAction(MotionEvent.ACTION_DOWN);
-                            mPieControlPanel.onTouchEvent(event);
-                            actionDown = false;
-                        }
+                            float deltaX = Math.abs(event.getX() - initialX);
+                            float deltaY = Math.abs(event.getY() - initialY);
+                            float distance = orient == Gravity.BOTTOM ||
+                                    orient == Gravity.TOP ? deltaY : deltaX;
+                            // Swipe up
+                            if (distance > 10) {
+                                orient = mPieControlPanel.getOrientation();
+                                mPieControlPanel.show(centerPie ? -1 : (int)(orient == Gravity.BOTTOM ||
+                                    orient == Gravity.TOP ? initialX : initialY));
+                                event.setAction(MotionEvent.ACTION_DOWN);
+                                mPieControlPanel.onTouchEvent(event);
+                                actionDown = false;
+                            }
+                    }
+                } else {
+                    return mPieControlPanel.onTouchEvent(event);
                 }
-            } else {
-                return mPieControlPanel.onTouchEvent(event);
             }
-
             return false;
         }
     }

@@ -145,25 +145,6 @@ public class PieControlPanel extends FrameLayout implements StatusBarPanel,
     }
 
     public void bumpConfiguration() {
-        if (Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.PA_PIE_STICK, 1) != 0) {
-
-            // Get original offset
-            int gravityIndex = findGravityOffset(convertPieGravitytoGravity(mStatusBar.mPieGravity));
-
-            // Orient Pie to that place
-            reorient(gravityArray[gravityIndex], false);
-
-            // Now re-orient it for landscape orientation
-            switch (mDisplay.getRotation()) {
-                case Surface.ROTATION_270:
-                    reorient(gravityArray[gravityIndex + 1], false);
-                    break;
-                case Surface.ROTATION_90:
-                    reorient(gravityArray[gravityIndex - 1], false);
-                    break;
-            }
-        }
         show(false);
         if (mPieControl != null)
             mPieControl.onConfigurationChanged();
@@ -210,21 +191,6 @@ public class PieControlPanel extends FrameLayout implements StatusBarPanel,
         show(mShowing);
         if (storeSetting) {
             int gravityOffset = mOrientation;
-            if (mStatusBar.mPieStick) {
-
-                gravityOffset = findGravityOffset(mOrientation);
-                switch (mDisplay.getRotation()) {
-                    case Surface.ROTATION_270:
-                        gravityOffset = gravityArray[gravityOffset - 1];
-                        break;
-                    case Surface.ROTATION_90:
-                        gravityOffset = gravityArray[gravityOffset + 1];
-                        break;
-                    default:
-                        gravityOffset = mOrientation;
-                        break;
-                }
-            }
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.PA_PIE_GRAVITY, convertGravitytoPieGravity(gravityOffset));
         }
@@ -302,6 +268,8 @@ public class PieControlPanel extends FrameLayout implements StatusBarPanel,
             mStatusBar.toggleRecentApps();
         } else if (buttonName.equals(PieControl.SEARCH_BUTTON)) {
             launchAssistAction();
+        } else if (buttonName.equals(PieControl.POWER_BUTTON)) {
+            injectKeyDelayed(KeyEvent.KEYCODE_POWER);
         }
     }
 
@@ -346,6 +314,6 @@ public class PieControlPanel extends FrameLayout implements StatusBarPanel,
     };
 
     public boolean getKeyguardStatus() {
-        return mKeyguardManger.isKeyguardLocked();
+        return mKeyguardManger.isKeyguardLocked() && mKeyguardManger.isKeyguardSecure() || mKeyguardManger.isKeyguardLocked() && !mKeyguardManger.isKeyguardSecure();
     }
 }

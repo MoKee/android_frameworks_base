@@ -40,6 +40,7 @@ public class PieControl implements OnClickListener {
     public static final String MENU_BUTTON = "##menu##";
     public static final String SEARCH_BUTTON = "##search##";
     public static final String RECENT_BUTTON = "##recent##";
+    public static final String POWER_BUTTON = "##power##";
 
     protected Context mContext;
     protected PieMenu mPie;
@@ -50,6 +51,7 @@ public class PieControl implements OnClickListener {
     private PieItem mMenu;
     private PieItem mRecent;
     private PieItem mSearch;
+    private PieItem mPower;
     private OnNavButtonPressedListener mListener;
     private PieControlPanel mPanel;
 
@@ -109,18 +111,11 @@ public class PieControl implements OnClickListener {
         mHome = makeItem(R.drawable.ic_sysbar_home, 1, HOME_BUTTON, false);
         mRecent = makeItem(R.drawable.ic_sysbar_recent, 1, RECENT_BUTTON, false);
         mMenu = makeItem(R.drawable.ic_sysbar_menu, 1, MENU_BUTTON, true);
+        mSearch = makeItem(R.drawable.ic_sysbar_search, 1, SEARCH_BUTTON, true);
+        mPower = makeItem(R.drawable.ic_sysbar_power, 1, POWER_BUTTON, true);
         mPie.addItem(mMenu);
-
-        if (mIsAssistantAvailable) {
-            mSearch = makeItem(R.drawable.ic_sysbar_search, 1, SEARCH_BUTTON, true); // TODO:
-                                                                                        // Replace
-                                                                                        // with
-                                                                                        // camera
-                                                                                        // or
-                                                                                        // something
-            mPie.addItem(mSearch);
-        }
-
+        mPie.addItem(mSearch);
+        mPie.addItem(mPower);
         mPie.addItem(mRecent);
         mPie.addItem(mHome);
         mPie.addItem(mBack);

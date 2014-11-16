@@ -4204,12 +4204,6 @@ public final class Settings {
         public static final String PA_PIE_MENU = "pa_pie_menu";
 
         /**
-         * Pie will not rotate. Should default to 1, (yes, do not rotate)
-         * @hide
-         */
-        public static final String PA_PIE_STICK = "pa_pie_stick";
-
-        /**
          * Center Pie? Should default to 1 (yes, center)
          * @hide
          */
@@ -4220,6 +4214,12 @@ public final class Settings {
          * @hide
          */
         public static final String PA_PIE_SEARCH = "pa_pie_search";
+
+        /**
+         * Pie power, should default to 0 (no, show only when needed)
+         * @hide
+         */
+        public static final String PA_PIE_POWER = "pa_pie_power";
 
         /**
          * Pie gap angle, should default to 2

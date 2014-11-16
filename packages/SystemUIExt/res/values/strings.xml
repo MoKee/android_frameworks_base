@@ -31,7 +31,7 @@
     <string name="powerwidget_screen_timeout_never_toast">Screen set to always on</string>
 
     <!-- PIE -->
-    <string name="pie_date_format">ccc, dd MMM yyyy</string>
+    <string name="pie_date_format">EEE, MMMM d</string>
     <string name="pie_hour_format_12">hh:mm</string>
     <string name="pie_hour_format_24">HH:mm</string>
     <string name="pie_am_pm">a</string>
