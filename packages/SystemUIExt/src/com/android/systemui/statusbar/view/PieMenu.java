@@ -38,6 +38,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
+import android.os.UserHandle;
 import android.os.Vibrator;
 import android.provider.Settings;
 import android.service.notification.StatusBarNotification;
@@ -247,22 +248,22 @@ public class PieMenu extends FrameLayout {
         mPanelOrientation = mPanel.getOrientation();
 
         // Fetch modes
-        mUseMenuAlways = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.PA_PIE_MENU, 1) == 1;
-        mUseSearch = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.PA_PIE_SEARCH, 1) == 1;
-        mUsePower = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.PA_PIE_POWER, 0) == 1;
-        mStatusMode = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.PA_PIE_MODE, 1);
-        mPieSize = Settings.System.getFloat(mContext.getContentResolver(),
-                Settings.System.PA_PIE_SIZE, 1.0f);
-        mPieAngle = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.PA_PIE_ANGLE, 12);
-        mPieGap = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.PA_PIE_GAP, 2);
-        mHapticFeedback = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.HAPTIC_FEEDBACK_ENABLED, 1) != 0;
+        mUseMenuAlways = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.PA_PIE_MENU, 1, UserHandle.USER_CURRENT) == 1;
+        mUseSearch = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.PA_PIE_SEARCH, 1, UserHandle.USER_CURRENT) == 1;
+        mUsePower = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.PA_PIE_POWER, 0, UserHandle.USER_CURRENT) == 1;
+        mStatusMode = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.PA_PIE_MODE, 1, UserHandle.USER_CURRENT);
+        mPieSize = Settings.System.getFloatForUser(mContext.getContentResolver(),
+                Settings.System.PA_PIE_SIZE, 1.0f, UserHandle.USER_CURRENT);
+        mPieAngle = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.PA_PIE_ANGLE, 12, UserHandle.USER_CURRENT);
+        mPieGap = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.PA_PIE_GAP, 2, UserHandle.USER_CURRENT);
+        mHapticFeedback = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.HAPTIC_FEEDBACK_ENABLED, 1, UserHandle.USER_CURRENT) != 0;
 
         // Snap
         mSnapRadius = (int) (mResources.getDimensionPixelSize(R.dimen.pie_snap_radius) * mPieSize);
@@ -358,36 +359,36 @@ public class PieMenu extends FrameLayout {
                 mOuterBatteryRadius, mCenter);
 
         // Colors
-        mEnableColor = (Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.PA_PIE_ENABLE_COLOR, 0) == 1);
+        mEnableColor = (Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.PA_PIE_ENABLE_COLOR, 0, UserHandle.USER_CURRENT) ==  1);
 
         mNotificationPaint.setColor(getResources().getColor(R.color.status));
         mSnapBackground.setColor(getResources().getColor(R.color.snap_background));
 
         if (mEnableColor) {
-            mPieBackground.setColor(Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.PA_PIE_BACKGROUND, COLOR_PIE_BACKGROUND) | COLOR_ALPHA_MASK);
-            mPieSelected.setColor(Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.PA_PIE_SELECT, COLOR_PIE_SELECT) | COLOR_ALPHA_MASK);
-            mPieOutlines.setColor(Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.PA_PIE_OUTLINES, COLOR_PIE_OUTLINES) | COLOR_OUTLINES_MASK );
-            mClockPaint.setColor(Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.PA_PIE_STATUS_CLOCK, COLOR_STATUS));
-            mAmPmPaint.setColor(Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.PA_PIE_STATUS_CLOCK, COLOR_STATUS));
-            mStatusPaint.setColor(Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.PA_PIE_STATUS, COLOR_STATUS));
-            mChevronBackgroundLeft.setColor(Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.PA_PIE_CHEVRON_LEFT, COLOR_CHEVRON_LEFT));
-            mChevronBackgroundRight.setColor(Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.PA_PIE_CHEVRON_RIGHT, COLOR_CHEVRON_RIGHT));
+            mPieBackground.setColor(Settings.System.getIntForUser(mContext.getContentResolver(),
+                    Settings.System.PA_PIE_BACKGROUND, COLOR_PIE_BACKGROUND, UserHandle.USER_CURRENT) | COLOR_ALPHA_MASK);
+            mPieSelected.setColor(Settings.System.getIntForUser(mContext.getContentResolver(),
+                    Settings.System.PA_PIE_SELECT, COLOR_PIE_SELECT, UserHandle.USER_CURRENT) | COLOR_ALPHA_MASK);
+            mPieOutlines.setColor(Settings.System.getIntForUser(mContext.getContentResolver(),
+                    Settings.System.PA_PIE_OUTLINES, COLOR_PIE_OUTLINES, UserHandle.USER_CURRENT) | COLOR_OUTLINES_MASK );
+            mClockPaint.setColor(Settings.System.getIntForUser(mContext.getContentResolver(),
+                    Settings.System.PA_PIE_STATUS_CLOCK, COLOR_STATUS, UserHandle.USER_CURRENT));
+            mAmPmPaint.setColor(Settings.System.getIntForUser(mContext.getContentResolver(),
+                    Settings.System.PA_PIE_STATUS_CLOCK, COLOR_STATUS, UserHandle.USER_CURRENT));
+            mStatusPaint.setColor(Settings.System.getIntForUser(mContext.getContentResolver(),
+                    Settings.System.PA_PIE_STATUS, COLOR_STATUS, UserHandle.USER_CURRENT));
+            mChevronBackgroundLeft.setColor(Settings.System.getIntForUser(mContext.getContentResolver(),
+                    Settings.System.PA_PIE_CHEVRON_LEFT, COLOR_CHEVRON_LEFT, UserHandle.USER_CURRENT));
+            mChevronBackgroundRight.setColor(Settings.System.getIntForUser(mContext.getContentResolver(),
+                    Settings.System.PA_PIE_CHEVRON_RIGHT, COLOR_CHEVRON_RIGHT, UserHandle.USER_CURRENT));
             mBatteryJuice.setColorFilter(new PorterDuffColorFilter(extractRGB(Settings.System
-                    .getInt(mContext.getContentResolver(),
-                            Settings.System.PA_PIE_JUICE, COLOR_BATTERY_JUICE)) | COLOR_OPAQUE_MASK,
+                    .getIntForUser(mContext.getContentResolver(),
+                            Settings.System.PA_PIE_JUICE, COLOR_BATTERY_JUICE, UserHandle.USER_CURRENT)) | COLOR_OPAQUE_MASK,
                     Mode.SRC_ATOP));
             for (PieItem item : mItems) {
-                item.setColor(Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.PA_PIE_BUTTON_COLOR, COLOR_PIE_BUTTON));
+                item.setColor(Settings.System.getIntForUser(mContext.getContentResolver(),
+                        Settings.System.PA_PIE_BUTTON_COLOR, COLOR_PIE_BUTTON, UserHandle.USER_CURRENT));
             }
         } else {
             mPieBackground.setColor(getResources().getColor(R.color.pie_background));
@@ -1103,8 +1104,8 @@ public class PieMenu extends FrameLayout {
                         break;
                 }
 
-                if (Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.PA_PIE_NOTIFICATIONS, 0) == 1) {
+                if (Settings.System.getIntForUser(mContext.getContentResolver(),
+                        Settings.System.PA_PIE_NOTIFICATIONS, 0, UserHandle.USER_CURRENT) == 1) {
                     if (state == PieStatusPanel.QUICK_SETTINGS_PANEL
                             &&
                             mStatusPanel.getFlipViewState() != PieStatusPanel.QUICK_SETTINGS_PANEL
