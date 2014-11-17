@@ -3805,7 +3805,7 @@ public class Intent implements Parcelable, Cloneable {
      * view metrics, making it running alongside another app.
      * @hide
      */
-    public static final int FLAG_ACTIVITY_SPLIT_VIEW = 0X00030000;
+    public static final int FLAG_ACTIVITY_SPLIT_VIEW = 0X00009000;
     /**
      * If set, when sending a broadcast only registered receivers will be
      * called -- no BroadcastReceiver components will be launched.
