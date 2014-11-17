@@ -23,10 +23,10 @@
     <color name="snap_background">#ffffffff</color>
     <color name="pie_background">#aa333333</color>
     <color name="pie_button">#b2ffffff</color>
-    <color name="pie_select">#dfffffff</color>
+    <color name="pie_select">#aaffffff</color>
     <color name="pie_outlines">#ffffffff</color>
-    <color name="chevron_left">#00ffffff</color>
-    <color name="chevron_right">#00ffffff</color>
+    <color name="chevron_left">#dfa9a9a9</color>
+    <color name="chevron_right">#dfe3e3e3</color>
     <color name="battery_juice">#ffa5a5a5</color>
     <color name="battery_juice_low">#ffffbb33</color>
     <color name="battery_juice_critical">#ffff4444</color>
