@@ -791,7 +791,7 @@ public class NavigationBarView extends LinearLayout {
                 && mLockUtils.getCameraEnabled();
         // TODO(): Ideally we should integrate with DevicePolicyManager for application widget too.
         final boolean showApplicationWidget = showSearch &&
-                mApplicationWidgetPackageName != null && mLockUtils.getApplicationWidgetEnabled();
+                mApplicationWidgetPackageName != null;
         final boolean showNotifs = showSearch &&
             Settings.System.getIntForUser(mContext.getContentResolver(),
                         Settings.System.LOCKSCREEN_NOTIFICATIONS, 1, UserHandle.USER_CURRENT_OR_SELF) == 1 &&
