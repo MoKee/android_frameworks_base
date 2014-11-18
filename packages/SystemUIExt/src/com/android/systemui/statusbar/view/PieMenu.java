@@ -927,7 +927,7 @@ public class PieMenu extends FrameLayout {
                 }
                 canvas.drawTextOnPath(mPolicy.getSimpleDate(), mStatusPath, 0,
                         mStatusOffset * 3, mStatusPaint);
-                canvas.drawTextOnPath(bar.mNotificationData.size() + mContext.getString(R.string.status_bar_latest_events_title).toUpperCase(),
+                canvas.drawTextOnPath(bar.mNotificationData.size() + " " + mContext.getString(R.string.status_bar_latest_events_title).toUpperCase(),
                         mStatusPath, 0, mStatusOffset * 2, mStatusPaint);
                 canvas.drawTextOnPath(
                         mContext.getString(R.string.quick_settings_wifi_label).toUpperCase() + ": " + mPolicy.getWifiSsid(((PhoneStatusBar) bar).mNetworkController),
