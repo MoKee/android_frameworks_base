@@ -1991,6 +1991,10 @@
   <java-symbol type="layout" name="year_label_text_view" />
   <java-symbol type="layout" name="date_picker_holo" />
 
+  <!-- Config.xml entries -->
+  <java-symbol type="string" name="config_deviceKeyHandlerLib" />
+  <java-symbol type="string" name="config_deviceKeyHandlerClass" />
+
   <java-symbol type="id" name="time_header" />
   <java-symbol type="id" name="hours" />
   <java-symbol type="id" name="minutes" />
@@ -2172,4 +2176,12 @@
   <java-symbol type="bool" name="config_enable_mms_with_mobile_data_off" />
 
   <java-symbol type="bool" name="config_wifiApFirmwareReload" />
+
+  <!-- EdgeGesture service -->
+  <java-symbol type="dimen" name="edge_gesture_trigger_distance" />
+  <java-symbol type="dimen" name="edge_gesture_perpendicular_distance" />
+  <java-symbol type="dimen" name="edge_gesture_trigger_thickness" />
+
+  <!-- Gesture Sensor -->
+  <java-symbol type="bool" name="config_enableGestureService" />
 </resources>
