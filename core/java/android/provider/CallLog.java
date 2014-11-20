@@ -634,9 +634,12 @@ public class CallLog {
                 ContentValues values) {
             final ContentResolver resolver = context.getContentResolver();
             Uri result = resolver.insert(uri, values);
-            resolver.delete(uri, "_id IN " +
-                    "(SELECT _id FROM calls ORDER BY " + DEFAULT_SORT_ORDER
-                    + " LIMIT -1 OFFSET 500)", null);
+            int count = Settings.System.getInt(resolver, Settings.System.CALL_LOG_DELETE_LIMIT, 500);
+            if (count != 0) {
+                resolver.delete(uri, "_id IN " +
+                        "(SELECT _id FROM calls ORDER BY " + DEFAULT_SORT_ORDER
+                        + " LIMIT -1 OFFSET " + count +")", null);
+            }
             return result;
         }
 
