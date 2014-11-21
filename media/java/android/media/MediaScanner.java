@@ -329,17 +329,13 @@ public class MediaScanner
     /** Whether the database had any entries in it before the scan started */
     private boolean mWasEmptyPriorToScan = false;
     /** Whether the scanner has set a default sound for the ringer ringtone. */
-    private boolean mDefaultRingtoneSet;
-    /** Whether the scanner has set a default sound for the SIM-2 ringer ringtone. */
-    private boolean mDefaultRingtoneSet_2;
+    private boolean[] mDefaultRingtonesSet;
     /** Whether the scanner has set a default sound for the notification ringtone. */
     private boolean mDefaultNotificationSet;
     /** Whether the scanner has set a default sound for the alarm ringtone. */
     private boolean mDefaultAlarmSet;
-    /** The filename for the default sound for the ringer ringtone. */
-    private String mDefaultRingtoneFilename;
-    /** The filename for the default sound for the SIM-2 ringer ringtone. */
-    private String mDefaultRingtoneFilename_2;
+    /** The filenames for the default sound for the ringer ringtone. */
+    private String[] mDefaultRingtoneFilenames;
     /** The filename for the default sound for the notification ringtone. */
     private String mDefaultNotificationFilename;
     /** The filename for the default sound for the alarm ringtone. */
@@ -350,6 +346,7 @@ public class MediaScanner
      * to get the full system property.
      */
     private static final String DEFAULT_RINGTONE_PROPERTY_PREFIX = "ro.config.";
+    private static final int DEFAULT_SIM_INDEX = 0;
 
     // set to true if file path comparisons should be case insensitive.
     // this should be set when scanning files on a case insensitive file system.
@@ -407,10 +404,24 @@ public class MediaScanner
     }
 
     private void setDefaultRingtoneFileNames() {
-        mDefaultRingtoneFilename = SystemProperties.get(DEFAULT_RINGTONE_PROPERTY_PREFIX
+        String defaultAllSimRingtone = SystemProperties.get(DEFAULT_RINGTONE_PROPERTY_PREFIX
                 + Settings.System.RINGTONE);
-        mDefaultRingtoneFilename_2 = SystemProperties.get(DEFAULT_RINGTONE_PROPERTY_PREFIX
-                + Settings.System.RINGTONE_2);
+
+        int phoneCount = MSimTelephonyManager.getDefault().getPhoneCount();
+        mDefaultRingtoneFilenames = new String[phoneCount];
+        mDefaultRingtonesSet = new boolean[phoneCount];
+
+        mDefaultRingtoneFilenames[DEFAULT_SIM_INDEX] = SystemProperties.get(DEFAULT_RINGTONE_PROPERTY_PREFIX
+                + Settings.System.RINGTONE);
+
+        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+            for (int i = MSimConstants.SUB2; i < phoneCount; i++) {
+                String defaultIterSimRingtone = SystemProperties.get(DEFAULT_RINGTONE_PROPERTY_PREFIX
+                        + Settings.System.RINGTONE + "_" + (i + 1), defaultAllSimRingtone);
+                mDefaultRingtoneFilenames[i] = defaultIterSimRingtone;
+            }
+        }
+
         mDefaultNotificationFilename = SystemProperties.get(DEFAULT_RINGTONE_PROPERTY_PREFIX
                 + Settings.System.NOTIFICATION_SOUND);
         mDefaultAlarmAlertFilename = SystemProperties.get(DEFAULT_RINGTONE_PROPERTY_PREFIX
@@ -820,8 +831,6 @@ public class MediaScanner
         private Uri endFile(FileEntry entry, boolean ringtones, boolean notifications,
                 boolean alarms, boolean music, boolean podcasts)
                 throws RemoteException {
-            boolean isRingtone_2 = false;
-            
             // update database
 
             // use album artist if artist is missing
@@ -951,16 +960,15 @@ public class MediaScanner
                                 doesPathHaveFilename(entry.mPath, mDefaultNotificationFilename)) {
                             needToSetSettings = true;
                         }
-                    } else if (ringtones && !mDefaultRingtoneSet) {
-                        if (TextUtils.isEmpty(mDefaultRingtoneFilename) ||
-                                doesPathHaveFilename(entry.mPath, mDefaultRingtoneFilename)) {
-                            needToSetSettings = true;
-                        }
-                    } else if (ringtones && !mDefaultRingtoneSet_2) {
-                        if (TextUtils.isEmpty(mDefaultRingtoneFilename_2) ||
-                                doesPathHaveFilename(entry.mPath, mDefaultRingtoneFilename_2)) {
-                            needToSetSettings = true;
-                            isRingtone_2 = true;
+                    } else if (ringtones && !ringtoneDefaultsSet()) {
+                        int phoneCount = MSimTelephonyManager.getDefault().getPhoneCount();
+                        for (int i = 0; i < phoneCount; i++) {
+                            // Check if ringtone matches default ringtone
+                            if (TextUtils.isEmpty(mDefaultRingtoneFilenames[i]) ||
+                                    doesPathHaveFilename(entry.mPath, mDefaultRingtoneFilenames[i])) {
+                                needToSetSettings = true;
+                                break;
+                            }
                         }
                     } else if (alarms && !mDefaultAlarmSet) {
                         if (TextUtils.isEmpty(mDefaultAlarmAlertFilename) ||
@@ -1019,17 +1027,29 @@ public class MediaScanner
                     setSettingIfNotSet(Settings.System.NOTIFICATION_SOUND, tableUri, rowId);
                     mDefaultNotificationSet = true;
                 } else if (ringtones) {
-                    if (!isRingtone_2) {
-                        setSettingIfNotSet(Settings.System.RINGTONE, tableUri, rowId);
-                        mDefaultRingtoneSet = true;
-                    } else {
-                        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
-                            int phoneCount = MSimTelephonyManager.getDefault().getPhoneCount();
-                            for (int i = MSimConstants.SUB2; i < phoneCount; i++) {                            
-                                setSettingIfNotSet((Settings.System.RINGTONE + "_" + (i+1)), tableUri, rowId);
-                            }
-                            mDefaultRingtoneSet_2 = true;
+                    int phoneCount = MSimTelephonyManager.getDefault().getPhoneCount();
+                    String uri = null;
+                    for (int i = 0; i < phoneCount; i++) {
+                        if (mDefaultRingtonesSet[i]) {
+                            continue;
                         }
+
+                        // Check if ringtone matches default ringtone
+                        if (!TextUtils.isEmpty(mDefaultRingtoneFilenames[i]) &&
+                                !doesPathHaveFilename(entry.mPath, mDefaultRingtoneFilenames[i])) {
+                            continue;
+                        }
+
+                        if (i == DEFAULT_SIM_INDEX) {
+                            uri = Settings.System.RINGTONE;
+                        } else {
+                            uri = Settings.System.RINGTONE + "_" + (i + 1);
+                        }
+
+                        // Set default ringtone
+                        setSettingIfNotSet(uri, tableUri, rowId);
+
+                        mDefaultRingtonesSet[i] = true;
                     }
                 } else if (alarms) {
                     setSettingIfNotSet(Settings.System.ALARM_ALERT, tableUri, rowId);
@@ -1038,6 +1058,20 @@ public class MediaScanner
             }
 
             return result;
+        }
+
+        private boolean ringtoneDefaultsSet() {
+            // If not multisim, just check default sim's default
+            if (!MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+                return mDefaultRingtonesSet[DEFAULT_SIM_INDEX];
+            }
+            // Otherwise check if all defaults were accounted for
+            for (boolean defaultSet : mDefaultRingtonesSet) {
+                if (!defaultSet) {
+                    return false;
+                }
+            }
+            return true;
         }
 
         private boolean doesPathHaveFilename(String path, String filename) {
