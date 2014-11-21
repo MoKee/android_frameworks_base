@@ -202,7 +202,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     DockBatteryController mDockBatteryController;
     LocationController mLocationController;
     public NetworkController mNetworkController;
-    MSimNetworkController mMSimNetworkController;
+    public MSimNetworkController mMSimNetworkController;
 
     int mNaturalBarHeight = -1;
     int mIconSize = -1;
