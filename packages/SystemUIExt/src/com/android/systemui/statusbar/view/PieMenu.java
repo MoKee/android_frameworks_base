@@ -61,6 +61,8 @@ import com.android.systemui.statusbar.PieControlPanel;
 import com.android.systemui.statusbar.StatusBarIconView;
 import com.android.systemui.statusbar.phone.PhoneStatusBar;
 import com.android.systemui.statusbar.policy.PiePolicy;
+import com.android.systemui.statusbar.policy.MSimNetworkController;
+import com.android.systemui.statusbar.policy.NetworkController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -929,9 +931,14 @@ public class PieMenu extends FrameLayout {
                         mStatusOffset * 3, mStatusPaint);
                 canvas.drawTextOnPath(bar.mNotificationData.size() + " " + mContext.getString(R.string.status_bar_latest_events_title).toUpperCase(),
                         mStatusPath, 0, mStatusOffset * 2, mStatusPaint);
-                canvas.drawTextOnPath(
-                        mContext.getString(R.string.quick_settings_wifi_label).toUpperCase() + ": " + mPolicy.getWifiSsid(((PhoneStatusBar) bar).mNetworkController),
-                        mStatusPath, 0, mStatusOffset * 1, mStatusPaint);
+                NetworkController nc = null;
+				if (((PhoneStatusBar) bar).mNetworkController == null) {
+					nc = (NetworkController) ((PhoneStatusBar) bar).mMSimNetworkController;
+				} else {
+					nc = ((PhoneStatusBar) bar).mNetworkController;
+				}
+				canvas.drawTextOnPath(mContext.getString(R.string.quick_settings_wifi_label).toUpperCase() +
+						": " + mPolicy.getWifiSsid(nc),mStatusPath, 0, mStatusOffset * 1, mStatusPaint);
                 canvas.drawTextOnPath(mPolicy.getBatteryLevelReadable(), mStatusPath, 0,
                         mStatusOffset * 0, mStatusPaint);
                 canvas.restoreToCount(state);
