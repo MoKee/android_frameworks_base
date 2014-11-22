@@ -25,10 +25,7 @@ char *ChangeFileExt(const char *fn, const char *fext) {
     int l = strlen(fn);
     int le = strlen(fext);
     int i;
-    for (i = l - 1; fn[i] != '.' && fn[i] != '\\' && fn[i] != '/' &&
-                        fn[i] != ':' && i >= 0;
-         i--)
-        ;
+    for (i = l - 1; fn[i] != '.' && fn[i] != '\\' && fn[i] != '/' && fn[i] != ':' && i >= 0; i--) ;
     char *fnext;
     //如果没扩展名
     if (i <= 0 || fn[i] == '\\' || fn[i] == '/' || fn[i] == ':') {

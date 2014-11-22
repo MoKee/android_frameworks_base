@@ -41,14 +41,12 @@ inline int getIndexOffset(FILE *fp, int fo, int lo, int num) {
         return -1;
     //使用"二分法"确定记录偏移量
     do {
-        mo = fo +
-             (lo - fo) / (sizeof(IndexStruct) - 2) / 2 *
-                 (sizeof(IndexStruct) - 2);
+        mo = fo + (lo - fo) / (sizeof(IndexStruct) - 2) / 2 * (sizeof(IndexStruct) - 2);
         fseek(fp, mo, SEEK_SET);
         fread(&smv, sizeof(smv) - 1, 1, fp);
         fread(&mv, sizeof(mv) - 1, 1, fp);
-        mv &= 0x00ffffff;
-        smv &= 0x00ffffff;
+        mv& = 0x00ffffff;
+        smv& = 0x00ffffff;
 
         //如果在这个区间,证明已经找到.
         if (num >= smv && num <= mv) return mo;
@@ -106,8 +104,7 @@ MpLocation GetMpLocation(const char *fn, int num) {
             fread(strBuf, sizeof(strBuf), 1, fp);
             //检验字符串边界
             int i;
-            for (i = 0; strBuf[i] != '\0' && i < sizeof(strBuf); i++)
-                ;
+            for(i = 0; strBuf[i] != '\0' && i < sizeof(strBuf); i++);
 
             if (i == sizeof(strBuf)) strBuf[sizeof(strBuf) - 1] = '\0';
             //获取区号
