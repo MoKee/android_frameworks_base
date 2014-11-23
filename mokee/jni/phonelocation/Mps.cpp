@@ -35,18 +35,16 @@ inline int getIndexOffset(FILE *fp, int fo, int lo, int num) {
     llv &= 0x00ffffff;
 
     //边界检测处理
-    if (num < fv)
-        return -1;
-    else if (num > llv)
-        return -1;
+    if (num < fv) return -1;
+    else if (num > llv) return -1;
     //使用"二分法"确定记录偏移量
     do {
         mo = fo + (lo - fo) / (sizeof(IndexStruct) - 2) / 2 * (sizeof(IndexStruct) - 2);
         fseek(fp, mo, SEEK_SET);
         fread(&smv, sizeof(smv) - 1, 1, fp);
         fread(&mv, sizeof(mv) - 1, 1, fp);
-        mv& = 0x00ffffff;
-        smv& = 0x00ffffff;
+        mv &= 0x00ffffff;
+        smv &= 0x00ffffff;
 
         //如果在这个区间,证明已经找到.
         if (num >= smv && num <= mv) return mo;
