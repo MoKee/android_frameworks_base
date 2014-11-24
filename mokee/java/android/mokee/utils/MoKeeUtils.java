@@ -35,15 +35,13 @@ import java.util.Locale;
 
 public class MoKeeUtils {
 
-    public static boolean isChineseLanguage(boolean excludeTW) {
-        Configuration configuration = Resources.getSystem().getConfiguration();
-        if (excludeTW) {
-            return configuration.locale.getLanguage().startsWith(Locale.CHINESE.getLanguage())
-                    && !configuration.locale.getCountry().equals("TW");
-        } else {
-            return configuration.locale.getLanguage().startsWith(Locale.CHINESE.getLanguage());
-        }
+    private static String LIBNAME = "mokeeutils";
+
+    static {
+        System.loadLibrary(LIBNAME);
     }
+
+    public static native boolean isSupportLanguage(boolean excludeTW);
 
     public static boolean isOnline(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
