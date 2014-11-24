@@ -236,7 +236,7 @@ public class NetworkTraffic extends TextView {
 
     public void updateSettings() {
         ContentResolver resolver = mContext.getContentResolver();
-        mState = Settings.System.getIntForUser(resolver, Settings.System.STATUS_BAR_NETWORK_TRAFFIC_STYLE, 1
+        mState = Settings.System.getIntForUser(resolver, Settings.System.STATUS_BAR_NETWORK_TRAFFIC_STYLE, 3
                  , UserHandle.USER_CURRENT);
         MB = KB * KB;
         GB = MB * KB;
