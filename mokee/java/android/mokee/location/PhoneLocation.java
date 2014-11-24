@@ -24,27 +24,17 @@ import android.text.TextUtils;
 
 public final class PhoneLocation {
 
-    private static String PHONE;
-    private static String LOCATION;
     private static String LIBNAME = "mokee-phonelocation";
-
-    public PhoneLocation() {
-    }
 
     static {
         System.loadLibrary(LIBNAME);
     }
 
-    static native String getPhoneNumberLocation(String number);
+    private static native String getPhoneNumberLocation(String number);
 
     private synchronized static String doGetLocationFromPhone(String number) {
-        if (null == number) {
-            return null;
-        }
-        if (number.equals(PHONE)) return LOCATION;
-        LOCATION = getPhoneNumberLocation(number);
-        PHONE = number;
-        return LOCATION;
+        if (TextUtils.isEmpty(number)) return null;
+        return getPhoneNumberLocation(number);
     }
 
     private static String getPosFromPhone(String number, int i) {
