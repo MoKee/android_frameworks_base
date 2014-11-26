@@ -18,7 +18,14 @@
 
 package com.android.systemui.statusbar;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
+import android.graphics.PorterDuff;
+import android.os.Handler;
 import android.telephony.MSimTelephonyManager;
 import android.telephony.TelephonyManager;
 import android.util.AttributeSet;
@@ -31,10 +38,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.internal.telephony.MSimConstants;
+import com.android.systemui.statusbar.phone.BarBackgroundUpdater;
 import com.android.systemui.statusbar.policy.NetworkController;
 import com.android.systemui.statusbar.policy.MSimNetworkController;
 
 import com.android.systemui.R;
+
+import java.util.ArrayList;
 
 // Intimately tied to the design of res/layout/msim_signal_cluster_view.xml
 public class MSimSignalClusterView
@@ -80,6 +90,11 @@ public class MSimSignalClusterView
                                          R.id.mobile_type_sub3};
     private int mNumPhones = MSimTelephonyManager.getDefault().getPhoneCount();
 
+    private final Handler mHandler;
+    private final int mDSBDuration;
+    private int mPreviousOverrideIconColor = 0;
+    private int mOverrideIconColor = 0;
+
     public MSimSignalClusterView(Context context) {
         this(context, null);
     }
@@ -105,6 +120,85 @@ public class MSimSignalClusterView
             mMobileActivityId[i] = 0;
             mNoSimIconId[i] = 0;
         }
+
+        mHandler = new Handler();
+        mDSBDuration = context.getResources().getInteger(R.integer.dsb_transition_duration);
+        BarBackgroundUpdater.addListener(new BarBackgroundUpdater.UpdateListener(this) {
+
+            @Override
+            public AnimatorSet onUpdateStatusBarIconColor(final int previousIconColor,
+                    final int iconColor) {
+                mPreviousOverrideIconColor = previousIconColor;
+                mOverrideIconColor = iconColor;
+
+                if (mOverrideIconColor == 0) {
+                    mHandler.post(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            if (mWifi != null) {
+                                mWifi.setColorFilter(null);
+                            }
+                            for (int i = 0; i < mNumPhones; i++) {
+                                if (mMobile[i] != null) {
+                                    mMobile[i].setColorFilter(null);
+                                }
+                                if (mMobileType[i] != null) {
+                                    mMobileType[i].setColorFilter(null);
+                                }
+                            }
+                            if (mAirplane != null) {
+                                mAirplane.setColorFilter(null);
+                            }
+                        }
+
+                    });
+
+                    return null;
+                } else {
+                    final ArrayList<Animator> anims = new ArrayList<Animator>();
+
+                    if (mWifi != null) {
+                        anims.add(buildAnimator(mWifi));
+                    }
+                    for (int i = 0; i < mNumPhones; i++) {
+                        if (mMobile[i] != null) {
+                            anims.add(buildAnimator(mMobile[i]));
+                        }
+                        if (mMobileType[i] != null) {
+                            anims.add(buildAnimator(mMobileType[i]));
+                        }
+                    }
+                    if (mAirplane != null) {
+                        anims.add(buildAnimator(mAirplane));
+                    }
+
+                    if (anims.isEmpty()) {
+                        return null;
+                    } else {
+                        final AnimatorSet animSet = new AnimatorSet();
+                        animSet.playTogether(anims);
+                        return animSet;
+                    }
+                }
+            }
+
+        });
+    }
+
+    private ObjectAnimator buildAnimator(final ImageView target) {
+        final ObjectAnimator animator = ObjectAnimator.ofObject(target, "colorFilter",
+                new ArgbEvaluator(), mPreviousOverrideIconColor, mOverrideIconColor);
+        animator.setDuration(mDSBDuration);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+
+            @Override
+            public void onAnimationUpdate(final ValueAnimator anim) {
+                target.invalidate();
+            }
+
+        });
+        return animator;
     }
 
     public void setNetworkController(MSimNetworkController nc) {
