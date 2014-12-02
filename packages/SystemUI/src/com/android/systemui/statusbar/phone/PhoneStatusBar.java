@@ -2,6 +2,7 @@
  * Copyright (c) 2012-2014 The Linux Foundation. All rights reserved.
  * Not a Contribution.
  * Copyright (C) 2010 The Android Open Source Project
+ * Copyright (C) 2014-2015 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -345,6 +346,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
     private boolean mShowCarrierInPanel = false;
 
+    // Status bar carrier
+    private boolean mShowStatusBarCarrier;
+
     // Status bar Network traffic;
     private NetworkTraffic mNetworkTraffic;
 
@@ -414,6 +418,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_CARRIER), false, this);
+            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.SCREEN_BRIGHTNESS_MODE), false, this);
             update();
         }
@@ -430,6 +436,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC;
             mBrightnessControl = !autoBrightness && Settings.System.getInt(
                     resolver, Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1;
+            mShowStatusBarCarrier = Settings.System.getIntForUser(resolver,
+                Settings.System.STATUS_BAR_CARRIER, 0, mCurrentUserId) == 1;
+            showStatusBarCarrierLabel(mShowStatusBarCarrier);
         }
     }
 
@@ -3427,6 +3436,15 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             }
         }
     };
+
+    public void showStatusBarCarrierLabel(boolean show) {
+        if (mStatusBarView == null) return;
+        ContentResolver resolver = mContext.getContentResolver();
+        View statusBarCarrierLabel = mStatusBarView.findViewById(R.id.status_bar_carrier_label);
+        if (statusBarCarrierLabel != null) {
+            statusBarCarrierLabel.setVisibility(show ? (mShowStatusBarCarrier ? View.VISIBLE : View.GONE) : View.GONE);
+        }
+    }
 
     private void resetUserExpandedStates() {
         ArrayList<Entry> activeNotifications = mNotificationData.getActiveNotifications();
