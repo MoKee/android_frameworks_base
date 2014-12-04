@@ -76,6 +76,7 @@ public class MSimNetworkController extends NetworkController {
     int[] mMSimDataDirectionIconId; // data + data direction on phones
     int[] mMSimDataSignalIconId;
     int[] mMSimDataTypeIconId;
+    int[] mMSimDataRoamIconId;
     int[] mNoMSimIconId;
     int[] mMSimMobileActivityIconId; // overlay arrows for data direction
     int[] mMSimLastCombinedActivityIconId;
@@ -102,8 +103,8 @@ public class MSimNetworkController extends NetworkController {
         void setWifiIndicators(boolean visible, int strengthIcon, int activityIcon,
                 String contentDescription);
         void setMobileDataIndicators(boolean visible, int strengthIcon, int activityIcon,
-                int typeIcon, String contentDescription, String typeContentDescription,
-                int noSimIcon, int subscription);
+                int typeIcon, int roamingIcon, String contentDescription,
+                String typeContentDescription, int noSimIcon, int subscription);
         void setIsAirplaneMode(boolean is, int airplaneIcon);
     }
 
@@ -122,6 +123,7 @@ public class MSimNetworkController extends NetworkController {
         mMSimIconId = new int[numPhones];
         mMSimPhoneSignalIconId = new int[numPhones];
         mMSimDataTypeIconId = new int[numPhones];
+        mMSimDataRoamIconId = new int[numPhones];
         mNoMSimIconId = new int[numPhones];
         mMSimMobileActivityIconId = new int[numPhones];
         mMSimContentDescriptionPhoneSignal = new String[numPhones];
@@ -264,6 +266,7 @@ public class MSimNetworkController extends NetworkController {
                 mMSimPhoneSignalIconId[subscription],
                 mMSimMobileActivityIconId[subscription],
                 mMSimDataTypeIconId[subscription],
+                mMSimDataRoamIconId[subscription],
                 mMSimContentDescriptionPhoneSignal[subscription],
                 mMSimContentDescriptionDataType[subscription],
                 mNoMSimIconId[subscription], subscription);
@@ -274,6 +277,7 @@ public class MSimNetworkController extends NetworkController {
                     mAlwaysShowCdmaRssi ? mPhoneSignalIconId : mWimaxIconId,
                     mMSimMobileActivityIconId[subscription],
                     mMSimDataTypeIconId[subscription],
+                    mMSimDataRoamIconId[subscription],
                     mContentDescriptionWimax,
                     mMSimContentDescriptionDataType[subscription],
                     mNoMSimIconId[subscription], subscription);
@@ -285,6 +289,7 @@ public class MSimNetworkController extends NetworkController {
                         : mMSimDataSignalIconId[subscription],
                     mMSimMobileActivityIconId[subscription],
                     mMSimDataTypeIconId[subscription],
+                    mMSimDataRoamIconId[subscription],
                     mMSimContentDescriptionPhoneSignal[subscription],
                     mMSimContentDescriptionDataType[subscription],
                     mNoMSimIconId[subscription], subscription);
@@ -639,6 +644,12 @@ public class MSimNetworkController extends NetworkController {
     private final void updateDataNetType(int subscription) {
         // DSDS case: Data is active only on DDS. Clear the icon for NON-DDS
         int dataSub = MSimTelephonyManager.getDefault().getPreferredDataSubscription();
+
+        // Clear roaming if we're always showing an indicator
+        if (SystemProperties.getBoolean("ro.config.always_show_roaming", false)) {
+            mMSimDataRoamIconId[subscription] = 0;
+        }
+
         if (subscription != dataSub) {
             if (DEBUG) {
                 Slog.d(TAG,"updateDataNetType: SUB" + subscription
@@ -809,7 +820,11 @@ public class MSimNetworkController extends NetworkController {
                         TelephonyIcons.QS_DATA_R[mInetCondition];
             }
         } else if (mPhone.isNetworkRoaming(subscription)) {
-            mMSimDataTypeIconId[subscription] = R.drawable.stat_sys_data_fully_connected_roam;
+            if (SystemProperties.getBoolean("ro.config.always_show_roaming", false)) {
+                mMSimDataRoamIconId[subscription] = R.drawable.stat_sys_data_msim_roam;
+            } else {
+                mMSimDataTypeIconId[subscription] = R.drawable.stat_sys_data_fully_connected_roam;
+            }
             if (subscription == dataSub) mQSDataTypeIconId =
                     TelephonyIcons.QS_DATA_R[mInetCondition];
         }
@@ -1024,6 +1039,12 @@ public class MSimNetworkController extends NetworkController {
         int N;
         final boolean emergencyOnly = isEmergencyOnly(); // All sims are emergency only
         int dataSub = MSimTelephonyManager.getDefault().getPreferredDataSubscription();
+
+        // Clear roaming if we're always showing an indicator
+        if (SystemProperties.getBoolean("ro.config.always_show_roaming", false)) {
+            mMSimDataRoamIconId[subscription] = 0;
+        }
+
         if (DEBUG) {
             Slog.d(TAG,"refreshViews subscription =" + subscription + "mMSimDataConnected ="
                     + mMSimDataConnected[subscription]);
@@ -1187,7 +1208,6 @@ public class MSimNetworkController extends NetworkController {
         if (!mMSimDataConnected[subscription]) {
             if (DEBUG) Slog.d(TAG, "refreshViews: Data not connected!! Set no data type icon / Roaming for"
                     + " subscription: " + subscription);
-            mMSimDataTypeIconId[subscription] = 0;
             if (subscription == dataSub) mQSDataTypeIconId = 0;
             if (isCdma(subscription)) {
                 if (isCdmaEri(subscription)) {
@@ -1197,7 +1217,11 @@ public class MSimNetworkController extends NetworkController {
                             TelephonyIcons.QS_DATA_R[mInetCondition];
                 }
             } else if (mPhone.isNetworkRoaming(subscription)) {
-                mMSimDataTypeIconId[subscription] = R.drawable.stat_sys_data_fully_connected_roam;
+                if (SystemProperties.getBoolean("ro.config.always_show_roaming", false)) {
+                    mMSimDataRoamIconId[subscription] = R.drawable.stat_sys_data_msim_roam;
+                } else {
+                    mMSimDataTypeIconId[subscription] = R.drawable.stat_sys_data_fully_connected_roam;
+                }
                 if (subscription == dataSub) mQSDataTypeIconId =
                         TelephonyIcons.QS_DATA_R[mInetCondition];
             }
@@ -1205,7 +1229,7 @@ public class MSimNetworkController extends NetworkController {
 
         if (!mAirplaneMode && mMSimState[subscription] == IccCardConstants.State.ABSENT) {
             mMSimPhoneSignalIconId[subscription] = mMSimDataSignalIconId[subscription]
-                    = mMSimDataTypeIconId[subscription] = 0;
+                    = mMSimDataTypeIconId[subscription] = mMSimDataRoamIconId[subscription] = 0;
             if (subscription == dataSub) {
                 mQSDataTypeIconId = 0;
                 mQSPhoneSignalIconId = 0;

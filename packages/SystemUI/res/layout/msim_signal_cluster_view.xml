@@ -111,6 +111,12 @@
                     android:layout_gravity="end|bottom"
                     />
             </FrameLayout>
+            <ImageView
+                    android:id="@+id/mobile_roaming"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:visibility="gone"
+                    />
         </LinearLayout>
     </FrameLayout>
     <FrameLayout
@@ -148,6 +154,12 @@
                     android:layout_gravity="end|bottom"
                     />
             </FrameLayout>
+            <ImageView
+                    android:id="@+id/mobile_roaming_sub2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:visibility="gone"
+                    />
         </LinearLayout>
     </FrameLayout>
     <FrameLayout
@@ -185,6 +197,12 @@
                     android:layout_gravity="end|bottom"
                     />
             </FrameLayout>
+            <ImageView
+                    android:id="@+id/mobile_roaming_sub3"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:visibility="gone"
+                    />
         </LinearLayout>
     </FrameLayout>
     <ImageView
