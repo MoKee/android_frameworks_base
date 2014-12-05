@@ -1208,6 +1208,7 @@ public class MSimNetworkController extends NetworkController {
         if (!mMSimDataConnected[subscription]) {
             if (DEBUG) Slog.d(TAG, "refreshViews: Data not connected!! Set no data type icon / Roaming for"
                     + " subscription: " + subscription);
+            mMSimDataTypeIconId[subscription] = 0;
             if (subscription == dataSub) mQSDataTypeIconId = 0;
             if (isCdma(subscription)) {
                 if (isCdmaEri(subscription)) {
