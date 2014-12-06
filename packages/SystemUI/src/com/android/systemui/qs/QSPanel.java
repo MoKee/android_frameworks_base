@@ -116,7 +116,7 @@ public class QSPanel extends ViewGroup {
 
     private void updateDetailText() {
         mDetailDoneButton.setText(R.string.quick_settings_done);
-        mDetailSettingsButton.setText(R.string.quick_settings_more_settings);
+        mDetailSettingsButton.setText(R.string.quick_settings_data_Package_settings);
     }
 
     public void setBrightnessMirror(BrightnessMirrorController c) {
