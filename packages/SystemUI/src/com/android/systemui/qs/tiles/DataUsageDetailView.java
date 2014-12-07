@@ -93,7 +93,7 @@ public class DataUsageDetailView extends LinearLayout {
             usageColor = R.color.system_warning_color;
         }
 
-        final TextView title = (TextView) findViewById(android.R.id.title);
+        final TextView title = (TextView) findViewById(android.R.id.title); 
         title.setText(titleId);
         final TextView usage = (TextView) findViewById(R.id.usage_text);
         usage.setText(formatBytes(bytes));
