@@ -177,7 +177,8 @@ public class Environment {
 
         /** {@hide} */
         public File getSecondaryStorageDirectory() {
-            return mExternalDirsForApp[1];
+            return (mExternalDirsForApp.length > 1)
+                    ? mExternalDirsForApp[1] : mExternalDirsForApp[0];
         }
 
         @Deprecated
@@ -423,13 +424,13 @@ public class Environment {
      */
     public static File getExternalStorageDirectory() {
         throwIfUserRequired();
-        return sCurrentUser.getExternalDirsForApp()[0];
+        return sCurrentUser.getExternalStorageDirectory();
     }
 
     /** {@hide} */
     public static File getSecondaryStorageDirectory() {
         throwIfUserRequired();
-        return sCurrentUser.getExternalDirsForApp()[1];
+        return sCurrentUser.getSecondaryStorageDirectory();
     }
 
     /** {@hide} */
@@ -745,6 +746,9 @@ public class Environment {
         return getExternalStorageState(path);
     }
 
+    /**
+     * @hide
+     */
     public static String getSecondaryStorageState() {
         final File externalDir = sCurrentUser.getExternalDirsForApp()[1];
         return getStorageState(externalDir);
