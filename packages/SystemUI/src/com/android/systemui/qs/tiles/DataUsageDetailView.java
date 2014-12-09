@@ -72,7 +72,7 @@ public class DataUsageDetailView extends LinearLayout {
                 bottom = res.getString(R.string.quick_settings_data_Package_Set);
             } else {
                 bottom = res.getString(R.string.quick_settings_data_Package,
-                    Formatter.formatFileSize(mContext,info.limitLevel));
+                        Formatter.formatFileSize(mContext,info.limitLevel));
             }
         } else if (info.usageLevel <= info.limitLevel) {
             // over warning, under limit
@@ -90,10 +90,10 @@ public class DataUsageDetailView extends LinearLayout {
                     Formatter.formatFileSize(mContext,info.usageLevel));
             if (info.limitLevel > 0) {
                 bottom = res.getString(R.string.quick_settings_data_Package_limit,
-                    Formatter.formatFileSize(mContext,info.usageLevel - info.limitLevel));
+                        Formatter.formatFileSize(mContext,info.usageLevel - info.limitLevel));
             } else {
                 bottom = res.getString(R.string.quick_settings_data_Package_limit,
-                    Formatter.formatFileSize(mContext,info.usageLevel - info.warningLevel));
+                        Formatter.formatFileSize(mContext,info.usageLevel - info.warningLevel));
             }
             usageColor = R.color.system_warning_color;
         }
