@@ -68,11 +68,12 @@ public class DataUsageDetailView extends LinearLayout {
             bytes = info.usageLevel;
             top = res.getString(R.string.quick_settings_cellular_detail_data_warning,
                     Formatter.formatFileSize(mContext,info.warningLevel));
-	    if (info.limitLevel <= 0) 
-	    bottom = res.getString(R.string.quick_settings_data_Package_Set);
-	    else
-	    bottom = res.getString(R.string.quick_settings_data_Package,
-		    Formatter.formatFileSize(mContext,info.limitLevel));
+            if (info.limitLevel <= 0) {
+                bottom = res.getString(R.string.quick_settings_data_Package_Set);
+            } else {
+                bottom = res.getString(R.string.quick_settings_data_Package,
+                    Formatter.formatFileSize(mContext,info.limitLevel));
+            }
         } else if (info.usageLevel <= info.limitLevel) {
             // over warning, under limit
             titleId = R.string.quick_settings_has_data_usage;
@@ -87,12 +88,13 @@ public class DataUsageDetailView extends LinearLayout {
             bytes = info.usageLevel - info.limitLevel;
             top = res.getString(R.string.quick_settings_cellular_detail_data_used,
                     Formatter.formatFileSize(mContext,info.usageLevel));
-	    if (info.limitLevel > 0)
-            bottom = res.getString(R.string.quick_settings_data_Package_limit,
+            if (info.limitLevel > 0) {
+                bottom = res.getString(R.string.quick_settings_data_Package_limit,
                     Formatter.formatFileSize(mContext,info.usageLevel - info.limitLevel));
-	    else
-	    bottom = res.getString(R.string.quick_settings_data_Package_limit,
+            } else {
+                bottom = res.getString(R.string.quick_settings_data_Package_limit,
                     Formatter.formatFileSize(mContext,info.usageLevel - info.warningLevel));
+            }
             usageColor = R.color.system_warning_color;
         }
 
