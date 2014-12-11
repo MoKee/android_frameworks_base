@@ -1240,6 +1240,7 @@ public final class Settings {
             MOVED_TO_SECURE.add(Secure.WIFI_WATCHDOG_PING_COUNT);
             MOVED_TO_SECURE.add(Secure.WIFI_WATCHDOG_PING_DELAY_MS);
             MOVED_TO_SECURE.add(Secure.WIFI_WATCHDOG_PING_TIMEOUT_MS);
+            MOVED_TO_SECURE.add(Secure.STATS_COLLECTION);
 
             // At one time in System, then Global, but now back in Secure
             MOVED_TO_SECURE.add(Secure.INSTALL_NON_MARKET_APPS);
@@ -3016,7 +3017,8 @@ public final class Settings {
          * 4 - Voice search
          * 5 - In-app search
          * 6 - Launch Camera
-         * 7 - Last app
+         * 7 - Action Sleep
+         * 8 - Last app
          * @hide
          */
         public static final String KEY_HOME_LONG_PRESS_ACTION = "key_home_long_press_action";
@@ -5501,6 +5503,12 @@ public final class Settings {
          * @hide
          */
         public static final String DEVELOPMENT_SHORTCUT = "development_shortcut";
+
+        /**
+         * Global stats collection
+         * @hide
+         */
+        public static final String STATS_COLLECTION = "stats_collection";
 
 
         /**
