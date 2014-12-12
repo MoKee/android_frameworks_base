@@ -758,7 +758,8 @@ public interface WindowManagerPolicy {
      * Create and return an animation to let the wallpaper disappear after being shown on a force
      * hiding window.
      */
-    public Animation createForceHideWallpaperExitAnimation(boolean goingToNotificationShade);
+    public Animation createForceHideWallpaperExitAnimation(boolean goingToNotificationShade,
+            boolean keyguardShowingMedia);
 
     /**
      * Called from the input reader thread before a key is enqueued.
@@ -1185,6 +1186,7 @@ public interface WindowManagerPolicy {
      * Specifies whether there is an on-screen navigation bar separate from the status bar.
      */
     public boolean hasNavigationBar();
+    public boolean hasPermanentMenuKey();
 
     /**
      * Specifies whether the device needs a navigation bar (because it has no hardware buttons)
