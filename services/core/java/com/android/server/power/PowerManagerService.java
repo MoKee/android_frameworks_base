@@ -1601,8 +1601,7 @@ public final class PowerManagerService extends SystemService
      */
     private void updateUserActivitySummaryLocked(long now, int dirty) {
         // Update the status of the user activity timeout timer.
-        if ((dirty & (DIRTY_WAKE_LOCKS | DIRTY_USER_ACTIVITY
-                | DIRTY_WAKEFULNESS | DIRTY_SETTINGS)) != 0) {
+        if ((dirty & (DIRTY_USER_ACTIVITY | DIRTY_WAKEFULNESS | DIRTY_SETTINGS)) != 0) {
             mHandler.removeMessages(MSG_USER_ACTIVITY_TIMEOUT);
 
             long nextTimeout = 0;
@@ -1629,20 +1628,20 @@ public final class PowerManagerService extends SystemService
 
                         mKeyboardLight.setBrightness(mKeyboardVisible ? keyboardBrightness : 0);
                         if (mButtonTimeout != 0 && now > mLastUserActivityTime + mButtonTimeout) {
-                             mButtonsLight.setBrightness(0);
+                            mButtonsLight.setBrightness(0);
                         } else {
                             mButtonsLight.setBrightness(buttonBrightness);
                             if (buttonBrightness != 0 && mButtonTimeout != 0) {
                                 nextTimeout = now + mButtonTimeout;
                             }
                         }
-                        mUserActivitySummary = USER_ACTIVITY_SCREEN_BRIGHT;
+                        mUserActivitySummary |= USER_ACTIVITY_SCREEN_BRIGHT;
                     } else {
                         nextTimeout = mLastUserActivityTime + screenOffTimeout;
                         if (now < nextTimeout) {
                             mButtonsLight.setBrightness(0);
                             mKeyboardLight.setBrightness(0);
-                            mUserActivitySummary = USER_ACTIVITY_SCREEN_DIM;
+                            mUserActivitySummary |= USER_ACTIVITY_SCREEN_DIM;
                         }
                     }
                 }
@@ -1672,7 +1671,7 @@ public final class PowerManagerService extends SystemService
                         nextTimeout = -1;
                     }
                 }
-                if (mUserActivitySummary != 0 && nextTimeout >= 0) {
+                if (mUserActivitySummary != 0) {
                     Message msg = mHandler.obtainMessage(MSG_USER_ACTIVITY_TIMEOUT);
                     msg.setAsynchronous(true);
                     mHandler.sendMessageAtTime(msg, nextTimeout);
