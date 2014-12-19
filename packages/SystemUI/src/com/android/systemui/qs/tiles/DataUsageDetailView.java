@@ -81,7 +81,7 @@ public class DataUsageDetailView extends LinearLayout {
             top = res.getString(R.string.quick_settings_cellular_detail_data_used,
                     formatBytes(info.usageLevel));
             bottom = res.getString(R.string.quick_settings_cellular_detail_data_limit,
-                    formatBytes(info.limitLevel))
+                    formatBytes(info.limitLevel));
         } else {
             // over limit
             titleId = R.string.quick_settings_cellular_detail_over_limit;
