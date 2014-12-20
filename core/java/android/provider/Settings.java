@@ -2198,13 +2198,6 @@ public final class Settings {
         public static final String VOLUME_MASTER_MUTE = "volume_master_mute";
 
         /**
-         * Whether to wake the screen with the volume keys, the value is boolean.
-         *
-         * @hide
-         */
-        public static final String VOLUME_WAKE_SCREEN = "volume_wake_screen";
-
-        /**
          * Whether or not volume button music controls should be enabled to seek media tracks
          * @hide
          */
@@ -3092,6 +3085,24 @@ public final class Settings {
          * @hide
          */
         public static final String HOME_WAKE_SCREEN = "home_wake_screen";
+
+        /**
+         * Whether to wake the screen with the back key, the value is boolean.
+         * @hide
+         */
+        public static final String BACK_WAKE_SCREEN = "back_wake_screen";
+
+        /**
+         * Whether to wake the screen with the menu key, the value is boolean.
+         * @hide
+         */
+        public static final String MENU_WAKE_SCREEN = "menu_wake_screen";
+
+        /**
+         * Whether to wake the screen with the volume keys, the value is boolean.
+         * @hide
+         */
+        public static final String VOLUME_WAKE_SCREEN = "volume_wake_screen";
 
         /**
          * Whether the phone ringtone should be played in an increasing manner
@@ -6265,6 +6276,13 @@ public final class Settings {
         * @hide
         */
        public static final String PACKAGE_VERIFIER_INCLUDE_ADB = "verifier_verify_adb_installs";
+
+       /**
+        * Time since last fstrim (milliseconds) after which we force one to happen
+        * during device startup.  If unset, the default is 3 days.
+        * @hide
+        */
+       public static final String FSTRIM_MANDATORY_INTERVAL = "fstrim_mandatory_interval";
 
        /**
         * The interval in milliseconds at which to check packet counts on the
