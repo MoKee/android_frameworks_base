@@ -461,6 +461,11 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 Settings.System.STATUS_BAR_CARRIER, 0, mCurrentUserId) == 1;
             showStatusBarCarrierLabel(mShowStatusBarCarrier);
 
+            if (mNavigationBarView != null) {
+                boolean navLeftInLandscape = Settings.System.getInt(resolver,
+                        Settings.System.NAVBAR_LEFT_IN_LANDSCAPE, 0) == 1;
+                mNavigationBarView.setLeftInLandscape(navLeftInLandscape);
+            }
 /*
             boolean showInsidePercent = Settings.System.getIntForUser(resolver,
                     Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0, mCurrentUserId) == 1;
