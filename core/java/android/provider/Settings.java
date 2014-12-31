@@ -5369,6 +5369,35 @@ public final class Settings {
                 INCALL_POWER_BUTTON_BEHAVIOR_SCREEN_OFF;
 
         /**
+         * If the call will judge whether the volume button settings.
+         * Values:
+         * 1 - Running the volume key answer
+         * 2 - Shut down volume key answer
+         *
+         * @hide
+         */
+        public static final String ANSWER_VOLUME_BUTTON_BEHAVIOR = "answer_volume_button_behavior";
+
+        /**
+         * ANSWER_VOLUME_BUTTON_BEHAVIOR value for "turn off screen".
+         * @hide
+         */
+        public static final int ANSWER_VOLUME_BUTTON_BEHAVIOR_SCREEN_OFF = 0x1;
+
+        /**
+         * ANSWER_VOLUME_BUTTON_BEHAVIOR value for "hang up".
+         * @hide
+         */
+        public static final int ANSWER_VOLUME_BUTTON_BEHAVIOR_HANGUP = 0x2;
+
+        /**
+         * ANSWER_VOLUME_BUTTON_BEHAVIOR default value.
+         * @hide
+         */
+        public static final int ANSWER_VOLUME_BUTTON_BEHAVIOR_DEFAULT =
+                ANSWER_VOLUME_BUTTON_BEHAVIOR_SCREEN_OFF;
+
+        /**
          * Whether the device should wake when the wake gesture sensor detects motion.
          * @hide
          */
