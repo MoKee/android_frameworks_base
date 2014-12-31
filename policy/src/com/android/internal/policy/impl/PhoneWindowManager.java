@@ -198,6 +198,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private static final int KEY_ACTION_LAUNCH_CAMERA = 6;
     private static final int KEY_ACTION_SLEEP = 7;
     private static final int KEY_ACTION_LAST_APP = 8;
+    private static final int KEY_ACTION_SCREENSHOT = 9;
+    private static final int KEY_ACTION_REBOOT = 10;
 
     // Masks for checking presence of hardware keys.
     // Must match values in core/res/res/values/config.xml
@@ -1211,6 +1213,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 break;
             case KEY_ACTION_LAST_APP:
                 ActionUtils.switchToLastApp(mContext, mCurrentUserId);
+                break;
+            case KEY_ACTION_SCREENSHOT:
+                mHandler.postDelayed(mScreenshotRunnable, getScreenshotChordLongPressDelay());
+                break;
+            case KEY_ACTION_REBOOT:
+                showGlobalActions();
                 break;
             default:
                 break;
