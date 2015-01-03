@@ -17,6 +17,7 @@
 package android.telecom;
 
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.os.IBinder.DeathRecipient;
 import android.os.RemoteException;
@@ -41,8 +42,9 @@ import java.util.UUID;
  */
 final class RemoteConnectionService {
 
+    // Note: Casting null to avoid ambiguous constructor reference.
     private static final RemoteConnection NULL_CONNECTION =
-            new RemoteConnection("NULL", null, null);
+            new RemoteConnection("NULL", null, (ConnectionRequest) null);
 
     private static final RemoteConference NULL_CONFERENCE =
             new RemoteConference("NULL", null);
@@ -79,6 +81,7 @@ final class RemoteConnectionService {
                 }
                 connection.setConferenceableConnections(conferenceable);
                 connection.setVideoState(parcel.getVideoState());
+                connection.setCallSubstate(parcel.getCallSubstate());
                 if (connection.getState() == Connection.STATE_DISCONNECTED) {
                     // ... then, if it was created in a disconnected state, that indicates
                     // failure on the providing end, so immediately mark it destroyed
@@ -96,6 +99,11 @@ final class RemoteConnectionService {
                 findConferenceForAction(callId, "setActive")
                         .setState(Connection.STATE_ACTIVE);
             }
+        }
+
+        @Override
+        public void setExtras(String callId, Bundle extras) {
+            // NOTE: Should this be a no-op?
         }
 
         @Override
@@ -303,6 +311,21 @@ final class RemoteConnectionService {
         public void setPhoneAccountHandle(String callId, PhoneAccountHandle pHandle) {
             findConnectionForAction(callId, "setPhoneAccountHandle")
                     .setPhoneAccountHandle(pHandle);
+        }
+
+        @Override
+        public void setCallSubstate(String callId, int callSubstate) {
+            findConnectionForAction(callId, "callSubstate")
+                    .setCallSubstate(callSubstate);
+        }
+
+        @Override
+        public void addExistingConnection(String callId, ParcelableConnection connection) {
+            // TODO: add contents of this method
+            RemoteConnection remoteConnction = new RemoteConnection(callId,
+                    mOutgoingConnectionServiceRpc, connection);
+
+            mOurConnectionServiceImpl.addRemoteExistingConnection(remoteConnction);
         }
     };
 

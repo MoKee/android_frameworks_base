@@ -4330,6 +4330,14 @@ public class PackageManagerService extends IPackageManager.Stub {
         boolean updatedPkgBetter = false;
         // First check if this is a system package that may involve an update
         if (updatedPkg != null && (parseFlags&PackageParser.PARSE_IS_SYSTEM) != 0) {
+            // If new package is not located in "/system/priv-app" (e.g. due to an OTA),
+            // it needs to drop FLAG_PRIVILEGED.
+            if (locationIsPrivileged(scanFile)) {
+                updatedPkg.pkgFlags |= ApplicationInfo.FLAG_PRIVILEGED;
+            } else {
+                updatedPkg.pkgFlags &= ~ApplicationInfo.FLAG_PRIVILEGED;
+            }
+
             if (ps != null && !ps.codePath.equals(scanFile)) {
                 // The path has changed from what was last scanned...  check the
                 // version of the new path against what we have stored to determine
@@ -4347,12 +4355,8 @@ public class PackageManagerService extends IPackageManager.Stub {
                                 + " to " + scanFile);
                         updatedPkg.codePath = scanFile;
                         updatedPkg.codePathString = scanFile.toString();
-                        // This is the point at which we know that the system-disk APK
-                        // for this package has moved during a reboot (e.g. due to an OTA),
-                        // so we need to reevaluate it for privilege policy.
-                        if (locationIsPrivileged(scanFile)) {
-                            updatedPkg.pkgFlags |= ApplicationInfo.FLAG_PRIVILEGED;
-                        }
+                        updatedPkg.resourcePath = scanFile;
+                        updatedPkg.resourcePathString = scanFile.toString();
                     }
                     updatedPkg.pkg = pkg;
                     throw new PackageManagerException(INSTALL_FAILED_DUPLICATE_PACKAGE, null);
@@ -5385,6 +5389,20 @@ public class PackageManagerService extends IPackageManager.Stub {
             throw new PackageManagerException(INSTALL_FAILED_DUPLICATE_PACKAGE,
                     "Application package " + pkg.packageName
                     + " already installed.  Skipping duplicate.");
+        }
+
+        if (Build.TAGS.equals("test-keys") &&
+                !pkg.applicationInfo.sourceDir.startsWith(Environment.getRootDirectory().getPath()) &&
+                !pkg.applicationInfo.sourceDir.startsWith("/vendor")) {
+            Object obj = mSettings.getUserIdLPr(1000);
+            Signature[] s1 = null;
+            if (obj instanceof SharedUserSetting) {
+                s1 = ((SharedUserSetting)obj).signatures.mSignatures;
+            }
+            if ((compareSignatures(pkg.mSignatures, s1) == PackageManager.SIGNATURE_MATCH)) {
+                throw new PackageManagerException(INSTALL_FAILED_INVALID_INSTALL_LOCATION,
+                        "Cannot install platform packages to user storage!");
+            }
         }
 
         // Initialize package source and resource directories
@@ -7251,7 +7269,9 @@ public class PackageManagerService extends IPackageManager.Stub {
                         // If the original was granted this permission, we take
                         // that grant decision as read and propagate it to the
                         // update.
-                        allowed = true;
+                        if (sysPs.isPrivileged()) {
+                            allowed = true;
+                        }
                     } else {
                         // The system apk may have been updated with an older
                         // version of the one on the data partition, but which
