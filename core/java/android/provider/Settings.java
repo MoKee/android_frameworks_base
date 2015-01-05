@@ -3493,6 +3493,11 @@ public final class Settings {
         public static final String STATUS_BAR_CLOCK_SHOW_SECOND = "status_bar_clock_show_second";
 
         /**
+         * @hide
+         */
+        public static final String SHOW_SU_ICON = "show_su_icon";
+
+        /**
          * I am the lolrus.
          * <p>
          * Nonzero values indicate that the user has a bukkit.
