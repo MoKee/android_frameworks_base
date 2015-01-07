@@ -47,8 +47,8 @@
     <item>1225 聖誕節</item>
   </string-array>
   <string-array name="lunar_festival">
-    <item>腊月廿九 除夕</item>
-    <item>腊月三十 除夕</item>
+    <item>臘月廿九除夕</item>
+    <item>臘月三十除夕</item>
     <item>正月初一 春節</item>
     <item>正月十五 元宵節</item>
     <item>五月初五 端午節</item>
@@ -57,6 +57,6 @@
     <item>八月十五 中秋節</item>
     <item>九月初九 重陽節</item>
     <item>腊月初八 臘八節</item>
-    <item>腊月廿三 小年</item>
+    <item>臘月廿三小年</item>
   </string-array>
 </resources>
