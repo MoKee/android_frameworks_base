@@ -5065,7 +5065,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                         if (telecomManager.isRinging()) {
                            // The volume key answer
                            if ((mAnswerVolumeBehavior
-                            & Settings.Secure.ANSWER_VOLUME_BUTTON_BEHAVIOR_ANSWER) != 0) {
+                            & Settings.Secure.ANSWER_VOLUME_BUTTON_BEHAVIOR) != 0) {
                                  telecomManager.acceptRingingCall();
                             }
                             // If an incoming call is ringing, either VOLUME key means
