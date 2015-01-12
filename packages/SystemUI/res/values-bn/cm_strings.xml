@@ -18,8 +18,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="accessibility_dpad_left">কার্সর বামে</string>
   <string name="accessibility_dpad_right">কার্সর ডানে</string>
-  <string name="dessert_case_settings_cm_title">সিএম\'স মাস্কটস প্রদর্শন করুন</string>
-  <string name="dessert_case_settings_cm_summary">সিএম\'স মাস্কটস ও এন্ড্রয়েড ডেজার্টস ড্রিমের ভেতর একসাথে প্রদর্শন করুন</string>
   <string name="quick_settings_screen_sleep">নিদ্রাতে পাঠানো</string>
   <string name="quick_settings_label_enabled">সক্রিয়</string>
   <string name="quick_settings_ringer_normal">শব্দ</string>
