@@ -104,9 +104,9 @@ public class ThemeUtils {
 
     private static final String MEDIA_CONTENT_URI = "content://media/internal/audio/media";
 
-    public static final String ACTION_THEME_CHANGED = "org.cyanogenmod.intent.action.THEME_CHANGED";
+    public static final String ACTION_THEME_CHANGED = "org.mokee.intent.action.THEME_CHANGED";
 
-    public static final String CATEGORY_THEME_COMPONENT_PREFIX = "org.cyanogenmod.intent.category.";
+    public static final String CATEGORY_THEME_COMPONENT_PREFIX = "org.mokee.intent.category.";
 
     public static final int SYSTEM_TARGET_API = 0;
 

@@ -96,7 +96,7 @@ public class ThemeService extends IThemeService.Stub {
     private static final boolean DEBUG = false;
 
     private static final String GOOGLE_SETUPWIZARD_PACKAGE = "com.google.android.setupwizard";
-    private static final String CM_SETUPWIZARD_PACKAGE = "com.cyanogenmod.account";
+    private static final String MK_SETUPWIZARD_PACKAGE = "com.mokee.setupwizard";
 
     private static final long MAX_ICON_CACHE_SIZE = 33554432L; // 32MB
     private static final long PURGED_ICON_CACHE_SIZE = 25165824L; // 24 MB
@@ -813,7 +813,7 @@ public class ThemeService extends IThemeService.Stub {
 
     private boolean isSetupActivity(ResolveInfo info) {
         return GOOGLE_SETUPWIZARD_PACKAGE.equals(info.activityInfo.packageName) ||
-               CM_SETUPWIZARD_PACKAGE.equals(info.activityInfo.packageName);
+               MK_SETUPWIZARD_PACKAGE.equals(info.activityInfo.packageName);
     }
 
     private boolean handlesThemeChanges(String pkgName, List<ResolveInfo> infos) {
