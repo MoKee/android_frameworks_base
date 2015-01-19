@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (C) 2015 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +18,8 @@
 package com.android.keyguard;
 
 import android.content.Context;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.content.res.TypedArray;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -162,8 +165,13 @@ public class CarrierText extends TextView {
             }
             text.append(carrierText);
         }
-
-        setText(text);
+        String customCarrierLabel = Settings.System.getStringForUser(getContext().getContentResolver(),
+           Settings.System.CUSTOM_CARRIER_LABEL, UserHandle.USER_CURRENT);
+        if (!TextUtils.isEmpty(customCarrierLabel)) {
+            setText(customCarrierLabel);
+        } else {
+            setText(text);
+        }
     }
 
     /**
