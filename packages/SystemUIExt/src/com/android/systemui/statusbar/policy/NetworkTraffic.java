@@ -44,11 +44,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.android.systemui.R;
-import com.android.systemui.utils.multiNetworkTrafficDownIndicatorSpan;
-import com.android.systemui.utils.multiNetworkTrafficDownTextSpan;
-import com.android.systemui.utils.multiNetworkTrafficUpIndicatorSpan;
-import com.android.systemui.utils.multiNetworkTrafficUpTextSpan;
-import com.android.systemui.utils.singleNetworkTrafficIndicatorSpan;
+import com.android.systemui.utils.NetworkTrafficSpan;
 
 /*
  *
@@ -139,19 +135,19 @@ public class NetworkTraffic extends TextView {
                     Spannable spannable = new SpannableString(output);
                     spannable.setSpan(new AbsoluteSizeSpan(txtSizeMulti), 0, upIndex,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    spannable.setSpan((new multiNetworkTrafficUpTextSpan()), 0, upIndex,
+                    spannable.setSpan((new NetworkTrafficSpan(-0.05)), 0, upIndex,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     spannable.setSpan(new AbsoluteSizeSpan((int) (txtSizeMulti * 0.7)), upIndex,
                             lineIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    spannable.setSpan(new multiNetworkTrafficUpIndicatorSpan(), upIndex, lineIndex,
+                    spannable.setSpan(new NetworkTrafficSpan(-0.4), upIndex, lineIndex,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     spannable.setSpan(new AbsoluteSizeSpan(txtSizeMulti), lineIndex, downIndex,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    spannable.setSpan((new multiNetworkTrafficDownTextSpan()), lineIndex, downIndex,
+                    spannable.setSpan((new NetworkTrafficSpan(0.05)), lineIndex, downIndex,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     spannable.setSpan(new AbsoluteSizeSpan((int) (txtSizeMulti * 0.7)), downIndex,
                             output.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    spannable.setSpan(new multiNetworkTrafficDownIndicatorSpan(), downIndex,
+                    spannable.setSpan(new NetworkTrafficSpan(0.4), downIndex,
                             output.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     setText(spannable);
                 } else {
@@ -161,7 +157,7 @@ public class NetworkTraffic extends TextView {
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     spannable.setSpan(new AbsoluteSizeSpan((int) (txtSizeMulti * 0.9)), index,
                             output.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    spannable.setSpan(new singleNetworkTrafficIndicatorSpan(), index,
+                    spannable.setSpan(new NetworkTrafficSpan(0.25), index,
                             output.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     setText(spannable);
                 }
