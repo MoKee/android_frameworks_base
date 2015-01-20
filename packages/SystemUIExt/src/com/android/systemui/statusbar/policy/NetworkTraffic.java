@@ -35,23 +35,31 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.os.UserHandle;
 import android.provider.Settings;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 
 import com.android.systemui.R;
+import com.android.systemui.utils.multiNetworkTrafficDownIndicatorSpan;
+import com.android.systemui.utils.multiNetworkTrafficDownTextSpan;
+import com.android.systemui.utils.multiNetworkTrafficUpIndicatorSpan;
+import com.android.systemui.utils.multiNetworkTrafficUpTextSpan;
+import com.android.systemui.utils.singleNetworkTrafficIndicatorSpan;
 
 /*
-*
-* Seeing how an Integer object in java requires at least 16 Bytes, it seemed awfully wasteful
-* to only use it for a single boolean. 32-bits is plenty of room for what we need it to do.
-*
-*/
+ *
+ * Seeing how an Integer object in java requires at least 16 Bytes, it seemed awfully wasteful
+ * to only use it for a single boolean. 32-bits is plenty of room for what we need it to do.
+ *
+ */
 public class NetworkTraffic extends TextView {
-    public static final int MASK_UP = 0x00000001;        // Least valuable bit
-    public static final int MASK_DOWN = 0x00000002;      // Second least valuable bit
-    public static final int MASK_PERIOD = 0xFFFF0000;    // Most valuable 16 bits
+    public static final int MASK_UP = 0x00000001; // Least valuable bit
+    public static final int MASK_DOWN = 0x00000002; // Second least valuable bit
+    public static final int MASK_PERIOD = 0xFFFF0000; // Most valuable 16 bits
 
     private static final int KILOBYTE = 1024;
 
@@ -99,7 +107,7 @@ public class NetworkTraffic extends TextView {
 
             // If bit/s convert from Bytes to bits
             String symbol = "B/s";
- 
+
             // Get information for uplink ready so the line return can be added
             String output = "";
             if (isSet(mState, MASK_UP)) {
@@ -123,9 +131,40 @@ public class NetworkTraffic extends TextView {
             }
 
             // Update view if there's anything new to show
-            if (! output.contentEquals(getText())) {
-                setTextSize(TypedValue.COMPLEX_UNIT_PX, (float)textSize);
-                setText(output);
+            if (!output.contentEquals(getText())) {
+                if (textSize == txtSizeMulti) {
+                    int upIndex = output.indexOf(mUp);
+                    int downIndex = output.indexOf(mDown);
+                    int lineIndex = output.indexOf("\n");
+                    Spannable spannable = new SpannableString(output);
+                    spannable.setSpan(new AbsoluteSizeSpan(txtSizeMulti), 0, upIndex,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    spannable.setSpan((new multiNetworkTrafficUpTextSpan()), 0, upIndex,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    spannable.setSpan(new AbsoluteSizeSpan((int) (txtSizeMulti * 0.7)), upIndex,
+                            lineIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    spannable.setSpan(new multiNetworkTrafficUpIndicatorSpan(), upIndex, lineIndex,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    spannable.setSpan(new AbsoluteSizeSpan(txtSizeMulti), lineIndex, downIndex,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    spannable.setSpan((new multiNetworkTrafficDownTextSpan()), lineIndex, downIndex,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    spannable.setSpan(new AbsoluteSizeSpan((int) (txtSizeMulti * 0.7)), downIndex,
+                            output.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    spannable.setSpan(new multiNetworkTrafficDownIndicatorSpan(), downIndex,
+                            output.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    setText(spannable);
+                } else {
+                    int index = output.indexOf(isSet(mState, MASK_DOWN) ? mDown : mUp);
+                    Spannable spannable = new SpannableString(output);
+                    spannable.setSpan(new AbsoluteSizeSpan(txtSizeSingle), 0, index,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    spannable.setSpan(new AbsoluteSizeSpan((int) (txtSizeMulti * 0.9)), index,
+                            output.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    spannable.setSpan(new singleNetworkTrafficIndicatorSpan(), index,
+                            output.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    setText(spannable);
+                }
             }
 
             // Post delayed message to refresh in ~1000ms
@@ -136,15 +175,15 @@ public class NetworkTraffic extends TextView {
         }
 
         private String formatOutput(long timeDelta, long data, String symbol) {
-            long speed = (long)(data / (timeDelta / 1000F));
+            long speed = (long) (data / (timeDelta / 1000F));
             if (speed < KB) {
                 return decimalFormat.format(speed) + symbol;
             } else if (speed < MB) {
-                return decimalFormat.format(speed / (float)KB) + 'K' + symbol;
+                return decimalFormat.format(speed / (float) KB) + 'K' + symbol;
             } else if (speed < GB) {
-                return decimalFormat.format(speed / (float)MB) + 'M' + symbol;
+                return decimalFormat.format(speed / (float) MB) + 'M' + symbol;
             }
-            return decimalFormat.format(speed / (float)GB) + 'G' + symbol;
+            return decimalFormat.format(speed / (float) GB) + 'G' + symbol;
         }
     };
 
@@ -167,7 +206,7 @@ public class NetworkTraffic extends TextView {
         }
 
         /*
-         *  @hide
+         * @hide
          */
         @Override
         public void onChange(boolean selfChange) {
@@ -176,21 +215,21 @@ public class NetworkTraffic extends TextView {
     }
 
     /*
-     *  @hide
+     * @hide
      */
     public NetworkTraffic(Context context) {
         this(context, null);
     }
 
     /*
-     *  @hide
+     * @hide
      */
     public NetworkTraffic(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
     /*
-     *  @hide
+     * @hide
      */
     public NetworkTraffic(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -236,8 +275,8 @@ public class NetworkTraffic extends TextView {
 
     public void updateSettings() {
         ContentResolver resolver = mContext.getContentResolver();
-        mState = Settings.System.getIntForUser(resolver, Settings.System.STATUS_BAR_NETWORK_TRAFFIC_STYLE, 3
-                 , UserHandle.USER_CURRENT);
+        mState = Settings.System.getIntForUser(resolver,
+                Settings.System.STATUS_BAR_NETWORK_TRAFFIC_STYLE, 3 , UserHandle.USER_CURRENT);
         MB = KB * KB;
         GB = MB * KB;
 
