@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The CyanogenMod Project
+ * Copyright (C) 2015 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -500,7 +501,7 @@ public class ThemeService extends IThemeService.Stub {
 
     private boolean updateFonts(String pkgName) {
         //Clear the font dir
-        ThemeUtils.deleteFilesInDir(ThemeUtils.SYSTEM_THEME_FONT_PATH);
+        FileUtils.deleteContents(new File(ThemeUtils.SYSTEM_THEME_FONT_PATH));
 
         if (!pkgName.equals(SYSTEM_DEFAULT)) {
             //Get Font Assets

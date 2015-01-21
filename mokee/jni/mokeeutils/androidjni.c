@@ -39,13 +39,13 @@ static int registerNativeMethods(JNIEnv *env, const char *className,
     clazz = (*env)->FindClass(env, className);
     if (clazz == NULL) {
 #ifdef DEBUG
-        __android_log_print(ANDROID_LOG_DEBUG, TAG_JNI, "class not exist!");
+        __android_log_print(ANDROID_LOG_INFO, TAG_JNI, "class not exist!");
 #endif
         return JNI_FALSE;
     }
     if ((*env)->RegisterNatives(env, clazz, gMethods, numMethods) < 0) {
 #ifdef DEBUG
-        __android_log_print(ANDROID_LOG_DEBUG, TAG_JNI, "method not exist!");
+        __android_log_print(ANDROID_LOG_INFO, TAG_JNI, "method not exist!");
 #endif
         return JNI_FALSE;
     }

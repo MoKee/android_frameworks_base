@@ -23,12 +23,19 @@
 #include <android/log.h>
 #include <cutils/properties.h>
 
-//#ifdef DEBUG
+//#define DEBUG
+
+#ifdef DEBUG
 #define TAG "mokee-phonelocation"
-//#endif
+#endif
 
 #define MAX_PHONE_LEN 20
 #define MAX_PHONE_CN_LEN 40
+
+static const char *KNOWN_PREFIX[] = {"0086", "106", "12520", "17951",
+                                     "17909", "12593", "17950", "17910",
+                                     "17911", "193", "17900", "17901"};
+static const int KNOWN_PREFIX_LEN = 12;
 
 typedef struct known_phone_info {
     char known_phone[MAX_PHONE_LEN];
@@ -50,11 +57,6 @@ static known_phone_info_t g_known_phone[] = {
     {"1069", "001,信息服务台"},
 };
 
-static const int KNOWN_PREFIX_LEN = 12;
-static const char LOC_FILE[] = "/system/media/location/mokee-phonelocation.dat";
-static const char *KNOWN_PREFIX[] = {"0086",  "106",   "12520", "17951",
-                                     "17909", "12593", "17950", "17910",
-                                     "17911", "193",   "17900", "17901"};
 static int exists = 0;
 
 int file_exists(const char *filename) {
@@ -74,8 +76,7 @@ int isInterPhone(char *phone, int len) {
     return -1;
 }
 
-void formatPhone(char *phone, int len,
-                 char *nphone) { //得到电话号码的标准格式，去掉开头的＋86等
+void formatPhone(char *phone, int len, char *nphone) { //得到电话号码的标准格式，去掉开头的＋86等
     if (phone == NULL || nphone == NULL) { return; }
     // shouldn't length over 40!
     if (len > 40) len = 40;
@@ -113,10 +114,10 @@ void formatPhone(char *phone, int len,
         } else { memmove(nphone, nphone + 1, len); }
     }
     if (nphone[0] != '0' && nphone[0] != '1' &&
-        nphone[0] != '9') //国内的固定电话,9是银行等的开头把这些也除去
+        nphone[0] != '9')            //国内的固定电话,9是银行等的开头把这些也除去
         memmove(nphone + 1, "0", 1); //把第二位也置为0，这样在数据库就找不到
     if (nphone[1] == '0' && nphone[0] == '1' &&
-        nphone[2] != '0') //北京做特殊处理
+        nphone[2] != '0')            //北京做特殊处理
         memmove(nphone + 1, "0", 1); //把第二位也置为0，这样在数据库就找不到
     strncpy(phone, nphone, len);
     int i;
@@ -130,16 +131,17 @@ void formatPhone(char *phone, int len,
     if (pch = strchr(nphone, '#')) { pch[0] = 0x00; }
     if (pch = strchr(nphone, '*')) { pch[0] = 0x00; }
 #ifdef DEBUG
-    __android_log_print(ANDROID_LOG_DEBUG, TAG, "after format: %s", nphone);
+    __android_log_print(ANDROID_LOG_INFO, TAG, "after format: %s", nphone);
 #endif
 }
+
 JNIEXPORT jstring JNICALL
     getPhoneNumberLocation(JNIEnv *env, jclass thiz, jstring phone) {
     char *phone2;
     jboolean is_copy;
     phone2 = (*env)->GetStringUTFChars(env, phone, &is_copy);
 #ifdef DEBUG
-    __android_log_print(ANDROID_LOG_DEBUG, TAG, "called [%s]", phone2);
+    __android_log_print(ANDROID_LOG_INFO, TAG, "called [%s]", phone2);
 #endif
     if (phone2 == NULL) return NULL;
     int len = strlen(phone2);
@@ -167,11 +169,10 @@ JNIEXPORT jstring JNICALL
     if (len < 3) return NULL;
 
 #ifdef DEBUG
-    __android_log_print(ANDROID_LOG_DEBUG, TAG, "parse: %s %d", phone2, len);
+    __android_log_print(ANDROID_LOG_INFO, TAG, "parse: %s %d", phone2, len);
 #endif
-    if (strncmp(phone2, "12520", 5) == 0 &&
-        len <
-            11) { // test whether start with 12520 and other is not a mobile no.
+
+    if (strncmp(phone2, "12520", 5) == 0 && len < 11) { // test whether start with 12520 and other is not a mobile no.
         return (*env)->NewStringUTF(env, "001,移动飞信用户");
     }
     {
@@ -191,21 +192,25 @@ JNIEXPORT jstring JNICALL
     memset(locationCode, 0x00, 48);
     memset(location, 0x00, 48);
 
+    char *LOC_PATH = malloc(50);
+    memset(LOC_PATH, 0, 50);
+    toOriginal(",mwnsam,gc_h]/iia\\seok)kjjae*jfjmall]_ohkn+^_o", LOC_PATH);
     if (isInterPhone(nphone, len) >= 0) {
+
 #ifdef DEBUG
-        __android_log_print(ANDROID_LOG_DEBUG, TAG, "inter phone[%s]", nphone);
+        __android_log_print(ANDROID_LOG_INFO, TAG, "inter phone[%s]", nphone);
 #endif
+
         int pos = len > 6 ? 6 : len;
         char m[8];
         memset(m, 0x00, 8);
         int i;
-        for (i = 0; i < 7 - pos; i++) {
-            m[i] = '9';
-        }
+        for (i = 0; i < 7 - pos; i++) { m[i] = '9'; }
         strncpy(m + 7 - pos, nphone, pos);
         for (; pos >= 3; pos--) {
             int num = atol(&m[0]);
-            if (getLocationInfoEx(num, location, locationCode) >= 0) {
+            if (getLocationInfoEx(LOC_PATH, num, location, locationCode) >= 0) {
+                free(LOC_PATH);
                 return (*env)->NewStringUTF(env, locationCode);
             }
             memmove(m + 1, m, 6);
@@ -222,39 +227,49 @@ JNIEXPORT jstring JNICALL
     } else {
         if (len >= 7) { nphone[7] = 0x00; }
     }
+
 #ifdef DEBUG
-    __android_log_print(ANDROID_LOG_DEBUG, TAG, "find %s", nphone);
+    __android_log_print(ANDROID_LOG_INFO, TAG, "find %s", nphone);
 #endif
+
     int num = atol(nphone);
-    if (getLocationInfoEx(num, location, locationCode) >= 0) {
+    if (getLocationInfoEx(LOC_PATH, num, location, locationCode) >= 0) {
+        free(LOC_PATH);
         return (*env)->NewStringUTF(env, locationCode);
     }
+
 #ifdef DEBUG
-    __android_log_print(ANDROID_LOG_DEBUG, TAG, "return emptystr");
+    __android_log_print(ANDROID_LOG_INFO, TAG, "return emptystr");
 #endif
+
     return NULL;
 }
 
-int getLocationInfoEx(int num, char *location, char *locationCode) {
-    if (file_exists(LOC_FILE) < 0) {
+int getLocationInfoEx(char *locationPath, int num, char *location, char *locationCode) {
+    if (file_exists(locationPath) < 0) {
+
 #ifdef DEBUG
-        __android_log_print(ANDROID_LOG_DEBUG, TAG, "data file not exist!");
+        __android_log_print(ANDROID_LOG_INFO, TAG, "data file not exist!");
 #endif
         return -1;
     }
 
-    getLocationInfo(LOC_FILE, num, location, locationCode);
+    getLocationInfo(locationPath, num, location, locationCode);
+
 #ifdef DEBUG
-    __android_log_print(ANDROID_LOG_DEBUG, TAG, "return is %d, %s, %d, %s",
+    __android_log_print(ANDROID_LOG_INFO, TAG, "return is %d, %s, %d, %s",
                         strlen(location), location, strlen(locationCode),
                         locationCode);
 #endif
+
     if (location[0] == ' ' && location[1] == 0x00) return -1;
     strcat(locationCode, ",");
     strcat(locationCode, location);
+
 #ifdef DEBUG
-    __android_log_print(ANDROID_LOG_DEBUG, TAG, "[%d] == %s", num,
+    __android_log_print(ANDROID_LOG_INFO, TAG, "[%d] == %s", num,
                         locationCode);
 #endif
+
     return 0;
 }

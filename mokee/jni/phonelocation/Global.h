@@ -17,33 +17,32 @@
 
 #ifndef _MPGLOBAL_INCLUDED_
 #define _MPGLOBAL_INCLUDED_
-#pragma pack (1)
+#pragma pack(1)
 
 //链表节点类
 class StringNode {
-public:
+  public:
     unsigned short cityCode;
-    char * value;
+    char *value;
     int length;
     unsigned short offset;
-    StringNode * next;
+    StringNode *next;
 
-    StringNode(const char * val, unsigned short cityCode);
+    StringNode(const char *val, unsigned short cityCode);
     StringNode();
     ~StringNode();
 };
 
-
 //索引表节点类
 class IndexNode {
-public:
+  public:
     int NumStart;
     int NumEnd;
-    StringNode * Address;
-    IndexNode * next;
+    StringNode *Address;
+    IndexNode *next;
 
     IndexNode();
-    IndexNode(int ns, int ne, StringNode * ad=NULL);
+    IndexNode(int ns, int ne, StringNode *ad = NULL);
 };
 
 //索引记录结构体

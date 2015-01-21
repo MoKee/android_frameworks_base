@@ -26,11 +26,13 @@ StringNode::StringNode(const char *val, unsigned short cityCode) {
     this->cityCode = cityCode;
     this->next = NULL;
 }
+
 StringNode::StringNode() {
     value = NULL;
     length = 0;
     next = NULL;
 }
+
 StringNode::~StringNode() {
     if (value) delete[] value;
 }
@@ -40,6 +42,7 @@ IndexNode::IndexNode() {
     Address = NULL;
     next = NULL;
 }
+
 IndexNode::IndexNode(int ns, int ne, StringNode *ad) {
     NumStart = ns;
     NumEnd = ne;

@@ -35,11 +35,14 @@ inline int getIndexOffset(FILE *fp, int fo, int lo, int num) {
     llv &= 0x00ffffff;
 
     //边界检测处理
-    if (num < fv) return -1;
-    else if (num > llv) return -1;
+    if (num < fv)
+        return -1;
+    else if (num > llv)
+        return -1;
     //使用"二分法"确定记录偏移量
     do {
-        mo = fo + (lo - fo) / (sizeof(IndexStruct) - 2) / 2 * (sizeof(IndexStruct) - 2);
+        mo = fo + (lo - fo) / (sizeof(IndexStruct) - 2) / 2 *
+                (sizeof(IndexStruct) - 2);
         fseek(fp, mo, SEEK_SET);
         fread(&smv, sizeof(smv) - 1, 1, fp);
         fread(&mv, sizeof(mv) - 1, 1, fp);
@@ -102,7 +105,7 @@ MpLocation GetMpLocation(const char *fn, int num) {
             fread(strBuf, sizeof(strBuf), 1, fp);
             //检验字符串边界
             int i;
-            for(i = 0; strBuf[i] != '\0' && i < sizeof(strBuf); i++);
+            for (i = 0; strBuf[i] != '\0' && i < sizeof(strBuf); i++);
 
             if (i == sizeof(strBuf)) strBuf[sizeof(strBuf) - 1] = '\0';
             //获取区号
@@ -110,7 +113,6 @@ MpLocation GetMpLocation(const char *fn, int num) {
             strcpy(mpl.Location, strBuf);
         }
     }
-
     fclose(fp);
     return mpl;
 }
@@ -118,6 +120,7 @@ MpLocation GetMpLocation(const char *fn, int num) {
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 #include <stdlib.h>
 
 void getLocationInfo(char *dataFile, int num, char *location, char *cityCode) {

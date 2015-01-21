@@ -25,7 +25,8 @@ char *ChangeFileExt(const char *fn, const char *fext) {
     int l = strlen(fn);
     int le = strlen(fext);
     int i;
-    for (i = l - 1; fn[i] != '.' && fn[i] != '\\' && fn[i] != '/' && fn[i] != ':' && i >= 0; i--) ;
+    for (i = l - 1; fn[i] != '.' && fn[i] != '\\' && fn[i] != '/' &&
+            fn[i] != ':' && i >= 0; i--);
     char *fnext;
     //如果没扩展名
     if (i <= 0 || fn[i] == '\\' || fn[i] == '/' || fn[i] == ':') {
@@ -114,13 +115,9 @@ int MpDataConvert(const char *fnin, const char *fnout) {
     fclose(fpin);
     /***********************************************/
     int j = 0;
-    for (p = indexTable; p != NULL; p = p->next) {
-        j++;
-    }
+    for (p = indexTable; p != NULL; p = p->next) { j++; }
     int k = 0;
-    for (ps = stringTable; ps != NULL; ps = ps->next) {
-        k++;
-    }
+    for (ps = stringTable; ps != NULL; ps = ps->next) { k++; }
     /***********************************************/
     /***********************************************/
     //导入数据文件
@@ -222,6 +219,5 @@ int main(int argc, char *argv[]) {
             break;
         }
     }
-
     return ret;
 }

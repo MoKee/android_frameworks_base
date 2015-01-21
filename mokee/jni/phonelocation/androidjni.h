@@ -32,16 +32,15 @@
 #define JNIREG_CLASS "android/mokee/location/PhoneLocation"
 
 JNIEXPORT jstring JNICALL
-getPhoneNumberLocation( JNIEnv* env, jclass thiz, jstring phone );
+    getPhoneNumberLocation(JNIEnv *env, jclass thiz, jstring phone);
 
 /**
  * Table of methods associated with a single class.
  */
 static JNINativeMethod gMethods[] = {
-    {
-        "getPhoneNumberLocation", "(Ljava/lang/String;)Ljava/lang/String;",
-        (void*) getPhoneNumberLocation
-    },
+    {"getPhoneNumberLocation", "(Ljava/lang/String;)Ljava/lang/String;",
+     (void *)getPhoneNumberLocation},
     /* <<----Functions for sync end--------------------------------- */
 };
+
 #endif

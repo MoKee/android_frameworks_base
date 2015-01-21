@@ -22,13 +22,11 @@
 void int2str(char *str, int integer) {
     int tmp_int = integer, tmp_int_len = 0;
     char *p = str;
-    while (0 != tmp_int)
-        tmp_int /= 10, tmp_int_len++;
+    while (0 != tmp_int) tmp_int /= 10, tmp_int_len++;
     tmp_int = integer;
     int i = 0, len_zero_count = 1;
     char tmp = 0;
-    for (i = 0; i < tmp_int_len; i++)
-        len_zero_count *= 10;
+    for (i = 0; i < tmp_int_len; i++) len_zero_count *= 10;
     for (i = 0; i < tmp_int_len; i++) {
         len_zero_count /= 10;
         if (0 == i)
@@ -43,8 +41,7 @@ void str2int(char *str, int *integer, int count) {
     int tmp_int = 0, zero_count = 1;
     char *p = str;
     int i = 0;
-    for (i = 0; i < count; i++)
-        zero_count *= 10;
+    for (i = 0; i < count; i++) zero_count *= 10;
     while (1 != zero_count) {
         zero_count /= 10;
         tmp_int += (*p++ - '0') * zero_count;
@@ -54,7 +51,7 @@ void str2int(char *str, int *integer, int count) {
 
 void toOriginal(char *str, char *dstr) {
     int i = 0, code = 0, value = 0, len = strlen(str);
-    char *key = malloc(100), tmpvalue = 0, resultkey[100] = { 0 };
+    char *key = malloc(100), tmpvalue = 0, resultkey[100] = {0};
     memset(key, 0, 100);
     for (i = 0; i < len; i++) {
         code = *str++;
@@ -62,10 +59,11 @@ void toOriginal(char *str, char *dstr) {
         int2str(key, code);
         str2int(key, &value, strlen(key));
         memset(key, 0, 100);
-        tmpvalue = (char) value;
+        tmpvalue = (char)value;
         resultkey[i] = tmpvalue;
         value = 0;
     }
     free(key);
+    key = NULL;
     memcpy(dstr, resultkey, strlen(resultkey) + 1);
 }
