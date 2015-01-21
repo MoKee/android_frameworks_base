@@ -194,8 +194,7 @@ public class Lunar {
         String run1 = res.getString(com.android.internal.R.string.status_leap);
         String month1 = res.getString(com.android.internal.R.string.status_month);
         return cyclical() + animalsYear() + year1 + (leap ? run1 : "") + lunarMonthName[month - 1]
-                + month1
-                + getChinaDayString(day);
+                + month1 + getChinaDayString(day);
     }
 
     public boolean isBigMonth(String lunarFestivalStr) {

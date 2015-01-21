@@ -110,7 +110,7 @@ public class SolarTerm {
     public static String getSolarTermStr (int year, int month, int day) {
         Resources res = Resources.getSystem();
         String [] solarArrayStr = res.getStringArray(com.android.internal.R.array.solar_term);
-        String SolarTermStr="";
+        String SolarTermStr = "";
         int temp;
         int result = 0;
         int index = (year - START_YEAR) * 12 + month;
