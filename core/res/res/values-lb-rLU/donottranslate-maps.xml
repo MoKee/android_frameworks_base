@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2014 The CyanogenMod Project
+     Copyright (C) 2013-2014 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,8 +15,12 @@
      limitations under the License.
 -->
 <resources>
-    <dimen name="weather_text_size">12sp</dimen>
-     <dimen name="detail_radio_group_padding_left">16dp</dimen>
-     <dimen name="detail_radio_group_padding">8dp</dimen>
-    <dimen name="qs_tile_icon_size_visualizer">40dp</dimen>
+    <!-- Stub for Luxembourgish -->
+    <integer-array name="maps_starting_lat_lng">
+        <item>50854509</item>
+        <item>4376678</item>
+    </integer-array>
+    <integer-array name="maps_starting_zoom">
+        <item>5</item>
+    </integer-array>
 </resources>
