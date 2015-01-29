@@ -236,7 +236,6 @@ LOCAL_SHARED_LIBRARIES := \
 	libicui18n \
 	libmedia \
 	libmokeeutils \
-	libmokee-phonelocation \
 	libjpeg \
 	libusbhost \
 	libharfbuzz_ng \
