@@ -1948,9 +1948,31 @@ final class ActivityStack {
         return true;
     }
 
+    private TaskRecord getNextTask(TaskRecord targetTask) {
+        final int index = mTaskHistory.indexOf(targetTask);
+        if (index >= 0) {
+            final int numTasks = mTaskHistory.size();
+            for (int i = index + 1; i < numTasks; ++i) {
+                TaskRecord task = mTaskHistory.get(i);
+                if (task.userId == targetTask.userId) {
+                    return task;
+                }
+            }
+        }
+        return null;
+    }
+
     private void insertTaskAtTop(TaskRecord task) {
+        // If the moving task is over home stack, transfer its return type to next task
+        if (task.isOverHomeStack()) {
+            final TaskRecord nextTask = getNextTask(task);
+            if (nextTask != null) {
+                nextTask.setTaskToReturnTo(task.getTaskToReturnTo());
+            }
+        }
+
         // If this is being moved to the top by another activity or being launched from the home
-        // activity, set mOnTopOfHome accordingly.
+        // activity, set mTaskToReturnTo accordingly.
         if (isOnHomeDisplay()) {
             ActivityStack lastStack = mStackSupervisor.getLastStack();
             final boolean fromHome = lastStack.isHomeStack();
@@ -3649,6 +3671,15 @@ final class ActivityStack {
         if (DEBUG_TRANSITION) Slog.v(TAG,
                 "Prepare to back transition: task=" + taskId);
 
+        boolean prevIsHome = false;
+        if (tr.isOverHomeStack()) {
+            final TaskRecord nextTask = getNextTask(tr);
+            if (nextTask != null) {
+                nextTask.setTaskToReturnTo(tr.getTaskToReturnTo());
+            } else {
+                prevIsHome = true;
+            }
+        }
         mTaskHistory.remove(tr);
         mTaskHistory.add(0, tr);
         updateTaskMovement(tr, false);
@@ -3684,7 +3715,8 @@ final class ActivityStack {
         }
 
         final TaskRecord task = mResumedActivity != null ? mResumedActivity.task : null;
-        if (task == tr && tr.isOverHomeStack() || numTasks <= 1 && isOnHomeDisplay()) {
+        if (prevIsHome || task == tr && tr.isOverHomeStack()
+                || numTasks <= 1 && isOnHomeDisplay()) {
             if (!mService.mBooting && !mService.mBooted) {
                 // Not ready yet!
                 return false;
@@ -3964,18 +3996,16 @@ final class ActivityStack {
     }
 
     void getTasksLocked(List<RunningTaskInfo> list, int callingUid, boolean allowed) {
-        boolean setFirstAsLast = mStackSupervisor.getFocusedStack() == this;
-        boolean first = true;
         for (int taskNdx = mTaskHistory.size() - 1; taskNdx >= 0; --taskNdx) {
             final TaskRecord task = mTaskHistory.get(taskNdx);
-            if (task.getTopActivity() == null) {
-                continue;
-            }
             ActivityRecord r = null;
             ActivityRecord top = null;
             int numActivities = 0;
             int numRunning = 0;
             final ArrayList<ActivityRecord> activities = task.mActivities;
+            if (activities.isEmpty()) {
+                continue;
+            }
             if (!allowed && !task.isHomeTask() && task.effectiveUid != callingUid) {
                 continue;
             }
@@ -4004,10 +4034,6 @@ final class ActivityStack {
             ci.baseActivity = r.intent.getComponent();
             ci.topActivity = top.intent.getComponent();
             ci.lastActiveTime = task.lastActiveTime;
-            if (setFirstAsLast && first) {
-                ci.lastActiveTime = SystemClock.elapsedRealtime();
-                first = false;
-            }
 
             if (top.task != null) {
                 ci.description = top.task.lastDescription;
