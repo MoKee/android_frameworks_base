@@ -61,7 +61,7 @@ public class NetworkTraffic extends TextView {
 
     private static DecimalFormat decimalFormat = new DecimalFormat("##0.#");
     static {
-        decimalFormat.setMaximumIntegerDigits(3);
+        decimalFormat.setMaximumIntegerDigits(4);
         decimalFormat.setMaximumFractionDigits(1);
     }
 
