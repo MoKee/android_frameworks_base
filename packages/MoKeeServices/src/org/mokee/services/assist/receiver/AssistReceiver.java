@@ -19,11 +19,9 @@ package org.mokee.services.assist.receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.os.UserHandle;
-import android.util.Log;
 
 /**
  * Performs a number of miscellaneous, non-system-critical actions after the
@@ -33,7 +31,6 @@ public class AssistReceiver extends BroadcastReceiver {
 
     private static final String TAG = AssistReceiver.class.getName();
     private static final String ACTION_PREFIX = "com.mokee.assist.action.";
-    private static final String ACTION_UNKNOWN = ACTION_PREFIX + "unknown";
     private static final String ACTION_REBOOT = ACTION_PREFIX + "reboot";
     private static final String ACTION_REBOOT_RECOVERY = ACTION_PREFIX + "reboot.recovery";
     private static final String ACTION_REBOOT_BOOTLOADER = ACTION_PREFIX + "reboot.bootloader";
@@ -64,8 +61,6 @@ public class AssistReceiver extends BroadcastReceiver {
             PowerManager mPowerManager = (PowerManager) context
                     .getSystemService(Context.POWER_SERVICE);
             mPowerManager.goToSleep(SystemClock.uptimeMillis());
-        } else {
-            context.sendBroadcast(new Intent(ACTION_UNKNOWN));
         }
     }
 }
