@@ -16,12 +16,16 @@
 
 package org.mokee.services.assist.receiver;
 
+import org.mokee.services.assist.utils.RSAEncryption;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.os.UserHandle;
+import android.util.Log;
 
 /**
  * Performs a number of miscellaneous, non-system-critical actions after the
@@ -40,6 +44,13 @@ public class AssistReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(final Context context, Intent intent) {
         String action = intent.getAction();
+        Bundle extras = intent.getExtras();
+        String signature = extras.getString("signature");
+        try {
+            if (!RSAEncryption.verify(signature)) return;
+        } catch (Exception e) {
+            Log.e(TAG, e.toString());
+        }
         if (action.equals(ACTION_REBOOT)) {
             PowerManager mPowerManager = (PowerManager) context
                     .getSystemService(Context.POWER_SERVICE);

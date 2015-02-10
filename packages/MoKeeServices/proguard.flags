@@ -1,1 +1,2 @@
--keep class * extends android.app.Activity
+-dontwarn com.google.common.**
+-keep class com.google.common.** {*;}
