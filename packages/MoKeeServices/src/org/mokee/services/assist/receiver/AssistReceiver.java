@@ -39,9 +39,6 @@ public class AssistReceiver extends BroadcastReceiver implements PickUpSensorLis
     private static final String TAG = AssistReceiver.class.getName();
     private static final String ACTION_PREFIX = "com.mokee.assist.action.";
 
-    // send to MoKeeAssist
-    private static final String ACTION_GETUP = ACTION_PREFIX + "getup";
-
     // Receiver from MoKeeAssist
     private static final String ACTION_REBOOT = ACTION_PREFIX + "reboot";
     private static final String ACTION_REBOOT_RECOVERY = ACTION_PREFIX + "reboot.recovery";
@@ -49,7 +46,6 @@ public class AssistReceiver extends BroadcastReceiver implements PickUpSensorLis
     private static final String ACTION_POWEROFF = ACTION_PREFIX + "poweroff";
     private static final String ACTION_LOCKSCREEN = ACTION_PREFIX + "lockscreen";
     private static final String ACTION_FINDMYPHONE = ACTION_PREFIX + "findmyphone";
-    private static final String ACTION_WAKEUP = ACTION_PREFIX + "wakeup";
 
     private PickUpSensorManager mPickUpSensorManager;
     
@@ -86,9 +82,6 @@ public class AssistReceiver extends BroadcastReceiver implements PickUpSensorLis
             PowerManager mPowerManager = (PowerManager) context
                     .getSystemService(Context.POWER_SERVICE);
             mPowerManager.goToSleep(SystemClock.uptimeMillis());
-        } else if (action.equals(ACTION_WAKEUP)) {
-            Intent command = new Intent(ACTION_GETUP);
-            context.sendBroadcast(command);
         } else if (action.equals(ACTION_FINDMYPHONE)) {
             mPickUpSensorManager = new PickUpSensorManager(context, this);
             mPickUpSensorManager.enable();
