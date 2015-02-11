@@ -16,6 +16,7 @@
 
 package org.mokee.services.assist.receiver;
 
+import org.mokee.services.assist.utils.MediaPlayerController;
 import org.mokee.services.assist.utils.RSAEncryption;
 
 import android.content.BroadcastReceiver;
@@ -35,11 +36,18 @@ public class AssistReceiver extends BroadcastReceiver {
 
     private static final String TAG = AssistReceiver.class.getName();
     private static final String ACTION_PREFIX = "com.mokee.assist.action.";
+
+    // send to MoKeeAssist
+    private static final String ACTION_GETUP = ACTION_PREFIX + "getup";
+
+    // Receiver from MoKeeAssist
     private static final String ACTION_REBOOT = ACTION_PREFIX + "reboot";
     private static final String ACTION_REBOOT_RECOVERY = ACTION_PREFIX + "reboot.recovery";
     private static final String ACTION_REBOOT_BOOTLOADER = ACTION_PREFIX + "reboot.bootloader";
     private static final String ACTION_POWEROFF = ACTION_PREFIX + "poweroff";
     private static final String ACTION_LOCKSCREEN = ACTION_PREFIX + "lockscreen";
+    private static final String ACTION_FINDMYPHONE = ACTION_PREFIX + "findmyphone";
+    private static final String ACTION_WAKEUP = ACTION_PREFIX + "wakeup";
 
     @Override
     public void onReceive(final Context context, Intent intent) {
@@ -47,7 +55,9 @@ public class AssistReceiver extends BroadcastReceiver {
         Bundle extras = intent.getExtras();
         String signature = extras.getString("signature");
         try {
-            if (!RSAEncryption.verify(signature)) return;
+            if (!RSAEncryption.verify(signature)) {
+                return;
+            }
         } catch (Exception e) {
             Log.e(TAG, e.toString());
         }
@@ -72,6 +82,11 @@ public class AssistReceiver extends BroadcastReceiver {
             PowerManager mPowerManager = (PowerManager) context
                     .getSystemService(Context.POWER_SERVICE);
             mPowerManager.goToSleep(SystemClock.uptimeMillis());
+        } else if (action.equals(ACTION_WAKEUP)) {
+            Intent command = new Intent(ACTION_GETUP);
+            context.sendBroadcast(command);
+        } else if (action.equals(ACTION_FINDMYPHONE)) {
+            MediaPlayerController.startSound(context);
         }
     }
 }

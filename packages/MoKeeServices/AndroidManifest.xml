@@ -32,6 +32,8 @@
                 <action android:name="com.mokee.assist.action.reboot.bootloader" />
                 <action android:name="com.mokee.assist.action.poweroff" />
                 <action android:name="com.mokee.assist.action.lockscreen" />
+                <action android:name="com.mokee.assist.action.findmyphone"/>
+                <action android:name="com.mokee.assist.action.wakeup"/>
             </intent-filter>
         </receiver>
     </application>
