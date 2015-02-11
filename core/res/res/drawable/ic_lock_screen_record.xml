@@ -16,4 +16,4 @@
 -->
 <bitmap xmlns:android="http://schemas.android.com/apk/res/android"
     android:src="@drawable/ic_lock_screen_record_alpha"
-    android:tint="@android:color/material_deep_teal_500" /> 
+    android:tint="@android:color/material_deep_teal_500" />
