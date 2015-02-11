@@ -16,6 +16,8 @@
 
 package org.mokee.services.assist.receiver;
 
+import org.mokee.services.assist.sensors.PickUpSensorManager;
+import org.mokee.services.assist.sensors.PickUpSensorManager.PickUpSensorListener;
 import org.mokee.services.assist.utils.MediaPlayerController;
 import org.mokee.services.assist.utils.RSAEncryption;
 
@@ -32,7 +34,7 @@ import android.util.Log;
  * Performs a number of miscellaneous, non-system-critical actions after the
  * system has finished booting.
  */
-public class AssistReceiver extends BroadcastReceiver {
+public class AssistReceiver extends BroadcastReceiver implements PickUpSensorListener{
 
     private static final String TAG = AssistReceiver.class.getName();
     private static final String ACTION_PREFIX = "com.mokee.assist.action.";
@@ -49,6 +51,8 @@ public class AssistReceiver extends BroadcastReceiver {
     private static final String ACTION_FINDMYPHONE = ACTION_PREFIX + "findmyphone";
     private static final String ACTION_WAKEUP = ACTION_PREFIX + "wakeup";
 
+    private PickUpSensorManager mPickUpSensorManager;
+    
     @Override
     public void onReceive(final Context context, Intent intent) {
         String action = intent.getAction();
@@ -86,7 +90,15 @@ public class AssistReceiver extends BroadcastReceiver {
             Intent command = new Intent(ACTION_GETUP);
             context.sendBroadcast(command);
         } else if (action.equals(ACTION_FINDMYPHONE)) {
+            mPickUpSensorManager = new PickUpSensorManager(context, this);
+            mPickUpSensorManager.enable();
             MediaPlayerController.startSound(context);
         }
+    }
+
+    @Override
+    public void onPickup() {
+        mPickUpSensorManager.disable();
+        MediaPlayerController.cleanupMediaPlayer();
     }
 }
