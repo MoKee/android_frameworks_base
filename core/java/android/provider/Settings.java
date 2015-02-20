@@ -3498,6 +3498,12 @@ public final class Settings {
         public static final String SHOW_SU_ICON = "show_su_icon";
 
         /**
+         *  Enable navigation bar double tap gesture on to put device to sleep
+         *  @hide
+         */
+        public static final String DOUBLE_TAP_SLEEP_GESTURE_NAVBAR = "double_tap_sleep_gesture_navbar";
+
+        /**
          * I am the lolrus.
          * <p>
          * Nonzero values indicate that the user has a bukkit.
