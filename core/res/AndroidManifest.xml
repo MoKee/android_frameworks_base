@@ -1921,6 +1921,14 @@
         android:description="@string/permdesc_bindJobService" />
     <uses-permission android:name="android.permission.BIND_JOB_SERVICE"/>
 
+    <!-- Allows an application to intercept package launch actions.
+         <p> Not for use by third-party applications.
+         @hide -->
+    <permission android:name="android.permission.INTERCEPT_PACKAGE_LAUNCH"
+        android:label="@string/permlab_interceptPackageLaunch"
+        android:description="@string/permdesc_interceptPackageLaunch"
+        android:protectionLevel="system|signature" />
+
     <!-- ========================================= -->
     <!-- Permissions for special development tools -->
     <!-- ========================================= -->
@@ -2115,7 +2123,7 @@
     <permission android:name="android.permission.SET_ACTIVITY_WATCHER"
         android:label="@string/permlab_runSetActivityWatcher"
         android:description="@string/permdesc_runSetActivityWatcher"
-        android:protectionLevel="signature" />
+        android:protectionLevel="signature|system" />
 
     <!-- @SystemApi Allows an application to call the activity manager shutdown() API
          to put the higher-level system there into a shutdown state.
@@ -2794,7 +2802,7 @@
     <!-- Allows an application to control keyguard.  Only allowed for system processes.
         @hide -->
     <permission android:name="android.permission.CONTROL_KEYGUARD"
-        android:protectionLevel="signature"
+        android:protectionLevel="signature|system"
         android:label="@string/permlab_control_keyguard"
         android:description="@string/permdesc_control_keyguard" />
 
