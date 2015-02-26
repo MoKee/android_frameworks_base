@@ -70,7 +70,9 @@
                     android:layout_gravity="center_vertical"
                     android:textAppearance="@style/TextAppearance.StatusBar.CarrierLabel"
                     android:singleLine="true"
-                    android:ellipsize="end"/>
+                    android:ellipsize="end"
+                    android:visibility="gone"
+                    />
 
                 <TextView
                     android:id="@+id/left_clock"
