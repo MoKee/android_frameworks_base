@@ -772,7 +772,7 @@ public class ThemeService extends IThemeService.Stub {
             }
         }
 
-        builder.setThemeChangeTimestamp(System.currentTimeMillis());
+        builder.setLastThemeChangeRequestType(request.getReqeustType());
 
         return builder;
     }
