@@ -46,10 +46,10 @@ import com.android.server.twilight.TwilightListener;
 import com.android.server.twilight.TwilightManager;
 import com.android.server.twilight.TwilightState;
 
-import org.cyanogenmod.hardware.AdaptiveBacklight;
-import org.cyanogenmod.hardware.ColorEnhancement;
-import org.cyanogenmod.hardware.DisplayColorCalibration;
-import org.cyanogenmod.hardware.SunlightEnhancement;
+import org.mokee.hardware.AdaptiveBacklight;
+import org.mokee.hardware.ColorEnhancement;
+import org.mokee.hardware.DisplayColorCalibration;
+import org.mokee.hardware.SunlightEnhancement;
 
 import java.io.PrintWriter;
 
