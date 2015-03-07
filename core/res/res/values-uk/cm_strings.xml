@@ -56,7 +56,6 @@
   <string name="privacy_guard_notification">Сторож Приватності активний</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> буде заборонено доступ до персональних даних</string>
   <string name="permlab_useHardwareFramework">Взаємодія із обладнанням</string>
-  <string name="permdesc_useHardwareFramework">Програма може отримувати доступ до підсистемних апаратних абстракцій CyanogenMod.</string>
   <string name="permlab_setKeyguardWallpaper">встановлення шпалер екрану блокування</string>
   <string name="permdesc_setKeyguardWallpaper">Дозволяє програмі міняти шпалери екрану блокування.</string>
   <string name="privacy_guard_dialog_title">Сторож Приватності</string>

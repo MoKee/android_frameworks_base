@@ -54,7 +54,6 @@
   <string name="privacy_guard_notification">שומר הפרטיות פועל</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> לא יוכל לגשת למידע אישי</string>
   <string name="permlab_useHardwareFramework">השתמש במסגרת חומרתית</string>
-  <string name="permdesc_useHardwareFramework">אפשר ליישום לגשת למסגרת החומרתית של CM.</string>
   <string name="permlab_setKeyguardWallpaper">הגדר רקע ל-keyguard</string>
   <string name="permdesc_setKeyguardWallpaper">אפשר ליישום לשנות את הרקע של מסך הנעילה.</string>
   <string name="privacy_guard_dialog_title">שומר הפרטיות</string>

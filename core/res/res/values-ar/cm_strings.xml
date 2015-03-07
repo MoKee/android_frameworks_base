@@ -53,7 +53,6 @@
   <string name="privacy_guard_notification">حارس الخصوصية نشط</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> لن تكون قادراً على الوصول إلى البيانات الشخصية</string>
   <string name="permlab_useHardwareFramework">استخدام نظام الأجهزة</string>
-  <string name="permdesc_useHardwareFramework">يسمح لتطبيق وصول إلى نظام أجهزة CM.</string>
   <string name="permlab_setKeyguardWallpaper">تعيين خلفية للإطار</string>
   <string name="permdesc_setKeyguardWallpaper">يسمح ااتطبيق بتغيير خلفية شاشة القفل.</string>
   <string name="privacy_guard_dialog_title">حارس الخصوصية</string>

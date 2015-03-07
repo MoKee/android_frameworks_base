@@ -54,7 +54,6 @@
   <string name="privacy_guard_notification">Personvernvakt aktiv</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> vil ikke få tilgang til personlige data</string>
   <string name="permlab_useHardwareFramework">bruke maskinvare</string>
-  <string name="permdesc_useHardwareFramework">Gir en app tilgang til CM maskinvaren.</string>
   <string name="permlab_setKeyguardWallpaper">Angi tastaturbakgrunn</string>
   <string name="permdesc_setKeyguardWallpaper">Tillat en app å endre låseskjermsbakgrunn.</string>
   <string name="privacy_guard_dialog_title">Personvernvakt</string>

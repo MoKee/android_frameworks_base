@@ -50,7 +50,6 @@
   <string name="privacy_guard_notification">Gizlilik Qoruması aktivdir</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> məxfi məlumatlara daxil olmayacaq</string>
   <string name="permlab_useHardwareFramework">təchizat altsistemini işlət</string>
-  <string name="permdesc_useHardwareFramework">Tətbiqetmənin CM təchizat altsisteminə girişinə icazə verər.</string>
   <string name="permlab_setKeyguardWallpaper">klaviatura divar kağızını nizamla</string>
   <string name="permdesc_setKeyguardWallpaper">Tətbiqetmənin kilit ekranı divar kağızını dəyişdirməsinə icazə verər.</string>
   <string name="privacy_guard_dialog_title">Gizlilik Qoruması</string>
