@@ -34,4 +34,7 @@
     <!-- label for screen record item in phone options dialog -->
     <string name="global_action_screen_record">Screen record</string>
 
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_useHardwareFramework_mk">Allows an app access to the MK hardware framework.</string>
+
 </resources>

@@ -1023,6 +1023,15 @@ public final class SystemServer {
 
             }
 
+            if (!disableNonCoreServices) {
+                try {
+                    Slog.i(TAG, "MkHardwareService");
+                    ServiceManager.addService(Context.MKHW_SERVICE, new MkHardwareService(context));
+                } catch (Throwable e) {
+                    reportWtf("starting MKHW Service", e);
+                }
+            }
+
             mSystemServiceManager.startService(LauncherAppsService.class);
 
             boolean isWipowerEnabled = SystemProperties.getBoolean("ro.bluetooth.wipower", false);

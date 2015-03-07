@@ -2935,6 +2935,17 @@ public abstract class Context {
     public static final String TORCH_SERVICE = "torch";
 
     /**
+     * Use with {@link #getSystemService} to retrieve a
+     * {@link android.hardware.MkHardwareManager} for controlling
+     * hw specific features
+     *
+     * @see #getSystemService
+     * @see android.hardware.MkHardwareManager
+     * @hide
+     */
+    public static final String MKHW_SERVICE = "mkhw";
+
+    /**
      * Determine whether the given permission is allowed for a particular
      * process and user ID running in the system.
      *
