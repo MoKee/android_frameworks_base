@@ -565,7 +565,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     int mIncallPowerBehavior;
 
     // The volume key answer
-    boolean mVolumeAnswer;
+    boolean mRingVolumeBehavior;
 
     // Behavior of HOME button during incomming call ring.
     // (See Settings.Secure.RING_HOME_BUTTON_BEHAVIOR.)
@@ -719,6 +719,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     Settings.Secure.RING_HOME_BUTTON_BEHAVIOR), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.Secure.getUriFor(
+                    Settings.Secure.RING_VOLUME_BUTTON_BEHAVIOR), false, this,
+                    UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.WAKE_GESTURE_ENABLED), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
@@ -802,8 +805,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.NAVBAR_LEFT_IN_LANDSCAPE), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.ANSWER_VOLUME_BUTTON_BEHAVIOR_ANSWER), false, this);
             updateSettings();
         }
 
@@ -1727,6 +1728,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     Settings.Secure.RING_HOME_BUTTON_BEHAVIOR,
                     Settings.Secure.RING_HOME_BUTTON_BEHAVIOR_DEFAULT,
                     UserHandle.USER_CURRENT);
+            mRingVolumeBehavior = (Settings.Secure.getIntForUser(resolver,
+                    Settings.Secure.RING_VOLUME_BUTTON_BEHAVIOR,
+                    Settings.Secure.RING_VOLUME_BUTTON_BEHAVIOR_DEFAULT,
+                    UserHandle.USER_CURRENT);
             mHomeWakeScreen = (Settings.System.getIntForUser(resolver,
                     Settings.System.HOME_WAKE_SCREEN, 1, UserHandle.USER_CURRENT) == 1) &&
                     ((mDeviceHardwareWakeKeys & KEY_MASK_HOME) != 0);
@@ -1747,8 +1752,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     ((mDeviceHardwareWakeKeys & KEY_MASK_VOLUME) != 0);
             mVolBtnMusicControls = (Settings.System.getIntForUser(resolver,
                     Settings.System.VOLBTN_MUSIC_CONTROLS, 1, UserHandle.USER_CURRENT) == 1);
-            mVolumeAnswer = (Settings.System.getIntForUser(resolver,
-                    Settings.System.ANSWER_VOLUME_BUTTON_BEHAVIOR_ANSWER, 0, UserHandle.USER_CURRENT) == 1);
 
             // Height of navigation bar buttons
             int mNavButtonsHeight = Settings.System.getIntForUser(resolver,
@@ -5192,7 +5195,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     if (telecomManager != null) {
                         if (telecomManager.isRinging()) {
                            // The volume key answer
-                           if (mVolumeAnswer) {
+                           if (mRingVolumeBehavior) {
                                  telecomManager.acceptRingingCall();
                             }
                             // If an incoming call is ringing, either VOLUME key means
