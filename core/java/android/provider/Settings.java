@@ -3247,24 +3247,6 @@ public final class Settings {
         public static final String KEY_MENU_LONG_PRESS_ACTION = "key_menu_long_press_action";
 
         /**
-         * Width and height of output vide expressed in WxH
-         * @hide
-         */
-        public static final String SCREEN_RECORDER_OUTPUT_DIMENSIONS = "screen_recorder_output_dimensions";
-
-        /**
-         * Screen recorder framerate in bits per second
-         * @hide
-         */
-        public static final String SCREEN_RECORDER_BITRATE = "screen_recorder_bitrate";
-
-        /**
-         * Whether to include audio when recording a video
-         * @hide
-         */
-        public static final String SCREEN_RECORDER_RECORD_AUDIO = "screen_recorder_record_audio";
-
-        /**
          * Action to perform when the assistant (search) key is pressed. (Default is 3)
          * (See KEY_HOME_LONG_PRESS_ACTION for valid values)
          * @hide
@@ -3353,12 +3335,6 @@ public final class Settings {
         public static final String NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
 
         /**
-         * volume answer.
-         * @hide
-         */
-        public static final String ANSWER_VOLUME_BUTTON_BEHAVIOR_ANSWER = "call_volume_answer";
-
-        /**
          * Put on your ear, and this will automatically call current number in dialer
          * @hide
          */
@@ -3425,6 +3401,24 @@ public final class Settings {
          * int (0: Hide  or 1: Only Rx 2: Rx&Tx).
          */
         public static final String STATUS_BAR_NETWORK_TRAFFIC_STYLE = "status_bar_network_traffic_style";
+
+        /**
+         * Width and height of output vide expressed in WxH
+         * @hide
+         */
+        public static final String SCREEN_RECORDER_OUTPUT_DIMENSIONS = "screen_recorder_output_dimensions";
+
+        /**
+         * Screen recorder framerate in bits per second
+         * @hide
+         */
+        public static final String SCREEN_RECORDER_BITRATE = "screen_recorder_bitrate";
+
+        /**
+         * Whether to include audio when recording a video
+         * @hide
+         */
+        public static final String SCREEN_RECORDER_RECORD_AUDIO = "screen_recorder_record_audio";
 
         /**
          * I am the lolrus.
@@ -5761,6 +5755,36 @@ public final class Settings {
          */
         public static final int RING_HOME_BUTTON_BEHAVIOR_DEFAULT =
                 RING_HOME_BUTTON_BEHAVIOR_DO_NOTHING;
+
+        /**
+         * What happens when the user presses the Volume button when the
+         * phone is ringing.<br/>
+         * <b>Values:</b><br/>
+         * 1 - Nothing happens. (Default behavior)<br/>
+         * 2 - The Volume button answer the current call.<br/>
+         *
+         * @hide
+         */
+        public static final String RING_VOLUME_BUTTON_BEHAVIOR = "ring_volume_button_behavior";
+
+        /**
+         * RING_VOLUME_BUTTON_BEHAVIOR value for "do nothing".
+         * @hide
+         */
+        public static final int RING_VOLUME_BUTTON_BEHAVIOR_DO_NOTHING = 0x1;
+
+        /**
+         * RING_VOLUME_BUTTON_BEHAVIOR value for "answer".
+         * @hide
+         */
+        public static final int RING_VOLUME_BUTTON_BEHAVIOR_ANSWER = 0x2;
+
+        /**
+         * RING_VOLUME_BUTTON_BEHAVIOR default value.
+         * @hide
+         */
+        public static final int RING_VOLUME_BUTTON_BEHAVIOR_DEFAULT =
+                RING_VOLUME_BUTTON_BEHAVIOR_DO_NOTHING;
 
         /**
          * The current night mode that has been selected by the user.  Owned
