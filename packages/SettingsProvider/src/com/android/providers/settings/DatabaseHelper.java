@@ -1818,11 +1818,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             upgradeVersion = 113;
         }
 
-        /************* The following are CM-12.0 changes ************/
+        /************* The following are mkl changes ************/
 
         if (upgradeVersion < 114) {
             // Artificially bump our upgrade version to handle
-            // migration path from cm-11.0 to cm-12.0
+            // migration path from kk_mkt to mkl
             // without this, heads up would never work if
             // a user did not wipe data
             upgradeHeadsUpSettingFromNone(db);
@@ -1842,13 +1842,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             upgradeVersion = 114;
         }
 
-        // From here on out, we can assume the user is coming from CM and will have these rows
-        if (upgradeVersion < 115) {
-            moveSettingsToNewTable(db, TABLE_SYSTEM, TABLE_SECURE,
-                    new String[] { Settings.Secure.STATS_COLLECTION }, true);
-            upgradeVersion = 115;
-        }
-
         if (upgradeVersion < 116) {
             moveSettingsToNewTable(db, TABLE_SYSTEM, TABLE_SECURE,
                     new String[] { Settings.Secure.VOLUME_LINK_NOTIFICATION }, true);
@@ -1856,7 +1849,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         if (upgradeVersion < 117) {
-            // CM11 used "holo" as a system default theme. For CM12 and up its been
+            // MK44 used "holo" as a system default theme. For MK50 and up its been
             // switched to "system". So change all "holo" references in themeConfig to "system"
             final String NAME_THEME_CONFIG = "themeConfig";
             Cursor c = null;
@@ -1968,7 +1961,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         if (upgradeVersion < 124) {
-            // Migrate from cm-12.0 if there is no entry from cm-11.0
+            // Migrate from mkl if there is no entry from kk_mkt
             db.beginTransaction();
             SQLiteStatement stmt = null;
             try {
@@ -2628,9 +2621,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             loadIntegerSetting(stmt, Settings.Secure.SLEEP_TIMEOUT,
                     R.integer.def_sleep_timeout);
-
-            loadBooleanSetting(stmt, Settings.Secure.STATS_COLLECTION,
-                    R.bool.def_cm_stats_collection);
 
             loadBooleanSetting(stmt, Settings.Secure.ADVANCED_MODE,
                     R.bool.def_advanced_mode);
