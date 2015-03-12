@@ -16,6 +16,7 @@
 
 package com.android.systemui.statusbar.phone;
 
+import android.app.ActivityManager;
 import android.app.ActivityManagerNative;
 import android.app.admin.DevicePolicyManager;
 import android.content.BroadcastReceiver;
@@ -38,6 +39,7 @@ import android.graphics.drawable.InsetDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PowerManager;
 import android.os.RemoteException;
 import android.os.UserHandle;
 import android.provider.MediaStore;
@@ -125,6 +127,7 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
     private boolean mScreenOn;
     private boolean mLinked;
     private boolean mVisualizerEnabled;
+    private boolean mPowerSaveModeEnabled;
     private SettingsObserver mSettingsObserver;
 
     public KeyguardBottomAreaView(Context context) {
@@ -144,7 +147,6 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
         super(context, attrs, defStyleAttr, defStyleRes);
         mTrustDrawable = new TrustDrawable(mContext);
         mSettingsObserver = new SettingsObserver(new Handler());
-        mSettingsObserver.observe();
     }
 
     private AccessibilityDelegate mAccessibilityDelegate = new AccessibilityDelegate() {
@@ -208,23 +210,25 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
         mLockIcon.setOnLongClickListener(this);
         mCameraImageView.setOnClickListener(this);
         mPhoneImageView.setOnClickListener(this);
-        mVisualizer = (VisualizerView) findViewById(R.id.visualizerView);
-        if (mVisualizer != null) {
-            Paint paint = new Paint();
-            Resources res = mContext.getResources();
-            paint.setStrokeWidth(res.getDimensionPixelSize(R.dimen.kg_visualizer_path_stroke_width));
-            paint.setAntiAlias(true);
-            paint.setColor(res.getColor(R.color.equalizer_fill_color));
-            paint.setPathEffect(new DashPathEffect(new float[] {
-                    res.getDimensionPixelSize(R.dimen.kg_visualizer_path_effect_1),
-                    res.getDimensionPixelSize(R.dimen.kg_visualizer_path_effect_2)
-            }, 0));
+        if (ActivityManager.isHighEndGfx()) {
+            mVisualizer = (VisualizerView) findViewById(R.id.visualizerView);
+            if (mVisualizer != null) {
+                Paint paint = new Paint();
+                Resources res = mContext.getResources();
+                paint.setStrokeWidth(res.getDimensionPixelSize(
+                        R.dimen.kg_visualizer_path_stroke_width));
+                paint.setAntiAlias(true);
+                paint.setColor(res.getColor(R.color.equalizer_fill_color));
+                paint.setPathEffect(new DashPathEffect(new float[] {
+                        res.getDimensionPixelSize(R.dimen.kg_visualizer_path_effect_1),
+                        res.getDimensionPixelSize(R.dimen.kg_visualizer_path_effect_2)
+                }, 0));
 
-            int bars = res.getInteger(R.integer.kg_visualizer_divisions);
-            mVisualizer.addRenderer(new LockscreenBarEqRenderer(bars, paint,
-                    res.getInteger(R.integer.kg_visualizer_db_fuzz),
-                    res.getInteger(R.integer.kg_visualizer_db_fuzz_factor)));
-
+                int bars = res.getInteger(R.integer.kg_visualizer_divisions);
+                mVisualizer.addRenderer(new LockscreenBarEqRenderer(bars, paint,
+                        res.getInteger(R.integer.kg_visualizer_db_fuzz),
+                        res.getInteger(R.integer.kg_visualizer_db_fuzz_factor)));
+            }
         }
 
         initAccessibility();
@@ -319,6 +323,20 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
             shortcut) {
         boolean customTarget = mShortcutHelper.isTargetCustom(shortcut);
         if (customTarget) {
+            if (isProtected(mShortcutHelper.getIntent(shortcut))) {
+                return false;
+            }
+        } else if (shortcut == LockscreenShortcutsHelper.Shortcuts.LEFT_SHORTCUT
+                && isProtected(PHONE_INTENT)) {
+            // is dialer protected?
+            return false;
+        } else if (shortcut == LockscreenShortcutsHelper.Shortcuts.RIGHT_SHORTCUT
+                && isProtected(getCameraIntent())) {
+            // is camera protected?
+            return false;
+        }
+
+        if (customTarget) {
             boolean isEmpty = mShortcutHelper.isTargetEmpty(shortcut);
             if (visible && isEmpty) {
                 visible = false;
@@ -327,6 +345,23 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
             }
         }
         return visible;
+    }
+
+    private boolean isProtected(Intent intent) {
+        ResolveInfo resolved = mContext.getPackageManager().resolveActivityAsUser(intent,
+                PackageManager.MATCH_DEFAULT_ONLY,
+                mLockPatternUtils.getCurrentUser());
+        if (resolved != null) {
+            try {
+                boolean protect = mContext.getPackageManager().getApplicationInfo(
+                        resolved.activityInfo.packageName, 0).protect;
+                return protect;
+            } catch (PackageManager.NameNotFoundException e) {
+                return false;
+            }
+        }
+
+        return false;
     }
 
     private void updatePhoneVisibility() {
@@ -475,8 +510,18 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
     }
 
     @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        mContext.registerReceiver(mReceiver, new IntentFilter(
+                PowerManager.ACTION_POWER_SAVE_MODE_CHANGING));
+        mSettingsObserver.observe();
+    }
+
+    @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
+        mSettingsObserver.unobserve();
+        mContext.unregisterReceiver(mReceiver);
         mTrustDrawable.stop();
         requestVisualizer(false, 0);
     }
@@ -613,6 +658,19 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
         }
     };
 
+    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (PowerManager.ACTION_POWER_SAVE_MODE_CHANGING.equals(intent.getAction())) {
+                mPowerSaveModeEnabled = intent.getBooleanExtra(PowerManager.EXTRA_POWER_SAVE_MODE,
+                        false);
+                removeCallbacks(mStartVisualizer);
+                removeCallbacks(mStopVisualizer);
+                post(mPowerSaveModeEnabled ? mStopVisualizer : mStartVisualizer);
+            }
+        }
+    };
+
     private final KeyguardUpdateMonitorCallback mUpdateMonitorCallback =
             new KeyguardUpdateMonitorCallback() {
         @Override
@@ -675,7 +733,7 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
     }
 
     public void requestVisualizer(boolean show, int delay) {
-        if (!mVisualizerEnabled) {
+        if (mVisualizer == null || !mVisualizerEnabled || mPowerSaveModeEnabled) {
             return;
         }
         removeCallbacks(mStartVisualizer);
