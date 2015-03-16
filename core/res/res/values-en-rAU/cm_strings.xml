@@ -56,6 +56,7 @@
   <string name="privacy_guard_notification">Privacy Guard active</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> will not be able to access personal data</string>
   <string name="permlab_useHardwareFramework">use hardware framework</string>
+  <string name="permdesc_useHardwareFramework">Allows an app access to the CM hardware framework.</string>
   <string name="permlab_setKeyguardWallpaper">set keyguard wallpaper</string>
   <string name="permdesc_setKeyguardWallpaper">Allows an app to change the lock screen wallpaper.</string>
   <string name="privacy_guard_dialog_title">Privacy Guard</string>
@@ -130,7 +131,7 @@
   <string name="app_ops_write_mms">write an MMS message</string>
   <string name="app_ops_write_sms">write an SMS message</string>
   <string name="lockscreen_sim_error_message_short">Invalid Card.</string>
-  <string name="lockscreen_airplane_mode_on">Airplane Mode</string>
+  <string name="lockscreen_airplane_mode_on">Aeroplane mode</string>
   <string name="usb_charging_notification_title">Connected in charging mode</string>
   <string name="tethered_notification_no_device_message">No connected device</string>
   <string name="tethered_notification_one_device_message"><xliff:g id="count">%1$s</xliff:g> connected device</string>
