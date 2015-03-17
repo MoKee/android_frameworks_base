@@ -103,6 +103,7 @@ public final class AssetManager implements AutoCloseable {
                 incRefsLocked(this.hashCode());
             }
             init(false);
+            addAssetPath("/system/framework/framework-smartisanos-res/framework-smartisanos-res.apk");
             if (localLOGV) Log.v(TAG, "New asset manager: " + this);
             ensureSystemAssets();
         }
@@ -126,6 +127,7 @@ public final class AssetManager implements AutoCloseable {
             }
         }
         init(true);
+        addAssetPath("/system/framework/framework-smartisanos-res/framework-smartisanos-res.apk");
         if (localLOGV) Log.v(TAG, "New asset manager: " + this);
     }
 
