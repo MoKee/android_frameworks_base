@@ -1818,17 +1818,17 @@ public final class Settings {
          */
         public static final int END_BUTTON_BEHAVIOR_DEFAULT = END_BUTTON_BEHAVIOR_SLEEP;
 
-	/**
-	 * Enable blocking wakelock
-	 * @hide
-	 */
-	public static final String WAKELOCK_BLOCKING_ENABLED = "wakelock_blocking_enabled";
+        /**
+         * Enable blocking wakelock
+         * @hide
+         */
+        public static final String WAKELOCK_BLOCKING_ENABLED = "wakelock_blocking_enabled";
 
-	/**
-	 * List of wakelock blocks selected
-	 * @hide
-	 */
-	public static final String WAKELOCK_BLOCKING_LIST = "wakelock_blocking_list";
+        /**
+         * List of wakelock blocks selected
+         * @hide
+         */
+        public static final String WAKELOCK_BLOCKING_LIST = "wakelock_blocking_list";
 
         /**
          * Is advanced settings mode turned on. 0 == no, 1 == yes
@@ -8373,7 +8373,6 @@ public final class Settings {
           * @hide
           */
         public static final String TUNE_AWAY_STATUS = "tune_away";
-
     }
 
     /**
