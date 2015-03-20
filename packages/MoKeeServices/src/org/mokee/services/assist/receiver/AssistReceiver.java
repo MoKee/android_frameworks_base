@@ -16,9 +16,6 @@
 
 package org.mokee.services.assist.receiver;
 
-import org.mokee.services.assist.sensors.PickUpSensorManager;
-import org.mokee.services.assist.sensors.PickUpSensorManager.PickUpSensorListener;
-import org.mokee.services.assist.utils.MediaPlayerController;
 import org.mokee.services.assist.utils.RSAEncryption;
 
 import android.content.BroadcastReceiver;
@@ -34,7 +31,7 @@ import android.util.Log;
  * Performs a number of miscellaneous, non-system-critical actions after the
  * system has finished booting.
  */
-public class AssistReceiver extends BroadcastReceiver implements PickUpSensorListener{
+public class AssistReceiver extends BroadcastReceiver {
 
     private static final String TAG = AssistReceiver.class.getName();
     private static final String ACTION_PREFIX = "com.mokee.assist.action.";
@@ -45,9 +42,6 @@ public class AssistReceiver extends BroadcastReceiver implements PickUpSensorLis
     private static final String ACTION_REBOOT_BOOTLOADER = ACTION_PREFIX + "reboot.bootloader";
     private static final String ACTION_POWEROFF = ACTION_PREFIX + "poweroff";
     private static final String ACTION_LOCKSCREEN = ACTION_PREFIX + "lockscreen";
-    private static final String ACTION_FINDMYPHONE = ACTION_PREFIX + "findmyphone";
-
-    private PickUpSensorManager mPickUpSensorManager;
     
     @Override
     public void onReceive(final Context context, Intent intent) {
@@ -82,16 +76,6 @@ public class AssistReceiver extends BroadcastReceiver implements PickUpSensorLis
             PowerManager mPowerManager = (PowerManager) context
                     .getSystemService(Context.POWER_SERVICE);
             mPowerManager.goToSleep(SystemClock.uptimeMillis());
-        } else if (action.equals(ACTION_FINDMYPHONE)) {
-            mPickUpSensorManager = new PickUpSensorManager(context, this);
-            mPickUpSensorManager.enable();
-            MediaPlayerController.startSound(context);
         }
-    }
-
-    @Override
-    public void onPickup() {
-        mPickUpSensorManager.disable();
-        MediaPlayerController.cleanupMediaPlayer();
     }
 }
