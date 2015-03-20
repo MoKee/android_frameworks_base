@@ -1586,7 +1586,7 @@ public final class PowerManagerService extends SystemService
                 switch (wakeLock.mFlags & PowerManager.WAKE_LOCK_LEVEL_MASK) {
                     case PowerManager.PARTIAL_WAKE_LOCK:
                         if (wakeLock.isBlocked()) {
-                            Slog.d(TAG, "updateWakeLockSummaryLocked: PARTIAL_WAKE_LOCK blocked tag=" + wakeLock.mTag);
+                            //Slog.d(TAG, "updateWakeLockSummaryLocked: PARTIAL_WAKE_LOCK blocked tag=" + wakeLock.mTag);
                             continue;
                         }
                         //Slog.d(TAG, "updateWakeLockSummaryLocked: PARTIAL_WAKE_LOCK tag=" + wakeLock.mTag);
