@@ -867,7 +867,7 @@ public final class PowerManagerService extends SystemService
                     mSeenWakeLocks.add(tag);
                 }
             }
-		
+
             if (mWakeLockBlockingEnabled == 1) {
                 if (mBlockedWakeLocks.contains(tag)) {
                     blockWakelock = true;
@@ -1059,9 +1059,10 @@ public final class PowerManagerService extends SystemService
     private void notifyWakeLockAcquiredLocked(WakeLock wakeLock) {
         if (mSystemReady) {
             if (!wakeLock.isBlocked()) {
+                wakeLock.mNotifiedAcquired = true;
                 mNotifier.onWakeLockAcquired(wakeLock.mFlags, wakeLock.mTag, wakeLock.mPackageName,
-                    wakeLock.mOwnerUid, wakeLock.mOwnerPid, wakeLock.mWorkSource,
-                    wakeLock.mHistoryTag);
+                        wakeLock.mOwnerUid, wakeLock.mOwnerPid, wakeLock.mWorkSource,
+                        wakeLock.mHistoryTag);
             }
         }
     }
@@ -1077,10 +1078,11 @@ public final class PowerManagerService extends SystemService
 
     private void notifyWakeLockReleasedLocked(WakeLock wakeLock) {
         if (mSystemReady) {
-            if (!wakeLock.isBlocked()) {
+            if (!wakeLock.isBlocked() && wakeLock.mNotifiedAcquired) {
+                wakeLock.mNotifiedAcquired = false;
                 mNotifier.onWakeLockReleased(wakeLock.mFlags, wakeLock.mTag,
-                    wakeLock.mPackageName, wakeLock.mOwnerUid, wakeLock.mOwnerPid,
-                    wakeLock.mWorkSource, wakeLock.mHistoryTag);
+                        wakeLock.mPackageName, wakeLock.mOwnerUid, wakeLock.mOwnerPid,
+                        wakeLock.mWorkSource, wakeLock.mHistoryTag);
             }
         }
     }
@@ -3618,7 +3620,7 @@ public final class PowerManagerService extends SystemService
                 String wakeLockTag = nextWakeLock.next();
                 buffer.append(wakeLockTag + "|");
             }
-            if (buffer.length()>0) {
+            if (buffer.length() > 0) {
                 buffer.deleteCharAt(buffer.length() - 1);
             }
             return buffer.toString();
@@ -3627,7 +3629,7 @@ public final class PowerManagerService extends SystemService
 
     private void setBlockedWakeLocks(String wakeLockTagsString) {
         mBlockedWakeLocks = new HashSet<String>();
-        if (wakeLockTagsString!=null && wakeLockTagsString.length()!=0) {
+        if (wakeLockTagsString != null && wakeLockTagsString.length() != 0) {
             String[] parts = wakeLockTagsString.split("\\|");
             for (int i = 0; i < parts.length; i++) {
                 mBlockedWakeLocks.add(parts[i]);
