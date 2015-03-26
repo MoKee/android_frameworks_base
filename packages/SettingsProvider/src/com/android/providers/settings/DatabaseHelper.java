@@ -77,7 +77,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // database gets upgraded properly. At a minimum, please confirm that 'upgradeVersion'
     // is properly propagated through your change.  Not doing so will result in a loss of user
     // settings.
-    private static final int DATABASE_VERSION = 124;
+    private static final int DATABASE_VERSION = 125;
 
     private Context mContext;
     private int mUserHandle;
@@ -1932,7 +1932,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 stmt = db.compileStatement("INSERT OR IGNORE INTO secure(name,value)"
                         + " VALUES(?,?);");
                 loadBooleanSetting(stmt, Secure.ADVANCED_MODE,
-                        R.bool.def_advanced_mode);
+                        com.android.internal.R.bool.config_advancedSettingsMode);
                 db.setTransactionSuccessful();
             } finally {
                 db.endTransaction();
@@ -1977,6 +1977,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 if (stmt != null) stmt.close();
             }
             upgradeVersion = 124;
+        }
+
+        if (upgradeVersion < 125) {
+            // Force enable advanced settings if the overlay defaults to true
+            if (mContext.getResources().getBoolean(
+                    com.android.internal.R.bool.config_advancedSettingsMode)) {
+                db.beginTransaction();
+                SQLiteStatement stmt = null;
+                try {
+                    stmt = db.compileStatement("INSERT OR REPLACE INTO secure(name,value)"
+                            + " VALUES(?,?);");
+                    loadBooleanSetting(stmt, Secure.ADVANCED_MODE,
+                            com.android.internal.R.bool.config_advancedSettingsMode);
+                    db.setTransactionSuccessful();
+                } finally {
+                    db.endTransaction();
+                    if (stmt != null) stmt.close();
+                }
+            }
+            upgradeVersion = 125;
         }
 
         // *** Remember to update DATABASE_VERSION above!
@@ -2475,8 +2495,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             loadIntegerSetting(stmt, Settings.System.STATUS_BAR_BATTERY_STYLE,
                     R.integer.def_battery_style);
 
+            loadIntegerSetting(stmt, Settings.System.ENABLE_FORWARD_LOOKUP,
+                    R.integer.def_forward_lookup);
+
             loadIntegerSetting(stmt, Settings.System.ENABLE_PEOPLE_LOOKUP,
                     R.integer.def_people_lookup);
+
+            loadIntegerSetting(stmt, Settings.System.ENABLE_REVERSE_LOOKUP,
+                    R.integer.def_reverse_lookup);
 
             loadIntegerSetting(stmt, Settings.System.QS_QUICK_PULLDOWN,
                     R.integer.def_qs_quick_pulldown);
@@ -2623,7 +2649,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     R.integer.def_sleep_timeout);
 
             loadBooleanSetting(stmt, Settings.Secure.ADVANCED_MODE,
-                    R.bool.def_advanced_mode);
+                    com.android.internal.R.bool.config_advancedSettingsMode);
 
             loadDefaultThemeSettings(stmt);
             loadProtectedSmsSetting(stmt);
