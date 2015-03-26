@@ -750,7 +750,7 @@ public final class PowerManagerService extends SystemService
         String blockedWakelockList = Settings.System.getStringForUser(resolver,
                 Settings.System.WAKELOCK_BLOCKING_LIST, UserHandle.USER_CURRENT);
         setBlockedWakeLocks(blockedWakelockList);
-        Slog.d(TAG, "mWakeLockBlockingEnabled=" + mWakeLockBlockingEnabled + " blockedWakelockList=" + blockedWakelockList);
+        // Slog.d(TAG, "mWakeLockBlockingEnabled=" + mWakeLockBlockingEnabled + " blockedWakelockList=" + blockedWakelockList);
 
         final int oldScreenBrightnessSetting = mScreenBrightnessSetting;
         mScreenBrightnessSetting = Settings.System.getIntForUser(resolver,
@@ -861,18 +861,18 @@ public final class PowerManagerService extends SystemService
                         + ", tag=\"" + tag + "\", ws=" + ws + ", uid=" + uid + ", pid=" + pid);
             }
 
-		        boolean blockWakelock = false;
-		        if (!mSeenWakeLocks.contains(tag)) {
-		            if ((flags & PowerManager.WAKE_LOCK_LEVEL_MASK) == PowerManager.PARTIAL_WAKE_LOCK) {
-		                mSeenWakeLocks.add(tag);
-		            }
-		        }
+            boolean blockWakelock = false;
+            if (!mSeenWakeLocks.contains(tag)) {
+                if ((flags & PowerManager.WAKE_LOCK_LEVEL_MASK) == PowerManager.PARTIAL_WAKE_LOCK) {
+                    mSeenWakeLocks.add(tag);
+                }
+            }
 		
-		        if (mWakeLockBlockingEnabled == 1) {
-		            if (mBlockedWakeLocks.contains(tag)) {
-		                blockWakelock = true;
-		            }
-		        }
+            if (mWakeLockBlockingEnabled == 1) {
+                if (mBlockedWakeLocks.contains(tag)) {
+                    blockWakelock = true;
+                }
+            }
 
             WakeLock wakeLock;
             int index = findWakeLockIndexLocked(lock);
@@ -3609,6 +3609,7 @@ public final class PowerManagerService extends SystemService
                 }
             }
         }
+
         @Override
         public String getSeenWakeLocks() {
             StringBuffer buffer = new StringBuffer();
