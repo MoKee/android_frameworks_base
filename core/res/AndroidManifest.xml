@@ -306,7 +306,7 @@
     <protected-broadcast android:name="android.intent.action.ACTION_SET_RADIO_CAPABILITY_DONE" />
     <protected-broadcast android:name="android.intent.action.ACTION_SET_RADIO_CAPABILITY_FAILED" />
 
-    <protected-broadcast android:name="org.cyanogenmod.intent.action.THEME_CHANGED" />
+    <protected-broadcast android:name="org.mokee.intent.action.THEME_CHANGED" />
     <protected-broadcast android:name="android.intent.action.THEME_RESOURCES_CACHED" />
 
     <!-- ====================================== -->
