@@ -19,11 +19,11 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
         >
-    <com.android.systemui.egg.CMLand
+    <com.android.systemui.egg.MKLand
             android:id="@+id/world"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-    </com.android.systemui.egg.CMLand>
+    </com.android.systemui.egg.MKLand>
     <TextView
             android:id="@+id/score"
             android:layout_width="wrap_content"

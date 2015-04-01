@@ -738,8 +738,10 @@ public class LLand extends FrameLayout {
             super(context);
 
             setBackgroundResource(getEggPlayer());
-            getBackground().setTintMode(PorterDuff.Mode.SRC_ATOP);
-            getBackground().setTint(getEggPlayerColor());
+            if (!isMK()) {
+                getBackground().setTintMode(PorterDuff.Mode.SRC_ATOP);
+                getBackground().setTint(getEggPlayerColor());
+            }
             setOutlineProvider(new ViewOutlineProvider() {
                 @Override
                 public void getOutline(View view, Outline outline) {
@@ -992,5 +994,9 @@ public class LLand extends FrameLayout {
 
     protected int getEggPlayerColor() {
         return 0xFF00FF00;
+    }
+
+    protected boolean isMK () {
+        return false;
     }
 }
