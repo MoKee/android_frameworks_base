@@ -1422,7 +1422,9 @@ public class PackageParser {
             if (parser.getDepth() == searchDepth && "meta-data".equals(parser.getName())) {
                 for (int i=0; i < parser.getAttributeCount(); i++) {
                     if ("name".equals(parser.getAttributeName(i)) &&
-                                    ThemeInfo.META_TAG_NAME.equals(parser.getAttributeValue(i))) {
+                                    ThemeInfo.META_TAG_NAME.equals(parser.getAttributeValue(i))
+                                    || "name".equals(parser.getAttributeName(i)) &&
+                                    ThemeInfo.META_TAG_NAME_CM.equals(parser.getAttributeValue(i))) {
                         isTheme = true;
                         installLocation = PackageInfo.INSTALL_LOCATION_INTERNAL_ONLY;
                         break;
@@ -2037,6 +2039,13 @@ public class PackageParser {
 
         //Is this pkg a theme?
         if (metaDataBundle.containsKey(ThemeInfo.META_TAG_NAME)) {
+            pkg.mIsThemeApk = true;
+            pkg.mTrustedOverlay = true;
+            pkg.mOverlayPriority = 1;
+            pkg.mThemeInfo = new ThemeInfo(metaDataBundle);
+        }
+
+        if (metaDataBundle.containsKey(ThemeInfo.META_TAG_NAME_CM)) {
             pkg.mIsThemeApk = true;
             pkg.mTrustedOverlay = true;
             pkg.mOverlayPriority = 1;

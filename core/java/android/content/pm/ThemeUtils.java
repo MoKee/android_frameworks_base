@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The CyanogenMod Project
+ * Copyright (C) 2015 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -102,8 +103,8 @@ public class ThemeUtils {
     private static final String MEDIA_CONTENT_URI = "content://media/internal/audio/media";
 
     // Constants for theme change broadcast
-    public static final String ACTION_THEME_CHANGED = "org.cyanogenmod.intent.action.THEME_CHANGED";
-    public static final String CATEGORY_THEME_COMPONENT_PREFIX = "org.cyanogenmod.intent.category.";
+    public static final String ACTION_THEME_CHANGED = "org.mokee.intent.action.THEME_CHANGED";
+    public static final String CATEGORY_THEME_COMPONENT_PREFIX = "org.mokee.intent.category.";
     public static final String EXTRA_COMPONENTS = "components";
     public static final String EXTRA_REQUEST_TYPE = "request_type";
     public static final String EXTRA_UPDATE_TIME = "update_time";

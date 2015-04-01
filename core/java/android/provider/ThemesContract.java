@@ -6,7 +6,7 @@ import android.net.Uri;
  * @hide
  */
 public class ThemesContract {
-    public static final String AUTHORITY = "com.cyanogenmod.themes";
+    public static final String AUTHORITY = "com.mokee.themes";
     public static final Uri AUTHORITY_URI = Uri.parse("content://" + AUTHORITY);
 
     public static class ThemesColumns {
