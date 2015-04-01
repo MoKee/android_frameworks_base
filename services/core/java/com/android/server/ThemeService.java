@@ -674,28 +674,18 @@ public class ThemeService extends IThemeService.Stub {
     }
 
     private boolean updateWallpaper(String pkgName) {
-        String selection = ThemesColumns.PKG_NAME + "= ?";
-        String[] selectionArgs = { pkgName };
-        Cursor c = mContext.getContentResolver().query(ThemesColumns.CONTENT_URI,
-                null, selection,
-                selectionArgs, null);
-        c.moveToFirst();
         WallpaperManager wm = WallpaperManager.getInstance(mContext);
         if (SYSTEM_DEFAULT.equals(pkgName)) {
             try {
                 wm.clear();
             } catch (IOException e) {
                 return false;
-            } finally {
-                c.close();
             }
         } else if (TextUtils.isEmpty(pkgName)) {
             try {
                 wm.clear(false);
             } catch (IOException e) {
                 return false;
-            } finally {
-                c.close();
             }
         } else {
             InputStream in = null;
@@ -707,7 +697,6 @@ public class ThemeService extends IThemeService.Stub {
                 return false;
             } finally {
                 ThemeUtils.closeQuietly(in);
-                c.close();
             }
         }
         return true;
