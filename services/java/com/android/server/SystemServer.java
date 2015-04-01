@@ -1036,10 +1036,10 @@ public final class SystemServer {
 
             if (!disableNonCoreServices) {
                 try {
-                    Slog.i(TAG, "CmHardwareService");
-                    ServiceManager.addService(Context.CMHW_SERVICE, new CmHardwareService(context));
+                    Slog.i(TAG, "MkHardwareService");
+                    ServiceManager.addService(Context.MKHW_SERVICE, new MkHardwareService(context));
                 } catch (Throwable e) {
-                    reportWtf("starting CMHW Service", e);
+                    reportWtf("starting MKHW Service", e);
                 }
             }
 

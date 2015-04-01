@@ -24,7 +24,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.ContentObserver;
-import android.hardware.CmHardwareManager;
+import android.hardware.MkHardwareManager;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.IBinder;
@@ -75,7 +75,7 @@ public class LiveDisplayController {
 
     private final Context mContext;
     private final Handler mHandler;
-    private final CmHardwareManager mCmHardwareManager;
+    private final MkHardwareManager mMkHardwareManager;
 
     private int mDayTemperature;
     private int mNightTemperature;
@@ -114,25 +114,25 @@ public class LiveDisplayController {
     LiveDisplayController(Context context, Looper looper) {
         mContext = context;
         mHandler = new LiveDisplayHandler(looper);
-        mCmHardwareManager = (CmHardwareManager) context.getSystemService(Context.CMHW_SERVICE);
+        mMkHardwareManager = (MkHardwareManager) context.getSystemService(Context.MKHW_SERVICE);
 
         mTwilightManager = LocalServices.getService(TwilightManager.class);
         mTwilightManager.registerListener(mTwilightListener, mHandler);
 
         final boolean sunlightEnhancementSupported =
-                mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT);
+                mMkHardwareManager.isSupported(MkHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT);
 
         if (sunlightEnhancementSupported) {
-            mOutdoorMode = mCmHardwareManager.get(CmHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT);
+            mOutdoorMode = mMkHardwareManager.get(MkHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT);
         }
 
-        if (mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_COLOR_ENHANCEMENT)) {
+        if (mMkHardwareManager.isSupported(MkHardwareManager.FEATURE_COLOR_ENHANCEMENT)) {
             mColorEnhancement =
-                    mCmHardwareManager.get(CmHardwareManager.FEATURE_COLOR_ENHANCEMENT);
+                    mMkHardwareManager.get(MkHardwareManager.FEATURE_COLOR_ENHANCEMENT);
         }
 
-        if (mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT)) {
-            mLowPower = mCmHardwareManager.get(CmHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT);
+        if (mMkHardwareManager.isSupported(MkHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT)) {
+            mLowPower = mMkHardwareManager.get(MkHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT);
         }
 
         mDefaultDayTemperature = mContext.getResources().getInteger(
@@ -149,7 +149,7 @@ public class LiveDisplayController {
                 -3,
                 UserHandle.USER_CURRENT);
 
-        // Workaround for CMHW - remove once the new patches are merged
+        // Workaround for MKHW - remove once the new patches are merged
         if (!sunlightEnhancementSupported) {
             Settings.System.putIntForUser(mContext.getContentResolver(),
                     Settings.System.DISPLAY_AUTO_OUTDOOR_MODE,
@@ -176,7 +176,7 @@ public class LiveDisplayController {
                 Settings.System.DISPLAY_TEMPERATURE_MODE,
                 MODE_OFF,
                 UserHandle.USER_CURRENT);
-        if (!mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT)) {
+        if (!mMkHardwareManager.isSupported(MkHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT)) {
             mUseOutdoorMode = false;
         } else {
             mUseOutdoorMode = Settings.System.getIntForUser(mContext.getContentResolver(),
@@ -184,7 +184,7 @@ public class LiveDisplayController {
                     1,
                     UserHandle.USER_CURRENT) == 1;
         }
-        if (!mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT)) {
+        if (!mMkHardwareManager.isSupported(MkHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT)) {
             mUseLowPower = false;
         } else {
             mUseLowPower = Settings.System.getIntForUser(mContext.getContentResolver(),
@@ -192,7 +192,7 @@ public class LiveDisplayController {
                     1,
                     UserHandle.USER_CURRENT) == 1;
         }
-        if (!mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_COLOR_ENHANCEMENT)) {
+        if (!mMkHardwareManager.isSupported(MkHardwareManager.FEATURE_COLOR_ENHANCEMENT)) {
             mColorEnhancement = false;
         } else {
             mColorEnhancement = Settings.System.getIntForUser(mContext.getContentResolver(),
@@ -325,15 +325,15 @@ public class LiveDisplayController {
         Slog.d(TAG, "Adjust display temperature to " + temperature +
                 "K [r=" + rgb[0] + " g=" + rgb[1] + " b=" + rgb[2] + "]");
 
-        if (mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_DISPLAY_COLOR_CALIBRATION)) {
+        if (mMkHardwareManager.isSupported(MkHardwareManager.FEATURE_DISPLAY_COLOR_CALIBRATION)) {
             // Clear this out in case of an upgrade
             Settings.Secure.putStringForUser(mContext.getContentResolver(),
                     Settings.Secure.LIVE_DISPLAY_COLOR_MATRIX,
                     null,
                     UserHandle.USER_CURRENT);
 
-            int max = mCmHardwareManager.getDisplayColorCalibrationMax();
-            mCmHardwareManager.setDisplayColorCalibration(new int[] {
+            int max = mMkHardwareManager.getDisplayColorCalibrationMax();
+            mMkHardwareManager.setDisplayColorCalibration(new int[] {
                 (int) (rgb[0] * max), (int) (rgb[1] * max), (int) (rgb[2] * max)
             });
             screenRefresh();
@@ -376,7 +376,7 @@ public class LiveDisplayController {
             return;
         }
 
-        mCmHardwareManager.set(CmHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT, enabled);
+        mMkHardwareManager.set(MkHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT, enabled);
         mOutdoorMode = enabled;
     }
 
@@ -392,7 +392,7 @@ public class LiveDisplayController {
             return;
         }
 
-        mCmHardwareManager.set(CmHardwareManager.FEATURE_COLOR_ENHANCEMENT, enabled);
+        mMkHardwareManager.set(MkHardwareManager.FEATURE_COLOR_ENHANCEMENT, enabled);
         mColorEnhancement = enabled;
     }
 
@@ -406,7 +406,7 @@ public class LiveDisplayController {
             return;
         }
 
-        mCmHardwareManager.set(CmHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT, enabled);
+        mMkHardwareManager.set(MkHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT, enabled);
         mLowPower = enabled;
     }
 
@@ -589,11 +589,11 @@ public class LiveDisplayController {
 
     public void dump(PrintWriter pw) {
         boolean hasSunlightEnhancement =
-                mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT);
+                mMkHardwareManager.isSupported(MkHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT);
         boolean hasColorEnhancement =
-                mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_COLOR_ENHANCEMENT);
+                mMkHardwareManager.isSupported(MkHardwareManager.FEATURE_COLOR_ENHANCEMENT);
         boolean hasAdaptiveBacklight =
-                mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT);
+                mMkHardwareManager.isSupported(MkHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT);
 
         pw.println();
         pw.println("LiveDisplay Controller Configuration:");

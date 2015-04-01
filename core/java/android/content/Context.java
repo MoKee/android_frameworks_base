@@ -2952,14 +2952,14 @@ public abstract class Context {
 
     /**
      * Use with {@link #getSystemService} to retrieve a
-     * {@link android.hardware.CmHardwareManager} for controlling
+     * {@link android.hardware.MkHardwareManager} for controlling
      * hw specific features
      *
      * @see #getSystemService
-     * @see android.hardware.CmHardwareManager
+     * @see android.hardware.MkHardwareManager
      * @hide
      */
-    public static final String CMHW_SERVICE = "cmhw";
+    public static final String MKHW_SERVICE = "mkhw";
 
     /**
      * Determine whether the given permission is allowed for a particular

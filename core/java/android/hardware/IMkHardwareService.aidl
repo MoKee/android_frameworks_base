@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015, The CyanogenMod Project
+ * Copyright (c) 2015, The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 package android.hardware;
 
 /** {@hide} */
-interface ICmHardwareService {
+interface IMkHardwareService {
 
     int getSupportedFeatures();
     boolean get(int feature);

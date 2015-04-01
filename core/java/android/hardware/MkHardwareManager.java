@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 The CyanogenMod Project
+ * Copyright (C) 2015 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,14 +25,14 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Manages access to CyanogenMod hardware extensions
+ * Manages access to MoKee OpenSource hardware extensions
  *
  * {@hide}
  */
-public final class CmHardwareManager {
-    private static final String TAG = "CmHardwareManager";
+public final class MkHardwareManager {
+    private static final String TAG = "MkHardwareManager";
 
-    private final ICmHardwareService mService;
+    private final IMkHardwareService mService;
 
     /**
      * Adaptive backlight support (this refers to technologies like NVIDIA SmartDimmer,
@@ -108,9 +108,9 @@ public final class CmHardwareManager {
     /**
      * @hide to prevent subclassing from outside of the framework
      */
-    public CmHardwareManager(Context context) {
-        mService = ICmHardwareService.Stub.asInterface(
-                ServiceManager.getService(Context.CMHW_SERVICE));
+    public MkHardwareManager(Context context) {
+        mService = IMkHardwareService.Stub.asInterface(
+                ServiceManager.getService(Context.MKHW_SERVICE));
     }
 
     /**
@@ -118,7 +118,7 @@ public final class CmHardwareManager {
      */
     public int getSupportedFeatures() {
         if (mService == null) {
-            Log.w(TAG, "no cmhw service.");
+            Log.w(TAG, "no mkhw service.");
             return 0;
         }
 
@@ -130,9 +130,9 @@ public final class CmHardwareManager {
     }
 
     /**
-     * Determine if a CM Hardware feature is supported on this device
+     * Determine if a MK Hardware feature is supported on this device
      *
-     * @param feature The CM Hardware feature to query
+     * @param feature The MK Hardware feature to query
      *
      * @return true if the feature is supported, false otherwise.
      */
@@ -145,7 +145,7 @@ public final class CmHardwareManager {
      *
      * Only used for features which have simple enable/disable controls.
      *
-     * @param feature the CM Hardware feature to query
+     * @param feature the MK Hardware feature to query
      *
      * @return true if the feature is enabled, false otherwise.
      */
@@ -155,7 +155,7 @@ public final class CmHardwareManager {
         }
 
         if (mService == null) {
-            Log.w(TAG, "no cmhw service.");
+            Log.w(TAG, "no mkhw service.");
             return false;
         }
 
@@ -171,7 +171,7 @@ public final class CmHardwareManager {
      *
      * Only used for features which have simple enable/disable controls.
      *
-     * @param feature the CM Hardware feature to set
+     * @param feature the MK Hardware feature to set
      * @param enable true to enable, false to disale
      *
      * @return true if the feature is enabled, false otherwise.
@@ -182,7 +182,7 @@ public final class CmHardwareManager {
         }
 
         if (mService == null) {
-            Log.w(TAG, "no cmhw service.");
+            Log.w(TAG, "no mkhw service.");
             return false;
         }
 
@@ -224,7 +224,7 @@ public final class CmHardwareManager {
 
     private int[] getVibratorIntensityArray() {
         if (mService == null) {
-            Log.w(TAG, "no cmhw service.");
+            Log.w(TAG, "no mkhw service.");
             return null;
         }
 
@@ -280,7 +280,7 @@ public final class CmHardwareManager {
      */
     public boolean setVibratorIntensity(int intensity) {
         if (mService == null) {
-            Log.w(TAG, "no cmhw service.");
+            Log.w(TAG, "no mkhw service.");
             return false;
         }
 
@@ -318,7 +318,7 @@ public final class CmHardwareManager {
 
     private int[] getDisplayColorCalibrationArray() {
         if (mService == null) {
-            Log.w(TAG, "no cmhw service.");
+            Log.w(TAG, "no mkhw service.");
             return null;
         }
 
@@ -372,7 +372,7 @@ public final class CmHardwareManager {
      */
     public boolean setDisplayColorCalibration(int[] rgb) {
         if (mService == null) {
-            Log.w(TAG, "no cmhw service.");
+            Log.w(TAG, "no mkhw service.");
             return false;
         }
 
@@ -406,7 +406,7 @@ public final class CmHardwareManager {
 
     private int[] getDisplayGammaCalibrationArray(int idx) {
         if (mService == null) {
-            Log.w(TAG, "no cmhw service.");
+            Log.w(TAG, "no mkhw service.");
             return null;
         }
 
@@ -422,7 +422,7 @@ public final class CmHardwareManager {
      */
     public int getNumGammaControls() {
         if (mService == null) {
-            Log.w(TAG, "no cmhw service.");
+            Log.w(TAG, "no mkhw service.");
             return 0;
         }
 
@@ -472,7 +472,7 @@ public final class CmHardwareManager {
      */
     public boolean setDisplayGammaCalibration(int idx, int[] rgb) {
         if (mService == null) {
-            Log.w(TAG, "no cmhw service.");
+            Log.w(TAG, "no mkhw service.");
             return false;
         }
 
@@ -488,7 +488,7 @@ public final class CmHardwareManager {
      */
     public String getLtoSource() {
         if (mService == null) {
-            Log.w(TAG, "no cmhw service.");
+            Log.w(TAG, "no mkhw service.");
             return null;
         }
 
@@ -504,7 +504,7 @@ public final class CmHardwareManager {
      */
     public String getLtoDestination() {
         if (mService == null) {
-            Log.w(TAG, "no cmhw service.");
+            Log.w(TAG, "no mkhw service.");
             return null;
         }
 
@@ -520,7 +520,7 @@ public final class CmHardwareManager {
      */
     public long getLtoDownloadInterval() {
         if (mService == null) {
-            Log.w(TAG, "no cmhw service.");
+            Log.w(TAG, "no mkhw service.");
             return 0;
         }
 
@@ -536,7 +536,7 @@ public final class CmHardwareManager {
      */
     public String getSerialNumber() {
         if (mService == null) {
-            Log.w(TAG, "no cmhw service.");
+            Log.w(TAG, "no mkhw service.");
             return null;
         }
 
@@ -553,7 +553,7 @@ public final class CmHardwareManager {
      */
     public boolean requireAdaptiveBacklightForSunlightEnhancement() {
         if (mService == null) {
-            Log.w(TAG, "no cmhw service.");
+            Log.w(TAG, "no mkhw service.");
             return false;
         }
 
