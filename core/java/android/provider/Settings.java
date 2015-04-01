@@ -3343,6 +3343,12 @@ public final class Settings {
         public static final String CALL_LOG_DELETE_LIMIT = "call_log_delete_limit";
 
         /**
+         * Whether the blacklisting feature for phone calls from all numbers is enabled
+         * @hide
+         */
+        public static final String PHONE_BLACKLIST_ALL_NUMBER_MODE = "phone_blacklist_all_number";
+
+        /**
          * I am the lolrus.
          * <p>
          * Nonzero values indicate that the user has a bukkit.
@@ -3573,6 +3579,7 @@ public final class Settings {
             NOTIFICATION_SOUND,
             SYSTEM_PROFILES_ENABLED,
             PHONE_BLACKLIST_ENABLED,
+            PHONE_BLACKLIST_ALL_NUMBER_MODE,
             PHONE_BLACKLIST_NOTIFY_ENABLED,
             PHONE_BLACKLIST_PRIVATE_NUMBER_MODE,
             PHONE_BLACKLIST_UNKNOWN_NUMBER_MODE,
