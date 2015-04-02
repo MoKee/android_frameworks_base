@@ -1,0 +1,40 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:androidprv="http://schemas.android.com/apk/prv/res/android"
+    coreApp="true"
+    package="org.mokee.services"
+    android:sharedUserId="android.uid.system" >
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_ALL_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.REBOOT" />
+    <uses-permission android:name="android.permission.RECOVERY" />
+    <uses-permission android:name="android.permission.SHUTDOWN" />
+
+    <application
+        android:allowBackup="false"
+        android:allowClearUserData="false"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/platlogo"
+        android:label="@string/app_label"
+        android:persistent="true"
+        android:process="org.mokee.services"
+        android:supportsRtl="true" >
+        <receiver
+            android:name="org.mokee.services.assist.receiver.AssistReceiver"
+            androidprv:primaryUserOnly="true" >
+            <intent-filter android:priority="1000" >
+                <action android:name="com.mokee.assist.action.reboot" />
+                <action android:name="com.mokee.assist.action.reboot.recovery" />
+                <action android:name="com.mokee.assist.action.reboot.bootloader" />
+                <action android:name="com.mokee.assist.action.poweroff" />
+                <action android:name="com.mokee.assist.action.lockscreen" />
+                <action android:name="com.mokee.assist.action.findmyphone"/>
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
