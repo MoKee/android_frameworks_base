@@ -3388,10 +3388,22 @@ public final class Settings {
         public static final String PHONE_BLACKLIST_ALL_NUMBER_MODE = "phone_blacklist_all_number";
 
         /**
+         * show carrier in statusbar. The value is
+         * int (1: Show or 0: Hide).
+         */
+        public static final String STATUS_BAR_CARRIER = "status_bar_carrier";
+
+        /**
          * custom carrier label. The value is
          * String.
          */
         public static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
+
+        /**
+         * show traffic in statusbar. The value is
+         * int (0: Hide  or 1: Only Rx 2: Rx&Tx).
+         */
+        public static final String STATUS_BAR_NETWORK_TRAFFIC_STYLE = "status_bar_network_traffic_style";
 
         /**
          * I am the lolrus.

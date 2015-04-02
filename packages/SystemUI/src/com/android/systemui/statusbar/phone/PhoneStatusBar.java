@@ -2,6 +2,7 @@
  * Copyright (c) 2012-2014 The Linux Foundation. All rights reserved.
  * Not a Contribution.
  * Copyright (C) 2010 The Android Open Source Project
+ * Copyright (C) 2014-2015 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -185,6 +186,7 @@ import com.android.systemui.statusbar.policy.KeyguardUserSwitcher;
 import com.android.systemui.statusbar.policy.LocationControllerImpl;
 import com.android.systemui.statusbar.policy.MSimNetworkControllerImpl;
 import com.android.systemui.statusbar.policy.NetworkControllerImpl;
+import com.android.systemui.statusbar.policy.NetworkTraffic;
 import com.android.systemui.statusbar.policy.NextAlarmController;
 import com.android.systemui.statusbar.policy.PreviewInflater;
 import com.android.systemui.statusbar.policy.RotationLockControllerImpl;
@@ -370,6 +372,12 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
     private boolean mShowCarrierInPanel = false;
 
+    // Status bar Carrier
+    private boolean mShowStatusBarCarrier;
+
+    // Status bar Network traffic;
+    private NetworkTraffic mNetworkTraffic;
+
     // position
     int[] mPositionTmp = new int[2];
     boolean mExpandedVisible;
@@ -461,6 +469,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_CLOCK), false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_CARRIER), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.NAVBAR_LEFT_IN_LANDSCAPE), false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.RECENTS_LONG_PRESS_ACTIVITY), false, this);
@@ -485,6 +495,10 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             mBrightnessControl = Settings.System.getIntForUser(
                     resolver, Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0,
                     UserHandle.USER_CURRENT) == 1;
+            mShowStatusBarCarrier = Settings.System.getIntForUser(
+                    resolver, Settings.System.STATUS_BAR_CARRIER, 0,
+                    UserHandle.USER_CURRENT) == 1;
+            showStatusBarCarrierLabel(mShowStatusBarCarrier);
 
             final int oldClockLocation = mClockLocation;
             final View oldClockView = mClockView;
@@ -1013,6 +1027,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         mMoreIcon = mStatusBarView.findViewById(R.id.moreIcon);
         mNotificationIcons.setOverflowIndicator(mMoreIcon);
         mStatusBarContents = (LinearLayout)mStatusBarView.findViewById(R.id.status_bar_contents);
+
+        mNetworkTraffic = (NetworkTraffic)mStatusBarView.findViewById(R.id.network_traffic);
 
         mClockView = (TextView) mStatusBarView.findViewById(R.id.clock);
         mClockLocation = Settings.System.getIntForUser(mContext.getContentResolver(),
@@ -3755,6 +3771,15 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         }
     };
 
+    public void showStatusBarCarrierLabel(boolean show) {
+        if (mStatusBarView == null) return;
+        ContentResolver resolver = mContext.getContentResolver();
+        View statusBarCarrierLabel = mStatusBarView.findViewById(R.id.status_bar_carrier_label);
+        if (statusBarCarrierLabel != null) {
+            statusBarCarrierLabel.setVisibility(show ? (mShowStatusBarCarrier ? View.VISIBLE : View.GONE) : View.GONE);
+        }
+    }
+
     private BroadcastReceiver mPackageBroadcastReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             if (DEBUG) Log.v(TAG, "onReceive: " + intent);
@@ -3814,6 +3839,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         animateCollapsePanels();
         updatePublicMode(); 
         updateNotifications();
+        mNetworkTraffic.updateSettings();
         resetUserSetupObserver();
         setControllerUsers();
 
