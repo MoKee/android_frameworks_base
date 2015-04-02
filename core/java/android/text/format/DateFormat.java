@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006 The Android Open Source Project
+ * Copyright (C) 2015 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +18,7 @@
 package android.text.format;
 
 import android.content.Context;
+import android.mokee.utils.MoKeeUtils;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.text.SpannableStringBuilder;
@@ -516,7 +518,11 @@ public class DateFormat {
             switch (c) {
                 case 'A':
                 case 'a':
-                    replacement = localeData.amPm[inDate.get(Calendar.AM_PM) - Calendar.AM];
+                    if (MoKeeUtils.isSupportLanguage(false)) {
+                        replacement = DateUtils.getAMPMCNString(inDate.get(Calendar.HOUR), inDate.get(Calendar.AM_PM));
+                    } else {
+                        replacement = localeData.amPm[inDate.get(Calendar.AM_PM) - Calendar.AM];
+                    }
                     break;
                 case 'd':
                     replacement = zeroPad(inDate.get(Calendar.DATE), count);
