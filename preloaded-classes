@@ -898,6 +898,7 @@ android.media.ToneGenerator
 android.media.audiofx.AudioEffect
 android.media.audiofx.LoudnessEnhancer
 android.mokee.hardware.ProximitySensorManager
+android.mokee.location.PhoneLocation
 android.mokee.utils.MoKeeUtils
 android.mtp.MtpDatabase
 android.mtp.MtpDevice
