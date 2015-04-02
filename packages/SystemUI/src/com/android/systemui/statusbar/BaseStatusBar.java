@@ -894,18 +894,23 @@ public abstract class BaseStatusBar extends SystemUI implements
                 }
             });
 
-            filterButton.setVisibility(View.VISIBLE);
-            filterButton.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    ContentValues values = new ContentValues();
-                    String message = SpamFilter.getNotificationContent(
-                    sbn.getNotification());
-                    values.put(NotificationTable.MESSAGE_TEXT, message);
-                    values.put(PackageTable.PACKAGE_NAME, pkg);
-                    mContext.getContentResolver().insert(SPAM_MESSAGE_URI, values);
-                    removeNotification(sbn.getKey(), null);
-                }
-            });
+            // add settings notification to whitelist
+            if (pkg.equals("com.android.settings")) {
+                filterButton.setVisibility(View.GONE);
+            } else {
+                filterButton.setVisibility(View.VISIBLE);
+                filterButton.setOnClickListener(new View.OnClickListener() {
+                        public void onClick(View v) {
+                        ContentValues values = new ContentValues();
+                        String message = SpamFilter.getNotificationContent(
+                        sbn.getNotification());
+                        values.put(NotificationTable.MESSAGE_TEXT, message);
+                        values.put(PackageTable.PACKAGE_NAME, pkg);
+                        mContext.getContentResolver().insert(SPAM_MESSAGE_URI, values);
+                        removeNotification(sbn.getKey(), null);
+                    }
+                });
+            }
 
             final Intent appSettingsQueryIntent
                     = new Intent(Intent.ACTION_MAIN)
