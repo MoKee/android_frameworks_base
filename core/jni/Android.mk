@@ -235,6 +235,7 @@ LOCAL_SHARED_LIBRARIES := \
 	libicuuc \
 	libicui18n \
 	libmedia \
+	libmokeeutils \
 	libjpeg \
 	libusbhost \
 	libharfbuzz_ng \
