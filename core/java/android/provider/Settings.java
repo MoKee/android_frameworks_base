@@ -3338,6 +3338,18 @@ public final class Settings {
         public static final String INCREASING_RING_RAMP_UP_TIME = "increasing_ring_ramp_up_time";
 
         /**
+         * Put on your ear, and this will automatically call current number in dialer
+         * @hide
+         */
+        public static final String DIRECT_CALL_FOR_DIALER = "direct_call_for_dialer";
+
+        /**
+         * Put on your ear, and this will automatically call current number in message
+         * @hide
+         */
+        public static final String DIRECT_CALL_FOR_MMS = "direct_call_for_mms";
+
+        /**
          * ListView Animations
          * 0 == None
          * 1 == Wave (Left)
