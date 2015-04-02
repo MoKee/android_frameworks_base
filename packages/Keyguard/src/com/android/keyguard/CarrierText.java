@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (C) 2015 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +22,8 @@ import android.content.res.Configuration;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.TypedArray;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.text.method.SingleLineTransformationMethod;
 import android.text.TextUtils;
 import android.telephony.TelephonyManager;
@@ -156,7 +159,13 @@ public class CarrierText extends LinearLayout {
         if (mAirplaneModeText != null && mShowAPM) {
             mAirplaneModeText.setText(airplaneMode);
         }
-        updateCarrierView.setText(text != null ? text.toString() : null);
+        String customCarrierLabel = Settings.System.getStringForUser(getContext().getContentResolver(),
+                Settings.System.CUSTOM_CARRIER_LABEL, UserHandle.USER_CURRENT);
+        if (!TextUtils.isEmpty(customCarrierLabel)) {
+            updateCarrierView.setText(text != null ? customCarrierLabel : null);
+        } else {
+            updateCarrierView.setText(text != null ? text.toString() : null);
+        }
     }
 
     @Override
