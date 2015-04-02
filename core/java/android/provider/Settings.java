@@ -3388,6 +3388,12 @@ public final class Settings {
         public static final String PHONE_BLACKLIST_ALL_NUMBER_MODE = "phone_blacklist_all_number";
 
         /**
+         * custom carrier label. The value is
+         * String.
+         */
+        public static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
+
+        /**
          * I am the lolrus.
          * <p>
          * Nonzero values indicate that the user has a bukkit.
