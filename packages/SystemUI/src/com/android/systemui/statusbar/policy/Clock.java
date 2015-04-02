@@ -201,7 +201,7 @@ public class Clock implements DemoMode {
         } else {
             sdf = mClockFormat;
         }
-        String result = sdf.format(mCalendar.getTime());
+        String result = is24 ? sdf.format(mCalendar.getTime()) : DateFormat.format(format, mCalendar.getTime()).toString();
 
         if (mAmPmStyle != AM_PM_STYLE_NORMAL) {
             int magic1 = result.indexOf(MAGIC1);
@@ -279,7 +279,7 @@ public class Clock implements DemoMode {
     void updateSettings() {
         ContentResolver resolver = mContext.getContentResolver();
         mAmPmStyle = (Settings.System.getIntForUser(resolver,
-                Settings.System.STATUS_BAR_AM_PM, 2, UserHandle.USER_CURRENT));
+                Settings.System.STATUS_BAR_AM_PM, 0, UserHandle.USER_CURRENT));
         mClockFormatString = "";
 
         updateClock();
