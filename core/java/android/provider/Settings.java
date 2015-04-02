@@ -3412,36 +3412,6 @@ public final class Settings {
         public static final String STATUS_BAR_NETWORK_TRAFFIC_STYLE = "status_bar_network_traffic_style";
 
         /**
-         * What happens when the user presses the Volume button when the
-         * phone is ringing.<br/>
-         * <b>Values:</b><br/>
-         * 1 - Nothing happens. (Default behavior)<br/>
-         * 2 - The Volume button answer the current call.<br/>
-         *
-         * @hide
-         */
-        public static final String RING_VOLUME_BUTTON_BEHAVIOR = "ring_volume_button_behavior";
-
-        /**
-         * RING_VOLUME_BUTTON_BEHAVIOR value for "do nothing".
-         * @hide
-         */
-        public static final int RING_VOLUME_BUTTON_BEHAVIOR_DO_NOTHING = 0x1;
-
-        /**
-         * RING_VOLUME_BUTTON_BEHAVIOR value for "answer".
-         * @hide
-         */
-        public static final int RING_VOLUME_BUTTON_BEHAVIOR_ANSWER = 0x2;
-
-        /**
-         * RING_VOLUME_BUTTON_BEHAVIOR default value.
-         * @hide
-         */
-        public static final int RING_VOLUME_BUTTON_BEHAVIOR_DEFAULT =
-                RING_VOLUME_BUTTON_BEHAVIOR_DO_NOTHING;
-
-        /**
          * I am the lolrus.
          * <p>
          * Nonzero values indicate that the user has a bukkit.
@@ -5791,6 +5761,36 @@ public final class Settings {
          */
         public static final int RING_HOME_BUTTON_BEHAVIOR_DEFAULT =
                 RING_HOME_BUTTON_BEHAVIOR_DO_NOTHING;
+
+        /**
+         * What happens when the user presses the Volume button when the
+         * phone is ringing.<br/>
+         * <b>Values:</b><br/>
+         * 1 - Nothing happens. (Default behavior)<br/>
+         * 2 - The Volume button answer the current call.<br/>
+         *
+         * @hide
+         */
+        public static final String RING_VOLUME_BUTTON_BEHAVIOR = "ring_volume_button_behavior";
+
+        /**
+         * RING_VOLUME_BUTTON_BEHAVIOR value for "do nothing".
+         * @hide
+         */
+        public static final int RING_VOLUME_BUTTON_BEHAVIOR_DO_NOTHING = 0x1;
+
+        /**
+         * RING_VOLUME_BUTTON_BEHAVIOR value for "answer".
+         * @hide
+         */
+        public static final int RING_VOLUME_BUTTON_BEHAVIOR_ANSWER = 0x2;
+
+        /**
+         * RING_VOLUME_BUTTON_BEHAVIOR default value.
+         * @hide
+         */
+        public static final int RING_VOLUME_BUTTON_BEHAVIOR_DEFAULT =
+                RING_VOLUME_BUTTON_BEHAVIOR_DO_NOTHING;
 
         /**
          * The current night mode that has been selected by the user.  Owned
