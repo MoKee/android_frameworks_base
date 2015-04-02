@@ -16,4 +16,5 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="status_leap">閏</string>
+  <string name="permdesc_useHardwareFramework_mk">允許應用程式存取 MK 硬件框架。</string>
 </resources>
