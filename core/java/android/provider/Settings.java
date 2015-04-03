@@ -3107,6 +3107,11 @@ public final class Settings {
         public static final String POINTER_SPEED = "pointer_speed";
 
         /**
+         * The time accurate to the second.
+         */
+        public static final String STATUS_BAR_CLOCK_SHOW_SECOND = "status_bar_clock_show_second";
+
+        /**
          * Show icon when stylus is used?
          * 0 = no
          * 1 = yes
