@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006 The Android Open Source Project
+ * Copyright (C) 2015 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,6 +74,15 @@ public class Clock implements DemoMode {
     private int mAmPmStyle = AM_PM_STYLE_GONE;
     private boolean mDemoMode;
     private boolean mAttached;
+
+    private final Handler handler = new Handler();
+
+    private Runnable secondUpdateRunnable = new Runnable() {
+        public void run() {
+            updateClock();
+            handler.postDelayed(this, 1000);
+        }
+    };
 
     class SettingsObserver extends UserContentObserver {
         SettingsObserver(Handler handler) {
@@ -165,6 +175,12 @@ public class Clock implements DemoMode {
 
         SimpleDateFormat sdf;
         String format = is24 ? d.timeFormat24 : d.timeFormat12;
+
+        // replace seconds directly in format, not in result
+        if (Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.CLOCK_USE_SECOND, 0) == 1) {
+            format = format.replaceFirst("mm", "mm:ss");
+        }
         if (!format.equals(mClockFormatString)) {
             /*
              * Search for an unquoted "a" in the format string, so we can
@@ -282,6 +298,8 @@ public class Clock implements DemoMode {
                 Settings.System.STATUS_BAR_AM_PM, 0, UserHandle.USER_CURRENT));
         mClockFormatString = "";
 
+        handler.removeCallbacks(secondUpdateRunnable); // Unique runnable
+        handler.post(secondUpdateRunnable);
         updateClock();
     }
 
