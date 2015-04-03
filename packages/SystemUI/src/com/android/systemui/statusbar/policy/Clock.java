@@ -42,6 +42,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import libcore.icu.LocaleData;
 
@@ -73,6 +75,9 @@ public class Clock implements DemoMode {
     private int mAmPmStyle = AM_PM_STYLE_GONE;
     private boolean mDemoMode;
     private boolean mAttached;
+
+    private final Handler handler = new Handler();
+    TimerTask second;
 
     class SettingsObserver extends UserContentObserver {
         SettingsObserver(Handler handler) {
@@ -165,6 +170,13 @@ public class Clock implements DemoMode {
 
         SimpleDateFormat sdf;
         String format = is24 ? d.timeFormat24 : d.timeFormat12;
+
+        // replace seconds directly in format, not in result
+        if (Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.CLOCK_USE_SECOND, 0) == 1) {
+            String temp = format;
+            format = temp.replaceFirst("mm", "mm:ss");
+        }
         if (!format.equals(mClockFormatString)) {
             /*
              * Search for an unquoted "a" in the format string, so we can
@@ -282,6 +294,23 @@ public class Clock implements DemoMode {
                 Settings.System.STATUS_BAR_AM_PM, 0, UserHandle.USER_CURRENT));
         mClockFormatString = "";
 
+        second = new TimerTask()
+        {
+            @Override
+            public void run()
+             {
+                Runnable updater = new Runnable()
+                  {
+                   public void run()
+                   {
+                       updateClock();
+                   }
+                  };
+                handler.post(updater);
+             }
+        };
+        Timer timer = new Timer();
+        timer.schedule(second, 0, 1001);
         updateClock();
     }
 
