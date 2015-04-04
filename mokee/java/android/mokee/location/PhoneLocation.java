@@ -47,7 +47,7 @@ public final class PhoneLocation {
     }
 
     private static String getLocationFromPhoneNumber(String number, int pos) {
-        String s = doGetLocationFromPhoneNumber(number.replaceAll("(?:-| )", ""));
+        String s = doGetLocationFromPhoneNumber(number);
         String[] ss = null;
         if (!TextUtils.isEmpty(s)) {
             ss = s.split(",");
