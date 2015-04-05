@@ -56,7 +56,6 @@ muuta juba olemasolevaid.</string>
   <string name="privacy_guard_notification">Privaatsuskaitse aktiveeritud</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> ei pääse ligi isiklikele andmetele</string>
   <string name="permlab_useHardwareFramework">kasutada riistvara raamistikku</string>
-  <string name="permdesc_useHardwareFramework">Annab rakendusele ligipääsu CM riistvara raamistikule.</string>
   <string name="permlab_setKeyguardWallpaper">muuta lukuekraani pilti</string>
   <string name="permdesc_setKeyguardWallpaper">Lubab rakendusel muuta lukustusekraani taustapilti.</string>
   <string name="privacy_guard_dialog_title">Privaatsuskaitse</string>

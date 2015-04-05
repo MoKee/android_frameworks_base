@@ -54,7 +54,6 @@
   <string name="privacy_guard_notification">Penjaga Privasi aktif</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> tidak akan dapat mengakses data pribadi</string>
   <string name="permlab_useHardwareFramework">gunakan hardware framework</string>
-  <string name="permdesc_useHardwareFramework">Izinkan app untuk mengakses framework hardware CM.</string>
   <string name="permlab_setKeyguardWallpaper">set keyguard wallpaper</string>
   <string name="permdesc_setKeyguardWallpaper">Izinkan aplikasi untuk mengubah wallpaper layar kunci.</string>
   <string name="privacy_guard_dialog_title">Penjaga Privasi</string>

@@ -54,7 +54,6 @@
   <string name="privacy_guard_notification">Adatvédelem aktív</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> nem fog hozzáférni a személyes adataihoz</string>
   <string name="permlab_useHardwareFramework">hardver keretrendszert használ</string>
-  <string name="permdesc_useHardwareFramework">Lehetővé teszi az alkalmazás számára, hogy a CM hardver hozzáférjen a keretrendszerhez.</string>
   <string name="permlab_setKeyguardWallpaper">billentyűzár háttérképének beállítása</string>
   <string name="permdesc_setKeyguardWallpaper">Lehetővé teszi az alkalmazás számára, hogy módosítsa a képernyőzár hátterét.</string>
   <string name="privacy_guard_dialog_title">Adatvédelmi beállítások</string>

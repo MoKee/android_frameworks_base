@@ -54,7 +54,6 @@
   <string name="privacy_guard_notification">Προστασία Απορρήτου ενεργή</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> δεν θα μπορεί να έχει πρόσβαση στα προσωπικά σας δεδομένα</string>
   <string name="permlab_useHardwareFramework">χρήση του πλαισίου υλικού</string>
-  <string name="permdesc_useHardwareFramework">Επιτρέπει σε μια εφαρμογή την πρόσβαση στο πλαίσιο υλικού του CM.</string>
   <string name="permlab_setKeyguardWallpaper">ορισμός ταπετσαρίας οθόνης κλειδώματος</string>
   <string name="permdesc_setKeyguardWallpaper">Επιτρέπει σε μια εφαρμογή την αλλαγή της ταπετσαρίας της οθόνης κλειδώματος.</string>
   <string name="privacy_guard_dialog_title">Προστασία Απορρήτου</string>

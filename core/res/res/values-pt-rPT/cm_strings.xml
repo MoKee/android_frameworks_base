@@ -54,7 +54,6 @@
   <string name="privacy_guard_notification">PProteção da Privacidade ativa</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> não poderá aceder a dados pessoais</string>
   <string name="permlab_useHardwareFramework">Utilizar a estrutura de hardware</string>
-  <string name="permdesc_useHardwareFramework">Permite o acesso duma aplicação à estrutura de hardware CM.</string>
   <string name="permlab_setKeyguardWallpaper">Definir a imagem de fundo do ecrã de bloqueio</string>
   <string name="permdesc_setKeyguardWallpaper">Permite a uma aplicação trocar a imagem de fundo do ecrã de bloqueio.</string>
   <string name="privacy_guard_dialog_title">Proteção da Privacidade</string>

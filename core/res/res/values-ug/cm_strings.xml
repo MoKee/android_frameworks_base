@@ -54,7 +54,6 @@
   <string name="privacy_guard_notification">شەخسىيەت قوغداش ئاكتىپ</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> شەخسىي سانلىق مەلۇماتلارنى زىيارەت قىلالمايدۇ</string>
   <string name="permlab_useHardwareFramework">قاتتىق دېتال قۇرۇلمىسىنى ئىشلىتىدۇ</string>
-  <string name="permdesc_useHardwareFramework">ئەپنىڭ CM قاتتىق دېتال قۇرۇلمىسىنى ئىشلىتىشىگە يول قويىدۇ.</string>
   <string name="permlab_setKeyguardWallpaper">قۇلۇپ ئېكران تام قەغىزىنى تەڭشەيدۇ</string>
   <string name="permdesc_setKeyguardWallpaper">ئەپنىڭ قۇلۇپ ئېكران تام قەغىزىنى ئۆزگەرتىشىگە يول قويىدۇ.</string>
   <string name="privacy_guard_dialog_title">شەخسىيەت قوغداش</string>
