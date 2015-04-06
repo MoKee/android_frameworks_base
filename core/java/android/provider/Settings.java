@@ -3414,7 +3414,7 @@ public final class Settings {
         /**
          * Use Cloud Phone Number Location Engine
          */
-        public static final String CLOUD_PHONE_NUMBER_LOCATION_ENABLED = "cloud_phone_number_location_enabled";
+        public static final String ENABLE_CLOUD_LOCATION_LOOKUP = "enable_cloud_location_lookup";
 
         /**
          * I am the lolrus.
