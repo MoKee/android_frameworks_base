@@ -3412,6 +3412,11 @@ public final class Settings {
         public static final String STATUS_BAR_NETWORK_TRAFFIC_STYLE = "status_bar_network_traffic_style";
 
         /**
+         * Use Cloud Phone Number Location Engine
+         */
+        public static final String CLOUD_PHONE_NUMBER_LOCATION_ENABLED = "cloud_phone_number_location_enabled";
+
+        /**
          * I am the lolrus.
          * <p>
          * Nonzero values indicate that the user has a bukkit.
