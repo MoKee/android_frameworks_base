@@ -49,4 +49,7 @@
   <!-- MoKee PlatLogo -->
   <java-symbol type="drawable" name="mk_platlogo" />
 
+  <!-- From Chromium-WebView -->
+  <java-symbol type="string" name="config_googleWebViewPackageName" />
+
 </resources>

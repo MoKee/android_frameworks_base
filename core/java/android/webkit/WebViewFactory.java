@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.mokee.utils.MoKeeUtils;
 import android.os.Build;
 import android.os.Process;
 import android.os.RemoteException;
@@ -77,8 +78,9 @@ public final class WebViewFactory {
     private static PackageInfo sPackageInfo;
 
     public static String getWebViewPackageName() {
-        return AppGlobals.getInitialApplication().getString(
-                com.android.internal.R.string.config_webViewPackageName);
+        String aospWebView = AppGlobals.getInitialApplication().getString(com.android.internal.R.string.config_webViewPackageName);
+        String googleWebView = AppGlobals.getInitialApplication().getString(com.android.internal.R.string.config_googleWebViewPackageName);
+        return MoKeeUtils.isApkInstalled(googleWebView, AppGlobals.getInitialApplication().getApplicationContext()) ? googleWebView : aospWebView;
     }
 
     public static PackageInfo getLoadedPackageInfo() {
