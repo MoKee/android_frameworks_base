@@ -591,6 +591,7 @@ public class WifiConfiguration implements Parcelable {
      ***/
     public Visibility setVisibility(long age, int configBand) {
         boolean isNetworkFound = false;
+        String profileConfigKey = configKey();
         if (scanResultCache == null) {
             visibility = null;
             return null;
@@ -622,14 +623,18 @@ public class WifiConfiguration implements Parcelable {
             if ((now_ms - result.seen) > age) continue;
 
             if (result.is5GHz()) {
-                isNetworkFound = true;
+                if (profileConfigKey.equals(configKey(result))) {
+                    isNetworkFound = true;
+                }
                 if (result.level > status.rssi5) {
                     status.rssi5 = result.level;
                     status.age5 = result.seen;
                     status.BSSID5 = result.BSSID;
                 }
             } else if (result.is24GHz()) {
-                isNetworkFound = true;
+                if (profileConfigKey.equals(configKey(result))) {
+                    isNetworkFound = true;
+                }
                 if (result.level > status.rssi24) {
                     status.rssi24 = result.level;
                     status.age24 = result.seen;
@@ -1452,14 +1457,14 @@ public class WifiConfiguration implements Parcelable {
             key = mCachedConfigKey;
         } else {
             if (allowedKeyManagement.get(KeyMgmt.WPA_PSK)) {
-                key = SSID + KeyMgmt.strings[KeyMgmt.WPA_PSK];
+                key = SSID + "-" + KeyMgmt.strings[KeyMgmt.WPA_PSK];
             } else if (allowedKeyManagement.get(KeyMgmt.WPA_EAP) ||
                     allowedKeyManagement.get(KeyMgmt.IEEE8021X)) {
-                key = SSID + KeyMgmt.strings[KeyMgmt.WPA_EAP];
+                key = SSID + "-" + KeyMgmt.strings[KeyMgmt.WPA_EAP];
             } else if (wepKeys[0] != null) {
-                key = SSID + "WEP";
+                key = SSID + "-WEP";
             } else {
-                key = SSID + KeyMgmt.strings[KeyMgmt.NONE];
+                key = SSID + "-" + KeyMgmt.strings[KeyMgmt.NONE];
             }
             mCachedConfigKey = key;
         }
@@ -1481,14 +1486,13 @@ public class WifiConfiguration implements Parcelable {
 
         if (result.capabilities.contains("WEP")) {
             key = key + "-WEP";
-        }
-
-        if (result.capabilities.contains("PSK")) {
+        } else if (result.capabilities.contains("PSK")) {
             key = key + "-" + KeyMgmt.strings[KeyMgmt.WPA_PSK];
-        }
-
-        if (result.capabilities.contains("EAP")) {
+        } else if (result.capabilities.contains("EAP") ||
+                   result.capabilities.contains("IEEE8021X")) {
             key = key + "-" + KeyMgmt.strings[KeyMgmt.WPA_EAP];
+        } else {
+            key = key + "-" + KeyMgmt.strings[KeyMgmt.NONE];
         }
 
         return key;
