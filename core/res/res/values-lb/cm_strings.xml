@@ -46,9 +46,9 @@
   <string name="permlab_writeThemes">Aktiven Design änneren</string>
   <string name="permdesc_writeThemesDesc">Erlaabt der App, nei Designen dobäizesetzen an den aktiven Design z\'änneren.</string>
   <string name="permlab_readPhoneBlacklist">Schwaarz Lëscht ausliesen</string>
-  <string name="permdesc_readPhoneBlacklist">Erlaabt der App, Informatiounen iwwer blockéiert Telefonsnummeren fir erakommend Uriff oder Messagen ze liesen.</string>
+  <string name="permdesc_readPhoneBlacklist">Erlaabt der App, Informatiounen iwwer blockéiert Telefonsnummere fir erakommend Uriff oder Messagen ze liesen.</string>
   <string name="permlab_changePhoneBlacklist">Schwaarz Lëscht änneren</string>
-  <string name="permdesc_changePhoneBlacklist">Erlaabt der App, d\'blockéiert Telefonsnummeren fir erakommend Uriff oder Messagen z\'änneren.</string>
+  <string name="permdesc_changePhoneBlacklist">Erlaabt der App, d\'blockéiert Telefonsnummere fir erakommend Uriff oder Messagen z\'änneren.</string>
   <string name="permlab_changePrivacyGuardState">Privatsphärschutz aktivéieren oder desaktivéieren</string>
   <string name="permdesc_changePrivacyGuardState">Erlaabt der App, z\'änneren ob eng aner App mam Privatsphärschutz leeft. Wann eng App mam Privatsphärschutz leeft, huet se keen Accès op perséinlech Date wéi Kontakter, Uruffprotokoller oder Messagen.</string>
   <string name="privacy_guard_notification">Privatsphärschutz aktiv</string>
@@ -86,7 +86,7 @@
   <string name="app_ops_delete_sms">SMS-Messagë läschen</string>
   <string name="app_ops_draw_on_top">Virun aneren Appen ablenden</string>
   <string name="app_ops_get_usage_stats">App-Benotzungsstatistiken ausliesen</string>
-  <string name="app_ops_keep_device_awake">de Rouezoustand desaktivéieren</string>
+  <string name="app_ops_keep_device_awake">de Rouzoustand desaktivéieren</string>
   <string name="app_ops_make_phone_call">en Telefonsuruff maachen</string>
   <string name="app_ops_modify_calendar">de Kalenner änneren</string>
   <string name="app_ops_modify_call_log">d\'Urufflëscht änneren</string>
@@ -101,8 +101,8 @@
   <string name="app_ops_read_call_log">d\'Urufflëscht liesen</string>
   <string name="app_ops_read_clipboard">d\'Tëschenoflag liesen</string>
   <string name="app_ops_read_contacts">d\'Kontakter liesen</string>
-  <string name="app_ops_read_mms">MMS-Messagen liesen</string>
-  <string name="app_ops_read_sms">SMS-Messagen liesen</string>
+  <string name="app_ops_read_mms">MMS-Messagë liesen</string>
+  <string name="app_ops_read_sms">SMS-Messagë liesen</string>
   <string name="app_ops_receive_sms">en SMS-Message empfänken</string>
   <string name="app_ops_record_audio">Toun ophuelen</string>
   <string name="app_ops_send_mms">en MMS-Message schécken</string>
@@ -133,12 +133,6 @@
   <string name="tethered_notification_multi_device_message"><xliff:g id="count">%1$s</xliff:g> connectéiert Apparater</string>
   <string name="progress_nomediapresent" product="default">Keen eraushuelbaart Medium präsent\u2026</string>
   <string name="storage_uicc">UICC-Späicher</string>
-  <string name="stk_cc_ussd_to_dial">D\'USSD-Ufro gouf an eng DIAL-Ufro ëmgewandelt.</string>
-  <string name="stk_cc_ussd_to_ss">D\'USSD-Ufro gouf an eng SS-Ufro ëmgewandelt.</string>
-  <string name="stk_cc_ussd_to_ussd">D\'USSD-Ufro gouf an eng nei USSD-Ufro ëmgewandelt.</string>
-  <string name="stk_cc_ss_to_dial">D\'SS-Ufro gouf an eng DIAL-Ufro ëmgewandelt.</string>
-  <string name="stk_cc_ss_to_ussd">D\'SS-Ufro gouf an eng USSD-Ufro ëmgewandelt.</string>
-  <string name="stk_cc_ss_to_ss">D\'SS-Ufro gouf an eng nei SS-Ufro ëmgewandelt.</string>
   <string name="China_Mobile">China Mobile</string>
   <string name="China_Unicom">China Unicom</string>
   <string name="China_Telecom">China Telecom</string>
@@ -165,7 +159,7 @@
   <string name="sd_progress_unmounting">SD-Kaart gëtt ofgemellt\u2026</string>
   <string name="sd_progress_erasing">SD-Kaart gëtt geläscht\u2026</string>
   <string name="sd_format_error">Konnt d\'SD-Kaart net läschen.</string>
-  <string name="sd_media_bad_removal">D\'SD-Kaart gouf erausgeholl ier se ofgemellt gouf.</string>
+  <string name="sd_media_bad_removal">D\'SD-Kaart gouf erausgeholl ier s\'ofgemellt gouf.</string>
   <string name="sd_media_checking">D\'SD-Kaart gëtt iwwerpréift.</string>
   <string name="sd_media_removed">D\'SD-Kaart gouf erausgeholl.</string>
   <string name="sd_media_shared">D\'SD-Kaart gëtt momentan vun engem Computer benotzt.</string>
