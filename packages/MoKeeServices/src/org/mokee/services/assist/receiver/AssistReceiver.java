@@ -56,16 +56,13 @@ public class AssistReceiver extends BroadcastReceiver {
             Log.e(TAG, e.toString());
         }
         if (action.equals(ACTION_REBOOT)) {
-            PowerManager mPowerManager = (PowerManager) context
-                    .getSystemService(Context.POWER_SERVICE);
+            PowerManager mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
             mPowerManager.reboot("");
         } else if (action.equals(ACTION_REBOOT_RECOVERY)) {
-            PowerManager mPowerManager = (PowerManager) context
-                    .getSystemService(Context.POWER_SERVICE);
+            PowerManager mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
             mPowerManager.reboot("recovery");
         } else if (action.equals(ACTION_REBOOT_BOOTLOADER)) {
-            PowerManager mPowerManager = (PowerManager) context
-                    .getSystemService(Context.POWER_SERVICE);
+            PowerManager mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
             mPowerManager.reboot("bootloader");
         } else if (action.equals(ACTION_POWEROFF)) {
             Intent command = new Intent(Intent.ACTION_REQUEST_SHUTDOWN);
@@ -73,8 +70,7 @@ public class AssistReceiver extends BroadcastReceiver {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivityAsUser(command, UserHandle.CURRENT);
         } else if (action.equals(ACTION_LOCKSCREEN)) {
-            PowerManager mPowerManager = (PowerManager) context
-                    .getSystemService(Context.POWER_SERVICE);
+            PowerManager mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
             mPowerManager.goToSleep(SystemClock.uptimeMillis());
         }
     }
