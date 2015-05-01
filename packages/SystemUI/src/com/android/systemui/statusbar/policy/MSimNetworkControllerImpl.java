@@ -1541,7 +1541,7 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
 
         public boolean showEmptySimIcons() {
             return Settings.System.getIntForUser(mResolver,
-                    Settings.System.STATUS_BAR_MSIM_SHOW_EMPTY_ICONS, 1, mUserId) != 0;
+                    Settings.System.STATUS_BAR_MSIM_SHOW_EMPTY_ICONS, 0, mUserId) != 0;
         }
 
         public void register() {
