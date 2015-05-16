@@ -61,7 +61,6 @@
   <string name="quick_settings_usb_tether_label">USB tethering</string>
   <string name="quick_settings_heads_up_label">Flytende notifikasjoner</string>
   <string name="quick_settings_ambient_display_label">Ambient skjerm</string>
-  <string name="quick_settings_custom_tile_detail_title">Egendefinerte fliser</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">Sveip til høyre for %1$s</string>
   <string name="right_shortcut_hint">Sveip til venstre for %1$s</string>
@@ -93,5 +92,4 @@
   <string name="screen_pinning_description_no_navbar">Dette holder den i syne inntill du løsner den. Trykk og hold på tilbake knappen for å løsne.</string>
   <string name="interruption_level_silent">Stille</string>
   <string name="zen_silent_with_warning">Ingen avbrudd, unntatt alarmer.</string>
-  <string name="quick_settings_remove">Fjern flis</string>
 </resources>

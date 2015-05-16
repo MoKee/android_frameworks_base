@@ -61,7 +61,6 @@
   <string name="quick_settings_usb_tether_label">USB-модем</string>
   <string name="quick_settings_heads_up_label">Спливаючі сповіщення</string>
   <string name="quick_settings_ambient_display_label">Ambient display</string>
-  <string name="quick_settings_custom_tile_detail_title">Власна плитка</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">Проведіть вправо для %1$s</string>
   <string name="right_shortcut_hint">Проведіть вліво для %1$s</string>
@@ -93,5 +92,4 @@
   <string name="screen_pinning_description_no_navbar">Триматиме це перед Вами, доки не відкріпите. Торкніться й утримуйте кнопку «Назад», щоб відкріпити.</string>
   <string name="interruption_level_silent">Тихий</string>
   <string name="zen_silent_with_warning">Жодних переривань, за винятком будильника.</string>
-  <string name="quick_settings_remove">Видалити плитку</string>
 </resources>
