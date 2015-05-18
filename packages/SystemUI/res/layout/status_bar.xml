@@ -70,6 +70,7 @@
                     android:layout_gravity="center_vertical"
                     android:textAppearance="@style/TextAppearance.StatusBar.CarrierLabel"
                     android:singleLine="true"
+                    android:paddingEnd="6dip"
                     android:ellipsize="end"
                     android:visibility="gone"
                     />
