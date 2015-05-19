@@ -174,9 +174,7 @@ public class CarrierText extends TextView {
                         getContext().getText(R.string.keyguard_missing_sim_message_short), text);
             }
         }
-        String customCarrierLabel = Settings.System.getStringForUser(getContext().getContentResolver(),
-                Settings.System.CUSTOM_CARRIER_LABEL, UserHandle.USER_CURRENT);
-        setText(!TextUtils.isEmpty(customCarrierLabel) ? customCarrierLabel : displayText);
+        setText(displayText);
     }
 
     @Override
@@ -229,7 +227,11 @@ public class CarrierText extends TextView {
                 " plmn=" + plmn + " spn=" + spn);
         switch (status) {
             case Normal:
-                carrierText = concatenate(plmn, spn);
+                String mCustomCarrierLabel = Settings.System.getStringForUser(getContext().getContentResolver(),
+                        Settings.System.CUSTOM_CARRIER_LABEL, UserHandle.USER_CURRENT);
+                boolean mAirplaneMode = (Settings.Global.getInt(getContext().getContentResolver(),
+                        Settings.Global.AIRPLANE_MODE_ON, 0) == 1);
+                carrierText = !TextUtils.isEmpty(mCustomCarrierLabel) && !mAirplaneMode ? mCustomCarrierLabel : concatenate(plmn, spn);
                 break;
 
             case SimNotReady:

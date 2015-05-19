@@ -48,7 +48,7 @@
 
         <Button
             android:id="@+id/usage_carrier_text"
-            style="@style/QSBorderlessButton"
+            style="@style/QSUsageCarrierBorderlessButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

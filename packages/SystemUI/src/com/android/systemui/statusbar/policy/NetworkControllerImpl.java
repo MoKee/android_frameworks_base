@@ -583,9 +583,11 @@ public class NetworkControllerImpl extends BroadcastReceiver
             refreshViews();
         } else if (action.equals(ConnectivityManager.CONNECTIVITY_ACTION_IMMEDIATE) ||
                  action.equals(ConnectivityManager.INET_CONDITION_ACTION)) {
+                    
             updateConnectivity(intent);
             refreshViews();
         } else if (action.equals(Intent.ACTION_CUSTOM_CARRIER_LABEL_CHANGED)) {
+            updateNetworkName(mShowSpn, mSpn , mShowPlmn , mPlmn);
             refreshViews();
         } else if (action.equals(Intent.ACTION_CONFIGURATION_CHANGED)) {
             //parse the string to current language string in public resources
@@ -598,7 +600,7 @@ public class NetworkControllerImpl extends BroadcastReceiver
                     mPlmn = getLocaleString(mOriginalTelephonyPlmn);
                 }
             }
-            updateNetworkName( mShowSpn, mSpn , mShowPlmn , mPlmn);
+            updateNetworkName(mShowSpn, mSpn , mShowPlmn , mPlmn);
             refreshLocale();
             refreshViews();
         } else if (action.equals(Intent.ACTION_LOCALE_CHANGED)) {
@@ -1060,7 +1062,9 @@ public class NetworkControllerImpl extends BroadcastReceiver
             }
         }
         if (something) {
-            mNetworkName = str.toString();
+            String mCustomCarrierLabel = Settings.System.getStringForUser(mContext.getContentResolver(),
+                    Settings.System.CUSTOM_CARRIER_LABEL, UserHandle.USER_CURRENT);
+            mNetworkName = !TextUtils.isEmpty(mCustomCarrierLabel) && !mAirplaneMode ? mCustomCarrierLabel : str.toString();
         } else {
             mNetworkName = mNetworkNameDefault;
         }
@@ -1285,9 +1289,6 @@ public class NetworkControllerImpl extends BroadcastReceiver
         int N;
         final boolean emergencyOnly = isEmergencyOnly();
 
-        final String customCarrierLabel = Settings.System.getStringForUser(context.getContentResolver(),
-                Settings.System.CUSTOM_CARRIER_LABEL, UserHandle.USER_CURRENT);
-
         if (!mHasMobileDataFeature) {
             mDataSignalIconId = mPhoneSignalIconId = 0;
             mQSPhoneSignalIconId = 0;
@@ -1431,11 +1432,6 @@ public class NetworkControllerImpl extends BroadcastReceiver
             mQSPhoneSignalIconId = mDemoMobileLevel < 0 ? R.drawable.ic_qs_signal_no_signal :
                     TelephonyIcons.QS_TELEPHONY_SIGNAL_STRENGTH[mDemoInetCondition][mDemoMobileLevel];
             mQSDataTypeIconId = mDemoQSDataTypeIconId;
-        }
-
-        if (!TextUtils.isEmpty(customCarrierLabel)) {
-            combinedLabel = customCarrierLabel;
-            mobileLabel = customCarrierLabel;
         }
 
         if (!mAirplaneMode && mSimState == IccCardConstants.State.ABSENT) {

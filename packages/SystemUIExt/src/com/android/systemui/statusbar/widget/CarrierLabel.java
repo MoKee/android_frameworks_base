@@ -20,7 +20,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.mokee.utils.MoKeeUtils;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
@@ -31,7 +30,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.android.internal.telephony.TelephonyIntents;
-import com.android.systemui.utils.SpnOverride;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -43,7 +41,6 @@ public class CarrierLabel extends TextView {
 
     private Context mContext;
     private boolean mAttached;
-    private static boolean isCN;
 
     public CarrierLabel(Context context) {
         this(context, null);
@@ -56,13 +53,12 @@ public class CarrierLabel extends TextView {
     public CarrierLabel(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         mContext = context;
-        updateNetworkName(true, null, false, null);
+        updateNetworkName(false, null, false, null);
     }
 
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-
         if (!mAttached) {
             mAttached = true;
             IntentFilter filter = new IntentFilter();
@@ -91,7 +87,6 @@ public class CarrierLabel extends TextView {
                         intent.getStringExtra(TelephonyIntents.EXTRA_SPN),
                         intent.getBooleanExtra(TelephonyIntents.EXTRA_SHOW_PLMN, false),
                         intent.getStringExtra(TelephonyIntents.EXTRA_PLMN));
-                isCN = MoKeeUtils.isSupportLanguage(false);
             }
         }
     };
@@ -117,22 +112,15 @@ public class CarrierLabel extends TextView {
     }
 
     private String getOperatorName() {
-        String operatorName = getContext().getString(R.string.quick_settings_wifi_no_network);
-        TelephonyManager telephonyManager = (TelephonyManager) getContext().getSystemService(
-                Context.TELEPHONY_SERVICE);
-        if (isCN) {
-            String operator = telephonyManager.getNetworkOperator();
-            if (TextUtils.isEmpty(operator)) {
-                operator = telephonyManager.getSimOperator();
-            }
-            SpnOverride mSpnOverride = new SpnOverride();
-            operatorName = mSpnOverride.getSpn(operator);
-        } else {
-            operatorName = telephonyManager.getNetworkOperatorName();
-        }
+        TelephonyManager telephonyManager = (TelephonyManager) getContext().getSystemService(Context.TELEPHONY_SERVICE);
+        String operatorName = telephonyManager.getNetworkOperatorName();
         if (TextUtils.isEmpty(operatorName)) {
             operatorName = telephonyManager.getSimOperatorName();
+            if (TextUtils.isEmpty(operatorName)) {
+                operatorName = getContext().getString(R.string.quick_settings_wifi_no_network);
+            }
         }
         return operatorName.toUpperCase();
     }
+
 }
