@@ -2135,9 +2135,7 @@ public abstract class BaseStatusBar extends SystemUI implements
                 || (notification.defaults & Notification.DEFAULT_VIBRATE) != 0
                 || notification.sound != null
                 || notification.vibrate != null;
-        String key = sbn.getKey();
-        boolean wasHeadsUp = isHeadsUp(key);
-        boolean isHighPriority = wasHeadsUp ? true : sbn.getScore() >= INTERRUPTION_THRESHOLD;
+        boolean isHighPriority = sbn.getScore() >= INTERRUPTION_THRESHOLD;
         boolean isFullscreen = notification.fullScreenIntent != null;
         boolean hasTicker = mHeadsUpTicker && !TextUtils.isEmpty(notification.tickerText);
         boolean isAllowed = notification.extras.getInt(Notification.EXTRA_AS_HEADS_UP,
