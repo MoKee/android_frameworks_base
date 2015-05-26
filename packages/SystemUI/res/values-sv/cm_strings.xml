@@ -69,5 +69,4 @@
   <string name="lockscreen_target_empty">Tom</string>
   <string name="interruption_level_silent">Ljudlös</string>
   <string name="zen_silent_with_warning">Inga avbrott, utom alarm.</string>
-  <string name="quick_settings_remove">Ta bort bricka</string>
 </resources>

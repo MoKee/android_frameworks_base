@@ -61,7 +61,6 @@
   <string name="quick_settings_usb_tether_label">USB повезивање</string>
   <string name="quick_settings_heads_up_label">Искачуће поруке</string>
   <string name="quick_settings_ambient_display_label">Амбијент приказ</string>
-  <string name="quick_settings_custom_tile_detail_title">Промени назив</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">Превуци десно за %1$s</string>
   <string name="right_shortcut_hint">Превуци лево за %1$s</string>
@@ -93,5 +92,4 @@
   <string name="screen_pinning_description_no_navbar">Ово задржава преглед док га не уклониш. Додирни и држи дугме за назад да уклониш.</string>
   <string name="interruption_level_silent">Тишина</string>
   <string name="zen_silent_with_warning">Нема узнемиравања, осим аларма.</string>
-  <string name="quick_settings_remove">Уклони назив</string>
 </resources>
