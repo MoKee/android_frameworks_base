@@ -18,6 +18,5 @@
 
 make
 ./generateData Mps -c mokee-phonelocation.txt
-cp mokee-phonelocation.dat $(dirname $(dirname $(pwd)))/private/phonelocation/mokee-phonelocation.dat
+mv mokee-phonelocation.dat $(dirname $(dirname $(pwd)))/private/phonelocation/mokee-phonelocation.dat
 make clean
-rm mokee-phonelocation.dat
