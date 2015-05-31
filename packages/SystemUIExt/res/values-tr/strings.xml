@@ -17,7 +17,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="quick_settings_has_data_usage">Veri kullanımı</string>
   <string name="quick_settings_remaining_data_usage">"Geriye kalan verinin <xliff:g id="DATA_REID">%s</xliff:g>"</string>
-  <string name="quick_settings_data_Package_Set">Lütfen  bir veri paketi tanımlayın</string>
   <string name="quick_settings_data_Package">"Veri sınırının <xliff:g id="DATA_PACKAGE">%s</xliff:g>"</string>
   <string name="quick_settings_data_Package_limit">"<xliff:g id="DATA_LIMIT">%s</xliff:g> aşıldı"</string>
 </resources>

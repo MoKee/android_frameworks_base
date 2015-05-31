@@ -17,7 +17,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="quick_settings_has_data_usage">데이터 사용</string>
   <string name="quick_settings_remaining_data_usage">"나머지 데이터 공간<xliff:g id="DATA_REID">%s </xliff:g>"</string>
-  <string name="quick_settings_data_Package_Set">데이터 패키지를 설정 하십시오</string>
   <string name="quick_settings_data_Package">"<xliff:g id="DATA_PACKAGE">%s </xliff:g>의 데이터 제한"</string>
   <string name="quick_settings_data_Package_limit">"<xliff:g id="DATA_LIMIT">%s </xliff:g> 초과"</string>
 </resources>

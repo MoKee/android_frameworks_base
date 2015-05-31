@@ -17,7 +17,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="quick_settings_has_data_usage">數據使用</string>
   <string name="quick_settings_remaining_data_usage">"<xliff:g id="DATA_REID">%s </xliff:g> 的剩餘的資料使用量"</string>
-  <string name="quick_settings_data_Package_Set">請設置資料數據包</string>
   <string name="quick_settings_data_Package">"<xliff:g id="DATA_PACKAGE">%s </xliff:g> 的資料使用限制"</string>
   <string name="quick_settings_data_Package_limit">"<xliff:g id="DATA_LIMIT">%s </xliff:g> 超過"</string>
 </resources>
