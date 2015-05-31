@@ -66,7 +66,6 @@
   <string name="quick_settings_heads_up_label">Bildirim pencereleri</string>
   <string name="quick_settings_ambient_display_label">Bildirim ekranı</string>
   <string name="quick_settings_sync_label">Eşitleme</string>
-  <string name="quick_settings_custom_tile_detail_title">Özel kareler</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">%1$s için sağa kaydırın</string>
   <string name="right_shortcut_hint">%1$s için sola kaydırın</string>

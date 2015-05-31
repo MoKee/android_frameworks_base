@@ -66,7 +66,6 @@
   <string name="quick_settings_heads_up_label">Heads Up</string>
   <string name="quick_settings_ambient_display_label">Ambient display</string>
   <string name="quick_settings_sync_label">Sincronizzazione</string>
-  <string name="quick_settings_custom_tile_detail_title">Tile personalizzato</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">Scorri a destra per %1$s</string>
   <string name="right_shortcut_hint">Scorri a sinistra per %1$s</string>
@@ -98,5 +97,4 @@
   <string name="screen_pinning_description_no_navbar">Tienilo in vista fino a quando non sblocchi. Tieni premuto il tasto Indietro per sbloccare.</string>
   <string name="interruption_level_silent">Silenzioso</string>
   <string name="zen_silent_with_warning">Senza interruzioni, tranne sveglie.</string>
-  <string name="quick_settings_remove">Rimuovi tile</string>
 </resources>
