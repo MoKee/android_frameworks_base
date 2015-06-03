@@ -1,2 +1,1 @@
--dontwarn com.google.common.**
--keep class com.google.common.** {*;}
+
