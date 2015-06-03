@@ -16,12 +16,12 @@
 
 package org.mokee.services.assist.utils;
 
+import android.util.Base64;
+
 import java.security.KeyFactory;
 import java.security.PublicKey;
 import java.security.Signature;
 import java.security.spec.X509EncodedKeySpec;
-
-import com.google.common.io.BaseEncoding;
 
 public class RSAEncryption {
     private static String pub_key = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvlIvTfzmkZFq5wCT2kztGbxYFzHnYrynuLZFbcUAk4weIIDlPs95YbesaAUMolaJOWq6VZ7hoydnpUGmRqb6Ygy+de1xQaPzIKXn+8f1GwRo2JvipHm/T/SPc/OcJommeI7KZNGjH88z7dqFbuGIPZIZh/lyJO1CZcM0uddgCnQIDAQAB";
@@ -32,8 +32,7 @@ public class RSAEncryption {
 
     public boolean verify(byte[] data, byte[] sign) throws Exception {
         KeyFactory keyFactory = KeyFactory.getInstance(RSA_KEY_ALGORITHM);
-        X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(BaseEncoding.base64().decode(
-                pub_key));
+        X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(Base64.decode(pub_key, Base64.DEFAULT));
         PublicKey pubKey = keyFactory.generatePublic(x509KeySpec);
         Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);
         signature.initVerify(pubKey);
@@ -44,6 +43,6 @@ public class RSAEncryption {
     public static boolean verify(String signature) throws Exception {
         RSAEncryption das = new RSAEncryption();
         String comment = "Prevent abuse of our interface.";
-        return das.verify(comment.getBytes(), BaseEncoding.base64().decode(signature));
+        return das.verify(comment.getBytes(), Base64.decode(signature, Base64.DEFAULT));
     }
 }
