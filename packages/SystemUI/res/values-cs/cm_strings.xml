@@ -153,7 +153,4 @@
   <string name="zen_silent_with_warning">Žádná přerušení s výjimkou budíků.</string>
   <string name="quick_settings_remove">Odebrat dlaždici</string>
   <string name="quick_settings_dynamic_tile_detail_title">Dynamické dlaždice</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Další budík</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Výběr IME</string>
-  <string name="dynamic_qs_tile_su_label">Root přístup</string>
 </resources>
