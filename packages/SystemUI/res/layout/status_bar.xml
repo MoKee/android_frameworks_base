@@ -63,7 +63,7 @@
                 android:layout_height="match_parent"
                 >
 
-                <com.android.systemui.statusbar.widget.CarrierLabel
+                <com.android.keyguard.CarrierText
                     android:id="@+id/status_bar_carrier_label"
                     android:textAppearance="@style/TextAppearance.StatusBar.CarrierLabel"
                     android:layout_width="wrap_content"
