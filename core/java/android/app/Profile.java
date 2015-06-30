@@ -214,7 +214,8 @@ public final class Profile implements Parcelable, Comparable {
             return type == TriggerType.WIFI ? "ssid" : "address";
         }
 
-        public static final Parcelable.Creator<ProfileTrigger> CREATOR = new Parcelable.Creator<ProfileTrigger>() {
+        public static final Parcelable.Creator<ProfileTrigger> CREATOR
+                = new Parcelable.Creator<ProfileTrigger>() {
             public ProfileTrigger createFromParcel(Parcel in) {
                 return new ProfileTrigger(in);
             }
@@ -738,7 +739,8 @@ public final class Profile implements Parcelable, Comparable {
                     profile.setStatusBarIndicator(xpp.nextText().equals("yes"));
                 }
                 if (name.equals("profiletype")) {
-                    profile.setProfileType(xpp.nextText().equals("toggle") ? TOGGLE_TYPE : CONDITIONAL_TYPE);
+                    profile.setProfileType(xpp.nextText().equals("toggle")
+                            ? TOGGLE_TYPE : CONDITIONAL_TYPE);
                 }
                 if (name.equals("ringModeDescriptor")) {
                     RingModeSettings smd = RingModeSettings.fromXml(xpp, context);

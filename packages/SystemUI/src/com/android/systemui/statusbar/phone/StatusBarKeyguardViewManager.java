@@ -16,11 +16,15 @@
 
 package com.android.systemui.statusbar.phone;
 
+import android.app.Profile;
+import android.app.ProfileManager;
+import android.app.admin.DevicePolicyManager;
 import android.content.ComponentCallbacks2;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.SystemClock;
+import android.util.Log;
 import android.util.Slog;
 import android.view.KeyEvent;
 import android.view.View;
@@ -434,7 +438,30 @@ public class StatusBarKeyguardViewManager {
     }
 
     public boolean isSecure(int userId) {
-        return mBouncer.isSecure() || mLockPatternUtils.isSecure(userId);
+        return mBouncer.isSecure() || (mLockPatternUtils.isSecure(userId)
+                && getActiveProfileLockMode(userId) != Profile.LockMode.DISABLE);
+    }
+
+    public int getActiveProfileLockMode(int userId) {
+        // Check device policy
+        DevicePolicyManager dpm = getDevicePolicyManager();
+        if (dpm.requireSecureKeyguard(userId)) {
+            // Always enforce lock screen
+            return Profile.LockMode.DEFAULT;
+        }
+		final ProfileManager mProfileManager = (ProfileManager) mContext.getSystemService(Context.PROFILE_SERVICE);
+        final Profile profile = mProfileManager.getActiveProfile();
+        return profile == null ? Profile.LockMode.DEFAULT : profile.getScreenLockMode();
+    }
+
+    public DevicePolicyManager getDevicePolicyManager() {
+        final DevicePolicyManager devicePolicyManager =
+                (DevicePolicyManager) mContext.getSystemService(Context.DEVICE_POLICY_SERVICE);
+        if (devicePolicyManager == null) {
+            Log.e(TAG, "Can't get DevicePolicyManagerService: is it running?",
+                    new IllegalStateException("Stack trace:"));
+        }
+        return devicePolicyManager;
     }
 
     public boolean isInputRestricted() {

@@ -17,14 +17,13 @@
 package com.android.server;
 
 import android.app.Profile;
+import android.app.ProfileManager;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothProfile;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
-import android.media.AudioManager;
 import android.net.wifi.WifiManager;
 import android.net.wifi.WifiSsid;
 import android.net.wifi.WifiInfo;
@@ -38,7 +37,7 @@ public class ProfileTriggerHelper extends BroadcastReceiver {
     private static final String TAG = "ProfileTriggerHelper";
 
     private Context mContext;
-    private ProfileManagerService mService;
+    private ProfileManager mManager;
 
     private WifiManager mWifiManager;
     private String mLastConnectedSSID;
@@ -53,9 +52,9 @@ public class ProfileTriggerHelper extends BroadcastReceiver {
         }
     };
 
-    public ProfileTriggerHelper(Context context, ProfileManagerService service) {
+    public ProfileTriggerHelper(Context context, ProfileManager manager) {
         mContext = context;
-        mService = service;
+        mManager = manager;
 
         mWifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
         mLastConnectedSSID = getActiveSSID();
@@ -121,16 +120,16 @@ public class ProfileTriggerHelper extends BroadcastReceiver {
     }
 
     private void checkTriggers(int type, String id, int newState) {
-        for (Profile p : mService.getProfileList()) {
+        /*for (Profile p : mManager.getProfileList()) {
             if (newState != p.getTrigger(type, id)) {
                 continue;
             }
 
-            UUID currentProfileUuid = mService.getActiveProfile().getUuid();
+            UUID currentProfileUuid = mManager.getActiveProfile().getUuid();
             if (!currentProfileUuid.equals(p.getUuid())) {
-                mService.setActiveProfile(p, true);
+                //mManager.setActiveProfile(p, true);
             }
-        }
+        }*/
     }
 
     private String getActiveSSID() {

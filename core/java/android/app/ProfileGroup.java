@@ -16,6 +16,8 @@
 
 package android.app;
 
+import android.app.Notification;
+import android.app.NotificationGroup;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -55,7 +57,8 @@ public final class ProfileGroup implements Parcelable {
     private boolean mDirty;
 
     /** @hide */
-    public static final Parcelable.Creator<ProfileGroup> CREATOR = new Parcelable.Creator<ProfileGroup>() {
+    public static final Parcelable.Creator<ProfileGroup> CREATOR
+            = new Parcelable.Creator<ProfileGroup>() {
         public ProfileGroup createFromParcel(Parcel in) {
             return new ProfileGroup(in);
         }
