@@ -331,4 +331,7 @@
 
     <!-- Quick Settings tile defaults -->
     <java-symbol type="string" name="config_defaultQuickSettingsTiles" />
+
+    <!-- Fingerprint default name -->
+    <java-symbol type="string" name="fingerprint_default_name" />
 </resources>
