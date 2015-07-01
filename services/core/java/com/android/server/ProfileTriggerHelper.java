@@ -17,7 +17,6 @@
 package com.android.server;
 
 import android.app.Profile;
-import android.app.ProfileManager;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -33,11 +32,14 @@ import android.util.Log;
 
 import java.util.UUID;
 
+/**
+ * @hide
+ */
 public class ProfileTriggerHelper extends BroadcastReceiver {
     private static final String TAG = "ProfileTriggerHelper";
 
     private Context mContext;
-    private ProfileManager mManager;
+    private ProfileManagerService mManagerService;
 
     private WifiManager mWifiManager;
     private String mLastConnectedSSID;
@@ -52,9 +54,9 @@ public class ProfileTriggerHelper extends BroadcastReceiver {
         }
     };
 
-    public ProfileTriggerHelper(Context context, ProfileManager manager) {
+    public ProfileTriggerHelper(Context context, ProfileManagerService profileManagerService) {
         mContext = context;
-        mManager = manager;
+        mManagerService = profileManagerService;
 
         mWifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
         mLastConnectedSSID = getActiveSSID();
@@ -120,16 +122,16 @@ public class ProfileTriggerHelper extends BroadcastReceiver {
     }
 
     private void checkTriggers(int type, String id, int newState) {
-        /*for (Profile p : mManager.getProfileList()) {
+        for (Profile p : mManagerService.getProfileList()) {
             if (newState != p.getTrigger(type, id)) {
                 continue;
             }
 
-            UUID currentProfileUuid = mManager.getActiveProfile().getUuid();
+            UUID currentProfileUuid = mManagerService.getActiveProfileInternal().getUuid();
             if (!currentProfileUuid.equals(p.getUuid())) {
-                //mManager.setActiveProfile(p, true);
+                mManagerService.setActiveProfileInternal(p, true);
             }
-        }*/
+        }
     }
 
     private String getActiveSSID() {

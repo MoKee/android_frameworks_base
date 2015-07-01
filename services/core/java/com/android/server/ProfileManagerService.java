@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014 CyanogenMod Project
+ * Copyright (c) 2011-2015 CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,6 +77,7 @@ public class ProfileManagerService extends IProfileManager.Stub {
     private Context mContext;
     private boolean mDirty;
     private BackupManager mBackupManager;
+    private ProfileTriggerHelper mTriggerHelper;
 
     private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
         @Override
@@ -113,6 +114,7 @@ public class ProfileManagerService extends IProfileManager.Stub {
     }
 
     private void initialize(boolean skipFile) {
+        mTriggerHelper = new ProfileTriggerHelper(mContext, this);
         mProfiles = new HashMap<UUID, Profile>();
         mProfileNames = new HashMap<String, UUID>();
         mGroups = new HashMap<UUID, NotificationGroup>();
@@ -208,7 +210,7 @@ public class ProfileManagerService extends IProfileManager.Stub {
     @Override
     public Profile getProfile(ParcelUuid profileParcelUuid) {
         UUID profileUuid = profileParcelUuid.getUuid();
-        return internalGetProfile(profileUuid);
+        return getProfileInternal(profileUuid);
     }
 
     @Override
@@ -220,7 +222,7 @@ public class ProfileManagerService extends IProfileManager.Stub {
 
     @Override
     public Profile getActiveProfile() {
-        return mActiveProfile;
+        return getActiveProfileInternal();
     }
 
     @Override
@@ -380,7 +382,7 @@ public class ProfileManagerService extends IProfileManager.Stub {
         profile.addProfileGroup(new ProfileGroup(group.getUuid(), defaultGroup));
     }
 
-    private Profile internalGetProfile(UUID profileUuid) {
+    private Profile getProfileInternal(UUID profileUuid) {
         // use primary UUID first
         if (mProfiles.containsKey(profileUuid)) {
             return mProfiles.get(profileUuid);
@@ -540,6 +542,10 @@ public class ProfileManagerService extends IProfileManager.Stub {
         if (LOCAL_LOGV) Log.v(TAG, "setActiveProfile(UUID, boolean) found UUID in mProfiles.");
         setActiveProfileInternal(mProfiles.get(profileUuid), doInit);
         return true;
+    }
+
+    /* package */ Profile getActiveProfileInternal() {
+        return mActiveProfile;
     }
 
     /* package */ void setActiveProfileInternal(Profile newActiveProfile, boolean doInit) {
