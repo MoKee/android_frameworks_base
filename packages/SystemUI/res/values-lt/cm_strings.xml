@@ -120,7 +120,6 @@
   <string name="quick_settings_heads_up_label">Iššokantys pranešimai</string>
   <string name="quick_settings_ambient_display_label">Ambient display</string>
   <string name="quick_settings_sync_label">Sinchronizavimas</string>
-  <string name="quick_settings_custom_tile_detail_title">Tinkinta plytelė</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">Braukite į dešinę, kad %1$s</string>
   <string name="right_shortcut_hint">Braukite į kairę, kad %1$s</string>
@@ -154,7 +153,4 @@
   <string name="zen_silent_with_warning">Be pertrūkių, išskyrus signalus.</string>
   <string name="quick_settings_remove">Pašalinti plytelę</string>
   <string name="quick_settings_dynamic_tile_detail_title">Dinaminė plytelė</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Kitas signalas</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Įvesties metodas</string>
-  <string name="dynamic_qs_tile_su_label">Prieiga prie „Root“</string>
 </resources>

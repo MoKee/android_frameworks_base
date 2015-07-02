@@ -153,7 +153,4 @@
   <string name="zen_silent_with_warning">Neniu interrompo, krom alarmoj.</string>
   <string name="quick_settings_remove">Forigi kahelon</string>
   <string name="quick_settings_dynamic_tile_detail_title">Dinamika kahelo</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Venonta alarmo</string>
-  <string name="dynamic_qs_tile_ime_selector_label">IME elektilo</string>
-  <string name="dynamic_qs_tile_su_label">Radikuzanta atingo</string>
 </resources>

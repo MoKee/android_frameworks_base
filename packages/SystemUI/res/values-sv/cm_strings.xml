@@ -116,7 +116,6 @@
   <string name="quick_settings_lte_label">LTE</string>
   <string name="quick_settings_screen_timeout_detail_title">Skärmtidsgräns</string>
   <string name="quick_settings_sync_label">Synk</string>
-  <string name="quick_settings_custom_tile_detail_title">Anpassad bricka</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="right_shortcut_hint">Svep vänster för %1$s</string>
   <string name="navbar_dialog_title">Välj åtgärd att tilldela</string>
@@ -148,7 +147,4 @@
   <string name="zen_silent_with_warning">Inga avbrott, utom alarm.</string>
   <string name="quick_settings_remove">Ta bort bricka</string>
   <string name="quick_settings_dynamic_tile_detail_title">Dynamiska bricka</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Nästa alarm</string>
-  <string name="dynamic_qs_tile_ime_selector_label">IME-väljare</string>
-  <string name="dynamic_qs_tile_su_label">Root-åtkomst</string>
 </resources>
