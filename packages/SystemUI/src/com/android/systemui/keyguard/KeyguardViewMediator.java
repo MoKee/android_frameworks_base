@@ -469,11 +469,17 @@ public class KeyguardViewMediator extends SystemUI {
         }
 
         public void onFingerprintRecognized(int userId) {
-            if (mStatusBarKeyguardViewManager.isBouncerShowing()) {
-                mViewMediatorCallback.keyguardDone(true);
-            }
+            mViewMediatorCallback.keyguardDone(true);
         };
 
+        @Override
+        public void onFingerprintAttemptFailed() {
+            if (mUpdateMonitor.isMaxFingerprintAttemptsReached()
+                    && !mStatusBarKeyguardViewManager.isBouncerShowing()) {
+                mStatusBarKeyguardViewManager.showBouncerHideNotifications();
+            }
+            userActivity();
+        }
     };
 
     ViewMediatorCallback mViewMediatorCallback = new ViewMediatorCallback() {
@@ -1326,6 +1332,7 @@ public class KeyguardViewMediator extends SystemUI {
             mUpdateMonitor.clearFailedUnlockAttempts();
         }
         mUpdateMonitor.clearFingerprintRecognized();
+        mUpdateMonitor.stopAuthenticatingFingerprint();
 
         if (mExitSecureCallback != null) {
             try {
