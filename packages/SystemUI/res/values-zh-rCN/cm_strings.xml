@@ -120,6 +120,7 @@
   <string name="quick_settings_heads_up_label">浮动通知</string>
   <string name="quick_settings_ambient_display_label">环境显示</string>
   <string name="quick_settings_sync_label">同步</string>
+  <string name="quick_settings_custom_tile_detail_title">自定义瓷片</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">向右滑动以%1$s</string>
   <string name="right_shortcut_hint">向左滑动以%1$s</string>
@@ -151,4 +152,9 @@
   <string name="screen_pinning_description_no_navbar">这将会固定显示此屏幕，直到您取消固定为止。触摸并按住返回键即可取消固定。</string>
   <string name="interruption_level_silent">静音</string>
   <string name="zen_silent_with_warning">禁止打扰，闹钟除外。</string>
+  <string name="quick_settings_remove">移除瓷片</string>
+  <string name="quick_settings_dynamic_tile_detail_title">动态按钮</string>
+  <string name="dynamic_qs_tile_next_alarm_label">下一个闹铃</string>
+  <string name="dynamic_qs_tile_ime_selector_label">输入法选择器</string>
+  <string name="dynamic_qs_tile_su_label">Root 授权</string>
 </resources>
