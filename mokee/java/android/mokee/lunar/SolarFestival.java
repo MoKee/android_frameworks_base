@@ -19,19 +19,14 @@ package android.mokee.lunar;
 import android.content.res.Resources;
 
 import com.android.internal.R;
+import com.mokee.cloud.calendar.ChineseCalendarUtils;
 
-public class SolarHoliDay {
+public class SolarFestival {
 
-    public static String getSolarHoliDay(int currentMonth, int currentDayForMonth) {
-        Resources res = Resources.getSystem();
-        String num_date = String.format("%02d", currentMonth + 1) + "" + String.format("%02d", currentDayForMonth);
-        String[] solarHolidayArray = res.getStringArray(com.android.internal.R.array.solar_holiday);
-        for(int i = 0; i < solarHolidayArray.length; i++) {
-            String[] solarHolidayDateStr = solarHolidayArray[i].split(" ");
-            if (solarHolidayDateStr[0].equals(num_date)) {
-                return solarHolidayDateStr[1];
-            }
-        }
-        return "";
+    public static String getSolarFestivalInfo(int currentMonth, int currentDayForMonth) {
+        String[] array = Resources.getSystem().getStringArray(
+                com.android.internal.R.array.solar_festival);
+        return ChineseCalendarUtils.getSolarFestivalInfoFromArray(currentMonth, currentDayForMonth,
+                array);
     }
 }

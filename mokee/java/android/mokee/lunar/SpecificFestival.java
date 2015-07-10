@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 - 2015 The MoKee OpenSource Project
+ * Copyright (C) 2015 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,11 +21,10 @@ import android.content.res.Resources;
 import com.android.internal.R;
 import com.mokee.cloud.calendar.ChineseCalendarUtils;
 
-public class LunarFestival {
+public class SpecificFestival {
 
-    public static String getLunarFestivalInfo(String chinadate, Lunar lunar) {
-        String[] array = Resources.getSystem().getStringArray(
-                com.android.internal.R.array.lunar_festival);
-        return ChineseCalendarUtils.getLunarFestivalInfoFromArray(chinadate, lunar, array);
+    public static String getSpecificFestivalInfo(int month, int dayOfWeek, int count) {
+        String[] array = Resources.getSystem().getStringArray(com.android.internal.R.array.specific_festival);
+        return ChineseCalendarUtils.getSpecificFestivalInfoFromArray(month, dayOfWeek, count, array);
     }
 }

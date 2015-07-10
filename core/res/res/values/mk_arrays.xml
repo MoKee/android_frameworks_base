@@ -110,7 +110,7 @@
         <item>冬至</item>
     </string-array>
 
-    <string-array name="solar_holiday">
+    <string-array name="solar_festival">
         <item>0101 元旦节</item>
         <item>0214 情人节</item>
         <item>0308 妇女节</item>
@@ -130,6 +130,12 @@
         <item>1111 光棍节</item>
         <item>1224 平安夜</item>
         <item>1225 圣诞节</item>
+    </string-array>
+
+    <string-array name="specific_festival">
+        <item>5 2 0 母亲节</item>
+        <item>6 3 0 父亲节</item>
+        <item>11 4 4 感恩节</item>
     </string-array>
 
     <string-array name="lunar_festival">

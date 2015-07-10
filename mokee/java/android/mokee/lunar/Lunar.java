@@ -27,14 +27,11 @@ import com.android.internal.R;
 
 public class Lunar {
 
-    private int year;
-    private int month;
-    private int day;
+    private int year, month, day;
     private boolean leap;
     private Resources res;
     private Calendar mCalendar;
-    private String[] chineseNumber;
-    private String[] lunarMonthName;
+    private String[] chineseNumber, lunarMonthName;
     private SimpleDateFormat chineseDateFormat;
 
     private final static long[] lunarInfo = new long[] {
@@ -197,7 +194,7 @@ public class Lunar {
                 + month1 + getChinaDayString(day);
     }
 
-    public boolean isBigMonth(String lunarFestivalStr) {
+    public boolean isBigMonth() {
         if (monthDays(year, month) == 30) {
             return true;
         } else {

@@ -33,7 +33,8 @@
   <java-symbol type="array" name="gan" />
   <java-symbol type="array" name="zhi" />
   <java-symbol type="array" name="solar_term" />
-  <java-symbol type="array" name="solar_holiday" />
+  <java-symbol type="array" name="solar_festival" />
+  <java-symbol type="array" name="specific_festival" />
   <java-symbol type="array" name="lunar_festival" />
   <java-symbol type="array" name="lunar_month_name" />
   <java-symbol type="string" name="status_chushi" />

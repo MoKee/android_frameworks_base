@@ -29,7 +29,7 @@
     <item>狗</item>
     <item>豬</item>
   </string-array>
-  <string-array name="solar_holiday">
+  <string-array name="solar_festival">
     <item>0101 元旦節</item>
     <item>0214 情人節</item>
     <item>0308 婦女節</item>
