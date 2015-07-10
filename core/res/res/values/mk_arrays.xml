@@ -115,16 +115,20 @@
         <item>0214 情人节</item>
         <item>0308 妇女节</item>
         <item>0312 植树节</item>
+        <item>0315 消费日</item>
         <item>0401 愚人节</item>
+        <item>0413 泼水节</item>
         <item>0501 劳动节</item>
         <item>0504 青年节</item>
         <item>0601 儿童节</item>
-        <item>0701 建党节</item>
+        <item>0701 建党日</item>
         <item>0801 建军节</item>
+        <item>0903 抗战胜利</item>
         <item>0910 教师节</item>
         <item>1001 国庆节</item>
         <item>1031 万圣节</item>
         <item>1111 光棍节</item>
+        <item>1224 平安夜</item>
         <item>1225 圣诞节</item>
     </string-array>
 
@@ -133,6 +137,7 @@
         <item>腊月三十 除夕</item>
         <item>正月初一 春节</item>
         <item>正月十五 元宵节</item>
+        <item>二月初二 龙抬头</item>
         <item>五月初五 端午节</item>
         <item>七月初七 七夕节</item>
         <item>七月十五 中元节</item>
