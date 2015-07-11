@@ -50,4 +50,6 @@
   <!-- MoKee PlatLogo -->
   <java-symbol type="drawable" name="mk_platlogo" />
 
+  <java-symbol type="array" name="config_externalMKServices" />
+
 </resources>

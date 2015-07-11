@@ -16,8 +16,6 @@
 
 package com.android.systemui.statusbar.phone;
 
-import android.app.Profile;
-import android.app.ProfileManager;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentCallbacks2;
 import android.content.Context;
@@ -35,6 +33,8 @@ import com.android.internal.policy.IKeyguardShowCallback;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.keyguard.KeyguardUpdateMonitor;
 import com.android.keyguard.ViewMediatorCallback;
+import mokee.app.Profile;
+import mokee.app.ProfileManager;
 
 import static com.android.keyguard.KeyguardHostView.OnDismissAction;
 
@@ -454,8 +454,7 @@ public class StatusBarKeyguardViewManager {
             // Always enforce lock screen
             return Profile.LockMode.DEFAULT;
         }
-		final ProfileManager mProfileManager = (ProfileManager) mContext.getSystemService(Context.PROFILE_SERVICE);
-        final Profile profile = mProfileManager.getActiveProfile();
+        final Profile profile = ProfileManager.getInstance(mContext).getActiveProfile();
         return profile == null ? Profile.LockMode.DEFAULT : profile.getScreenLockMode();
     }
 

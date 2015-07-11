@@ -26,6 +26,9 @@ LOCAL_PRIVILEGED_MODULE := true
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
+LOCAL_STATIC_JAVA_LIBRARIES := \
+    org.mokee.platform.sdk
+
 LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res
 
 include $(BUILD_STATIC_JAVA_LIBRARY)
