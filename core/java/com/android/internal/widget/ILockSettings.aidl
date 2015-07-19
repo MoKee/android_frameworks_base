@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (C) 2015 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +17,8 @@
 
 package com.android.internal.widget;
 
+import android.gesture.Gesture;
+
 /** {@hide} */
 interface ILockSettings {
     void setBoolean(in String key, in boolean value, in int userId);
@@ -27,10 +30,13 @@ interface ILockSettings {
     byte getLockPatternSize(int userId);
     void setLockPattern(in String pattern, int userId);
     boolean checkPattern(in String pattern, int userId);
+    void setLockGesture(in Gesture gesture, int userId);
+    boolean checkGesture(in Gesture gesture, int userId);
     void setLockPassword(in String password, int userId);
     boolean checkPassword(in String password, int userId);
     boolean checkVoldPassword(int userId);
     boolean havePattern(int userId);
+    boolean haveGesture(int userId);
     boolean havePassword(int userId);
     void removeUser(int userId);
 }
