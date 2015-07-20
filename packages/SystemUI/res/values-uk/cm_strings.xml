@@ -153,4 +153,6 @@
   <string name="zen_silent_with_warning">Жодних переривань, за винятком будильника.</string>
   <string name="quick_settings_remove">Видалити плитку</string>
   <string name="quick_settings_dynamic_tile_detail_title">Динамічні плитки</string>
+  <string name="fingerprint_try_again_hint">Будь-ласка, спробуйте зняти відбиток пальця ще раз</string>
+  <string name="accessibility_dock_battery_level">Заряд батареї док-станції <xliff:g id="number">%d</xliff:g> процентів.</string>
 </resources>

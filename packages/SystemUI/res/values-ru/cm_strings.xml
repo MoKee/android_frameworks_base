@@ -143,6 +143,7 @@
   <string name="interruption_level_silent">Без звука</string>
   <string name="zen_silent_with_warning">Никаких уведомлений, кроме будильника.</string>
   <string name="quick_settings_remove">Удалить плитку</string>
+  <string name="quick_settings_dynamic_tile_detail_title">Динамическая плитка</string>
   <string name="fingerprint_try_again_hint">Повторите сканирование</string>
   <string name="accessibility_dock_battery_level">Заряд батареи док-станции <xliff:g id="number">%d</xliff:g> процентов.</string>
 </resources>
