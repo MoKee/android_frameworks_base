@@ -120,7 +120,6 @@
   <string name="quick_settings_heads_up_label">Heads up</string>
   <string name="quick_settings_ambient_display_label">Tampilan Ambient</string>
   <string name="quick_settings_sync_label">Singkron</string>
-  <string name="quick_settings_custom_tile_detail_title">Tile kustom</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">Geser ke kanan untuk %1$s</string>
   <string name="right_shortcut_hint">Geser ke kiri untuk %1$s</string>
@@ -154,9 +153,6 @@
   <string name="zen_silent_with_warning">Tidak ada interupsi, kecuali alarm.</string>
   <string name="quick_settings_remove">Hapus tile</string>
   <string name="quick_settings_dynamic_tile_detail_title">Petak Dinamis</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Alarm selanjutnya</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Pemilih IME</string>
-  <string name="dynamic_qs_tile_su_label">Akses Root</string>
   <string name="fingerprint_try_again_hint">Silahka pindai lagi</string>
   <string name="accessibility_dock_battery_level">Baterai dudukan <xliff:g id="number">%d</xliff:g> persen.</string>
 </resources>

@@ -152,9 +152,6 @@
   <string name="interruption_level_silent">Silencieux</string>
   <string name="zen_silent_with_warning">Aucune interruption, sauf pour les alarmes.</string>
   <string name="quick_settings_dynamic_tile_detail_title">Raccourcis dynamiques</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Prochaine alarme</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Mode de saisie</string>
-  <string name="dynamic_qs_tile_su_label">Accès root</string>
   <string name="fingerprint_try_again_hint">Veuillez lancer une nouvelle recherche</string>
   <string name="accessibility_dock_battery_level">Batterie de la station d\'accueil chargée à <xliff:g id="number">%d</xliff:g> pour cent.</string>
 </resources>
