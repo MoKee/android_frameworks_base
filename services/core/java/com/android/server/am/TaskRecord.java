@@ -79,6 +79,7 @@ final class TaskRecord {
     private static final String ATTR_TASK_AFFILIATION_COLOR = "task_affiliation_color";
     private static final String ATTR_CALLING_UID = "calling_uid";
     private static final String ATTR_CALLING_PACKAGE = "calling_package";
+    private static final String ATTR_IS_LOCKED = "is_locked";
 
     private static final String TASK_THUMBNAIL_SUFFIX = "_task_thumbnail";
 
@@ -106,6 +107,8 @@ final class TaskRecord {
                                 // recents when activity finishes
     boolean askedCompatMode;// Have asked the user about compat mode for this task.
     boolean hasBeenVisible; // Set if any activities in the task have been visible to the user.
+
+    boolean isLocked;       // set when activity locked
 
     String stringName;      // caching of toString() result.
     int userId;             // user for which this task was created
@@ -218,7 +221,7 @@ final class TaskRecord {
             long _lastActiveTime, long lastTimeMoved, boolean neverRelinquishIdentity,
             TaskDescription _lastTaskDescription, int taskAffiliation,
             int prevTaskId, int nextTaskId, int taskAffiliationColor, int callingUid,
-            String callingPackage) {
+            String callingPackage, boolean _isLocked) {
         mService = service;
         mFilename = String.valueOf(_taskId) + TASK_THUMBNAIL_SUFFIX +
                 TaskPersister.IMAGE_EXTENSION;
@@ -253,6 +256,7 @@ final class TaskRecord {
         mNextAffiliateTaskId = nextTaskId;
         mCallingUid = callingUid;
         mCallingPackage = callingPackage;
+        isLocked = _isLocked;
     }
 
     void touchActiveTime() {
@@ -850,6 +854,7 @@ final class TaskRecord {
         out.attribute(null, ATTR_NEXT_AFFILIATION, String.valueOf(mNextAffiliateTaskId));
         out.attribute(null, ATTR_CALLING_UID, String.valueOf(mCallingUid));
         out.attribute(null, ATTR_CALLING_PACKAGE, mCallingPackage == null ? "" : mCallingPackage);
+        out.attribute(null, ATTR_IS_LOCKED, String.valueOf(isLocked));
 
         if (affinityIntent != null) {
             out.startTag(null, TAG_AFFINITYINTENT);
@@ -911,6 +916,7 @@ final class TaskRecord {
         int nextTaskId = INVALID_TASK_ID;
         int callingUid = -1;
         String callingPackage = "";
+        boolean isLocked = false;
 
         for (int attrNdx = in.getAttributeCount() - 1; attrNdx >= 0; --attrNdx) {
             final String attrName = in.getAttributeName(attrNdx);
@@ -964,6 +970,8 @@ final class TaskRecord {
                 callingUid = Integer.valueOf(attrValue);
             } else if (ATTR_CALLING_PACKAGE.equals(attrName)) {
                 callingPackage = attrValue;
+            } else if (ATTR_IS_LOCKED.equals(attrName)) {
+                isLocked = Boolean.valueOf(attrValue);
             } else {
                 Slog.w(TAG, "TaskRecord: Unknown attribute=" + attrName);
             }
@@ -1025,7 +1033,7 @@ final class TaskRecord {
                 autoRemoveRecents, askedCompatMode, taskType, userId, effectiveUid, lastDescription,
                 activities, firstActiveTime, lastActiveTime, lastTimeOnTop, neverRelinquishIdentity,
                 taskDescription, taskAffiliation, prevTaskId, nextTaskId, taskAffiliationColor,
-                callingUid, callingPackage);
+                callingUid, callingPackage, isLocked);
 
         for (int activityNdx = activities.size() - 1; activityNdx >=0; --activityNdx) {
             activities.get(activityNdx).task = task;
