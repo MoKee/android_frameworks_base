@@ -201,7 +201,7 @@ public class TaskViewHeader extends FrameLayout {
     }
 
     /** Binds the bar view to the task */
-    public void rebindToTask(Task t) {
+    public void rebindToTask(final Task t) {
         // If an activity icon is defined, then we use that as the primary icon to show in the bar,
         // otherwise, we fall back to the application icon
 
@@ -216,25 +216,21 @@ public class TaskViewHeader extends FrameLayout {
         if (!mActivityDescription.getText().toString().equals(t.activityLabel)) {
             mActivityDescription.setText(t.activityLabel);
         }
-        final Task tt = t;
         task = t;
         refreshBackground(t.useLightOnPrimaryColor,t.isLockedApp);
         mLockAppButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 lockAppUtils.refreshLockAppMap();
-
-                if (tt.isLockedApp) {
-                    lockAppUtils.removeApp(tt.pkgName);
-                    tt.isLockedApp = false;
+                if (t.isLockedApp) {
+                    lockAppUtils.removeApp(t.pkgName);
                     mDismissButton.setVisibility(View.VISIBLE);
                 } else {
-                    lockAppUtils.addApp(tt.pkgName);
-                    tt.isLockedApp = true;
+                    lockAppUtils.addApp(t.pkgName);
                     mDismissButton.setVisibility(View.GONE);
                 }
-                refreshBackground(tt.useLightOnPrimaryColor,tt.isLockedApp);
+                t.isLockedApp = !t.isLockedApp;
+                refreshBackground(t.useLightOnPrimaryColor,t.isLockedApp);
             }
         });
         // Try and apply the system ui tint
