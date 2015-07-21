@@ -37,8 +37,7 @@ public class LockAppUtils {
 
     public static void refreshLockAppMap() {
 
-        String appString = Settings.System.getString(ct.getContentResolver(),
-                                setting);
+        String appString = Settings.System.getString(ct.getContentResolver(), setting);
 
         lockAppmap.clear();
 
