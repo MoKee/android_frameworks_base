@@ -205,7 +205,6 @@ public class TaskViewHeader extends FrameLayout {
         // otherwise, we fall back to the application icon
 
         lockAppUtils.refreshLockAppMap();
-        t.pkgName = t.key.baseIntent.getComponent().getPackageName();
         t.isLockedApp = lockAppUtils.isLockedApp(t.pkgName) ;
         if (t.activityIcon != null) {
             mApplicationIcon.setImageDrawable(t.activityIcon);
@@ -227,9 +226,11 @@ public class TaskViewHeader extends FrameLayout {
                 if (tt.isLockedApp) {
                     lockAppUtils.removeApp(tt.pkgName);
                     tt.isLockedApp = false;
+                    mDismissButton.setVisibility(View.VISIBLE);
                 } else {
                     lockAppUtils.addApp(tt.pkgName);
                     tt.isLockedApp = true;
+                    mDismissButton.setVisibility(View.GONE);
                 }
                 refreshBackground(tt.useLightOnPrimaryColor,tt.isLockedApp);
             }
@@ -249,6 +250,9 @@ public class TaskViewHeader extends FrameLayout {
                 mLightDismissDrawable : mDarkDismissDrawable);
         mDismissButton.setContentDescription(String.format(mDismissContentDescription,
                 t.activityLabel));
+        if (tt.isLockedApp) {
+            mDismissButton.setVisibility(View.GONE);
+        }
     }
 
     /** Unbinds the bar view from the task */
@@ -284,7 +288,7 @@ public class TaskViewHeader extends FrameLayout {
 
     /** Animates this task bar if the user does not interact with the stack after a certain time. */
     void startNoUserInteractionAnimation() {
-        if (mDismissButton.getVisibility() != View.VISIBLE) {
+        if (mDismissButton.getVisibility() == View.INVISIBLE) {
             mDismissButton.setVisibility(View.VISIBLE);
             mDismissButton.setAlpha(0f);
             mDismissButton.animate()
@@ -312,7 +316,7 @@ public class TaskViewHeader extends FrameLayout {
 
     /** Mark this task view that the user does has not interacted with the stack after a certain time. */
     void setNoUserInteractionState() {
-        if (mDismissButton.getVisibility() != View.VISIBLE) {
+        if (mDismissButton.getVisibility() == View.INVISIBLE) {
             mDismissButton.animate().cancel();
             mDismissButton.setVisibility(View.VISIBLE);
             mDismissButton.setAlpha(1f);
@@ -326,7 +330,9 @@ public class TaskViewHeader extends FrameLayout {
 
     /** Resets the state tracking that the user has not interacted with the stack after a certain time. */
     void resetNoUserInteractionState() {
-        mDismissButton.setVisibility(View.INVISIBLE);
+        if (mDismissButton.getVisibility() != View.GONE) {
+            mDismissButton.setVisibility(View.INVISIBLE);
+        }
         mLockAppButton.setVisibility(View.INVISIBLE);
     }
 
