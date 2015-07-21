@@ -8319,6 +8319,7 @@ public final class ActivityManagerService extends ActivityManagerNative
         rti.lastActiveTime = tr.lastActiveTime;
         rti.affiliatedTaskId = tr.mAffiliatedTaskId;
         rti.affiliatedTaskColor = tr.mAffiliatedTaskColor;
+        rti.isLocked = tr.isLocked;
         return rti;
     }
 

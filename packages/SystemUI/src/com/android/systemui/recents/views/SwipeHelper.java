@@ -370,7 +370,7 @@ public class SwipeHelper {
 
         if (dismissChild) {
             // flingadingy
-            if (task.isLockedApp) {
+            if (task.isLocked) {
                 mCallback.onDragCancelled(mCurrView);
                 snapChild(mCurrView, velocity);
             } else {

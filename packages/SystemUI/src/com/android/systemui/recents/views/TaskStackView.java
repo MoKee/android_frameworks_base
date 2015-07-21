@@ -576,7 +576,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
 
                 for (int i = 0; i < tasks_tmp.size(); i++) {
                     Task t = tasks_tmp.get(i);
-                    if (!t.isLockedApp) {
+                    if (!t.isLocked) {
                         tasks.add(t);
                     }
                 }
@@ -589,7 +589,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                     int delay = mConfig.taskViewRemoveAnimDuration / tasks.size();
                     for (int i = 0; i < childCount; i++) {
                         TaskView tv = (TaskView) getChildAt(i);
-                        if(!tv.getTask().isLockedApp) {
+                        if(!tv.getTask().isLocked) {
                             tasks.remove(tv.getTask());
                             tv.dismissTask(dismissDelay);
                             dismissDelay += delay;
@@ -602,7 +602,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                     // Remove possible alive Tasks
                     for (int i = 0; i < size; i++) {
                         Task t = tasks.get(i);
-                        if (mStack.getTasks().contains(t) && !t.isLockedApp) {
+                        if (mStack.getTasks().contains(t) && !t.isLocked) {
                             mStack.removeTask(t);
                         }
                     }
@@ -613,7 +613,6 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 if (size > 0) {
                     ssp.removeAllUserTask(UserHandle.myUserId());
                 }
-
             }
         });
     }

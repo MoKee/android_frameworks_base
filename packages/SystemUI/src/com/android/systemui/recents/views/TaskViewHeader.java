@@ -36,7 +36,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
-import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -49,7 +48,6 @@ import com.android.systemui.recents.Constants;
 import com.android.systemui.recents.RecentsConfiguration;
 import com.android.systemui.recents.misc.Utilities;
 import com.android.systemui.recents.model.Task;
-import com.android.systemui.utils.LockAppUtils;
 
 /* The task bar view */
 public class TaskViewHeader extends FrameLayout {
@@ -61,10 +59,6 @@ public class TaskViewHeader extends FrameLayout {
     ImageView mLockAppButton;
     ImageView mApplicationIcon;
     TextView mActivityDescription;
-
-    Context ct;
-    LockAppUtils lockAppUtils;
-    Task task;
 
     // Header drawables
     boolean mCurrentPrimaryColorIsDark;
@@ -108,8 +102,6 @@ public class TaskViewHeader extends FrameLayout {
             }
         });
 
-        this.ct = context;
-        lockAppUtils = new LockAppUtils(context);
         // Load the dismiss resources
         Resources res = context.getResources();
         mLightDismissDrawable = res.getDrawable(R.drawable.recents_dismiss_light);
@@ -204,9 +196,6 @@ public class TaskViewHeader extends FrameLayout {
     public void rebindToTask(Task t) {
         // If an activity icon is defined, then we use that as the primary icon to show in the bar,
         // otherwise, we fall back to the application icon
-
-        lockAppUtils.refreshLockAppMap();
-        t.isLockedApp = lockAppUtils.isLockedApp(t.pkgName) ;
         if (t.activityIcon != null) {
             mApplicationIcon.setImageDrawable(t.activityIcon);
         } else if (t.applicationIcon != null) {
@@ -216,25 +205,12 @@ public class TaskViewHeader extends FrameLayout {
         if (!mActivityDescription.getText().toString().equals(t.activityLabel)) {
             mActivityDescription.setText(t.activityLabel);
         }
-        final Task tt = t;
-        task = t;
-        refreshBackground(t.useLightOnPrimaryColor,t.isLockedApp);
+        refreshBackground(t.useLightOnPrimaryColor,t.isLocked);
         mLockAppButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                lockAppUtils.refreshLockAppMap();
-
-                if (tt.isLockedApp) {
-                    lockAppUtils.removeApp(tt.pkgName);
-                    tt.isLockedApp = false;
-                    mDismissButton.setVisibility(View.VISIBLE);
-                } else {
-                    lockAppUtils.addApp(tt.pkgName);
-                    tt.isLockedApp = true;
-                    mDismissButton.setVisibility(View.GONE);
-                }
-                refreshBackground(tt.useLightOnPrimaryColor,tt.isLockedApp);
+                t.isLocked = !t.isLocked;
+                refreshBackground(t.useLightOnPrimaryColor,t.isLocked);
             }
         });
         // Try and apply the system ui tint
@@ -252,7 +228,7 @@ public class TaskViewHeader extends FrameLayout {
                 mLightDismissDrawable : mDarkDismissDrawable);
         mDismissButton.setContentDescription(String.format(mDismissContentDescription,
                 t.activityLabel));
-        if (t.isLockedApp) {
+        if (t.isLocked) {
             mDismissButton.setVisibility(View.GONE);
         }
     }
@@ -290,7 +266,7 @@ public class TaskViewHeader extends FrameLayout {
 
     /** Animates this task bar if the user does not interact with the stack after a certain time. */
     void startNoUserInteractionAnimation() {
-        if (mDismissButton.getVisibility() != View.VISIBLE && !task.isLockedApp) {
+        if (mDismissButton.getVisibility() != View.VISIBLE && !task.isLocked) {
             mDismissButton.setVisibility(View.VISIBLE);
             mDismissButton.setAlpha(0f);
             mDismissButton.animate()
@@ -318,7 +294,7 @@ public class TaskViewHeader extends FrameLayout {
 
     /** Mark this task view that the user does has not interacted with the stack after a certain time. */
     void setNoUserInteractionState() {
-        if (mDismissButton.getVisibility() != View.VISIBLE && !task.isLockedApp) {
+        if (mDismissButton.getVisibility() != View.VISIBLE && !task.isLocked) {
             mDismissButton.animate().cancel();
             mDismissButton.setVisibility(View.VISIBLE);
             mDismissButton.setAlpha(1f);
@@ -332,7 +308,7 @@ public class TaskViewHeader extends FrameLayout {
 
     /** Resets the state tracking that the user has not interacted with the stack after a certain time. */
     void resetNoUserInteractionState() {
-        if (!task.isLockedApp) {
+        if (!task.isLocked) {
             mDismissButton.setVisibility(View.INVISIBLE);
         }
         mLockAppButton.setVisibility(View.INVISIBLE);

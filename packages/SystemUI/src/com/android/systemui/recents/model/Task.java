@@ -118,12 +118,11 @@ public class Task {
     public Drawable applicationIcon;
     public Drawable activityIcon;
     public String activityLabel;
-    public String pkgName;
     public int colorPrimary;
     public boolean useLightOnPrimaryColor;
     public Bitmap thumbnail;
     public boolean isActive;
-    public boolean isLockedApp;
+    public boolean isLocked;
     public boolean lockToThisTask;
     public boolean lockToTaskEnabled;
     public Bitmap icon;
@@ -137,7 +136,7 @@ public class Task {
     public Task(TaskKey key, boolean isActive, int taskAffiliation, int taskAffiliationColor,
                 String activityTitle, Drawable activityIcon, int colorPrimary,
                 boolean lockToThisTask, boolean lockToTaskEnabled, Bitmap icon,
-                String iconFilename) {
+                String iconFilename, boolean isLocked) {
         boolean isInAffiliationGroup = (taskAffiliation != key.id);
         boolean hasAffiliationGroupColor = isInAffiliationGroup && (taskAffiliationColor != 0);
         this.key = key;
@@ -149,8 +148,7 @@ public class Task {
         this.useLightOnPrimaryColor = Utilities.computeContrastBetweenColors(this.colorPrimary,
                 Color.WHITE) > 3f;
         this.isActive = isActive;
-        this.isLockedApp = false;
-        this.pkgName = key.baseIntent.getComponent().getPackageName();
+        this.isLocked = isLocked;
         this.lockToThisTask = lockToTaskEnabled && lockToThisTask;
         this.lockToTaskEnabled = lockToTaskEnabled;
         this.icon = icon;
@@ -167,8 +165,7 @@ public class Task {
         this.colorPrimary = o.colorPrimary;
         this.useLightOnPrimaryColor = o.useLightOnPrimaryColor;
         this.isActive = o.isActive;
-        this.isLockedApp = o.isLockedApp;
-        this.pkgName = o.pkgName;
+        this.isLocked = o.isLocked;
         this.lockToThisTask = o.lockToThisTask;
         this.lockToTaskEnabled = o.lockToTaskEnabled;
     }
