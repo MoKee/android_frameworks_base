@@ -33,6 +33,8 @@ import com.android.systemui.recents.RecentsConfiguration;
 import com.android.systemui.recents.misc.Utilities;
 import com.android.systemui.recents.model.Task;
 import com.android.systemui.statusbar.phone.PhoneStatusBar;
+import com.android.systemui.recents.model.Task;
+import com.android.systemui.utils.LockAppUtils;
 
 /* A task view */
 public class TaskView extends FrameLayout implements Task.TaskCallbacks,
@@ -705,6 +707,7 @@ public class TaskView extends FrameLayout implements Task.TaskCallbacks,
     @Override
      public void onClick(final View v) {
         final TaskView tv = this;
+        final Task task = tv.getTask();
         final boolean delayViewClick = (v != this) && (v != mActionButtonView);
         if (delayViewClick) {
             // We purposely post the handler delayed to allow for the touch feedback to draw
@@ -716,7 +719,10 @@ public class TaskView extends FrameLayout implements Task.TaskCallbacks,
                             mCb.onTaskViewAppIconClicked(tv);
                         }
                     } else if (v == mHeaderView.mDismissButton) {
-                        dismissTask(0L);
+                        LockAppUtils.refreshLockAppMap();
+                        if (!task.isLockedApp) {
+                            dismissTask(0L);
+                        }
                     }
                 }
             }, 125);
