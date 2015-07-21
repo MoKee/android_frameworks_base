@@ -29,6 +29,7 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import com.android.systemui.recents.RecentsConfiguration;
+import com.android.systemui.recents.model.Task;
 
 /**
  * This class facilitates swipe to dismiss. It defines an interface to be implemented by the
@@ -364,10 +365,17 @@ public class SwipeHelper {
         boolean dismissChild = mCallback.canChildBeDismissed(mCurrView)
                 && isValidSwipeDirection(translation)
                 && (childSwipedFastEnough || childSwipedFarEnough);
+        TaskView tv = (TaskView) mCurrView;
+        Task task = tv.getTask();
 
         if (dismissChild) {
             // flingadingy
-            dismissChild(mCurrView, childSwipedFastEnough ? velocity : 0f);
+            if (task.isLockedApp) {
+                mCallback.onDragCancelled(mCurrView);
+                snapChild(mCurrView, velocity);
+            } else {
+                dismissChild(mCurrView, childSwipedFastEnough ? velocity : 0f);
+            }
         } else {
             // snappity
             mCallback.onDragCancelled(mCurrView);
