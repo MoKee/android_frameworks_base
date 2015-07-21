@@ -3107,11 +3107,6 @@ public final class Settings {
         public static final String POINTER_SPEED = "pointer_speed";
 
         /**
-         * The time accurate to the second.
-         */
-        public static final String STATUS_BAR_CLOCK_SHOW_SECOND = "status_bar_clock_show_second";
-
-        /**
          * Show icon when stylus is used?
          * 0 = no
          * 1 = yes
@@ -3472,6 +3467,24 @@ public final class Settings {
          */
         public static final String ENABLE_CLOUD_LOCATION_LOOKUP = "enable_cloud_location_lookup";
 
+
+        /**
+         * show clear all recents button
+         * @hide
+         */
+        public static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
+
+        /**
+         * location of the clear all rectents button
+         * @hide
+         */
+        public static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
+
+        /**
+         * The time accurate to the second.
+         */
+        public static final String STATUS_BAR_CLOCK_SHOW_SECOND = "status_bar_clock_show_second";
+
         /**
          * I am the lolrus.
          * <p>
@@ -3529,18 +3542,6 @@ public final class Settings {
          * @hide
          */
         public static final String DOUBLE_TAP_SLEEP_GESTURE = "double_tap_sleep_gesture";
-
-        /**
-         * show clear all recents button
-         * @hide
-         */
-        public static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
-
-        /**
-         * location of the clear all rectents button
-         * @hide
-         */
-        public static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
 
         /**
          * Boolean value on whether to show weather in the statusbar
