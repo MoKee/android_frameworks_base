@@ -2644,13 +2644,6 @@ public final class Settings {
         public static final String DEV_FORCE_SHOW_NAVBAR = Secure.DEV_FORCE_SHOW_NAVBAR;
 
         /**
-         * LockedAppList
-         *
-         * @hide
-         */
-        public static final String Locked_APP_LIST = "locked_app_list";
-
-        /**
          * Date format string
          *   mm/dd/yyyy
          *   dd/mm/yyyy
@@ -3444,6 +3437,13 @@ public final class Settings {
          * @hide
          */
         public static final String PHONE_BLACKLIST_ALL_NUMBER_MODE = "phone_blacklist_all_number";
+
+        /**
+         * LockedAppList
+         *
+         * @hide
+         */
+        public static final String Locked_APP_LIST = "locked_app_list";
 
         /**
          * show carrier in statusbar. The value is
