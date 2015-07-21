@@ -845,6 +845,11 @@ public class ActivityManager {
          */
         public int affiliatedTaskColor;
 
+        /**
+         * Lock state for this task.
+         */
+        public boolean isLocked;
+
         public RecentTaskInfo() {
         }
 
@@ -878,6 +883,7 @@ public class ActivityManager {
             dest.writeLong(lastActiveTime);
             dest.writeInt(affiliatedTaskId);
             dest.writeInt(affiliatedTaskColor);
+            dest.writeInt(isLocked ? 1 : 0);
         }
 
         public void readFromParcel(Parcel source) {
@@ -894,6 +900,7 @@ public class ActivityManager {
             lastActiveTime = source.readLong();
             affiliatedTaskId = source.readInt();
             affiliatedTaskColor = source.readInt();
+            isLocked = source.readInt() != 0;
         }
 
         public static final Creator<RecentTaskInfo> CREATOR

@@ -140,7 +140,7 @@ public class RecentsTaskLoadPlan {
             Task task = new Task(taskKey, (t.id != RecentsTaskLoader.INVALID_TASK_ID),
                     t.affiliatedTaskId, t.affiliatedTaskColor, activityLabel, activityIcon,
                     activityColor, (i == (taskCount - 1)), mConfig.lockToAppEnabled, icon,
-                    iconFilename);
+                    iconFilename, t.isLocked);
             task.thumbnail = loader.getAndUpdateThumbnail(taskKey, mSystemServicesProxy, false);
             if (DEBUG) Log.d(TAG, "\tthumbnail: " + taskKey + ", " + task.thumbnail);
             loadedTasks.add(task);
