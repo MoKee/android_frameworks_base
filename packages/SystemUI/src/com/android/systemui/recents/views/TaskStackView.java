@@ -559,26 +559,26 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
         mFocusedTaskIndex = -1;
     }
 
+    public int getUnLockedTaskCount(ArrayList<Task> tasks) {
+        int count = 0;
+        for (int i = 0; i < tasks.size(); i++) {
+            if (!tasks.get(i).isLockedApp) {
+                count ++;
+            }
+        }
+        return count;
+    }
+
     public void dismissAllTasks() {
         post(new Runnable() {
             @Override
             public void run() {
-                ArrayList<Task> tasks_tmp = new ArrayList<Task>();
-                tasks_tmp.addAll(mStack.getTasks());
-                if (dismissAll() && tasks_tmp.size() > 1) {
-                    // Ignore the visible foreground task
-                    Task foregroundTask = tasks_tmp.get(tasks_tmp.size() - 1);
-                    tasks_tmp.remove(foregroundTask);
-                }
-
-                //将未锁定Task放到新的List
                 ArrayList<Task> tasks = new ArrayList<Task>();
-
-                for (int i = 0; i < tasks_tmp.size(); i++) {
-                    Task t = tasks_tmp.get(i);
-                    if (!t.isLockedApp) {
-                        tasks.add(t);
-                    }
+                tasks.addAll(mStack.getTasks());
+                // Ignore the visible foreground task
+                if (dismissAll() && tasks.size() > 1) {
+                    Task foregroundTask = tasks.get(tasks.size() - 1);
+                    tasks.remove(foregroundTask);
                 }
 
                 // Remove visible TaskViews
@@ -586,7 +586,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                     long dismissDelay = 0;
                     int childCount = getChildCount();
                     if (dismissAll() && childCount > 1) childCount--;
-                    int delay = mConfig.taskViewRemoveAnimDuration / tasks.size();
+                    int delay = mConfig.taskViewRemoveAnimDuration / getUnLockedTaskCount(tasks);
                     for (int i = 0; i < childCount; i++) {
                         TaskView tv = (TaskView) getChildAt(i);
                         if(!tv.getTask().isLockedApp) {
@@ -613,7 +613,6 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 if (size > 0) {
                     ssp.removeAllUserTask(UserHandle.myUserId());
                 }
-
             }
         });
     }

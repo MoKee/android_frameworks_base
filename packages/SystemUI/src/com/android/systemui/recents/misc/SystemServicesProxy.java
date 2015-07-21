@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2015 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -97,7 +98,6 @@ public class SystemServicesProxy {
     Paint mBgProtectionPaint;
     Canvas mBgProtectionCanvas;
 
-    Context ct;
     static {
         sBitmapOptions = new BitmapFactory.Options();
         sBitmapOptions.inMutable = true;
@@ -129,7 +129,6 @@ public class SystemServicesProxy {
         mBgProtectionPaint.setColor(0xFFffffff);
         mBgProtectionCanvas = new Canvas();
 
-        ct = context;
         // Resolve the assist intent
         Intent assist = mSm.getAssistIntent(context, false);
         if (assist != null) {
