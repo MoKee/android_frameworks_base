@@ -53,7 +53,6 @@ import com.android.systemui.recents.views.DebugOverlayView;
 import com.android.systemui.recents.views.RecentsView;
 import com.android.systemui.recents.views.SystemBarScrimViews;
 import com.android.systemui.recents.views.ViewAnimation;
-import com.android.systemui.recents.RecentsConfiguration;
 import com.android.systemui.statusbar.phone.PhoneStatusBar;
 import com.android.systemui.SystemUIApplication;
 
@@ -584,7 +583,6 @@ public class RecentsActivity extends Activity implements RecentsView.RecentsView
 
         // Dismiss Recents to the focused Task or Home
         dismissRecentsToFocusedTaskOrHome(true);
-
         mRecentsView.endFABanimation();
     }
 
