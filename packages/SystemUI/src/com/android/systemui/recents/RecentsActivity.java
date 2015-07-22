@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2015 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,6 +53,7 @@ import com.android.systemui.recents.model.TaskStack;
 import com.android.systemui.recents.views.DebugOverlayView;
 import com.android.systemui.recents.views.RecentsView;
 import com.android.systemui.recents.views.SystemBarScrimViews;
+import com.android.systemui.recents.views.TaskStackView;
 import com.android.systemui.recents.views.ViewAnimation;
 import com.android.systemui.statusbar.phone.PhoneStatusBar;
 import com.android.systemui.SystemUIApplication;
@@ -151,6 +153,25 @@ public class RecentsActivity extends Activity implements RecentsView.RecentsView
                 // Notify the fallback receiver that we have successfully got the broadcast
                 // See AlternateRecentsComponent.onAnimationStarted()
                 setResultCode(Activity.RESULT_OK);
+            } else if (action.equals(AlternateRecentsComponent.ACTION_FLOATING_BUTTON_REFRESH)) {
+                TaskStack stack = AlternateRecentsComponent.getGolbalStack();
+                if (stack != null) {
+                    ArrayList<Task> tasks = new ArrayList<Task>();
+                    tasks.addAll(stack.getTasks());
+                    // Ignore the visible foreground task
+                    
+                    if (AlternateRecentsComponent.dismissAll(context) && tasks.size() > 1) {
+                        Task foregroundTask = tasks.get(tasks.size() - 1);
+                        tasks.remove(foregroundTask);
+                    }
+                    if (TaskStackView.getUnLockedTaskCount(tasks) != 0) {
+                        findViewById(R.id.floating_action_button).setVisibility(View.VISIBLE);
+                        mRecentsView.startFABanimation();;
+                    } else {
+                        findViewById(R.id.floating_action_button).setVisibility(View.GONE);
+                        mRecentsView.endFABanimation();
+                    }
+                }
             }
         }
     };
@@ -252,13 +273,11 @@ public class RecentsActivity extends Activity implements RecentsView.RecentsView
                 }
             });
             mRecentsView.setSearchBarVisibility(View.GONE);
-            findViewById(R.id.floating_action_button).setVisibility(View.GONE);
         } else {
             if (mEmptyView != null) {
                 mEmptyView.setVisibility(View.GONE);
                 mEmptyView.setOnClickListener(null);
             }
-            findViewById(R.id.floating_action_button).setVisibility(View.VISIBLE);
             boolean showSearchBar = Settings.System.getInt(getContentResolver(),
                        Settings.System.RECENTS_SHOW_SEARCH_BAR, 1) == 1;
             if (mRecentsView.hasSearchBar()) {
@@ -459,6 +478,7 @@ public class RecentsActivity extends Activity implements RecentsView.RecentsView
         filter.addAction(AlternateRecentsComponent.ACTION_HIDE_RECENTS_ACTIVITY);
         filter.addAction(AlternateRecentsComponent.ACTION_TOGGLE_RECENTS_ACTIVITY);
         filter.addAction(AlternateRecentsComponent.ACTION_START_ENTER_ANIMATION);
+        filter.addAction(AlternateRecentsComponent.ACTION_FLOATING_BUTTON_REFRESH);
         registerReceiver(mServiceBroadcastReceiver, filter);
 
         // Register any broadcast receivers for the task loader
@@ -525,7 +545,15 @@ public class RecentsActivity extends Activity implements RecentsView.RecentsView
 
         // Animate the SystemUI scrim views
         mScrimViews.startEnterRecentsAnimation();
-        mRecentsView.startFABanimation();
+        TaskStack stack = AlternateRecentsComponent.getGolbalStack();
+        if (stack != null) {
+            if (TaskStackView.getUnLockedTaskCount(stack.getTasks()) != 0) {
+                findViewById(R.id.floating_action_button).setVisibility(View.VISIBLE);
+                mRecentsView.startFABanimation();
+            } else {
+                findViewById(R.id.floating_action_button).setVisibility(View.GONE);
+            }
+        }
     }
 
     @Override
