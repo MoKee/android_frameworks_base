@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2015 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -391,6 +392,7 @@ public class RecentsView extends FrameLayout implements TaskStackView.TaskStackV
 
     public void startFABanimation() {
         // Animate the action button in
+        if (mFloatingButton == null || mFloatingButton.getAlpha() == 1f) return;
         mFloatingButton = ((View)getParent()).findViewById(R.id.floating_action_button);
         mFloatingButton.animate().alpha(1f)
                 .setStartDelay(mConfig.taskBarEnterAnimDelay)
@@ -401,6 +403,7 @@ public class RecentsView extends FrameLayout implements TaskStackView.TaskStackV
     }
 
     public void endFABanimation() {
+        if (mFloatingButton == null || mFloatingButton.getAlpha() == 0f) return;
         // Animate the action button away
         mFloatingButton = ((View)getParent()).findViewById(R.id.floating_action_button);
         mFloatingButton.animate().alpha(0f)
