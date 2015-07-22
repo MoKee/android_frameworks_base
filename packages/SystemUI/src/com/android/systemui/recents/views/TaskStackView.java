@@ -87,6 +87,8 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
     int mFocusedTaskIndex = -1;
     int mPrevAccessibilityFocusedIndex = -1;
 
+    boolean dismissAllPressed = false;
+
     private PopupMenu mPopup;
 
     // Optimizations
@@ -591,6 +593,9 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                         TaskView tv = (TaskView) getChildAt(i);
                         if(!tv.getTask().isLockedApp) {
                             tasks.remove(tv.getTask());
+                            if(i == childCount - 1) {
+                                dismissAllPressed = true;
+                            }
                             tv.dismissTask(dismissDelay);
                             dismissDelay += delay;
                         }
@@ -979,13 +984,14 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
 
         // If there are no remaining tasks, then either unfilter the current stack, or just close
         // the activity if there are no filtered stacks
-        if (mStack.getTaskCount() == 0) {
+        if (mStack.getTaskCount() == 0 || dismissAllPressed) {
             boolean shouldFinishActivity = true;
             if (mStack.hasFilteredTasks()) {
                 mStack.unfilterTasks();
-                shouldFinishActivity = (mStack.getTaskCount() == 0);
+                shouldFinishActivity = (mStack.getTaskCount() == 0 || dismissAllPressed);
             }
             if (shouldFinishActivity) {
+                dismissAllPressed = false;
                 mCb.onAllTaskViewsDismissed();
             }
         }

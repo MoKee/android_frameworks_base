@@ -637,7 +637,7 @@ public class RecentsActivity extends Activity implements RecentsView.RecentsView
 
     @Override
     public void onAllTaskViewsDismissed() {
-        mFinishLaunchHomeRunnable.run();
+        dismissRecentsToFocusedTaskOrHome(true);
         mRecentsView.endFABanimation();
     }
 
