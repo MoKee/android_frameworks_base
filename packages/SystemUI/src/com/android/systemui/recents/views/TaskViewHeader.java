@@ -23,6 +23,7 @@ import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -36,6 +37,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -44,7 +46,9 @@ import android.view.ViewOutlineProvider;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.android.systemui.R;
+import com.android.systemui.recents.AlternateRecentsComponent;
 import com.android.systemui.recents.Constants;
 import com.android.systemui.recents.RecentsConfiguration;
 import com.android.systemui.recents.misc.Utilities;
@@ -231,6 +235,8 @@ public class TaskViewHeader extends FrameLayout {
                 }
                 t.isLockedApp = !t.isLockedApp;
                 refreshBackground(t.useLightOnPrimaryColor,t.isLockedApp);
+                Intent intent = AlternateRecentsComponent.createLocalBroadcastIntent(mContext, AlternateRecentsComponent.ACTION_FLOATING_BUTTON_REFRESH);
+                mContext.sendBroadcastAsUser(intent, UserHandle.CURRENT);
             }
         });
         // Try and apply the system ui tint

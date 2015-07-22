@@ -36,9 +36,11 @@ import android.graphics.Rect;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.os.UserHandle;
+import android.provider.Settings;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
+
 import com.android.systemui.R;
 import com.android.systemui.RecentsComponent;
 import com.android.systemui.recents.misc.Console;
@@ -82,12 +84,15 @@ public class AlternateRecentsComponent implements ActivityOptions.OnAnimationSta
     final public static String ACTION_START_ENTER_ANIMATION = "action_start_enter_animation";
     final public static String ACTION_TOGGLE_RECENTS_ACTIVITY = "action_toggle_recents_activity";
     final public static String ACTION_HIDE_RECENTS_ACTIVITY = "action_hide_recents_activity";
+    final public static String ACTION_FLOATING_BUTTON_REFRESH = "action_floating_button_refresh";
 
     final static int sMinToggleDelay = 350;
 
     final static String sToggleRecentsAction = "com.android.systemui.recents.SHOW_RECENTS";
     public final static String sRecentsPackage = "com.android.systemui";
     public final static String sRecentsActivity = "com.android.systemui.recents.RecentsActivity";
+
+    private static TaskStack golbalStack;
 
     /**
      * An implementation of ITaskStackListener, that allows us to listen for changes to the system
@@ -204,12 +209,17 @@ public class AlternateRecentsComponent implements ActivityOptions.OnAnimationSta
     }
 
     /** Creates a new broadcast intent */
-    static Intent createLocalBroadcastIntent(Context context, String action) {
+    public static Intent createLocalBroadcastIntent(Context context, String action) {
         Intent intent = new Intent(action);
         intent.setPackage(context.getPackageName());
         intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY_BEFORE_BOOT |
                 Intent.FLAG_RECEIVER_FOREGROUND);
         return intent;
+    }
+
+    public static boolean dismissAll(Context context) {
+        return Settings.System.getInt(context.getContentResolver(),
+            Settings.System.RECENTS_CLEAR_ALL_DISMISS_ALL, 0) == 1;
     }
 
     /** Initializes the Recents. */
@@ -609,6 +619,10 @@ public class AlternateRecentsComponent implements ActivityOptions.OnAnimationSta
         return mTmpTransform;
     }
 
+    static TaskStack getGolbalStack() {
+        return golbalStack;
+    }
+
     /** Starts the recents activity */
     void startRecentsActivity(ActivityManager.RunningTaskInfo topTask, boolean isTopTaskHome) {
         RecentsTaskLoader loader = RecentsTaskLoader.getInstance();
@@ -619,13 +633,13 @@ public class AlternateRecentsComponent implements ActivityOptions.OnAnimationSta
             sInstanceLoadPlan = loader.createLoadPlan(mContext);
         }
         loader.preloadTasks(sInstanceLoadPlan, isTopTaskHome);
-        TaskStack stack = sInstanceLoadPlan.getTaskStack();
+        golbalStack = sInstanceLoadPlan.getTaskStack();
 
         // Prepare the dummy stack for the transition
-        mDummyStackView.updateMinMaxScrollForStack(stack, mTriggeredFromAltTab, isTopTaskHome);
+        mDummyStackView.updateMinMaxScrollForStack(golbalStack, mTriggeredFromAltTab, isTopTaskHome);
         TaskStackViewLayoutAlgorithm.VisibilityReport stackVr =
                 mDummyStackView.computeStackVisibilityReport();
-        boolean hasRecentTasks = stack.getTaskCount() > 0;
+        boolean hasRecentTasks = golbalStack.getTaskCount() > 0;
         boolean useThumbnailTransition = (topTask != null) && !isTopTaskHome && hasRecentTasks;
 
         if (useThumbnailTransition) {
@@ -637,7 +651,7 @@ public class AlternateRecentsComponent implements ActivityOptions.OnAnimationSta
             loader.loadTasks(mContext, sInstanceLoadPlan, launchOpts);
 
             // Try starting with a thumbnail transition
-            ActivityOptions opts = getThumbnailTransitionActivityOptions(topTask, stack,
+            ActivityOptions opts = getThumbnailTransitionActivityOptions(topTask, golbalStack,
                     mDummyStackView);
             if (opts != null) {
                 startAlternateRecentsActivity(topTask, opts, false /* fromHome */,

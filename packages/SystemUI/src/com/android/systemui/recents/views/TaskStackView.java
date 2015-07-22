@@ -39,6 +39,7 @@ import android.widget.FrameLayout;
 import android.widget.PopupMenu;
 
 import com.android.systemui.R;
+import com.android.systemui.recents.AlternateRecentsComponent;
 import com.android.systemui.recents.Constants;
 import com.android.systemui.recents.RecentsConfiguration;
 import com.android.systemui.recents.misc.DozeTrigger;
@@ -542,11 +543,6 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
         tv.dismissTask(0L);
     }
 
-    private boolean dismissAll() {
-        return Settings.System.getInt(mContext.getContentResolver(),
-            Settings.System.RECENTS_CLEAR_ALL_DISMISS_ALL, 0) == 1;
-    }
-
     /** Resets the focused task. */
     void resetFocusedTask() {
         if ((0 <= mFocusedTaskIndex) && (mFocusedTaskIndex < mStack.getTaskCount())) {
@@ -559,7 +555,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
         mFocusedTaskIndex = -1;
     }
 
-    public int getUnLockedTaskCount(ArrayList<Task> tasks) {
+    public static int getUnLockedTaskCount(ArrayList<Task> tasks) {
         int count = 0;
         for (int i = 0; i < tasks.size(); i++) {
             if (!tasks.get(i).isLockedApp) {
@@ -576,7 +572,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 ArrayList<Task> tasks = new ArrayList<Task>();
                 tasks.addAll(mStack.getTasks());
                 // Ignore the visible foreground task
-                if (dismissAll() && tasks.size() > 1) {
+                if (AlternateRecentsComponent.dismissAll(getContext()) && tasks.size() > 1) {
                     Task foregroundTask = tasks.get(tasks.size() - 1);
                     tasks.remove(foregroundTask);
                 }
@@ -585,7 +581,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 if (tasks.size() > 0) {
                     long dismissDelay = 0;
                     int childCount = getChildCount();
-                    if (dismissAll() && childCount > 1) childCount--;
+                    if (AlternateRecentsComponent.dismissAll(getContext()) && childCount > 1) childCount--;
                     int unlockedCount = getUnLockedTaskCount(tasks);
                     int delay = unlockedCount != 0 ? mConfig.taskViewRemoveAnimDuration / unlockedCount : 0;
                     for (int i = 0; i < childCount; i++) {

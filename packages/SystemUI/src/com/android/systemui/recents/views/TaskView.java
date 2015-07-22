@@ -20,14 +20,18 @@ import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.*;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewOutlineProvider;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.FrameLayout;
+
 import com.android.systemui.R;
+import com.android.systemui.recents.AlternateRecentsComponent;
 import com.android.systemui.recents.Constants;
 import com.android.systemui.recents.RecentsConfiguration;
 import com.android.systemui.recents.misc.Utilities;
@@ -717,6 +721,8 @@ public class TaskView extends FrameLayout implements Task.TaskCallbacks,
                         }
                     } else if (v == mHeaderView.mDismissButton) {
                         dismissTask(0L);
+                        Intent intent = AlternateRecentsComponent.createLocalBroadcastIntent(mContext, AlternateRecentsComponent.ACTION_FLOATING_BUTTON_REFRESH);
+                        mContext.sendBroadcastAsUser(intent, UserHandle.CURRENT);
                     }
                 }
             }, 125);
