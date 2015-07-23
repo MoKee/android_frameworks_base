@@ -1,0 +1,23 @@
+<!--
+     Copyright (C) 2015 The MoKee OpenSource Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportHeight="24"
+    android:viewportWidth="24">
+    <path android:fillColor="#FFFFFF" android:pathData="m7.794528,4.291743c-0.039669,-0.040122 -0.082107,-0.075444 -0.122614,-0.113074c-0.158508,-0.143154 -0.258469,-0.222768 -0.258469,-0.222768l0.000957,0.010815c-0.475406,-0.346524 -1.078494,-0.557068 -1.712357,-0.557068c-1.734305,-0.000059 -2.863543,1.273742 -2.863543,2.863417l0,4.008856c0,1.589541 1.147092,2.863476 2.863476,2.863476c0.708033,0 0.750152,-0.369252 1.14538,-0.572681c0,0 0.572682,-0.340575 0.572682,0.572681l0,7.44508l1.718112,0l0,-3.436172c0.632588,0 1.145364,-0.512842 1.145364,-1.145363l0,-6.299702c0,-2.600284 -1.659045,-4.64048 -2.488987,-5.417497zm6.291327,9.57397c0.210795,0.570383 0.206517,0.997797 0.206517,0.997797l0,1.145363c0,0.632589 0.512842,1.14538 1.145431,1.14538l0,3.436224l1.718112,0l0,-3.436172c0.632589,0 1.145363,-0.512842 1.145363,-1.145363l0,-1.145365c0,0 0.000706,-0.430165 0.209,-0.998686c-0.685696,0.27191 -1.431032,0.426004 -2.213486,0.426004c-0.781497,-0.000068 -1.525943,-0.15391 -2.210937,-0.425182zm2.210685,-10.456191c-2.687114,0 -4.864976,2.179448 -4.864976,4.867459s2.177862,4.867459 4.864976,4.867459c2.687046,0 4.86496,-2.179456 4.86496,-4.867459s-2.177845,-4.867459 -4.86496,-4.867459z" />
+</vector>
