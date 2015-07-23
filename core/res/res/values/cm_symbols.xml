@@ -333,4 +333,7 @@
 
     <!-- Fingerprint default name -->
     <java-symbol type="string" name="fingerprint_default_name" />
+
+    <!-- global actions (zen mode buttons) -->
+    <java-symbol type="id" name="option4" />
 </resources>
