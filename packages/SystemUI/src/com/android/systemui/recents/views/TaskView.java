@@ -486,8 +486,6 @@ public class TaskView extends FrameLayout implements Task.TaskCallbacks,
             public void run() {
                 if (mCb != null) {
                     mCb.onTaskViewDismissed(tv);
-                    Intent intent = AlternateRecentsComponent.createLocalBroadcastIntent(mContext, AlternateRecentsComponent.ACTION_FLOATING_BUTTON_REFRESH);
-                    mContext.sendBroadcastAsUser(intent, UserHandle.CURRENT);
                 }
             }
         }, delayed);

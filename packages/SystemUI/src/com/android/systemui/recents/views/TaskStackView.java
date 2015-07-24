@@ -1271,6 +1271,8 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 }
             }
         }
+        Intent intent = AlternateRecentsComponent.createLocalBroadcastIntent(mContext, AlternateRecentsComponent.ACTION_FLOATING_BUTTON_REFRESH);
+        mContext.sendBroadcastAsUser(intent, UserHandle.CURRENT);
     }
 
     @Override
