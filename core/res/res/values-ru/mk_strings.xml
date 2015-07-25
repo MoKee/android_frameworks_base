@@ -15,6 +15,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="status_leap">闰</string>
-  <string name="permdesc_useHardwareFramework_mk">允许应用访问 MK 硬件框架。</string>
+  <string name="status_leap">Начать</string>
+  <string name="permdesc_useHardwareFramework_mk">Приложение сможет получать доступ к аппаратной структуре MoKee.</string>
 </resources>

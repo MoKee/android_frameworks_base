@@ -45,6 +45,10 @@
     <item>1031 萬聖節</item>
     <item>1111 光棍節</item>
     <item>1225 聖誕節</item>
+    <item>1031 万圣节</item>
+    <item>1111 光棍节</item>
+    <item>1224 平安夜</item>
+    <item>1225 圣诞节</item>
   </string-array>
   <string-array name="lunar_festival">
     <item>臘月廿九 除夕</item>
@@ -58,5 +62,6 @@
     <item>九月初九 重陽節</item>
     <item>腊月初八 臘八節</item>
     <item>臘月廿三 小年</item>
+    <item>腊月廿三 小年</item>
   </string-array>
 </resources>
