@@ -193,7 +193,9 @@ public class PhoneStatusBarPolicy implements Callback {
 
     private final void updateHeadset(Intent intent) {
         int state = intent.getIntExtra("state", 0);
-        mService.setIconVisibility(SLOT_HEADSET, state == 1 ? true : false);
+        boolean mHeadsetIcon = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.SHOW_HEADSET_ICON, 1) == 1;
+        mService.setIconVisibility(SLOT_HEADSET, (state == 1 && mHeadsetIcon) ? true : false);
     }
 
     private ContentObserver mAlarmIconObserver = new ContentObserver(null) {
