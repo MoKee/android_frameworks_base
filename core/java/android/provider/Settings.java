@@ -3652,6 +3652,10 @@ public final class Settings {
          */
         public static final String APP_SWITCH_WAKE_SCREEN = "app_switch_wake_screen";
 
+        /**
+         * @hide
+         */
+        public static final String SHOW_HEADSET_ICON = "show_headset_icon";
 
         /**
          * Color temperature of the display during the day

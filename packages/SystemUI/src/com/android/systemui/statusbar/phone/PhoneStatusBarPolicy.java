@@ -77,6 +77,8 @@ public class PhoneStatusBarPolicy implements Callback {
     private final HotspotController mHotspot;
     private final AlarmManager mAlarmManager;
     private final UserInfoController mUserInfoController;
+    private int mHeadsetState;
+    private boolean mHeadsetIconVisible;
     private boolean mAlarmIconVisible;
 
     // Assume it's all good unless we hear otherwise.  We don't always seem
@@ -113,7 +115,8 @@ public class PhoneStatusBarPolicy implements Callback {
                 updateTTY(intent);
             }
             else if (action.equals(Intent.ACTION_HEADSET_PLUG)) {
-                updateHeadset(intent);
+                mHeadsetState = intent.getIntExtra("state", 0);
+                updateHeadset();
             }
         }
     };
@@ -173,6 +176,10 @@ public class PhoneStatusBarPolicy implements Callback {
         // headset
         mService.setIcon(SLOT_HEADSET, R.drawable.stat_sys_headset, 0, null);
         mService.setIconVisibility(SLOT_HEADSET, false);
+        mHeadsetIconObserver.onChange(true);
+        mContext.getContentResolver().registerContentObserver(
+                Settings.System.getUriFor(Settings.System.SHOW_HEADSET_ICON),
+                false, mHeadsetIconObserver);
 
         // cast
         mService.setIcon(SLOT_CAST, R.drawable.stat_sys_cast, 0, null);
@@ -191,10 +198,23 @@ public class PhoneStatusBarPolicy implements Callback {
         mService.setIconVisibility(SLOT_MANAGED_PROFILE, false);
     }
 
-    private final void updateHeadset(Intent intent) {
-        int state = intent.getIntExtra("state", 0);
-        mService.setIconVisibility(SLOT_HEADSET, state == 1 ? true : false);
+    private final void updateHeadset() {
+        mService.setIconVisibility(SLOT_HEADSET, (mHeadsetState == 1 && mHeadsetIconVisible) ? true : false);
     }
+
+    private ContentObserver mHeadsetIconObserver = new ContentObserver(null) {
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            mHeadsetIconVisible = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.SHOW_HEADSET_ICON, 1) == 1;
+            updateHeadset();
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            onChange(selfChange, null);
+        }
+    };
 
     private ContentObserver mAlarmIconObserver = new ContentObserver(null) {
         @Override
