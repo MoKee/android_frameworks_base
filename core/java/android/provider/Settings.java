@@ -3513,6 +3513,11 @@ public final class Settings {
         public static final String SHOW_SU_ICON = "show_su_icon";
 
         /**
+         * @hide
+         */
+        public static final String SHOW_HEADSET_ICON = "show_headset_icon";
+
+        /**
          *  Enable navigation bar double tap gesture on to put device to sleep
          *  @hide
          */
