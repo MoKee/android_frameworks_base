@@ -120,7 +120,6 @@
   <string name="quick_settings_heads_up_label">हेड्स अप।</string>
   <string name="quick_settings_ambient_display_label">परिवेशी प्रदर्शन</string>
   <string name="quick_settings_sync_label">संकालन</string>
-  <string name="quick_settings_custom_tile_detail_title">मनपसंद टाइल</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">%1$s के लिए दायाँ स्वाइप करें</string>
   <string name="right_shortcut_hint">%1$s के लिए बायाँ स्वाइप करें</string>
@@ -154,9 +153,6 @@
   <string name="zen_silent_with_warning">अलार्मों को छोड़कर और कोई विघ्न नहीं।</string>
   <string name="quick_settings_remove">टाइल हटाएँ</string>
   <string name="quick_settings_dynamic_tile_detail_title">गतिशील टाइल</string>
-  <string name="dynamic_qs_tile_next_alarm_label">अलगा अलार्म</string>
-  <string name="dynamic_qs_tile_ime_selector_label">आईएमई चयनक</string>
-  <string name="dynamic_qs_tile_su_label">मूल पहुँच</string>
   <string name="fingerprint_try_again_hint">कृपया फिर से स्कैन करें</string>
   <string name="accessibility_dock_battery_level">बैटरी <xliff:g id="number">%d</xliff:g> प्रतिशत को डॉक करें।</string>
 </resources>

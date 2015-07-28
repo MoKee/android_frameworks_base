@@ -120,7 +120,6 @@
   <string name="quick_settings_heads_up_label">Opozorilo</string>
   <string name="quick_settings_ambient_display_label">Okoliški zaslon</string>
   <string name="quick_settings_sync_label">Sinhronizacija</string>
-  <string name="quick_settings_custom_tile_detail_title">Ploščica po meri</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">Povlecite desno za %1$s</string>
   <string name="right_shortcut_hint">Povlecite levo za %1$s</string>
@@ -154,9 +153,6 @@
   <string name="zen_silent_with_warning">Brez prekinitev razen budilk.</string>
   <string name="quick_settings_remove">Odstrani ploščico</string>
   <string name="quick_settings_dynamic_tile_detail_title">Dinamične ploščice</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Naslednja budilka</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Izbirnik IME</string>
-  <string name="dynamic_qs_tile_su_label">Skrbniški dostop</string>
   <string name="fingerprint_try_again_hint">Preiščite znova</string>
   <string name="accessibility_dock_battery_level"><xliff:g id="number">%d</xliff:g> odstotkov baterije v postaji.</string>
 </resources>
