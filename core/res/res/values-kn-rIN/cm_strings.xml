@@ -44,7 +44,6 @@
   <string name="privacy_guard_notification">ಗೌಪ್ಯತಾ ರಕ್ಷಕ ಸಕ್ರಿಯ</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g>ಗೆ ಖಾಸಗಿ ಡೇಟಾವನ್ನು ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ</string>
   <string name="permlab_useHardwareFramework">ಹಾರ್ಡ್‍ವೇರ್ ಫ್ರೇಮ್‍ವರ್ಕ್ ಬಳಕೆ</string>
-  <string name="permdesc_useHardwareFramework">ಒಂದು ಆಪ್‍ಗೆ CM ಹಾರ್ಡ್‍ವೇರ್ ಫ್ರೇಮ್‍ವರ್ಕ್ ಪ್ರವೇಶಿಸಲು ಅನುಮತಿಸುತ್ತದೆ.</string>
   <string name="permlab_setKeyguardWallpaper">ಕೀಗಾರ್ಡ್ ವಾಲ್‍ಪೇಪರ್ ಹೊಂದಿಕೆ</string>
   <string name="permdesc_setKeyguardWallpaper">ಒಂದು ಆಪ್‍ಗೆ ಲಾಕ್ ಪರದೆಯ ವಾಲ್‍ಪೇಪರ್ ಬದಲಾಯಿಸಲು ಅನುಮತಿಸುತ್ತದೆ.</string>
   <string name="privacy_guard_dialog_title">ಗೌಪ್ಯತಾ ರಕ್ಷಕ</string>
@@ -65,10 +64,6 @@
   <string name="adb_both_active_notification_title">ಯುಎಸ್‍ಬಿಯಿಂದ ಎಡಿಬಿ &amp; ನೆಟ್‍ವರ್ಕ್ ಸಕ್ರಿಯಗೊಂಡಿದೆ</string>
   <string name="adb_active_generic_notification_message">ಡೀಬಗ್ಗಿಂಗ್ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲು ಸ್ಪರ್ಶಿಸಿ.</string>
   <string name="usb_choose_notification_title">ಯುಎಸ್‍ಬಿ ಆಯ್ಕೆಗಳನ್ನು ಆರಿಸಲು ಸ್ಪರ್ಶಿಸಿ.</string>
-  <string name="adb_active_custom_tile">ಎಡಿಬಿ - <xliff:g id="adb_type" example="USB">%1$s</xliff:g></string>
-  <string name="adb_active_custom_tile_both">ಯುಎಸ್‍ಬಿ &amp; ನೆಟ್‍ವರ್ಕ್</string>
-  <string name="adb_active_custom_tile_usb">ಯುಎಸ್‍ಬಿ</string>
-  <string name="adb_active_custom_tile_net">ನೆಟ್‍ವರ್ಕ್</string>
   <string name="permlab_interceptPackageLaunch">ಆಪ್ ಆರಂಭ ಪ್ರತಿಬಂಧ</string>
   <string name="permdesc_interceptPackageLaunch">ಆಪ್‍ಗೆ ಇತರೆ ಆಪ್‍ಗಳು ಆರಂಭಗೊಳ್ಳುವುದನ್ನು ಪ್ರತಿಬಂಧಿಸಲು ಅನುವುಮಾಡುತ್ತದೆ</string>
   <string name="app_ops_access_camera">ಕ್ಯಾಮೆರಾ ಪ್ರವೇಶ</string>

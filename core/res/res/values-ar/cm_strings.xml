@@ -62,10 +62,6 @@
   <string name="adb_both_active_notification_title">ADB عبر USB &amp; network ممكن</string>
   <string name="adb_active_generic_notification_message">إللمس لتعطيل التصحيح.</string>
   <string name="usb_choose_notification_title">المس لاظهار خيارات منفذ USB.</string>
-  <string name="adb_active_custom_tile">ADB - <xliff:g id="adb_type" example="USB">%1$s</xliff:g></string>
-  <string name="adb_active_custom_tile_both">USB &amp; network</string>
-  <string name="adb_active_custom_tile_usb">USB</string>
-  <string name="adb_active_custom_tile_net">الشبكة</string>
   <string name="permlab_interceptPackageLaunch">تم اعتراض تشغيل التطبيق</string>
   <string name="permdesc_interceptPackageLaunch">السماح لتطبيق معين باعتراض تشغيل تطبيقات أخرى</string>
   <string name="app_ops_access_camera">الوصول إلى الكاميرا</string>
