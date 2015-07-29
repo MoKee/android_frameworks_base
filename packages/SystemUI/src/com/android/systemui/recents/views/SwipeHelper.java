@@ -365,11 +365,11 @@ public class SwipeHelper {
         boolean dismissChild = mCallback.canChildBeDismissed(mCurrView)
                 && isValidSwipeDirection(translation)
                 && (childSwipedFastEnough || childSwipedFarEnough);
-        TaskView tv = (TaskView) mCurrView;
-        Task task = tv.getTask();
 
         if (dismissChild) {
             // flingadingy
+            TaskView tv = (TaskView) mCurrView;
+            Task task = tv.getTask();
             if (task.isLockedApp) {
                 mCallback.onDragCancelled(mCurrView);
                 snapChild(mCurrView, velocity);
