@@ -21,7 +21,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -30,18 +29,20 @@ import java.text.DecimalFormat;
 import java.util.Locale;
 
 /**
-* @hide
-*/
+ * @hide
+ */
 
 public class MoKeeUtils {
 
-    private static String LIBNAME = "mokeeutils";
-
-    static {
-        System.loadLibrary(LIBNAME);
+    public static boolean isSupportLanguage(boolean excludeTW) {
+        Locale locale = Resources.getSystem().getConfiguration().locale;
+        if (excludeTW) {
+            return locale.getLanguage().startsWith(Locale.CHINESE.getLanguage())
+                    && !locale.getCountry().equals("TW");
+        } else {
+            return locale.getLanguage().startsWith(Locale.CHINESE.getLanguage());
+        }
     }
-
-    public static native boolean isSupportLanguage(boolean excludeTW);
 
     public static boolean isOnline(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -60,7 +61,8 @@ public class MoKeeUtils {
         } catch (NameNotFoundException e) {
             return false;
         }
-        return state != PackageManager.COMPONENT_ENABLED_STATE_DISABLED && state != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER ? true : false;
+        return state != PackageManager.COMPONENT_ENABLED_STATE_DISABLED
+                && state != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER ? true : false;
     }
 
     public static boolean isApkInstalled(String packagename, Context context) {
