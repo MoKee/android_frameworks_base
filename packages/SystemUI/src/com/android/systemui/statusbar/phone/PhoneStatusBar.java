@@ -56,6 +56,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.pm.ThemeUtils;
 import android.content.res.Configuration;
 import android.content.res.ThemeChangeRequest.RequestType;
 import android.content.res.ThemeConfig;
@@ -3638,6 +3639,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         filter.addAction(Intent.ACTION_SCREEN_ON);
         filter.addAction(Intent.ACTION_KEYGUARD_WALLPAPER_CHANGED);
+        filter.addAction(ThemeUtils.ACTION_THEME_CHANGED);
         if (DEBUG_MEDIA_FAKE_ARTWORK) {
             filter.addAction("fake_artwork");
         }
@@ -3777,6 +3779,11 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                         Context.WALLPAPER_SERVICE);
                 mKeyguardWallpaper = wm.getKeyguardBitmap();
                 updateMediaMetaData(true);
+            } else if (ThemeUtils.ACTION_THEME_CHANGED.equals(action)) {
+                mShowStatusBarCarrier = Settings.System.getIntForUser(
+                        mContext.getContentResolver(), Settings.System.STATUS_BAR_CARRIER, 0,
+                        UserHandle.USER_CURRENT) == 1;
+                showStatusBarCarrierLabel(mShowStatusBarCarrier);
             }
         }
     };
