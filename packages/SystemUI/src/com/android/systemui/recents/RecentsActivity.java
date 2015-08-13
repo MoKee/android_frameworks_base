@@ -154,22 +154,7 @@ public class RecentsActivity extends Activity implements RecentsView.RecentsView
                 // See AlternateRecentsComponent.onAnimationStarted()
                 setResultCode(Activity.RESULT_OK);
             } else if (action.equals(AlternateRecentsComponent.ACTION_FLOATING_BUTTON_REFRESH)) {
-                TaskStack stack = AlternateRecentsComponent.getGolbalStack();
-                if (stack != null) {
-                    ArrayList<Task> tasks = new ArrayList<Task>();
-                    tasks.addAll(stack.getTasks());
-                    // Ignore the visible foreground task
-                    if (AlternateRecentsComponent.dismissAll(context) && tasks.size() > 1) {
-                        Task foregroundTask = tasks.get(tasks.size() - 1);
-                        tasks.remove(foregroundTask);
-                    }
-                    if (TaskStackView.getUnLockedTaskCount(tasks) != 0) {
-                        findViewById(R.id.floating_action_button).setVisibility(View.VISIBLE);
-                        mRecentsView.startFABanimation();;
-                    } else {
-                        mRecentsView.endFABanimation();
-                    }
-                }
+                setFloatingActionButtonVisibility(false);
             }
         }
     };
@@ -544,13 +529,28 @@ public class RecentsActivity extends Activity implements RecentsView.RecentsView
 
         // Animate the SystemUI scrim views
         mScrimViews.startEnterRecentsAnimation();
+        setFloatingActionButtonVisibility(true);
+    }
+
+    private void setFloatingActionButtonVisibility(boolean isFirst) {
         TaskStack stack = AlternateRecentsComponent.getGolbalStack();
         if (stack != null) {
-            if (TaskStackView.getUnLockedTaskCount(stack.getTasks()) != 0) {
+            ArrayList<Task> tasks = new ArrayList<Task>();
+            tasks.addAll(stack.getTasks());
+            // Ignore the visible foreground task
+            if (AlternateRecentsComponent.dismissAll(this) && tasks.size() > 1) {
+                Task foregroundTask = tasks.get(tasks.size() - 1);
+                tasks.remove(foregroundTask);
+            }
+            if (TaskStackView.getUnLockedTaskCount(tasks) != 0) {
                 findViewById(R.id.floating_action_button).setVisibility(View.VISIBLE);
                 mRecentsView.startFABanimation();
             } else {
-                findViewById(R.id.floating_action_button).setVisibility(View.GONE);
+                if (isFirst) {
+                    findViewById(R.id.floating_action_button).setVisibility(View.GONE);
+                } else {
+                    mRecentsView.endFABanimation();
+                }
             }
         }
     }
