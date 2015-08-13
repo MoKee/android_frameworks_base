@@ -574,7 +574,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 tasks.addAll(mStack.getTasks());
                 String foregroundTaskPackageName = "";
                 // Ignore the visible foreground task
-                if (AlternateRecentsComponent.dismissAll(getContext()) && tasks.size() > 1) {
+                if (AlternateRecentsComponent.ignoredForeground(getContext()) && tasks.size() > 1) {
                     Task foregroundTask = tasks.get(tasks.size() - 1);
                     tasks.remove(foregroundTask);
                     foregroundTaskPackageName = foregroundTask.pkgName;
@@ -584,7 +584,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 if (tasks.size() > 0) {
                     long dismissDelay = 0;
                     int childCount = getChildCount();
-                    if (AlternateRecentsComponent.dismissAll(getContext()) && childCount > 1) childCount--;
+                    if (AlternateRecentsComponent.ignoredForeground(getContext()) && childCount > 1) childCount--;
                     int unlockedCount = getUnLockedTaskCount(tasks);
                     int delay = unlockedCount != 0 ? mConfig.taskViewRemoveAnimDuration / unlockedCount : 0;
                     for (int i = 0; i < childCount; i++) {

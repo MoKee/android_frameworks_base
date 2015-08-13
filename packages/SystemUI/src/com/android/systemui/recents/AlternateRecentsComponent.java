@@ -218,9 +218,9 @@ public class AlternateRecentsComponent implements ActivityOptions.OnAnimationSta
         return intent;
     }
 
-    public static boolean dismissAll(Context context) {
+    public static boolean ignoredForeground(Context context) {
         return Settings.System.getInt(context.getContentResolver(),
-            Settings.System.RECENTS_CLEAR_ALL_DISMISS_ALL, 0) == 1;
+            Settings.System.RECENTS_CLEAR_ALL_IGNORED_FOREGROUND, 0) == 1;
     }
 
     /** Initializes the Recents. */

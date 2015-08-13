@@ -3461,7 +3461,7 @@ public final class Settings {
           * Whether to dismiss all recents tasks
           * @hide
           */
-        public static final String RECENTS_CLEAR_ALL_DISMISS_ALL = "recents_clear_all_dismiss_all";
+        public static final String RECENTS_CLEAR_ALL_IGNORED_FOREGROUND = "recents_clear_all_ignored_foreground";
 
         /**
          * show traffic in statusbar. The value is
