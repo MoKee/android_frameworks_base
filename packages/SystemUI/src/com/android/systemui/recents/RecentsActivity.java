@@ -159,7 +159,6 @@ public class RecentsActivity extends Activity implements RecentsView.RecentsView
                     ArrayList<Task> tasks = new ArrayList<Task>();
                     tasks.addAll(stack.getTasks());
                     // Ignore the visible foreground task
-                    
                     if (AlternateRecentsComponent.dismissAll(context) && tasks.size() > 1) {
                         Task foregroundTask = tasks.get(tasks.size() - 1);
                         tasks.remove(foregroundTask);
