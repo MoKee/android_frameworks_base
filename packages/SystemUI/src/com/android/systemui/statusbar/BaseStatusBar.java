@@ -1836,7 +1836,7 @@ public abstract class BaseStatusBar extends SystemUI implements
     protected void setZenMode(int mode) {
         if (!isDeviceProvisioned()) return;
         mZenMode = mode;
-        updateNotifications();
+        updateNotifications(true);
     }
 
     // extended in PhoneStatusBar
@@ -1858,7 +1858,10 @@ public abstract class BaseStatusBar extends SystemUI implements
 
     protected abstract void haltTicker();
     protected abstract void setAreThereNotifications();
-    protected abstract void updateNotifications();
+    protected void updateNotifications() {
+        updateNotifications(false);
+    }
+    protected abstract void updateNotifications(boolean immediate);
     protected abstract void tick(StatusBarNotification n, boolean firstTime);
     protected abstract void updateExpandedViewPos(int expandedPosition);
     protected abstract boolean shouldDisableNavbarGestures();
