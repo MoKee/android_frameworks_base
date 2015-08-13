@@ -52,6 +52,7 @@ import android.os.ParcelFileDescriptor;
 import android.os.RemoteException;
 import android.os.UserHandle;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 import android.view.Display;
@@ -317,7 +318,7 @@ public class SystemServicesProxy {
     }
 
     /** Removes all the user task and kills its processes **/
-    public void removeAllUserTask(int userId) {
+    public void removeAllUserTask(int userId, String packageName) {
         // Exclude home/recents tasks
         List<ActivityManager.RecentTaskInfo> tasks = mAm.getRecentTasksForUser(
                 ActivityManager.getMaxRecentTasksStatic(),
@@ -335,7 +336,9 @@ public class SystemServicesProxy {
             String pkgName = t.baseIntent.getComponent().getPackageName();
             boolean isLockedApp = LockAppUtils.isLockedApp(pkgName) ;
             if (t.persistentId > 0 && !isLockedApp) {
-                removeTask(t.persistentId);
+                if (TextUtils.isEmpty(packageName) || !TextUtils.equals(pkgName, packageName)) {
+                    removeTask(t.persistentId);
+                }
             }
         }
     }

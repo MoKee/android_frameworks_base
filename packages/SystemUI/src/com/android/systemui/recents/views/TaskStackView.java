@@ -572,10 +572,12 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
             public void run() {
                 ArrayList<Task> tasks = new ArrayList<Task>();
                 tasks.addAll(mStack.getTasks());
+                String foregroundTaskPackageName = "";
                 // Ignore the visible foreground task
                 if (AlternateRecentsComponent.dismissAll(getContext()) && tasks.size() > 1) {
                     Task foregroundTask = tasks.get(tasks.size() - 1);
                     tasks.remove(foregroundTask);
+                    foregroundTaskPackageName = foregroundTask.pkgName;
                 }
 
                 // Remove visible TaskViews
@@ -609,7 +611,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 // And remove all the excluded or all the other tasks
                 SystemServicesProxy ssp = RecentsTaskLoader.getInstance().getSystemServicesProxy();
                 if (size > 0) {
-                    ssp.removeAllUserTask(UserHandle.myUserId());
+                    ssp.removeAllUserTask(UserHandle.myUserId(), foregroundTaskPackageName);
                 }
             }
         });
