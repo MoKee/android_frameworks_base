@@ -111,6 +111,7 @@ public class NetworkTraffic extends TextView {
             if (isSet(mState, MASK_UP)) {
                 output = formatOutput(timeDelta, txData, symbol);
                 output += mUp;
+                shouldHide = txData == 0;
             }
 
             // Ensure text size is where it needs to be
@@ -118,6 +119,7 @@ public class NetworkTraffic extends TextView {
             if (isSet(mState, MASK_UP + MASK_DOWN)) {
                 output += "\n";
                 textSize = txtSizeMulti;
+                shouldHide = rxData == 0 && txData == 0;
             } else {
                 textSize = txtSizeSingle;
             }
@@ -126,9 +128,8 @@ public class NetworkTraffic extends TextView {
             if (isSet(mState, MASK_DOWN)) {
                 output += formatOutput(timeDelta, rxData, symbol);
                 output += mDown;
+                shouldHide = rxData == 0;
             }
-
-            shouldHide = TextUtils.isEmpty(output.replaceAll("(?:0" + symbol + mUp + "|0" + symbol + mDown + "|\n)", ""));
 
             // Update view if there's anything new to show
             if (!output.contentEquals(getText()) && !shouldHide) {
@@ -166,7 +167,7 @@ public class NetworkTraffic extends TextView {
                     setText(spannable);
                 }
             }
-            setVisibility(shouldHide ? View.GONE : View.VISIBLE);
+            setVisibility(shouldHide || mState == 0 ? View.GONE : View.VISIBLE);
             // Post delayed message to refresh in ~1000ms
             totalRxBytes = newTotalRxBytes;
             totalTxBytes = newTotalTxBytes;
