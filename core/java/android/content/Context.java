@@ -2939,17 +2939,6 @@ public abstract class Context {
     public static final String TORCH_SERVICE = "torch";
 
     /**
-     * Use with {@link #getSystemService} to retrieve a
-     * {@link android.hardware.MkHardwareManager} for controlling
-     * hw specific features
-     *
-     * @see #getSystemService
-     * @see android.hardware.MkHardwareManager
-     * @hide
-     */
-    public static final String MKHW_SERVICE = "mkhw";
-
-    /**
      * {@link com.android.server.KillSwitchService}for accessing the kill switch service.
      *
      * @see #getSystemService

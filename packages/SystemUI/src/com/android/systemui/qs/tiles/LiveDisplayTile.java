@@ -21,7 +21,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.database.ContentObserver;
-import android.hardware.MkHardwareManager;
 import android.os.Handler;
 import android.os.UserHandle;
 import android.provider.Settings;
@@ -29,6 +28,8 @@ import android.provider.Settings;
 import com.android.internal.util.ArrayUtils;
 import com.android.systemui.R;
 import com.android.systemui.qs.QSTile;
+
+import mokee.hardware.MKHardwareManager;
 
 /** Quick settings tile: LiveDisplay mode switcher **/
 public class LiveDisplayTile extends QSTile<LiveDisplayTile.LiveDisplayState> {
@@ -71,11 +72,9 @@ public class LiveDisplayTile extends QSTile<LiveDisplayTile.LiveDisplayState> {
         mAnnouncementEntries = res.getStringArray(R.array.live_display_announcement);
         mValues = res.getStringArray(com.android.internal.R.array.live_display_values);
 
-        final MkHardwareManager hardware =
-                (MkHardwareManager) mContext.getSystemService(Context.MKHW_SERVICE);
-
         mOutdoorModeAvailable =
-                hardware.isSupported(MkHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT);
+                MKHardwareManager.getInstance(mContext)
+                    .isSupported(MKHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT);
 
         mDefaultDayTemperature = mContext.getResources().getInteger(
                 com.android.internal.R.integer.config_dayColorTemperature);

@@ -13,8 +13,6 @@ LOCAL_JAVA_LIBRARIES := android.policy telephony-common
 
 LOCAL_JAVA_LIBRARIES += services.accessibility
 
-LOCAL_JAVA_LIBRARIES += org.mokee.hardware
-
 LOCAL_JAVA_LIBRARIES += org.mokee.platform.sdk
 
 include $(BUILD_STATIC_JAVA_LIBRARY)
