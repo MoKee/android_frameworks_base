@@ -291,6 +291,7 @@ public class NetworkTraffic extends TextView {
                 return;
             }
         } else {
+            setVisibility(View.GONE);
             clearHandlerCallbacks();
         }
     }
