@@ -3882,6 +3882,14 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub {
                 if (mDeviceOwner != null) {
                     mDeviceOwner.clearDeviceOwner();
                     mDeviceOwner.writeOwnerFile();
+                    // Restore backup manager.
+                    try {
+                        IBackupManager ibm = IBackupManager.Stub.asInterface(
+                                ServiceManager.getService(Context.BACKUP_SERVICE));
+                        ibm.setBackupServiceActive(UserHandle.USER_OWNER, true);
+                    } catch (RemoteException e) {
+                        throw new IllegalStateException("Failed activating backup service.", e);
+                    }
                 }
             } finally {
                 Binder.restoreCallingIdentity(ident);
