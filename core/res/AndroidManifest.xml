@@ -3289,7 +3289,7 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name="com.mokee.mms.receiver.SmsCaptchasReceiver">
+        <receiver android:name="com.android.server.SmsCaptchasReceiver">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>

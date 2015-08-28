@@ -29,6 +29,9 @@
   <!-- MoKee PlatLogo -->
   <java-symbol type="drawable" name="mk_platlogo" />
 
+  <!-- Captchas -->
+  <java-symbol type="string" name="captchas_has_copied" />
+
   <java-symbol type="array" name="config_externalMKServices" />
 
 </resources>
