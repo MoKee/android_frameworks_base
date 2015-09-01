@@ -63,6 +63,11 @@ public class ProfilesTile extends QSTile<QSTile.State> implements KeyguardMonito
     }
 
     @Override
+    public boolean hasSensitiveData() {
+        return true;
+    }
+
+    @Override
     protected void handleDestroy() {
         mKeyguardMonitor.removeCallback(this);
     }

@@ -68,6 +68,11 @@ public class LocationTile extends QSTile<QSTile.BooleanState> {
     }
 
     @Override
+    public boolean hasSensitiveData() {
+        return true;
+    }
+
+    @Override
     public DetailAdapter getDetailAdapter() {
         return mDetailAdapter;
     }

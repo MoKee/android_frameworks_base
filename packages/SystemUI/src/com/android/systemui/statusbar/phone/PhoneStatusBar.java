@@ -485,6 +485,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     Settings.Secure.LOCKSCREEN_VISUALIZER_ENABLED), false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.RECENTS_LONG_PRESS_ACTIVITY), false, this);
+            resolver.registerContentObserver(Settings.Secure.getUriFor(
+                    Settings.Secure.LOCKSCREEN_HIDE_TILES_WITH_SENSITIVE_DATA),
+                    false, this, UserHandle.USER_ALL);
             update();
         }
 
@@ -506,6 +509,11 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             mBrightnessControl = Settings.System.getIntForUser(
                     resolver, Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0,
                     UserHandle.USER_CURRENT) == 1;
+
+            mQSPanel.setHideQsTilesWithSensitiveData(
+                    Settings.Secure.getIntForUser(resolver,
+                        Settings.Secure.LOCKSCREEN_HIDE_TILES_WITH_SENSITIVE_DATA, 0,
+                            UserHandle.USER_CURRENT) != 0);
 
             mShowStatusBarCarrier = Settings.System.getIntForUser(
                     resolver, Settings.System.STATUS_BAR_CARRIER, 0,
@@ -1263,6 +1271,11 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 }
             });
         }
+
+        mQSPanel.setHideQsTilesWithSensitiveData(
+                Settings.Secure.getIntForUser(mContext.getContentResolver(),
+                    Settings.Secure.LOCKSCREEN_HIDE_TILES_WITH_SENSITIVE_DATA, 0,
+                        UserHandle.USER_CURRENT) != 0);
 
         // User info. Trigger first load.
         mHeader.setUserInfoController(mUserInfoController);
