@@ -288,7 +288,6 @@ public class TaskViewHeader extends FrameLayout {
                     .withLayer()
                     .start();
         }
-
     }
 
     /** Animates this task bar if the user does not interact with the stack after a certain time. */
@@ -316,7 +315,6 @@ public class TaskViewHeader extends FrameLayout {
                     .withLayer()
                     .start();
         }
-
     }
 
     /** Mark this task view that the user does has not interacted with the stack after a certain time. */
