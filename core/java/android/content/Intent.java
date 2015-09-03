@@ -3652,7 +3652,7 @@ public class Intent implements Parcelable, Cloneable {
      * @hide
      */
     public static final String EXTRA_CURRENT_PACKAGE_NAME =
-            "com.cyanogenmod.intent.extra.CURRENT_PACKAGE_NAME";
+            "com.mokee.intent.extra.CURRENT_PACKAGE_NAME";
 
     // ---------------------------------------------------------------------
     // ---------------------------------------------------------------------

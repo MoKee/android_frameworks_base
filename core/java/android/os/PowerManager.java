@@ -394,7 +394,7 @@ public final class PowerManager {
      * @hide
      */
     public static final String POWER_PROFILE_CHANGED =
-            "com.cyanogenmod.power.PROFILE_CHANGED";
+            "com.mokee.power.PROFILE_CHANGED";
 
     final Context mContext;
     final IPowerManager mService;
