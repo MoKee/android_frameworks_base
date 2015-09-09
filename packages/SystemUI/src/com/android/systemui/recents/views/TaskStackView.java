@@ -584,15 +584,17 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 if (tasks.size() > 0) {
                     long dismissDelay = 0;
                     int childCount = getChildCount();
-                    if (AlternateRecentsComponent.ignoredForeground(getContext()) && childCount > 1) childCount--;
-                    int unlockedCount = getUnLockedTaskCount(tasks);
-                    int delay = unlockedCount != 0 ? mConfig.taskViewRemoveAnimDuration / unlockedCount : 0;
-                    for (int i = 0; i < childCount; i++) {
-                        TaskView tv = (TaskView) getChildAt(i);
-                        if(!tv.getTask().isLockedApp) {
-                            tasks.remove(tv.getTask());
-                            tv.dismissTask(dismissDelay);
-                            dismissDelay += delay;
+                    if (childCount > 0) {
+                        if (AlternateRecentsComponent.ignoredForeground(getContext()) && childCount > 1) childCount--;
+                        int unlockedCount = getUnLockedTaskCount(tasks);
+                        int delay = unlockedCount != 0 ? mConfig.taskViewRemoveAnimDuration / unlockedCount : 0;
+                        for (int i = 0; i < childCount; i++) {
+                            TaskView tv = (TaskView) getChildAt(i);
+                            if (!tv.getTask().isLockedApp) {
+                                tasks.remove(tv.getTask());
+                                tv.dismissTask(dismissDelay);
+                                dismissDelay += delay;
+                            }
                         }
                     }
                 }
