@@ -2571,7 +2571,7 @@ public class Intent implements Parcelable, Cloneable {
      */
     //@SdkConstant(SdkConstantType.BROADCAST_INTENT_ACTION)
     public static final String ACTION_HOTWORD_INPUT_CHANGED
-            = "com.cyanogenmod.intent.action.HOTWORD_INPUT_CHANGED";
+            = "com.mokee.intent.action.HOTWORD_INPUT_CHANGED";
 
     /**
      * @hide
