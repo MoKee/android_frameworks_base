@@ -40,7 +40,7 @@
   <string name="accessibility_quick_settings_heads_up_changed_off">已關閉浮動通知。</string>
   <string name="accessibility_quick_settings_heads_up_changed_on">已開啟浮動通知。</string>
   <string name="accessibility_quick_settings_hotspot_off">已關閉行動熱點。</string>
-  <string name="accessibility_quick_settings_hotspot_on">已開啟行動熱點。</string>
+  <string name="accessibility_quick_settings_hotspot_on">已開啟流動熱點。</string>
   <string name="accessibility_quick_settings_live_display_off">已關閉 LiveDisplay。</string>
   <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: 自動模式。</string>
   <string name="accessibility_quick_settings_live_display_day">LiveDisplay: 日間模式。</string>
@@ -108,6 +108,7 @@
   <string name="quick_settings_lockscreen_label_enforced">強制執行鎖定螢幕</string>
   <string name="quick_settings_network_adb_label">透過網絡連接 ADB</string>
   <string name="quick_settings_lte_label">LTE</string>
+  <string name="quick_settings_volume_panel_label">音量區</string>
   <string name="quick_settings_screen_timeout_detail_title">螢幕逾時</string>
   <string name="quick_settings_usb_tether_label">USB 網絡共享</string>
   <string name="quick_settings_heads_up_label">浮動通知</string>
@@ -122,7 +123,7 @@
   <string name="navbar_menu_big_button">功能表按鈕</string>
   <string name="navigation_ring_title">快速啟動捷徑</string>
   <string name="navring_target_reset_message">刪除所有使用者建立的導覽欄捷徑並還原爲預設？</string>
-  <string name="navring_target_reset">導覽欄捷徑已還原爲預設</string>
+  <string name="navring_target_reset">導覽列捷徑已重設爲預設</string>
   <string name="navring_action_open_ime_switcher">打開輸入法切換器</string>
   <string name="navring_action_kill_app">終止應用程式</string>
   <string name="navring_action_none">無</string>
@@ -139,8 +140,8 @@
   <string name="screen_pinning_description_no_navbar">這將保持畫面在視野範圍內，直至您解鎖畫面位置。觸摸并按住返回按鈕即可解鎖畫面。</string>
   <string name="interruption_level_silent">靜音</string>
   <string name="zen_silent_with_warning">不打擾，鬧鐘除外。</string>
-  <string name="quick_settings_remove">移除按鈕</string>
-  <string name="quick_settings_dynamic_tile_detail_title">動態按鈕</string>
+  <string name="quick_settings_remove">移除方塊</string>
+  <string name="quick_settings_dynamic_tile_detail_title">動態方塊</string>
   <string name="fingerprint_try_again_hint">請再次掃描</string>
   <string name="accessibility_dock_battery_level">座架電池 <xliff:g id="number">%d</xliff:g>%%。</string>
 </resources>
