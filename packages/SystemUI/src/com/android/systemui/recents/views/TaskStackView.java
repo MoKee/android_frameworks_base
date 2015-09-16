@@ -567,56 +567,58 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
     }
 
     public void dismissAllTasks() {
-        post(new Runnable() {
+        final ArrayList<Task> tasks = new ArrayList<Task>();
+        tasks.addAll(mStack.getTasks());
+        String tmpForegroundTaskPackageName = "";
+        // Ignore the visible foreground task
+        if (AlternateRecentsComponent.ignoredForeground(getContext()) && tasks.size() > 1) {
+            Task foregroundTask = tasks.get(tasks.size() - 1);
+            tasks.remove(foregroundTask);
+            tmpForegroundTaskPackageName = foregroundTask.pkgName;
+        }
+        final String foregroundTaskPackageName = tmpForegroundTaskPackageName;
+
+        // Remove visible TaskViews
+        if (tasks.size() > 0) {
+            long dismissDelay = 0;
+            int childCount = getChildCount();
+            if (childCount > 0) {
+                if (AlternateRecentsComponent.ignoredForeground(getContext()) && childCount > 1) childCount--;
+                int unlockedCount = getUnLockedTaskCount(tasks);
+                int delay = unlockedCount != 0 ? mConfig.taskViewRemoveAnimDuration / unlockedCount : 0;
+                for (int i = 0; i < childCount; i++) {
+                    TaskView tv = (TaskView) getChildAt(i);
+                    if (!tv.getTask().isLockedApp) {
+                        tasks.remove(tv.getTask());
+                        tv.dismissTask(dismissDelay);
+                        dismissDelay += delay;
+                    }
+                }
+            }
+        }
+
+        final int size = tasks.size();
+        if (size > 0) {
+            // Remove any unlocked Tasks
+            for (Task t : tasks) {
+                if (mStack.getTasks().contains(t) && !t.isLockedApp) {
+                    mStack.removeTask(t);
+                }
+            }
+        }
+
+        // removeAllUserTask() can take upwards of two seconds to execute so post
+        // a delayed runnable to run this code once we are done animating
+        postDelayed(new Runnable() {
             @Override
             public void run() {
-                ArrayList<Task> tasks = new ArrayList<Task>();
-                tasks.addAll(mStack.getTasks());
-                String foregroundTaskPackageName = "";
-                // Ignore the visible foreground task
-                if (AlternateRecentsComponent.ignoredForeground(getContext()) && tasks.size() > 1) {
-                    Task foregroundTask = tasks.get(tasks.size() - 1);
-                    tasks.remove(foregroundTask);
-                    foregroundTaskPackageName = foregroundTask.pkgName;
-                }
-
-                // Remove visible TaskViews
-                if (tasks.size() > 0) {
-                    long dismissDelay = 0;
-                    int childCount = getChildCount();
-                    if (childCount > 0) {
-                        if (AlternateRecentsComponent.ignoredForeground(getContext()) && childCount > 1) childCount--;
-                        int unlockedCount = getUnLockedTaskCount(tasks);
-                        int delay = unlockedCount != 0 ? mConfig.taskViewRemoveAnimDuration / unlockedCount : 0;
-                        for (int i = 0; i < childCount; i++) {
-                            TaskView tv = (TaskView) getChildAt(i);
-                            if (!tv.getTask().isLockedApp) {
-                                tasks.remove(tv.getTask());
-                                tv.dismissTask(dismissDelay);
-                                dismissDelay += delay;
-                            }
-                        }
-                    }
-                }
-
-                int size = tasks.size();
-                if (size > 0) {
-                    // Remove possible alive Tasks
-                    for (int i = 0; i < size; i++) {
-                        Task t = tasks.get(i);
-                        if (mStack.getTasks().contains(t) && !t.isLockedApp) {
-                            mStack.removeTask(t);
-                        }
-                    }
-                }
-
                 // And remove all the excluded or all the other tasks
                 SystemServicesProxy ssp = RecentsTaskLoader.getInstance().getSystemServicesProxy();
                 if (size > 0) {
                     ssp.removeAllUserTask(UserHandle.myUserId(), foregroundTaskPackageName);
                 }
             }
-        });
+        }, mConfig.taskViewRemoveAnimDuration);
     }
 
     @Override
