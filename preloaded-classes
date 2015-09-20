@@ -898,7 +898,6 @@ android.media.ToneGenerator
 android.media.audiofx.AudioEffect
 android.media.audiofx.LoudnessEnhancer
 android.mokee.hardware.ProximitySensorManager
-android.mokee.location.PhoneLocation
 android.mokee.utils.MoKeeUtils
 android.mtp.MtpDatabase
 android.mtp.MtpDevice
@@ -2141,6 +2140,7 @@ com.google.android.collect.Lists
 com.google.android.collect.Maps
 com.google.android.gles_jni.EGLImpl
 com.google.android.gles_jni.GLImpl
+com.mokee.cloud.location.OfflineNumber
 dalvik.system.BlockGuard
 dalvik.system.BlockGuard$1
 dalvik.system.BlockGuard$2

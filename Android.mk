@@ -149,9 +149,9 @@ LOCAL_SRC_FILES += \
 	core/java/android/content/pm/IPackageManager.aidl \
 	core/java/android/content/pm/IPackageMoveObserver.aidl \
 	core/java/android/content/pm/IPackageStatsObserver.aidl \
-        core/java/android/content/res/IThemeChangeListener.aidl \
-        core/java/android/content/res/IThemeProcessingListener.aidl \
-        core/java/android/content/res/IThemeService.aidl \
+	core/java/android/content/res/IThemeChangeListener.aidl \
+	core/java/android/content/res/IThemeProcessingListener.aidl \
+	core/java/android/content/res/IThemeService.aidl \
 	core/java/android/database/IContentObserver.aidl \
 	core/java/android/hardware/ICameraService.aidl \
 	core/java/android/hardware/ICameraServiceListener.aidl \
@@ -327,8 +327,8 @@ LOCAL_SRC_FILES += \
 	location/java/android/location/IGeofenceProvider.aidl \
 	location/java/android/location/IGpsMeasurementsListener.aidl \
 	location/java/android/location/IGpsNavigationMessageListener.aidl \
-        location/java/android/location/IGeoFencer.aidl \
-        location/java/android/location/IGeoFenceListener.aidl \
+	location/java/android/location/IGeoFencer.aidl \
+	location/java/android/location/IGeoFenceListener.aidl \
 	location/java/android/location/IGpsStatusListener.aidl \
 	location/java/android/location/IGpsStatusProvider.aidl \
 	location/java/android/location/ILocationListener.aidl \
@@ -354,7 +354,7 @@ LOCAL_SRC_FILES += \
 	media/java/android/media/IRemoteVolumeObserver.aidl \
 	media/java/android/media/IRingtonePlayer.aidl \
 	media/java/android/media/IVolumeController.aidl \
-        media/java/android/media/audiopolicy/IAudioPolicyCallback.aidl \
+	media/java/android/media/audiopolicy/IAudioPolicyCallback.aidl \
 	media/java/android/media/projection/IMediaProjection.aidl \
 	media/java/android/media/projection/IMediaProjectionCallback.aidl \
 	media/java/android/media/projection/IMediaProjectionManager.aidl \
