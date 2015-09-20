@@ -22,7 +22,7 @@ import android.text.TextUtils;
 * @hide
 */
 
-public final class PhoneLocation {
+public final class PhoneNumberOfflineGeocoder {
 
     private static String LIBNAME = "mokee-phonelocation";
 
@@ -32,22 +32,22 @@ public final class PhoneLocation {
 
     public static String getPhoneCode(String number) {
         if (TextUtils.isEmpty(number)) return "";
-        String mPhoneCode = getLocationFromPhoneNumber(number.toString(), 0);
+        String mPhoneCode = getDescriptionForNumber(number.toString(), 0);
         return (TextUtils.isEmpty(mPhoneCode) ? "" : mPhoneCode);
     }
 
     public static String getPhoneLocation(String number) {
         if (TextUtils.isEmpty(number)) return "";
-        String mPhoneLocation = getLocationFromPhoneNumber(number.toString(), 1);
+        String mPhoneLocation = getDescriptionForNumber(number.toString(), 1);
         return (TextUtils.isEmpty(mPhoneLocation) ? "" : mPhoneLocation);
     }
 
-    private synchronized static String doGetLocationFromPhoneNumber(String number) {
-        return nativeGetLocationFromPhoneNumber(number);
+    private synchronized static String doGetDescriptionForNumber(String number) {
+        return nativeGetDescriptionForNumber(number);
     }
 
-    private static String getLocationFromPhoneNumber(String number, int pos) {
-        String s = doGetLocationFromPhoneNumber(number.replaceAll("(?:-| )", ""));
+    private static String getDescriptionForNumber(String number, int pos) {
+        String s = doGetDescriptionForNumber(number.replaceAll("(?:-| )", ""));
         String[] ss = null;
         if (!TextUtils.isEmpty(s)) {
             ss = s.split(",");
@@ -56,6 +56,6 @@ public final class PhoneLocation {
         return null;
     }
 
-    private static native String nativeGetLocationFromPhoneNumber(String number);
+    private static native String nativeGetDescriptionForNumber(String number);
 
 }
