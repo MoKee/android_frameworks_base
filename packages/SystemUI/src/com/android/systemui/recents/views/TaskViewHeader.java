@@ -67,6 +67,9 @@ public class TaskViewHeader extends FrameLayout {
     ImageView mApplicationIcon;
     TextView mActivityDescription;
 
+    FrameLayout.LayoutParams mDismissButtonParams;
+    FrameLayout.LayoutParams mLockAppButtonParams;
+
     Context ct;
     LockAppUtils lockAppUtils;
     Task task;
@@ -148,6 +151,8 @@ public class TaskViewHeader extends FrameLayout {
         mActivityDescription = (TextView) findViewById(R.id.activity_description);
         mDismissButton = (ImageView) findViewById(R.id.dismiss_task);
         mLockAppButton = (ImageView) findViewById(R.id.set_lock_app);
+        mDismissButtonParams = (FrameLayout.LayoutParams)mDismissButton.getLayoutParams();
+        mLockAppButtonParams = (FrameLayout.LayoutParams)mLockAppButton.getLayoutParams();
 
         // Hide the backgrounds if they are ripple drawables
         if (!Constants.DebugFlags.App.EnableTaskFiltering) {
@@ -167,9 +172,10 @@ public class TaskViewHeader extends FrameLayout {
         setBackground(mBackground);
     }
 
-    private void refreshBackground(boolean is_color_light, boolean iswhite) {
-        mLockAppButton.setImageDrawable(ct.getDrawable((iswhite ? (is_color_light ? R.drawable.ic_lock_light : R.drawable.ic_lock_dark) 
+    private void refreshBackground(boolean is_color_light, boolean is_locked) {
+        mLockAppButton.setImageDrawable(ct.getDrawable((is_locked ? (is_color_light ? R.drawable.ic_lock_light : R.drawable.ic_lock_dark) 
             : (is_color_light ? R.drawable.ic_lock_open_light : R.drawable.ic_lock_open_dark))));
+        mLockAppButton.setLayoutParams(is_locked ? mDismissButtonParams : mLockAppButtonParams);
     }
 
     @Override
