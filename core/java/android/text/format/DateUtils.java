@@ -53,15 +53,8 @@ public class DateUtils
     /**
      * Exact time display for Chinese
      */
-    private static final int []sAmPmCN = new int[] {
-        com.android.internal.R.string.lc,
-        com.android.internal.R.string.lm,
-        com.android.internal.R.string.zc,
-        com.android.internal.R.string.sw,
-        com.android.internal.R.string.zw,
-        com.android.internal.R.string.xw,
-        com.android.internal.R.string.bw,
-        com.android.internal.R.string.sy
+    private static final String []sAmPmCN = new String[] {
+        "凌晨","黎明","早晨","上午","中午","下午","晚上","深夜"
     };
 
     /**
@@ -231,32 +224,31 @@ public class DateUtils
     }
 
     public static String getAMPMCNString(int hours, int ampm) {
-        Resources r = Resources.getSystem();
         if (ampm == Calendar.AM) {
             if (hours < 5) {
-                return r.getString(sAmPmCN[0]);
+                return sAmPmCN[0];
             } else if (hours >= 5 && hours < 7) {
-                return r.getString(sAmPmCN[1]);
+                return sAmPmCN[1];
             } else if (hours >= 7 && hours < 9) {
-                return r.getString(sAmPmCN[2]);
+                return sAmPmCN[2];
             } else if (hours >= 9 && hours < 12) {
-                return r.getString(sAmPmCN[3]);
+                return sAmPmCN[3];
             } else {
-                return r.getString(sAmPmCN[0]);
+                return sAmPmCN[0];
             }
         } else {
             if (hours == 0) {
-                return r.getString(sAmPmCN[4]);
+                return sAmPmCN[4];
             } else if (hours < 6) {
-                return r.getString(sAmPmCN[5]);
+                return sAmPmCN[5];
             } else if (hours >= 6 && hours <= 9) {
-                return r.getString(sAmPmCN[6]);
+                return sAmPmCN[6];
             } else if (hours > 9 && hours < 12) {
-                return r.getString(sAmPmCN[7]);
+                return sAmPmCN[7];
             } else if (hours == 12) {
-                return r.getString(sAmPmCN[4]);
+                return sAmPmCN[4];
             } else {
-                return r.getString(sAmPmCN[4]);
+                return sAmPmCN[4];
             }
         }
     }
