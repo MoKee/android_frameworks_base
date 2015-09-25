@@ -1774,6 +1774,9 @@
         <enum name="KEYCODE_TV_MEDIA_CONTEXT_MENU" value="257" />
         <enum name="KEYCODE_TV_TIMER_PROGRAMMING" value="258" />
         <enum name="KEYCODE_HELP" value="259" />
+        <enum name="KEYCODE_ZENMODE_MUTE" value="260" />
+        <enum name="KEYCODE_ZENMODE_DO_NOT_DISTURB" value="261" />
+        <enum name="KEYCODE_ZENMODE_NORMAL" value="262" />
     </attr>
 
     <!-- ***************************************************************** -->

@@ -32707,6 +32707,9 @@ package android.view {
     field public static final int KEYCODE_YEN = 216; // 0xd8
     field public static final int KEYCODE_Z = 54; // 0x36
     field public static final int KEYCODE_ZENKAKU_HANKAKU = 211; // 0xd3
+    field public static final int KEYCODE_ZENMODE_MUTE = 260; // 0x104
+    field public static final int KEYCODE_ZENMODE_DO_NOT_DISTURB = 261; // 0x105
+    field public static final int KEYCODE_ZENMODE_NORMAL = 262; // 0x106
     field public static final int KEYCODE_ZOOM_IN = 168; // 0xa8
     field public static final int KEYCODE_ZOOM_OUT = 169; // 0xa9
     field public static final deprecated int MAX_KEYCODE = 84; // 0x54
