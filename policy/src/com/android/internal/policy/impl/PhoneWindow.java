@@ -3738,6 +3738,9 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
         }
         if (!mForcedNavigationBarColor) {
             mNavigationBarColor = a.getColor(R.styleable.Window_navigationBarColor, 0xFF000000);
+            if (mStatusBarColor != 0xFF000000) {
+                mNavigationBarColor = mStatusBarColor;
+            }
         }
 
         if (mAlwaysReadCloseOnTouchAttr || getContext().getApplicationInfo().targetSdkVersion
@@ -5021,6 +5024,7 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
         if (mDecor != null) {
             mDecor.updateColorViews(null, false /* animate */);
         }
+        setNavigationBarColor(color);
     }
 
     @Override
