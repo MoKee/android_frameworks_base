@@ -151,8 +151,12 @@ public class TaskViewHeader extends FrameLayout {
         mActivityDescription = (TextView) findViewById(R.id.activity_description);
         mDismissButton = (ImageView) findViewById(R.id.dismiss_task);
         mLockAppButton = (ImageView) findViewById(R.id.set_lock_app);
-        mDismissButtonParams = (FrameLayout.LayoutParams)mDismissButton.getLayoutParams();
-        mLockAppButtonParams = (FrameLayout.LayoutParams)mLockAppButton.getLayoutParams();
+        if (mDismissButtonParams == null) {
+            mDismissButtonParams = (FrameLayout.LayoutParams)mDismissButton.getLayoutParams();
+        }
+        if (mLockAppButtonParams == null) {
+            mLockAppButtonParams = (FrameLayout.LayoutParams)mLockAppButton.getLayoutParams();
+        }
 
         // Hide the backgrounds if they are ripple drawables
         if (!Constants.DebugFlags.App.EnableTaskFiltering) {
