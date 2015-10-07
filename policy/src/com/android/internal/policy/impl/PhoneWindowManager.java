@@ -373,8 +373,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     WindowState mLastInputMethodWindow = null;
     WindowState mLastInputMethodTargetWindow = null;
 
-    private ZenModeHelper mZenModeHelper;
-
     // FIXME This state is shared between the input reader and handler thread.
     // Technically it's broken and buggy but it has been like this for many years
     // and we have not yet seen any problems.  Someday we'll rewrite this logic
@@ -5763,29 +5761,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     msg.setAsynchronous(true);
                     msg.sendToTarget();
                 }
-                break;
-            }
-            case KeyEvent.KEYCODE_ZENMODE_MUTE:
-            case KeyEvent.KEYCODE_ZENMODE_DO_NOT_DISTURB:
-            case KeyEvent.KEYCODE_ZENMODE_NORMAL: {
-                if (down) {
-                    boolean initialize = false;
-                    if (mZenModeHelper == null) {
-                        mZenModeHelper = new ZenModeHelper(mContext);
-                        initialize = true;
-                    }
-
-                    if (keyCode == KeyEvent.KEYCODE_ZENMODE_MUTE)
-                        mZenModeHelper.setZenMode(Settings.Global.ZEN_MODE_NO_INTERRUPTIONS);
-                    else if (keyCode == KeyEvent.KEYCODE_ZENMODE_DO_NOT_DISTURB)
-                        mZenModeHelper.setZenMode(Settings.Global.ZEN_MODE_IMPORTANT_INTERRUPTIONS);
-                    else if (keyCode == KeyEvent.KEYCODE_ZENMODE_NORMAL)
-                        mZenModeHelper.setZenMode(Settings.Global.ZEN_MODE_OFF);
-
-                    if (!initialize)
-                        performHapticFeedbackLw(null, HapticFeedbackConstants.LONG_PRESS, false);
-                }
-                break;
             }
         }
 

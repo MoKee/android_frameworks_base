@@ -748,14 +748,8 @@ public class KeyEvent extends InputEvent implements Parcelable {
     public static final int KEYCODE_TV_TIMER_PROGRAMMING = 258;
     /** Key code constant: Help key. */
     public static final int KEYCODE_HELP = 259;
-    /** Key code constant: ZenMode Mute key. */
-    public static final int KEYCODE_ZENMODE_MUTE = 260;
-    /** Key code constant: ZenMode Do Not Disturb key. */
-    public static final int KEYCODE_ZENMODE_DO_NOT_DISTURB = 261;
-    /** Key code constant: ZenMode Normal key. */
-    public static final int KEYCODE_ZENMODE_NORMAL = 262;
 
-    private static final int LAST_KEYCODE = KEYCODE_ZENMODE_NORMAL;
+    private static final int LAST_KEYCODE = KEYCODE_HELP;
 
     // NOTE: If you add a new keycode here you must also add it to:
     //  isSystem()
@@ -1800,9 +1794,6 @@ public class KeyEvent extends InputEvent implements Parcelable {
             case KeyEvent.KEYCODE_BRIGHTNESS_DOWN:
             case KeyEvent.KEYCODE_BRIGHTNESS_UP:
             case KeyEvent.KEYCODE_MEDIA_AUDIO_TRACK:
-            case KeyEvent.KEYCODE_ZENMODE_MUTE:
-            case KeyEvent.KEYCODE_ZENMODE_DO_NOT_DISTURB:
-            case KeyEvent.KEYCODE_ZENMODE_NORMAL:
                 return true;
         }
 
