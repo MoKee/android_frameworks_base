@@ -67,9 +67,6 @@ public class TaskViewHeader extends FrameLayout {
     ImageView mApplicationIcon;
     TextView mActivityDescription;
 
-    FrameLayout.LayoutParams mDismissButtonParams;
-    FrameLayout.LayoutParams mLockAppButtonParams;
-
     Context ct;
     LockAppUtils lockAppUtils;
     Task task;
@@ -151,12 +148,6 @@ public class TaskViewHeader extends FrameLayout {
         mActivityDescription = (TextView) findViewById(R.id.activity_description);
         mDismissButton = (ImageView) findViewById(R.id.dismiss_task);
         mLockAppButton = (ImageView) findViewById(R.id.set_lock_app);
-        if (mDismissButtonParams == null) {
-            mDismissButtonParams = (FrameLayout.LayoutParams)mDismissButton.getLayoutParams();
-        }
-        if (mLockAppButtonParams == null) {
-            mLockAppButtonParams = (FrameLayout.LayoutParams)mLockAppButton.getLayoutParams();
-        }
 
         // Hide the backgrounds if they are ripple drawables
         if (!Constants.DebugFlags.App.EnableTaskFiltering) {
@@ -179,7 +170,6 @@ public class TaskViewHeader extends FrameLayout {
     private void refreshBackground(boolean is_color_light, boolean is_locked) {
         mLockAppButton.setImageDrawable(ct.getDrawable((is_locked ? (is_color_light ? R.drawable.ic_lock_light : R.drawable.ic_lock_dark) 
             : (is_color_light ? R.drawable.ic_lock_open_light : R.drawable.ic_lock_open_dark))));
-        mLockAppButton.setLayoutParams(is_locked ? mDismissButtonParams : mLockAppButtonParams);
     }
 
     @Override
@@ -232,7 +222,7 @@ public class TaskViewHeader extends FrameLayout {
             mActivityDescription.setText(t.activityLabel);
         }
         task = t;
-        refreshBackground(t.useLightOnPrimaryColor,t.isLockedApp);
+        refreshBackground(t.useLightOnPrimaryColor, t.isLockedApp);
         mLockAppButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -245,7 +235,7 @@ public class TaskViewHeader extends FrameLayout {
                     mDismissButton.setVisibility(View.GONE);
                 }
                 t.isLockedApp = !t.isLockedApp;
-                refreshBackground(t.useLightOnPrimaryColor,t.isLockedApp);
+                refreshBackground(t.useLightOnPrimaryColor, t.isLockedApp);
                 Intent intent = AlternateRecentsComponent.createLocalBroadcastIntent(mContext, AlternateRecentsComponent.ACTION_FLOATING_BUTTON_REFRESH);
                 mContext.sendBroadcastAsUser(intent, UserHandle.CURRENT);
             }
