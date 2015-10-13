@@ -99,8 +99,4 @@
   <string name="select_application">Esbillar app</string>
   <string name="lockscreen_target_empty">Balero</string>
   <string name="zen_silent_with_warning">Ensin interrupciones, quitante alarmes.</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Alarma siguiente</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Seleutor d\'IME</string>
-  <string name="dynamic_qs_tile_su_label">Accesu root</string>
-  <string name="quick_settings_custom_qs_detail_empty_text">Nun s\'atoparon elementos</string>
 </resources>

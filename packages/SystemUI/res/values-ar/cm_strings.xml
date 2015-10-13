@@ -157,5 +157,4 @@
   <string name="quick_settings_dynamic_tile_detail_title">مربع ديناميكي</string>
   <string name="fingerprint_try_again_hint">الرجاء إجراء المسح مرة أخرى</string>
   <string name="accessibility_dock_battery_level">بطارية الإرساء <xliff:g id="number">%d</xliff:g>في المائة.</string>
-  <string name="quick_settings_custom_qs_detail_empty_text">لم يُعثر على عناص</string>
 </resources>
