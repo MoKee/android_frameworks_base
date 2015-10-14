@@ -69,6 +69,8 @@ import android.util.Log;
 import com.android.internal.R;
 import com.android.internal.util.cm.ImageUtils;
 
+import mokee.providers.MKSettings;
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -468,8 +470,8 @@ public class ThemeService extends IThemeService.Stub {
         final String defaultThemePkg = Settings.Secure.getString(resolver,
                 Settings.Secure.DEFAULT_THEME_PACKAGE);
         if (!TextUtils.isEmpty(defaultThemePkg)) {
-            String defaultThemeComponents = Settings.Secure.getString(resolver,
-                    Settings.Secure.DEFAULT_THEME_COMPONENTS);
+            String defaultThemeComponents = MKSettings.Secure.getString(resolver,
+                    MKSettings.Secure.DEFAULT_THEME_COMPONENTS);
             List<String> components;
             if (TextUtils.isEmpty(defaultThemeComponents)) {
                 components = ThemeUtils.getAllComponents();

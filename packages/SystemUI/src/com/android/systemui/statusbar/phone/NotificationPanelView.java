@@ -61,6 +61,8 @@ import com.android.systemui.statusbar.policy.KeyguardUserSwitcher;
 import com.android.systemui.statusbar.stack.NotificationStackScrollLayout;
 import com.android.systemui.statusbar.stack.StackStateAnimator;
 
+import mokee.providers.MKSettings;
+
 public class NotificationPanelView extends PanelView implements
         ExpandableView.OnHeightChangedListener, ObservableScrollView.Listener,
         View.OnClickListener, NotificationStackScrollLayout.OnOverscrollTopChangedListener,
@@ -2100,8 +2102,8 @@ public class NotificationPanelView extends PanelView implements
         protected void observe() {
             super.observe();
             ContentResolver resolver = mContext.getContentResolver();
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.QS_QUICK_PULLDOWN), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.QS_QUICK_PULLDOWN), false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.DOUBLE_TAP_SLEEP_GESTURE), false, this, UserHandle.USER_ALL);
             update();
@@ -2116,8 +2118,8 @@ public class NotificationPanelView extends PanelView implements
         @Override
         public void update() {
             ContentResolver resolver = mContext.getContentResolver();
-            mOneFingerQuickSettingsIntercept = Settings.System.getIntForUser(resolver,
-                    Settings.System.QS_QUICK_PULLDOWN, 0, UserHandle.USER_CURRENT);
+            mOneFingerQuickSettingsIntercept = MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.QS_QUICK_PULLDOWN, 0, UserHandle.USER_CURRENT);
             mDoubleTapToSleepEnabled = Settings.System.getIntForUser(resolver,
                     Settings.System.DOUBLE_TAP_SLEEP_GESTURE, 1, UserHandle.USER_CURRENT) == 1;
         }

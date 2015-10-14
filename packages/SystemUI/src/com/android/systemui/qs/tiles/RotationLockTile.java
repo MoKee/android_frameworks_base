@@ -27,6 +27,8 @@ import com.android.systemui.qs.QSTile;
 import com.android.systemui.statusbar.policy.RotationLockController;
 import com.android.systemui.statusbar.policy.RotationLockController.RotationLockControllerCallback;
 
+import mokee.providers.MKSettings;
+
 /** Quick settings tile: Rotation **/
 public class RotationLockTile extends QSTile<QSTile.BooleanState> {
     private final AnimationIcon mPortraitToAuto
@@ -52,8 +54,8 @@ public class RotationLockTile extends QSTile<QSTile.BooleanState> {
         super(host);
         mController = host.getRotationLockController();
 
-        mAdvancedMode = Settings.Secure.getInt(mContext.getContentResolver(),
-                Settings.Secure.ADVANCED_MODE, 1) == 1;
+        mAdvancedMode = MKSettings.Secure.getInt(mContext.getContentResolver(),
+                MKSettings.Secure.ADVANCED_MODE, 1) == 1;
     }
 
     @Override

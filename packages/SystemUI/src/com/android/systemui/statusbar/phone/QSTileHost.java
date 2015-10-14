@@ -80,6 +80,7 @@ import com.android.systemui.statusbar.policy.UserSwitcherController;
 import com.android.systemui.statusbar.policy.ZenModeController;
 import com.android.systemui.volume.VolumeComponent;
 
+import mokee.providers.MKSettings;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -392,7 +393,7 @@ public class QSTileHost implements QSTile.Host {
                     Settings.Secure.getUriFor(Settings.Secure.QS_TILES),
                     false, this, mUserTracker.getCurrentUserId());
             mContext.getContentResolver().registerContentObserver(
-                    Settings.Secure.getUriFor(Settings.Secure.QS_USE_MAIN_TILES),
+                    MKSettings.Secure.getUriFor(MKSettings.Secure.QS_USE_MAIN_TILES),
                     false, this, mUserTracker.getCurrentUserId());
             mRegistered = true;
         }
