@@ -1274,6 +1274,7 @@ android.media.midi.MidiManager
 android.media.projection.MediaProjectionManager
 android.media.session.MediaSessionManager
 android.media.tv.TvInputManager
+android.mokee.utils.MoKeeUtils
 android.mtp.MtpDatabase
 android.mtp.MtpDevice
 android.mtp.MtpDeviceInfo
