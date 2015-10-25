@@ -16,13 +16,16 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="lockscreen_gesture_instructions">绘制解锁手势</string>
-  <string name="lockscreen_gesture_correct">正确！</string>
-  <string name="lockscreen_gesture_wrong">请重试</string>
-  <string name="keyguard_accessibility_gesture_unlock">手势解锁。</string>
-  <string name="keyguard_accessibility_gesture_area">手势区域。</string>
-  <string name="kg_forgot_gesture_button_text">忘记了手势</string>
-  <string name="kg_wrong_gesture">手势错误</string>
-  <string name="kg_gesture_instructions">绘制您的手势</string>
-  <string name="kg_too_many_failed_gesture_attempts_dialog_message">您已经 <xliff:g id="number">%d</xliff:g> 次错误地绘制了解锁图案。\n\n请在 <xliff:g id="number">%d</xliff:g> 秒后重试。</string>
+  <string name="lockscreen_gesture_instructions">繪製手勢以解鎖</string>
+  <string name="lockscreen_gesture_correct">正確！</string>
+  <string name="lockscreen_gesture_wrong">試多一次</string>
+  <string name="keyguard_accessibility_gesture_unlock">手勢解鎖</string>
+  <string name="keyguard_accessibility_gesture_area">手勢區</string>
+  <string name="kg_forgot_gesture_button_text">忘記手勢</string>
+  <string name="kg_wrong_gesture">手勢錯誤</string>
+  <string name="kg_gesture_instructions">繪製你的手勢</string>
+  <string name="kg_too_many_failed_gesture_attempts_dialog_message">
+        你的手勢已畫錯  <xliff:g id="number">%d</xliff:g>  次。
+        \n\n請在 <xliff:g id="number">%d</xliff:g> 秒後再試。
+    </string>
 </resources>
