@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The Android Open Source Project
+ * Copyright (C) 2014 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,23 +14,19 @@
  * limitations under the License.
  */
 
-package android.app;
+package com.android.systemui.statusbar.policy;
 
-/**
- * Callback interface used by IWallpaperManager to send asynchronous 
- * notifications back to its clients.  Note that this is a
- * one-way interface so the server does not block waiting for the client.
- *
- * @hide
- */
-oneway interface IWallpaperManagerCallback {
-    /**
-     * Called when the wallpaper has changed
-     */
-    void onWallpaperChanged();
+public interface WeatherController {
+    void addCallback(Callback callback);
+    void removeCallback(Callback callback);
+    WeatherInfo getWeatherInfo();
 
-    /**
-     * Called when the keygaurd wallpaper has changed
-     */
-     void onKeyguardWallpaperChanged();
+    public interface Callback {
+        void onWeatherChanged(WeatherInfo temp);
+    }
+    public static class WeatherInfo {
+        public String temp = null;
+        public String city = null;
+        public String condition = null;
+    }
 }
