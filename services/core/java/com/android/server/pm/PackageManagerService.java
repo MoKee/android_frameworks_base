@@ -2005,7 +2005,7 @@ public class PackageManagerService extends IPackageManager.Stub {
 
             // Gross hack for now: we know this file doesn't contain any
             // code, so don't dexopt it to avoid the resulting log spew
-            alreadyDexOpted.add(frameworkDir.getPath() + "/org.cyanogenmod.platform-res.apk");
+            alreadyDexOpted.add(frameworkDir.getPath() + "/org.mokee.platform-res.apk");
 
             /**
              * There are a number of commands implemented in Java, which

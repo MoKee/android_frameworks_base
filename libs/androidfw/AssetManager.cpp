@@ -75,7 +75,7 @@ static const char* kDefaultVendor = "default";
 static const char* kAssetsRoot = "assets";
 static const char* kAppZipName = NULL; //"classes.jar";
 static const char* kSystemAssets = "framework/framework-res.apk";
-static const char* kCMSDKAssets = "framework/org.cyanogenmod.platform-res.apk";
+static const char* kMKSDKAssets = "framework/org.mokee.platform-res.apk";
 static const char* kResourceCache = "resource-cache";
 static const char* kAndroidManifest = "AndroidManifest.xml";
 
@@ -341,10 +341,10 @@ bool AssetManager::addDefaultAssets()
     String8 path(root);
     path.appendPath(kSystemAssets);
 
-    String8 pathCM(root);
-    pathCM.appendPath(kCMSDKAssets);
+    String8 pathMK(root);
+    pathMK.appendPath(kMKSDKAssets);
 
-    return addAssetPath(path, NULL) & addAssetPath(pathCM, NULL);
+    return addAssetPath(path, NULL) & addAssetPath(pathMK, NULL);
 }
 
 int32_t AssetManager::nextAssetPath(const int32_t cookie) const

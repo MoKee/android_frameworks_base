@@ -457,7 +457,7 @@ public final class SystemServer {
         boolean disableNetworkTime = SystemProperties.getBoolean("config.disable_networktime", false);
         boolean isEmulator = SystemProperties.get("ro.kernel.qemu").equals("1");
         String[] externalServices = context.getResources()
-                .getStringArray(com.android.internal.R.array.config_externalCMServices);
+                .getStringArray(com.android.internal.R.array.config_externalMKServices);
 
         try {
             Slog.i(TAG, "Reading configuration...");

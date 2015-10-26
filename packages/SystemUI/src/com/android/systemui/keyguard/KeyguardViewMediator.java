@@ -56,8 +56,8 @@ import android.view.WindowManagerPolicy;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import cyanogenmod.app.Profile;
-import cyanogenmod.app.ProfileManager;
+import mokee.app.Profile;
+import mokee.app.ProfileManager;
 
 import com.android.internal.policy.IKeyguardDrawnCallback;
 import com.android.internal.policy.IKeyguardExitCallback;

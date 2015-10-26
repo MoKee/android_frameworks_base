@@ -2405,8 +2405,8 @@
          permanent error -->
     <bool translatable="false" name="config_protocol_errors_perm_failure">true</bool>
 
-    <!-- External CM Services list -->
-    <string-array name="config_externalCMServices"></string-array>
+    <!-- External MK Services list -->
+    <string-array name="config_externalMKServices"></string-array>
 
     <!-- Default values for display color temperature -->
     <integer name="config_dayColorTemperature">6500</integer>
