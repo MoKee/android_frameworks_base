@@ -150,7 +150,6 @@ public class InputManagerService extends IInputManager.Stub
 
     // State for the currently installed input filter.
     final Object mInputFilterLock = new Object();
-    IInputFilter mInputFilter; // guarded by mInputFilterLock
     ChainedInputFilterHost mInputFilterHost; // guarded by mInputFilterLock
     ArrayList<ChainedInputFilterHost> mInputFilterChain =
             new ArrayList<ChainedInputFilterHost>(); // guarded by mInputFilterLock
@@ -188,6 +187,7 @@ public class InputManagerService extends IInputManager.Stub
             InputChannel fromChannel, InputChannel toChannel);
     private static native void nativeSetPointerSpeed(long ptr, int speed);
     private static native void nativeSetShowTouches(long ptr, boolean enabled);
+    private static native void nativeSetStylusIconEnabled(long ptr, boolean enabled);
     private static native void nativeSetVolumeKeysRotation(long ptr, int mode);
     private static native void nativeSetInteractive(long ptr, boolean interactive);
     private static native void nativeReloadCalibration(long ptr);
@@ -291,6 +291,7 @@ public class InputManagerService extends IInputManager.Stub
 
         registerPointerSpeedSettingObserver();
         registerShowTouchesSettingObserver();
+        registerStylusIconEnabledSettingObserver();
         registerVolumeKeysRotationSettingObserver();
 
         mContext.registerReceiver(new BroadcastReceiver() {
@@ -304,6 +305,7 @@ public class InputManagerService extends IInputManager.Stub
 
         updatePointerSpeedFromSettings();
         updateShowTouchesFromSettings();
+        updateStylusIconEnabledFromSettings();
         updateVolumeKeysRotationFromSettings();
     }
 
@@ -501,20 +503,10 @@ public class InputManagerService extends IInputManager.Stub
      */
     public void setInputFilter(IInputFilter filter) {
         synchronized (mInputFilterLock) {
-            final IInputFilter oldFilter = mInputFilter;
-            if (oldFilter == filter) {
-                return; // nothing to do
-            }
-
-            if (oldFilter != null) {
+            if (mInputFilterHost != null) {
                 mInputFilterHost.disconnectLocked();
                 mInputFilterChain.remove(mInputFilterHost);
                 mInputFilterHost = null;
-                try {
-                    oldFilter.uninstall();
-                } catch (RemoteException re) {
-                    /* ignore */
-                }
             }
 
             if (filter != null) {
@@ -1328,6 +1320,32 @@ public class InputManagerService extends IInputManager.Stub
         try {
             result = Settings.System.getIntForUser(mContext.getContentResolver(),
                     Settings.System.SHOW_TOUCHES, UserHandle.USER_CURRENT);
+        } catch (SettingNotFoundException snfe) {
+        }
+        return result;
+    }
+
+    public void updateStylusIconEnabledFromSettings() {
+        int enabled = getStylusIconEnabled(0);
+        nativeSetStylusIconEnabled(mPtr, enabled != 0);
+    }
+
+    public void registerStylusIconEnabledSettingObserver() {
+        mContext.getContentResolver().registerContentObserver(
+                Settings.System.getUriFor(Settings.System.STYLUS_ICON_ENABLED), false,
+                new ContentObserver(mHandler) {
+                    @Override
+                    public void onChange(boolean selfChange) {
+                        updateStylusIconEnabledFromSettings();
+                    }
+                });
+    }
+
+    private int getStylusIconEnabled(int defaultValue) {
+        int result = defaultValue;
+        try {
+            result = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.STYLUS_ICON_ENABLED);
         } catch (SettingNotFoundException snfe) {
         }
         return result;

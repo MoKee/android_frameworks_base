@@ -317,6 +317,12 @@ public class WallpaperManager {
             }
         }
 
+        public void forgetLoadedKeyguardWallpaper() {
+            synchronized (this) {
+                mKeyguardWallpaper = null;
+            }
+        }
+
         private Bitmap getCurrentWallpaperLocked(Context context) {
             if (mService == null) {
                 Log.w(TAG, "WallpaperService not running");
@@ -712,6 +718,13 @@ public class WallpaperManager {
         if (isWallpaperSupported()) {
             sGlobals.forgetLoadedWallpaper();
         }
+    }
+
+    /**
+     * @hide
+     */
+    public void forgetLoadedKeyguardWallpaper() {
+        sGlobals.forgetLoadedKeyguardWallpaper();
     }
 
     /**
@@ -1225,7 +1238,29 @@ public class WallpaperManager {
         mWallpaperXStep = xStep;
         mWallpaperYStep = yStep;
     }
-    
+
+    /** @hide */
+    public int getLastWallpaperX() {
+        try {
+            return WindowManagerGlobal.getWindowSession().getLastWallpaperX();
+        } catch (RemoteException e) {
+            // Ignore.
+        }
+
+        return -1;
+    }
+
+    /** @hide */
+    public int getLastWallpaperY() {
+        try {
+            return WindowManagerGlobal.getWindowSession().getLastWallpaperY();
+        } catch (RemoteException e) {
+            // Ignore.
+        }
+
+        return -1;
+    }
+
     /**
      * Send an arbitrary command to the current active wallpaper.
      * 
@@ -1299,7 +1334,18 @@ public class WallpaperManager {
      * wallpaper.
      */
     public void clear() throws IOException {
-        setStream(openDefaultWallpaper(mContext));
+        clear(true);
+    }
+
+    /** @hide */
+    public void clear(boolean setToDefault) throws IOException {
+        if (setToDefault) {
+            setStream(openDefaultWallpaper(mContext));
+        } else {
+            Bitmap blackBmp = Bitmap.createBitmap(1, 1, Bitmap.Config.RGB_565);
+            blackBmp.setPixel(0, 0, mContext.getResources().getColor(android.R.color.black));
+            setBitmap(blackBmp);
+        }
     }
 
     /**

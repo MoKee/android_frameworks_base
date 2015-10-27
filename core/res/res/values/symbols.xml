@@ -2398,6 +2398,7 @@
   <!-- Config.xml entries -->
   <java-symbol type="bool" name="config_show_cmIMESwitcher"/>
   <java-symbol type="bool" name="config_samsung_stk" />
+  <java-symbol type="bool" name="config_hasRemovableLid" />
 
   <!-- Notification and battery light -->
   <java-symbol type="bool" name="config_intrusiveNotificationLed" />
@@ -2428,9 +2429,6 @@
   <java-symbol type="string" name="adb_net_active_notification_title" />
   <java-symbol type="string" name="adb_both_active_notification_title" />
   <java-symbol type="string" name="adb_active_generic_notification_message" />
-
-  <!-- Package Manager -->
-  <java-symbol type="array" name="config_disabledComponents" />
 
   <!-- Last app switch animations -->
   <java-symbol type="anim" name="last_app_in" />

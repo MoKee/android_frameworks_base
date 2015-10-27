@@ -276,6 +276,9 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
             actionsArray = mActions.split("\\|");
         }
 
+        // Always add the power off option
+        mItems.add(new PowerAction());
+
         ArraySet<String> addedKeys = new ArraySet<String>();
         for (int i = 0; i < actionsArray.length; i++) {
             String actionKey = actionsArray[i];
@@ -284,7 +287,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                 continue;
             }
             if (GLOBAL_ACTION_KEY_POWER.equals(actionKey)) {
-                mItems.add(new PowerAction());
+                continue;
             } else if (GLOBAL_ACTION_KEY_REBOOT.equals(actionKey)) {
                 mItems.add(new RebootAction());
             } else if (GLOBAL_ACTION_KEY_SCREENSHOT.equals(actionKey)) {
@@ -1197,8 +1200,8 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
 
     protected void updatePowerMenuActions() {
         ContentResolver resolver = mContext.getContentResolver();
-        mActions = Settings.Global.getStringForUser(resolver,
-                Settings.Global.POWER_MENU_ACTIONS, UserHandle.USER_CURRENT);
+        mActions = Settings.Secure.getStringForUser(resolver,
+                Settings.Secure.POWER_MENU_ACTIONS, UserHandle.USER_CURRENT);
     }
 
     PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
