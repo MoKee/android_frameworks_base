@@ -321,7 +321,7 @@
     <protected-broadcast android:name="android.internal.policy.action.BURN_IN_PROTECTION" />
     <protected-broadcast android:name="android.app.action.SYSTEM_UPDATE_POLICY_CHANGED" />
     <protected-broadcast android:name="android.app.action.DEVICE_OWNER_CHANGED" />
-    <protected-broadcast android:name="org.cyanogenmod.intent.action.THEME_CHANGED" />
+    <protected-broadcast android:name="org.mokee.intent.action.THEME_CHANGED" />
     <protected-broadcast android:name="android.intent.action.THEME_RESOURCES_CACHED" />
     <!-- ====================================================================== -->
     <!--                          RUNTIME PERMISSIONS                           -->
@@ -2960,7 +2960,7 @@
                 <action android:name="com.tmobile.intent.action.APP_LAUNCH_FAILURE_RESET" />
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
-                <action android:name="org.cyanogenmod.intent.action.THEME_CHANGED" />
+                <action android:name="org.mokee.intent.action.THEME_CHANGED" />
                 <category android:name="com.tmobile.intent.category.THEME_PACKAGE_INSTALL_STATE_CHANGE" />
                 <data android:scheme="package" />
             </intent-filter>
