@@ -3931,6 +3931,30 @@ public final class Settings {
         public static final String SHOW_HEADSET_ICON = "show_headset_icon";
 
         /**
+         * Whether the blacklisting feature for phone calls from advertisement numbers is enabled
+         * @hide
+         */
+        public static final String PHONE_BLACKLIST_ADVERTISEMENT_NUMBER_MODE = "phone_blacklist_advertisement_number";
+
+        /**
+         * Whether the blacklisting feature for phone calls from fraud numbers is enabled
+         * @hide
+         */
+        public static final String PHONE_BLACKLIST_FRAUD_NUMBER_MODE = "phone_blacklist_fraud_number";
+
+        /**
+         * Whether the blacklisting feature for phone calls from harass numbers is enabled
+         * @hide
+         */
+        public static final String PHONE_BLACKLIST_HARASS_NUMBER_MODE = "phone_blacklist_harass_number";
+
+        /**
+         * Whether the blacklisting feature for phone calls from all numbers is enabled
+         * @hide
+         */
+        public static final String PHONE_BLACKLIST_ALL_NUMBER_MODE = "phone_blacklist_all_number";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
