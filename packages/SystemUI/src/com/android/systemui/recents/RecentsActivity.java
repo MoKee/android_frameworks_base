@@ -556,6 +556,11 @@ public class RecentsActivity extends Activity implements RecentsView.RecentsView
     }
 
     private void setFloatingActionButtonVisibility(boolean isFirst) {
+        boolean showClearAllRecents = Settings.System.getInt(getContentResolver(),
+                Settings.System.SHOW_CLEAR_ALL_RECENTS, 1) == 1;
+        if (!showClearAllRecents) {
+            return;
+        }
         TaskStack stack = AlternateRecentsComponent.getGolbalStack();
         if (stack != null) {
             ArrayList<Task> tasks = new ArrayList<Task>();
