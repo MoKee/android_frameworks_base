@@ -67,6 +67,7 @@ import com.android.server.pm.PermissionsState.PermissionState;
 
 import java.io.FileNotFoundException;
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -84,6 +85,7 @@ import android.content.pm.Signature;
 import android.content.pm.UserInfo;
 import android.content.pm.PackageUserState;
 import android.content.pm.VerifierDeviceIdentity;
+import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.Log;
@@ -93,9 +95,13 @@ import android.util.SparseIntArray;
 import android.util.Xml;
 
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
@@ -217,6 +223,7 @@ final class Settings {
     private final File mPackageListFilename;
     private final File mStoppedPackagesFilename;
     private final File mBackupStoppedPackagesFilename;
+    private final File mPrebundledPackagesFilename;
 
     final ArrayMap<String, PackageSetting> mPackages =
             new ArrayMap<String, PackageSetting>();
@@ -224,6 +231,8 @@ final class Settings {
     // List of replaced system applications
     private final ArrayMap<String, PackageSetting> mDisabledSysPackages =
         new ArrayMap<String, PackageSetting>();
+    private final HashSet<String> mPrebundledPackages =
+            new HashSet<String>();
 
     // Set of restored intent-filter verification states
     private final ArrayMap<String, IntentFilterVerificationInfo> mRestoredIntentFilterVerifications =
@@ -357,6 +366,7 @@ final class Settings {
         mSettingsFilename = new File(mSystemDir, "packages.xml");
         mBackupSettingsFilename = new File(mSystemDir, "packages-backup.xml");
         mPackageListFilename = new File(mSystemDir, "packages.list");
+        mPrebundledPackagesFilename = new File(mSystemDir, "prebundled-packages.list");
         FileUtils.setPermissions(mPackageListFilename, 0640, SYSTEM_UID, PACKAGE_INFO_GID);
 
         // Deprecated: Needed for migration
@@ -2340,6 +2350,57 @@ final class Settings {
         }
     }
 
+    void writePrebundledPackagesLPr() {
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter(
+                    new BufferedWriter(new FileWriter(mPrebundledPackagesFilename, false)));
+            for (String packageName : mPrebundledPackages) {
+                writer.println(packageName);
+            }
+        } catch (IOException e) {
+            Slog.e(PackageManagerService.TAG, "Unable to write prebundled package list", e);
+        } finally {
+            if (writer != null) {
+                writer.close();
+            }
+        }
+    }
+
+    void readPrebundledPackagesLPr() {
+        if (!mPrebundledPackagesFilename.exists()) {
+            return;
+        }
+
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(mPrebundledPackagesFilename));
+            String packageName = reader.readLine();
+            while (packageName != null) {
+                if (!TextUtils.isEmpty(packageName)) {
+                    mPrebundledPackages.add(packageName);
+                }
+                packageName = reader.readLine();
+            }
+        } catch (IOException e) {
+            Slog.e(PackageManagerService.TAG, "Unable to read prebundled package list", e);
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {}
+            }
+        }
+    }
+
+    void markPrebundledPackageInstalledLPr(String packageName) {
+        mPrebundledPackages.add(packageName);
+    }
+
+    boolean wasPrebundledPackageInstalledLPr(String packageName) {
+        return mPrebundledPackages.contains(packageName);
+    }
+
     void writeDisabledSysPackageLPr(XmlSerializer serializer, final PackageSetting pkg)
             throws java.io.IOException {
         serializer.startTag(null, "updated-package");
@@ -3001,6 +3062,11 @@ final class Settings {
             for (int i=0; i<ri.size(); i++) {
                 ActivityInfo ai = ri.get(i).activityInfo;
                 set[i] = new ComponentName(ai.packageName, ai.name);
+                // We have already discovered the best third party match,
+                // so we only need to finish filling set with all results.
+                if (haveNonSys != null) {
+                    continue;
+                }
                 if ((ai.applicationInfo.flags&ApplicationInfo.FLAG_SYSTEM) == 0) {
                     if (ri.get(i).match >= thirdPartyMatch) {
                         // Keep track of the best match we find of all third
@@ -3009,7 +3075,6 @@ final class Settings {
                         if (PackageManagerService.DEBUG_PREFERRED) Log.d(TAG, "Result "
                                 + ai.packageName + "/" + ai.name + ": non-system!");
                         haveNonSys = set[i];
-                        break;
                     }
                 } else if (cn.getPackageName().equals(ai.packageName)
                         && cn.getClassName().equals(ai.name)) {
@@ -3903,6 +3968,57 @@ final class Settings {
             return true;
         }
         return false;
+    }
+
+    void removeStalePermissions() {
+        /*
+         * Remove any permission that is not currently declared by any package
+         */
+        List<BasePermission> permissionsToRemove = new ArrayList<>();
+        for (BasePermission basePerm : mPermissions.values()) {
+            // Ignore permissions declared by the system
+            if (basePerm.sourcePackage.equals("android") ||
+                    basePerm.sourcePackage.equals("cyanogenmod.platform")) {
+                continue;
+            }
+            // Ignore permissions other than NORMAL (ignore DYNAMIC and BUILTIN), like the
+            // ones based on permission-trees
+            if (basePerm.type != BasePermission.TYPE_NORMAL) {
+                continue;
+            }
+
+            if (!mPackages.containsKey(basePerm.sourcePackage)) {
+                // Package doesn't exist
+                permissionsToRemove.add(basePerm);
+                continue;
+            }
+            PackageSetting pkgSettings = mPackages.get(basePerm.sourcePackage);
+            if (pkgSettings.pkg == null || pkgSettings.pkg.permissions == null) {
+                // Package doesn't declare permissions
+                permissionsToRemove.add(basePerm);
+                continue;
+            }
+            boolean found = false;
+            for (PackageParser.Permission perm : pkgSettings.pkg.permissions) {
+                if (perm.info.name != null && basePerm.name.equals(perm.info.name)) {
+                    // The original package still declares the permission
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                // The original package doesn't currently declare the permission
+                permissionsToRemove.add(basePerm);
+            }
+        }
+        // And now remove all stale permissions
+        for (BasePermission basePerm : permissionsToRemove) {
+            String msg = "Removed stale permission: " + basePerm.name + " originally " +
+                    "assigned to " + basePerm.sourcePackage + "\n";
+            mReadMessages.append(msg);
+            PackageManagerService.reportSettingsProblem(Log.WARN, msg);
+            mPermissions.remove(basePerm.name);
+        }
     }
 
     List<UserInfo> getAllUsers() {

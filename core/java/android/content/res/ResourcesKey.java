@@ -26,19 +26,21 @@ public final class ResourcesKey {
     private final float mScale;
     private final boolean mIsThemeable;
     private final int mHash;
+    private final ThemeConfig mThemeConfig;
 
     public final int mDisplayId;
     @NonNull
     public final Configuration mOverrideConfiguration;
 
     public ResourcesKey(String resDir, int displayId, Configuration overrideConfiguration,
-            float scale, boolean isThemeable) {
+            float scale, boolean isThemeable, ThemeConfig themeConfig) {
         mResDir = resDir;
         mDisplayId = displayId;
         mOverrideConfiguration = overrideConfiguration != null
                 ? overrideConfiguration : Configuration.EMPTY;
         mScale = scale;
         mIsThemeable = isThemeable;
+        mThemeConfig = themeConfig;
 
         int hash = 17;
         hash = 31 * hash + (mResDir == null ? 0 : mResDir.hashCode());
@@ -46,6 +48,7 @@ public final class ResourcesKey {
         hash = 31 * hash + mOverrideConfiguration.hashCode();
         hash = 31 * hash + Float.floatToIntBits(mScale);
         hash = 31 * hash + (mIsThemeable ? 1 : 0);
+        hash = 31 * hash + (themeConfig != null ? themeConfig.hashCode() : 0);
         mHash = hash;
     }
 
@@ -77,7 +80,18 @@ public final class ResourcesKey {
         if (mScale != peer.mScale) {
             return false;
         }
-        return mIsThemeable == peer.mIsThemeable;
+        if (mIsThemeable != peer.mIsThemeable) {
+            return false;
+        }
+        if (mThemeConfig != peer.mThemeConfig) {
+            if (mThemeConfig == null || peer.mThemeConfig == null) {
+                return false;
+            }
+            if (!mThemeConfig.equals(peer.mThemeConfig)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override

@@ -21,6 +21,7 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.util.TypedValue;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -644,11 +645,10 @@ public final class AssetManager implements AutoCloseable {
      *
      * {@hide}
      */
-
-     public final int addOverlayPath(String idmapPath, String resApkPath, String targetPkgPath,
-            String prefixPath) {
+     public final int addOverlayPath(String idmapPath, String themeApkPath,
+             String resApkPath, String targetPkgPath, String prefixPath) {
         synchronized (this) {
-            int res = addOverlayPathNative(idmapPath, resApkPath, targetPkgPath,
+            int res = addOverlayPathNative(idmapPath, themeApkPath, resApkPath, targetPkgPath,
                     prefixPath);
             makeStringBlocks(mStringBlocks);
             return res;
@@ -660,7 +660,7 @@ public final class AssetManager implements AutoCloseable {
      *
      * {@hide}
      */
-    private native final int addOverlayPathNative(String idmapPath,
+    private native final int addOverlayPathNative(String idmapPath, String themeApkPath,
             String resApkPath, String targetPkgPath, String prefixPath);
 
     /**
@@ -668,14 +668,14 @@ public final class AssetManager implements AutoCloseable {
      *
      * {@hide}
      */
-    public final int addCommonOverlayPath(String idmapPath,
+    public final int addCommonOverlayPath(String themeApkPath,
             String resApkPath, String prefixPath) {
         synchronized (this) {
-            return addCommonOverlayPathNative(idmapPath, resApkPath, prefixPath);
+            return addCommonOverlayPathNative(themeApkPath, resApkPath, prefixPath);
         }
     }
 
-    private native final int addCommonOverlayPathNative(String idmapPath,
+    private native final int addCommonOverlayPathNative(String themeApkPath,
             String resApkPath, String prefixPath);
 
     /**

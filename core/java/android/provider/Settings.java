@@ -3126,6 +3126,15 @@ public final class Settings {
                 sBooleanValidator;
 
         /**
+         * Call recording format value
+         * 0: AMR_WB
+         * 1: MPEG_4
+         * Default: 0
+         * @hide
+         */
+        public static final String CALL_RECORDING_FORMAT = "call_recording_format";
+
+        /**
          * Whether the phone vibrates when it is ringing due to an incoming call. This will
          * be used by Phone and Setting apps; it shouldn't affect other apps.
          * The value is boolean (1 or 0).
@@ -3780,9 +3789,22 @@ public final class Settings {
         public static final String APP_SWITCH_WAKE_SCREEN = "app_switch_wake_screen";
 
         /**
+         * Whether to wake the screen with the camera key half-press.
          * @hide
          */
-        public static final String SHOW_HEADSET_ICON = "show_headset_icon";
+        public static final String CAMERA_WAKE_SCREEN = "camera_wake_screen";
+
+        /**
+         * Whether or not to send device back to sleep if Camera button is released ("Peek")
+         * @hide
+         */
+        public static final String CAMERA_SLEEP_ON_RELEASE = "camera_sleep_on_release";
+
+        /**
+         * Whether to launch secure camera app when key is longpressed
+         * @hide
+         */
+        public static final String CAMERA_LAUNCH = "camera_launch";
 
         /**
          * Color temperature of the display during the day
@@ -3902,6 +3924,11 @@ public final class Settings {
          * @hide
          */
         public static final String T9_SEARCH_INPUT_LOCALE = "t9_search_input_locale";
+
+        /**
+         * @hide
+         */
+        public static final String SHOW_HEADSET_ICON = "show_headset_icon";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
@@ -6534,6 +6561,7 @@ public final class Settings {
          * might be 19. ThemeService would then change the value to 21. This is useful
          * when an API change breaks a theme. Themeservice can identify old themes and
          * unapply them from the system.
+         * @hide
          */
         public static final String THEME_PREV_BOOT_API_LEVEL = "theme_prev_boot_api_level";
 
@@ -8584,6 +8612,14 @@ public final class Settings {
          * @hide
          */
         public static final String LTE_SERVICE_FORCED = "lte_service_forced";
+
+        /**
+         * Whether the system auto-configure the priority of the wifi ap's or use
+         * the manual settings established by the user.
+         * <> 0 to autoconfigure, 0 to manual settings. Default is <> 0.
+         * @hide
+         */
+        public static final String WIFI_AUTO_PRIORITIES_CONFIGURATION = "wifi_auto_priority";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings

@@ -101,7 +101,7 @@ public:
      * newly-added asset source.
      */
     bool addAssetPath(const String8& path, int32_t* cookie);
-    bool addOverlayPath(const String8& path, int32_t* cookie,
+    bool addOverlayPath(const String8& idmapPath, const String8& overlayApkpath, int32_t* cookie,
                  const String8& resApkPath, const String8& targetPkgPath,
                  const String8& prefixPath);
     bool addCommonOverlayPath(const String8& path, int32_t* cookie,
@@ -238,7 +238,7 @@ public:
      * Generate idmap data to translate resources IDs between a package and a
      * corresponding overlay package.
      */
-    bool createIdmap(const char* targetApkPath, const char* overlayApkPath,
+    bool createIdmap(const char* targetApkPath, const char* overlayApkPath, const char* cache_path,
         uint32_t targetCrc, uint32_t overlayCrc,
         time_t targetMtime, time_t overlayMtime,
         uint32_t** outData, size_t* outSize);
@@ -300,7 +300,7 @@ private:
     const ResTable* getResTable(bool required = true) const;
     void setLocaleLocked(const char* locale);
     void updateResourceParamsLocked() const;
-    bool appendPathToResTable(const asset_path& ap, size_t* entryIdx) const;
+    bool appendPathToResTable(const asset_path& ap) const;
 
     Asset* openIdmapLocked(const struct asset_path& ap) const;
 
@@ -309,7 +309,7 @@ private:
 
     String8 getPkgName(const char *apkPath);
 
-    String8 getOverlayResPath(const char* targetApkPath, const char* overlayApkPath);
+    String8 getOverlayResPath(const char* cachePath);
 
     class SharedZip : public RefBase {
     public:
@@ -379,6 +379,8 @@ private:
 
         void addOverlay(const String8& path, const asset_path& overlay);
         bool getOverlay(const String8& path, size_t idx, asset_path* out) const;
+
+        void closeZip(const String8& zip);
         
     private:
         void closeZip(int idx);

@@ -520,10 +520,16 @@ static jint android_content_AssetManager_addAssetPath(JNIEnv* env, jobject clazz
 }
 
 static jint android_content_AssetManager_addOverlayPath(JNIEnv* env, jobject clazz,
+                                                     jstring idmapPath,
                                                      jstring packagePath,
                                                      jstring resApkPath, jstring targetPkgPath,
                                                      jstring prefixPath)
 {
+    ScopedUtfChars idmapPath8(env, idmapPath);
+    if (idmapPath8.c_str() == NULL) {
+        return 0;
+    }
+
     ScopedUtfChars packagePath8(env, packagePath);
     if (packagePath8.c_str() == NULL) {
         return 0;
@@ -550,9 +556,13 @@ static jint android_content_AssetManager_addOverlayPath(JNIEnv* env, jobject cla
     }
 
     int32_t cookie;
-    bool res = am->addOverlayPath(String8(packagePath8.c_str()), &cookie,
+    bool res = am->addOverlayPath(
+            String8(idmapPath8.c_str()),
+            String8(packagePath8.c_str()),
+            &cookie,
             String8(resApkPath8.c_str()),
-            String8(targetPkgPath8.c_str()), String8(prefixPath8.c_str()));
+            String8(targetPkgPath8.c_str()),
+            String8(prefixPath8.c_str()));
 
     return (res) ? (jint)cookie : 0;
 }
@@ -573,6 +583,11 @@ static jint android_content_AssetManager_addCommonOverlayPath(JNIEnv* env, jobje
 
     ScopedUtfChars prefixPath8(env, prefixPath);
     if (prefixPath8.c_str() == NULL) {
+        return 0;
+    }
+
+    if (!access(packagePath8.c_str(), R_OK) == 0 ||
+        !access(resApkPath8.c_str(), R_OK) == 0) {
         return 0;
     }
 
@@ -2229,7 +2244,7 @@ static JNINativeMethod gAssetManagerMethods[] = {
         (void*) android_content_AssetManager_getAssetRemainingLength },
     { "addAssetPathNative", "(Ljava/lang/String;)I",
         (void*) android_content_AssetManager_addAssetPath },
-    { "addOverlayPathNative",   "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I",
+    { "addOverlayPathNative",   "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I",
         (void*) android_content_AssetManager_addOverlayPath },
     { "addCommonOverlayPathNative",   "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I",
         (void*) android_content_AssetManager_addCommonOverlayPath },

@@ -76,6 +76,7 @@ import android.util.SparseIntArray;
 import android.view.Display;
 import android.util.BoostFramework;
 
+import android.view.InflateException;
 import com.android.internal.R;
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.app.AssistUtils;
@@ -197,6 +198,7 @@ import android.os.FactoryTest;
 import android.os.FileObserver;
 import android.os.FileUtils;
 import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.IPermissionController;
 import android.os.IProcessInfoService;
@@ -1245,12 +1247,6 @@ public final class ActivityManagerService extends ActivityManagerNative
     final ArrayList<UidRecord.ChangeItem> mAvailUidChanges = new ArrayList<>();
 
     /**
-     * Runtime CPU use collection thread.  This object's lock is used to
-     * perform synchronization with the thread (notifying it to run).
-     */
-    final Thread mProcessCpuThread;
-
-    /**
      * Used to collect per-process CPU use for ANRs, battery stats, etc.
      * Must acquire this object's lock when accessing it.
      * NOTE: this lock will be held while doing long operations (trawling
@@ -1406,6 +1402,7 @@ public final class ActivityManagerService extends ActivityManagerNative
     final ServiceThread mHandlerThread;
     final MainHandler mHandler;
     final UiHandler mUiHandler;
+    final CpuTrackerHandler mCpuTrackerHandler;
 
     final class UiHandler extends Handler {
         public UiHandler() {
@@ -2060,6 +2057,47 @@ public final class ActivityManagerService extends ActivityManagerNative
         }
     };
 
+    static final int SCHEDULE_CPU_STATS_MSG = 1;
+    static final int UPDATE_CPU_STATS_MSG = 2;
+
+    final class CpuTrackerHandler extends Handler {
+        public CpuTrackerHandler(Looper looper) {
+            super(looper);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+            case SCHEDULE_CPU_STATS_MSG: {
+                final long now = SystemClock.uptimeMillis();
+                long nextCpuDelay = (mLastCpuTime.get() + MONITOR_CPU_MAX_TIME) - now;
+                long nextWriteDelay = (mLastWriteTime + BATTERY_STATS_TIME) - now;
+                //Slog.i(TAG, "Cpu delay=" + nextCpuDelay + ", write delay=" + nextWriteDelay);
+                if (nextWriteDelay < nextCpuDelay) {
+                    nextCpuDelay = nextWriteDelay;
+                }
+                if (nextCpuDelay > 0) {
+                    mProcessCpuMutexFree.set(true);
+                    sendEmptyMessageDelayed(UPDATE_CPU_STATS_MSG, nextCpuDelay);
+                }
+            } break;
+            case UPDATE_CPU_STATS_MSG: {
+                updateCpuStatsNow();
+                schedule();
+            } break;
+            }
+        }
+
+        void schedule() {
+            sendEmptyMessage(SCHEDULE_CPU_STATS_MSG);
+        }
+
+        void updateNow() {
+            removeMessages(UPDATE_CPU_STATS_MSG);
+            sendEmptyMessage(UPDATE_CPU_STATS_MSG);
+        }
+    }
+
     static final int COLLECT_PSS_BG_MSG = 1;
 
     final Handler mBgHandler = new Handler(BackgroundThread.getHandler().getLooper()) {
@@ -2323,6 +2361,9 @@ public final class ActivityManagerService extends ActivityManagerNative
         mHandlerThread.start();
         mHandler = new MainHandler(mHandlerThread.getLooper());
         mUiHandler = new UiHandler();
+        HandlerThread cpuTrackerThread = new HandlerThread("CpuTracker");
+        cpuTrackerThread.start();
+        mCpuTrackerHandler = new CpuTrackerHandler(cpuTrackerThread.getLooper());
 
         mFgBroadcastQueue = new BroadcastQueue(this, mHandler,
                 "foreground", BROADCAST_FG_TIMEOUT, false);
@@ -2338,7 +2379,7 @@ public final class ActivityManagerService extends ActivityManagerNative
         File dataDir = Environment.getDataDirectory();
         File systemDir = new File(dataDir, "system");
         systemDir.mkdirs();
-        mBatteryStatsService = new BatteryStatsService(systemDir, mHandler);
+        mBatteryStatsService = new BatteryStatsService(systemDir, mCpuTrackerHandler);
         mBatteryStatsService.getActiveStatistics().readLocked();
         mBatteryStatsService.scheduleWriteToDisk();
         mOnBattery = DEBUG_POWER ? true
@@ -2373,36 +2414,6 @@ public final class ActivityManagerService extends ActivityManagerNative
         mStackSupervisor = new ActivityStackSupervisor(this, mRecentTasks);
         mTaskPersister = new TaskPersister(systemDir, mStackSupervisor, mRecentTasks);
 
-        mProcessCpuThread = new Thread("CpuTracker") {
-            @Override
-            public void run() {
-                while (true) {
-                    try {
-                        try {
-                            synchronized(this) {
-                                final long now = SystemClock.uptimeMillis();
-                                long nextCpuDelay = (mLastCpuTime.get()+MONITOR_CPU_MAX_TIME)-now;
-                                long nextWriteDelay = (mLastWriteTime+BATTERY_STATS_TIME)-now;
-                                //Slog.i(TAG, "Cpu delay=" + nextCpuDelay
-                                //        + ", write delay=" + nextWriteDelay);
-                                if (nextWriteDelay < nextCpuDelay) {
-                                    nextCpuDelay = nextWriteDelay;
-                                }
-                                if (nextCpuDelay > 0) {
-                                    mProcessCpuMutexFree.set(true);
-                                    this.wait(nextCpuDelay);
-                                }
-                            }
-                        } catch (InterruptedException e) {
-                        }
-                        updateCpuStatsNow();
-                    } catch (Exception e) {
-                        Slog.e(TAG, "Unexpected exception collecting process stats", e);
-                    }
-                }
-            }
-        };
-
         Watchdog.getInstance().addMonitor(this);
         Watchdog.getInstance().addThread(mHandler);
     }
@@ -2417,7 +2428,7 @@ public final class ActivityManagerService extends ActivityManagerNative
 
     private void start() {
         Process.removeAllProcessGroups();
-        mProcessCpuThread.start();
+        mCpuTrackerHandler.schedule();
 
         mBatteryStatsService.publish(mContext);
         mAppOpsService.publish(mContext);
@@ -2482,9 +2493,7 @@ public final class ActivityManagerService extends ActivityManagerNative
             return;
         }
         if (mProcessCpuMutexFree.compareAndSet(true, false)) {
-            synchronized (mProcessCpuThread) {
-                mProcessCpuThread.notify();
-            }
+            mCpuTrackerHandler.updateNow();
         }
     }
 
@@ -10799,9 +10808,15 @@ public final class ActivityManagerService extends ActivityManagerNative
                     return true;
                 }
             }
+            final int anrPid = proc.pid;
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
+                    if (anrPid != proc.pid) {
+                        Slog.i(TAG, "Ignoring stale ANR (occurred in " + anrPid +
+                                    ", but current pid is " + proc.pid + ")");
+                        return;
+                    }
                     appNotResponding(proc, activity, parent, aboveSystem, annotation);
                 }
             });
@@ -12024,6 +12039,28 @@ public final class ActivityManagerService extends ActivityManagerNative
         }
     }
 
+    private void sendAppFailureBroadcast(String pkgName) {
+        Intent intent = new Intent(Intent.ACTION_APP_FAILURE,
+                (pkgName != null)? Uri.fromParts("package", pkgName, null) : null);
+        mContext.sendBroadcastAsUser(intent, UserHandle.CURRENT_OR_SELF);
+    }
+
+    /**
+     * A possible theme crash is one that throws one of the following exceptions
+     * {@link android.content.res.Resources.NotFoundException}
+     * {@link android.view.InflateException}
+     *
+     * @param exceptionClassName
+     * @return True if exceptionClassName is one of the above exceptions
+     */
+    private boolean isPossibleThemeCrash(String exceptionClassName) {
+        if (Resources.NotFoundException.class.getName().equals(exceptionClassName) ||
+                InflateException.class.getName().equals(exceptionClassName)) {
+            return true;
+        }
+        return false;
+    }
+
     private boolean handleAppCrashLocked(ProcessRecord app, String reason,
             String shortMsg, String longMsg, String stackTrace) {
         long now = SystemClock.uptimeMillis();
@@ -12034,6 +12071,9 @@ public final class ActivityManagerService extends ActivityManagerNative
         } else {
             crashTime = null;
         }
+
+        if (isPossibleThemeCrash(shortMsg)) sendAppFailureBroadcast(app.info.packageName);
+
         if (crashTime != null && now < crashTime+ProcessList.MIN_CRASH_INTERVAL) {
             // This process loses!
             Slog.w(TAG, "Process " + app.info.processName
@@ -12831,6 +12871,9 @@ public final class ActivityManagerService extends ActivityManagerNative
                 ProcessRecord app = mLruProcesses.get(i);
                 if ((!allUsers && app.userId != userId)
                         || (!allUids && app.uid != callingUid)) {
+                    continue;
+                }
+                if (app.processName.equals("system")) {
                     continue;
                 }
                 if ((app.thread != null) && (!app.crashing && !app.notResponding)) {
@@ -17482,6 +17525,10 @@ public final class ActivityManagerService extends ActivityManagerNative
                         null, AppOpsManager.OP_NONE, null, false, false,
                         MY_PID, Process.SYSTEM_UID, UserHandle.USER_ALL);
                 if ((changes&ActivityInfo.CONFIG_LOCALE) != 0) {
+                    // if locale changed, time format may have changed
+                    final int is24Hour = android.text.format.DateFormat.is24HourFormat(mContext) ? 1 : 0;
+                    mHandler.sendMessage(mHandler.obtainMessage(UPDATE_TIME, is24Hour, 0));
+                    // now send general broadcast
                     intent = new Intent(Intent.ACTION_LOCALE_CHANGED);
                     intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
                     if (!mProcessesReady) {
