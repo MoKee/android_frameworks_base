@@ -3926,6 +3926,11 @@ public final class Settings {
         public static final String T9_SEARCH_INPUT_LOCALE = "t9_search_input_locale";
 
         /**
+         * Use MoKee Cloud Location Engine
+         */
+        public static final String ENABLE_CLOUD_LOCATION_LOOKUP = "enable_cloud_location_lookup";
+
+        /**
          * @hide
          */
         public static final String SHOW_HEADSET_ICON = "show_headset_icon";
