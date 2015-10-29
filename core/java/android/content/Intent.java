@@ -1346,6 +1346,15 @@ public class Intent implements Parcelable, Cloneable {
     public static final String ACTION_SEARCH_LONG_PRESS = "android.intent.action.SEARCH_LONG_PRESS";
 
     /**
+     * Activity Action: Start action associated with long press on the recents key.
+     * <p>Input: {@link #EXTRA_LONG_PRESS_RELEASE} is set to true if the long press
+     * is released
+     * <p>Output: Nothing
+     * @hide
+     */
+    public static final String ACTION_RECENTS_LONG_PRESS = "android.intent.action.RECENTS_LONG_PRESS";
+
+    /**
      * Activity Action: The user pressed the "Report" button in the crash/ANR dialog.
      * This intent is delivered to the package which installed the application, usually
      * Google Play.
@@ -2678,6 +2687,45 @@ public class Intent implements Parcelable, Cloneable {
             "android.intent.action.GET_RESTRICTION_ENTRIES";
 
     /**
+     * <p>Broadcast Action: The state of the HOTWORD audio input has changed.:</p>
+     * <ul>
+     *   <li><em>state</em> - A String value indicating the state of the input.
+     *   {@link #EXTRA_HOTWORD_INPUT_STATE}. The value will be one of:
+     *   {@link android.media.AudioRecord#RECORDSTATE_RECORDING} or
+     *   {@link android.media.AudioRecord#RECORDSTATE_STOPPED}.
+     *   </li>
+     *   <li><em>package</em> - A String value indicating the package name of the application
+     *   that currently holds the HOTWORD input.
+     *   {@link #EXTRA_CURRENT_PACKAGE_NAME}
+     *   </li>
+     * </ul>
+     *
+     * <p class="note">This is a protected intent that can only be sent
+     * by the system. It can only be received by packages that hold
+     * {@link android.Manifest.permission#CAPTURE_AUDIO_HOTWORD}.
+     *
+     * @hide
+     */
+    //@SdkConstant(SdkConstantType.BROADCAST_INTENT_ACTION)
+    public static final String ACTION_HOTWORD_INPUT_CHANGED
+            = "com.cyanogenmod.intent.action.HOTWORD_INPUT_CHANGED";
+
+    /**
+     * @hide
+     * Activity to challenge the user for a PIN that was configured when setting up
+     * restrictions. Restrictions include blocking of apps and preventing certain user operations,
+     * controlled by {@link android.os.UserManager#setUserRestrictions(Bundle).
+     * Launch the activity using
+     * {@link android.app.Activity#startActivityForResult(Intent, int)} and check if the
+     * result is {@link android.app.Activity#RESULT_OK} for a successful response to the
+     * challenge.<p/>
+     * Before launching this activity, make sure that there is a PIN in effect, by calling
+     * {@link android.os.UserManager#hasRestrictionsChallenge()}.
+     */
+    public static final String ACTION_RESTRICTIONS_CHALLENGE =
+            "android.intent.action.RESTRICTIONS_CHALLENGE";
+
+    /**
      * Sent the first time a user is starting, to allow system apps to
      * perform one time initialization.  (This will not be seen by third
      * party applications because a newly initialized user does not have any
@@ -2862,6 +2910,13 @@ public class Intent implements Parcelable, Cloneable {
      */
     public static final String ACTION_SHOW_BRIGHTNESS_DIALOG =
             "android.intent.action.SHOW_BRIGHTNESS_DIALOG";
+
+    /**
+     * Activity Action: Shows the notification brightness setting dialog.
+     * @hide
+     */
+    public static final String ACTION_SHOW_NOTIFICATION_BRIGHTNESS_DIALOG =
+            "android.intent.action.SHOW_NOTIFICATION_BRIGHTNESS_DIALOG";
 
     /**
      * Broadcast Action:  A global button was pressed.  Includes a single
@@ -3831,6 +3886,15 @@ public class Intent implements Parcelable, Cloneable {
             = "android.intent.extra.SHUTDOWN_USERSPACE_ONLY";
 
     /**
+     * This field is part of the intent {@link #ACTION_RECENTS_LONG_PRESS}.
+     * The type of the extra is a boolean that indicates if the long press
+     * is released.
+     * @hide
+     */
+    public static final String EXTRA_RECENTS_LONG_PRESS_RELEASE =
+            "android.intent.extra.RECENTS_LONG_PRESS_RELEASE";
+
+    /**
      * Optional boolean extra for {@link #ACTION_TIME_CHANGED} that indicates the
      * user has set their time format preferences to the 24 hour format.
      *
@@ -3873,6 +3937,22 @@ public class Intent implements Parcelable, Cloneable {
      * @hide
      */
     public static final String EXTRA_THEME_PACKAGE_NAME = "android.intent.extra.PACKAGE_NAME";
+
+    /**
+     * Extra for {@link #ACTION_HOTWORD_INPUT_CHANGED} that provides the state of
+     * the input when the broadcast action was sent.
+     * @hide
+     */
+    public static final String EXTRA_HOTWORD_INPUT_STATE =
+            "com.cyanogenmod.intent.extra.HOTWORD_INPUT_STATE";
+
+    /**
+     * Extra for {@link #ACTION_RECENTS_LONG_PRESS} that provides the package name of the
+     * app in foreground when recents was long pressed. Can be reused for other purposes.
+     * @hide
+     */
+    public static final String EXTRA_CURRENT_PACKAGE_NAME =
+            "com.cyanogenmod.intent.extra.CURRENT_PACKAGE_NAME";
 
     // ---------------------------------------------------------------------
     // ---------------------------------------------------------------------

@@ -3899,7 +3899,8 @@ public final class ActivityManagerService extends ActivityManagerNative
             if (sourceRecord == null) {
                 throw new SecurityException("Called with bad activity token: " + resultTo);
             }
-            if (!sourceRecord.info.packageName.equals("android")) {
+            if (!sourceRecord.info.packageName.equals("android") &&
+                    !sourceRecord.info.packageName.equals("org.cyanogenmod.resolver")) {
                 throw new SecurityException(
                         "Must be called from an activity that is declared in the android package");
             }
@@ -17628,8 +17629,9 @@ public final class ActivityManagerService extends ActivityManagerNative
 
     private void saveThemeResourceLocked(ThemeConfig t, boolean isDiff){
         if(isDiff) {
-            Settings.Secure.putString(mContext.getContentResolver(),
-                    Configuration.THEME_PKG_CONFIGURATION_PERSISTENCE_PROPERTY, t.toJson());
+            Settings.Secure.putStringForUser(mContext.getContentResolver(),
+                    Configuration.THEME_PKG_CONFIGURATION_PERSISTENCE_PROPERTY, t.toJson(),
+                    UserHandle.USER_CURRENT);
         }
     }
 

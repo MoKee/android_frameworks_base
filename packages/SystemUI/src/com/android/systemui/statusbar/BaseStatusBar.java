@@ -156,7 +156,7 @@ public abstract class BaseStatusBar extends SystemUI implements
     private static final Uri SPAM_MESSAGE_URI = new Uri.Builder()
            .scheme(ContentResolver.SCHEME_CONTENT)
             .authority(SpamMessageProvider.AUTHORITY)
-            .appendPath("message")
+            .appendPath("messages")
             .build();
 
     protected CommandQueue mCommandQueue;
@@ -951,12 +951,17 @@ public abstract class BaseStatusBar extends SystemUI implements
                 filterButton.setVisibility(View.VISIBLE);
                 filterButton.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
-                        ContentValues values = new ContentValues();
-                        String message = SpamFilter.getNotificationContent(
-                        sbn.getNotification());
-                        values.put(NotificationTable.MESSAGE_TEXT, message);
-                        values.put(PackageTable.PACKAGE_NAME, pkg);
-                        mContext.getContentResolver().insert(SPAM_MESSAGE_URI, values);
+                        AsyncTask.execute(new Runnable() {
+                            @Override
+                            public void run() {
+                                ContentValues values = new ContentValues();
+                                String message = SpamFilter.getNotificationContent(
+                                sbn.getNotification());
+                                values.put(NotificationTable.MESSAGE_TEXT, message);
+                                values.put(PackageTable.PACKAGE_NAME, pkg);
+                                mContext.getContentResolver().insert(SPAM_MESSAGE_URI, values);
+                            }
+                        });
                         removeNotification(sbn.getKey(), null);
                     }
                 });
@@ -1130,26 +1135,6 @@ public abstract class BaseStatusBar extends SystemUI implements
     }
 
     protected abstract View getStatusBarView();
-
-    protected View.OnTouchListener mRecentsPreloadOnTouchListener = new View.OnTouchListener() {
-        // additional optimization when we have software system buttons - start loading the recent
-        // tasks on touch down
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            int action = event.getAction() & MotionEvent.ACTION_MASK;
-            if (action == MotionEvent.ACTION_DOWN) {
-                preloadRecents();
-            } else if (action == MotionEvent.ACTION_CANCEL) {
-                cancelPreloadingRecents();
-            } else if (action == MotionEvent.ACTION_UP) {
-                if (!v.isPressed()) {
-                    cancelPreloadingRecents();
-                }
-
-            }
-            return false;
-        }
-    };
 
     /** Proxy for RecentsComponent */
 

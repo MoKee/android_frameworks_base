@@ -38,6 +38,16 @@
     <!-- Proximity check on screen on default -->
     <java-symbol type="bool" name="config_proximityCheckOnWakeEnabledByDefault" />
 
+    <!-- Notification and battery light -->
+    <java-symbol type="bool" name="config_adjustableNotificationLedBrightness" />
+    <java-symbol type="bool" name="config_intrusiveNotificationLed" />
+    <java-symbol type="bool" name="config_multiColorNotificationLed" />
+    <java-symbol type="bool" name="config_intrusiveBatteryLed" />
+    <java-symbol type="bool" name="config_multiColorBatteryLed" />
+    <java-symbol type="bool" name="config_multipleNotificationLeds" />
+    <java-symbol type="array" name="notification_light_package_mapping" />
+    <java-symbol type="array" name="config_notificationNoAlertsVibePattern" />
+
     <!-- Package Manager -->
     <java-symbol type="array" name="config_disabledComponents" />
     <java-symbol type="array" name="config_forceEnabledComponents" />
@@ -85,4 +95,21 @@
 
     <!-- Non-themeable packages -->
     <java-symbol type="array" name="non_themeable_packages" />
+
+    <!-- Wifi AP Disabled from Subscription change -->
+    <java-symbol type="string" name="subscription_change_disabled_wifi_ap" />
+
+    <!-- WiFi turn off notification -->
+    <java-symbol type="string" name="notify_turn_wifi_off_title" />
+
+    <!-- Region locked prebundled packages (per mcc) -->
+    <java-symbol type="array" name="config_region_locked_packages" />
+
+    <!-- Packages in this list should be a union of all packages defined in values-mccxxx (mcc) -->
+    <java-symbol type="array" name="config_restrict_to_region_locked_devices" />
+
+    <!-- Support Samsung docks -->
+    <java-symbol type="bool" name="config_forceAnalogCarDock" />
+    <java-symbol type="bool" name="config_forceAnalogDeskDock" />
+
 </resources>

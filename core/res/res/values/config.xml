@@ -663,6 +663,10 @@
          we rely on gravity to determine the effective orientation. -->
     <bool name="config_deskDockEnablesAccelerometer">true</bool>
 
+    <!-- Control whether a desk dock event should override the default bluetooth
+         audio routing, FORCE_BT_DESK_DOCK, with an analog dock, FORCE_ANALOG_DOCK. -->
+    <bool name="config_forceAnalogDeskDock">false</bool>
+
     <!-- Car dock behavior -->
 
     <!-- The number of degrees to rotate the display when the device is in a car dock.
@@ -680,6 +684,10 @@
          a car dock make the accelerometer more a physical input (like a lid). -->
 
     <bool name="config_carDockEnablesAccelerometer">true</bool>
+
+    <!-- Control whether a car dock event should override the default bluetooth
+         audio routing, FORCE_BT_CAR_DOCK, with an analog dock, FORCE_ANALOG_DOCK. -->
+    <bool name="config_forceAnalogCarDock">false</bool>
 
     <!-- HDMI behavior -->
 
@@ -876,6 +884,10 @@
     <!-- Default value for LED on time when the battery is low on charge in miliseconds -->
     <integer name="config_notificationsBatteryLedOn">125</integer>
 
+    <!-- Is the notification LED brightness adjustable ?
+         Used to decide if the user can set LED brightness -->
+    <bool name="config_adjustableNotificationLedBrightness">false</bool>
+
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">false</bool>
 
@@ -889,6 +901,10 @@
     <!-- Does the battery LED support multiple colors?
          Used to decide if the user can change the colors -->
     <bool name="config_multiColorBatteryLed">false</bool>
+
+    <!-- Does the device have multiple LEDs ?
+         Used to decide if the user can change the multiple LEDs settings -->
+    <bool name="config_multipleNotificationLeds">false</bool>
 
     <!-- Do the battery/notification LEDs support pulsing?
          Used to decide if we show pulse settings -->
@@ -2469,5 +2485,13 @@
 
     <!-- Boolean to enable Stylus gestures -->
     <bool name="config_stylusGestures">false</bool>
+
+    <!-- Config to enable installation of region locked packages -->
+    <string-array name="config_region_locked_packages" translatable="false">
+    </string-array>
+
+    <!-- Packages in this list should be a union of all packages defined in values-mccxxx (mcc) -->
+    <string-array name="config_restrict_to_region_locked_devices" translatable="false">
+    </string-array>
 
 </resources>
