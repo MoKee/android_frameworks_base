@@ -162,4 +162,5 @@
   <string name="quick_settings_dynamic_tile_detail_title">کاشی پویا</string>
   <string name="fingerprint_try_again_hint">لطفاً دوباره اسکن کنید</string>
   <string name="accessibility_dock_battery_level">باتری داک <xliff:g id="number">%d</xliff:g> درصد.</string>
+  <string name="play_queue_extention">نمایش صف پخش</string>
 </resources>

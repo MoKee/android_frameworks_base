@@ -162,4 +162,5 @@
   <string name="quick_settings_dynamic_tile_detail_title">Dynamické dlaždice</string>
   <string name="fingerprint_try_again_hint">Prosím nasnímat znovu</string>
   <string name="accessibility_dock_battery_level">Baterie doku: <xliff:g id="number">%d</xliff:g>\u0025.</string>
+  <string name="play_queue_extention">Zobrazit frontu přehrávání</string>
 </resources>
