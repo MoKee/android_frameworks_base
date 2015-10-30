@@ -172,6 +172,7 @@ import com.android.systemui.statusbar.policy.NextAlarmController;
 import com.android.systemui.statusbar.policy.PreviewInflater;
 import com.android.systemui.statusbar.policy.RotationLockControllerImpl;
 import com.android.systemui.statusbar.policy.SecurityControllerImpl;
+import com.android.systemui.statusbar.policy.SuControllerImpl;
 import com.android.systemui.statusbar.policy.UserInfoController;
 import com.android.systemui.statusbar.policy.UserSwitcherController;
 import com.android.systemui.statusbar.policy.WeatherControllerImpl;
@@ -301,6 +302,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     BrightnessMirrorController mBrightnessMirrorController;
     AccessibilityController mAccessibilityController;
     WeatherControllerImpl mWeatherController;
+    SuControllerImpl mSuController;
 
     int mNaturalBarHeight = -1;
 
@@ -345,6 +347,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private boolean mKeyguardShowingMedia;
     private long mKeyguardFadingAwayDelay;
     private long mKeyguardFadingAwayDuration;
+
+    private Bitmap mKeyguardWallpaper;
 
     int mKeyguardMaxNotificationCount;
 
@@ -794,7 +798,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
         // Lastly, call to the icon policy to install/update all the icons.
         mIconPolicy = new PhoneStatusBarPolicy(mContext, mCastController, mHotspotController,
-                mUserInfoController, mBluetoothController);
+                mUserInfoController, mBluetoothController, mSuController);
         mIconPolicy.setCurrentUserSetup(mUserSetup);
         mSettingsObserver.onChange(false); // set up
 
@@ -807,6 +811,11 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     Settings.Global.getUriFor(SETTING_HEADS_UP_TICKER), true,
                     mHeadsUpObserver);
         }
+
+        WallpaperManager wallpaperManager = (WallpaperManager) mContext.getSystemService(
+                Context.WALLPAPER_SERVICE);
+        mKeyguardWallpaper = wallpaperManager.getKeyguardBitmap();
+
         mUnlockMethodCache = UnlockMethodCache.getInstance(mContext);
         mUnlockMethodCache.addListener(this);
         startKeyguard();
@@ -1025,6 +1034,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             mZenModeController = mVolumeComponent.getZenController();
         }
         mCastController = new CastControllerImpl(mContext);
+        mSuController = new SuControllerImpl(mContext);
         final SignalClusterView signalCluster =
                 (SignalClusterView) mStatusBarView.findViewById(R.id.signal_cluster);
         final SignalClusterView signalClusterKeyguard =
@@ -1935,11 +1945,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
         // apply user lockscreen image
         if (mMediaMetadata == null && backdropBitmap == null) {
-            WallpaperManager wm = (WallpaperManager)
-                    mContext.getSystemService(Context.WALLPAPER_SERVICE);
-            if (wm != null) {
-                backdropBitmap = wm.getKeyguardBitmap();
-            }
+            backdropBitmap = mKeyguardWallpaper;
         }
 
         final boolean hasBackdrop = backdropBitmap != null;
@@ -3291,6 +3297,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     updateMediaMetaData(true);
                 }
             } else if (Intent.ACTION_KEYGUARD_WALLPAPER_CHANGED.equals(action)) {
+                WallpaperManager wm = (WallpaperManager) mContext.getSystemService(
+                        Context.WALLPAPER_SERVICE);
+                mKeyguardWallpaper = wm.getKeyguardBitmap();
                 updateMediaMetaData(true);
             }
         }
@@ -3357,6 +3366,11 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     public void userSwitched(int newUserId) {
         super.userSwitched(newUserId);
         if (MULTIUSER_DEBUG) mNotificationPanelDebugText.setText("USER " + newUserId);
+        WallpaperManager wm = (WallpaperManager)
+                mContext.getSystemService(Context.WALLPAPER_SERVICE);
+        mKeyguardWallpaper = null;
+        wm.forgetLoadedKeyguardWallpaper();
+
         animateCollapsePanels();
         updatePublicMode();
         updateNotifications();
@@ -3364,9 +3378,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         setControllerUsers();
         mAssistManager.onUserSwitched(newUserId);
 
-        WallpaperManager wm = (WallpaperManager)
-                mContext.getSystemService(Context.WALLPAPER_SERVICE);
-        wm.forgetLoadedKeyguardWallpaper();
+        mKeyguardWallpaper = wm.getKeyguardBitmap();
         updateMediaMetaData(true);
     }
 
