@@ -2401,39 +2401,6 @@
     <string-array name="config_cell_retries_per_error_code">
     </string-array>
 
-    <!-- Whether cpu boost is enabled for AppLaunch -->
-    <bool name="config_enableCpuBoostForAppLaunch">false</bool>
-    <integer name="launchboost_timeout_param">0</integer>
-    <integer-array name="launchboost_param_value"/>
-
-    <!-- Whether disablepacking is enabled or not -->
-    <bool name="config_disablePacking">false</bool>
-    <integer name="disablepacking_timeout_param">0</integer>
-    <integer-array name="launchboost_packing_param_value"/>
-
-    <!-- Whether cpu boost is enabled for animation. -->
-    <bool name="config_enablePerfBoostForAnimation">false</bool>
-    <integer name="animationboost_timeout_param">0</integer>
-    <integer-array name="animationboost_param_value"/>
-
-    <!-- Whether cpu boost is enabled for overscroller fling. -->
-    <bool name="config_enableCpuBoostForOverScrollerFling">false</bool>
-    <integer name="flingboost_timeout_param">0</integer>
-    <integer-array name="flingboost_param_value"/>
-
-    <!-- Whether cpu boost is enabled for horizontal scroll. -->
-    <bool name="config_enableCpuBoostForScroller">false</bool>
-    <integer name="scrollboost_timeout_param">0</integer>
-    <integer-array name="scrollboost_param_value"/>
-
-    <!-- Activities list for boost -->
-    <string-array translatable="false" name="boost_activityList">
-    </string-array>
-
-    <!-- Activity scroll boost params -->
-    <integer name="ascrollboost_timeout">0</integer>
-    <integer-array name="ascrollboost_param_value"/>
-
    <!-- Configuration to play sms ringtone during MO/MT call -->
    <bool name="config_sms_ringtone_incall">false</bool>
     <!-- IpReachability monitor enable/Disable -->
@@ -2493,6 +2460,22 @@
 
     <!-- Packages in this list should be a union of all packages defined in values-mccxxx (mcc) -->
     <string-array name="config_restrict_to_region_locked_devices" translatable="false">
+    </string-array>
+
+    <!-- Defines the system property to set for performance profile xe: sys.cpu.modes. Leave it
+         blank if the device do not support performance profiles -->
+    <string name="config_perf_profile_prop" translatable="false"></string>
+
+    <!-- When config_perf_profile_prop is defined, this value MUST be the index of
+         one of the listes values in frameworks/base/core/res/res/values/cm_arrays.xml
+         for "perf_profile_values" array. Leave it blank if the device do not support
+         performance profiles  -->
+    <string name="config_perf_profile_default_entry" translatable="false"></string>
+
+    <!-- Automatic power profile management per app.
+         Each item should list the fully-qualified activity
+         name and the power profile id, separated by a comma. -->
+    <string-array name="config_auto_perf_activities" translatable="false">
     </string-array>
 
 </resources>
