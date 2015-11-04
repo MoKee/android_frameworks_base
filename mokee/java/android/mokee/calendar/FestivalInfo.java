@@ -40,6 +40,7 @@ public class FestivalInfo {
                         "0715 解放紀念", "0808 父親節", "0903 軍人節", "0928 孔子誕辰", "1010 國慶節", "1024 聯合國日", "1025 臺灣光復",
                         "1112 國父誕辰", "1031 萬聖節", "1224 平安夜", "1225 聖誕節" };
         }
+        return null;
     }
 
     public static String [] getSpecificInfo() {
@@ -51,5 +52,6 @@ public class FestivalInfo {
             case "TW":
                 return new String [] { "5 2 0 母親節", "11 4 4 感恩節" };
         }
+        return null;
     }
 }
