@@ -92,8 +92,6 @@ import android.content.res.Configuration;
 
 import android.Manifest;
 
-import mokee.app.suggest.AppSuggestManager;
-
 import android.app.ActivityManager;
 import android.app.ActivityManagerNative;
 import android.app.AppGlobals;
@@ -1999,11 +1997,9 @@ public class PackageManagerService extends IPackageManager.Stub {
             mRestoredSettings = mSettings.readLPw(this, sUserManager.getUsers(false),
                     mSdkVersion, mOnlyCore, mInstaller);
 
-            String customResolverActivity = SystemProperties.get("ro.custom.resolver.activity");
-            if (TextUtils.isEmpty(customResolverActivity)) {
-                customResolverActivity = Resources.getSystem().getString(
-                        R.string.config_customResolverActivity);
-            }
+
+            String customResolverActivity = Resources.getSystem().getString(
+                    R.string.config_customResolverActivity);
             if (TextUtils.isEmpty(customResolverActivity)) {
                 customResolverActivity = null;
             } else {
@@ -4401,17 +4397,6 @@ public class PackageManagerService extends IPackageManager.Stub {
                 if (ri.activityInfo.metaData == null) ri.activityInfo.metaData = new Bundle();
                 ri.activityInfo.metaData.putBoolean(Intent.METADATA_DOCK_HOME, true);
                 return ri;
-            } else if (shouldIncludeResolveActivity(intent)) {
-                if (userId != 0) {
-                    ResolveInfo ri = new ResolveInfo(mResolveInfo);
-                    ri.activityInfo = new ActivityInfo(ri.activityInfo);
-                    ri.activityInfo.applicationInfo = new ApplicationInfo(
-                            ri.activityInfo.applicationInfo);
-                    ri.activityInfo.applicationInfo.uid = UserHandle.getUid(userId,
-                            UserHandle.getAppId(ri.activityInfo.applicationInfo.uid));
-                    return ri;
-                }
-                return mResolveInfo;
             }
         }
         return null;
@@ -4670,13 +4655,6 @@ public class PackageManagerService extends IPackageManager.Stub {
             return resolver.queryIntent(intent, resolvedType, false, userId);
         }
         return null;
-    }
-
-    private boolean shouldIncludeResolveActivity(Intent intent) {
-        synchronized(mPackages) {
-            AppSuggestManager suggest = AppSuggestManager.getInstance(mContext);
-            return mResolverReplaced && (suggest != null) ? suggest.handles(intent) : false;
-        }
     }
 
     @Override
