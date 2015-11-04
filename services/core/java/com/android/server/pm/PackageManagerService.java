@@ -92,7 +92,7 @@ import android.content.res.Configuration;
 
 import android.Manifest;
 
-import cyanogenmod.app.suggest.AppSuggestManager;
+import mokee.app.suggest.AppSuggestManager;
 
 import android.app.ActivityManager;
 import android.app.ActivityManagerNative;
@@ -221,7 +221,7 @@ import android.util.SparseIntArray;
 import android.util.Xml;
 import android.view.Display;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 import dalvik.system.DexFile;
 import dalvik.system.VMRuntime;
 
@@ -1507,9 +1507,9 @@ public class PackageManagerService extends IPackageManager.Stub {
                                 }
                             }
                             if (!update && !isSystemApp(res.pkg)) {
-                                boolean privacyGuard = CMSettings.Secure.getIntForUser(
+                                boolean privacyGuard = MKSettings.Secure.getIntForUser(
                                         mContext.getContentResolver(),
-                                        CMSettings.Secure.PRIVACY_GUARD_DEFAULT,
+                                        MKSettings.Secure.PRIVACY_GUARD_DEFAULT,
                                         0, UserHandle.USER_CURRENT) == 1;
                                 if (privacyGuard) {
                                     mAppOps.setPrivacyGuardSettingForPackage(

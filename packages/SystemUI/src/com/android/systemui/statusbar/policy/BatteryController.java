@@ -32,7 +32,7 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 public class BatteryController extends BroadcastReceiver {
     private static final String TAG = "BatteryController";
@@ -169,9 +169,9 @@ public class BatteryController extends BroadcastReceiver {
         private boolean mRegistered;
 
         private final Uri STYLE_URI =
-                CMSettings.System.getUriFor(CMSettings.System.STATUS_BAR_BATTERY_STYLE);
+                MKSettings.System.getUriFor(MKSettings.System.STATUS_BAR_BATTERY_STYLE);
         private final Uri PERCENT_URI =
-                CMSettings.System.getUriFor(CMSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT);
+                MKSettings.System.getUriFor(MKSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT);
 
         public SettingsObserver(Context context, Handler handler) {
             super(handler);
@@ -195,10 +195,10 @@ public class BatteryController extends BroadcastReceiver {
         }
 
         private void update() {
-            mStyle = CMSettings.System.getIntForUser(mResolver,
-                    CMSettings.System.STATUS_BAR_BATTERY_STYLE, 0, mUserId);
-            mPercentMode = CMSettings.System.getIntForUser(mResolver,
-                    CMSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0, mUserId);
+            mStyle = MKSettings.System.getIntForUser(mResolver,
+                    MKSettings.System.STATUS_BAR_BATTERY_STYLE, 0, mUserId);
+            mPercentMode = MKSettings.System.getIntForUser(mResolver,
+                    MKSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0, mUserId);
 
             fireSettingsChanged();
         }
