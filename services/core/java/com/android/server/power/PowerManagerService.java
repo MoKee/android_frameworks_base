@@ -3335,11 +3335,7 @@ public final class PowerManagerService extends SystemService
                     }
                 }
             };
-            if (checkProximity) {
-                runWithProximityCheck(r);
-            } else {
-                r.run();
-            }
+            runWithProximityCheck(r);
         }
 
         private void runWithProximityCheck(Runnable r) {
