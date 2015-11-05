@@ -16,14 +16,14 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="lockscreen_gesture_instructions">Geste zeichnen zum entsperren</string>
+  <string name="lockscreen_gesture_instructions">Geste zeichnen zum Entsperren</string>
   <string name="lockscreen_gesture_correct">Korrekt!</string>
   <string name="lockscreen_gesture_wrong">Bitte erneut versuchen</string>
-  <string name="keyguard_accessibility_gesture_unlock">Geste zum entsperren.</string>
+  <string name="keyguard_accessibility_gesture_unlock">Geste zum Entsperren.</string>
   <string name="keyguard_accessibility_gesture_area">Gestenbereich.</string>
   <string name="kg_forgot_gesture_button_text">Geste vergessen</string>
   <string name="kg_wrong_gesture">Falsche Geste</string>
-  <string name="kg_gesture_instructions">Zeichne deine Geste</string>
+  <string name="kg_gesture_instructions">Zeichnen Sie Ihre Geste</string>
   <string name="kg_too_many_failed_gesture_attempts_dialog_message">
         Sie haben Ihre Entsperrungsgeste <xliff:g id="NUMBER_0">%d</xliff:g>-mal falsch gezeichnet. "\n\n"Bitte versuchen Sie es in <xliff:g id="NUMBER_1">%d</xliff:g> Sekunden noch einmal.
     </string>
