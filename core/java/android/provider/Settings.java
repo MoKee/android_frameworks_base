@@ -2192,6 +2192,12 @@ public final class Settings {
         public static final int ADVANCED_SETTINGS_DEFAULT = 0;
 
         /**
+         * Navigation controls to Use
+         * @hide
+         */
+        public static final String NAV_BUTTONS = "nav_buttons";
+
+        /**
          * @deprecated Use {@link android.provider.Settings.Global#AIRPLANE_MODE_ON} instead
          */
         @Deprecated
@@ -6548,16 +6554,6 @@ public final class Settings {
          * @hide
          */
         public static final String LIVE_DISPLAY_COLOR_MATRIX = "live_display_color_matrix";
-
-        /**
-         * The global recents long press activity chosen by the user.
-         * This setting is stored as a flattened component name as
-         * per {@link ComponentName#flattenToString()}.
-         *
-         * @hide
-         */
-        public static final String RECENTS_LONG_PRESS_ACTIVITY = "recents_long_press_activity";
-
 
         /**
          * Whether to include options in power menu for rebooting into recovery or bootloader

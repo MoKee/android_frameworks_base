@@ -209,6 +209,8 @@ import static com.android.systemui.statusbar.phone.BarTransitions.MODE_TRANSLUCE
 import static com.android.systemui.statusbar.phone.BarTransitions.MODE_TRANSPARENT;
 import static com.android.systemui.statusbar.phone.BarTransitions.MODE_WARNING;
 
+import mokee.providers.MKSettings;
+
 public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         DragDownHelper.DragDownCallback, ActivityStarter, OnUnlockMethodChangedListener,
         HeadsUpManager.OnHeadsUpChangedListener {
@@ -448,8 +450,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     Settings.System.SCREEN_BRIGHTNESS_MODE), false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.NAVBAR_LEFT_IN_LANDSCAPE), false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.Secure.RECENTS_LONG_PRESS_ACTIVITY), false, this);
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.Secure.RECENTS_LONG_PRESS_ACTIVITY), false, this);
             update();
         }
 
@@ -478,7 +480,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 mNavigationBarView.setLeftInLandscape(navLeftInLandscape);
             }
 
-            // This method reads Settings.Secure.RECENTS_LONG_PRESS_ACTIVITY
+            // This method reads MKSettings.Secure.RECENTS_LONG_PRESS_ACTIVITY
             updateCustomRecentsLongPressHandler(false);
         }
     }
@@ -1350,14 +1352,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private void prepareNavigationBarView() {
         mNavigationBarView.reorient();
 
-        mNavigationBarView.getRecentsButton().setOnClickListener(mRecentsClickListener);
-        mNavigationBarView.getRecentsButton().setOnTouchListener(mRecentsPreloadOnTouchListener);
-        mNavigationBarView.getRecentsButton().setLongClickable(true);
-        mNavigationBarView.getRecentsButton().setOnLongClickListener(mLongPressBackRecentsListener);
-        mNavigationBarView.getBackButton().setLongClickable(true);
-        mNavigationBarView.getBackButton().setOnLongClickListener(mLongPressBackRecentsListener);
-        mNavigationBarView.getHomeButton().setOnTouchListener(mHomeActionListener);
-        mNavigationBarView.getHomeButton().setOnLongClickListener(mLongPressHomeListener);
+        mNavigationBarView.setListeners(mRecentsClickListener, mRecentsPreloadOnTouchListener,
+                mLongPressBackRecentsListener, mHomeActionListener);
         mAssistManager.onConfigurationChanged();
     }
 
@@ -3423,6 +3419,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
         mKeyguardWallpaper = wm.getKeyguardBitmap();
         updateMediaMetaData(true);
+        if (mNavigationBarView != null) {
+            mNavigationBarView.updateSettings();
+        }
     }
 
     private void setControllerUsers() {
@@ -3775,7 +3774,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
     @Override
     public boolean shouldDisableNavbarGestures() {
-        return !isDeviceProvisioned() || (mDisabled1 & StatusBarManager.DISABLE_SEARCH) != 0;
+        return !isDeviceProvisioned() || (mDisabled1 & StatusBarManager.DISABLE_SEARCH) != 0
+                || (mNavigationBarView != null && mNavigationBarView.isInEditMode());
     }
 
     public void postStartActivityDismissingKeyguard(final Intent intent, int delay) {
@@ -4360,16 +4360,12 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         mKeyguardIndicationController.hideTransientIndicationDelayed(HINT_RESET_DELAY_MS);
     }
 
-    public void onCameraHintStarted() {
-        mKeyguardIndicationController.showTransientIndication(R.string.camera_hint);
+    public void onCameraHintStarted(String hint) {
+        mKeyguardIndicationController.showTransientIndication(hint);
     }
 
-    public void onVoiceAssistHintStarted() {
-        mKeyguardIndicationController.showTransientIndication(R.string.voice_hint);
-    }
-
-    public void onPhoneHintStarted() {
-        mKeyguardIndicationController.showTransientIndication(R.string.phone_hint);
+    public void onLeftHintStarted(String hint) {
+        mKeyguardIndicationController.showTransientIndication(hint);
     }
 
     public void onTrackingStopped(boolean expand) {
@@ -4565,20 +4561,20 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     activityManager.stopLockTaskModeOnCurrent();
                     // When exiting refresh disabled flags.
                     mNavigationBarView.setDisabledFlags(mDisabled1, true);
-                } else if ((v.getId() == R.id.back)
+                } else if ((NavbarEditor.NAVBAR_BACK.equals(v.getTag()))
                         && !mNavigationBarView.getRecentsButton().isPressed()) {
                     // If we aren't pressing recents right now then they presses
                     // won't be together, so send the standard long-press action.
                     sendBackLongPress = true;
-                } else if ((v.getId() == R.id.recent_apps)) {
+                } else if ((NavbarEditor.NAVBAR_RECENT.equals(v.getTag()))) {
                     hijackRecentsLongPress = true;
                 }
                 mLastLockToAppLongPress = time;
             } else {
                 // If this is back still need to handle sending the long-press event.
-                if (v.getId() == R.id.back) {
+                if (NavbarEditor.NAVBAR_BACK.equals(v.getTag())) {
                     sendBackLongPress = true;
-                } else if (v.getId() == R.id.recent_apps) {
+                } else if (NavbarEditor.NAVBAR_RECENT.equals(v.getTag())) {
                     hijackRecentsLongPress = true;
                 } else if (isAccessiblityEnabled && activityManager.isInLockTaskMode()) {
                     // When in accessibility mode a long press that is recents (not back)
@@ -4655,7 +4651,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
      * set and points to a valid app.  Start this activity.
      */
     private void startCustomRecentsLongPressActivity(ComponentName customComponentName) {
-        Intent intent = new Intent(Intent.ACTION_RECENTS_LONG_PRESS);
+        Intent intent = new Intent(mokee.content.Intent.ACTION_RECENTS_LONG_PRESS);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         // Include the package name of the app currently in the foreground
@@ -4701,8 +4697,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             updateCustomRecentsLongPressCandidates();
         }
 
-        String componentString = Settings.Secure.getString(mContext.getContentResolver(),
-                Settings.Secure.RECENTS_LONG_PRESS_ACTIVITY);
+        String componentString = MKSettings.Secure.getString(mContext.getContentResolver(),
+                MKSettings.Secure.RECENTS_LONG_PRESS_ACTIVITY);
         if (componentString == null) {
             mCustomRecentsLongPressHandler = null;
             return;
@@ -4732,18 +4728,19 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
      * Updates the cache of Recents Long Press applications.
      *
      * These applications must:
-     * - handle the Intent.ACTION_RECENTS_LONG_PRESS (which is permissions protected); and
+     * - handle the mokee.content.Intent.ACTION_RECENTS_LONG_PRESS
+     *   (which is permissions protected); and
      * - not be disabled by the user or the system.
      *
      * More than one handler can be a candidate.  When the action is invoked,
-     * the user setting (stored in Settings.Secure) is consulted.
+     * the user setting (stored in MKSettings.Secure) is consulted.
      */
     private void updateCustomRecentsLongPressCandidates() {
         synchronized (mCustomRecentsLongPressHandlerCandidates) {
             mCustomRecentsLongPressHandlerCandidates.clear();
 
             PackageManager pm = mContext.getPackageManager();
-            Intent intent = new Intent(Intent.ACTION_RECENTS_LONG_PRESS);
+            Intent intent = new Intent(mokee.content.Intent.ACTION_RECENTS_LONG_PRESS);
 
             // Search for all apps that can handle ACTION_RECENTS_LONG_PRESS
             List<ResolveInfo> activities = pm.queryIntentActivities(intent,
