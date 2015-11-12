@@ -2459,11 +2459,6 @@
     <!-- External MK Services list -->
     <string-array name="config_externalMKServices"></string-array>
 
-    <!-- Default values for display color temperature -->
-    <integer name="config_dayColorTemperature">6500</integer>
-    <integer name="config_nightColorTemperature">4500</integer>
-    <integer name="config_outdoorAmbientLux">9000</integer>
-
     <!-- Timeout in MS for how long you have to long-press the back key to
          kill the foreground app. -->
     <integer name="config_backKillTimeout">2000</integer>

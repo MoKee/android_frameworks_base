@@ -924,8 +924,8 @@ public class StatusBarHeaderView extends RelativeLayout implements View.OnClickL
             super.observe();
 
             ContentResolver resolver = mContext.getContentResolver();
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.STATUS_BAR_SHOW_WEATHER), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.STATUS_BAR_SHOW_WEATHER), false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(MKSettings.System.getUriFor(
                     MKSettings.System.STATUS_BAR_BATTERY_STYLE), false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(MKSettings.System.getUriFor(
@@ -961,8 +961,8 @@ public class StatusBarHeaderView extends RelativeLayout implements View.OnClickL
             }
 
             mShowBatteryTextExpanded = showExpandedBatteryPercentage;
-            mShowWeather = Settings.System.getInt(
-                    resolver, Settings.System.STATUS_BAR_SHOW_WEATHER, 1) == 1;
+            mShowWeather = MKSettings.System.getInt(
+                    resolver, MKSettings.System.STATUS_BAR_SHOW_WEATHER, 1) == 1;
             updateVisibilities();
             requestCaptureValues();
         }
