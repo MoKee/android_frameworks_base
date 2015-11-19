@@ -34,7 +34,7 @@ import com.android.systemui.recents.RecentsConfiguration;
 import com.android.systemui.recents.misc.Utilities;
 import com.android.systemui.recents.model.Task;
 import com.android.systemui.statusbar.phone.PhoneStatusBar;
-import mokee.providers.MKSettings;
+import mokee.providers.CMSettings;
 
 /* A task view */
 public class TaskView extends FrameLayout implements Task.TaskCallbacks,
@@ -772,8 +772,8 @@ public class TaskView extends FrameLayout implements Task.TaskCallbacks,
         if (v == mHeaderView.mApplicationIcon) {
             if (mCb != null) {
                 boolean showDevShortcuts =
-                        MKSettings.Secure.getInt(v.getContext().getContentResolver(),
-                                MKSettings.Secure.DEVELOPMENT_SHORTCUT, 0) != 0;
+                        CMSettings.Secure.getInt(v.getContext().getContentResolver(),
+                                CMSettings.Secure.DEVELOPMENT_SHORTCUT, 0) != 0;
                 if (showDevShortcuts) {
                     mCb.onTaskViewLongClicked(this);
                 } else {

@@ -73,7 +73,7 @@ import com.android.systemui.tuner.TunerService;
 
 import java.text.NumberFormat;
 
-import mokee.providers.MKSettings;
+import mokee.providers.CMSettings;
 
 /**
  * The view to manage the header area in the expanded status bar.
@@ -924,12 +924,12 @@ public class StatusBarHeaderView extends RelativeLayout implements View.OnClickL
             super.observe();
 
             ContentResolver resolver = mContext.getContentResolver();
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.STATUS_BAR_SHOW_WEATHER), false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.STATUS_BAR_BATTERY_STYLE), false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(CMSettings.System.getUriFor(
+                    CMSettings.System.STATUS_BAR_SHOW_WEATHER), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(CMSettings.System.getUriFor(
+                    CMSettings.System.STATUS_BAR_BATTERY_STYLE), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(CMSettings.System.getUriFor(
+                    CMSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT), false, this, UserHandle.USER_ALL);
             update();
         }
 
@@ -946,10 +946,10 @@ public class StatusBarHeaderView extends RelativeLayout implements View.OnClickL
 
             ContentResolver resolver = mContext.getContentResolver();
             int currentUserId = ActivityManager.getCurrentUser();
-            int batteryStyle = MKSettings.System.getIntForUser(resolver,
-                    MKSettings.System.STATUS_BAR_BATTERY_STYLE, 0, currentUserId);
-            boolean showExpandedBatteryPercentage = MKSettings.System.getIntForUser(resolver,
-                    MKSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0, currentUserId) == 0;
+            int batteryStyle = CMSettings.System.getIntForUser(resolver,
+                    CMSettings.System.STATUS_BAR_BATTERY_STYLE, 0, currentUserId);
+            boolean showExpandedBatteryPercentage = CMSettings.System.getIntForUser(resolver,
+                    CMSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0, currentUserId) == 0;
 
             switch (batteryStyle) {
                 case 4: //BATTERY_METER_GONE
@@ -961,8 +961,8 @@ public class StatusBarHeaderView extends RelativeLayout implements View.OnClickL
             }
 
             mShowBatteryTextExpanded = showExpandedBatteryPercentage;
-            mShowWeather = MKSettings.System.getInt(
-                    resolver, MKSettings.System.STATUS_BAR_SHOW_WEATHER, 1) == 1;
+            mShowWeather = CMSettings.System.getInt(
+                    resolver, CMSettings.System.STATUS_BAR_SHOW_WEATHER, 1) == 1;
             updateVisibilities();
             requestCaptureValues();
         }

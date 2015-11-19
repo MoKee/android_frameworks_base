@@ -47,7 +47,7 @@ import com.android.server.twilight.TwilightManager;
 import com.android.server.twilight.TwilightState;
 
 import mokee.hardware.MKHardwareManager;
-import mokee.providers.MKSettings;
+import mokee.providers.CMSettings;
 
 import java.io.PrintWriter;
 
@@ -133,8 +133,8 @@ public class LiveDisplayController {
 
         // Counter used to determine when we should tell the user about this feature.
         // If it's not used after 3 sunsets, we'll show the hint once.
-        mHintCounter = MKSettings.System.getIntForUser(mContext.getContentResolver(),
-                MKSettings.System.LIVE_DISPLAY_HINTED,
+        mHintCounter = CMSettings.System.getIntForUser(mContext.getContentResolver(),
+                CMSettings.System.LIVE_DISPLAY_HINTED,
                 -3,
                 UserHandle.USER_CURRENT);
 
@@ -170,16 +170,16 @@ public class LiveDisplayController {
     }
 
     private void updateSettings() {
-        mDayTemperature = MKSettings.System.getIntForUser(mContext.getContentResolver(),
-                MKSettings.System.DISPLAY_TEMPERATURE_DAY,
+        mDayTemperature = CMSettings.System.getIntForUser(mContext.getContentResolver(),
+                CMSettings.System.DISPLAY_TEMPERATURE_DAY,
                 mDefaultDayTemperature,
                 UserHandle.USER_CURRENT);
-        mNightTemperature = MKSettings.System.getIntForUser(mContext.getContentResolver(),
-                MKSettings.System.DISPLAY_TEMPERATURE_NIGHT,
+        mNightTemperature = CMSettings.System.getIntForUser(mContext.getContentResolver(),
+                CMSettings.System.DISPLAY_TEMPERATURE_NIGHT,
                 mDefaultNightTemperature,
                 UserHandle.USER_CURRENT);
-        mMode = MKSettings.System.getIntForUser(mContext.getContentResolver(),
-                MKSettings.System.DISPLAY_TEMPERATURE_MODE,
+        mMode = CMSettings.System.getIntForUser(mContext.getContentResolver(),
+                CMSettings.System.DISPLAY_TEMPERATURE_MODE,
                 MODE_OFF,
                 UserHandle.USER_CURRENT);
 
@@ -189,8 +189,8 @@ public class LiveDisplayController {
         }
 
         // Manual color adjustment will be set as a space separated string of float values
-        String colorAdjustmentTemp = MKSettings.System.getStringForUser(mContext.getContentResolver(),
-                MKSettings.System.DISPLAY_COLOR_ADJUSTMENT,
+        String colorAdjustmentTemp = CMSettings.System.getStringForUser(mContext.getContentResolver(),
+                CMSettings.System.DISPLAY_COLOR_ADJUSTMENT,
                 UserHandle.USER_CURRENT);
         String[] colorAdjustment = colorAdjustmentTemp == null ?
                 null : colorAdjustmentTemp.split(" ");
@@ -213,19 +213,19 @@ public class LiveDisplayController {
 
     private final class SettingsObserver extends ContentObserver {
         private final Uri DISPLAY_TEMPERATURE_DAY_URI =
-                MKSettings.System.getUriFor(MKSettings.System.DISPLAY_TEMPERATURE_DAY);
+                CMSettings.System.getUriFor(CMSettings.System.DISPLAY_TEMPERATURE_DAY);
         private final Uri DISPLAY_TEMPERATURE_NIGHT_URI =
-                MKSettings.System.getUriFor(MKSettings.System.DISPLAY_TEMPERATURE_NIGHT);
+                CMSettings.System.getUriFor(CMSettings.System.DISPLAY_TEMPERATURE_NIGHT);
         private final Uri DISPLAY_TEMPERATURE_MODE_URI =
-                MKSettings.System.getUriFor(MKSettings.System.DISPLAY_TEMPERATURE_MODE);
+                CMSettings.System.getUriFor(CMSettings.System.DISPLAY_TEMPERATURE_MODE);
         private final Uri DISPLAY_AUTO_OUTDOOR_MODE_URI =
-                MKSettings.System.getUriFor(MKSettings.System.DISPLAY_AUTO_OUTDOOR_MODE);
+                CMSettings.System.getUriFor(CMSettings.System.DISPLAY_AUTO_OUTDOOR_MODE);
         private final Uri DISPLAY_LOW_POWER_URI =
-                MKSettings.System.getUriFor(MKSettings.System.DISPLAY_LOW_POWER);
+                CMSettings.System.getUriFor(CMSettings.System.DISPLAY_LOW_POWER);
         private final Uri DISPLAY_COLOR_ENHANCE_URI =
-                MKSettings.System.getUriFor(MKSettings.System.DISPLAY_COLOR_ENHANCE);
+                CMSettings.System.getUriFor(CMSettings.System.DISPLAY_COLOR_ENHANCE);
         private final Uri DISPLAY_COLOR_ADJUSTMENT_URI =
-                MKSettings.System.getUriFor(MKSettings.System.DISPLAY_COLOR_ADJUSTMENT);
+                CMSettings.System.getUriFor(CMSettings.System.DISPLAY_COLOR_ADJUSTMENT);
         public SettingsObserver() {
             super(mHandler);
         }
@@ -354,8 +354,8 @@ public class LiveDisplayController {
             return;
         }
 
-        boolean value = MKSettings.System.getIntForUser(mContext.getContentResolver(),
-                MKSettings.System.DISPLAY_AUTO_OUTDOOR_MODE,
+        boolean value = CMSettings.System.getIntForUser(mContext.getContentResolver(),
+                CMSettings.System.DISPLAY_AUTO_OUTDOOR_MODE,
                 1,
                 UserHandle.USER_CURRENT) == 1;
 
@@ -381,8 +381,8 @@ public class LiveDisplayController {
             return;
         }
 
-        boolean value = MKSettings.System.getIntForUser(mContext.getContentResolver(),
-                MKSettings.System.DISPLAY_COLOR_ENHANCE,
+        boolean value = CMSettings.System.getIntForUser(mContext.getContentResolver(),
+                CMSettings.System.DISPLAY_COLOR_ENHANCE,
                 1,
                 UserHandle.USER_CURRENT) == 1;
 
@@ -406,8 +406,8 @@ public class LiveDisplayController {
             return;
         }
 
-        boolean value = MKSettings.System.getIntForUser(mContext.getContentResolver(),
-                MKSettings.System.DISPLAY_LOW_POWER,
+        boolean value = CMSettings.System.getIntForUser(mContext.getContentResolver(),
+                CMSettings.System.DISPLAY_LOW_POWER,
                 1,
                 UserHandle.USER_CURRENT) == 1;
 
@@ -509,8 +509,8 @@ public class LiveDisplayController {
         if (mHintCounter == value) {
             return;
         }
-        MKSettings.System.putIntForUser(mContext.getContentResolver(),
-                MKSettings.System.LIVE_DISPLAY_HINTED,
+        CMSettings.System.putIntForUser(mContext.getContentResolver(),
+                CMSettings.System.LIVE_DISPLAY_HINTED,
                 value,
                 UserHandle.USER_CURRENT);
         mHintCounter = value;

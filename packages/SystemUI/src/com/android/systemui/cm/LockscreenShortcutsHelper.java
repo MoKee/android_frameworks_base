@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.android.systemui.R;
-import mokee.providers.MKSettings;
+import mokee.providers.CMSettings;
 
 public class LockscreenShortcutsHelper {
 
@@ -54,7 +54,7 @@ public class LockscreenShortcutsHelper {
             mListener = listener;
             mHandler = new Handler(Looper.getMainLooper());
             mContext.getContentResolver().registerContentObserver(
-                    MKSettings.Secure.getUriFor(MKSettings.Secure.LOCKSCREEN_TARGETS), false, mObserver);
+                    CMSettings.Secure.getUriFor(CMSettings.Secure.LOCKSCREEN_TARGETS), false, mObserver);
         }
         fetchTargets();
     }
@@ -91,8 +91,8 @@ public class LockscreenShortcutsHelper {
     }
 
     private void fetchTargets() {
-        mTargetActivities = MKSettings.Secure.getDelimitedStringAsList(mContext.getContentResolver(),
-                MKSettings.Secure.LOCKSCREEN_TARGETS, DELIMITER);
+        mTargetActivities = CMSettings.Secure.getDelimitedStringAsList(mContext.getContentResolver(),
+                CMSettings.Secure.LOCKSCREEN_TARGETS, DELIMITER);
         int itemsToPad = Shortcuts.values().length - mTargetActivities.size();
         if (itemsToPad > 0) {
             for (int i = 0; i < itemsToPad; i++) {
@@ -190,7 +190,7 @@ public class LockscreenShortcutsHelper {
     }
 
     public void saveTargets(ArrayList<String> targets) {
-        MKSettings.Secure.putListAsDelimitedString(mContext.getContentResolver(),
-                MKSettings.Secure.LOCKSCREEN_TARGETS, DELIMITER, targets);
+        CMSettings.Secure.putListAsDelimitedString(mContext.getContentResolver(),
+                CMSettings.Secure.LOCKSCREEN_TARGETS, DELIMITER, targets);
     }
 }

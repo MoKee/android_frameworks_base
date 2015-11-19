@@ -32,7 +32,7 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import mokee.providers.MKSettings;
+import mokee.providers.CMSettings;
 
 public class BatteryController extends BroadcastReceiver {
     private static final String TAG = "BatteryController";
@@ -169,9 +169,9 @@ public class BatteryController extends BroadcastReceiver {
         private boolean mRegistered;
 
         private final Uri STYLE_URI =
-                MKSettings.System.getUriFor(MKSettings.System.STATUS_BAR_BATTERY_STYLE);
+                CMSettings.System.getUriFor(CMSettings.System.STATUS_BAR_BATTERY_STYLE);
         private final Uri PERCENT_URI =
-                MKSettings.System.getUriFor(MKSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT);
+                CMSettings.System.getUriFor(CMSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT);
 
         public SettingsObserver(Context context, Handler handler) {
             super(handler);
@@ -195,10 +195,10 @@ public class BatteryController extends BroadcastReceiver {
         }
 
         private void update() {
-            mStyle = MKSettings.System.getIntForUser(mResolver,
-                    MKSettings.System.STATUS_BAR_BATTERY_STYLE, 0, mUserId);
-            mPercentMode = MKSettings.System.getIntForUser(mResolver,
-                    MKSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0, mUserId);
+            mStyle = CMSettings.System.getIntForUser(mResolver,
+                    CMSettings.System.STATUS_BAR_BATTERY_STYLE, 0, mUserId);
+            mPercentMode = CMSettings.System.getIntForUser(mResolver,
+                    CMSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0, mUserId);
 
             fireSettingsChanged();
         }

@@ -209,7 +209,7 @@ import static com.android.systemui.statusbar.phone.BarTransitions.MODE_TRANSLUCE
 import static com.android.systemui.statusbar.phone.BarTransitions.MODE_TRANSPARENT;
 import static com.android.systemui.statusbar.phone.BarTransitions.MODE_WARNING;
 
-import mokee.providers.MKSettings;
+import mokee.providers.CMSettings;
 
 public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         DragDownHelper.DragDownCallback, ActivityStarter, OnUnlockMethodChangedListener,
@@ -448,10 +448,10 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.SCREEN_BRIGHTNESS_MODE), false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.NAVBAR_LEFT_IN_LANDSCAPE), false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.Secure.RECENTS_LONG_PRESS_ACTIVITY), false, this);
+            resolver.registerContentObserver(CMSettings.System.getUriFor(
+                    CMSettings.System.NAVBAR_LEFT_IN_LANDSCAPE), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(CMSettings.System.getUriFor(
+                    CMSettings.Secure.RECENTS_LONG_PRESS_ACTIVITY), false, this);
             update();
         }
 
@@ -475,12 +475,12 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     UserHandle.USER_CURRENT) == 1;
 
             if (mNavigationBarView != null) {
-                boolean navLeftInLandscape = MKSettings.System.getIntForUser(resolver,
-                        MKSettings.System.NAVBAR_LEFT_IN_LANDSCAPE, 0, UserHandle.USER_CURRENT) == 1;
+                boolean navLeftInLandscape = CMSettings.System.getIntForUser(resolver,
+                        CMSettings.System.NAVBAR_LEFT_IN_LANDSCAPE, 0, UserHandle.USER_CURRENT) == 1;
                 mNavigationBarView.setLeftInLandscape(navLeftInLandscape);
             }
 
-            // This method reads MKSettings.Secure.RECENTS_LONG_PRESS_ACTIVITY
+            // This method reads CMSettings.Secure.RECENTS_LONG_PRESS_ACTIVITY
             updateCustomRecentsLongPressHandler(false);
         }
     }
@@ -4709,8 +4709,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             updateCustomRecentsLongPressCandidates();
         }
 
-        String componentString = MKSettings.Secure.getString(mContext.getContentResolver(),
-                MKSettings.Secure.RECENTS_LONG_PRESS_ACTIVITY);
+        String componentString = CMSettings.Secure.getString(mContext.getContentResolver(),
+                CMSettings.Secure.RECENTS_LONG_PRESS_ACTIVITY);
         if (componentString == null) {
             mCustomRecentsLongPressHandler = null;
             return;
@@ -4745,7 +4745,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
      * - not be disabled by the user or the system.
      *
      * More than one handler can be a candidate.  When the action is invoked,
-     * the user setting (stored in MKSettings.Secure) is consulted.
+     * the user setting (stored in CMSettings.Secure) is consulted.
      */
     private void updateCustomRecentsLongPressCandidates() {
         synchronized (mCustomRecentsLongPressHandlerCandidates) {
