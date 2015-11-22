@@ -43,7 +43,7 @@ import com.android.systemui.cm.UserContentObserver;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 public class StatusBarIconView extends AnimatedImageView {
     private static final String TAG = "StatusBarIconView";
@@ -89,8 +89,8 @@ public class StatusBarIconView extends AnimatedImageView {
 
     public void setNotification(Notification notification) {
         mNotification = notification;
-        mShowNotificationCount = CMSettings.System.getIntForUser(mContext.getContentResolver(),
-                CMSettings.System.STATUS_BAR_NOTIF_COUNT, 0, UserHandle.USER_CURRENT) == 1;
+        mShowNotificationCount = MKSettings.System.getIntForUser(mContext.getContentResolver(),
+                MKSettings.System.STATUS_BAR_NOTIF_COUNT, 0, UserHandle.USER_CURRENT) == 1;
         setContentDescription(notification);
     }
 
@@ -374,7 +374,7 @@ public class StatusBarIconView extends AnimatedImageView {
             super.observe();
 
             mContext.getContentResolver().registerContentObserver(
-                    CMSettings.System.getUriFor(CMSettings.System.STATUS_BAR_NOTIF_COUNT),
+                    MKSettings.System.getUriFor(MKSettings.System.STATUS_BAR_NOTIF_COUNT),
                     false, this);
         }
 
@@ -387,8 +387,8 @@ public class StatusBarIconView extends AnimatedImageView {
 
         @Override
         public void update() {
-            boolean showIconCount = CMSettings.System.getIntForUser(mContext.getContentResolver(),
-                    CMSettings.System.STATUS_BAR_NOTIF_COUNT, 0, UserHandle.USER_CURRENT) == 1;
+            boolean showIconCount = MKSettings.System.getIntForUser(mContext.getContentResolver(),
+                    MKSettings.System.STATUS_BAR_NOTIF_COUNT, 0, UserHandle.USER_CURRENT) == 1;
             for (StatusBarIconView sbiv : mIconViews) {
                 sbiv.mShowNotificationCount = showIconCount;
                 sbiv.set(sbiv.mIcon, true);

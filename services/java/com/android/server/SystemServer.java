@@ -102,7 +102,7 @@ import com.android.server.wallpaper.WallpaperManagerService;
 import com.android.server.webkit.WebViewUpdateService;
 import com.android.server.wm.WindowManagerService;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 import dalvik.system.VMRuntime;
 
 import java.io.File;
@@ -190,8 +190,8 @@ public final class SystemServer {
         }
         @Override
         public void onChange(boolean selfChange) {
-            int adbPort = CMSettings.Secure.getInt(mContentResolver,
-                CMSettings.Secure.ADB_PORT, 0);
+            int adbPort = MKSettings.Secure.getInt(mContentResolver,
+                MKSettings.Secure.ADB_PORT, 0);
             // setting this will control whether ADB runs on TCP/IP or USB
             SystemProperties.set("service.adb.tcp.port", Integer.toString(adbPort));
         }
@@ -1049,12 +1049,12 @@ public final class SystemServer {
         }
 
         // make sure the ADB_ENABLED setting value matches the secure property value
-        CMSettings.Secure.putInt(mContentResolver, CMSettings.Secure.ADB_PORT,
+        MKSettings.Secure.putInt(mContentResolver, MKSettings.Secure.ADB_PORT,
                 Integer.parseInt(SystemProperties.get("service.adb.tcp.port", "-1")));
 
         // register observer to listen for settings changes
         mContentResolver.registerContentObserver(
-            CMSettings.Secure.getUriFor(CMSettings.Secure.ADB_PORT),
+            MKSettings.Secure.getUriFor(MKSettings.Secure.ADB_PORT),
             false, new AdbPortObserver());
 
         // Before things start rolling, be sure we have decided whether

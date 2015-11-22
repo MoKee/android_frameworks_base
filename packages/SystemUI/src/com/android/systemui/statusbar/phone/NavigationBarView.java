@@ -63,7 +63,7 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import mokee.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 public class NavigationBarView extends LinearLayout {
     final static boolean DEBUG = false;
@@ -888,7 +888,7 @@ public class NavigationBarView extends LinearLayout {
             super.observe();
             ContentResolver resolver = getContext().getContentResolver();
             resolver.registerContentObserver(
-                    CMSettings.System.getUriFor(CMSettings.System.NAVIGATION_BAR_MENU_ARROW_KEYS),
+                    MKSettings.System.getUriFor(MKSettings.System.NAVIGATION_BAR_MENU_ARROW_KEYS),
                     false, this);
 
             // intialize mModlockDisabled
@@ -903,8 +903,8 @@ public class NavigationBarView extends LinearLayout {
 
         @Override
         protected void update() {
-            mShowDpadArrowKeys = CMSettings.System.getIntForUser(getContext().getContentResolver(),
-                    CMSettings.System.NAVIGATION_BAR_MENU_ARROW_KEYS, 0, UserHandle.USER_CURRENT) != 0;
+            mShowDpadArrowKeys = MKSettings.System.getIntForUser(getContext().getContentResolver(),
+                    MKSettings.System.NAVIGATION_BAR_MENU_ARROW_KEYS, 0, UserHandle.USER_CURRENT) != 0;
             // reset saved side button visibilities
             for (int i = 0; i < mSideButtonVisibilities.length; i++) {
                 for (int j = 0; j < mSideButtonVisibilities[i].length; j++) {

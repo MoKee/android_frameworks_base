@@ -70,11 +70,11 @@ import com.android.systemui.statusbar.policy.HeadsUpManager;
 import com.android.systemui.statusbar.policy.KeyguardUserSwitcher;
 import com.android.systemui.statusbar.stack.NotificationStackScrollLayout;
 import com.android.systemui.statusbar.stack.StackStateAnimator;
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 import java.util.List;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 public class NotificationPanelView extends PanelView implements
         ExpandableView.OnHeightChangedListener, ObservableScrollView.Listener,
@@ -2445,10 +2445,10 @@ public class NotificationPanelView extends PanelView implements
 
         void observe() {
             ContentResolver resolver = mContext.getContentResolver();
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN), false, this);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.DOUBLE_TAP_SLEEP_GESTURE), false, this);
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN), false, this);
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.DOUBLE_TAP_SLEEP_GESTURE), false, this);
             update();
         }
 
@@ -2469,10 +2469,10 @@ public class NotificationPanelView extends PanelView implements
 
         public void update() {
             ContentResolver resolver = mContext.getContentResolver();
-            mOneFingerQuickSettingsIntercept = CMSettings.System.getInt(
-                    resolver, CMSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN, 1) == 1;
-            mDoubleTapToSleepEnabled = CMSettings.System.getInt(
-                    resolver, CMSettings.System.DOUBLE_TAP_SLEEP_GESTURE, 1) == 1;
+            mOneFingerQuickSettingsIntercept = MKSettings.System.getInt(
+                    resolver, MKSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN, 1) == 1;
+            mDoubleTapToSleepEnabled = MKSettings.System.getInt(
+                    resolver, MKSettings.System.DOUBLE_TAP_SLEEP_GESTURE, 1) == 1;
         }
     }
 

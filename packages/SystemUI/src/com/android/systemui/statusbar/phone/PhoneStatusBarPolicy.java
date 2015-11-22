@@ -52,7 +52,7 @@ import com.android.systemui.statusbar.policy.HotspotController;
 import com.android.systemui.statusbar.policy.UserInfoController;
 import com.android.systemui.statusbar.policy.SuController;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 /**
  * This class contains all of the policy about which icons are installed in the status
@@ -167,7 +167,7 @@ public class PhoneStatusBarPolicy implements Callback {
         mService.setIconVisibility(SLOT_ALARM_CLOCK, false);
         mAlarmIconObserver.onChange(true);
         mContext.getContentResolver().registerContentObserver(
-                CMSettings.System.getUriFor(CMSettings.System.SHOW_ALARM_ICON),
+                MKSettings.System.getUriFor(MKSettings.System.SHOW_ALARM_ICON),
                 false, mAlarmIconObserver);
 
         // zen
@@ -184,7 +184,7 @@ public class PhoneStatusBarPolicy implements Callback {
         mService.setIconVisibility(SLOT_HEADSET, false);
         mHeadsetIconObserver.onChange(true);
         mContext.getContentResolver().registerContentObserver(
-                Settings.System.getUriFor(Settings.System.SHOW_HEADSET_ICON),
+                MKSettings.System.getUriFor(MKSettings.System.SHOW_HEADSET_ICON),
                 false, mHeadsetIconObserver);
 
         // cast
@@ -216,8 +216,8 @@ public class PhoneStatusBarPolicy implements Callback {
     private ContentObserver mHeadsetIconObserver = new ContentObserver(null) {
         @Override
         public void onChange(boolean selfChange, Uri uri) {
-            mHeadsetIconVisible = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.SHOW_HEADSET_ICON, 1) == 1;
+            mHeadsetIconVisible = MKSettings.System.getInt(mContext.getContentResolver(),
+                    MKSettings.System.SHOW_HEADSET_ICON, 1) == 1;
             updateHeadset();
         }
 
@@ -230,8 +230,8 @@ public class PhoneStatusBarPolicy implements Callback {
     private ContentObserver mAlarmIconObserver = new ContentObserver(null) {
         @Override
         public void onChange(boolean selfChange, Uri uri) {
-            mAlarmIconVisible = CMSettings.System.getInt(mContext.getContentResolver(),
-                    CMSettings.System.SHOW_ALARM_ICON, 1) == 1;
+            mAlarmIconVisible = MKSettings.System.getInt(mContext.getContentResolver(),
+                    MKSettings.System.SHOW_ALARM_ICON, 1) == 1;
             updateAlarm();
         }
 

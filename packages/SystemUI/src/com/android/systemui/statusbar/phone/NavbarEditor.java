@@ -46,7 +46,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import mokee.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 /**
  * Handles the editing of the navigation bar
@@ -351,8 +351,8 @@ public class NavbarEditor implements View.OnTouchListener {
             if (i != 0) sb.append("|");
             sb.append(info.key);
         }
-        CMSettings.System.putStringForUser(mContext.getContentResolver(),
-                CMSettings.System.NAV_BUTTONS, sb.toString(), UserHandle.USER_CURRENT);
+        MKSettings.System.putStringForUser(mContext.getContentResolver(),
+                MKSettings.System.NAV_BUTTONS, sb.toString(), UserHandle.USER_CURRENT);
     }
 
     /**
@@ -360,8 +360,8 @@ public class NavbarEditor implements View.OnTouchListener {
      * key arrangement stored in settings provider
      */
     protected void updateKeys() {
-        String saved = CMSettings.System.getStringForUser(mContext.getContentResolver(),
-                CMSettings.System.NAV_BUTTONS, UserHandle.USER_CURRENT);
+        String saved = MKSettings.System.getStringForUser(mContext.getContentResolver(),
+                MKSettings.System.NAV_BUTTONS, UserHandle.USER_CURRENT);
         if (saved == null) {
             saved = DEFAULT_SETTING_STRING;
         }

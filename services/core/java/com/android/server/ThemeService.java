@@ -66,7 +66,7 @@ import android.util.Log;
 
 import com.android.internal.R;
 import com.android.internal.util.cm.ImageUtils;
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -346,9 +346,9 @@ public class ThemeService extends IThemeService.Stub {
         final ContentResolver resolver = mContext.getContentResolver();
         int recordedApiLevel = android.os.Build.VERSION.SDK_INT;
         try {
-            recordedApiLevel = CMSettings.Secure.getInt(resolver,
-                    CMSettings.Secure.THEME_PREV_BOOT_API_LEVEL);
-        } catch (CMSettings.CMSettingNotFoundException e) {
+            recordedApiLevel = MKSettings.Secure.getInt(resolver,
+                    MKSettings.Secure.THEME_PREV_BOOT_API_LEVEL);
+        } catch (MKSettings.MKSettingNotFoundException e) {
             recordedApiLevel = -1;
             Log.d(TAG, "Previous api level not found. First time booting?");
         }
@@ -360,8 +360,8 @@ public class ThemeService extends IThemeService.Stub {
 
     private void updateThemeApi() {
         final ContentResolver resolver = mContext.getContentResolver();
-        boolean success = CMSettings.Secure.putInt(resolver,
-                CMSettings.Secure.THEME_PREV_BOOT_API_LEVEL, android.os.Build.VERSION.SDK_INT);
+        boolean success = MKSettings.Secure.putInt(resolver,
+                MKSettings.Secure.THEME_PREV_BOOT_API_LEVEL, android.os.Build.VERSION.SDK_INT);
         if (!success) {
             Log.e(TAG, "Unable to store latest API level to secure settings");
         }
@@ -456,8 +456,8 @@ public class ThemeService extends IThemeService.Stub {
         final String defaultThemePkg = Settings.Secure.getString(resolver,
                 Settings.Secure.DEFAULT_THEME_PACKAGE);
         if (!TextUtils.isEmpty(defaultThemePkg)) {
-            String defaultThemeComponents = CMSettings.Secure.getString(resolver,
-                    CMSettings.Secure.DEFAULT_THEME_COMPONENTS);
+            String defaultThemeComponents = MKSettings.Secure.getString(resolver,
+                    MKSettings.Secure.DEFAULT_THEME_COMPONENTS);
             List<String> components;
             if (TextUtils.isEmpty(defaultThemeComponents)) {
                 components = ThemeUtils.getAllComponents();

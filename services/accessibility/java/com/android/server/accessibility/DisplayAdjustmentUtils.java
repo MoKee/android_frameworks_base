@@ -26,7 +26,7 @@ import android.os.ServiceManager;
 import android.provider.Settings;
 import android.util.Slog;
 import android.view.accessibility.AccessibilityManager;
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 /**
  * Utility methods for performing accessibility display adjustments.
@@ -77,8 +77,8 @@ public class DisplayAdjustmentUtils {
             return true;
         }
 
-        if (CMSettings.Secure.getStringForUser(cr,
-                CMSettings.Secure.LIVE_DISPLAY_COLOR_MATRIX, userId) != null) {
+        if (MKSettings.Secure.getStringForUser(cr,
+                MKSettings.Secure.LIVE_DISPLAY_COLOR_MATRIX, userId) != null) {
             return true;
         }
 
@@ -97,8 +97,8 @@ public class DisplayAdjustmentUtils {
             colorMatrix = multiply(colorMatrix, INVERSION_MATRIX_VALUE_ONLY);
         }
 
-        String adj = CMSettings.Secure.getStringForUser(cr,
-                CMSettings.Secure.LIVE_DISPLAY_COLOR_MATRIX, userId);
+        String adj = MKSettings.Secure.getStringForUser(cr,
+                MKSettings.Secure.LIVE_DISPLAY_COLOR_MATRIX, userId);
         if (adj != null) {
             String[] tmp = adj.split(" ");
             if (tmp.length == 16) {

@@ -82,7 +82,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 import libcore.util.Objects;
 
 import static android.os.PowerManagerInternal.POWER_HINT_INTERACTION;
@@ -675,20 +675,20 @@ public final class PowerManagerService extends SystemService
             resolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.DOUBLE_TAP_TO_WAKE),
                     false, mSettingsObserver, UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.Secure.getUriFor(
-                    CMSettings.Secure.BUTTON_BRIGHTNESS),
+            resolver.registerContentObserver(MKSettings.Secure.getUriFor(
+                    MKSettings.Secure.BUTTON_BRIGHTNESS),
                     false, mSettingsObserver, UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.Secure.getUriFor(
-                    CMSettings.Secure.KEYBOARD_BRIGHTNESS),
+            resolver.registerContentObserver(MKSettings.Secure.getUriFor(
+                    MKSettings.Secure.KEYBOARD_BRIGHTNESS),
                     false, mSettingsObserver, UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.Secure.getUriFor(
-                    CMSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT),
+            resolver.registerContentObserver(MKSettings.Secure.getUriFor(
+                    MKSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT),
                     false, mSettingsObserver, UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.PROXIMITY_ON_WAKE),
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.PROXIMITY_ON_WAKE),
                     false, mSettingsObserver, UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.Global.getUriFor(
-                    CMSettings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED),
+            resolver.registerContentObserver(MKSettings.Global.getUriFor(
+                    MKSettings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED),
                     false, mSettingsObserver, UserHandle.USER_ALL);
 
             // Go.
@@ -739,11 +739,11 @@ public final class PowerManagerService extends SystemService
         mSupportsDoubleTapWakeConfig = resources.getBoolean(
                 com.android.internal.R.bool.config_supportDoubleTapWake);
         mProximityTimeOut = resources.getInteger(
-                org.cyanogenmod.platform.internal.R.integer.config_proximityCheckTimeout);
+                org.mokee.platform.internal.R.integer.config_proximityCheckTimeout);
         mProximityWakeSupported = resources.getBoolean(
-                org.cyanogenmod.platform.internal.R.bool.config_proximityCheckOnWake);
+                org.mokee.platform.internal.R.bool.config_proximityCheckOnWake);
         mProximityWakeEnabledByDefaultConfig = resources.getBoolean(
-                org.cyanogenmod.platform.internal.R.bool.config_proximityCheckOnWakeEnabledByDefault);
+                org.mokee.platform.internal.R.bool.config_proximityCheckOnWakeEnabledByDefault);
         if (mProximityWakeSupported) {
             PowerManager powerManager = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
             mProximityWakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,
@@ -776,11 +776,11 @@ public final class PowerManagerService extends SystemService
                 Settings.Global.STAY_ON_WHILE_PLUGGED_IN, 0);
         mTheaterModeEnabled = Settings.Global.getInt(mContext.getContentResolver(),
                 Settings.Global.THEATER_MODE_ON, 0) == 1;
-        mWakeUpWhenPluggedOrUnpluggedSetting = CMSettings.Global.getInt(resolver,
-                CMSettings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
+        mWakeUpWhenPluggedOrUnpluggedSetting = MKSettings.Global.getInt(resolver,
+                MKSettings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
                 (mWakeUpWhenPluggedOrUnpluggedConfig ? 1 : 0));
-        mProximityWakeEnabled = CMSettings.System.getInt(resolver,
-                CMSettings.System.PROXIMITY_ON_WAKE, mProximityWakeEnabledByDefaultConfig ? 1 : 0) == 1;
+        mProximityWakeEnabled = MKSettings.System.getInt(resolver,
+                MKSettings.System.PROXIMITY_ON_WAKE, mProximityWakeEnabledByDefaultConfig ? 1 : 0) == 1;
 
         if (mSupportsDoubleTapWakeConfig) {
             boolean doubleTapWakeEnabled = Settings.Secure.getIntForUser(resolver,
@@ -824,15 +824,15 @@ public final class PowerManagerService extends SystemService
             updateLowPowerModeLocked();
         }
 
-        mButtonTimeout = CMSettings.Secure.getIntForUser(resolver,
-                CMSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT,
+        mButtonTimeout = MKSettings.Secure.getIntForUser(resolver,
+                MKSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT,
                 DEFAULT_BUTTON_ON_DURATION, UserHandle.USER_CURRENT);
 
-        mButtonBrightness = CMSettings.Secure.getIntForUser(resolver,
-                CMSettings.Secure.BUTTON_BRIGHTNESS, mButtonBrightnessSettingDefault,
+        mButtonBrightness = MKSettings.Secure.getIntForUser(resolver,
+                MKSettings.Secure.BUTTON_BRIGHTNESS, mButtonBrightnessSettingDefault,
                 UserHandle.USER_CURRENT);
-        mKeyboardBrightness = CMSettings.Secure.getIntForUser(resolver,
-                CMSettings.Secure.KEYBOARD_BRIGHTNESS, mKeyboardBrightnessSettingDefault,
+        mKeyboardBrightness = MKSettings.Secure.getIntForUser(resolver,
+                MKSettings.Secure.KEYBOARD_BRIGHTNESS, mKeyboardBrightnessSettingDefault,
                 UserHandle.USER_CURRENT);
 
         mDirty |= DIRTY_SETTINGS;

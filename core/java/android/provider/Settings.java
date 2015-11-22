@@ -2931,7 +2931,7 @@ public final class Settings {
 
         /**
         * Developer options - Navigation Bar show switch
-        * @deprecated Moved to CMSettings.Secure.DEV_FORCE_SHOW_NAVBAR
+        * @deprecated Moved to MKSettings.Secure.DEV_FORCE_SHOW_NAVBAR
         * @hide
         */
         public static final String DEV_FORCE_SHOW_NAVBAR = "dev_force_show_navbar";
@@ -3474,11 +3474,6 @@ public final class Settings {
          * Use MoKee Cloud Location Engine
          */
         public static final String ENABLE_CLOUD_LOCATION_LOOKUP = "enable_cloud_location_lookup";
-
-        /**
-         * @hide
-         */
-        public static final String SHOW_HEADSET_ICON = "show_headset_icon";
 
         /**
          * Whether the blacklisting feature for phone calls from advertisement numbers is enabled
@@ -6512,7 +6507,7 @@ public final class Settings {
 
         /**
          * String to contain power menu actions
-         * @deprecated Use {@link CMSettings.Secure#POWER_MENU_ACTIONS} instead
+         * @deprecated Use {@link MKSettings.Secure#POWER_MENU_ACTIONS} instead
          * @hide
          */
         @Deprecated

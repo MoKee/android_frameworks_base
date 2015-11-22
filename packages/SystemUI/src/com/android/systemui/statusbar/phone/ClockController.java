@@ -13,7 +13,7 @@ import com.android.systemui.R;
 import com.android.systemui.cm.UserContentObserver;
 import com.android.systemui.statusbar.policy.Clock;
 
-import mokee.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 /**
  * To control your...clock
@@ -43,10 +43,10 @@ public class ClockController {
         protected void observe() {
             super.observe();
             ContentResolver resolver = mContext.getContentResolver();
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.STATUS_BAR_AM_PM), false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.STATUS_BAR_CLOCK), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.STATUS_BAR_AM_PM), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.STATUS_BAR_CLOCK), false, this, UserHandle.USER_ALL);
             updateSettings();
         }
 
@@ -109,11 +109,11 @@ public class ClockController {
 
     private void updateSettings() {
         ContentResolver resolver = mContext.getContentResolver();
-        mAmPmStyle = CMSettings.System.getIntForUser(resolver,
-                CMSettings.System.STATUS_BAR_AM_PM, Clock.AM_PM_STYLE_GONE,
+        mAmPmStyle = MKSettings.System.getIntForUser(resolver,
+                MKSettings.System.STATUS_BAR_AM_PM, Clock.AM_PM_STYLE_GONE,
                 UserHandle.USER_CURRENT);
-        mClockLocation = CMSettings.System.getIntForUser(
-                resolver, CMSettings.System.STATUS_BAR_CLOCK, STYLE_CLOCK_RIGHT,
+        mClockLocation = MKSettings.System.getIntForUser(
+                resolver, MKSettings.System.STATUS_BAR_CLOCK, STYLE_CLOCK_RIGHT,
                 UserHandle.USER_CURRENT);
         updateActiveClock();
     }

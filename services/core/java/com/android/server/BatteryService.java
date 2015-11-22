@@ -49,7 +49,7 @@ import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.EventLog;
 import android.util.Slog;
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 import java.io.File;
 import java.io.FileDescriptor;
@@ -62,7 +62,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 /**
  * <p>BatteryService monitors the charging status, and charge level of the device
@@ -769,11 +769,11 @@ public final class BatteryService extends SystemService {
 
             // Is the notification LED brightness changeable ?
             mAdjustableNotificationLedBrightness = context.getResources().getBoolean(
-                    org.cyanogenmod.platform.internal.R.bool.config_adjustableNotificationLedBrightness);
+                    org.mokee.platform.internal.R.bool.config_adjustableNotificationLedBrightness);
 
             // Does the Device have multiple LEDs ?
             mMultipleNotificationLeds = context.getResources().getBoolean(
-                    org.cyanogenmod.platform.internal.R.bool.config_multipleNotificationLeds);
+                    org.mokee.platform.internal.R.bool.config_multipleNotificationLeds);
 
             mBatteryLedOn = context.getResources().getInteger(
                     com.android.internal.R.integer.config_notificationsBatteryLedOn);
@@ -936,24 +936,24 @@ public final class BatteryService extends SystemService {
             ContentResolver resolver = mContext.getContentResolver();
 
             // Battery light enabled
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.BATTERY_LIGHT_ENABLED), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.BATTERY_LIGHT_ENABLED), false, this, UserHandle.USER_ALL);
 
             // Low battery pulse
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.BATTERY_LIGHT_PULSE), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.BATTERY_LIGHT_PULSE), false, this, UserHandle.USER_ALL);
 
             // Notification LED brightness
             if (mAdjustableNotificationLedBrightness) {
-                resolver.registerContentObserver(CMSettings.System.getUriFor(
-                        CMSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL),
+                resolver.registerContentObserver(MKSettings.System.getUriFor(
+                        MKSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL),
                         false, this, UserHandle.USER_ALL);
             }
 
             // Multiple LEDs enabled
             if (mMultipleNotificationLeds) {
-                resolver.registerContentObserver(CMSettings.System.getUriFor(
-                        CMSettings.System.NOTIFICATION_LIGHT_MULTIPLE_LEDS_ENABLE),
+                resolver.registerContentObserver(MKSettings.System.getUriFor(
+                        MKSettings.System.NOTIFICATION_LIGHT_MULTIPLE_LEDS_ENABLE),
                         false, this, UserHandle.USER_ALL);
             }
 
@@ -961,13 +961,13 @@ public final class BatteryService extends SystemService {
             if (mMultiColorLed) {
                 // Register observer if we have a multi color led
                 resolver.registerContentObserver(
-                        CMSettings.System.getUriFor(CMSettings.System.BATTERY_LIGHT_LOW_COLOR),
+                        MKSettings.System.getUriFor(MKSettings.System.BATTERY_LIGHT_LOW_COLOR),
                         false, this, UserHandle.USER_ALL);
                 resolver.registerContentObserver(
-                        CMSettings.System.getUriFor(CMSettings.System.BATTERY_LIGHT_MEDIUM_COLOR),
+                        MKSettings.System.getUriFor(MKSettings.System.BATTERY_LIGHT_MEDIUM_COLOR),
                         false, this, UserHandle.USER_ALL);
                 resolver.registerContentObserver(
-                        CMSettings.System.getUriFor(CMSettings.System.BATTERY_LIGHT_FULL_COLOR),
+                        MKSettings.System.getUriFor(MKSettings.System.BATTERY_LIGHT_FULL_COLOR),
                         false, this, UserHandle.USER_ALL);
             }
 
@@ -983,35 +983,35 @@ public final class BatteryService extends SystemService {
             Resources res = mContext.getResources();
 
             // Battery light enabled
-            mLightEnabled = CMSettings.System.getInt(resolver,
-                    CMSettings.System.BATTERY_LIGHT_ENABLED, 1) != 0;
+            mLightEnabled = MKSettings.System.getInt(resolver,
+                    MKSettings.System.BATTERY_LIGHT_ENABLED, 1) != 0;
 
             // Low battery pulse
-            mLedPulseEnabled = CMSettings.System.getInt(resolver,
-                        CMSettings.System.BATTERY_LIGHT_PULSE, 1) != 0;
+            mLedPulseEnabled = MKSettings.System.getInt(resolver,
+                        MKSettings.System.BATTERY_LIGHT_PULSE, 1) != 0;
 
             // Light colors
-            mBatteryLowARGB = CMSettings.System.getInt(resolver,
-                    CMSettings.System.BATTERY_LIGHT_LOW_COLOR, res.getInteger(
+            mBatteryLowARGB = MKSettings.System.getInt(resolver,
+                    MKSettings.System.BATTERY_LIGHT_LOW_COLOR, res.getInteger(
                     com.android.internal.R.integer.config_notificationsBatteryLowARGB));
-            mBatteryMediumARGB = CMSettings.System.getInt(resolver,
-                    CMSettings.System.BATTERY_LIGHT_MEDIUM_COLOR, res.getInteger(
+            mBatteryMediumARGB = MKSettings.System.getInt(resolver,
+                    MKSettings.System.BATTERY_LIGHT_MEDIUM_COLOR, res.getInteger(
                     com.android.internal.R.integer.config_notificationsBatteryMediumARGB));
-            mBatteryFullARGB = CMSettings.System.getInt(resolver,
-                    CMSettings.System.BATTERY_LIGHT_FULL_COLOR, res.getInteger(
+            mBatteryFullARGB = MKSettings.System.getInt(resolver,
+                    MKSettings.System.BATTERY_LIGHT_FULL_COLOR, res.getInteger(
                     com.android.internal.R.integer.config_notificationsBatteryFullARGB));
 
             // Notification LED brightness
             if (mAdjustableNotificationLedBrightness) {
-                mNotificationLedBrightnessLevel = CMSettings.System.getInt(resolver,
-                        CMSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
+                mNotificationLedBrightnessLevel = MKSettings.System.getInt(resolver,
+                        MKSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
                         LIGHT_BRIGHTNESS_MAXIMUM);
             }
 
             // Multiple LEDs enabled
             if (mMultipleNotificationLeds) {
-                mMultipleLedsEnabled = CMSettings.System.getInt(resolver,
-                        CMSettings.System.NOTIFICATION_LIGHT_MULTIPLE_LEDS_ENABLE,
+                mMultipleLedsEnabled = MKSettings.System.getInt(resolver,
+                        MKSettings.System.NOTIFICATION_LIGHT_MULTIPLE_LEDS_ENABLE,
                         mMultipleNotificationLeds ? 1 : 0) != 0;
             }
 

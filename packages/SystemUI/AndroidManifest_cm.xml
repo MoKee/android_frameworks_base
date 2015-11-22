@@ -33,7 +33,7 @@
             android:icon="@drawable/tuner"
             android:label="@string/lockscreen_targets_message"
             android:theme="@android:style/Theme.Material.Settings"
-            android:process=":cmsettings"
+            android:process=":mksettings"
             android:exported="true">
         </activity>
     </application>

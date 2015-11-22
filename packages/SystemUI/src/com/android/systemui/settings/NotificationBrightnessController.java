@@ -34,7 +34,7 @@ import com.android.systemui.R;
 import java.lang.Exception;
 import java.util.ArrayList;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 public class NotificationBrightnessController implements ToggleSlider.Listener {
     private static final String TAG = "StatusBar.NotificationBrightnessController";
@@ -74,7 +74,7 @@ public class NotificationBrightnessController implements ToggleSlider.Listener {
     private class NotificationBrightnessObserver extends ContentObserver {
 
         private final Uri NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL_URI =
-                CMSettings.System.getUriFor(CMSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL);
+                MKSettings.System.getUriFor(MKSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL);
 
         public NotificationBrightnessObserver(Handler handler) {
             super(handler);
@@ -193,8 +193,8 @@ public class NotificationBrightnessController implements ToggleSlider.Listener {
         mNotificationManager.cancel(1);
         mListening = false;
 
-        CMSettings.System.putIntForUser(mContext.getContentResolver(),
-                CMSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
+        MKSettings.System.putIntForUser(mContext.getContentResolver(),
+                MKSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
                 mCurrentBrightness, UserHandle.USER_CURRENT);
     }
 
@@ -213,12 +213,12 @@ public class NotificationBrightnessController implements ToggleSlider.Listener {
 
     /** Fetch the brightness from the system settings and update the slider */
     private void updateSlider() {
-        mCurrentBrightness = CMSettings.System.getIntForUser(mContext.getContentResolver(),
-                CMSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
+        mCurrentBrightness = MKSettings.System.getIntForUser(mContext.getContentResolver(),
+                MKSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
                 mMaximumBrightness, UserHandle.USER_CURRENT);
 
-        CMSettings.System.putIntForUser(mContext.getContentResolver(),
-                CMSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
+        MKSettings.System.putIntForUser(mContext.getContentResolver(),
+                MKSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
                 mMaximumBrightness, UserHandle.USER_CURRENT);
 
         mControl.setMax(mMaximumBrightness - mMinimumBrightness);

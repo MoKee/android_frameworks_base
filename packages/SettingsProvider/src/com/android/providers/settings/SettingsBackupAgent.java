@@ -39,7 +39,7 @@ import android.util.Log;
 import com.android.internal.util.ArrayUtils;
 import com.android.internal.widget.LockPatternUtils;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 import libcore.io.IoUtils;
 
 import java.io.BufferedOutputStream;
@@ -886,30 +886,30 @@ public class SettingsBackupAgent extends BackupAgentHelper {
             }
         }
 
-        restoreCMSetting(cachedEntries);
+        restoreMKSetting(cachedEntries);
     }
 
-    private void restoreCMSetting(Map<String, String> cachedEntries) {
-        ContentValues cmSettingsValues = new ContentValues();
+    private void restoreMKSetting(Map<String, String> cachedEntries) {
+        ContentValues mkSettingsValues = new ContentValues();
         ContentResolver cr = getContentResolver();
         for (String key : cachedEntries.keySet()) {
             Uri uri = null;
-            if (ArrayUtils.contains(CMSettings.System.LEGACY_SYSTEM_SETTINGS, key)) {
-                uri = CMSettings.System.CONTENT_URI;
-            } else if (ArrayUtils.contains(CMSettings.Secure.LEGACY_SECURE_SETTINGS, key)) {
-                uri = CMSettings.Secure.CONTENT_URI;
-            } else if (ArrayUtils.contains(CMSettings.Global.LEGACY_GLOBAL_SETTINGS, key)) {
-                uri = CMSettings.Global.CONTENT_URI;
+            if (ArrayUtils.contains(MKSettings.System.LEGACY_SYSTEM_SETTINGS, key)) {
+                uri = MKSettings.System.CONTENT_URI;
+            } else if (ArrayUtils.contains(MKSettings.Secure.LEGACY_SECURE_SETTINGS, key)) {
+                uri = MKSettings.Secure.CONTENT_URI;
+            } else if (ArrayUtils.contains(MKSettings.Global.LEGACY_GLOBAL_SETTINGS, key)) {
+                uri = MKSettings.Global.CONTENT_URI;
             }
             if (uri != null) {
                 String value = cachedEntries.get(key);
-                cmSettingsValues.clear();
-                cmSettingsValues.put(Settings.NameValueTable.NAME, key);
-                cmSettingsValues.put(Settings.NameValueTable.VALUE, value);
+                mkSettingsValues.clear();
+                mkSettingsValues.put(Settings.NameValueTable.NAME, key);
+                mkSettingsValues.put(Settings.NameValueTable.VALUE, value);
                 try {
-                    cr.insert(uri, cmSettingsValues);
+                    cr.insert(uri, mkSettingsValues);
                     if (DEBUG) {
-                        Log.d(TAG, "Restored cm setting: " + key + " : " + key + "=" + value);
+                        Log.d(TAG, "Restored mk setting: " + key + " : " + key + "=" + value);
                     }
                 } catch (IllegalArgumentException e) {
                     Log.e(TAG, "Failed to migrate " + key + " due to " + e.toString());
