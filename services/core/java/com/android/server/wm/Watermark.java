@@ -82,7 +82,7 @@ class Watermark {
                 TypedValue.COMPLEX_UNIT_PX, 0, dm));
         if (appendDisplayVersion != 0) {
             builder.append(" - ");
-            builder.append(SystemProperties.get("ro.cm.display.version"));
+            builder.append(SystemProperties.get("ro.mk.version"));
         }
 
         mText = builder.toString();
