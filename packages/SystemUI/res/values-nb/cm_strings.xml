@@ -162,5 +162,4 @@
   <string name="quick_settings_dynamic_tile_detail_title">Dynamisk flis</string>
   <string name="fingerprint_try_again_hint">Skann på nytt</string>
   <string name="accessibility_dock_battery_level">Dokkingstasjonens batteri <xliff:g id="number"> %d</xliff:g> prosent.</string>
-  <string name="quick_settings_custom_qs_detail_empty_text">Ingen elementer funnet</string>
 </resources>

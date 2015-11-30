@@ -131,7 +131,6 @@
   <string name="quick_settings_ambient_display_label">Visualización de ambiente</string>
   <string name="quick_settings_sync_label">Sincronización</string>
   <string name="quick_settings_battery_saver_label">Economizador da bateria</string>
-  <string name="quick_settings_custom_tile_detail_title">Botón personalizado</string>
   <string name="quick_settings_performance_profile_detail_title">Modo da batería</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">Arrastra á dereita para %1$s</string>
@@ -166,11 +165,7 @@
   <string name="zen_silent_with_warning">Sin interrupcións (agás alarmas).</string>
   <string name="quick_settings_remove">Retirar botón</string>
   <string name="quick_settings_dynamic_tile_detail_title">Botón dinámico</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Próxima alarma</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Selector IME</string>
-  <string name="dynamic_qs_tile_su_label">Acceso de superusuario</string>
   <string name="fingerprint_try_again_hint">Volve a buscar</string>
   <string name="accessibility_dock_battery_level">Batería do conector <xliff:g id="number">%d</xliff:g> %.</string>
-  <string name="quick_settings_custom_qs_detail_empty_text">Non se atopou nada</string>
   <string name="play_queue_extention">Amosar a cola de reproducción</string>
 </resources>
