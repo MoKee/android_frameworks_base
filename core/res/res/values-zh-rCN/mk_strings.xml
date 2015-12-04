@@ -14,14 +14,9 @@
      limitations under the License.
 -->
 
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-  <!-- MoKee PlatLogo -->
-  <java-symbol type="drawable" name="mk_platlogo" />
-
-  <java-symbol type="array" name="config_externalMKServices" />
-
-  <java-symbol type="string" name="android_start_mk_title" />
-  <java-symbol type="string" name="android_upgrading_mk_title" />
+    <string name="android_upgrading_mk_title">"魔趣正在升级..."</string>
+    <string name="android_start_mk_title">"魔趣正在启动..."</string>
 
 </resources>

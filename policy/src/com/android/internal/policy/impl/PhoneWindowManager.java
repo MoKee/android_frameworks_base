@@ -6720,9 +6720,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                         }
                     };
                     if (mContext.getPackageManager().isUpgrade()) {
-                        mBootMsgDialog.setTitle(R.string.android_upgrading_title);
+                        mBootMsgDialog.setTitle(R.string.android_upgrading_mk_title);
                     } else {
-                        mBootMsgDialog.setTitle(R.string.android_start_title);
+                        mBootMsgDialog.setTitle(R.string.android_start_mk_title);
                     }
                     mBootMsgDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                     mBootMsgDialog.setIndeterminate(true);
