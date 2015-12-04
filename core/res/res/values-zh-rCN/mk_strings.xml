@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2014-2016 The MoKee Open Source Project
+<!-- Copyright (C) 2014-2016 The MoKee OpenSource Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,12 +14,9 @@
      limitations under the License.
 -->
 
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- External MK specific core services -->
-    <java-symbol type="array" name="config_externalMKServices" />
-
-  <java-symbol type="string" name="android_start_mk_title" />
-  <java-symbol type="string" name="android_upgrading_mk_title" />
+    <string name="android_upgrading_mk_title">"魔趣正在升级..."</string>
+    <string name="android_start_mk_title">"魔趣正在启动..."</string>
 
 </resources>
