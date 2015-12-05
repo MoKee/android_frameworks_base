@@ -71,7 +71,7 @@ public class Clock implements DemoMode {
     private SimpleDateFormat mClockFormat;
     private SettingsObserver settingsObserver;
 
-    private int mAmPmStyle = AM_PM_STYLE_GONE;
+    private int mAmPmStyle = AM_PM_STYLE_NORMAL;
     private boolean mDemoMode;
     private boolean mAttached;
 
