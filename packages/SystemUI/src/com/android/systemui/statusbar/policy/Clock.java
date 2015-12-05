@@ -57,7 +57,7 @@ public class Clock extends TextView implements DemoMode {
     public static final int AM_PM_STYLE_SMALL   = 1;
     public static final int AM_PM_STYLE_GONE    = 2;
 
-    private int mAmPmStyle = AM_PM_STYLE_GONE;
+    private int mAmPmStyle = AM_PM_STYLE_NORMAL;
 
     public Clock(Context context) {
         this(context, null);

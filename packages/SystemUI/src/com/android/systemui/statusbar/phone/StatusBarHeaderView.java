@@ -949,7 +949,7 @@ public class StatusBarHeaderView extends RelativeLayout implements View.OnClickL
             int batteryStyle = MKSettings.System.getIntForUser(resolver,
                     MKSettings.System.STATUS_BAR_BATTERY_STYLE, 0, currentUserId);
             boolean showExpandedBatteryPercentage = MKSettings.System.getIntForUser(resolver,
-                    MKSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0, currentUserId) == 0;
+                    MKSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 1, currentUserId) == 0;
 
             switch (batteryStyle) {
                 case 4: //BATTERY_METER_GONE

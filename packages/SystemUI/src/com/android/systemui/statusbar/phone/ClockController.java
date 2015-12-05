@@ -110,7 +110,7 @@ public class ClockController {
     private void updateSettings() {
         ContentResolver resolver = mContext.getContentResolver();
         mAmPmStyle = MKSettings.System.getIntForUser(resolver,
-                MKSettings.System.STATUS_BAR_AM_PM, Clock.AM_PM_STYLE_GONE,
+                MKSettings.System.STATUS_BAR_AM_PM, Clock.AM_PM_STYLE_NORMAL,
                 UserHandle.USER_CURRENT);
         mClockLocation = MKSettings.System.getIntForUser(
                 resolver, MKSettings.System.STATUS_BAR_CLOCK, STYLE_CLOCK_RIGHT,

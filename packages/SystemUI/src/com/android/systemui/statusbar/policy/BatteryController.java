@@ -198,7 +198,7 @@ public class BatteryController extends BroadcastReceiver {
             mStyle = MKSettings.System.getIntForUser(mResolver,
                     MKSettings.System.STATUS_BAR_BATTERY_STYLE, 0, mUserId);
             mPercentMode = MKSettings.System.getIntForUser(mResolver,
-                    MKSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0, mUserId);
+                    MKSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 1, mUserId);
 
             fireSettingsChanged();
         }
