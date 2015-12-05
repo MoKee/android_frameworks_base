@@ -34,6 +34,8 @@ public class ClockController {
     private int mAmPmStyle;
     private int mIconTint = Color.WHITE;
 
+    private boolean mShowSecond;
+
     class SettingsObserver extends UserContentObserver {
         SettingsObserver(Handler handler) {
             super(handler);
@@ -47,6 +49,8 @@ public class ClockController {
                     MKSettings.System.STATUS_BAR_AM_PM), false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(MKSettings.System.getUriFor(
                     MKSettings.System.STATUS_BAR_CLOCK), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.STATUS_BAR_CLOCK_SHOW_SECOND), false, this, UserHandle.USER_ALL);
             updateSettings();
         }
 
@@ -100,6 +104,7 @@ public class ClockController {
 
         mActiveClock = getClockForCurrentLocation();
         mActiveClock.setVisibility(View.VISIBLE);
+        mActiveClock.setClockSecond(mShowSecond);
         mActiveClock.setAmPmStyle(mAmPmStyle);
 
         setClockAndDateStatus();
@@ -115,6 +120,9 @@ public class ClockController {
         mClockLocation = MKSettings.System.getIntForUser(
                 resolver, MKSettings.System.STATUS_BAR_CLOCK, STYLE_CLOCK_RIGHT,
                 UserHandle.USER_CURRENT);
+        mShowSecond = MKSettings.System.getIntForUser(
+                resolver, MKSettings.System.STATUS_BAR_CLOCK_SHOW_SECOND, 0,
+                UserHandle.USER_CURRENT) == 1;
         updateActiveClock();
     }
 

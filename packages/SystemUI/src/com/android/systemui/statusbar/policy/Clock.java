@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006 The Android Open Source Project
+ * Copyright (C) 2015-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +24,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.UserHandle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -58,6 +60,16 @@ public class Clock extends TextView implements DemoMode {
     public static final int AM_PM_STYLE_GONE    = 2;
 
     private int mAmPmStyle = AM_PM_STYLE_NORMAL;
+
+    private boolean mShowSecond;
+    private final Handler handler = new Handler();
+
+    private Runnable secondUpdateRunnable = new Runnable() {
+        public void run() {
+            updateClock();
+            handler.postDelayed(this, 1000);
+        }
+    };
 
     public Clock(Context context) {
         this(context, null);
@@ -145,6 +157,12 @@ public class Clock extends TextView implements DemoMode {
 
         SimpleDateFormat sdf;
         String format = is24 ? d.timeFormat_Hm : d.timeFormat_hm;
+
+        // replace seconds directly in format, not in result
+        if (mShowSecond) {
+            format = format.replaceFirst("mm", "mm:ss");
+        }
+
         if (!format.equals(mClockFormatString)) {
             /*
              * Search for an unquoted "a" in the format string, so we can
@@ -241,6 +259,14 @@ public class Clock extends TextView implements DemoMode {
         mAmPmStyle = style;
         mClockFormatString = "";
         updateClock();
+    }
+
+    public void setClockSecond(boolean show) {
+        mShowSecond = show;
+        handler.removeCallbacks(secondUpdateRunnable); // Unique runnable
+        if (mShowSecond) {
+            handler.post(secondUpdateRunnable);
+        }
     }
 }
 
