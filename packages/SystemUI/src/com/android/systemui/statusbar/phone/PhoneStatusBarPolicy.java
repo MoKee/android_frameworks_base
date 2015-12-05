@@ -84,6 +84,7 @@ public class PhoneStatusBarPolicy implements Callback {
     private int mHeadsetState;
     private boolean mHeadsetIconVisible;
     private boolean mAlarmIconVisible;
+    private boolean mSuIconVisible;
     private final SuController mSuController;
 
     // Assume it's all good unless we hear otherwise.  We don't always seem
@@ -202,6 +203,9 @@ public class PhoneStatusBarPolicy implements Callback {
         mService.setIcon(SLOT_SU, R.drawable.stat_sys_su, 0, null);
         mService.setIconVisibility(SLOT_SU, false);
         mSuController.addCallback(mSuCallback);
+        mContext.getContentResolver().registerContentObserver(
+                MKSettings.System.getUriFor(MKSettings.System.SHOW_SU_ICON),
+                false, mSuIconObserver);
 
         // managed profile
         mService.setIcon(SLOT_MANAGED_PROFILE, R.drawable.stat_sys_managed_profile_status, 0,
@@ -233,6 +237,20 @@ public class PhoneStatusBarPolicy implements Callback {
             mAlarmIconVisible = MKSettings.System.getInt(mContext.getContentResolver(),
                     MKSettings.System.SHOW_ALARM_ICON, 1) == 1;
             updateAlarm();
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            onChange(selfChange, null);
+        }
+    };
+
+    private ContentObserver mSuIconObserver = new ContentObserver(null) {
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            mSuIconVisible = MKSettings.System.getInt(mContext.getContentResolver(),
+                    MKSettings.System.SHOW_SU_ICON, 1) == 1;
+            updateSu();
         }
 
         @Override
@@ -459,7 +477,7 @@ public class PhoneStatusBarPolicy implements Callback {
     };
 
     private void updateSu() {
-        mService.setIconVisibility(SLOT_SU, mSuController.hasActiveSessions());
+        mService.setIconVisibility(SLOT_SU, mSuIconVisible && mSuController.hasActiveSessions());
     }
 
     private final CastController.Callback mCastCallback = new CastController.Callback() {
