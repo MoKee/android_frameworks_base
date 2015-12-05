@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2010 The Android Open Source Project
+ * Copyright (C) 2013-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -172,6 +173,7 @@ import com.android.systemui.statusbar.policy.KeyguardUserSwitcher;
 import com.android.systemui.statusbar.policy.LocationControllerImpl;
 import com.android.systemui.statusbar.policy.NetworkController;
 import com.android.systemui.statusbar.policy.NetworkControllerImpl;
+import com.android.systemui.statusbar.policy.NetworkTraffic;
 import com.android.systemui.statusbar.policy.NextAlarmController;
 import com.android.systemui.statusbar.policy.PreviewInflater;
 import com.android.systemui.statusbar.policy.RotationLockControllerImpl;
@@ -369,6 +371,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private TextView mCarrierLabel;
     private boolean mShowCarrierInPanel = false;
     boolean mExpandedVisible;
+
+    // Status bar Network traffic;
+    private NetworkTraffic mNetworkTraffic;
 
     private int mNavigationBarWindowState = WINDOW_STATE_SHOWING;
 
@@ -1085,6 +1090,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         if (isAPhone) {
             mNetworkController.addEmergencyListener(mHeader);
         }
+
+        mNetworkTraffic = (NetworkTraffic)mStatusBarView.findViewById(R.id.network_traffic);
 
         mCarrierLabel = (TextView)mStatusBarWindow.findViewById(R.id.carrier_label);
         final boolean showCarrierLabel = mContext.getResources().getBoolean(
@@ -3481,6 +3488,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         animateCollapsePanels();
         updatePublicMode();
         updateNotifications();
+        mNetworkTraffic.updateSettings();
         resetUserSetupObserver();
         setControllerUsers();
         mAssistManager.onUserSwitched(newUserId);
