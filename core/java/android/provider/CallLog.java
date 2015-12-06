@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006 The Android Open Source Project
+ * Copyright (C) 2015-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -661,9 +662,12 @@ public class CallLog {
                 ContentValues values) {
             final ContentResolver resolver = context.getContentResolver();
             Uri result = resolver.insert(uri, values);
-            resolver.delete(uri, "_id IN " +
-                    "(SELECT _id FROM calls ORDER BY " + DEFAULT_SORT_ORDER
-                    + " LIMIT -1 OFFSET 500)", null);
+            int limit = Settings.System.getInt(resolver, Settings.System.CALL_LOG_DELETE_LIMIT, 500);
+            if (limit != 0) {
+                resolver.delete(uri, "_id IN " +
+                        "(SELECT _id FROM calls ORDER BY " + DEFAULT_SORT_ORDER
+                        + " LIMIT -1 OFFSET " + limit +")", null);
+            }
             return result;
         }
 

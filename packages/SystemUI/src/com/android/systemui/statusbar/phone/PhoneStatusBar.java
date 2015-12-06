@@ -520,7 +520,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             }
 
             // Send a broadcast to Settings to update Key disabling when user changes
-            Intent intent = new Intent("com.cyanogenmod.action.UserChanged");
+            Intent intent = new Intent("com.mokee.action.UserChanged");
             intent.setPackage("com.android.settings");
             mContext.sendBroadcastAsUser(intent, new UserHandle(UserHandle.USER_CURRENT));
         }

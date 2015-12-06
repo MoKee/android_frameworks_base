@@ -3480,7 +3480,14 @@ public final class Settings {
         public static final String VOICE_LAUNCH_INTENT = "voice_launch_intent";
 
         /**
+         * Call log delete limit
+         * @hide
+         */
+        public static final String CALL_LOG_DELETE_LIMIT = "call_log_delete_limit";
+
+        /**
          * Use MoKee Cloud Location Engine
+         * @hide
          */
         public static final String ENABLE_CLOUD_LOCATION_LOOKUP = "enable_cloud_location_lookup";
 
