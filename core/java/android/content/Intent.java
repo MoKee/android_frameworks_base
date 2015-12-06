@@ -2699,7 +2699,7 @@ public class Intent implements Parcelable, Cloneable {
      */
     //@SdkConstant(SdkConstantType.BROADCAST_INTENT_ACTION)
     public static final String ACTION_HOTWORD_INPUT_CHANGED
-            = "com.cyanogenmod.intent.action.HOTWORD_INPUT_CHANGED";
+            = "com.mokee.intent.action.HOTWORD_INPUT_CHANGED";
 
     /**
      * @hide
@@ -3926,7 +3926,7 @@ public class Intent implements Parcelable, Cloneable {
      * @hide
      */
     public static final String EXTRA_HOTWORD_INPUT_STATE =
-            "com.cyanogenmod.intent.extra.HOTWORD_INPUT_STATE";
+            "com.mokee.intent.extra.HOTWORD_INPUT_STATE";
 
     /**
      * Extra for {@link #ACTION_RECENTS_LONG_PRESS} that provides the package name of the
@@ -3934,7 +3934,7 @@ public class Intent implements Parcelable, Cloneable {
      * @hide
      */
     public static final String EXTRA_CURRENT_PACKAGE_NAME =
-            "com.cyanogenmod.intent.extra.CURRENT_PACKAGE_NAME";
+            "com.mokee.intent.extra.CURRENT_PACKAGE_NAME";
 
     // ---------------------------------------------------------------------
     // ---------------------------------------------------------------------
