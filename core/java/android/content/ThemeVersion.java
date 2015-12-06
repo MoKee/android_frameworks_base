@@ -17,9 +17,9 @@ package android.content;
 
 /**
  * Warning: Careful moving/refactoring this class as our SDK references it.
- * ThemeVersion 1 = CM11
- * ThemeVersion 2 = CM12/CM12.1 First Release
- * ThemeVersion 3 = CM12.1 W/ Wallpaper Packs
+ * ThemeVersion 1 = MK44
+ * ThemeVersion 2 = MK50/MK51 First Release
+ * ThemeVersion 3 = MK51 W/ Wallpaper Packs
  * @hide
  */
 public class ThemeVersion {
@@ -42,8 +42,8 @@ public class ThemeVersion {
      * Do not change the order of this. See SDK.
      * Increment the minSupportedVersion when the fw can no longer support a theme's apk structure
      * Increment currentVersion when a change to the theme's apk structure is changed
-     * For example, CM11 to CM12 introduces new resources to overlay, so the overlays
-     * version should change. Because the changes are not compatible with CM11, the minVersion
+     * For example, MK44 to MK50 introduces new resources to overlay, so the overlays
+     * version should change. Because the changes are not compatible with MK44, the minVersion
      * must change as well.
      *
      * If a new feature is added to a component (ex rotations in icon packs), the current version
