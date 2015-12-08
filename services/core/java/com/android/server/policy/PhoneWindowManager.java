@@ -1136,7 +1136,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     MKSettings.System.NAVBAR_LEFT_IN_LANDSCAPE), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(MKSettings.Secure.getUriFor(
-                    MKSettings.Secure.ANBI_ENABLED), false, this,
+                    MKSettings.Secure.ANBI_ENABLED), true, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(MKSettings.Secure.getUriFor(
                     MKSettings.Secure.THREE_FINGER_SCREENSHOT_ENABLED), false, this,
