@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006 The Android Open Source Project
+ * Copyright (C) 2014-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3568,6 +3569,10 @@ public final class Settings {
             LOCK_TO_APP_ENABLED,
             NOTIFICATION_SOUND,
             PHONE_BLACKLIST_ENABLED,
+            PHONE_BLACKLIST_ALL_NUMBER_MODE,
+            PHONE_BLACKLIST_ADVERTISEMENT_NUMBER_MODE,
+            PHONE_BLACKLIST_FRAUD_NUMBER_MODE,
+            PHONE_BLACKLIST_HARASS_NUMBER_MODE,
             PHONE_BLACKLIST_NOTIFY_ENABLED,
             PHONE_BLACKLIST_PRIVATE_NUMBER_MODE,
             PHONE_BLACKLIST_UNKNOWN_NUMBER_MODE,
