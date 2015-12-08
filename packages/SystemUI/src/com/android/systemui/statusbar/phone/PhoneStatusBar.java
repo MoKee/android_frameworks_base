@@ -188,8 +188,8 @@ import com.android.systemui.statusbar.stack.NotificationStackScrollLayout.OnChil
 import com.android.systemui.statusbar.stack.StackStateAnimator;
 import com.android.systemui.statusbar.stack.StackViewState;
 import com.android.systemui.volume.VolumeComponent;
-import cyanogenmod.app.CustomTileListenerService;
-import cyanogenmod.app.StatusBarPanelCustomTile;
+import mokee.app.CustomTileListenerService;
+import mokee.app.StatusBarPanelCustomTile;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;

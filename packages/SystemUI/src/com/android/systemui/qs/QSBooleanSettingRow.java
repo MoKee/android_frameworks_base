@@ -152,7 +152,7 @@ public class QSBooleanSettingRow extends LinearLayout implements View.OnClickLis
                     ret = MKSettings.System.getInt(cr, mKey);
                     break;
             }
-        } catch (Settings.SettingNotFoundException|MKSettings.CMSettingNotFoundException e) {
+        } catch (Settings.SettingNotFoundException|MKSettings.MKSettingNotFoundException e) {
             Log.e(TAG, "need to add a default setting for key: " + mKey
                     + " in table: " + mWhichTable);
             e.printStackTrace();

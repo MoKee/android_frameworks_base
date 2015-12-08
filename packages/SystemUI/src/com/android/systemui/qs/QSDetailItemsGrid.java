@@ -28,7 +28,7 @@ import android.view.ViewGroup;
 
 import android.widget.BaseAdapter;
 
-import cyanogenmod.app.CustomTile;
+import mokee.app.CustomTile;
 
 import com.android.systemui.qs.tiles.UserDetailItemView;
 import com.android.systemui.R;

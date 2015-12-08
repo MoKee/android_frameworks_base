@@ -41,8 +41,8 @@ import com.android.internal.logging.MetricsLogger;
 
 import com.android.systemui.qs.QSDetailItemsGrid;
 import com.android.systemui.qs.QSDetailItemsList;
-import cyanogenmod.app.CustomTile;
-import cyanogenmod.app.StatusBarPanelCustomTile;
+import mokee.app.CustomTile;
+import mokee.app.StatusBarPanelCustomTile;
 
 import com.android.systemui.R;
 import com.android.systemui.qs.QSTile;

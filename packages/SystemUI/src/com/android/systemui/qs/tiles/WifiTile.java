@@ -41,7 +41,7 @@ import com.android.systemui.statusbar.policy.NetworkController.AccessPointContro
 import com.android.systemui.statusbar.policy.NetworkController.IconState;
 import com.android.systemui.statusbar.policy.SignalCallbackAdapter;
 
-import cyanogenmod.app.StatusBarPanelCustomTile;
+import mokee.app.StatusBarPanelCustomTile;
 
 import java.util.ArrayList;
 import java.util.List;

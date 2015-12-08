@@ -16,7 +16,7 @@
 
 package com.android.systemui.statusbar;
 
-import cyanogenmod.app.StatusBarPanelCustomTile;
+import mokee.app.StatusBarPanelCustomTile;
 
 import android.util.ArrayMap;
 

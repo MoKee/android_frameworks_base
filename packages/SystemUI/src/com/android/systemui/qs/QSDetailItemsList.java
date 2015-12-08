@@ -35,7 +35,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.android.systemui.R;
 
-import cyanogenmod.app.CustomTile;
+import mokee.app.CustomTile;
 
 import java.util.List;
 
