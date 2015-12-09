@@ -19,7 +19,10 @@
     <!-- External MK specific core services -->
     <java-symbol type="array" name="config_externalMKServices" />
 
-  <java-symbol type="string" name="android_start_mk_title" />
-  <java-symbol type="string" name="android_upgrading_mk_title" />
+    <java-symbol type="string" name="android_start_mk_title" />
+    <java-symbol type="string" name="android_upgrading_mk_title" />
+
+    <!-- PlatLogo -->
+    <java-symbol type="drawable" name="platlogo_mk" />
 
 </resources>
