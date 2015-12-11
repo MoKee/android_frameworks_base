@@ -31,7 +31,7 @@ LOCAL_JAVA_LIBRARIES := android.test.runner telephony-common
 LOCAL_PACKAGE_NAME := SystemUITests
 
 LOCAL_STATIC_JAVA_LIBRARIES := mockito-target Keyguard
-LOCAL_STATIC_JAVA_LIBRARIES += org.mokee.platform.sdk \
+LOCAL_STATIC_JAVA_LIBRARIES += org.mokee.platform.internal \
     android-support-v7-palette \
     android-support-v4
 
