@@ -21,11 +21,11 @@
   <string name="lockscreen_gesture_wrong">Повторите попытку</string>
   <string name="keyguard_accessibility_gesture_unlock">Разблокировка жестом.</string>
   <string name="keyguard_accessibility_gesture_area">Поле ввода жеста.</string>
-  <string name="kg_forgot_gesture_button_text">Я забыл жест</string>
-  <string name="kg_wrong_gesture">Неверный жест</string>
-  <string name="kg_gesture_instructions">Нарисуйте ваш жест</string>
+  <string name="kg_forgot_gesture_button_text">Я забыл графический ключ</string>
+  <string name="kg_wrong_gesture">Неверный графический ключ</string>
+  <string name="kg_gesture_instructions">Нарисуйте ваш графический ключ</string>
   <string name="kg_too_many_failed_gesture_attempts_dialog_message">
-        Вы нарисовали неверный жест разблокировки <xliff:g id="number">%d</xliff:g> раз.
+        Вы нарисовали неверный графический ключ <xliff:g id="number">%d</xliff:g> раз.
         \n\nПопробуйте снова через <xliff:g id="number">%d</xliff:g> с.
     </string>
 </resources>
