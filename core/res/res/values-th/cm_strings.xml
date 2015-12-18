@@ -17,10 +17,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="adb_active_custom_tile">ADB - <xliff:g id="adb_type" example="USB">%1$s</xliff:g></string>
-  <string name="adb_active_custom_tile_both">USB &amp; เครือข่าย</string>
-  <string name="adb_active_custom_tile_usb">USB</string>
-  <string name="adb_active_custom_tile_net">เครือข่าย</string>
   <string name="fingerprint_default_name">ลายนิ้วมือ <xliff:g id="number">%d</xliff:g></string>
   <string name="permlab_accessFingerprintService">การเข้าถึงบริการลายนิ้วมือ</string>
   <string name="permdesc_accessFingerprintService">อนุญาตให้แอพเข้าถึงบริการลายนิ้วมือ แอพสามารถเพิ่ม ลบ ตั้งชื่อใหม่ และรับรองความถูกต้องโดยเปรียบเทียบกับลายนิ้วมือ</string>
