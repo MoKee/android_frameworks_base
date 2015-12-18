@@ -78,7 +78,6 @@
   <string name="quick_settings_volume_panel_label">Bảng điều khiển âm lượng</string>
   <string name="quick_settings_heads_up_label">Heads up</string>
   <string name="quick_settings_ambient_display_label">Hiển thị môi trường xung quanh</string>
-  <string name="quick_settings_custom_tile_detail_title">Kiểu xếp cạnh nhau tùy chỉnh</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">Vuốt sang phải cho %1$s</string>
   <string name="right_shortcut_hint">Vuốt sang trái cho %1$s</string>
@@ -112,10 +111,6 @@
   <string name="zen_silent_with_warning">Không có gián đoạn, ngoại trừ báo thức.</string>
   <string name="quick_settings_remove">Gỡ kiểu xếp cạnh nhau</string>
   <string name="quick_settings_dynamic_tile_detail_title">Kiểu xếp cạnh nhau động</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Báo thức tiếp theo</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Trình chọn IME</string>
-  <string name="dynamic_qs_tile_su_label">Truy cập root</string>
   <string name="fingerprint_try_again_hint">Vui lòng quét một lần nữa</string>
   <string name="accessibility_dock_battery_level">Thanh pin <xliff:g id="number">%d</xliff:g> phần trăm.</string>
-  <string name="quick_settings_custom_qs_detail_empty_text">Không tìm thấy mục nào</string>
 </resources>

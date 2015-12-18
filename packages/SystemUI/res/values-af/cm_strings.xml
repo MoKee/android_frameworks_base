@@ -131,7 +131,6 @@
   <string name="quick_settings_ambient_display_label">Omgewingstemperatuur skerm</string>
   <string name="quick_settings_sync_label">Sinkroniseer</string>
   <string name="quick_settings_battery_saver_label">Battery bespaarder</string>
-  <string name="quick_settings_custom_tile_detail_title">Pasgemaakte teël</string>
   <string name="quick_settings_performance_profile_detail_title">Battery modus</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">Swiep regs vir %1$s</string>
@@ -166,11 +165,7 @@
   <string name="zen_silent_with_warning">Geen onderbrekings, behalwe wekkers.</string>
   <string name="quick_settings_remove">Verwyder teël</string>
   <string name="quick_settings_dynamic_tile_detail_title">Dinamiese teëls</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Volgende alarm</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Kies IME</string>
-  <string name="dynamic_qs_tile_su_label">\'Root\' toegang</string>
   <string name="fingerprint_try_again_hint">Skandeer asseblief weer</string>
   <string name="accessibility_dock_battery_level">Dok Battery <xliff:g id="number">%d</xliff:g> persent.</string>
-  <string name="quick_settings_custom_qs_detail_empty_text">Geen items gevind</string>
   <string name="play_queue_extention">Wys speel ry</string>
 </resources>
