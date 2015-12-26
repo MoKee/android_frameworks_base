@@ -693,6 +693,7 @@ public abstract class IntentResolver<F extends IntentFilter, R extends Object> {
         final String packageName = intent.getPackage();
 
         final boolean excludingStopped = intent.isExcludingStopped();
+        if (!excludingStopped && packageName != null && !packageName.contains("com.google.android")) Log.i("buildResolveList", "actionName: " + action + " packageName: " + packageName + " userId: " + String.valueOf(userId));
 
         final Printer logPrinter;
         final PrintWriter logPrintWriter;
