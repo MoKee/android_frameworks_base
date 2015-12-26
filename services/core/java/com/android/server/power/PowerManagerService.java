@@ -3225,7 +3225,11 @@ public final class PowerManagerService extends SystemService
             final int pid = Binder.getCallingPid();
             final long ident = Binder.clearCallingIdentity();
             try {
-                acquireWakeLockInternal(lock, flags, tag, packageName, ws, historyTag, uid, pid);
+                if (mAppOps == null || mAppOps.checkOperation(AppOpsManager.OP_WAKE_LOCK, uid, packageName) != AppOpsManager.MODE_IGNORED) {
+                    acquireWakeLockInternal(lock, flags, tag, packageName, ws, historyTag, uid, pid);
+                }
+            } catch (RemoteException e) {
+                throw new IllegalArgumentException("AppOpsService is already dead.");
             } finally {
                 Binder.restoreCallingIdentity(ident);
             }
