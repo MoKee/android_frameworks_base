@@ -23,9 +23,13 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import android.app.ActivityManagerNative;
 import android.net.Uri;
+import android.os.UserHandle;
+import android.text.TextUtils;
 import android.util.FastImmutableArraySet;
 import android.util.ArrayMap;
 import android.util.ArraySet;
@@ -39,6 +43,11 @@ import android.util.Printer;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.android.internal.util.FastPrintWriter;
+import com.mokee.aegis.ActionBlockerInfo.Action;
+import com.mokee.aegis.ActionBlockerInfo.ActionBlockerInfoCache;
+import com.mokee.aegis.ActionBlockerInfo.PackageInfo;
+import com.mokee.aegis.ActionBlockerUtils;
+import com.mokee.aegis.ProtectedActionUtils;
 
 /**
  * {@hide}
@@ -48,6 +57,9 @@ public abstract class IntentResolver<F extends IntentFilter, R extends Object> {
     final private static boolean DEBUG = false;
     final private static boolean localLOGV = DEBUG || false;
     final private static boolean localVerificationLOGV = DEBUG || false;
+
+    final private ActionBlockerInfoCache mCache = ActionBlockerInfoCache.getInstance();
+    final private ActionBlockerUtils actionBlockerUtils = ActionBlockerUtils.getInstance(mCache);
 
     public void addFilter(F f) {
         if (localLOGV) {
@@ -693,6 +705,21 @@ public abstract class IntentResolver<F extends IntentFilter, R extends Object> {
         final String packageName = intent.getPackage();
 
         final boolean excludingStopped = intent.isExcludingStopped();
+        if (!excludingStopped) {
+            if (!TextUtils.isEmpty(action) && !TextUtils.isEmpty(packageName) && ActivityManagerNative.isSystemReady()) {
+                boolean protectedAction = ProtectedActionUtils.isProtectedAction(packageName, action);
+                Log.i(ActionBlockerUtils.TAG, "packageName: " + packageName + " action: " + action);
+                if (!protectedAction) {
+                    try {
+                        Action mAction = mCache.getActionBlockInfo(UserHandle.myUserId()).get(packageName).getUidsInfo().get(UserHandle.myUserId()).getActions().get(action);
+                        Log.i(ActionBlockerUtils.TAG, "packageName: " + packageName + " action: " + action + "exist?");
+                    } catch (NullPointerException e) {
+                        actionBlockerUtils.actionBlockerWriter(packageName, action, UserHandle.myUserId());
+                        Log.i(ActionBlockerUtils.TAG, "packageName: " + packageName + " action: " + action + "save?");
+                    }
+                }
+            }
+        }
 
         final Printer logPrinter;
         final PrintWriter logPrintWriter;
