@@ -705,18 +705,20 @@ public abstract class IntentResolver<F extends IntentFilter, R extends Object> {
         final String packageName = intent.getPackage();
 
         final boolean excludingStopped = intent.isExcludingStopped();
-        if (!excludingStopped) {
-            if (!TextUtils.isEmpty(action) && !TextUtils.isEmpty(packageName) && ActivityManagerNative.isSystemReady()) {
-                boolean protectedAction = ProtectedActionUtils.isProtectedAction(packageName, action);
-                Log.i(ActionBlockerUtils.TAG, "packageName: " + packageName + " action: " + action);
-                if (!protectedAction) {
-                    try {
-                        Action mAction = mCache.getActionBlockInfo(UserHandle.myUserId()).get(packageName).getUidsInfo().get(UserHandle.myUserId()).getActions().get(action);
-                        Log.i(ActionBlockerUtils.TAG, "packageName: " + packageName + " action: " + action + "exist?");
-                    } catch (NullPointerException e) {
-                        actionBlockerUtils.actionBlockerWriter(packageName, action, UserHandle.myUserId());
-                        Log.i(ActionBlockerUtils.TAG, "packageName: " + packageName + " action: " + action + "save?");
+
+        if (!TextUtils.isEmpty(action) && !TextUtils.isEmpty(packageName) && ActivityManagerNative.isSystemReady()) {
+            boolean protectedAction = ProtectedActionUtils.isProtectedAction(packageName, action);
+            if (!protectedAction) {
+                try {
+                    Action mAction = mCache.getActionBlockInfo(UserHandle.myUserId()).get(packageName).getUidsInfo().get(UserHandle.myUserId()).getActions().get(action);
+                    if (mAction == null) {
+                        actionBlockerUtils.actionBlockerWriter(packageName, action, UserHandle.myUserId(), ActionBlockerUtils.MODE_ALLOWED);
+                        Log.i(ActionBlockerUtils.TAG, "packageName: " + packageName + " action: " + action + " saved");
                     }
+                    Log.i(ActionBlockerUtils.TAG, "packageName: " + packageName + " action: " + action + " exist");
+                } catch (NullPointerException e) {
+                    actionBlockerUtils.actionBlockerWriter(packageName, action, UserHandle.myUserId(), ActionBlockerUtils.MODE_ALLOWED);
+                    Log.i(ActionBlockerUtils.TAG, "packageName: " + packageName + " action: " + action + " saved");
                 }
             }
         }
