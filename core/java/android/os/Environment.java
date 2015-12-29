@@ -87,6 +87,7 @@ public class Environment {
             final File[] files = new File[volumes.length];
             for (int i = 0; i < volumes.length; i++) {
                 files[i] = volumes[i].getPathFile();
+                Log.i("MOKEEEEEEE", volumes[i].getPathFile().getAbsolutePath());
             }
             return files;
         }
