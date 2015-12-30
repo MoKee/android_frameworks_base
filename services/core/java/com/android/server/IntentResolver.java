@@ -43,10 +43,9 @@ import android.util.Printer;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.android.internal.util.FastPrintWriter;
-import com.mokee.aegis.ActionBlockerInfo.Action;
-import com.mokee.aegis.ActionBlockerInfo.ActionBlockerInfoCache;
-import com.mokee.aegis.ActionBlockerInfo.PackageInfo;
-import com.mokee.aegis.ActionBlockerUtils;
+import com.mokee.aegis.PacifierInfo.Action;
+import com.mokee.aegis.PacifierInfo.PacifierInfoCache;
+import com.mokee.aegis.PacifierUtils;
 import com.mokee.aegis.ProtectedActionUtils;
 
 /**
@@ -58,8 +57,7 @@ public abstract class IntentResolver<F extends IntentFilter, R extends Object> {
     final private static boolean localLOGV = DEBUG || false;
     final private static boolean localVerificationLOGV = DEBUG || false;
 
-    final private ActionBlockerInfoCache mCache = ActionBlockerInfoCache.getInstance();
-    final private ActionBlockerUtils actionBlockerUtils = ActionBlockerUtils.getInstance(mCache);
+    final private PacifierInfoCache mCache = PacifierInfoCache.getInstance();
 
     public void addFilter(F f) {
         if (localLOGV) {
@@ -706,19 +704,20 @@ public abstract class IntentResolver<F extends IntentFilter, R extends Object> {
 
         final boolean excludingStopped = intent.isExcludingStopped();
 
-        if (!TextUtils.isEmpty(action) && !TextUtils.isEmpty(packageName) && ActivityManagerNative.isSystemReady()) {
+        if (!excludingStopped && !TextUtils.isEmpty(action) && !TextUtils.isEmpty(packageName) && ActivityManagerNative.isSystemReady()) {
             boolean protectedAction = ProtectedActionUtils.isProtectedAction(packageName, action);
             if (!protectedAction) {
                 try {
-                    Action mAction = mCache.getActionBlockInfo(UserHandle.myUserId()).get(packageName).getUidsInfo().get(UserHandle.myUserId()).getActions().get(action);
+                    Action mAction = mCache.getPacifierInfo(UserHandle.myUserId()).get(packageName).getUidsInfo().get(UserHandle.myUserId()).getActions().get(action);
                     if (mAction == null) {
-                        actionBlockerUtils.actionBlockerWriter(packageName, action, UserHandle.myUserId(), ActionBlockerUtils.MODE_ALLOWED);
-                        Log.i(ActionBlockerUtils.TAG, "packageName: " + packageName + " action: " + action + " saved");
+                        mCache.addActionInfo(UserHandle.myUserId(), packageName, userId, action);
+                        Log.i(PacifierUtils.TAG, "packageName: " + packageName + " action: " + action + " saved");
+                    } else {
+                        Log.i(PacifierUtils.TAG, "packageName: " + packageName + " action: " + action + " exist");
                     }
-                    Log.i(ActionBlockerUtils.TAG, "packageName: " + packageName + " action: " + action + " exist");
                 } catch (NullPointerException e) {
-                    actionBlockerUtils.actionBlockerWriter(packageName, action, UserHandle.myUserId(), ActionBlockerUtils.MODE_ALLOWED);
-                    Log.i(ActionBlockerUtils.TAG, "packageName: " + packageName + " action: " + action + " saved");
+                    mCache.addActionInfo(UserHandle.myUserId(), packageName, userId, action);
+                    Log.i(PacifierUtils.TAG, "packageName: " + packageName + " action: " + action + " saved");
                 }
             }
         }
