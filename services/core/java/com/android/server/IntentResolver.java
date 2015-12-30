@@ -703,7 +703,7 @@ public abstract class IntentResolver<F extends IntentFilter, R extends Object> {
         final String packageName = intent.getPackage();
 
         final boolean excludingStopped = intent.isExcludingStopped();
-
+        boolean usePacifier = excludingStopped;
         if (!excludingStopped && !TextUtils.isEmpty(action) && !TextUtils.isEmpty(packageName) && ActivityManagerNative.isSystemReady()) {
             boolean protectedAction = ProtectedActionUtils.isProtectedAction(packageName, action);
             if (!protectedAction) {
@@ -711,13 +711,11 @@ public abstract class IntentResolver<F extends IntentFilter, R extends Object> {
                     Action mAction = mCache.getPacifierInfo(UserHandle.myUserId()).get(packageName).getUidsInfo().get(UserHandle.myUserId()).getActions().get(action);
                     if (mAction == null) {
                         mCache.addActionInfo(UserHandle.myUserId(), packageName, userId, action);
-                        Log.i(PacifierUtils.TAG, "packageName: " + packageName + " action: " + action + " saved");
                     } else {
-                        Log.i(PacifierUtils.TAG, "packageName: " + packageName + " action: " + action + " exist");
+                        usePacifier = mAction.getMode() == PacifierUtils.MODE_ERRORED;
                     }
                 } catch (NullPointerException e) {
                     mCache.addActionInfo(UserHandle.myUserId(), packageName, userId, action);
-                    Log.i(PacifierUtils.TAG, "packageName: " + packageName + " action: " + action + " saved");
                 }
             }
         }
@@ -740,7 +738,7 @@ public abstract class IntentResolver<F extends IntentFilter, R extends Object> {
             int match;
             if (debug) Slog.v(TAG, "Matching against filter " + filter);
 
-            if (excludingStopped && isFilterStopped(filter, userId)) {
+            if (usePacifier && isFilterStopped(filter, userId)) {
                 if (debug) {
                     Slog.v(TAG, "  Filter's target is stopped; skipping");
                 }
