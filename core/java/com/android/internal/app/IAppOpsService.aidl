@@ -54,4 +54,9 @@ interface IAppOpsService {
 
     // AppOps accounting
     void resetCounters();
+
+    // Pacifier methods
+    Map getPacifierInfo(int reqUserId);
+    void addActionInfo(int reqUserId, String packageName, int uid, String actionName);
+    void updateModeFromPackageUid(int reqUserId, String packageName, int uid, int mode);
 }

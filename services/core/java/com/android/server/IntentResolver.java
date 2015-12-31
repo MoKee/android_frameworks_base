@@ -27,7 +27,11 @@ import java.util.Map;
 import java.util.Set;
 
 import android.app.ActivityManagerNative;
+import android.content.Context;
 import android.net.Uri;
+import android.os.IBinder;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.os.UserHandle;
 import android.text.TextUtils;
 import android.util.FastImmutableArraySet;
@@ -42,9 +46,11 @@ import android.util.Printer;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+
+import com.android.internal.app.IAppOpsService;
 import com.android.internal.util.FastPrintWriter;
 import com.mokee.aegis.PacifierInfo.Action;
-import com.mokee.aegis.PacifierInfo.PacifierInfoCache;
+import com.mokee.aegis.PacifierInfo.PackageInfo;
 import com.mokee.aegis.PacifierUtils;
 import com.mokee.aegis.ProtectedActionUtils;
 
@@ -57,7 +63,8 @@ public abstract class IntentResolver<F extends IntentFilter, R extends Object> {
     final private static boolean localLOGV = DEBUG || false;
     final private static boolean localVerificationLOGV = DEBUG || false;
 
-    final private PacifierInfoCache mCache = PacifierInfoCache.getInstance();
+    IBinder ibinder = ServiceManager.getService(Context.APP_OPS_SERVICE);
+    private final IAppOpsService mAppOps = IAppOpsService.Stub.asInterface(ibinder);
 
     public void addFilter(F f) {
         if (localLOGV) {
@@ -708,14 +715,19 @@ public abstract class IntentResolver<F extends IntentFilter, R extends Object> {
             boolean protectedAction = ProtectedActionUtils.isProtectedAction(packageName, action);
             if (!protectedAction) {
                 try {
-                    Action mAction = mCache.getPacifierInfo(UserHandle.myUserId()).get(packageName).getUidsInfo().get(UserHandle.myUserId()).getActions().get(action);
+                    PackageInfo mPackageInfo = (PackageInfo)mAppOps.getPacifierInfo(UserHandle.myUserId()).get(packageName);
+                    Action mAction = mPackageInfo.getUidsInfo().get(UserHandle.myUserId()).getActions().get(action);
                     if (mAction == null) {
-                        mCache.addActionInfo(UserHandle.myUserId(), packageName, userId, action);
+                        mAppOps.addActionInfo(UserHandle.myUserId(), packageName, userId, action);
                     } else {
                         usePacifier = mAction.getMode() == PacifierUtils.MODE_ERRORED;
                     }
                 } catch (NullPointerException e) {
-                    mCache.addActionInfo(UserHandle.myUserId(), packageName, userId, action);
+                    try {
+                        mAppOps.addActionInfo(UserHandle.myUserId(), packageName, userId, action);
+                    } catch (RemoteException ex) {
+                    }
+                } catch (RemoteException e) {
                 }
             }
         }
