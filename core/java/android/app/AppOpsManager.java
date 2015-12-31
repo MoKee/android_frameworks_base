@@ -37,10 +37,12 @@ import android.util.ArrayMap;
 
 import com.android.internal.app.IAppOpsCallback;
 import com.android.internal.app.IAppOpsService;
+import com.mokee.aegis.PacifierInfo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * API for interacting with "application operation" tracking.
@@ -2107,6 +2109,31 @@ public class AppOpsManager {
     public void resetCounters() {
         try {
             mService.resetCounters();
+        } catch (RemoteException e) {
+        }
+    }
+
+    /** @hide */
+    public synchronized Map<String, PacifierInfo.PackageInfo> getPacifierInfo(int userId) {
+        try {
+            return mService.getPacifierInfo(userId);
+        } catch (RemoteException e) {
+        }
+        return null;
+    }
+
+    /** @hide */
+    public void addActionInfo(int mUserId, String mPackageName, int mUid, String mActionName) {
+        try {
+            mService.addActionInfo(mUserId, mPackageName, mUid, mActionName);
+        } catch (RemoteException e) {
+        }
+    }
+
+    /** @hide */
+    public void updateModeFromPackageUid(int mUserId, String mPackageName, int mUid, int mode) {
+        try {
+            mService.updateModeFromPackageUid(mUserId, mPackageName, mUid, mode);
         } catch (RemoteException e) {
         }
     }
