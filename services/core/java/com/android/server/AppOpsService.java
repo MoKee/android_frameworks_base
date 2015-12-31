@@ -74,6 +74,8 @@ import com.android.internal.util.ArrayUtils;
 import com.android.internal.util.FastXmlSerializer;
 import com.android.internal.util.XmlUtils;
 import com.android.server.PermissionDialogReqQueue.PermissionDialogReq;
+import com.mokee.aegis.PacifierInfo.PacifierInfoCache;
+import com.mokee.aegis.PacifierInfo.PackageInfo;
 
 import libcore.util.EmptyArray;
 import org.xmlpull.v1.XmlPullParser;
@@ -124,6 +126,8 @@ public class AppOpsService extends IAppOpsService.Stub {
     };
 
     final SparseArray<UidState> mUidStates = new SparseArray<>();
+
+    final private PacifierInfoCache mPacifierInfoCache = PacifierInfoCache.getInstance();
 
     private Runnable mSuSessionChangedRunner = new Runnable() {
         @Override
@@ -2178,5 +2182,20 @@ public class AppOpsService extends IAppOpsService.Stub {
             // ensure the counter reset persists
             scheduleWriteLocked();
         }
+    }
+
+    @Override
+    public synchronized Map<String, PackageInfo> getPacifierInfo(int userId) {
+        return mPacifierInfoCache.getPacifierInfo(userId);
+    }
+
+    @Override
+    public void addActionInfo(int mUserId, String mPackageName, int mUid, String mActionName) {
+        mPacifierInfoCache.addActionInfo(mUserId, mPackageName, mUid, mActionName);
+    }
+
+    @Override
+    public void updateModeFromPackageUid(int mUserId, String mPackageName, int mUid, int mode) {
+        mPacifierInfoCache.updateModeFromPackageUid(mUserId, mPackageName, mUid, mode);
     }
 }
