@@ -59,4 +59,5 @@ interface IAppOpsService {
     Map getPacifierInfo(int reqUserId);
     void addActionInfo(int reqUserId, String packageName, int uid, String actionName);
     void updateModeFromPackageUid(int reqUserId, String packageName, int uid, int mode);
+    void removePackageInfo(int reqUserId, String packageName);
 }

@@ -2198,4 +2198,9 @@ public class AppOpsService extends IAppOpsService.Stub {
     public void updateModeFromPackageUid(int mUserId, String mPackageName, int mUid, int mode) {
         mPacifierInfoCache.updateModeFromPackageUid(mUserId, mPackageName, mUid, mode);
     }
+
+    @Override
+    public void removePackageInfo(int mUserId, String mPackageName) {
+        mPacifierInfoCache.removePackageInfo(mUserId, mPackageName);
+    }
 }
