@@ -131,7 +131,6 @@
   <string name="quick_settings_ambient_display_label">Pantalla ambiente</string>
   <string name="quick_settings_sync_label">Sincronizar</string>
   <string name="quick_settings_battery_saver_label">Modo de ahorro de batería</string>
-  <string name="quick_settings_custom_tile_detail_title">Control personalizado</string>
   <string name="quick_settings_performance_profile_detail_title">Modo de la batería</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">Desliza a la derecha para %1$s</string>
@@ -166,11 +165,7 @@
   <string name="zen_silent_with_warning">Sin interrupciones, excepto las alarmas.</string>
   <string name="quick_settings_remove">Eliminar control</string>
   <string name="quick_settings_dynamic_tile_detail_title">Control dinámico</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Próxima alarma</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Selector IME</string>
-  <string name="dynamic_qs_tile_su_label">Acceso administrativo</string>
   <string name="fingerprint_try_again_hint">Por favor, escanea otra vez</string>
   <string name="accessibility_dock_battery_level">Batería de la base al <xliff:g id="number">%d</xliff:g> por ciento.</string>
-  <string name="quick_settings_custom_qs_detail_empty_text">No se encontraron elementos</string>
   <string name="play_queue_extention">Mostrar la cola de reproducción</string>
 </resources>

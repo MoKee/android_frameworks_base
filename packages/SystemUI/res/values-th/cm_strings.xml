@@ -132,7 +132,6 @@
   <string name="quick_settings_ambient_display_label">หน้าจอแวดล้อม</string>
   <string name="quick_settings_sync_label">ซิงค์</string>
   <string name="quick_settings_battery_saver_label">ประหยัดแบตเตอรี่</string>
-  <string name="quick_settings_custom_tile_detail_title">ไทล์กำหนดเอง</string>
   <string name="quick_settings_performance_profile_detail_title">รูปแบบแบตเตอรี่</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">ปัดไปทางขวาเพื่อ %1$s</string>
@@ -167,11 +166,7 @@
   <string name="zen_silent_with_warning">ห้ามรบกวน ยกเว้นนาฬิกาปลุก</string>
   <string name="quick_settings_remove">ลบไทล์ออก</string>
   <string name="quick_settings_dynamic_tile_detail_title">ไทล์แบบไดนามิก</string>
-  <string name="dynamic_qs_tile_next_alarm_label">การปลุกครั้งต่อไป</string>
-  <string name="dynamic_qs_tile_ime_selector_label">ตัวเลือก IME</string>
-  <string name="dynamic_qs_tile_su_label">สิทธิผู้ดูแลระบบ</string>
   <string name="fingerprint_try_again_hint">กรุณาสแกนอีกครั้ง</string>
   <string name="accessibility_dock_battery_level">แท่นชาร์จแบตเตอรี่ <xliff:g id="number">%d</xliff:g> เปอร์เซ็นต์</string>
-  <string name="quick_settings_custom_qs_detail_empty_text">ไม่พบรายการ</string>
   <string name="play_queue_extention">แสดงคิวเล่น</string>
 </resources>

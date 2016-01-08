@@ -131,7 +131,6 @@
   <string name="quick_settings_ambient_display_label">Ambient skjerm</string>
   <string name="quick_settings_sync_label">Synkronisering</string>
   <string name="quick_settings_battery_saver_label">Batterisparing</string>
-  <string name="quick_settings_custom_tile_detail_title">Egendefinerte fliser</string>
   <string name="quick_settings_performance_profile_detail_title">Batterimodus</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">Sveip til høyre for %1$s</string>
@@ -166,11 +165,7 @@
   <string name="zen_silent_with_warning">Ingen avbrudd, unntatt alarmer.</string>
   <string name="quick_settings_remove">Fjern flis</string>
   <string name="quick_settings_dynamic_tile_detail_title">Dynamisk flis</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Neste alarm</string>
-  <string name="dynamic_qs_tile_ime_selector_label">IME-velger</string>
-  <string name="dynamic_qs_tile_su_label">Root-tilgang</string>
   <string name="fingerprint_try_again_hint">Skann på nytt</string>
   <string name="accessibility_dock_battery_level">Dokkingstasjonens batteri <xliff:g id="number"> %d</xliff:g> prosent.</string>
-  <string name="quick_settings_custom_qs_detail_empty_text">Ingen elementer funnet</string>
   <string name="play_queue_extention">Vis avspillingskø</string>
 </resources>

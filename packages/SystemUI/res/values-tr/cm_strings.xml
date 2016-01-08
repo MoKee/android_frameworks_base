@@ -117,7 +117,6 @@
   <string name="quick_settings_usb_tether_label">USB İnternet Paylaşımı</string>
   <string name="quick_settings_sync_label">Eşitleme</string>
   <string name="quick_settings_battery_saver_label">Pil tasarrufu</string>
-  <string name="quick_settings_custom_tile_detail_title">Özel kare</string>
   <string name="left_shortcut_hint">%1$s için sağa kaydırın</string>
   <string name="navbar_dialog_title">Atamak için işlev seçin</string>
   <string name="navring_action_open_ime_switcher">IME Değiştiriciyi aç</string>
