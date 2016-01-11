@@ -718,13 +718,13 @@ public abstract class IntentResolver<F extends IntentFilter, R extends Object> {
                     PackageInfo mPackageInfo = (PackageInfo)mAppOps.getPacifierInfo(UserHandle.myUserId()).get(packageName);
                     Action mAction = mPackageInfo.getUidsInfo().get(UserHandle.myUserId()).getActions().get(action);
                     if (mAction == null) {
-                        mAppOps.addActionInfo(UserHandle.myUserId(), packageName, userId, action);
+                        mAppOps.addPacifierActionInfo(UserHandle.myUserId(), packageName, userId, action);
                     } else {
                         usePacifier = mAction.getMode() == PacifierUtils.MODE_ERRORED;
                     }
                 } catch (NullPointerException e) {
                     try {
-                        mAppOps.addActionInfo(UserHandle.myUserId(), packageName, userId, action);
+                        mAppOps.addPacifierActionInfo(UserHandle.myUserId(), packageName, userId, action);
                     } catch (RemoteException ex) {
                     }
                 } catch (RemoteException e) {
