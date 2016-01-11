@@ -74,8 +74,10 @@ import com.android.internal.util.ArrayUtils;
 import com.android.internal.util.FastXmlSerializer;
 import com.android.internal.util.XmlUtils;
 import com.android.server.PermissionDialogReqQueue.PermissionDialogReq;
+import com.mokee.aegis.PacifierInfo;
 import com.mokee.aegis.PacifierInfo.PacifierInfoCache;
-import com.mokee.aegis.PacifierInfo.PackageInfo;
+import com.mokee.aegis.WardenInfo;
+import com.mokee.aegis.WardenInfo.WardenInfoCache;
 
 import libcore.util.EmptyArray;
 import org.xmlpull.v1.XmlPullParser;
@@ -128,6 +130,8 @@ public class AppOpsService extends IAppOpsService.Stub {
     final SparseArray<UidState> mUidStates = new SparseArray<>();
 
     final private PacifierInfoCache mPacifierInfoCache = PacifierInfoCache.getInstance();
+
+    final private WardenInfoCache mWardenInfoCache = WardenInfoCache.getInstance();
 
     private Runnable mSuSessionChangedRunner = new Runnable() {
         @Override
@@ -2185,22 +2189,43 @@ public class AppOpsService extends IAppOpsService.Stub {
     }
 
     @Override
-    public synchronized Map<String, PackageInfo> getPacifierInfo(int userId) {
+    public synchronized Map<String, PacifierInfo.PackageInfo> getPacifierInfo(int userId) {
         return mPacifierInfoCache.getPacifierInfo(userId);
     }
 
     @Override
-    public void addActionInfo(int mUserId, String mPackageName, int mUid, String mActionName) {
+    public void addPacifierActionInfo(int mUserId, String mPackageName, int mUid, String mActionName) {
         mPacifierInfoCache.addActionInfo(mUserId, mPackageName, mUid, mActionName);
     }
 
     @Override
-    public void updateModeFromPackageUid(int mUserId, String mPackageName, int mUid, int mode) {
-        mPacifierInfoCache.updateModeFromPackageUid(mUserId, mPackageName, mUid, mode);
+    public void updatePacifierModeFromUid(int mUserId, String mPackageName, int mUid, int mode) {
+        mPacifierInfoCache.updateModeFromUid(mUserId, mPackageName, mUid, mode);
     }
 
     @Override
-    public void removePackageInfo(int mUserId, String mPackageName) {
-        mPacifierInfoCache.removePackageInfo(mUserId, mPackageName);
+    public void removePacifierPackageInfoFromUid(int mUserId, String mPackageName, int uid) {
+        mPacifierInfoCache.removePackageInfoFromUid(mUserId, mPackageName, uid);
     }
+
+    @Override
+    public synchronized Map<String, WardenInfo.PackageInfo> getWardenInfo(int userId) {
+        return mWardenInfoCache.getWardenInfo(userId);
+    }
+
+    @Override
+    public void removeWardenPackageInfoFromUid(int mUserId, String mPackageName, int uid) {
+        mWardenInfoCache.removePackageInfoFromUid(mUserId, mPackageName, uid);
+    }
+
+    @Override
+    public void updateWardenModeFromUid(int mUserId, String mPackageName, int mUid, int mode) {
+        mWardenInfoCache.updateModeFromUid(mUserId, mPackageName, mUid, mode);
+    }
+
+    @Override
+    public void addWardenPackageInfo(int mUserId, String mPackageName, int mUid) {
+        mWardenInfoCache.addPackageInfo(mUserId, mPackageName, mUid);
+    }
+
 }

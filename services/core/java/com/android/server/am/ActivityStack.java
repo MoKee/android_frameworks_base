@@ -25,7 +25,9 @@ import static com.android.server.am.ActivityRecord.APPLICATION_ACTIVITY_TYPE;
 
 import static com.android.server.am.ActivityStackSupervisor.HOME_STACK_ID;
 
+import android.text.TextUtils;
 import android.util.ArraySet;
+
 import com.android.internal.app.IVoiceInteractor;
 import com.android.internal.content.ReferrerIntent;
 import com.android.internal.os.BatteryStatsImpl;
@@ -65,10 +67,12 @@ import android.os.Trace;
 import android.os.UserHandle;
 import android.service.voice.IVoiceInteractionSession;
 import android.util.EventLog;
+import android.util.Log;
 import android.util.Slog;
 import android.view.Display;
 
 import com.android.server.LocalServices;
+import com.mokee.aegis.WardenUtils;
 
 import mokee.power.PerformanceManagerInternal;
 import mokee.providers.MKSettings;
@@ -1111,6 +1115,25 @@ final class ActivityStack {
             ProcessRecord app = next.task.mActivities.get(0).app;
             if (app != null && app != mService.mHomeProcess) {
                 mService.mHomeProcess = app;
+            }
+        }
+
+        String wardenPackageName = mStackSupervisor.mWardenPackageName;
+        if (wardenPackageName != null && !wardenPackageName.equals(next.packageName)) {
+            try {
+                mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(wardenPackageName);
+                mService.mAppOpsService.updateWardenModeFromUid(UserHandle.myUserId(), wardenPackageName, UserHandle.myUserId(), WardenUtils.MODE_ERRORED);
+            } catch (NullPointerException e) {
+            }
+            mStackSupervisor.mWardenPackageName = null;
+        } else {
+            try {
+                mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(next.packageName);
+                if (TextUtils.isEmpty(wardenPackageName)) {
+                    mService.mAppOpsService.updateWardenModeFromUid(UserHandle.myUserId(), next.packageName, UserHandle.myUserId(), WardenUtils.MODE_ALLOWED);
+                    mStackSupervisor.mWardenPackageName = next.packageName;
+                }
+            } catch (NullPointerException e) {
             }
         }
 

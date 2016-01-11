@@ -113,6 +113,8 @@ import com.android.server.wm.AppTransition;
 import com.android.server.wm.WindowManagerService;
 import com.google.android.collect.Lists;
 import com.google.android.collect.Maps;
+import com.mokee.aegis.WardenInfo;
+import com.mokee.aegis.WardenUtils;
 
 import libcore.io.IoUtils;
 import libcore.util.EmptyArray;
@@ -15982,6 +15984,14 @@ public final class ActivityManagerService extends ActivityManagerNative
 
         if (callingPackage == null) {
             throw new IllegalArgumentException("callingPackage cannot be null");
+        }
+
+        try {
+            WardenInfo.PackageInfo packageInfo = mAppOpsService.getWardenInfo(userId).get(callingPackage);
+            if (packageInfo.getUidsInfo().get(userId).getMode() == WardenUtils.MODE_ERRORED) {
+                return null;
+            }
+        } catch (NullPointerException e) {
         }
 
         if (DEBUG_SERVICE) Slog.v(TAG_SERVICE,
