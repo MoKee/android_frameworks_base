@@ -20,9 +20,9 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.SyncStatusObserver;
 
-import com.android.internal.logging.MetricsConstants;
 import com.android.systemui.R;
 import com.android.systemui.qs.QSTile;
+import org.mokee.internal.logging.MKMetricsLogger;
 
 /** Quick settings tile: Sync **/
 public class SyncTile extends QSTile<QSTile.BooleanState> {
@@ -70,7 +70,7 @@ public class SyncTile extends QSTile<QSTile.BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsConstants.DONT_TRACK_ME_BRO;
+        return MKMetricsLogger.TILE_SYNC;
     }
 
     @Override

@@ -47,6 +47,7 @@ import mokee.app.StatusBarPanelCustomTile;
 
 import com.android.systemui.R;
 import com.android.systemui.qs.QSTile;
+import org.mokee.internal.logging.MKMetricsLogger;
 
 import java.util.Arrays;
 
@@ -150,7 +151,7 @@ public class CustomQSTile extends QSTile<QSTile.State> {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsLogger.DONT_TRACK_ME_BRO;
+        return MKMetricsLogger.TILE_CUSTOM_QS;
     }
 
     private boolean isDynamicTile() {
@@ -195,7 +196,7 @@ public class CustomQSTile extends QSTile<QSTile.State> {
 
         @Override
         public int getMetricsCategory() {
-            return MetricsLogger.DONT_TRACK_ME_BRO;
+            return MKMetricsLogger.TILE_CUSTOM_QS_DETAIL;
         }
 
         @Override

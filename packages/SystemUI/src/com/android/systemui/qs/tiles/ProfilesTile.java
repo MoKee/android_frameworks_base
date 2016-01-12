@@ -33,7 +33,6 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckedTextView;
 import android.widget.ListView;
 
-import com.android.internal.logging.MetricsConstants;
 import com.android.systemui.R;
 import com.android.systemui.qs.QSDetailItemsList;
 import com.android.systemui.qs.QSTile;
@@ -43,6 +42,7 @@ import mokee.app.Profile;
 import mokee.app.ProfileManager;
 import mokee.app.StatusBarPanelCustomTile;
 import mokee.providers.MKSettings;
+import org.mokee.internal.logging.MKMetricsLogger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -113,7 +113,7 @@ public class ProfilesTile extends QSTile<QSTile.State> {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsConstants.DONT_TRACK_ME_BRO;
+        return MKMetricsLogger.TILE_PROFILES;
     }
 
     @Override
@@ -183,7 +183,7 @@ public class ProfilesTile extends QSTile<QSTile.State> {
 
         @Override
         public int getMetricsCategory() {
-            return MetricsConstants.DONT_TRACK_ME_BRO;
+            return MKMetricsLogger.TILE_PROFILES_DETAIL;
         }
 
         @Override

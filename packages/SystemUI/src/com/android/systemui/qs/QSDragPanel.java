@@ -68,6 +68,7 @@ import com.android.systemui.tuner.QsTuner;
 import com.viewpagerindicator.CirclePageIndicator;
 import mokee.app.StatusBarPanelCustomTile;
 import mokee.providers.MKSettings;
+import org.mokee.internal.logging.MKMetricsLogger;
 import org.mokee.internal.util.QSUtils;
 
 import java.util.ArrayList;
@@ -2007,7 +2008,7 @@ public class QSDragPanel extends QSPanel implements View.OnDragListener, View.On
 
         @Override
         public int getMetricsCategory() {
-            return MetricsLogger.DONT_TRACK_ME_BRO;
+            return MKMetricsLogger.DONT_LOG;
         }
 
         public void showBroadcastTileDialog() {

@@ -21,10 +21,10 @@ import android.content.Intent;
 import android.provider.Settings;
 import android.provider.Settings.Secure;
 
-import com.android.internal.logging.MetricsLogger;
 import com.android.systemui.qs.SecureSetting;
 import com.android.systemui.qs.QSTile;
 import com.android.systemui.R;
+import org.mokee.internal.logging.MKMetricsLogger;
 
 /** Quick settings tile: Ambient Display **/
 public class AmbientDisplayTile extends QSTile<QSTile.BooleanState> {
@@ -86,7 +86,7 @@ public class AmbientDisplayTile extends QSTile<QSTile.BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsLogger.DONT_TRACK_ME_BRO;
+        return MKMetricsLogger.TILE_AMBIENT_DISPLAY;
     }
 
     @Override
