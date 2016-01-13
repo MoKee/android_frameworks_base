@@ -69,6 +69,7 @@ import android.os.storage.MountServiceInternal;
 import android.os.storage.StorageManager;
 import android.service.voice.IVoiceInteractionSession;
 import android.service.voice.VoiceInteractionSession;
+import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.DebugUtils;
@@ -15988,7 +15989,8 @@ public final class ActivityManagerService extends ActivityManagerNative
 
         try {
             WardenInfo.PackageInfo packageInfo = mAppOpsService.getWardenInfo(userId).get(callingPackage);
-            if (packageInfo.getUidsInfo().get(userId).getMode() == WardenUtils.MODE_ERRORED) {
+            if (packageInfo.getUidsInfo().get(userId).getMode() == WardenUtils.MODE_ERRORED
+                    && TextUtils.isEmpty(mStackSupervisor.mWardenPackageName)) {
                 return null;
             }
         } catch (NullPointerException e) {

@@ -67,7 +67,6 @@ import android.os.Trace;
 import android.os.UserHandle;
 import android.service.voice.IVoiceInteractionSession;
 import android.util.EventLog;
-import android.util.Log;
 import android.util.Slog;
 import android.view.Display;
 
@@ -1123,8 +1122,8 @@ final class ActivityStack {
             try {
                 if (mService.mAppOpsService.getWardenInfo(UserHandle.myUserId())
                         .get(wardenPackageName).getUidsInfo().get(UserHandle.myUserId()).getMode() == WardenUtils.MODE_ALLOWED) {
-                    mService.mAppOpsService.updateWardenModeFromUid(UserHandle.myUserId(), wardenPackageName,
-                            UserHandle.myUserId(), WardenUtils.MODE_ERRORED);
+//                    mService.mAppOpsService.updateWardenModeFromUid(UserHandle.myUserId(), wardenPackageName,
+//                            UserHandle.myUserId(), WardenUtils.MODE_ERRORED);
                 }
             } catch (NullPointerException e) {
             }
@@ -1134,8 +1133,8 @@ final class ActivityStack {
                 int mode = mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(next.packageName)
                         .getUidsInfo().get(UserHandle.myUserId()).getMode();
                 if (TextUtils.isEmpty(wardenPackageName) && mode != WardenUtils.MODE_ALLOWED) {
-                    mService.mAppOpsService.updateWardenModeFromUid(UserHandle.myUserId(), next.packageName,
-                            UserHandle.myUserId(), WardenUtils.MODE_ALLOWED);
+//                    mService.mAppOpsService.updateWardenModeFromUid(UserHandle.myUserId(), next.packageName,
+//                            UserHandle.myUserId(), WardenUtils.MODE_ALLOWED);
                     mStackSupervisor.mWardenPackageName = next.packageName;
                 }
             } catch (NullPointerException e) {
