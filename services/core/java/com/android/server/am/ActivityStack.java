@@ -1120,22 +1120,23 @@ final class ActivityStack {
         String wardenPackageName = mStackSupervisor.mWardenPackageName;
         if (wardenPackageName != null && !wardenPackageName.equals(next.packageName)) {
             try {
-                if (mService.mAppOpsService.getWardenInfo(UserHandle.myUserId())
-                        .get(wardenPackageName).getUidsInfo().get(UserHandle.myUserId()).getMode() == WardenUtils.MODE_ALLOWED) {
-//                    mService.mAppOpsService.updateWardenModeFromUid(UserHandle.myUserId(), wardenPackageName,
-//                            UserHandle.myUserId(), WardenUtils.MODE_ERRORED);
+                if (mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(wardenPackageName)
+                        .getUidsInfo().get(UserHandle.myUserId()).getMode() == WardenUtils.MODE_ALLOWED
+                        && MKSettings.System.getInt(mService.mContext.getContentResolver(), MKSettings.System.AEGIS_WARDEN_FORCE_STOP, 0) == 1) {
+                    mService.forceStopPackage(wardenPackageName, mStackSupervisor.mWardenPackageUid);
                 }
             } catch (NullPointerException e) {
             }
             mStackSupervisor.mWardenPackageName = null;
+            mStackSupervisor.mWardenPackageUid = 0;
+
         } else {
             try {
                 int mode = mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(next.packageName)
                         .getUidsInfo().get(UserHandle.myUserId()).getMode();
                 if (TextUtils.isEmpty(wardenPackageName) && mode != WardenUtils.MODE_ALLOWED) {
-//                    mService.mAppOpsService.updateWardenModeFromUid(UserHandle.myUserId(), next.packageName,
-//                            UserHandle.myUserId(), WardenUtils.MODE_ALLOWED);
                     mStackSupervisor.mWardenPackageName = next.packageName;
+                    mStackSupervisor.mWardenPackageUid = next.userId;
                 }
             } catch (NullPointerException e) {
             }
