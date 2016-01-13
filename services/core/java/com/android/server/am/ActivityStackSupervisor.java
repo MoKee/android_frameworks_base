@@ -285,6 +285,8 @@ public final class ActivityStackSupervisor implements DisplayListener {
 
     String mWardenPackageName = null;
 
+    int mWardenPackageUid = 0;
+
     /**
      * We don't want to allow the device to go to sleep while in the process
      * of launching an activity.  This is primarily to allow alarm intent
