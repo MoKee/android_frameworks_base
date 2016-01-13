@@ -1121,7 +1121,7 @@ final class ActivityStack {
         if (wardenPackageName != null && !wardenPackageName.equals(next.packageName)) {
             try {
                 if (mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(wardenPackageName)
-                        .getUidsInfo().get(UserHandle.myUserId()).getMode() == WardenUtils.MODE_ALLOWED
+                        .getUidsInfo().get(UserHandle.myUserId()).getMode() == WardenUtils.MODE_ERRORED
                         && MKSettings.System.getInt(mService.mContext.getContentResolver(), MKSettings.System.AEGIS_WARDEN_FORCE_STOP, 0) == 1) {
                     mService.forceStopPackage(wardenPackageName, mStackSupervisor.mWardenPackageUid);
                 }
@@ -1134,7 +1134,7 @@ final class ActivityStack {
             try {
                 int mode = mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(next.packageName)
                         .getUidsInfo().get(UserHandle.myUserId()).getMode();
-                if (TextUtils.isEmpty(wardenPackageName) && mode != WardenUtils.MODE_ALLOWED) {
+                if (TextUtils.isEmpty(wardenPackageName) && mode == WardenUtils.MODE_ERRORED) {
                     mStackSupervisor.mWardenPackageName = next.packageName;
                     mStackSupervisor.mWardenPackageUid = next.userId;
                 }
