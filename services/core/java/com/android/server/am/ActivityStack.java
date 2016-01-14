@@ -1117,15 +1117,23 @@ final class ActivityStack {
             }
         }
 
-        String wardenPackageName = mStackSupervisor.mWardenPackageName;
-        if (wardenPackageName != null && !wardenPackageName.equals(next.packageName)) {
+        if (!TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && !mStackSupervisor.mWardenPackageName.equals(next.packageName)) {
             try {
-                if (mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(wardenPackageName)
+                if (mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(mStackSupervisor.mWardenPackageName)
                         .getUidsInfo().get(UserHandle.myUserId()).getMode() == WardenUtils.MODE_ERRORED
+                        && !next.isRecentsActivity() && !next.isApplicationActivity()
                         && MKSettings.System.getInt(mService.mContext.getContentResolver(), MKSettings.System.AEGIS_WARDEN_FORCE_STOP, 0) == 1) {
-                    mService.forceStopPackage(wardenPackageName, mStackSupervisor.mWardenPackageUid);
+                    mService.forceStopPackage(mStackSupervisor.mWardenPackageName, mStackSupervisor.mWardenPackageUid);
+                    if (!TextUtils.isEmpty(mStackSupervisor.mWardenCallBackPackageName)) {
+                        mService.forceStopPackage(mStackSupervisor.mWardenCallBackPackageName, mStackSupervisor.mWardenCallBackPackageUid);
+                        mStackSupervisor.mWardenCallBackPackageName = null;
+                    }
                 }
             } catch (NullPointerException e) {
+            }
+            if (next.isApplicationActivity()) {
+                mStackSupervisor.mWardenCallBackPackageName = mStackSupervisor.mWardenPackageName;
+                mStackSupervisor.mWardenCallBackPackageUid = mStackSupervisor.mWardenPackageUid;
             }
             mStackSupervisor.mWardenPackageName = null;
             mStackSupervisor.mWardenPackageUid = 0;
@@ -1134,7 +1142,7 @@ final class ActivityStack {
             try {
                 int mode = mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(next.packageName)
                         .getUidsInfo().get(UserHandle.myUserId()).getMode();
-                if (TextUtils.isEmpty(wardenPackageName) && mode == WardenUtils.MODE_ERRORED) {
+                if (TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && mode == WardenUtils.MODE_ERRORED) {
                     mStackSupervisor.mWardenPackageName = next.packageName;
                     mStackSupervisor.mWardenPackageUid = next.userId;
                 }
