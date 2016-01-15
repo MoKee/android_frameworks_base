@@ -1117,20 +1117,28 @@ final class ActivityStack {
             }
         }
         if (!TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && !mStackSupervisor.mWardenPackageName.equals(next.packageName)) {
-            try {
-                if (mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(mStackSupervisor.mWardenPackageName)
-                        .getUidsInfo().get(UserHandle.myUserId()).getMode() == WardenUtils.MODE_ERRORED
-                        && !next.isRecentsActivity() && !next.isApplicationActivity() && mLastPausedActivity != null
-                        && MKSettings.System.getInt(mService.mContext.getContentResolver(), MKSettings.System.AEGIS_WARDEN_FORCE_STOP, 0) == 1) {
-                    mService.forceStopPackage(mStackSupervisor.mWardenPackageName, mStackSupervisor.mWardenPackageUid);
-                    if (!TextUtils.isEmpty(mStackSupervisor.mWardenCallBackPackageName)) {
-                        mService.forceStopPackage(mStackSupervisor.mWardenCallBackPackageName, mStackSupervisor.mWardenCallBackPackageUid);
-                        mStackSupervisor.mWardenCallBackPackageName = null;
+            final boolean isRecentsActivity = next.isRecentsActivity();
+            final boolean isApplicationActivity = next.isApplicationActivity();
+            Runnable forceStopRunnable = new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        if (mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(mStackSupervisor.mWardenPackageName)
+                                .getUidsInfo().get(UserHandle.myUserId()).getMode() == WardenUtils.MODE_ERRORED
+                                && !isRecentsActivity && !isApplicationActivity && mLastPausedActivity != null
+                                && MKSettings.System.getInt(mService.mContext.getContentResolver(), MKSettings.System.AEGIS_WARDEN_FORCE_STOP, 0) == 1) {
+                            mService.forceStopPackage(mStackSupervisor.mWardenPackageName, mStackSupervisor.mWardenPackageUid);
+                            if (!TextUtils.isEmpty(mStackSupervisor.mWardenCallBackPackageName)) {
+                                mService.forceStopPackage(mStackSupervisor.mWardenCallBackPackageName, mStackSupervisor.mWardenCallBackPackageUid);
+                                mStackSupervisor.mWardenCallBackPackageName = null;
+                            }
+                        }
+                    } catch (NullPointerException e) {
                     }
                 }
-            } catch (NullPointerException e) {
-            }
-            if (next.isApplicationActivity()) {
+            };
+            mHandler.postDelayed(forceStopRunnable, 100);
+            if (isApplicationActivity) {
                 mStackSupervisor.mWardenCallBackPackageName = mStackSupervisor.mWardenPackageName;
                 mStackSupervisor.mWardenCallBackPackageUid = mStackSupervisor.mWardenPackageUid;
             }
