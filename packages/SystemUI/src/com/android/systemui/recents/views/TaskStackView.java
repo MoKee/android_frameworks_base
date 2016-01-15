@@ -1182,6 +1182,10 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
             showDismissAllButton();
         }
 
+        ActivityManager am = (ActivityManager) getContext()
+                .getSystemService(Context.ACTIVITY_SERVICE);
+        am.forceStopPackage(removedTask.key.baseIntent.getComponent().getPackageName());
+
         // Notify the callback that we've removed the task and it can clean up after it. Note, we
         // do this after onAllTaskViewsDismissed() is called, to allow the home activity to be
         // started before the call to remove the task.
@@ -1193,6 +1197,12 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
         // Announce for accessibility
         String msg = getContext().getString(R.string.accessibility_recents_all_items_dismissed);
         announceForAccessibility(msg);
+
+        ActivityManager am = (ActivityManager) getContext()
+                .getSystemService(Context.ACTIVITY_SERVICE);
+        for (Task task : removedTasks) {
+            am.forceStopPackage(task.key.baseIntent.getComponent().getPackageName());
+        }
 
         startDismissAllAnimation(new Runnable() {
             @Override
