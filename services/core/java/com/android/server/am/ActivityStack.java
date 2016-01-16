@@ -1116,35 +1116,52 @@ final class ActivityStack {
                 mService.mHomeProcess = app;
             }
         }
-        if (!TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && !mStackSupervisor.mWardenPackageName.equals(next.packageName)) {
-            try {
-                if (mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(mStackSupervisor.mWardenPackageName)
-                        .getUidsInfo().get(UserHandle.myUserId()).getMode() == WardenUtils.MODE_ERRORED
-                        && !next.isRecentsActivity() && !next.isApplicationActivity() && mLastPausedActivity != null
-                        && MKSettings.System.getInt(mService.mContext.getContentResolver(), MKSettings.System.AEGIS_WARDEN_FORCE_STOP, 0) == 1) {
-                    mService.forceStopPackage(mStackSupervisor.mWardenPackageName, mStackSupervisor.mWardenPackageUid);
-                    if (!TextUtils.isEmpty(mStackSupervisor.mWardenCallBackPackageName)) {
-                        mService.forceStopPackage(mStackSupervisor.mWardenCallBackPackageName, mStackSupervisor.mWardenCallBackPackageUid);
-                        mStackSupervisor.mWardenCallBackPackageName = null;
+
+        if (MKSettings.System.getInt(mService.mContext.getContentResolver(), MKSettings.System.AEGIS_WARDEN_FORCE_STOP, 0) == 1) {
+            if (!TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && !mStackSupervisor.mWardenPackageName.equals(next.packageName)) {
+                if (next.isHomeActivity()) {
+                    try {
+                        if (mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(mStackSupervisor.mWardenPackageName)
+                                .getUidsInfo().get(UserHandle.myUserId()).getMode() == WardenUtils.MODE_ERRORED
+                                && mLastPausedActivity != null) {
+                            mService.forceStopPackage(mStackSupervisor.mWardenPackageName, mStackSupervisor.mWardenPackageUid);
+                        }
+                    } catch (NullPointerException e) {
+                    }
+                } else {
+                    if (next.isApplicationActivity()) {
+                        if (!TextUtils.isEmpty(mStackSupervisor.mWardenCallBackPackageName) && !next.packageName.equals(mStackSupervisor.mWardenCallBackPackageName)) {
+                            if (!mStackSupervisor.mWardenCallBackServiceIsRunning) {
+                                mService.forceStopPackage(mStackSupervisor.mWardenCallBackPackageName, mStackSupervisor.mWardenCallBackPackageUid);
+                            }
+                            mStackSupervisor.mWardenCallBackPackageName = null;
+                            mStackSupervisor.mWardenCallBackPackageUid = 0;
+                            mStackSupervisor.mWardenCallBackServiceIsRunning = false;
+                        } else {
+                            List<ActivityManager.RunningServiceInfo> servicesInfo = mService.getServices(Integer.MAX_VALUE, 0);
+                            for (int i = 0; i < servicesInfo.size(); i ++) {
+                                if (servicesInfo.get(i).service.getPackageName().equals(next.packageName)) {
+                                    mStackSupervisor.mWardenCallBackServiceIsRunning = true;
+                                    break;
+                                }
+                            }
+                            mStackSupervisor.mWardenCallBackPackageName = next.packageName;
+                            mStackSupervisor.mWardenCallBackPackageUid = next.userId;
+                        }
                     }
                 }
-            } catch (NullPointerException e) {
-            }
-            if (next.isApplicationActivity()) {
-                mStackSupervisor.mWardenCallBackPackageName = mStackSupervisor.mWardenPackageName;
-                mStackSupervisor.mWardenCallBackPackageUid = mStackSupervisor.mWardenPackageUid;
-            }
-            mStackSupervisor.mWardenPackageName = null;
-            mStackSupervisor.mWardenPackageUid = 0;
-        } else {
-            try {
-                int mode = mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(next.packageName)
-                        .getUidsInfo().get(UserHandle.myUserId()).getMode();
-                if (TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && mode == WardenUtils.MODE_ERRORED) {
-                    mStackSupervisor.mWardenPackageName = next.packageName;
-                    mStackSupervisor.mWardenPackageUid = next.userId;
+                mStackSupervisor.mWardenPackageName = null;
+                mStackSupervisor.mWardenPackageUid = 0;
+            } else {
+                try {
+                    int mode = mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(next.packageName)
+                            .getUidsInfo().get(UserHandle.myUserId()).getMode();
+                    if (TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && mode == WardenUtils.MODE_ERRORED) {
+                        mStackSupervisor.mWardenPackageName = next.packageName;
+                        mStackSupervisor.mWardenPackageUid = next.userId;
+                    }
+                } catch (NullPointerException e) {
                 }
-            } catch (NullPointerException e) {
             }
         }
 
