@@ -15990,7 +15990,7 @@ public final class ActivityManagerService extends ActivityManagerNative
         try {
             WardenInfo.PackageInfo packageInfo = mAppOpsService.getWardenInfo(userId).get(callingPackage);
             if (packageInfo.getUidsInfo().get(userId).getMode() == WardenUtils.MODE_ERRORED) {
-                if (TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) || !callingPackage.equals(mStackSupervisor.mWardenPackageName)) {
+                if (TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) || !callingPackage.equals(service.getPackage())) {
                     return null;
                 }
             }
