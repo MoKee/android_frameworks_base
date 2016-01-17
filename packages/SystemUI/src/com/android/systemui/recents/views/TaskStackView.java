@@ -30,6 +30,10 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.IPackageDataObserver;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.IBinder;
+import android.os.RemoteException;
+import android.os.ServiceManager;
+import android.os.UserHandle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -39,6 +43,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.FrameLayout;
 import android.widget.PopupMenu;
 
+import com.android.internal.app.IAppOpsService;
 import com.android.internal.logging.MetricsLogger;
 import com.android.systemui.R;
 import com.android.systemui.recents.Constants;
@@ -51,6 +56,8 @@ import com.android.systemui.recents.model.RecentsTaskLoader;
 import com.android.systemui.recents.model.Task;
 import com.android.systemui.recents.model.TaskStack;
 import com.android.systemui.statusbar.DismissView;
+import com.mokee.aegis.WardenInfo;
+import com.mokee.aegis.WardenUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -115,6 +122,9 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
     List<TaskView> mImmutableTaskViews = new ArrayList<TaskView>();
     LayoutInflater mInflater;
     boolean mLayersDisabled;
+
+    IBinder iBinder = ServiceManager.getService(Context.APP_OPS_SERVICE);
+    private IAppOpsService mAppOps = IAppOpsService.Stub.asInterface(iBinder);
 
     // A convenience update listener to request updating clipping of tasks
     ValueAnimator.AnimatorUpdateListener mRequestUpdateClippingListener =
@@ -1182,9 +1192,15 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
             showDismissAllButton();
         }
 
-        ActivityManager am = (ActivityManager) getContext()
-                .getSystemService(Context.ACTIVITY_SERVICE);
-        am.forceStopPackage(removedTask.key.baseIntent.getComponent().getPackageName());
+        ActivityManager am = (ActivityManager) getContext().getSystemService(Context.ACTIVITY_SERVICE);
+        try {
+            if (((WardenInfo.PackageInfo)mAppOps.getWardenInfo(UserHandle.myUserId()).get(removedTask.key.baseIntent.
+                    getComponent().getPackageName())).getUidsInfo().get(UserHandle.myUserId()).getMode() == WardenUtils.MODE_ERRORED) {
+                am.forceStopPackage(removedTask.key.baseIntent.getComponent().getPackageName());
+            }
+        } catch (NullPointerException e) {
+        } catch (RemoteException e) {
+        }
 
         // Notify the callback that we've removed the task and it can clean up after it. Note, we
         // do this after onAllTaskViewsDismissed() is called, to allow the home activity to be
@@ -1198,10 +1214,16 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
         String msg = getContext().getString(R.string.accessibility_recents_all_items_dismissed);
         announceForAccessibility(msg);
 
-        ActivityManager am = (ActivityManager) getContext()
-                .getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager am = (ActivityManager) getContext().getSystemService(Context.ACTIVITY_SERVICE);
         for (Task task : removedTasks) {
-            am.forceStopPackage(task.key.baseIntent.getComponent().getPackageName());
+            try {
+                if (((WardenInfo.PackageInfo)mAppOps.getWardenInfo(UserHandle.myUserId()).get(task.key.baseIntent.
+                            getComponent().getPackageName())).getUidsInfo().get(UserHandle.myUserId()).getMode() == WardenUtils.MODE_ERRORED) {
+                    am.forceStopPackage(task.key.baseIntent.getComponent().getPackageName());
+                }
+            } catch (NullPointerException e) {
+            } catch (RemoteException e) {
+            }
         }
 
         startDismissAllAnimation(new Runnable() {
