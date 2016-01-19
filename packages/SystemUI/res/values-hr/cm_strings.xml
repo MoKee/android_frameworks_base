@@ -131,7 +131,6 @@
   <string name="quick_settings_ambient_display_label">Ambijentni zaslon</string>
   <string name="quick_settings_sync_label">Sinkroniziranje</string>
   <string name="quick_settings_battery_saver_label">Ušteda baterije</string>
-  <string name="quick_settings_custom_tile_detail_title">Prilagodljive pločice</string>
   <string name="quick_settings_performance_profile_detail_title">Način rada baterije</string>
   <string name="status_bar_expanded_header_weather_format">%1$s - %2$s</string>
   <string name="left_shortcut_hint">Kliznite desno za %1$s</string>
@@ -166,11 +165,7 @@
   <string name="zen_silent_with_warning">Bez prekidanja, osim alarma.</string>
   <string name="quick_settings_remove">Uklanjanje pločice</string>
   <string name="quick_settings_dynamic_tile_detail_title">Dinamičke pločice</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Slijedeći alarm</string>
-  <string name="dynamic_qs_tile_ime_selector_label">IME za odabir</string>
-  <string name="dynamic_qs_tile_su_label">Root pristup</string>
   <string name="fingerprint_try_again_hint">Molim skenirajte ponovo</string>
   <string name="accessibility_dock_battery_level">Dock baterija <xliff:g id="number">%d</xliff:g> postotak.</string>
-  <string name="quick_settings_custom_qs_detail_empty_text">Nije pronađena nijedna stavka</string>
   <string name="play_queue_extention">Prikaži listu za reprodukciju</string>
 </resources>

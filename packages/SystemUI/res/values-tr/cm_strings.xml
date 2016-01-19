@@ -131,7 +131,6 @@
   <string name="quick_settings_ambient_display_label">Bildirim ekranı</string>
   <string name="quick_settings_sync_label">Eşitleme</string>
   <string name="quick_settings_battery_saver_label">Pil tasarrufu</string>
-  <string name="quick_settings_custom_tile_detail_title">Özel kare</string>
   <string name="quick_settings_performance_profile_detail_title">Pil modu</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">%1$s için sağa kaydırın</string>
@@ -166,11 +165,7 @@
   <string name="zen_silent_with_warning">Alarmlar dışında rahatsız etme.</string>
   <string name="quick_settings_remove">Kareyi kaldır</string>
   <string name="quick_settings_dynamic_tile_detail_title">Dinamik kare</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Sonraki alarm</string>
-  <string name="dynamic_qs_tile_ime_selector_label">IME seçici</string>
-  <string name="dynamic_qs_tile_su_label">Root erişimi</string>
   <string name="fingerprint_try_again_hint">Lütfen tekrar tarayın</string>
   <string name="accessibility_dock_battery_level">Ünite pili yüzde <xliff:g id="number">%d</xliff:g>.</string>
-  <string name="quick_settings_custom_qs_detail_empty_text">Öge bulunamadı</string>
   <string name="play_queue_extention">Oynatma kuyruğunu göster</string>
 </resources>
