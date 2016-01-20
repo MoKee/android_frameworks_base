@@ -413,9 +413,14 @@ public class QSTileHost implements QSTile.Host, Tunable {
                 TextUtils.join(",", tiles), ActivityManager.getCurrentUser());
     }
 
+    public void initiateReset() {
+        if (mCallback != null) {
+            mCallback.resetTiles();
+        }
+    }
+
     @Override
     public void resetTiles() {
-        setEditing(false);
         MKSettings.Secure.putStringForUser(getContext().getContentResolver(),
                 MKSettings.Secure.QS_TILES, "default", ActivityManager.getCurrentUser());
     }
