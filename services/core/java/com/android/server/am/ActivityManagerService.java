@@ -16054,11 +16054,9 @@ public final class ActivityManagerService extends ActivityManagerNative
         try {
             WardenInfo.PackageInfo packageInfo = mAppOpsService.getWardenInfo(userId).get(callingPackage);
             if (packageInfo.getUidsInfo().get(userId).getMode() == WardenUtils.MODE_ERRORED) {
-                Log.i("MOKEEEEE", "try start service - callingPackage: " + callingPackage);
                 if (TextUtils.isEmpty(mStackSupervisor.mWardenPackageName)
                         || !TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && !TextUtils.equals(mStackSupervisor.mWardenPackageName, callingPackage)
                         || service != null && !TextUtils.isEmpty(service.getPackage()) && !TextUtils.equals(callingPackage, service.getPackage())) {
-                    Log.i("MOKEEEEE", "skip service");
                     return null;
                 }
             }
