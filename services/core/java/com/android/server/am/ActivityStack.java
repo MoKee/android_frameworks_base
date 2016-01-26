@@ -67,6 +67,7 @@ import android.os.Trace;
 import android.os.UserHandle;
 import android.service.voice.IVoiceInteractionSession;
 import android.util.EventLog;
+import android.util.Log;
 import android.util.Slog;
 import android.view.Display;
 
@@ -1118,8 +1119,9 @@ final class ActivityStack {
         }
 
         if (MKSettings.System.getInt(mService.mContext.getContentResolver(), MKSettings.System.AEGIS_WARDEN_FORCE_STOP, 0) == 1) {
-            if (!TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && !mStackSupervisor.mWardenPackageName.equals(next.packageName)) {
+            if (!TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && !TextUtils.equals(mStackSupervisor.mWardenPackageName, next.packageName)) {
                 if (next.isHomeActivity()) {
+                    Log.i("MOKEEEEE", "Current pkg: " + next.packageName + " go to home");
                     try {
                         if (mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(mStackSupervisor.mWardenPackageName)
                                 .getUidsInfo().get(UserHandle.myUserId()).getMode() == WardenUtils.MODE_ERRORED
@@ -1128,39 +1130,28 @@ final class ActivityStack {
                         }
                     } catch (NullPointerException e) {
                     }
-                } else {
-                    if (next.isApplicationActivity()) {
-                        if (!TextUtils.isEmpty(mStackSupervisor.mWardenCallBackPackageName) && !next.packageName.equals(mStackSupervisor.mWardenCallBackPackageName)) {
-                            if (!mStackSupervisor.mWardenCallBackServiceIsRunning) {
-                                mService.forceStopPackage(mStackSupervisor.mWardenCallBackPackageName, mStackSupervisor.mWardenCallBackPackageUid);
-                            }
-                            mStackSupervisor.mWardenCallBackPackageName = null;
-                            mStackSupervisor.mWardenCallBackPackageUid = 0;
-                            mStackSupervisor.mWardenCallBackServiceIsRunning = false;
-                        } else {
-                            List<ActivityManager.RunningServiceInfo> servicesInfo = mService.getServices(Integer.MAX_VALUE, 0);
-                            for (int i = 0; i < servicesInfo.size(); i ++) {
-                                if (servicesInfo.get(i).service.getPackageName().equals(next.packageName)) {
-                                    mStackSupervisor.mWardenCallBackServiceIsRunning = true;
-                                    break;
-                                }
-                            }
-                            mStackSupervisor.mWardenCallBackPackageName = next.packageName;
-                            mStackSupervisor.mWardenCallBackPackageUid = next.userId;
-                        }
-                    }
+                } else if (next.isApplicationActivity()) {
+                    Log.i("MOKEEEEE", "Current pkg: " + next.packageName + " go to callback");
+                    mStackSupervisor.mWardenCallBackPackageName = next.packageName;
                 }
+                if (!TextUtils.equals(mStackSupervisor.mWardenCallBackPackageName, next.packageName)) {
+                    mStackSupervisor.mWardenCallBackPackageName = null;
+                    Log.i("MOKEEEEE", "Current pkg: " + next.packageName + " clean call back");
+                }
+                Log.i("MOKEEEEE", "Current pkg: " + next.packageName + " cleanup");
                 mStackSupervisor.mWardenPackageName = null;
                 mStackSupervisor.mWardenPackageUid = 0;
             } else {
+                int mode = WardenUtils.MODE_ALLOWED;
                 try {
-                    int mode = mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(next.packageName)
+                    mode = mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(next.packageName)
                             .getUidsInfo().get(UserHandle.myUserId()).getMode();
-                    if (TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && mode == WardenUtils.MODE_ERRORED) {
-                        mStackSupervisor.mWardenPackageName = next.packageName;
-                        mStackSupervisor.mWardenPackageUid = next.userId;
-                    }
                 } catch (NullPointerException e) {
+                }
+                if (TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && mode == WardenUtils.MODE_ERRORED) {
+                    mStackSupervisor.mWardenPackageName = next.packageName;
+                    mStackSupervisor.mWardenPackageUid = next.userId;
+                    Log.i("MOKEEEEE", "Current pkg: " + next.packageName + " init");
                 }
             }
         }
