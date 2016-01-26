@@ -16063,7 +16063,13 @@ public final class ActivityManagerService extends ActivityManagerNative
         } catch (NullPointerException e) {
         }
         if (!TextUtils.isEmpty(mStackSupervisor.mWardenCallBackPackageName)) {
-            return null;
+            try {
+                WardenInfo.PackageInfo packageInfo = mAppOpsService.getWardenInfo(userId).get(mStackSupervisor.mWardenCallBackPackageName);
+                if (packageInfo.getUidsInfo().get(userId).getMode() == WardenUtils.MODE_ERRORED) {
+                    return null;
+                }
+            } catch (NullPointerException e) {
+            }
         }
 
         if (DEBUG_SERVICE) Slog.v(TAG_SERVICE,
