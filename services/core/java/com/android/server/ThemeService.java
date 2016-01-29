@@ -454,8 +454,8 @@ public class ThemeService extends IThemeService.Stub {
 
     private void doApplyDefaultTheme() {
         final ContentResolver resolver = mContext.getContentResolver();
-        final String defaultThemePkg = Settings.Secure.getString(resolver,
-                Settings.Secure.DEFAULT_THEME_PACKAGE);
+        final String defaultThemePkg = MKSettings.Secure.getString(resolver,
+                MKSettings.Secure.DEFAULT_THEME_PACKAGE);
         if (!TextUtils.isEmpty(defaultThemePkg)) {
             String defaultThemeComponents = MKSettings.Secure.getString(resolver,
                     MKSettings.Secure.DEFAULT_THEME_COMPONENTS);
