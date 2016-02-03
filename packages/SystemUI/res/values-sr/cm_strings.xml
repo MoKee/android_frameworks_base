@@ -166,6 +166,7 @@
   <string name="quick_settings_remove">Уклони назив</string>
   <string name="quick_settings_dynamic_tile_detail_title">Динамичне плочице</string>
   <string name="fingerprint_try_again_hint">Молим скенирај поново</string>
+  <string name="fingerprint_try_again_hint_too_many">Превише покушаја отиском прста. Пробај поново касније.</string>
   <string name="accessibility_dock_battery_level">Батерија <xliff:g id="number">%d</xliff:g> процената.</string>
   <string name="play_queue_extention">Прикажи на чекању</string>
 </resources>

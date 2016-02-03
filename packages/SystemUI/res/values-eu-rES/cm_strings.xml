@@ -166,6 +166,7 @@
   <string name="quick_settings_remove">Ezabatu lauza</string>
   <string name="quick_settings_dynamic_tile_detail_title">Lauza dinamikoa</string>
   <string name="fingerprint_try_again_hint">Eskaneatu berriro mesedez</string>
+  <string name="fingerprint_try_again_hint_too_many">Hatz-marka saiakera gehiegi. Saiatu geroago.</string>
   <string name="accessibility_dock_battery_level">Oinarriaren bateria, ehuneko <xliff:g id="number">%d</xliff:g>.</string>
   <string name="play_queue_extention">Bistaratu erreprodukzio ilara</string>
 </resources>
