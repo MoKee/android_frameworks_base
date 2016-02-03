@@ -16,5 +16,5 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="android_upgrading_mk_title">Mokee wordt bijgewerkt</string>
-  <string name="android_start_mk_title">MoKee start op</string>
+  <string name="android_start_mk_title">MoKee is bezig met opstarten</string>
 </resources>

@@ -15,6 +15,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="android_upgrading_mk_title">魔趣系统正在更新...</string>
-  <string name="android_start_mk_title">魔趣正在启动...</string>
+  <string name="android_upgrading_mk_title">MoKee ditingkatkan\u2026</string>
+  <string name="android_start_mk_title">MoKee dimulai\u2026</string>
 </resources>
