@@ -20,8 +20,15 @@ import android.content.res.Resources;
 
 import java.util.Locale;
 
+/**
+ * {@hide}
+ */
 public class FestivalInfo {
 
+    /**
+     * Return a Chinese festival info string.
+     * @hide
+     */
     public static String [] getFestivalInfo() {
         switch (Resources.getSystem().getConfiguration().locale.getCountry()) {
             case "CN":
@@ -43,6 +50,11 @@ public class FestivalInfo {
         return null;
     }
 
+
+    /**
+     * Return a Chinese specific festival info string.
+     * @hide
+     */
     public static String [] getSpecificInfo() {
         switch (Resources.getSystem().getConfiguration().locale.getCountry()) {
             case "CN":

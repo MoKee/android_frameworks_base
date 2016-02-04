@@ -225,6 +225,10 @@ public class DateUtils
         return LocaleData.get(Locale.getDefault()).amPm[ampm - Calendar.AM];
     }
 
+    /**
+     * Return a Chinese localized string for AM or PM.
+     * @hide
+     */
     public static String getAMPMCNString(int hours, int ampm) {
         if (ampm == Calendar.AM) {
             if (hours < 5) {
