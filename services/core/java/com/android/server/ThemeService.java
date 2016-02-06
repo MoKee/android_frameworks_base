@@ -1189,7 +1189,7 @@ public class ThemeService extends IThemeService.Stub {
     };
 
     private void processInstalledThemes() {
-        final String defaultTheme = ThemeUtils.getDefaultThemePackageName(mContext);
+        final String defaultTheme = getDefaultThemePackageName(mContext);
         Message msg;
         // Make sure the default theme is the first to get processed!
         if (!ThemeConfig.SYSTEM_DEFAULT.equals(defaultTheme)) {
@@ -1247,5 +1247,32 @@ public class ThemeService extends IThemeService.Stub {
         }
 
         return null;
+    }
+
+    /**
+     * Get the default theme package name
+     * Historically this was done using {@link ThemeUtils#getDefaultThemePackageName(Context)} but
+     * the setting that is queried in that method uses the AOSP settings provider but the setting
+     * is now in MKSettings.  Since {@link ThemeUtils} is in the core framework we cannot access
+     * MKSettings.
+     * @param context
+     * @return Default theme package name
+     */
+    private static String getDefaultThemePackageName(Context context) {
+        final String defaultThemePkg = MKSettings.Secure.getString(context.getContentResolver(),
+                MKSettings.Secure.DEFAULT_THEME_PACKAGE);
+        if (!TextUtils.isEmpty(defaultThemePkg)) {
+            PackageManager pm = context.getPackageManager();
+            try {
+                if (pm.getPackageInfo(defaultThemePkg, 0) != null) {
+                    return defaultThemePkg;
+                }
+            } catch (PackageManager.NameNotFoundException e) {
+                // doesn't exist so system will be default
+                Log.w(TAG, "Default theme " + defaultThemePkg + " not found", e);
+            }
+        }
+
+        return SYSTEM_DEFAULT;
     }
 }
