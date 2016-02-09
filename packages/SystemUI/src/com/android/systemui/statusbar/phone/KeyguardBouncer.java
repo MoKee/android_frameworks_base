@@ -32,7 +32,7 @@ import com.android.keyguard.R;
 import com.android.keyguard.ViewMediatorCallback;
 import com.android.systemui.DejankUtils;
 
-import org.mokee.internal.util.MKLockPatternUtils;
+import org.mokee.internal.util.MkLockPatternUtils;
 
 import static com.android.keyguard.KeyguardHostView.OnDismissAction;
 import static com.android.keyguard.KeyguardSecurityModel.SecurityMode;
