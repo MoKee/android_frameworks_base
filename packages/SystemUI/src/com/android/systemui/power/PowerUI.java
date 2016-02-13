@@ -237,8 +237,8 @@ public class PowerUI extends SystemUI {
                 if (mIgnoreFirstPowerEvent) {
                     mIgnoreFirstPowerEvent = false;
                 } else {
-                    if (MKSettings.Global.getInt(cr,
-                            MKSettings.Global.POWER_NOTIFICATIONS_ENABLED, 0) == 1) {
+                    if (Settings.Global.getInt(cr,
+                            Settings.Global.CHARGING_SOUNDS_ENABLED, 0) == 1) {
                         playPowerNotificationSound();
                     }
                 }
