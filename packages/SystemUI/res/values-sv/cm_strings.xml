@@ -131,7 +131,6 @@
   <string name="quick_settings_ambient_display_label">Omgivande skärm</string>
   <string name="quick_settings_sync_label">Synk</string>
   <string name="quick_settings_battery_saver_label">Strömsparläge</string>
-  <string name="quick_settings_custom_tile_detail_title">Anpassad bricka</string>
   <string name="quick_settings_performance_profile_detail_title">Batteriläge</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">Svep höger för %1$s</string>
@@ -166,12 +165,8 @@
   <string name="zen_silent_with_warning">Inga avbrott, utom alarm.</string>
   <string name="quick_settings_remove">Ta bort bricka</string>
   <string name="quick_settings_dynamic_tile_detail_title">Dynamiska bricka</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Nästa alarm</string>
-  <string name="dynamic_qs_tile_ime_selector_label">IME-väljare</string>
-  <string name="dynamic_qs_tile_su_label">Root-åtkomst</string>
   <string name="fingerprint_try_again_hint">Vänligen skanna igen</string>
   <string name="fingerprint_try_again_hint_too_many">För många fingeravtrycksförsök. Försök igen senare.</string>
   <string name="accessibility_dock_battery_level">Dockningsstationens batteri<xliff:g id="number">%d</xliff:g> procent.</string>
-  <string name="quick_settings_custom_qs_detail_empty_text">Inga objekt hittades</string>
   <string name="play_queue_extention">Visa uppspelningskö</string>
 </resources>

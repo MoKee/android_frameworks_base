@@ -131,7 +131,6 @@
   <string name="quick_settings_ambient_display_label">Inaktivitätsdisplay</string>
   <string name="quick_settings_sync_label">Synchronisierung</string>
   <string name="quick_settings_battery_saver_label">Akku-Sparmodus</string>
-  <string name="quick_settings_custom_tile_detail_title">Benutzerdefinierte Kachel</string>
   <string name="quick_settings_performance_profile_detail_title">Akkumodus</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> – <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">Nach rechts wischen für %1$s</string>
@@ -166,12 +165,8 @@
   <string name="zen_silent_with_warning">Unterbrechungen nur bei Alarmen.</string>
   <string name="quick_settings_remove">Kachel entfernen</string>
   <string name="quick_settings_dynamic_tile_detail_title">Dynamische Kachel</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Nächster Alarm</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Eingabemethode</string>
-  <string name="dynamic_qs_tile_su_label">Root-Zugriff</string>
   <string name="fingerprint_try_again_hint">Bitte erneut scannen</string>
   <string name="fingerprint_try_again_hint_too_many">Zu viele falsche Fingerabdrücke. Versuchen Sie es später erneut.</string>
   <string name="accessibility_dock_battery_level">Dock-Akku <xliff:g id="number">%d</xliff:g> Prozent.</string>
-  <string name="quick_settings_custom_qs_detail_empty_text">Keinen Inhalt gefunden</string>
   <string name="play_queue_extention">Warteschlange anzeigen</string>
 </resources>
