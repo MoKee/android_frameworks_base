@@ -166,6 +166,7 @@
   <string name="quick_settings_remove">타일 제거</string>
   <string name="quick_settings_dynamic_tile_detail_title">동적 타일</string>
   <string name="fingerprint_try_again_hint">다시 시도해 주십시오</string>
+  <string name="fingerprint_try_again_hint_too_many">지문 인식 시도가 너무 많습니다. 나중에 다시 시도하세요.</string>
   <string name="accessibility_dock_battery_level">독의 배터리는 <xliff:g id="number">%d</xliff:g>퍼센트입니다.</string>
   <string name="play_queue_extention">재생 대기열 표시</string>
 </resources>
