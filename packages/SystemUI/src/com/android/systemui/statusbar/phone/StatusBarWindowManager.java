@@ -35,6 +35,8 @@ import com.android.systemui.keyguard.KeyguardViewMediator;
 import com.android.systemui.statusbar.BaseStatusBar;
 import com.android.systemui.statusbar.StatusBarState;
 import com.android.systemui.statusbar.policy.KeyguardMonitor;
+import mokee.providers.MKSettings;
+import org.mokee.internal.util.MkLockPatternUtils;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -258,7 +260,8 @@ public class StatusBarWindowManager implements KeyguardMonitor.Callback {
         boolean isblur = false;
         if (mCurrentState.keyguardShowing && mKeyguardBlurEnabled
                 && !mCurrentState.keyguardOccluded
-                && !mShowingMedia) {
+                && !mShowingMedia
+                && !isShowingLiveLockScreen()) {
             isblur = true;
         }
         if (mKeyguardBlur != null) {
@@ -392,6 +395,13 @@ public class StatusBarWindowManager implements KeyguardMonitor.Callback {
 
     public boolean keyguardExternalViewHasFocus() {
         return mCurrentState.keyguardExternalViewHasFocus;
+    }
+
+    private boolean isShowingLiveLockScreen() {
+        MkLockPatternUtils lockPatternUtils = new MkLockPatternUtils(mContext);
+        return (MKSettings.Secure.getInt(mContext.getContentResolver(),
+                MKSettings.Secure.LIVE_LOCK_SCREEN_ENABLED, 0) == 1)
+                && lockPatternUtils.isThirdPartyKeyguardEnabled();
     }
 
     private static class State {
