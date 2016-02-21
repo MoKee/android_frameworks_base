@@ -127,7 +127,6 @@
   <string name="quick_settings_heads_up_label">Notifications flottantes</string>
   <string name="quick_settings_sync_label">Synchroniser</string>
   <string name="quick_settings_battery_saver_label">Économiseur de batterie</string>
-  <string name="quick_settings_custom_tile_detail_title">Personnaliser le raccourci</string>
   <string name="quick_settings_performance_profile_detail_title">Mode batterie</string>
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="left_shortcut_hint">Balayer à droite pour %1$s</string>
@@ -161,7 +160,6 @@
   <string name="interruption_level_silent">Silencieux</string>
   <string name="zen_silent_with_warning">Aucune interruption, sauf les alarmes.</string>
   <string name="quick_settings_dynamic_tile_detail_title">Raccourcis dynamiques</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Mode de saisie</string>
   <string name="fingerprint_try_again_hint">Veuillez scanner à nouveau</string>
   <string name="accessibility_dock_battery_level">Batterie de la station d\'accueil chargée à <xliff:g id="number">%d</xliff:g> pour cent.</string>
   <string name="play_queue_extention">Voir la file d\'attente de lecture</string>
