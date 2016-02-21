@@ -166,7 +166,7 @@
   <string name="quick_settings_remove">Uklanjanje pločice</string>
   <string name="quick_settings_dynamic_tile_detail_title">Dinamične pločice</string>
   <string name="fingerprint_try_again_hint">Molim skenirajte ponovo</string>
-  <string name="fingerprint_try_again_hint_too_many">Previše pokušaja otiska prsta. Pokušajte ponovno kasnije.</string>
+  <string name="fingerprint_try_again_hint_too_many">Previše pokušaja otiska prsta. Pokušajte ponovo kasnije.</string>
   <string name="accessibility_dock_battery_level">Dock baterija <xliff:g id="number">%d</xliff:g> postotak.</string>
   <string name="play_queue_extention">Prikaži listu za reprodukciju</string>
 </resources>

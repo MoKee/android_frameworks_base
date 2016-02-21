@@ -57,10 +57,10 @@
   <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay alterado para modo noite.</string>
   <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay alterado para modo exterior.</string>
   <string name="accessibility_quick_settings_location_battery_saving">Localização: poupança de bateria.</string>
-  <string name="accessibility_quick_settings_location_gps_only">Localização: apenas no dispositivo.</string>
+  <string name="accessibility_quick_settings_location_gps_only">Localização: apenas dispositivo.</string>
   <string name="accessibility_quick_settings_location_high_accuracy">Localização: alta precisão.</string>
   <string name="accessibility_quick_settings_location_changed_battery_saving">Modo de localização alterado para poupança de bateria.</string>
-  <string name="accessibility_quick_settings_location_changed_gps_only">Modo de localização alterado para apenas no dispositivo.</string>
+  <string name="accessibility_quick_settings_location_changed_gps_only">Modo de localização alterado para apenas dispositivo.</string>
   <string name="accessibility_quick_settings_location_changed_high_accuracy">Modo de localização alterado para alta precisão.</string>
   <string name="accessibility_quick_settings_lock_screen_off">Ecrã de bloqueio desligado.</string>
   <string name="accessibility_quick_settings_lock_screen_on">Ecrã de bloqueio ligado.</string>
@@ -147,7 +147,7 @@
   <string name="navigation_ring_title">Atalhos de início rápido</string>
   <string name="navring_target_reset_message">Eliminar todos os atalhos criados pelo utilizador na barra de navegação e restaurar para os valores de origem?</string>
   <string name="navring_target_reset">Atalhos da barra de navegação restaurados aos seus valores de origem</string>
-  <string name="navring_action_open_ime_switcher">Mudar IME</string>
+  <string name="navring_action_open_ime_switcher">Abrir seletor de método de entrada</string>
   <string name="navring_action_kill_app">Terminar aplicação</string>
   <string name="navring_action_none">Nenhum</string>
   <string name="navring_action_take_screenshot">Tirar captura de ecrã</string>
