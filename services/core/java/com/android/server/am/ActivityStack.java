@@ -274,6 +274,8 @@ final class ActivityStack {
     }
 
     private final PerformanceManagerInternal mPerf;
+    private static final String PROTECTED_APPS_TARGET_VALIDATION_COMPONENT =
+            "com.android.settings/com.android.settings.applications.ProtectedAppsActivity";
 
     final Handler mHandler;
 
@@ -1180,6 +1182,7 @@ final class ActivityStack {
         }
 
         updatePrivacyGuardNotificationLocked(next);
+        updateProtectedAppNotificationLocked(next);
     }
 
     private void setVisible(ActivityRecord r, boolean visible) {
@@ -2134,6 +2137,16 @@ final class ActivityStack {
         }
         mTaskHistory.add(taskNdx, task);
         updateTaskMovement(task, true);
+    }
+
+    private final void updateProtectedAppNotificationLocked(ActivityRecord next) {
+        ComponentName componentName = ComponentName.unflattenFromString(next.shortComponentName);
+        if (TextUtils.equals(componentName.flattenToString(),
+                PROTECTED_APPS_TARGET_VALIDATION_COMPONENT)) {
+            Message msg = mService.mHandler.obtainMessage(
+                    ActivityManagerService.CANCEL_PROTECTED_APP_NOTIFICATION, next);
+            msg.sendToTarget();
+        }
     }
 
     private final void updatePrivacyGuardNotificationLocked(ActivityRecord next) {
