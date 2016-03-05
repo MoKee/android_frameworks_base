@@ -17,7 +17,6 @@
 
 package com.android.server.pm;
 
-import static android.Manifest.permission.ACCESS_THEME_MANAGER;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_MEDIA_STORAGE;
@@ -92,6 +91,7 @@ import android.content.res.Configuration;
 
 import android.Manifest;
 
+import mokee.app.MKContextConstants;
 import android.app.ActivityManager;
 import android.app.ActivityManagerNative;
 import android.app.AppGlobals;
@@ -154,14 +154,12 @@ import android.content.pm.ServiceInfo;
 import android.content.pm.Signature;
 import android.content.pm.UserInfo;
 import android.content.pm.ManifestDigest;
-import android.content.pm.ThemeUtils;
 import android.content.pm.VerificationParams;
 import android.content.pm.VerifierDeviceIdentity;
 import android.content.pm.VerifierInfo;
 import android.content.res.Resources;
 import android.content.res.AssetManager;
 import android.content.res.ThemeConfig;
-import android.content.res.ThemeManager;
 import android.hardware.display.DisplayManager;
 import android.net.Uri;
 import android.os.Debug;
@@ -220,6 +218,8 @@ import android.util.Xml;
 import android.view.Display;
 
 import mokee.providers.MKSettings;
+import mokee.themes.IThemeService;
+
 import dalvik.system.DexFile;
 import dalvik.system.VMRuntime;
 
@@ -252,6 +252,7 @@ import com.android.server.pm.Settings.DatabaseVersion;
 import com.android.server.pm.Settings.VersionInfo;
 import com.android.server.storage.DeviceStorageMonitorInternal;
 
+import org.mokee.internal.util.ThemeUtils;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlSerializer;
@@ -301,8 +302,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 
 /**
  * Keep track of all those .apks everywhere.
@@ -1463,7 +1462,8 @@ public class PackageManagerService extends IPackageManager.Stub {
                             }
                             String category = null;
                             if(res.pkg.mIsThemeApk) {
-                                category = Intent.CATEGORY_THEME_PACKAGE_INSTALLED_STATE_CHANGE;
+                                category = mokee.content.Intent
+                                        .CATEGORY_THEME_PACKAGE_INSTALLED_STATE_CHANGE;
                             }
                             sendPackageBroadcast(Intent.ACTION_PACKAGE_ADDED,
                                     packageName, null, extras, null, null, updateUsers);
@@ -8250,7 +8250,8 @@ public class PackageManagerService extends IPackageManager.Stub {
 
         boolean hasCommonResources = (hasCommonResources(pkg) && !COMMON_OVERLAY.equals(target));
         PackageParser.Package targetPkg = mPackages.get(target);
-        String appPath = targetPkg != null ? targetPkg.baseCodePath : "";
+        String appPath = targetPkg != null ? targetPkg.baseCodePath :
+                Environment.getRootDirectory() + "/framework/framework-res.apk";
 
         if (mInstaller.aapt(pkg.baseCodePath, internalPath, resPath, sharedGid, pkgId,
                 pkg.applicationInfo.targetSdkVersion,
@@ -13519,7 +13520,8 @@ public class PackageManagerService extends IPackageManager.Stub {
 
                 String category = null;
                 if (info.isThemeApk) {
-                    category = Intent.CATEGORY_THEME_PACKAGE_INSTALLED_STATE_CHANGE;
+                    category = mokee.content.Intent
+                            .CATEGORY_THEME_PACKAGE_INSTALLED_STATE_CHANGE;
                 }
 
                 sendPackageBroadcast(Intent.ACTION_PACKAGE_ADDED, packageName, category,
@@ -13564,7 +13566,8 @@ public class PackageManagerService extends IPackageManager.Stub {
             if (removedPackage != null) {
                 String category = null;
                 if (isThemeApk) {
-                    category = Intent.CATEGORY_THEME_PACKAGE_INSTALLED_STATE_CHANGE;
+                    category = mokee.content.Intent
+                            .CATEGORY_THEME_PACKAGE_INSTALLED_STATE_CHANGE;
                 }
                 sendPackageBroadcast(Intent.ACTION_PACKAGE_REMOVED, removedPackage, category,
                         extras, null, null, removedUsers);
@@ -17684,8 +17687,11 @@ public class PackageManagerService extends IPackageManager.Stub {
     @Override
     public int processThemeResources(String themePkgName) {
         mContext.enforceCallingOrSelfPermission(
-                Manifest.permission.ACCESS_THEME_MANAGER, null);
-        PackageParser.Package pkg = mPackages.get(themePkgName);
+                mokee.platform.Manifest.permission.ACCESS_THEME_MANAGER, null);
+        PackageParser.Package pkg;
+        synchronized (mPackages) {
+            pkg = mPackages.get(themePkgName);
+        }
         if (pkg == null) {
             Log.w(TAG, "Unable to get pkg for processing " + themePkgName);
             return 0;
@@ -17706,11 +17712,15 @@ public class PackageManagerService extends IPackageManager.Stub {
 
         // Generate Idmaps and res tables if pkg is a theme
         Iterator<String> iterator = pkg.mOverlayTargets.iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             String target = iterator.next();
             Exception failedException = null;
+            PackageParser.Package targetPkg;
+            synchronized (mPackages) {
+                targetPkg = mPackages.get(target);
+            }
             try {
-                compileResourcesAndIdmapIfNeeded(mPackages.get(target), pkg);
+                compileResourcesAndIdmapIfNeeded(targetPkg, pkg);
             } catch (IdmapException e) {
                 failedException = e;
             } catch (AaptException e) {
@@ -17721,7 +17731,7 @@ public class PackageManagerService extends IPackageManager.Stub {
 
             if (failedException != null) {
                 Slog.w(TAG, "Unable to process theme " + pkg.packageName + " for " + target,
-                      failedException);
+                        failedException);
                 // remove target from mOverlayTargets
                 iterator.remove();
             }
@@ -17731,10 +17741,16 @@ public class PackageManagerService extends IPackageManager.Stub {
     }
 
     private void processThemeResourcesInThemeService(String pkgName) {
-        ThemeManager tm =
-                (ThemeManager) mContext.getSystemService(Context.THEME_SERVICE);
-        if (tm != null) {
-            tm.processThemeResources(pkgName);
+        IThemeService ts = IThemeService.Stub.asInterface(ServiceManager.getService(
+                MKContextConstants.MK_THEME_SERVICE));
+        if (ts == null) {
+            Slog.e(TAG, "Theme service not available");
+            return;
+        }
+        try {
+            ts.processThemeResources(pkgName);
+        } catch (RemoteException e) {
+            /* ignore */
         }
     }
 
