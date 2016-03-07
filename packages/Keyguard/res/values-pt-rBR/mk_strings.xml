@@ -16,13 +16,21 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- On the unlock gesture screen, shown at the top of the unlock screen to tell the user what to do. Below this text is the place for the user to draw the gesture. -->
   <string name="lockscreen_gesture_instructions">Desenhe o gesto para desbloquear</string>
+  <!-- Shown to confirm that the user entered their lock gesture correctly. -->
   <string name="lockscreen_gesture_correct">Correto!</string>
+  <!-- On the unlock gesture screen, shown when the user enters the wrong lock gesture and must try again. -->
   <string name="lockscreen_gesture_wrong">Tente novamente</string>
+  <!-- Accessibility description of the gesture unlock. [CHAR_LIMIT=none] -->
   <string name="keyguard_accessibility_gesture_unlock">Gesto de desbloqueio.</string>
+  <!-- Accessibility description of the unlock gesture area. [CHAR_LIMIT=none] -->
   <string name="keyguard_accessibility_gesture_area">Área de gestos.</string>
+  <!-- Message shown in gesture unlock after some number of unsuccessful attempts -->
   <string name="kg_forgot_gesture_button_text">Esqueci meu gesto</string>
+  <!-- Message shown when user enters wrong pattern -->
   <string name="kg_wrong_gesture">Gesto incorreto</string>
+  <!-- Instructions for using the gesture unlock screen -->
   <string name="kg_gesture_instructions">Desenhe seu gesto</string>
   <string name="kg_too_many_failed_gesture_attempts_dialog_message">
         Você desenhou seu gesto de desbloqueio incorretamente <xliff:g id="number">%d</xliff:g> vezes.
