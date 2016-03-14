@@ -34,5 +34,5 @@
   <string name="kg_gesture_instructions">Gambar gerakan anda</string>
   <string name="kg_too_many_failed_gesture_attempts_dialog_message">
 Anda telah salah menggambar gerakan <xliff:g id="number">%d</xliff:g> kali
-\n\nMencoba lagi <xliff:g id="number">%d</xliff:g> detik.    </string>
+\n\nMencoba lagi <xliff:g id="number"><xliff:g id="number">%d</xliff:g> detik.    </string>
 </resources>
