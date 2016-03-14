@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2015-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -101,6 +102,8 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
     boolean mDismissAllButtonAnimating;
     int mFocusedTaskIndex = -1;
     int mPrevAccessibilityFocusedIndex = -1;
+
+    int lockedTaskCount = 0;
 
     private PopupMenu mPopup;
 
@@ -208,6 +211,10 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
 
     /** Resets this TaskStackView for reuse. */
     void reset() {
+
+        // Reset locked task count
+        lockedTaskCount = 0;
+
         // Reset the focused task
         resetFocusedTask();
 
@@ -1010,6 +1017,10 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 int count = 0;
                 for (int i = taskViewCount - 1; i >= 0; i--) {
                     TaskView tv = taskViews.get(i);
+                    if (tv.getTask().isLockedTask) {
+                        lockedTaskCount ++;
+                        continue;
+                    }
                     tv.startDeleteTaskAnimation(i > 0 ? null : postAnimationRunnable, count * 50);
                     count++;
                 }
