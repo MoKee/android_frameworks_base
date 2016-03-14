@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2015-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1005,7 +1006,15 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
         hideDismissAllButton(new Runnable() {
             @Override
             public void run() {
-                List<TaskView> taskViews = getTaskViews();
+                // Cleanup locked taskviews first
+                Iterator<TaskView> iterator = mTaskViews.iterator();
+                while (iterator.hasNext()) {
+                    TaskView taskView = iterator.next();
+                    if (taskView.getTask().isLockedTask) {
+                        iterator.remove();
+                    }
+                }
+                List<TaskView> taskViews = Collections.unmodifiableList(mTaskViews);
                 int taskViewCount = taskViews.size();
                 int count = 0;
                 for (int i = taskViewCount - 1; i >= 0; i--) {

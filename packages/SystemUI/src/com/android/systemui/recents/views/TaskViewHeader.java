@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2015-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,7 +60,8 @@ public class TaskViewHeader extends FrameLayout {
 
     // Header views
     ImageView mMoveTaskButton;
-    ImageView mDismissButton;
+    // ImageView mDismissButton;
+    ImageView mLockTaskButton;
     ImageView mApplicationIcon;
     TextView mActivityDescription;
 
@@ -130,7 +132,8 @@ public class TaskViewHeader extends FrameLayout {
         // Initialize the icon and description views
         mApplicationIcon = (ImageView) findViewById(R.id.application_icon);
         mActivityDescription = (TextView) findViewById(R.id.activity_description);
-        mDismissButton = (ImageView) findViewById(R.id.dismiss_task);
+        // mDismissButton = (ImageView) findViewById(R.id.dismiss_task);
+        mLockTaskButton = (ImageView) findViewById(R.id.lock_task);
         mMoveTaskButton = (ImageView) findViewById(R.id.move_task);
 
         // Hide the backgrounds if they are ripple drawables
@@ -211,10 +214,10 @@ public class TaskViewHeader extends FrameLayout {
         mCurrentPrimaryColorIsDark = t.useLightOnPrimaryColor;
         mActivityDescription.setTextColor(t.useLightOnPrimaryColor ?
                 mConfig.taskBarViewLightTextColor : mConfig.taskBarViewDarkTextColor);
-        mDismissButton.setImageDrawable(t.useLightOnPrimaryColor ?
+        /* mDismissButton.setImageDrawable(t.useLightOnPrimaryColor ?
                 mLightDismissDrawable : mDarkDismissDrawable);
         mDismissButton.setContentDescription(String.format(mDismissContentDescription,
-                t.contentDescription));
+                t.contentDescription)); */
         mMoveTaskButton.setVisibility((mConfig.multiStackEnabled) ? View.VISIBLE : View.INVISIBLE);
         if (mConfig.multiStackEnabled) {
             updateResizeTaskBarIcon(t);
@@ -261,7 +264,7 @@ public class TaskViewHeader extends FrameLayout {
 
     /** Animates this task bar dismiss button when launching a task. */
     void startLaunchTaskDismissAnimation() {
-        if (mDismissButton.getVisibility() == View.VISIBLE) {
+        /* if (mDismissButton.getVisibility() == View.VISIBLE) {
             mDismissButton.animate().cancel();
             mDismissButton.animate()
                     .alpha(0f)
@@ -269,12 +272,12 @@ public class TaskViewHeader extends FrameLayout {
                     .setInterpolator(mConfig.fastOutSlowInInterpolator)
                     .setDuration(mConfig.taskViewExitToAppDuration)
                     .start();
-        }
+        } */
     }
 
     /** Animates this task bar if the user does not interact with the stack after a certain time. */
     void startNoUserInteractionAnimation() {
-        if (mDismissButton.getVisibility() != View.VISIBLE) {
+        /* if (mDismissButton.getVisibility() != View.VISIBLE) {
             mDismissButton.setVisibility(View.VISIBLE);
             mDismissButton.setAlpha(0f);
             mDismissButton.animate()
@@ -283,21 +286,21 @@ public class TaskViewHeader extends FrameLayout {
                     .setInterpolator(mConfig.fastOutLinearInInterpolator)
                     .setDuration(mConfig.taskViewEnterFromAppDuration)
                     .start();
-        }
+        } */
     }
 
     /** Mark this task view that the user does has not interacted with the stack after a certain time. */
     void setNoUserInteractionState() {
-        if (mDismissButton.getVisibility() != View.VISIBLE) {
+        /* if (mDismissButton.getVisibility() != View.VISIBLE) {
             mDismissButton.animate().cancel();
             mDismissButton.setVisibility(View.VISIBLE);
             mDismissButton.setAlpha(1f);
-        }
+        } */
     }
 
     /** Resets the state tracking that the user has not interacted with the stack after a certain time. */
     void resetNoUserInteractionState() {
-        mDismissButton.setVisibility(View.INVISIBLE);
+        /* mDismissButton.setVisibility(View.INVISIBLE); */
     }
 
     @Override
