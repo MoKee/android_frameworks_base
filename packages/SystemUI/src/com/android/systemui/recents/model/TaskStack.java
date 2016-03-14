@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2015-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +23,7 @@ import com.android.systemui.recents.Constants;
 import com.android.systemui.recents.RecentsConfiguration;
 import com.android.systemui.recents.misc.NamedCounter;
 import com.android.systemui.recents.misc.Utilities;
+import com.android.systemui.recents.utils.LockTaskHelper;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -253,11 +255,16 @@ public class TaskStack {
 
     /** Removes all tasks */
     public void removeAllTasks() {
+        LockTaskHelper mLockTaskHelper = LockTaskHelper.init(null);
         ArrayList<Task> taskList = new ArrayList<Task>(mTaskList.getTasks());
         int taskCount = taskList.size();
         for (int i = taskCount - 1; i >= 0; i--) {
             Task t = taskList.get(i);
-            removeTaskImpl(t);
+            if (!mLockTaskHelper.isLockedTask(t.pkgName)) {
+                removeTaskImpl(t);
+            } else {
+                taskList.remove(i);
+            }
         }
         if (mCb != null) {
             // Notify that all tasks have been removed
