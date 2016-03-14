@@ -54,6 +54,15 @@
         android:src="@drawable/star"
         android:visibility="gone" />
     <com.android.systemui.recents.views.FixedSizeImageView
+        android:id="@+id/lock_task"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="4dp"
+        android:layout_gravity="center_vertical|end"
+        android:padding="12dp"
+        android:background="@drawable/recents_button_bg"
+        android:src="@drawable/ic_lock_open_light" />
+    <!-- <com.android.systemui.recents.views.FixedSizeImageView
         android:id="@+id/dismiss_task"
         android:layout_width="48dp"
         android:layout_height="48dp"
@@ -62,5 +71,5 @@
         android:padding="12dp"
         android:background="@drawable/recents_button_bg"
         android:visibility="invisible"
-        android:src="@drawable/recents_dismiss_light" />
+        android:src="@drawable/recents_dismiss_light" /> -->
 </com.android.systemui.recents.views.TaskViewHeader>
