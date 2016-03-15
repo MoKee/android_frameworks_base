@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2015-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +30,7 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import com.android.systemui.recents.RecentsConfiguration;
+import com.android.systemui.recents.model.Task;
 
 /**
  * This class facilitates swipe to dismiss. It defines an interface to be implemented by the
@@ -365,9 +367,28 @@ public class SwipeHelper {
                 && isValidSwipeDirection(translation)
                 && (childSwipedFastEnough || childSwipedFarEnough);
 
-        if (dismissChild) {
+        TaskView tv = (TaskView) mCurrView;
+        Task mTask = tv.getTask();
+
+        if (dismissChild && translation > 0) {
             // flingadingy
-            dismissChild(mCurrView, childSwipedFastEnough ? velocity : 0f);
+            if (mTask.isLockedTask) {
+                mCallback.onDragCancelled(mCurrView);
+                snapChild(mCurrView, velocity);
+            } else {
+                dismissChild(mCurrView, childSwipedFastEnough ? velocity : 0f);
+            }
+        } else if (dismissChild && translation < 0) {
+            if (mTask.isLockedTask) {
+                tv.mLockTaskHelper.removeTask(mTask.pkgName);
+                mTask.isLockedTask = false;
+            } else {
+                tv.mLockTaskHelper.addTask(mTask.pkgName);
+                mTask.isLockedTask = true;
+            }
+            tv.refreshLockTaskButtonBackground(mTask.useLightOnPrimaryColor, mTask.isLockedTask);
+            mCallback.onDragCancelled(mCurrView);
+            snapChild(mCurrView, velocity);
         } else {
             // snappity
             mCallback.onDragCancelled(mCurrView);

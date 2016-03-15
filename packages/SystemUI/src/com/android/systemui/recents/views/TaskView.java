@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2015-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +34,7 @@ import com.android.systemui.recents.Constants;
 import com.android.systemui.recents.RecentsConfiguration;
 import com.android.systemui.recents.misc.Utilities;
 import com.android.systemui.recents.model.Task;
+import com.android.systemui.recents.utils.LockTaskHelper;
 import com.android.systemui.statusbar.phone.PhoneStatusBar;
 import mokee.providers.MKSettings;
 
@@ -51,6 +53,8 @@ public class TaskView extends FrameLayout implements Task.TaskCallbacks,
         public void onTaskViewFocusChanged(TaskView tv, boolean focused);
 
         public void onTaskResize(TaskView tv);
+
+        public void onTaskLockChanged();
     }
 
     RecentsConfiguration mConfig;
@@ -76,6 +80,8 @@ public class TaskView extends FrameLayout implements Task.TaskCallbacks,
     TaskViewHeader mHeaderView;
     View mActionButtonView;
     TaskViewCallbacks mCb;
+
+    LockTaskHelper mLockTaskHelper;
 
     // Optimizations
     ValueAnimator.AnimatorUpdateListener mUpdateDimListener =
@@ -111,6 +117,7 @@ public class TaskView extends FrameLayout implements Task.TaskCallbacks,
             setBackground(new FakeShadowDrawable(context.getResources(), mConfig));
         }
         setOutlineProvider(mViewBounds);
+        mLockTaskHelper = LockTaskHelper.init(context);
     }
 
     /** Set callback */
@@ -683,7 +690,10 @@ public class TaskView extends FrameLayout implements Task.TaskCallbacks,
             if (Constants.DebugFlags.App.EnableTaskFiltering || (am != null && am.isEnabled())) {
                 mHeaderView.mApplicationIcon.setOnClickListener(this);
             }
-            mHeaderView.mDismissButton.setOnClickListener(this);
+            // mHeaderView.mDismissButton.setOnClickListener(this);
+            mHeaderView.mLockTaskButton.setOnClickListener(this);
+            mTask.isLockedTask = mLockTaskHelper.isLockedTask(mTask.pkgName);
+            refreshLockTaskButtonBackground(mTask.useLightOnPrimaryColor, mTask.isLockedTask);
             if (mConfig.multiStackEnabled) {
                 mHeaderView.mMoveTaskButton.setOnClickListener(this);
             }
@@ -691,6 +701,12 @@ public class TaskView extends FrameLayout implements Task.TaskCallbacks,
             mHeaderView.mApplicationIcon.setOnLongClickListener(this);
         }
         mTaskDataLoaded = true;
+    }
+
+    public void refreshLockTaskButtonBackground(boolean isLight, boolean isLocked) {
+        int lockResId = isLight ? R.drawable.ic_lock_light : R.drawable.ic_lock_dark;
+        int openResId = isLight ? R.drawable.ic_lock_open_light : R.drawable.ic_lock_open_dark;
+        mHeaderView.mLockTaskButton.setImageDrawable(getContext().getDrawable((isLocked ? lockResId : openResId)));
     }
 
     @Override
@@ -702,7 +718,8 @@ public class TaskView extends FrameLayout implements Task.TaskCallbacks,
             mHeaderView.unbindFromTask();
             // Unbind any listeners
             mHeaderView.mApplicationIcon.setOnClickListener(null);
-            mHeaderView.mDismissButton.setOnClickListener(null);
+            // mHeaderView.mDismissButton.setOnClickListener(null);
+            mHeaderView.mLockTaskButton.setOnClickListener(null);
             if (mConfig.multiStackEnabled) {
                 mHeaderView.mMoveTaskButton.setOnClickListener(null);
             }
@@ -742,15 +759,24 @@ public class TaskView extends FrameLayout implements Task.TaskCallbacks,
                                 }
                             }
                         }
-                    } else if (v == mHeaderView.mDismissButton) {
+                    /*} else if (v == mHeaderView.mDismissButton) {
                         dismissTask();
                         // Keep track of deletions by the dismiss button
                         MetricsLogger.histogram(getContext(), "overview_task_dismissed_source",
-                                Constants.Metrics.DismissSourceHeaderButton);
+                                Constants.Metrics.DismissSourceHeaderButton); */
                     } else if (v == mHeaderView.mMoveTaskButton) {
                         if (mCb != null) {
                             mCb.onTaskResize(tv);
                         }
+                    } else if (v == mHeaderView.mLockTaskButton) {
+                        if (mTask.isLockedTask) {
+                            mLockTaskHelper.removeTask(mTask.pkgName);
+                        } else {
+                            mLockTaskHelper.addTask(mTask.pkgName);
+                        }
+                        mTask.isLockedTask = !mTask.isLockedTask;
+                        refreshLockTaskButtonBackground(mTask.useLightOnPrimaryColor, mTask.isLockedTask);
+                        mCb.onTaskLockChanged();
                     }
                 }
             }, 125);
