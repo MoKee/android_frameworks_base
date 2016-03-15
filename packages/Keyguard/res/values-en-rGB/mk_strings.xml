@@ -17,11 +17,11 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- On the unlock gesture screen, shown at the top of the unlock screen to tell the user what to do. Below this text is the place for the user to draw the gesture. -->
-  <string name="lockscreen_gesture_instructions">Draw gesture to unblock</string>
+  <string name="lockscreen_gesture_instructions">Draw gesture to unlock</string>
   <!-- Shown to confirm that the user entered their lock gesture correctly. -->
   <string name="lockscreen_gesture_correct">Correct!</string>
   <!-- On the unlock gesture screen, shown when the user enters the wrong lock gesture and must try again. -->
-  <string name="lockscreen_gesture_wrong">Try Again</string>
+  <string name="lockscreen_gesture_wrong">Try again</string>
   <!-- Accessibility description of the gesture unlock. [CHAR_LIMIT=none] -->
   <string name="keyguard_accessibility_gesture_unlock">Gesture unlock.</string>
   <!-- Accessibility description of the unlock gesture area. [CHAR_LIMIT=none] -->

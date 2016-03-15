@@ -21,6 +21,7 @@
   <!-- Shown to confirm that the user entered their lock gesture correctly. -->
   <string name="lockscreen_gesture_correct">Teisingai!</string>
   <!-- On the unlock gesture screen, shown when the user enters the wrong lock gesture and must try again. -->
+  <string name="lockscreen_gesture_wrong">Bandyti dar kartą</string>
   <!-- Accessibility description of the gesture unlock. [CHAR_LIMIT=none] -->
   <!-- Accessibility description of the unlock gesture area. [CHAR_LIMIT=none] -->
   <!-- Message shown in gesture unlock after some number of unsuccessful attempts -->
