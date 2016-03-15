@@ -87,6 +87,8 @@ import android.telecom.TelecomManager;
 import com.android.internal.os.DeviceKeyHandler;
 
 import com.android.internal.util.cm.ActionUtils;
+
+import mokee.hardware.MKHardwareManager;
 import mokee.providers.MKSettings;
 import dalvik.system.DexClassLoader;
 import android.util.DisplayMetrics;
@@ -747,6 +749,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private boolean mHasPermanentMenuKey;
     private boolean mClearedBecauseOfForceShow;
     private boolean mTopWindowIsKeyguard;
+    private MKHardwareManager mMKHardware;
 
     private class PolicyHandler extends Handler {
         @Override
@@ -1615,7 +1618,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mOrientationListener.setCurrentRotation(windowManager.getRotation());
         } catch (RemoteException ex) { }
         mSettingsObserver = new SettingsObserver(mHandler);
-        mSettingsObserver.observe();
         mShortcutManager = new ShortcutManager(context);
         mUiMode = context.getResources().getInteger(
                 com.android.internal.R.integer.config_defaultUiModeType);
@@ -2146,6 +2148,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     MKSettings.Secure.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
             if (devForceNavbar != mDevForceNavbar) {
                 mDevForceNavbar = devForceNavbar;
+                if (mMKHardware.isSupported(MKHardwareManager.FEATURE_KEY_DISABLE)) {
+                    mMKHardware.set(MKHardwareManager.FEATURE_KEY_DISABLE, mDevForceNavbar);
+                }
             }
 
             mNavigationBarLeftInLandscape = MKSettings.System.getIntForUser(resolver,
@@ -6911,6 +6916,11 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     public void systemReady() {
         mKeyguardDelegate = new KeyguardServiceDelegate(mContext);
         mKeyguardDelegate.onSystemReady();
+
+        mMKHardware = MKHardwareManager.getInstance(mContext);
+        // Ensure observe happens in systemReady() since we need
+        // MKHardwareService to be up and running
+        mSettingsObserver.observe();
 
         readCameraLensCoverState();
         updateUiMode();
