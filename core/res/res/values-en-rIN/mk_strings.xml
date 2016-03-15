@@ -18,4 +18,5 @@
   <!-- [CHAR LIMIT=40] Title of dialog that is shown when performing a system upgrade. -->
   <!-- [CHAR LIMIT=40] Title of dialog that is shown when system is starting. -->
   <string name="android_start_mk_title">MoKee is starting\u2026</string>
+  <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
 </resources>
