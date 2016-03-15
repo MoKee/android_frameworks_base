@@ -409,7 +409,7 @@ public final class ShutdownThread extends Thread {
                 }
             }
             if (mRebootUpdate) {
-                pd.setTitle(context.getText(com.android.internal.R.string.reboot_to_update_title));
+                pd.setTitle(context.getText(com.android.internal.R.string.reboot_to_update_mk_title));
                 pd.setMessage(context.getText(
                         com.android.internal.R.string.reboot_to_update_prepare));
                 pd.setMax(100);

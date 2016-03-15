@@ -21,6 +21,7 @@
 
     <java-symbol type="string" name="android_start_mk_title" />
     <java-symbol type="string" name="android_upgrading_mk_title" />
+    <java-symbol type="string" name="reboot_to_update_mk_title" />
 
     <!-- PlatLogo -->
     <java-symbol type="drawable" name="platlogo_mk" />
