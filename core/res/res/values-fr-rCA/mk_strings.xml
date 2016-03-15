@@ -19,4 +19,5 @@
   <string name="android_upgrading_mk_title">MoKee est en cours de mise à jour\u2026</string>
   <!-- [CHAR LIMIT=40] Title of dialog that is shown when system is starting. -->
   <string name="android_start_mk_title">Mokee est en cours de démarrage\u2026</string>
+  <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
 </resources>
