@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2013-2016 The MoKee Open Source Project
+<!-- Copyright (C) 2013-2016 The MoKee OpenSource Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -16,16 +16,8 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Network traffic monitor single-line text size -->
-    <dimen name="net_traffic_single_text_size">12dp</dimen>
-    <!-- Network traffic monitor multi-line text size -->
-    <dimen name="net_traffic_multi_text_size">9dp</dimen>
-
     <!-- Floating recents dismiss button -->
-    <dimen name="floating_recents_dismiss_button_height">54dp</dimen>
-    <dimen name="floating_recents_dismiss_button_width">54dp</dimen>
-    <dimen name="floating_recents_dismiss_button_translation_z">12dp</dimen>
-    <dimen name="floating_recents_dismiss_button_margin_side">32dp</dimen>
-    <dimen name="floating_recents_dismiss_button_margin_bottom">45dp</dimen>
+    <color name="fab_color">#ff009688</color>
+    <color name="floating_recents_dismiss_button_icon_color">#ffffff</color>
 
 </resources>
