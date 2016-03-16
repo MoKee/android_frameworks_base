@@ -54,4 +54,7 @@
         android:layout_gravity="center_horizontal|bottom"
         android:scaleType="fitXY"
         android:src="@drawable/recents_lower_gradient" />
+
+    <include layout="@layout/floating_recents_dismiss_button"
+        android:visibility="gone" />
 </FrameLayout>

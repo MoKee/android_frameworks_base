@@ -48,6 +48,7 @@ import com.android.internal.app.IAppOpsService;
 import com.android.internal.logging.MetricsLogger;
 import com.android.systemui.R;
 import com.android.systemui.recents.Constants;
+import com.android.systemui.recents.RecentsActivity;
 import com.android.systemui.recents.RecentsConfiguration;
 import com.android.systemui.recents.misc.DozeTrigger;
 import com.android.systemui.recents.misc.SystemServicesProxy;
@@ -98,7 +99,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
     DozeTrigger mUIDozeTrigger;
     DebugOverlayView mDebugOverlay;
     Rect mTaskStackBounds = new Rect();
-    DismissView mDismissAllButton;
+    View mDismissAllButton;
     boolean mDismissAllButtonAnimating;
     int mFocusedTaskIndex = -1;
     int mPrevAccessibilityFocusedIndex = -1;
@@ -363,15 +364,13 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
 
             // Inflate and add the dismiss button if necessary
             if (Constants.DebugFlags.App.EnableDismissAll && mDismissAllButton == null) {
-                mDismissAllButton = (DismissView)
-                        mInflater.inflate(R.layout.recents_dismiss_button, this, false);
-                mDismissAllButton.setOnButtonClickListener(new View.OnClickListener() {
+                mDismissAllButton = ((View)((View)getParent()).getParent()).findViewById(R.id.floating_recents_dismiss);
+                mDismissAllButton.findViewById(R.id.floating_recents_dismiss_button).setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         mStack.removeAllTasks();
                     }
                 });
-                addView(mDismissAllButton, 0);
             }
 
             // Return all the invisible children to the pool
@@ -390,9 +389,9 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                     reaquireAccessibilityFocus |= (i == mPrevAccessibilityFocusedIndex);
 
                     // Hide the dismiss button if the front most task is invisible
-                    if (task == mStack.getFrontMostTask()) {
+                    /* if (task == mStack.getFrontMostTask()) {
                         hideDismissAllButton(null);
-                    }
+                    } */
                 }
             }
 
@@ -421,9 +420,9 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
 
                     // If we show the front most task view then ensure that the dismiss button
                     // is visible too.
-                    if (!mAwaitingFirstLayout && (task == mStack.getFrontMostTask())) {
+                    /* if (!mAwaitingFirstLayout && (task == mStack.getFrontMostTask())) {
                         showDismissAllButton();
-                    }
+                    } */
                 }
 
                 // Animate the task into place
@@ -726,7 +725,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
         // Synchronize the views
         synchronizeStackViewsWithModel();
         clipTaskViews();
-        updateDismissButtonPosition();
+        // updateDismissButtonPosition();
         // Notify accessibility
         sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_SCROLLED);
     }
@@ -802,12 +801,12 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
         }
 
         // Measure the dismiss button
-        if (mDismissAllButton != null) {
+        /* if (mDismissAllButton != null) {
             int taskRectWidth = mLayoutAlgorithm.mTaskRect.width();
             mDismissAllButton.measure(
                     MeasureSpec.makeMeasureSpec(taskRectWidth, MeasureSpec.EXACTLY),
                     MeasureSpec.makeMeasureSpec(mConfig.dismissAllButtonSizePx, MeasureSpec.EXACTLY));
-        }
+        } */
 
         setMeasuredDimension(width, height);
     }
@@ -838,11 +837,11 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
         // Layout the dismiss button at the top of the screen, and just translate it accordingly
         // when synchronizing the views with the model to attach it to the bottom of the front-most
         // task view
-        if (mDismissAllButton != null) {
+        /* if (mDismissAllButton != null) {
             mDismissAllButton.layout(mLayoutAlgorithm.mTaskRect.left, 0,
                     mLayoutAlgorithm.mTaskRect.left + mDismissAllButton.getMeasuredWidth(),
                     mDismissAllButton.getMeasuredHeight());
-        }
+        } */
 
         if (mAwaitingFirstLayout) {
             mAwaitingFirstLayout = false;
@@ -1062,8 +1061,6 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 Float.compare(mDismissAllButton.getAlpha(), 0f) == 0) {
             mDismissAllButtonAnimating = true;
             mDismissAllButton.setVisibility(View.VISIBLE);
-            mDismissAllButton.showClearButton();
-            mDismissAllButton.findViewById(R.id.dismiss_text).setAlpha(1f);
             mDismissAllButton.setAlpha(0f);
             mDismissAllButton.animate()
                     .alpha(1f)
@@ -1099,7 +1096,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 .start();
     }
 
-    /** Updates the dismiss button position */
+    /** Updates the dismiss button position
     void updateDismissButtonPosition() {
         if (mDismissAllButton == null) return;
 
@@ -1115,7 +1112,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                         transform.rect.width()) / 2f);
             }
         }
-    }
+    } */
 
     /** Final callback after Recents is finally hidden. */
     void onRecentsHidden() {
@@ -1382,7 +1379,8 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 Task tvTask = taskViews.get(i).getTask();
                 if (taskIndex < mStack.indexOfTask(tvTask)) {
                     // Offset by 1 if we have a dismiss-all button
-                    insertIndex = i + (Constants.DebugFlags.App.EnableDismissAll ? 1 : 0);
+                    // insertIndex = i + (Constants.DebugFlags.App.EnableDismissAll ? 1 : 0);
+                    insertIndex = i;
                     break;
                 }
             }

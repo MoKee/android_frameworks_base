@@ -31,6 +31,7 @@ import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowInsets;
@@ -80,6 +81,8 @@ public class RecentsView extends FrameLayout implements TaskStackView.TaskStackV
     List<TaskStackView> mTaskStackViews = new ArrayList<>();
     RecentsAppWidgetHostView mSearchBar;
     RecentsViewCallbacks mCb;
+
+    View mDismissAllButton;
 
     public RecentsView(Context context) {
         super(context);
@@ -313,6 +316,12 @@ public class RecentsView extends FrameLayout implements TaskStackView.TaskStackV
         }
     }
 
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        mDismissAllButton = ((View)getParent()).findViewById(R.id.floating_recents_dismiss);
+    }
+
     /**
      * This is called with the full size of the window since we are handling our own insets.
      */
@@ -339,6 +348,12 @@ public class RecentsView extends FrameLayout implements TaskStackView.TaskStackV
         List<TaskStackView> stackViews = getTaskStackViews();
         List<Rect> stackViewsBounds = mLayoutAlgorithm.computeStackRects(stackViews,
                 taskStackBounds);
+
+        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams)mDismissAllButton.getLayoutParams();
+        params.topMargin = taskStackBounds.top;
+        params.gravity = Gravity.BOTTOM | Gravity.RIGHT;
+        mDismissAllButton.setLayoutParams(params);
+
         int stackCount = stackViews.size();
         for (int i = 0; i < stackCount; i++) {
             TaskStackView stackView = stackViews.get(i);
