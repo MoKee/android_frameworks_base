@@ -1119,9 +1119,9 @@ final class ActivityStack {
             }
         }
 
-        if (MKSettings.System.getInt(mService.mContext.getContentResolver(), MKSettings.System.AEGIS_WARDEN_FORCE_STOP, 0) == 1) {
-            if (!TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && !TextUtils.equals(mStackSupervisor.mWardenPackageName, next.packageName)) {
-                if (next.isHomeActivity()) {
+        if (!TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && !TextUtils.equals(mStackSupervisor.mWardenPackageName, next.packageName)) {
+            if (next.isHomeActivity()) {
+                if (MKSettings.System.getInt(mService.mContext.getContentResolver(), MKSettings.System.AEGIS_WARDEN_FORCE_STOP, 0) == 1) {
                     try {
                         if (mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(mStackSupervisor.mWardenPackageName)
                                 .getUidsInfo().get(UserHandle.myUserId()).getMode() == WardenUtils.MODE_ERRORED
@@ -1130,25 +1130,25 @@ final class ActivityStack {
                         }
                     } catch (NullPointerException e) {
                     }
-                } else if (next.isApplicationActivity()) {
-                    mStackSupervisor.mWardenCallBackPackageName = next.packageName;
                 }
-                if (!TextUtils.equals(mStackSupervisor.mWardenCallBackPackageName, next.packageName)) {
-                    mStackSupervisor.mWardenCallBackPackageName = null;
-                }
-                mStackSupervisor.mWardenPackageName = null;
-                mStackSupervisor.mWardenPackageUid = 0;
-            } else {
-                int mode = WardenUtils.MODE_ALLOWED;
-                try {
-                    mode = mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(next.packageName)
-                            .getUidsInfo().get(UserHandle.myUserId()).getMode();
-                } catch (NullPointerException e) {
-                }
-                if (TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && mode == WardenUtils.MODE_ERRORED) {
-                    mStackSupervisor.mWardenPackageName = next.packageName;
-                    mStackSupervisor.mWardenPackageUid = next.userId;
-                }
+            } else if (next.isApplicationActivity()) {
+                mStackSupervisor.mWardenCallBackPackageName = next.packageName;
+            }
+            if (!TextUtils.equals(mStackSupervisor.mWardenCallBackPackageName, next.packageName)) {
+                mStackSupervisor.mWardenCallBackPackageName = null;
+            }
+            mStackSupervisor.mWardenPackageName = null;
+            mStackSupervisor.mWardenPackageUid = 0;
+        } else {
+            int mode = WardenUtils.MODE_ALLOWED;
+            try {
+                mode = mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(next.packageName)
+                        .getUidsInfo().get(UserHandle.myUserId()).getMode();
+            } catch (NullPointerException e) {
+            }
+            if (TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && mode == WardenUtils.MODE_ERRORED) {
+                mStackSupervisor.mWardenPackageName = next.packageName;
+                mStackSupervisor.mWardenPackageUid = next.userId;
             }
         }
 
