@@ -16,6 +16,10 @@
 
 package com.android.server.power;
 
+import android.os.IDeviceIdleController;
+import android.os.ServiceManager;
+import com.android.internal.util.ArrayUtils;
+import com.android.server.SystemConfig;
 import mokee.power.PerformanceManagerInternal;
 
 import android.Manifest;
@@ -3515,14 +3519,23 @@ public final class PowerManagerService extends SystemService
             try {
                 if (mAppOps != null &&
                         mAppOps.checkOperation(AppOpsManager.OP_WAKE_LOCK, uid, packageName)
-                        != AppOpsManager.MODE_ALLOWED) {
-                    Slog.d(TAG, "acquireWakeLock: ignoring request from " + packageName);
-                    // For (ignore) accounting purposes
-                    mAppOps.noteOperation(AppOpsManager.OP_WAKE_LOCK, uid, packageName);
-                    // silent return
-                    return;
+                                != AppOpsManager.MODE_ALLOWED) {
+
+                    // If this app is whitelisted as "allow-in-power-save" then always allow!
+                    // Current impl only looks at system-loaded ones, if we want to also include
+                    // user apps which have been manually set, we would use IDeviceIdleController
+                    if (!SystemConfig.getInstance().getAllowInPowerSave().contains(packageName)) {
+                        Slog.d(TAG, "acquireWakeLock: ignoring request from " + packageName);
+                        // For (ignore) accounting purposes
+                        mAppOps.noteOperation(AppOpsManager.OP_WAKE_LOCK, uid, packageName);
+                        // silent return
+                        return;
+                    } else {
+                        Slog.d(TAG, "wake lock requested to be ignored but " + packageName
+                                + " is marked to opt-out of all power save restrictions.");
+                    }
                 }
-            } catch (RemoteException e) {
+            } catch (RemoteException ignored) {
             }
 
             final long ident = Binder.clearCallingIdentity();
