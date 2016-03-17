@@ -5950,6 +5950,12 @@ public class PackageManagerService extends IPackageManager.Stub {
             throw PackageManagerException.from(e);
         }
 
+        if (pkg.packageName.equals("com.google.android.packageinstaller")) {
+            // this package is blocked, skip installing it
+            throw new PackageManagerException(INSTALL_FAILED_UNINSTALLED_PREBUNDLE,
+                    "skip install for " + pkg.packageName);
+        }
+
         if ((parseFlags & PackageParser.PARSE_IS_PREBUNDLED_DIR) != 0) {
             synchronized (mPackages) {
                 PackageSetting existingSettings = mSettings.peekPackageLPr(pkg.packageName);
