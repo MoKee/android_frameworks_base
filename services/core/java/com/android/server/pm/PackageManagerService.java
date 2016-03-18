@@ -463,6 +463,8 @@ public class PackageManagerService extends IPackageManager.Stub {
     private static final String PROTECTED_APPS_TARGET_VALIDATION_COMPONENT =
                     "com.android.settings/com.android.settings.applications.ProtectedAppsActivity";
 
+    private static final List<String> BLACK_LIST_APPS = Arrays.asList("com.google.android.packageinstaller");
+
     /**
      * The offset in bytes to the beginning of the hashes in an idmap
      */
@@ -5950,10 +5952,12 @@ public class PackageManagerService extends IPackageManager.Stub {
             throw PackageManagerException.from(e);
         }
 
-        if (pkg.packageName.equals("com.google.android.packageinstaller")) {
-            // this package is blocked, skip installing it
-            throw new PackageManagerException(INSTALL_FAILED_UNINSTALLED_PREBUNDLE,
-                    "skip install for " + pkg.packageName);
+        for (String blockPackageName : BLACK_LIST_APPS) {
+            if (pkg.packageName.equals(blockPackageName)) {
+                // this package is blocked, skip installing it
+                throw new PackageManagerException(INSTALL_FAILED_REGION_LOCKED_PREBUNDLE,
+                        "skip install for " + pkg.packageName);
+            }
         }
 
         if ((parseFlags & PackageParser.PARSE_IS_PREBUNDLED_DIR) != 0) {
@@ -12434,6 +12438,16 @@ public class PackageManagerService extends IPackageManager.Stub {
     private void installNewPackageLI(PackageParser.Package pkg, int parseFlags, int scanFlags,
             UserHandle user, String installerPackageName, String volumeUuid,
             PackageInstalledInfo res) {
+
+        for (String blockPackageName : BLACK_LIST_APPS) {
+            if (pkg.packageName.equals(blockPackageName)) {
+                // this package is blocked, skip installing it
+                res.setError(INSTALL_FAILED_INTERNAL_ERROR, "Attempt to re-install " + pkg.packageName
+                        + " without first uninstalling.");
+                return;
+            }
+        }
+
         // Remember this for later, in case we need to rollback this install
         String pkgName = pkg.packageName;
 
