@@ -33,5 +33,5 @@
   <!-- Instructions for using the gesture unlock screen -->
   <string name="kg_gesture_instructions">绘制您的手势</string>
   <string name="kg_too_many_failed_gesture_attempts_dialog_message">
-您已经 <xliff:g id="number">%d</xliff:g> 次错误地绘制了解锁图案。\n\n请在 <xliff:g id="number">%d</xliff:g> 秒后再试。    </string>
+您已经绘画 <xliff:g id="number">%d</xliff:g> 次错误的解锁图案。\n\n请在 <xliff:g id="number">%d</xliff:g> 秒后再试。</string>
 </resources>

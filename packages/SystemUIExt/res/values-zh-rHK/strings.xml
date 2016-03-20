@@ -18,6 +18,6 @@
   <string name="quick_settings_has_data_usage">數據使用</string>
   <string name="quick_settings_remaining_data_usage">"<xliff:g id="DATA_REID">%s </xliff:g> 剩餘數據使用量"</string>
   <string name="quick_settings_data_Package_Set">請設定數據使用限制</string>
-  <string name="quick_settings_data_Package">"<xliff:g id="DATA_PACKAGE">%s </xliff:g> 的數據使用限制"</string>
-  <string name="quick_settings_data_Package_limit">"使用超出 <xliff:g id="DATA_LIMIT">%s</xliff:g>"</string>
+  <string name="quick_settings_data_Package">"<xliff:g id="DATA_PACKAGE">%s </xliff:g> 限制數據使用"</string>
+  <string name="quick_settings_data_Package_limit">"超出使用 <xliff:g id="DATA_LIMIT">%s</xliff:g>"</string>
 </resources>
