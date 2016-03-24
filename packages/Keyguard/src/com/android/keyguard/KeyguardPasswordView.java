@@ -342,6 +342,7 @@ public class KeyguardPasswordView extends KeyguardAbsKeyInputView
         // is from the user.
         if (!TextUtils.isEmpty(s)) {
             onUserInput();
+            onValidateQuickUnlock();
         }
     }
 
