@@ -33,6 +33,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.android.keyguard.PasswordTextView.QuickUnlockListener;
+import com.android.internal.widget.LockPatternChecker;
+
 import com.android.settingslib.animation.AppearAnimationUtils;
 import com.android.settingslib.animation.DisappearAnimationUtils;
 
@@ -51,6 +54,7 @@ public class KeyguardPINView extends KeyguardPinBasedInputView {
     private ViewGroup mRow2;
     private ViewGroup mRow3;
     private View mDivider;
+    private View mOKButton;
     private int mDisappearYTranslation;
     private View[][] mViews;
 
@@ -108,11 +112,13 @@ public class KeyguardPINView extends KeyguardPinBasedInputView {
                         findViewById(R.id.key9)
                 },
                 new View[]{
-                        null, findViewById(R.id.key0), findViewById(R.id.key_enter)
+                        null, findViewById(R.id.key0), null
                 },
                 new View[]{
                         null, mEcaView, null
                 }};
+        mOKButton = findViewById(R.id.key_enter);
+        mOKButton.setVisibility(View.INVISIBLE);
 
         boolean scramblePin = (MKSettings.System.getInt(getContext().getContentResolver(),
                 MKSettings.System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT, 0) == 1);
@@ -140,6 +146,11 @@ public class KeyguardPINView extends KeyguardPinBasedInputView {
                 view.setDigit(sNumbers.get(i));
             }
         }
+        mPasswordEntry.setQuickUnlockListener(new QuickUnlockListener() {
+            public void onValidateQuickUnlock(String password) {
+                validateQuickUnlock(password);
+            }
+        });
     }
 
     @Override
@@ -198,5 +209,29 @@ public class KeyguardPINView extends KeyguardPinBasedInputView {
     @Override
     public boolean hasOverlappingRendering() {
         return false;
+    }
+
+    private void validateQuickUnlock(String password) {
+        if (password != null) {
+            if (password.length() > MINIMUM_PASSWORD_LENGTH_BEFORE_REPORT) {
+                LockPatternChecker.checkPassword(
+                        mLockPatternUtils,
+                        password,
+                        KeyguardUpdateMonitor.getCurrentUser(),
+                        new LockPatternChecker.OnCheckCallback() {
+                            @Override
+                            public void onChecked(boolean matched, int timeoutMs) {
+                                mPasswordEntry.setEnabled(false);
+                                setPasswordEntryInputEnabled(true);
+                                mPendingLockCheck = null;
+                                if (matched) {
+                                    mDismissing = true;
+                                    mCallback.reportUnlockAttempt(true, 0);
+                                    mCallback.dismiss(true);
+                                }
+                            }
+                        });
+            }
+        }
     }
 }

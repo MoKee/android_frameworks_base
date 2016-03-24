@@ -40,7 +40,7 @@ public abstract class KeyguardAbsKeyInputView extends LinearLayout
     protected SecurityMessageDisplay mSecurityMessageDisplay;
     protected View mEcaView;
     protected boolean mEnableHaptics;
-    private boolean mDismissing;
+    protected boolean mDismissing;
 
     // To avoid accidental lockout due to events while the device in in the pocket, ignore
     // any passwords with length less than or equal to this length.
@@ -197,6 +197,28 @@ public abstract class KeyguardAbsKeyInputView extends LinearLayout
             mCallback.userActivity();
         }
         mSecurityMessageDisplay.setMessage("", false);
+    }
+
+    protected void onValidateQuickUnlock() {
+        String entry = getPasswordText();
+        if (entry.length() > MINIMUM_PASSWORD_LENGTH_BEFORE_REPORT) {
+            LockPatternChecker.checkPassword(
+                    mLockPatternUtils,
+                    entry,
+                    KeyguardUpdateMonitor.getCurrentUser(),
+                    new LockPatternChecker.OnCheckCallback() {
+                        @Override
+                        public void onChecked(boolean matched, int timeoutMs) {
+                            setPasswordEntryInputEnabled(true);
+                            mPendingLockCheck = null;
+                            if (matched) {
+                                mDismissing = true;
+                                mCallback.reportUnlockAttempt(true, 0);
+                                mCallback.dismiss(true);
+                            }
+                        }
+                    });
+        }
     }
 
     @Override
