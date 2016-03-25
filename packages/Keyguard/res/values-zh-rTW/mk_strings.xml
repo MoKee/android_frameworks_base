@@ -17,9 +17,13 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- On the unlock gesture screen, shown at the top of the unlock screen to tell the user what to do. Below this text is the place for the user to draw the gesture. -->
+  <string name="lockscreen_gesture_instructions">繪出手勢來解除鎖定</string>
   <!-- Shown to confirm that the user entered their lock gesture correctly. -->
+  <string name="lockscreen_gesture_correct">正確！</string>
   <!-- On the unlock gesture screen, shown when the user enters the wrong lock gesture and must try again. -->
+  <string name="lockscreen_gesture_wrong">請再試一次</string>
   <!-- Accessibility description of the gesture unlock. [CHAR_LIMIT=none] -->
+  <string name="keyguard_accessibility_gesture_unlock">手勢解鎖</string>
   <!-- Accessibility description of the unlock gesture area. [CHAR_LIMIT=none] -->
   <!-- Message shown in gesture unlock after some number of unsuccessful attempts -->
   <!-- Message shown when user enters wrong pattern -->

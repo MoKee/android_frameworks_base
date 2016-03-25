@@ -16,5 +16,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=40] Title of dialog that is shown when performing a system upgrade. -->
+  <string name="android_upgrading_mk_title">MoKee מתעדכן\u2026</string>
   <!-- [CHAR LIMIT=40] Title of dialog that is shown when system is starting. -->
+  <string name="android_start_mk_title">MoKee מתחיל\u2026</string>
 </resources>
