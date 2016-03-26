@@ -25,7 +25,7 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import com.android.systemui.R;
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 /**
  * The guts of a media notification revealed when performing a long press.
@@ -66,8 +66,8 @@ public class MediaNotificationGuts extends NotificationGuts {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 buttonView.setChecked(isChecked);
-                CMSettings.System.putInt(getContext().getContentResolver(),
-                        CMSettings.System.NOTIFICATION_PLAY_QUEUE,
+                MKSettings.System.putInt(getContext().getContentResolver(),
+                        MKSettings.System.NOTIFICATION_PLAY_QUEUE,
                         isChecked ? 1 : 0);
             }
         });
