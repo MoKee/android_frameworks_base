@@ -1352,6 +1352,17 @@ public class WallpaperManager {
         }
     }
 
+    /** @hide */
+    public void clearKeyguardWallpaper(boolean setToDefault) throws IOException {
+        if (setToDefault) {
+            setKeyguardStream(openDefaultWallpaper(mContext));
+        } else {
+            Bitmap blackBmp = Bitmap.createBitmap(1, 1, Bitmap.Config.RGB_565);
+            blackBmp.setPixel(0, 0, mContext.getResources().getColor(android.R.color.black));
+            setBitmap(blackBmp);
+        }
+    }
+
     /**
      * @hide
      */
