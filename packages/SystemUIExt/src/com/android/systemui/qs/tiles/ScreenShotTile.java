@@ -55,7 +55,7 @@ public class ScreenShotTile extends QSTile<QSTile.BooleanState> {
             @Override public void run() {
                 takeScreenshot();
             }
-        }, 800);
+        }, 650);
     }
 
     @Override
