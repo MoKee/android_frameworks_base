@@ -19,4 +19,5 @@
   <!-- [CHAR LIMIT=40] Title of dialog that is shown when system is starting. -->
   <string name="android_start_mk_title">Mokee\u2026 در حال شروع است</string>
   <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
+  <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
 </resources>

@@ -18,4 +18,5 @@
   <!-- [CHAR LIMIT=40] Title of dialog that is shown when performing a system upgrade. -->
   <!-- [CHAR LIMIT=40] Title of dialog that is shown when system is starting. -->
   <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
+  <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
 </resources>

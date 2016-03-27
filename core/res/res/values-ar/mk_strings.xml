@@ -20,4 +20,5 @@
   <!-- [CHAR LIMIT=40] Title of dialog that is shown when system is starting. -->
   <string name="android_start_mk_title">جاري بدأ موكي/u2026</string>
   <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
+  <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
 </resources>
