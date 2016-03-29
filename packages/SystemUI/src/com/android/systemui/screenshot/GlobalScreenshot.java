@@ -286,7 +286,7 @@ class SaveImageInBackgroundTask extends AsyncTask<SaveImageInBackgroundData, Voi
             mNotificationBuilder.addAction(R.drawable.ic_screenshot_edit,
                     r.getString(com.android.internal.R.string.edit), 
                     PendingIntent.getActivity(context, 0, editChooserIntent,
-                            PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_ONE_SHOT));
+                            PendingIntent.FLAG_CANCEL_CURRENT));
 
             // Create a delete action for the notification
             final PendingIntent deleteAction = PendingIntent.getBroadcast(context,  0,
