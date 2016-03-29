@@ -22,4 +22,5 @@
   <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
   <string name="reboot_to_update_mk_title">MoKee update sistem</string>
   <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
+  <string name="edit">Ubah</string>
 </resources>
