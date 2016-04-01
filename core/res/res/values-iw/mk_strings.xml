@@ -20,5 +20,7 @@
   <!-- [CHAR LIMIT=40] Title of dialog that is shown when system is starting. -->
   <string name="android_start_mk_title">MoKee מתחיל\u2026</string>
   <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
+  <string name="reboot_to_update_mk_title">עדכון מערכת MoKee</string>
   <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
+  <string name="edit">ערוך</string>
 </resources>
