@@ -16,7 +16,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=40] Title of dialog that is shown when performing a system upgrade. -->
+  <string name="android_upgrading_mk_title">MoKee மேம்படுத்தும் ஆகிறது\u2026</string>
   <!-- [CHAR LIMIT=40] Title of dialog that is shown when system is starting. -->
+  <string name="android_start_mk_title">MoKee ஆரம்பம் ஆகிறது\u2026</string>
   <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
   <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
 </resources>
