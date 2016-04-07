@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2014-2016 The MoKee Open Source Project
+<!-- Copyright (C) 2016 The MoKee Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -16,19 +16,10 @@
 
 <resources>
 
-    <java-symbol type="string" name="android_start_mk_title" />
-    <java-symbol type="string" name="android_upgrading_mk_title" />
-    <java-symbol type="string" name="reboot_to_update_mk_title" />
-
-    <!-- PlatLogo -->
-    <java-symbol type="drawable" name="platlogo_mk" />
-
-    <java-symbol type="string" name="edit" />
-
-    <java-symbol type="layout" name="boot_layout" />
-    <java-symbol type="id" name="boot_message" />
-    <java-symbol type="id" name="boot_message_detail" />
-    <java-symbol type="id" name="boot_icon" />
-    <java-symbol type="id" name="boot_progress" />
+    <dimen name="boot_icon_margin">6dp</dimen>
+    <dimen name="boot_icon_size">42dp</dimen>
+    <dimen name="boot_logo_size">400dp</dimen>
+    <dimen name="boot_margin">10dp</dimen>
+    <dimen name="boot_message">10dp</dimen>
 
 </resources>
