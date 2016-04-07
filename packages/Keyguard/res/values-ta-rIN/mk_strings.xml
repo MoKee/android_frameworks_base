@@ -17,11 +17,23 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- On the unlock gesture screen, shown at the top of the unlock screen to tell the user what to do. Below this text is the place for the user to draw the gesture. -->
+  <string name="lockscreen_gesture_instructions">திறக்க சைகை வரைய</string>
   <!-- Shown to confirm that the user entered their lock gesture correctly. -->
+  <string name="lockscreen_gesture_correct">சரி!</string>
   <!-- On the unlock gesture screen, shown when the user enters the wrong lock gesture and must try again. -->
+  <string name="lockscreen_gesture_wrong">மீண்டும் முயற்சி</string>
   <!-- Accessibility description of the gesture unlock. [CHAR_LIMIT=none] -->
+  <string name="keyguard_accessibility_gesture_unlock">சைகை திறத்தல்.</string>
   <!-- Accessibility description of the unlock gesture area. [CHAR_LIMIT=none] -->
+  <string name="keyguard_accessibility_gesture_area">சைகை பகுதி.</string>
   <!-- Message shown in gesture unlock after some number of unsuccessful attempts -->
+  <string name="kg_forgot_gesture_button_text">சைகை மறந்து விட்டது</string>
   <!-- Message shown when user enters wrong pattern -->
+  <string name="kg_wrong_gesture">சைகை தவறு</string>
   <!-- Instructions for using the gesture unlock screen -->
+  <string name="kg_gesture_instructions">உங்கள் வடிவம் வரையவும்</string>
+  <string name="kg_too_many_failed_gesture_attempts_dialog_message">
+தவறாக <xliff:g id="number">%d</xliff:g> முறை வரைய செய்தாய்.
+        \n\n<xliff:g id="number">%d</xliff:g> நொடிகளில் மீண்டும் முயற்சிக்கவும்.
+    </string>
 </resources>
