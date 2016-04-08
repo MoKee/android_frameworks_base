@@ -16,8 +16,7 @@
 
 <resources>
 
-    <color name="boot_background_primary_color">#fff</color>
-    <color name="boot_background_color">#0b7b8e</color>
+    <color name="boot_background_primary_color">#0b7b8e</color>
     <color name="boot_msg_color">#fff</color>
 
 </resources>
