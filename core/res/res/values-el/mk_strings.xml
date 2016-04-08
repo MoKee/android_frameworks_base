@@ -21,5 +21,7 @@
   <string name="android_start_mk_title">Το MoKee ξεκινάει\u2026
  </string>
   <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
+  <string name="reboot_to_update_mk_title">Ενημέρωση συστήματος MoKee</string>
   <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
+  <string name="edit">Επεξεργασία</string>
 </resources>
