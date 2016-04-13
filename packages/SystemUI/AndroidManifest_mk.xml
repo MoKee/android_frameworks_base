@@ -49,6 +49,9 @@
     <!-- Live lock screen manager -->
     <uses-permission android:name="mokee.permission.LIVE_LOCK_SCREEN_MANAGER_ACCESS_PRIVATE" />
 
+    <!-- LiveDisplay tile -->
+    <uses-permission android:name="mokee.permission.MANAGE_LIVEDISPLAY" />
+
     <application>
         <provider android:name=".cm.SpamMessageProvider"
                   android:permission="android.permission.INTERACT_ACROSS_USERS_FULL"
