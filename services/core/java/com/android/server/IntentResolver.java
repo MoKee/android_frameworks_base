@@ -726,6 +726,7 @@ public abstract class IntentResolver<F extends IntentFilter, R extends Object> {
                     try {
                         mAppOps.addPacifierActionInfo(UserHandle.myUserId(), packageName, userId, action);
                     } catch (RemoteException ex) {
+                    } catch (NullPointerException ex) {
                     }
                 } catch (RemoteException e) {
                 }
