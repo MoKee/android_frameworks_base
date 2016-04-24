@@ -225,7 +225,6 @@
   <string name="quick_settings_ambient_display_label">পৰিপাৰ্শ্বিক ডিচপ্লে</string>
   <string name="quick_settings_sync_label">সংযোজন</string>
   <string name="quick_settings_battery_saver_label">বেটাৰী চেভাৰ</string>
-  <string name="quick_settings_custom_tile_detail_title">কাষ্টম টাইল</string>
   <string name="quick_settings_performance_profile_detail_title">বেটাৰী মোড</string>
   <!-- Weather string format in expanded statusbar header -->
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
@@ -267,16 +266,12 @@
   <string name="quick_settings_remove">টাইল আঁতৰাওক</string>
   <!-- Dynamic tiles -->
   <string name="quick_settings_dynamic_tile_detail_title">ডায়নামিক টাইল</string>
-  <string name="dynamic_qs_tile_next_alarm_label">পৰৱৰ্তী এলাৰ্ম</string>
-  <string name="dynamic_qs_tile_ime_selector_label">IME চয়নকাৰী</string>
-  <string name="dynamic_qs_tile_su_label">ৰুট প্ৰৱেশ কৰক</string>
   <!-- Fingerprint -->
   <string name="fingerprint_try_again_hint">অনুগ্ৰহ কৰি পুনৰ স্কেন কৰক</string>
   <string name="fingerprint_try_again_hint_too_many">বহু বেছি আঙুলিৰছাপ প্ৰচেষ্টা পিছত পুনৰ চেষ্টা কৰক।</string>
   <!-- Content description of the dock battery level icon for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_dock_battery_level">ডক বেটাৰী <xliff:g id="number">%d</xliff:g> শতাংশ।</string>
   <!-- Empty view text for CustomQSTile -->
-  <string name="quick_settings_custom_qs_detail_empty_text">কোনো আইটেম পোৱা নাই</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.

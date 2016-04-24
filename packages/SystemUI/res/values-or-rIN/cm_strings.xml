@@ -225,7 +225,6 @@
   <string name="quick_settings_ambient_display_label">ଏମ୍ବିଏଣ୍ଟ ପ୍ରଦର୍ଶନ</string>
   <string name="quick_settings_sync_label">ସିଙ୍କ୍</string>
   <string name="quick_settings_battery_saver_label">ବ୍ୟାଟେରୀ ସଭର୍‌</string>
-  <string name="quick_settings_custom_tile_detail_title">ଟାଇଲ୍‍ କଷ୍ଟମ୍‍ କରନ୍ତୁ</string>
   <string name="quick_settings_performance_profile_detail_title">ବ୍ୟାଟେରୀ ମୋଡ୍‍</string>
   <!-- Weather string format in expanded statusbar header -->
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
@@ -267,16 +266,12 @@
   <string name="quick_settings_remove">ଟାଇଲ୍‍ ଅପସାରଣ କରନ୍ତୁ</string>
   <!-- Dynamic tiles -->
   <string name="quick_settings_dynamic_tile_detail_title">ଡାଇନେମିକ୍‍ ଟାଇଲ୍‍</string>
-  <string name="dynamic_qs_tile_next_alarm_label">ପରବର୍ତ୍ତୀ ଆଲରାମ୍:</string>
-  <string name="dynamic_qs_tile_ime_selector_label">IME ସିଲେକ୍ଟର</string>
-  <string name="dynamic_qs_tile_su_label">ରୁଟ୍‍ ଆକ୍‍ସେସ୍‍</string>
   <!-- Fingerprint -->
   <string name="fingerprint_try_again_hint">ଦୟାକରି ପୁନର୍ବାର ସ୍କାନ୍‍ କରନ୍ତୁ</string>
   <string name="fingerprint_try_again_hint_too_many">ଅଧିକ ଥର ଫିଙ୍ଗର୍‍ପ୍ରିଣ୍ଟ ଚେଷ୍ଟା। ପରେ ପୁନଃଚେଷ୍ଟା କରନ୍ତୁ।</string>
   <!-- Content description of the dock battery level icon for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_dock_battery_level">ଡକ୍‍ ବ୍ୟାଟେରୀ <xliff:g id="number">%d</xliff:g> ଶତକଡା।</string>
   <!-- Empty view text for CustomQSTile -->
-  <string name="quick_settings_custom_qs_detail_empty_text">କୌଣସି ଆଇଟମ୍‍ ମିଳୁନାହିଁ</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.

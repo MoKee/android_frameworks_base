@@ -225,7 +225,6 @@
   <string name="quick_settings_ambient_display_label">环境显示</string>
   <string name="quick_settings_sync_label">同步</string>
   <string name="quick_settings_battery_saver_label">省电模式</string>
-  <string name="quick_settings_custom_tile_detail_title">自定义瓷片</string>
   <string name="quick_settings_performance_profile_detail_title">电池模式</string>
   <!-- Weather string format in expanded statusbar header -->
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
@@ -267,16 +266,12 @@
   <string name="quick_settings_remove">移除瓷片</string>
   <!-- Dynamic tiles -->
   <string name="quick_settings_dynamic_tile_detail_title">动态按钮</string>
-  <string name="dynamic_qs_tile_next_alarm_label">下一个闹铃</string>
-  <string name="dynamic_qs_tile_ime_selector_label">输入法选择器</string>
-  <string name="dynamic_qs_tile_su_label">Root 授权</string>
   <!-- Fingerprint -->
   <string name="fingerprint_try_again_hint">请再次扫描</string>
   <string name="fingerprint_try_again_hint_too_many">太多次指纹尝试。请稍后再试。</string>
   <!-- Content description of the dock battery level icon for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_dock_battery_level">底座电池百分之 <xliff:g id="number">%d</xliff:g>。</string>
   <!-- Empty view text for CustomQSTile -->
-  <string name="quick_settings_custom_qs_detail_empty_text">未找到项目</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.

@@ -225,7 +225,6 @@
   <string name="quick_settings_ambient_display_label">절전 모드 자동 해제</string>
   <string name="quick_settings_sync_label">동기화</string>
   <string name="quick_settings_battery_saver_label">배터리 절약</string>
-  <string name="quick_settings_custom_tile_detail_title">개인설정 타일</string>
   <string name="quick_settings_performance_profile_detail_title">배터리 모드</string>
   <!-- Weather string format in expanded statusbar header -->
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
@@ -267,16 +266,12 @@
   <string name="quick_settings_remove">타일 제거</string>
   <!-- Dynamic tiles -->
   <string name="quick_settings_dynamic_tile_detail_title">동적 타일</string>
-  <string name="dynamic_qs_tile_next_alarm_label">다음 알람</string>
-  <string name="dynamic_qs_tile_ime_selector_label">입력 방법 선택</string>
-  <string name="dynamic_qs_tile_su_label">루트 권한</string>
   <!-- Fingerprint -->
   <string name="fingerprint_try_again_hint">다시 시도해 주십시오</string>
   <string name="fingerprint_try_again_hint_too_many">지문 인식 시도가 너무 많습니다. 나중에 다시 시도하세요.</string>
   <!-- Content description of the dock battery level icon for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_dock_battery_level">독의 배터리는 <xliff:g id="number">%d</xliff:g>퍼센트입니다.</string>
   <!-- Empty view text for CustomQSTile -->
-  <string name="quick_settings_custom_qs_detail_empty_text">항목을 찾을 수 없음</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.

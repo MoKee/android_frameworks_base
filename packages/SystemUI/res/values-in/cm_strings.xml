@@ -225,7 +225,6 @@
   <string name="quick_settings_ambient_display_label">Tampilan kala takaktif</string>
   <string name="quick_settings_sync_label">Sinkronisasi</string>
   <string name="quick_settings_battery_saver_label">Penghemat baterai</string>
-  <string name="quick_settings_custom_tile_detail_title">Ubin khusus</string>
   <string name="quick_settings_performance_profile_detail_title">Modus Baterai</string>
   <!-- Weather string format in expanded statusbar header -->
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
@@ -267,16 +266,12 @@
   <string name="quick_settings_remove">Hapus ubin</string>
   <!-- Dynamic tiles -->
   <string name="quick_settings_dynamic_tile_detail_title">Ubin dinamis</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Alarm selanjutnya</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Pemilih IME</string>
-  <string name="dynamic_qs_tile_su_label">Akses punca (root)</string>
   <!-- Fingerprint -->
   <string name="fingerprint_try_again_hint">Silahka pindai lagi</string>
   <string name="fingerprint_try_again_hint_too_many">Terlalu banyak percobaan sidik jari. Cobalah kembali nanti.</string>
   <!-- Content description of the dock battery level icon for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_dock_battery_level">Dok baterai <xliff:g id="number">%d</xliff:g> persen.</string>
   <!-- Empty view text for CustomQSTile -->
-  <string name="quick_settings_custom_qs_detail_empty_text">Tidak ada item yang ditemukan</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.

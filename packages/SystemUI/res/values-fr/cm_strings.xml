@@ -225,7 +225,6 @@
   <string name="quick_settings_ambient_display_label">Affichage en mode veille</string>
   <string name="quick_settings_sync_label">Synchro</string>
   <string name="quick_settings_battery_saver_label">Économiseur de batterie</string>
-  <string name="quick_settings_custom_tile_detail_title">Raccourci personnalisé</string>
   <string name="quick_settings_performance_profile_detail_title">Mode batterie</string>
   <!-- Weather string format in expanded statusbar header -->
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
@@ -267,16 +266,12 @@
   <string name="quick_settings_remove">Supprimer le raccourci</string>
   <!-- Dynamic tiles -->
   <string name="quick_settings_dynamic_tile_detail_title">Raccourcis dynamiques</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Prochaine alarme</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Mode de saisie</string>
-  <string name="dynamic_qs_tile_su_label">Accès root</string>
   <!-- Fingerprint -->
   <string name="fingerprint_try_again_hint">Veuillez scanner à nouveau</string>
   <string name="fingerprint_try_again_hint_too_many">Trop de tentatives de lecture d\'empreintes digitales. Réessayez plus tard.</string>
   <!-- Content description of the dock battery level icon for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_dock_battery_level">Batterie de la station d\'accueil chargée à <xliff:g id="number">%d</xliff:g> pour cent.</string>
   <!-- Empty view text for CustomQSTile -->
-  <string name="quick_settings_custom_qs_detail_empty_text">Aucun élément trouvé</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.

@@ -225,7 +225,6 @@
   <string name="quick_settings_ambient_display_label">Атмосферен екран</string>
   <string name="quick_settings_sync_label">Синхронизация</string>
   <string name="quick_settings_battery_saver_label">Пестене на батерия</string>
-  <string name="quick_settings_custom_tile_detail_title">Персонализирана плочка</string>
   <string name="quick_settings_performance_profile_detail_title">Режим на батерията</string>
   <!-- Weather string format in expanded statusbar header -->
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s </xliff:g> - <xliff:g id="condition">%2$s </xliff:g></string>
@@ -267,16 +266,12 @@
   <string name="quick_settings_remove">Премахни на плочки</string>
   <!-- Dynamic tiles -->
   <string name="quick_settings_dynamic_tile_detail_title">Динамични плочки</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Следваща аларма</string>
-  <string name="dynamic_qs_tile_ime_selector_label">IME селектор</string>
-  <string name="dynamic_qs_tile_su_label">Администраторски достъп</string>
   <!-- Fingerprint -->
   <string name="fingerprint_try_again_hint">Моля сканиране отново</string>
   <string name="fingerprint_try_again_hint_too_many">Твърде много опити за пръстови отпечатъци. Опитайте отново по-късно.</string>
   <!-- Content description of the dock battery level icon for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_dock_battery_level">Док батерия <xliff:g id="number">%d </xliff:g> процента.</string>
   <!-- Empty view text for CustomQSTile -->
-  <string name="quick_settings_custom_qs_detail_empty_text">Не са намерени елементи</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.

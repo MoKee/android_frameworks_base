@@ -225,7 +225,6 @@
   <string name="quick_settings_ambient_display_label">Pantalla ambient</string>
   <string name="quick_settings_sync_label">Sinc</string>
   <string name="quick_settings_battery_saver_label">Estalvi de bateria</string>
-  <string name="quick_settings_custom_tile_detail_title">Cel·la personalitzada</string>
   <string name="quick_settings_performance_profile_detail_title">Mode de la bateria</string>
   <!-- Weather string format in expanded statusbar header -->
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
@@ -267,16 +266,12 @@
   <string name="quick_settings_remove">Esborra cel·la</string>
   <!-- Dynamic tiles -->
   <string name="quick_settings_dynamic_tile_detail_title">Cel·la dinàmica</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Propera alarma</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Selector de l\'IME</string>
-  <string name="dynamic_qs_tile_su_label">Accés Superusuari</string>
   <!-- Fingerprint -->
   <string name="fingerprint_try_again_hint">Si us plau escanneja una altra vegada</string>
   <string name="fingerprint_try_again_hint_too_many">Massa intents d\'empremta digital. Intenta-ho més tard.</string>
   <!-- Content description of the dock battery level icon for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_dock_battery_level">Acoblament bateria <xliff:g id="number">%d</xliff:g> percent.</string>
   <!-- Empty view text for CustomQSTile -->
-  <string name="quick_settings_custom_qs_detail_empty_text">No s\'han trobat elements</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.

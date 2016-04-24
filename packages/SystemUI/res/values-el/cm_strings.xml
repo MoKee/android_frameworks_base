@@ -225,7 +225,6 @@
   <string name="quick_settings_ambient_display_label">Οθόνη ambient</string>
   <string name="quick_settings_sync_label">Συγχρονισμός</string>
   <string name="quick_settings_battery_saver_label">Εξοικονόμηση μπαταρίας</string>
-  <string name="quick_settings_custom_tile_detail_title">Προσαρμοσμένο πλακίδιο</string>
   <string name="quick_settings_performance_profile_detail_title">Λειτουργία μπαταρίας</string>
   <!-- Weather string format in expanded statusbar header -->
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
@@ -267,16 +266,12 @@
   <string name="quick_settings_remove">Αφαίρεση πλακιδίου</string>
   <!-- Dynamic tiles -->
   <string name="quick_settings_dynamic_tile_detail_title">Δυναμικό πλακίδιο</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Επόμενο ξυπνητήρι</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Επιλογέας μεθόδου εισόδου</string>
-  <string name="dynamic_qs_tile_su_label">Πρόσβαση root</string>
   <!-- Fingerprint -->
   <string name="fingerprint_try_again_hint">Παρακαλώ σαρώστε ξανά</string>
   <string name="fingerprint_try_again_hint_too_many">Πάρα πολλές απόπειρες δακτυλικών αποτυπωμάτων. Προσπαθήστε ξανά αργότερα.</string>
   <!-- Content description of the dock battery level icon for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_dock_battery_level">Μπαταρία βάσης σύνδεσης <xliff:g id="number">%d</xliff:g> τοις εκατό.</string>
   <!-- Empty view text for CustomQSTile -->
-  <string name="quick_settings_custom_qs_detail_empty_text">Δεν βρέθηκε κανένα αντικείμενο</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.

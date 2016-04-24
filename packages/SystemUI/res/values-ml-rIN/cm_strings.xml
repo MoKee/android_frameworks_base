@@ -225,7 +225,6 @@
   <string name="quick_settings_ambient_display_label">ആമ്പിയന്റ് ഡിസ്‌പ്ലേ</string>
   <string name="quick_settings_sync_label">സമന്വയിപ്പിക്കുക</string>
   <string name="quick_settings_battery_saver_label">ബാറ്ററി സേവർ</string>
-  <string name="quick_settings_custom_tile_detail_title">ഇഷ്ടാനുസൃത ടൈൽ</string>
   <string name="quick_settings_performance_profile_detail_title">ബാറ്ററി മോഡ്</string>
   <!-- Weather string format in expanded statusbar header -->
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
@@ -268,16 +267,12 @@
   <string name="quick_settings_remove">ടൈൽ നീക്കം ചെയ്യുക</string>
   <!-- Dynamic tiles -->
   <string name="quick_settings_dynamic_tile_detail_title">ഡൈനാമിക്ക് ടൈൽ</string>
-  <string name="dynamic_qs_tile_next_alarm_label">അടുത്ത അലാറം</string>
-  <string name="dynamic_qs_tile_ime_selector_label">IME സെലക്ടർ</string>
-  <string name="dynamic_qs_tile_su_label">റൂട്ട് പ്രവേശനം</string>
   <!-- Fingerprint -->
   <string name="fingerprint_try_again_hint">ദയവായി വീണ്ടും സ്കാൻ ചെയ്യുക</string>
   <string name="fingerprint_try_again_hint_too_many">വളരെയധികം ഫിംഗർപ്രിന്റ് ശ്രമങ്ങൾ. പിന്നീട് വീണ്ടും ശ്രമിക്കുക.</string>
   <!-- Content description of the dock battery level icon for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_dock_battery_level">ഡോക്ക് ബാറ്ററി <xliff:g id="number">%d</xliff:g> ശതമാനം.</string>
   <!-- Empty view text for CustomQSTile -->
-  <string name="quick_settings_custom_qs_detail_empty_text">ഇനങ്ങളൊന്നും കണ്ടെത്തിയില്ല</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.

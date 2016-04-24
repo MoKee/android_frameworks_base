@@ -225,7 +225,6 @@
   <string name="quick_settings_ambient_display_label">Индикация событий</string>
   <string name="quick_settings_sync_label">Синхронизация</string>
   <string name="quick_settings_battery_saver_label">Энергосбережение</string>
-  <string name="quick_settings_custom_tile_detail_title">Пользовательская плитка</string>
   <string name="quick_settings_performance_profile_detail_title">Энергопотребление</string>
   <!-- Weather string format in expanded statusbar header -->
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
@@ -267,16 +266,12 @@
   <string name="quick_settings_remove">Удалить плитку</string>
   <!-- Dynamic tiles -->
   <string name="quick_settings_dynamic_tile_detail_title">Динамическая плитка</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Следующий будильник</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Выбор метода ввода</string>
-  <string name="dynamic_qs_tile_su_label">Суперпользователь</string>
   <!-- Fingerprint -->
   <string name="fingerprint_try_again_hint">Повторите сканирование</string>
   <string name="fingerprint_try_again_hint_too_many">Слишком много попыток разблокировки по отпечатку пальца. Повторите попытку позже.</string>
   <!-- Content description of the dock battery level icon for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_dock_battery_level">Заряд батареи док-станции <xliff:g id="number">%d</xliff:g> процентов.</string>
   <!-- Empty view text for CustomQSTile -->
-  <string name="quick_settings_custom_qs_detail_empty_text">Элементы не найдены</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.

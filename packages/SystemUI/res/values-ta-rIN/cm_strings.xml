@@ -225,7 +225,6 @@
   <string name="quick_settings_ambient_display_label">சூழல்சார் திரை</string>
   <string name="quick_settings_sync_label">ஒத்திசை</string>
   <string name="quick_settings_battery_saver_label">பேட்டரி சேமிப்பான்</string>
-  <string name="quick_settings_custom_tile_detail_title">தனிப்பயன் ஓடு</string>
   <string name="quick_settings_performance_profile_detail_title">பேட்டரி முறை</string>
   <!-- Weather string format in expanded statusbar header -->
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
@@ -267,16 +266,12 @@
   <string name="quick_settings_remove">டைலை அகற்று</string>
   <!-- Dynamic tiles -->
   <string name="quick_settings_dynamic_tile_detail_title">இயங்குநிலை டைல்</string>
-  <string name="dynamic_qs_tile_next_alarm_label">அடுத்த அலாரம்</string>
-  <string name="dynamic_qs_tile_ime_selector_label">IME தேர்ந்தெடுப்பான்</string>
-  <string name="dynamic_qs_tile_su_label">மூல அணுகல்</string>
   <!-- Fingerprint -->
   <string name="fingerprint_try_again_hint">தயவுசெய்து மீண்டும் ஸ்கேன் செய்க</string>
   <string name="fingerprint_try_again_hint_too_many">மிக திக கைரேகை முயற்சிகள். பின்னர் மீண்டும் முயற்சிக்கவும்.</string>
   <!-- Content description of the dock battery level icon for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_dock_battery_level">பொருத்தப்பட்ட மின்கல <xliff:g id="number">%d</xliff:g> சதவிகிதம்.</string>
   <!-- Empty view text for CustomQSTile -->
-  <string name="quick_settings_custom_qs_detail_empty_text">உருப்படி எதுவும் கிடைக்கவில்லை</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.

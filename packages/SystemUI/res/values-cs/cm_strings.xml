@@ -225,7 +225,6 @@
   <string name="quick_settings_ambient_display_label">Ambientní zobrazení</string>
   <string name="quick_settings_sync_label">Synchronizace</string>
   <string name="quick_settings_battery_saver_label">Spořič baterie</string>
-  <string name="quick_settings_custom_tile_detail_title">Vlastní dlaždice</string>
   <string name="quick_settings_performance_profile_detail_title">Režim baterie</string>
   <!-- Weather string format in expanded statusbar header -->
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
@@ -267,16 +266,12 @@
   <string name="quick_settings_remove">Odebrat dlaždici</string>
   <!-- Dynamic tiles -->
   <string name="quick_settings_dynamic_tile_detail_title">Dynamické dlaždice</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Další budík</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Výběr IME</string>
-  <string name="dynamic_qs_tile_su_label">Root přístup</string>
   <!-- Fingerprint -->
   <string name="fingerprint_try_again_hint">Prosím nasnímat znovu</string>
   <string name="fingerprint_try_again_hint_too_many">Příliš mnoho pokusů o otisk prstu. Opakujte akci později.</string>
   <!-- Content description of the dock battery level icon for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_dock_battery_level">Baterie doku: <xliff:g id="number">%d</xliff:g>\u0025.</string>
   <!-- Empty view text for CustomQSTile -->
-  <string name="quick_settings_custom_qs_detail_empty_text">Nebyly nalezeny žádné položky</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.
