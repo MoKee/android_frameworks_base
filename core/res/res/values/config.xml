@@ -1298,6 +1298,8 @@
          -->
     <string-array name="config_locationProviderPackageNames" translatable="false">
         <!-- The standard AOSP fused location provider -->
+        <item>com.google.android.gms</item>
+        <item>com.amap.android.location</item>
         <item>com.android.location.fused</item>
     </string-array>
 
