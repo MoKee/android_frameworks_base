@@ -1108,7 +1108,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener {
         };
 
         mContext.getContentResolver().registerContentObserver(
-                MKSettings.System.getUriFor(MKSettings.Secure.MK_SETUP_WIZARD_COMPLETED),
+                MKSettings.Secure.getUriFor(MKSettings.Secure.MK_SETUP_WIZARD_COMPLETED),
                 false, mDeviceProvisionedObserver);
 
         // prevent a race condition between where we check the flag and where we register the
