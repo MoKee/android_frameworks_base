@@ -2675,6 +2675,7 @@ com.google.android.collect.Lists
 com.google.android.collect.Maps
 com.google.android.gles_jni.EGLImpl
 com.google.android.gles_jni.GLImpl
+com.mokee.security.SecurityUtils
 dalvik.system.BaseDexClassLoader
 dalvik.system.BlockGuard
 dalvik.system.BlockGuard$1
