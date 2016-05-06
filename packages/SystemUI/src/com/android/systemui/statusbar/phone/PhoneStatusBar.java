@@ -328,7 +328,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
     StatusBarWindowView mStatusBarWindow;
     FrameLayout mStatusBarWindowContent;
-    PhoneStatusBarView mStatusBarView;
+    private PhoneStatusBarView mStatusBarView;
     private int mStatusBarWindowState = WINDOW_STATE_SHOWING;
     private StatusBarWindowManager mStatusBarWindowManager;
     private UnlockMethodCache mUnlockMethodCache;
@@ -497,6 +497,10 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             // This method reads MKSettings.Secure.RECENTS_LONG_PRESS_ACTIVITY
             updateCustomRecentsLongPressHandler(false);
         }
+    }
+
+    public void setStatusBarViewVisibility(boolean visible) {
+        mStatusBarView.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
     }
 
     class DevForceNavbarObserver extends UserContentObserver {
@@ -793,6 +797,10 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private HashSet<Entry> mHeadsUpEntriesToRemoveOnSwitch = new HashSet<>();
     private RankingMap mLatestRankingMap;
     private boolean mNoAnimationOnNextBarModeChange;
+
+    public ScrimController getScrimController() {
+        return mScrimController;
+    }
 
     @Override
     public void start() {
@@ -4346,6 +4354,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             mDraggedDownRow = null;
         }
         mAssistManager.onLockscreenShown();
+        mKeyguardBottomArea.requestFocus();
         if (mLiveLockScreenController.isShowingLiveLockScreenView()) {
             mLiveLockScreenController.getLiveLockScreenView().onKeyguardShowing(
                     mStatusBarKeyguardViewManager.isScreenTurnedOn());
@@ -5538,5 +5547,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 }
             }
         }
+    }
+
+    public boolean isAffordanceSwipeInProgress() {
+        return mNotificationPanel.isAffordanceSwipeInProgress();
     }
 }
