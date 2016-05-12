@@ -10,7 +10,8 @@ LOCAL_SRC_FILES := $(call all-java-files-under, src) \
 LOCAL_STATIC_JAVA_LIBRARIES := Keyguard \
     org.mokee.platform.internal \
     android-support-v7-palette \
-    android-support-v4
+    android-support-v4 \
+    uicommon
 
 LOCAL_JAVA_LIBRARIES := telephony-common
 LOCAL_FULL_LIBS_MANIFEST_FILES := $(LOCAL_PATH)/AndroidManifest_mk.xml
