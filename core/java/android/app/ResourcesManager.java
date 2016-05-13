@@ -70,7 +70,7 @@ public class ResourcesManager {
 
     /**
      * Number of default assets attached to a Resource object's AssetManager
-     * This currently includes framework and cmsdk resources
+     * This currently includes framework and mksdk resources
      */
     private static final int NUM_DEFAULT_ASSETS = 2;
 
@@ -576,7 +576,7 @@ public class ResourcesManager {
         PackageInfo piTheme = null;
         PackageInfo piTarget = null;
         PackageInfo piAndroid = null;
-        PackageInfo piCm = null;
+        PackageInfo piMk = null;
 
         // Some apps run in process of another app (eg keyguard/systemUI) so we must get the
         // package name from the res tables. The 0th base package name will be the android group.
@@ -610,7 +610,7 @@ public class ResourcesManager {
             }
             piAndroid = getPackageManager().getPackageInfo("android", 0,
                     UserHandle.getCallingUserId());
-            piCm = getPackageManager().getPackageInfo("cyanogenmod.platform", 0,
+            piMk = getPackageManager().getPackageInfo("mokee.platform", 0,
                     UserHandle.getCallingUserId());
         } catch (RemoteException e) {
         }
@@ -618,7 +618,7 @@ public class ResourcesManager {
         if (piTheme == null || piTheme.applicationInfo == null ||
                     piTarget == null || piTarget.applicationInfo == null ||
                     piAndroid == null || piAndroid.applicationInfo == null ||
-                    piCm == null || piCm.applicationInfo == null ||
+                    piMk == null || piMk.applicationInfo == null ||
                     piTheme.mOverlayTargets == null) {
             return false;
         }
@@ -643,15 +643,15 @@ public class ResourcesManager {
             }
         }
 
-        // Attach themed resources for cmsdk
-        if (!piTarget.isThemeApk && !piCm.packageName.equals(basePackageName) &&
-                piTheme.mOverlayTargets.contains(piCm.packageName)) {
-            String resCachePath= ThemeUtils.getTargetCacheDir(piCm.packageName,
+        // Attach themed resources for mksdk
+        if (!piTarget.isThemeApk && !piMk.packageName.equals(basePackageName) &&
+                piTheme.mOverlayTargets.contains(piMk.packageName)) {
+            String resCachePath= ThemeUtils.getTargetCacheDir(piMk.packageName,
                     piTheme.packageName);
-            String prefixPath = ThemeUtils.getOverlayPathToTarget(piCm.packageName);
-            String targetPackagePath = piCm.applicationInfo.publicSourceDir;
+            String prefixPath = ThemeUtils.getOverlayPathToTarget(piMk.packageName);
+            String targetPackagePath = piMk.applicationInfo.publicSourceDir;
             String resApkPath = resCachePath + "/resources.apk";
-            String idmapPath = ThemeUtils.getIdmapPath(piCm.packageName, piTheme.packageName);
+            String idmapPath = ThemeUtils.getIdmapPath(piMk.packageName, piTheme.packageName);
             int cookie = assets.addOverlayPath(idmapPath, themePath,
                     resApkPath, targetPackagePath, prefixPath);
             if (cookie != 0) {
