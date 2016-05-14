@@ -718,8 +718,8 @@ public final class PowerManagerService extends SystemService
             resolver.registerContentObserver(MKSettings.Global.getUriFor(
                     MKSettings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED),
                     false, mSettingsObserver, UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.Secure.getUriFor(
-                    MKSettings.Secure.DEV_FORCE_SHOW_NAVBAR),
+            resolver.registerContentObserver(MKSettings.Global.getUriFor(
+                    MKSettings.Global.DEV_FORCE_SHOW_NAVBAR),
                     false, mSettingsObserver, UserHandle.USER_ALL);
 
             // Go.
@@ -865,8 +865,8 @@ public final class PowerManagerService extends SystemService
         mKeyboardBrightness = MKSettings.Secure.getIntForUser(resolver,
                 MKSettings.Secure.KEYBOARD_BRIGHTNESS, mKeyboardBrightnessSettingDefault,
                 UserHandle.USER_CURRENT);
-        mForceNavbar = MKSettings.Secure.getIntForUser(resolver,
-                MKSettings.Secure.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
+        mForceNavbar = MKSettings.Global.getIntForUser(resolver,
+                MKSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
         mDirty |= DIRTY_SETTINGS;
     }
 

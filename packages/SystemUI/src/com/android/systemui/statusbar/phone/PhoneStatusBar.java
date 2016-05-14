@@ -512,14 +512,14 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         protected void observe() {
             super.observe();
             ContentResolver resolver = mContext.getContentResolver();
-            resolver.registerContentObserver(MKSettings.Secure.getUriFor(
-                    MKSettings.Secure.DEV_FORCE_SHOW_NAVBAR), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(MKSettings.Global.getUriFor(
+                    MKSettings.Global.DEV_FORCE_SHOW_NAVBAR), false, this, UserHandle.USER_ALL);
         }
 
         @Override
         public void update() {
-            boolean visible = MKSettings.Secure.getIntForUser(mContext.getContentResolver(),
-                    MKSettings.Secure.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
+            boolean visible = MKSettings.Global.getIntForUser(mContext.getContentResolver(),
+                    MKSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
 
             if (visible) {
                 forceAddNavigationBar();
@@ -3795,6 +3795,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             mLiveLockScreenController.cleanup();
         }
 
+        mKeyguardBottomArea.cleanup();
         mStatusBarWindow.removeContent(mStatusBarWindowContent);
         mStatusBarWindow.clearDisappearingChildren();
 

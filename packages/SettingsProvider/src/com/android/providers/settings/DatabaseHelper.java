@@ -2085,7 +2085,7 @@ class DatabaseHelper extends SQLiteOpenHelper {
             }
 
             String[] systemToSecure = new String[] {
-                    MKSettings.Secure.DEV_FORCE_SHOW_NAVBAR,
+                    MKSettings.Global.DEV_FORCE_SHOW_NAVBAR,
                     MKSettings.Secure.KEYBOARD_BRIGHTNESS,
                     MKSettings.Secure.BUTTON_BRIGHTNESS,
                     MKSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT

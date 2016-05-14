@@ -904,8 +904,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.ACCELEROMETER_ROTATION_ANGLES), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.Secure.getUriFor(
-                    MKSettings.Secure.DEV_FORCE_SHOW_NAVBAR), false, this,
+            resolver.registerContentObserver(MKSettings.Global.getUriFor(
+                    MKSettings.Global.DEV_FORCE_SHOW_NAVBAR), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(MKSettings.System.getUriFor(
                     MKSettings.System.VOLBTN_MUSIC_CONTROLS), false, this,
@@ -2163,8 +2163,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 updateWakeGestureListenerLp();
             }
 
-            boolean devForceNavbar = MKSettings.Secure.getIntForUser(resolver,
-                    MKSettings.Secure.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
+            boolean devForceNavbar = MKSettings.Global.getIntForUser(resolver,
+                    MKSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
             if (devForceNavbar != mDevForceNavbar) {
                 mDevForceNavbar = devForceNavbar;
                 if (mMKHardware.isSupported(MKHardwareManager.FEATURE_KEY_DISABLE)) {
