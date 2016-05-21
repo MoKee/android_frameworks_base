@@ -225,7 +225,6 @@
   <string name="quick_settings_ambient_display_label">Pantalla ambiente</string>
   <string name="quick_settings_sync_label">Sincronización</string>
   <string name="quick_settings_battery_saver_label">Aforrador d\'enerxía</string>
-  <string name="quick_settings_custom_tile_detail_title">Caxella personalizada</string>
   <string name="quick_settings_performance_profile_detail_title">Mou de batería</string>
   <!-- Weather string format in expanded statusbar header -->
   <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
@@ -267,16 +266,12 @@
   <string name="quick_settings_remove">Desaniciar caxella</string>
   <!-- Dynamic tiles -->
   <string name="quick_settings_dynamic_tile_detail_title">Caxella dinámica</string>
-  <string name="dynamic_qs_tile_next_alarm_label">Alarma siguiente</string>
-  <string name="dynamic_qs_tile_ime_selector_label">Seleutor d\'IME</string>
-  <string name="dynamic_qs_tile_su_label">Accesu root</string>
   <!-- Fingerprint -->
   <string name="fingerprint_try_again_hint">Escania de nueves, por favor</string>
   <string name="fingerprint_try_again_hint_too_many">Munchos intentos de buelgues dactilares. Inténtalo dempués.</string>
   <!-- Content description of the dock battery level icon for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_dock_battery_level">Batería de la bas al <xliff:g id="number">%d</xliff:g> por cientu.</string>
   <!-- Empty view text for CustomQSTile -->
-  <string name="quick_settings_custom_qs_detail_empty_text">Nun s\'atoparon elementos</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.
