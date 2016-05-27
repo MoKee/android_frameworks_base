@@ -12570,6 +12570,7 @@ public final class ActivityManagerService extends ActivityManagerNative
         synchronized (sb) {
             bufferWasEmpty = sb.length() == 0;
             appendDropBoxProcessHeaders(process, processName, sb);
+            sb.append("CM Version: ").append(cyanogenmod.os.Build.CYANOGENMOD_VERSION).append("\n");
             sb.append("Build: ").append(Build.FINGERPRINT).append("\n");
             sb.append("System-App: ").append(isSystemApp).append("\n");
             sb.append("Uptime-Millis: ").append(info.violationUptimeMillis).append("\n");
@@ -12839,6 +12840,7 @@ public final class ActivityManagerService extends ActivityManagerNative
         if (subject != null) {
             sb.append("Subject: ").append(subject).append("\n");
         }
+        sb.append("CM Version: ").append(cyanogenmod.os.Build.CYANOGENMOD_VERSION).append("\n");
         sb.append("Build: ").append(Build.FINGERPRINT).append("\n");
         if (Debug.isDebuggerConnected()) {
             sb.append("Debugger: Connected\n");
