@@ -99,6 +99,9 @@ import mokee.providers.MKSettings;
 import dalvik.system.VMRuntime;
 
 import java.io.File;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -455,8 +458,8 @@ public final class SystemServer {
         boolean disableNetwork = SystemProperties.getBoolean("config.disable_network", false);
         boolean disableNetworkTime = SystemProperties.getBoolean("config.disable_networktime", false);
         boolean isEmulator = SystemProperties.get("ro.kernel.qemu").equals("1");
-        String[] externalServices = context.getResources().getStringArray(
-                org.mokee.platform.internal.R.array.config_externalMKServices);
+        String externalServer = context.getResources().getString(
+                org.mokee.platform.internal.R.string.config_externalSystemServer);
 
         try {
             Slog.i(TAG, "Reading configuration...");
@@ -1050,13 +1053,22 @@ public final class SystemServer {
         // MMS service broker
         mmsService = mSystemServiceManager.startService(MmsServiceBroker.class);
 
-        for (String service : externalServices) {
-            try {
-                Slog.i(TAG, service);
-                mSystemServiceManager.startService(service);
-            } catch (Throwable e) {
-                reportWtf("starting " + service , e);
-            }
+        final Class<?> serverClazz;
+        try {
+            serverClazz = Class.forName(externalServer);
+            final Constructor<?> constructor = serverClazz.getDeclaredConstructor(Context.class);
+            constructor.setAccessible(true);
+            final Object baseObject = constructor.newInstance(mSystemContext);
+            final Method method = baseObject.getClass().getDeclaredMethod("run");
+            method.setAccessible(true);
+            method.invoke(baseObject);
+        } catch (ClassNotFoundException
+                | IllegalAccessException
+                | InvocationTargetException
+                | InstantiationException
+                | NoSuchMethodException e) {
+            Slog.wtf(TAG, "Unable to start  " + externalServer);
+            Slog.wtf(TAG, e);
         }
 
         // It is now time to start up the app processes...
