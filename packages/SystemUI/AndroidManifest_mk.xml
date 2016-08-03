@@ -52,6 +52,9 @@
      <!-- Weather Provider -->
     <uses-permission android:name="mokee.permission.READ_WEATHER" />
 
+    <!-- Theme manager -->
+    <uses-permission android:name="mokee.permission.ACCESS_THEME_MANAGER" />
+
     <!-- NFC Tile -->
     <uses-permission android:name="android.permission.NFC" />
 
