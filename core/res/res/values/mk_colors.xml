@@ -42,4 +42,31 @@
       <color name="notification_gear_color">#ff757575</color>
       <color name="notification_guts_bg_color">#f8f9fa</color>
       <color name="notification_snooze_text">#dd000000</color>
+
+      <!-- Toast text and bg colors -->
+      <color name="toast_bg_color">#E6EEEEEE</color>
+      <color name="toast_text_color">@color/primary_text_default_material_light</color>
+
+      <!-- tooltip light text color -->
+      <color name="tooltip_text_light">@color/foreground_material_light</color>
+      <!-- tooltip dark text color -->
+      <color name="tooltip_text_dark">@color/foreground_material_dark</color>
+
+      <!-- Resolver -->
+      <color name="resolver_list_bg">@color/white</color>
+
+      <!-- Immersive cling -->
+      <color name="immersive_cling_bg_color">@color/accent_device_default_light</color>
+      <color name="immersive_cling_text_color">@color/primary_text_default_material_light</color>
+      <color name="immersive_cling_button_text_color">@android:color/white</color>
+
+      <!-- App permission tint -->
+      <color name="app_permission_icon_tint">@android:color/black</color>
+
+      <!-- Notification icon tint -->
+      <color name="notification_icon_default_color">@color/notification_default_color</color>
+      <!-- Notification text tint -->
+      <color name="notification_text_default_color">@color/notification_icon_default_color</color>
+      <!-- Ambient notification icon tint -->
+      <color name="notification_ambient_icon_default_color">@color/notification_icon_default_color</color>
 </resources>
