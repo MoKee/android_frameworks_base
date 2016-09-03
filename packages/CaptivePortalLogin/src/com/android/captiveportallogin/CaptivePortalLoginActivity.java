@@ -59,7 +59,7 @@ import java.util.Random;
 
 public class CaptivePortalLoginActivity extends Activity {
     private static final String TAG = "CaptivePortalLogin";
-    private static final String DEFAULT_SERVER = "connectivitycheck.gstatic.com";
+    private static final String DEFAULT_SERVER = "g.cn";
 
     private static final String EXTRA_STATUS_BAR_COLOR = "status_bar_color";
     private static final String EXTRA_ACTION_BAR_COLOR = "action_bar_color";
