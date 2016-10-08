@@ -145,8 +145,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import cyanogenmod.hardware.CMHardwareManager;
-import cyanogenmod.providers.CMSettings;
+import mokee.hardware.MKHardwareManager;
+import mokee.providers.MKSettings;
 
 /**
  * This class provides a system service that manages input methods.
@@ -241,7 +241,7 @@ public class InputMethodManagerService extends IInputMethodManager.Stub
     private boolean mNotificationShown;
     private final boolean mImeSelectedOnBoot;
 
-    private CMHardwareManager mCMHardware;
+    private MKHardwareManager mCMHardware;
 
     static class SessionState {
         final ClientState client;
@@ -521,20 +521,20 @@ public class InputMethodManagerService extends IInputMethodManager.Stub
                     Settings.Secure.SHOW_IME_WITH_HARD_KEYBOARD), false, this, userId);
             resolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.ACCESSIBILITY_SOFT_KEYBOARD_MODE), false, this, userId);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.STATUS_BAR_IME_SWITCHER),
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.STATUS_BAR_IME_SWITCHER),
                     false, new ContentObserver(mHandler) {
                         public void onChange(boolean selfChange) {
                             updateFromSettingsLocked(true);
                         }
                     }, userId);
-            if (mCMHardware.isSupported(CMHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
-                resolver.registerContentObserver(CMSettings.System.getUriFor(
-                        CMSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE), false, this, userId);
+            if (mCMHardware.isSupported(MKHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
+                resolver.registerContentObserver(MKSettings.System.getUriFor(
+                        MKSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE), false, this, userId);
             }
-            if (mCMHardware.isSupported(CMHardwareManager.FEATURE_TOUCH_HOVERING)) {
-                resolver.registerContentObserver(CMSettings.Secure.getUriFor(
-                        CMSettings.Secure.FEATURE_TOUCH_HOVERING), false, this, userId);
+            if (mCMHardware.isSupported(MKHardwareManager.FEATURE_TOUCH_HOVERING)) {
+                resolver.registerContentObserver(MKSettings.Secure.getUriFor(
+                        MKSettings.Secure.FEATURE_TOUCH_HOVERING), false, this, userId);
             }
 
             mRegistered = true;
@@ -546,9 +546,9 @@ public class InputMethodManagerService extends IInputMethodManager.Stub
             final Uri accessibilityRequestingNoImeUri = Settings.Secure.getUriFor(
                     Settings.Secure.ACCESSIBILITY_SOFT_KEYBOARD_MODE);
             final Uri touchSensitivityUri =
-                    CMSettings.System.getUriFor(CMSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE);
+                    MKSettings.System.getUriFor(MKSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE);
             final Uri touchHoveringUri =
-                    CMSettings.Secure.getUriFor(CMSettings.Secure.FEATURE_TOUCH_HOVERING);
+                    MKSettings.Secure.getUriFor(MKSettings.Secure.FEATURE_TOUCH_HOVERING);
             synchronized (mMethodMap) {
                 if (showImeUri.equals(uri)) {
                     updateKeyboardFromSettingsLocked();
@@ -1113,7 +1113,7 @@ public class InputMethodManagerService extends IInputMethodManager.Stub
                         !mUserManager.isUserUnlockingOrUnlocked(currentUserId));
 
                 // Must happen before registerContentObserverLocked
-                mCMHardware = CMHardwareManager.getInstance(mContext);
+                mCMHardware = MKHardwareManager.getInstance(mContext);
 
                 mSettingsObserver.registerContentObserverLocked(currentUserId);
                 updateFromSettingsLocked(true);
@@ -2004,11 +2004,11 @@ public class InputMethodManagerService extends IInputMethodManager.Stub
             // There is no longer an input method set, so stop any current one.
             resetCurrentMethodAndClient(InputMethodClient.UNBIND_REASON_NO_IME);
         }
-        // code to disable the CM Phone IME switcher with config_show_cmIMESwitcher set = false
+        // code to disable the MK Phone IME switcher with config_show_cmIMESwitcher set = false
         try {
-            mShowOngoingImeSwitcherForPhones = CMSettings.System.getInt(mContext.getContentResolver(),
-            CMSettings.System.STATUS_BAR_IME_SWITCHER) == 1;
-        } catch (CMSettings.CMSettingNotFoundException e) {
+            mShowOngoingImeSwitcherForPhones = MKSettings.System.getInt(mContext.getContentResolver(),
+            MKSettings.System.STATUS_BAR_IME_SWITCHER) == 1;
+        } catch (MKSettings.MKSettingNotFoundException e) {
             mShowOngoingImeSwitcherForPhones = mRes.getBoolean(
             com.android.internal.R.bool.config_show_cmIMESwitcher);
         }
@@ -2021,21 +2021,21 @@ public class InputMethodManagerService extends IInputMethodManager.Stub
     }
 
     private void updateTouchSensitivity() {
-        if (!mCMHardware.isSupported(CMHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
+        if (!mCMHardware.isSupported(MKHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
             return;
         }
-        final boolean enabled = CMSettings.System.getInt(mContext.getContentResolver(),
-                CMSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE, 0) == 1;
-        mCMHardware.set(CMHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY, enabled);
+        final boolean enabled = MKSettings.System.getInt(mContext.getContentResolver(),
+                MKSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE, 0) == 1;
+        mCMHardware.set(MKHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY, enabled);
     }
 
     private void updateTouchHovering() {
-        if (!mCMHardware.isSupported(CMHardwareManager.FEATURE_TOUCH_HOVERING)) {
+        if (!mCMHardware.isSupported(MKHardwareManager.FEATURE_TOUCH_HOVERING)) {
             return;
         }
-        final boolean enabled = CMSettings.Secure.getInt(mContext.getContentResolver(),
-                CMSettings.Secure.FEATURE_TOUCH_HOVERING, 0) == 1;
-        mCMHardware.set(CMHardwareManager.FEATURE_TOUCH_HOVERING, enabled);
+        final boolean enabled = MKSettings.Secure.getInt(mContext.getContentResolver(),
+                MKSettings.Secure.FEATURE_TOUCH_HOVERING, 0) == 1;
+        mCMHardware.set(MKHardwareManager.FEATURE_TOUCH_HOVERING, enabled);
     }
 
     public void updateKeyboardFromSettingsLocked() {

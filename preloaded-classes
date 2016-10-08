@@ -1472,6 +1472,8 @@ android.media.session.MediaSession$Token
 android.media.session.MediaSessionManager
 android.media.soundtrigger.SoundTriggerManager
 android.media.tv.TvInputManager
+android.mokee.location.PhoneNumberOfflineGeocoder
+android.mokee.utils.MoKeeUtils
 android.mtp.MtpDatabase
 android.mtp.MtpDevice
 android.mtp.MtpDeviceInfo
@@ -2877,6 +2879,7 @@ com.google.android.collect.Lists
 com.google.android.collect.Maps
 com.google.android.gles_jni.EGLImpl
 com.google.android.gles_jni.GLImpl
+com.mokee.security.SecurityUtils
 dalvik.system.BaseDexClassLoader
 dalvik.system.BlockGuard
 dalvik.system.BlockGuard$1

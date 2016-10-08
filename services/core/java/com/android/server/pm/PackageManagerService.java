@@ -228,7 +228,7 @@ import android.util.Xml;
 import android.util.jar.StrictJarFile;
 import android.view.Display;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 import com.android.internal.R;
 import com.android.internal.annotations.GuardedBy;
@@ -1780,9 +1780,9 @@ public class PackageManagerService extends IPackageManager.Stub {
             }
 
 			if (!update && !isSystemApp(res.pkg)) {
-			    boolean privacyGuard = CMSettings.Secure.getIntForUser(
+			    boolean privacyGuard = MKSettings.Secure.getIntForUser(
 						mContext.getContentResolver(),
-						CMSettings.Secure.PRIVACY_GUARD_DEFAULT,
+						MKSettings.Secure.PRIVACY_GUARD_DEFAULT,
 						0, UserHandle.USER_CURRENT) == 1;
 				if (privacyGuard) {
 					mAppOps.setPrivacyGuardSettingForPackage(
@@ -20939,8 +20939,8 @@ Slog.v(TAG, ":: stepped forward, applying functor at tag " + parser.getName());
 
         //Allow managers full access
         List<String> protectedComponentManagers =
-                CMSettings.Secure.getDelimitedStringAsList(mContext.getContentResolver(),
-                        CMSettings.Secure.PROTECTED_COMPONENT_MANAGERS, "|");
+                MKSettings.Secure.getDelimitedStringAsList(mContext.getContentResolver(),
+                        MKSettings.Secure.PROTECTED_COMPONENT_MANAGERS, "|");
         if (protectedComponentManagers.contains(callingPackage)) {
             if (DEBUG_PROTECTED) Log.d(TAG, "Calling package is a protected manager, allow");
             return false;

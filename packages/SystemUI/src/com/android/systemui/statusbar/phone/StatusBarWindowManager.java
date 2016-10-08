@@ -41,7 +41,7 @@ import com.android.systemui.statusbar.StatusBarState;
 import com.android.systemui.statusbar.policy.KeyguardMonitor;
 import com.android.systemui.tuner.TunerService;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -96,8 +96,8 @@ public class StatusBarWindowManager implements RemoteInputController.Callback,
         Resources res = mContext.getResources();
         boolean enableAccelerometerRotation = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.ACCELEROMETER_ROTATION, 1) != 0;
-        boolean enableLockScreenRotation = CMSettings.System.getInt(mContext.getContentResolver(),
-                CMSettings.System.LOCKSCREEN_ROTATION, 0) != 0;
+        boolean enableLockScreenRotation = MKSettings.System.getInt(mContext.getContentResolver(),
+                MKSettings.System.LOCKSCREEN_ROTATION, 0) != 0;
         return SystemProperties.getBoolean("lockscreen.rot_override", false)
                 || (res.getBoolean(R.bool.config_enableLockScreenRotation)
                 && (enableLockScreenRotation && enableAccelerometerRotation));

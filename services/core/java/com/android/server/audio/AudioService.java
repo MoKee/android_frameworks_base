@@ -22,9 +22,9 @@ import static android.media.AudioManager.RINGER_MODE_SILENT;
 import static android.media.AudioManager.RINGER_MODE_VIBRATE;
 import static android.os.Process.FIRST_APPLICATION_UID;
 
-import static cyanogenmod.media.MediaRecorder.ACTION_HOTWORD_INPUT_CHANGED;
-import static cyanogenmod.media.MediaRecorder.EXTRA_CURRENT_PACKAGE_NAME;
-import static cyanogenmod.media.MediaRecorder.EXTRA_HOTWORD_INPUT_STATE;
+import static mokee.media.MediaRecorder.ACTION_HOTWORD_INPUT_CHANGED;
+import static mokee.media.MediaRecorder.EXTRA_CURRENT_PACKAGE_NAME;
+import static mokee.media.MediaRecorder.EXTRA_HOTWORD_INPUT_STATE;
 
 import android.Manifest;
 import android.app.ActivityManager;

@@ -221,7 +221,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 import static android.service.notification.NotificationListenerService.Ranking.importanceToLevel;
 
@@ -314,9 +314,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private static final String SCREEN_BRIGHTNESS_MODE =
             "system:" + Settings.System.SCREEN_BRIGHTNESS_MODE;
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL =
-            "cmsystem:" + CMSettings.System.STATUS_BAR_BRIGHTNESS_CONTROL;
+            "mksystem:" + MKSettings.System.STATUS_BAR_BRIGHTNESS_CONTROL;
     private static final String NAVBAR_LEFT_IN_LANDSCAPE =
-            "cmsystem:" + CMSettings.System.NAVBAR_LEFT_IN_LANDSCAPE;
+            "mksystem:" + MKSettings.System.NAVBAR_LEFT_IN_LANDSCAPE;
 
     static {
         boolean onlyCoreApps;
@@ -478,8 +478,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
         void observe() {
             ContentResolver resolver = mContext.getContentResolver();
-            resolver.registerContentObserver(CMSettings.Global.getUriFor(
-                    CMSettings.Global.DEV_FORCE_SHOW_NAVBAR), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(MKSettings.Global.getUriFor(
+                    MKSettings.Global.DEV_FORCE_SHOW_NAVBAR), false, this, UserHandle.USER_ALL);
 
             CurrentUserTracker userTracker = new CurrentUserTracker(mContext) {
                 @Override
@@ -497,8 +497,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         }
 
         private void update() {
-            boolean visible = CMSettings.Global.getIntForUser(mContext.getContentResolver(),
-                    CMSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
+            boolean visible = MKSettings.Global.getIntForUser(mContext.getContentResolver(),
+                    MKSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
 
             if (visible) {
                 forceAddNavigationBar();
@@ -1131,7 +1131,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         filter.addAction(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         filter.addAction(Intent.ACTION_SCREEN_ON);
-        filter.addAction(cyanogenmod.content.Intent.ACTION_SCREEN_CAMERA_GESTURE);
+        filter.addAction(mokee.content.Intent.ACTION_SCREEN_CAMERA_GESTURE);
         context.registerReceiverAsUser(mBroadcastReceiver, UserHandle.ALL, filter, null, null);
 
         IntentFilter demoFilter = new IntentFilter();
@@ -3859,7 +3859,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             else if (Intent.ACTION_SCREEN_ON.equals(action)) {
                 mScreenOn = true;
                 notifyNavigationBarScreenOn(true);
-            } else if (cyanogenmod.content.Intent.ACTION_SCREEN_CAMERA_GESTURE.equals(action)) {
+            } else if (mokee.content.Intent.ACTION_SCREEN_CAMERA_GESTURE.equals(action)) {
                 boolean userSetupComplete = Settings.Secure.getInt(mContext.getContentResolver(),
                         Settings.Secure.USER_SETUP_COMPLETE, 0) != 0;
                 if (!userSetupComplete) {

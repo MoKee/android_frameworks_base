@@ -46,7 +46,7 @@ import android.widget.ImageView;
 import com.android.systemui.R;
 import com.android.systemui.statusbar.phone.ButtonDispatcher;
 
-import cyanogenmod.power.PerformanceManager;
+import mokee.power.PerformanceManager;
 
 import static android.view.accessibility.AccessibilityNodeInfo.ACTION_CLICK;
 import static android.view.accessibility.AccessibilityNodeInfo.ACTION_LONG_CLICK;

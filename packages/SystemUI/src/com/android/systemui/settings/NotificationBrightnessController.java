@@ -30,7 +30,7 @@ import com.android.systemui.R;
 import java.lang.Exception;
 import java.util.ArrayList;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 public class NotificationBrightnessController implements ToggleSlider.Listener {
     private static final String TAG = "StatusBar.NotificationBrightnessController";
@@ -136,8 +136,8 @@ public class NotificationBrightnessController implements ToggleSlider.Listener {
         mNotificationManager.cancel(1);
         mListening = false;
 
-        CMSettings.System.putIntForUser(mContext.getContentResolver(),
-                CMSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
+        MKSettings.System.putIntForUser(mContext.getContentResolver(),
+                MKSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
                 mCurrentBrightness, UserHandle.USER_CURRENT);
     }
 

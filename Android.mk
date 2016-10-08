@@ -496,7 +496,7 @@ LOCAL_INTERMEDIATE_SOURCES := \
 
 LOCAL_NO_STANDARD_LIBRARIES := true
 LOCAL_JAVA_LIBRARIES := core-oj core-libart core-lambda-stubs conscrypt okhttp core-junit bouncycastle ext
-LOCAL_STATIC_JAVA_LIBRARIES := framework-protos
+LOCAL_STATIC_JAVA_LIBRARIES := framework-protos mokee-cloud
 
 LOCAL_MODULE := framework
 

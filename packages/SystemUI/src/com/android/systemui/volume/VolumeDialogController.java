@@ -54,7 +54,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 /**
  *  Source of truth for all state / events related to the volume dialog.  No presentation.
@@ -741,8 +741,8 @@ public class VolumeDialogController {
     protected void onPlaySoundW(int streamType, int flags) {
 
         // If preference is no sound - just exit here
-        if (CMSettings.System.getInt(mContext.getContentResolver(),
-                CMSettings.System.VOLUME_ADJUST_SOUNDS_ENABLED, 1) == 0) {
+        if (MKSettings.System.getInt(mContext.getContentResolver(),
+                MKSettings.System.VOLUME_ADJUST_SOUNDS_ENABLED, 1) == 0) {
             return;
         }
 

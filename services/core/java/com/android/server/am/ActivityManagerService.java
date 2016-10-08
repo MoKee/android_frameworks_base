@@ -248,7 +248,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import dalvik.system.VMRuntime;
 
-import cyanogenmod.power.PerformanceManagerInternal;
+import mokee.power.PerformanceManagerInternal;
 
 import libcore.io.IoUtils;
 import libcore.util.EmptyArray;
@@ -18402,10 +18402,10 @@ public final class ActivityManagerService extends ActivityManagerNative
                     }
                     // Lie; we don't want to crash the app.
                     return ActivityManager.BROADCAST_SUCCESS;
-                case cyanogenmod.content.Intent.ACTION_PROTECTED_CHANGED:
+                case mokee.content.Intent.ACTION_PROTECTED_CHANGED:
                     final boolean state =
                             intent.getBooleanExtra(
-                                    cyanogenmod.content.Intent.EXTRA_PROTECTED_STATE, false);
+                                    mokee.content.Intent.EXTRA_PROTECTED_STATE, false);
                     if (state == PackageManager.COMPONENT_PROTECTED_STATUS) {
                         mRecentTasks.cleanupProtectedComponentTasksLocked(
                                 mUserController.getCurrentUserIdLocked());

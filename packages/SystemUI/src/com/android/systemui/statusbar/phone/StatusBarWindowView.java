@@ -67,7 +67,7 @@ import com.android.systemui.statusbar.StatusBarState;
 import com.android.systemui.statusbar.stack.NotificationStackScrollLayout;
 import com.android.systemui.tuner.TunerService;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 
 public class StatusBarWindowView extends FrameLayout implements TunerService.Tunable {
@@ -75,7 +75,7 @@ public class StatusBarWindowView extends FrameLayout implements TunerService.Tun
     public static final boolean DEBUG = BaseStatusBar.DEBUG;
 
     private static final String DOUBLE_TAP_SLEEP_GESTURE =
-            "cmsystem:" + CMSettings.System.DOUBLE_TAP_SLEEP_GESTURE;
+            "mksystem:" + MKSettings.System.DOUBLE_TAP_SLEEP_GESTURE;
 
     private DragDownHelper mDragDownHelper;
     private NotificationStackScrollLayout mStackScrollLayout;

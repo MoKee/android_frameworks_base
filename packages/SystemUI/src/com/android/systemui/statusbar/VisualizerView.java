@@ -32,7 +32,7 @@ import android.view.View;
 
 import com.android.systemui.tuner.TunerService;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 public class VisualizerView extends View
         implements Palette.PaletteAsyncListener, TunerService.Tunable {
@@ -41,7 +41,7 @@ public class VisualizerView extends View
     private static final boolean DEBUG = false;
 
     private static final String LOCKSCREEN_VISUALIZER_ENABLED =
-            "cmsecure:" + CMSettings.Secure.LOCKSCREEN_VISUALIZER_ENABLED;
+            "mksecure:" + MKSettings.Secure.LOCKSCREEN_VISUALIZER_ENABLED;
 
     private Paint mPaint;
     private Visualizer mVisualizer;

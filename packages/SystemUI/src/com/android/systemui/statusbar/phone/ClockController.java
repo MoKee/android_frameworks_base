@@ -26,8 +26,8 @@ public class ClockController implements TunerService.Tunable {
     public static final int CLOCK_POSITION_CENTER = 1;
     public static final int CLOCK_POSITION_LEFT = 2;
 
-    public static final String CLOCK_POSITION = "cmsystem:status_bar_clock";
-    public static final String CLOCK_STYLE = "cmsystem:status_bar_am_pm";
+    public static final String CLOCK_POSITION = "mksystem:status_bar_clock";
+    public static final String CLOCK_STYLE = "mksystem:status_bar_am_pm";
 
     private final NotificationIconAreaController mNotificationIconAreaController;
     private final Context mContext;

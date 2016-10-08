@@ -165,9 +165,9 @@
     <!-- shortcut manager -->
     <uses-permission android:name="android.permission.RESET_SHORTCUT_MANAGER_THROTTLING" />
 
-    <!-- manage cmsettings -->
-    <uses-permission android:name="cyanogenmod.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="cyanogenmod.permission.WRITE_SECURE_SETTINGS" />
+    <!-- manage mksettings -->
+    <uses-permission android:name="mokee.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="mokee.permission.WRITE_SECURE_SETTINGS" />
 
     <!-- Weather -->
     <uses-permission android:name="com.cyanogenmod.lockclock.permission.READ_WEATHER" />

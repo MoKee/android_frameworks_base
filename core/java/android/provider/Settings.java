@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006 The Android Open Source Project
+ * Copyright (C) 2014-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3234,7 +3235,7 @@ public final class Settings {
 
         /**
         * Developer options - Navigation Bar show switch
-        * @deprecated Moved to CMSettings.Secure.DEV_FORCE_SHOW_NAVBAR
+        * @deprecated Moved to MKSettings.Secure.DEV_FORCE_SHOW_NAVBAR
         * @hide
         */
         public static final String DEV_FORCE_SHOW_NAVBAR = "dev_force_show_navbar";
@@ -3701,6 +3702,42 @@ public final class Settings {
          public static final String VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
 
         /**
+         * Call log delete limit
+         * @hide
+         */
+        public static final String CALL_LOG_DELETE_LIMIT = "call_log_delete_limit";
+
+        /**
+         * Use MoKee Cloud Location Engine
+         * @hide
+         */
+        public static final String ENABLE_CLOUD_LOCATION_LOOKUP = "enable_cloud_location_lookup";
+
+        /**
+         * Whether the blacklisting feature for phone calls from advertisement numbers is enabled
+         * @hide
+         */
+        public static final String PHONE_BLACKLIST_ADVERTISEMENT_NUMBER_MODE = "phone_blacklist_advertisement_number";
+
+        /**
+         * Whether the blacklisting feature for phone calls from fraud numbers is enabled
+         * @hide
+         */
+        public static final String PHONE_BLACKLIST_FRAUD_NUMBER_MODE = "phone_blacklist_fraud_number";
+
+        /**
+         * Whether the blacklisting feature for phone calls from harass numbers is enabled
+         * @hide
+         */
+        public static final String PHONE_BLACKLIST_HARASS_NUMBER_MODE = "phone_blacklist_harass_number";
+
+        /**
+         * Whether the blacklisting feature for phone calls from all numbers is enabled
+         * @hide
+         */
+        public static final String PHONE_BLACKLIST_ALL_NUMBER_MODE = "phone_blacklist_all_number";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -3755,6 +3792,10 @@ public final class Settings {
             LOCK_TO_APP_ENABLED,
             NOTIFICATION_SOUND,
             ACCELEROMETER_ROTATION
+            PHONE_BLACKLIST_ALL_NUMBER_MODE,
+            PHONE_BLACKLIST_ADVERTISEMENT_NUMBER_MODE,
+            PHONE_BLACKLIST_FRAUD_NUMBER_MODE,
+            PHONE_BLACKLIST_HARASS_NUMBER_MODE,
         };
 
         /**
@@ -7114,7 +7155,7 @@ public final class Settings {
 
         /**
          * String to contain power menu actions
-         * @deprecated Use {@link CMSettings.Secure#POWER_MENU_ACTIONS} instead
+         * @deprecated Use {@link MKSettings.Secure#POWER_MENU_ACTIONS} instead
          * @hide
          */
         @Deprecated

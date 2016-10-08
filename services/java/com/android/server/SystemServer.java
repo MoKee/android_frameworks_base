@@ -111,7 +111,7 @@ import com.android.server.vr.VrManagerService;
 import com.android.server.webkit.WebViewUpdateService;
 import com.android.server.wm.WindowManagerService;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 import dalvik.system.VMRuntime;
 import dalvik.system.PathClassLoader;
 import java.lang.reflect.Constructor;
@@ -245,8 +245,8 @@ public final class SystemServer {
         }
         @Override
         public void onChange(boolean selfChange) {
-            int adbPort = CMSettings.Secure.getInt(mContentResolver,
-                CMSettings.Secure.ADB_PORT, 0);
+            int adbPort = MKSettings.Secure.getInt(mContentResolver,
+                MKSettings.Secure.ADB_PORT, 0);
             // setting this will control whether ADB runs on TCP/IP or USB
             SystemProperties.set("adb.network.port", Integer.toString(adbPort));
         }
@@ -600,7 +600,7 @@ public final class SystemServer {
         boolean enableWigig = SystemProperties.getBoolean("persist.wigig.enable", false);
 
         String externalServer = context.getResources().getString(
-                org.cyanogenmod.platform.internal.R.string.config_externalSystemServer);
+                org.mokee.platform.internal.R.string.config_externalSystemServer);
         boolean disableAtlas = SystemProperties.getBoolean("config.disable_atlas", false);
 
         try {
@@ -1267,12 +1267,12 @@ public final class SystemServer {
         }
 
         // make sure the ADB_ENABLED setting value matches the secure property value
-        CMSettings.Secure.putInt(mContentResolver, CMSettings.Secure.ADB_PORT,
+        MKSettings.Secure.putInt(mContentResolver, MKSettings.Secure.ADB_PORT,
                 Integer.parseInt(SystemProperties.get("service.adb.tcp.port", "-1")));
 
         // register observer to listen for settings changes
         mContentResolver.registerContentObserver(
-            CMSettings.Secure.getUriFor(CMSettings.Secure.ADB_PORT),
+            MKSettings.Secure.getUriFor(MKSettings.Secure.ADB_PORT),
             false, new AdbPortObserver());
 
         // Before things start rolling, be sure we have decided whether

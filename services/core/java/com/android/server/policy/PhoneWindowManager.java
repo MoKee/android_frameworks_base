@@ -112,6 +112,8 @@ import android.service.dreams.DreamService;
 import android.service.dreams.IDreamManager;
 import android.speech.RecognizerIntent;
 import android.telecom.TelecomManager;
+import mokee.hardware.MKHardwareManager;
+import mokee.providers.MKSettings;
 import android.util.DisplayMetrics;
 import android.util.EventLog;
 import android.util.Log;
@@ -174,8 +176,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.lang.reflect.Constructor;
 
-import cyanogenmod.hardware.CMHardwareManager;
-import cyanogenmod.providers.CMSettings;
+import mokee.hardware.MKHardwareManager;
+import mokee.providers.MKSettings;
 import dalvik.system.PathClassLoader;
 
 /**
@@ -861,7 +863,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     boolean mWifiDisplayConnected = false;
     int mWifiDisplayCustomRotation = -1;
 
-    private CMHardwareManager mCMHardware;
+    private MKHardwareManager mMKHardware;
     private boolean mClearedBecauseOfForceShow;
     private boolean mTopWindowIsKeyguard;
 
@@ -1009,29 +1011,29 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.POINTER_LOCATION), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.KEY_HOME_LONG_PRESS_ACTION), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.KEY_HOME_LONG_PRESS_ACTION), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.KEY_HOME_DOUBLE_TAP_ACTION), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.KEY_HOME_DOUBLE_TAP_ACTION), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.KEY_MENU_ACTION), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.KEY_MENU_ACTION), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.KEY_MENU_LONG_PRESS_ACTION), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.KEY_MENU_LONG_PRESS_ACTION), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.KEY_ASSIST_ACTION), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.KEY_ASSIST_ACTION), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.KEY_ASSIST_LONG_PRESS_ACTION), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.KEY_ASSIST_LONG_PRESS_ACTION), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.KEY_APP_SWITCH_ACTION), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.KEY_APP_SWITCH_ACTION), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.DEFAULT_INPUT_METHOD), false, this,
@@ -1045,50 +1047,50 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.ACCELEROMETER_ROTATION_ANGLES), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.Global.getUriFor(
-                    CMSettings.Global.DEV_FORCE_SHOW_NAVBAR), false, this,
+            resolver.registerContentObserver(MKSettings.Global.getUriFor(
+                    MKSettings.Global.DEV_FORCE_SHOW_NAVBAR), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.VOLBTN_MUSIC_CONTROLS), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.VOLBTN_MUSIC_CONTROLS), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.BACK_WAKE_SCREEN), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.BACK_WAKE_SCREEN), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.MENU_WAKE_SCREEN), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.MENU_WAKE_SCREEN), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.ASSIST_WAKE_SCREEN), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.ASSIST_WAKE_SCREEN), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.APP_SWITCH_WAKE_SCREEN), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.APP_SWITCH_WAKE_SCREEN), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.CAMERA_WAKE_SCREEN), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.CAMERA_WAKE_SCREEN), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.CAMERA_SLEEP_ON_RELEASE), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.CAMERA_SLEEP_ON_RELEASE), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.CAMERA_LAUNCH), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.CAMERA_LAUNCH), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.VOLUME_WAKE_SCREEN), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.VOLUME_WAKE_SCREEN), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.HOME_WAKE_SCREEN), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.HOME_WAKE_SCREEN), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.VOLUME_WAKE_SCREEN), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.VOLUME_WAKE_SCREEN), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.VOLUME_ANSWER_CALL), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.VOLUME_ANSWER_CALL), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.ACCELEROMETER_ROTATION_ANGLES), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.NAVBAR_LEFT_IN_LANDSCAPE), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.NAVBAR_LEFT_IN_LANDSCAPE), false, this,
                     UserHandle.USER_ALL);
             updateSettings();
         }
@@ -2168,35 +2170,35 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mDoubleTapOnHomeBehavior = KEY_ACTION_NOTHING;
         }
 
-        mLongPressOnHomeBehavior = CMSettings.System.getIntForUser(resolver,
-                CMSettings.System.KEY_HOME_LONG_PRESS_ACTION,
+            mLongPressOnHomeBehavior = MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.KEY_HOME_LONG_PRESS_ACTION,
                 mLongPressOnHomeBehavior, UserHandle.USER_CURRENT);
-        mDoubleTapOnHomeBehavior = CMSettings.System.getIntForUser(resolver,
-                CMSettings.System.KEY_HOME_DOUBLE_TAP_ACTION,
+            mDoubleTapOnHomeBehavior = MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.KEY_HOME_DOUBLE_TAP_ACTION,
                 mDoubleTapOnHomeBehavior, UserHandle.USER_CURRENT);
 
         if (hasMenu) {
-            mPressOnMenuBehavior = CMSettings.System.getIntForUser(resolver,
-                    CMSettings.System.KEY_MENU_ACTION,
+            mPressOnMenuBehavior = MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.KEY_MENU_ACTION,
                     mPressOnMenuBehavior, UserHandle.USER_CURRENT);
-            mLongPressOnMenuBehavior = CMSettings.System.getIntForUser(resolver,
-                    CMSettings.System.KEY_MENU_LONG_PRESS_ACTION,
+            mLongPressOnMenuBehavior = MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.KEY_MENU_LONG_PRESS_ACTION,
                     mLongPressOnMenuBehavior, UserHandle.USER_CURRENT);
         }
         if (hasAssist) {
-            mPressOnAssistBehavior = CMSettings.System.getIntForUser(resolver,
-                    CMSettings.System.KEY_ASSIST_ACTION,
+            mPressOnAssistBehavior = MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.KEY_ASSIST_ACTION,
                     mPressOnAssistBehavior, UserHandle.USER_CURRENT);
-            mLongPressOnAssistBehavior = CMSettings.System.getIntForUser(resolver,
-                    CMSettings.System.KEY_ASSIST_LONG_PRESS_ACTION,
+            mLongPressOnAssistBehavior = MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.KEY_ASSIST_LONG_PRESS_ACTION,
                     mLongPressOnAssistBehavior, UserHandle.USER_CURRENT);
         }
         if (hasAppSwitch) {
-            mPressOnAppSwitchBehavior = CMSettings.System.getIntForUser(resolver,
-                    CMSettings.System.KEY_APP_SWITCH_ACTION,
+            mPressOnAppSwitchBehavior = MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.KEY_APP_SWITCH_ACTION,
                     mPressOnAppSwitchBehavior, UserHandle.USER_CURRENT);
-            mLongPressOnAppSwitchBehavior = CMSettings.System.getIntForUser(resolver,
-                    CMSettings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION,
+            mLongPressOnAppSwitchBehavior = MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION,
                     mLongPressOnAppSwitchBehavior, UserHandle.USER_CURRENT);
         }
 
@@ -2337,33 +2339,33 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mTorchLongPressPowerEnabled = CMSettings.System.getIntForUser(
                     resolver, CMSettings.System.TORCH_LONG_PRESS_POWER_GESTURE, 0,
                     UserHandle.USER_CURRENT) == 1;
-            mHomeWakeScreen = (CMSettings.System.getIntForUser(resolver,
-                    CMSettings.System.HOME_WAKE_SCREEN, 1, UserHandle.USER_CURRENT) == 1) &&
+            mHomeWakeScreen = (MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.HOME_WAKE_SCREEN, 1, UserHandle.USER_CURRENT) == 1) &&
                     ((mDeviceHardwareWakeKeys & KEY_MASK_HOME) != 0);
-            mBackWakeScreen = (CMSettings.System.getIntForUser(resolver,
-                    CMSettings.System.BACK_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1) &&
+            mBackWakeScreen = (MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.BACK_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1) &&
                     ((mDeviceHardwareWakeKeys & KEY_MASK_BACK) != 0);
-            mMenuWakeScreen = (CMSettings.System.getIntForUser(resolver,
-                    CMSettings.System.MENU_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1) &&
+            mMenuWakeScreen = (MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.MENU_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1) &&
                     ((mDeviceHardwareWakeKeys & KEY_MASK_MENU) != 0);
-            mAssistWakeScreen = (CMSettings.System.getIntForUser(resolver,
-                    CMSettings.System.ASSIST_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1) &&
+            mAssistWakeScreen = (MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.ASSIST_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1) &&
                     ((mDeviceHardwareWakeKeys & KEY_MASK_ASSIST) != 0);
-            mAppSwitchWakeScreen = (CMSettings.System.getIntForUser(resolver,
-                    CMSettings.System.APP_SWITCH_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1) &&
+            mAppSwitchWakeScreen = (MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.APP_SWITCH_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1) &&
                     ((mDeviceHardwareWakeKeys & KEY_MASK_APP_SWITCH) != 0);
-            mCameraWakeScreen = (CMSettings.System.getIntForUser(resolver,
-                    CMSettings.System.CAMERA_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1) &&
+            mCameraWakeScreen = (MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.CAMERA_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1) &&
                     ((mDeviceHardwareWakeKeys & KEY_MASK_CAMERA) != 0);
-            mCameraSleepOnRelease = (CMSettings.System.getIntForUser(resolver,
-                    CMSettings.System.CAMERA_SLEEP_ON_RELEASE, 0, UserHandle.USER_CURRENT) == 1);
-            mCameraLaunch = (CMSettings.System.getIntForUser(resolver,
-                    CMSettings.System.CAMERA_LAUNCH, 0, UserHandle.USER_CURRENT) == 1);
-            mVolumeWakeScreen = (CMSettings.System.getIntForUser(resolver,
-                    CMSettings.System.VOLUME_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1) &&
+            mCameraSleepOnRelease = (MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.CAMERA_SLEEP_ON_RELEASE, 0, UserHandle.USER_CURRENT) == 1);
+            mCameraLaunch = (MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.CAMERA_LAUNCH, 0, UserHandle.USER_CURRENT) == 1);
+            mVolumeWakeScreen = (MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.VOLUME_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1) &&
                     ((mDeviceHardwareWakeKeys & KEY_MASK_VOLUME) != 0);
-            mVolBtnMusicControls = (CMSettings.System.getIntForUser(resolver,
-                    CMSettings.System.VOLBTN_MUSIC_CONTROLS, 1, UserHandle.USER_CURRENT) == 1);
+            mVolBtnMusicControls = (MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.VOLBTN_MUSIC_CONTROLS, 1, UserHandle.USER_CURRENT) == 1);
             mVolumeAnswerCall = CMSettings.System.getIntForUser(resolver,
                     CMSettings.System.VOLUME_ANSWER_CALL, 0, UserHandle.USER_CURRENT) == 1;
 
@@ -2376,17 +2378,17 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 updateWakeGestureListenerLp();
             }
 
-            boolean devForceNavbar = CMSettings.Global.getIntForUser(resolver,
-                    CMSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
+            boolean devForceNavbar = MKSettings.Global.getIntForUser(resolver,
+                    MKSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
             if (devForceNavbar != mDevForceNavbar) {
                 mDevForceNavbar = devForceNavbar;
-                if (mCMHardware.isSupported(CMHardwareManager.FEATURE_KEY_DISABLE)) {
-                    mCMHardware.set(CMHardwareManager.FEATURE_KEY_DISABLE, mDevForceNavbar);
+                if (mMKHardware.isSupported(MKHardwareManager.FEATURE_KEY_DISABLE)) {
+                    mMKHardware.set(MKHardwareManager.FEATURE_KEY_DISABLE, mDevForceNavbar);
                 }
             }
 
-            mNavigationBarLeftInLandscape = CMSettings.System.getIntForUser(resolver,
-                    CMSettings.System.NAVBAR_LEFT_IN_LANDSCAPE, 0, UserHandle.USER_CURRENT) == 1;
+            mNavigationBarLeftInLandscape = MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.NAVBAR_LEFT_IN_LANDSCAPE, 0, UserHandle.USER_CURRENT) == 1;
 
             updateKeyAssignments();
 
@@ -3899,8 +3901,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             }
             return -1;
         } else if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (unpinActivity(true) || CMSettings.Secure.getInt(mContext.getContentResolver(),
-                    CMSettings.Secure.KILL_APP_LONGPRESS_BACK, 0) == 1) {
+            if (unpinActivity(true) || MKSettings.Secure.getInt(mContext.getContentResolver(),
+                    MKSettings.Secure.KILL_APP_LONGPRESS_BACK, 0) == 1) {
                 if (down && repeatCount == 0) {
                     mHandler.postDelayed(mBackLongPress, mBackKillTimeout);
                 }
@@ -7827,7 +7829,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 this::onKeyguardShowingStateChanged);
         mKeyguardDelegate.onSystemReady();
 
-        mCMHardware = CMHardwareManager.getInstance(mContext);
+        mMKHardware = MKHardwareManager.getInstance(mContext);
         // Ensure observe happens in systemReady() since we need
         // CMHardwareService to be up and running
         mSettingsObserver.observe();

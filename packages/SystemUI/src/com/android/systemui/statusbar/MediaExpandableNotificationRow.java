@@ -44,8 +44,8 @@ public class MediaExpandableNotificationRow extends ExpandableNotificationRow
 
     private boolean mQueueEnabled = false;
 
-    private static final String NOTIFICATION_PLAY_QUEUE = "cmsystem:" +
-            cyanogenmod.providers.CMSettings.System.NOTIFICATION_PLAY_QUEUE;
+    private static final String NOTIFICATION_PLAY_QUEUE = "mksystem:" +
+            mokee.providers.MKSettings.System.NOTIFICATION_PLAY_QUEUE;
 
     public MediaExpandableNotificationRow(Context context, AttributeSet attrs) {
         super(context, attrs);

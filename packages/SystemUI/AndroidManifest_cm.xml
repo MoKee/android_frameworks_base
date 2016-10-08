@@ -19,8 +19,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         package="com.android.systemui">
 
-    <uses-permission android:name="cyanogenmod.permission.WRITE_SECURE_SETTINGS" />
-    <uses-permission android:name="cyanogenmod.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="mokee.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="mokee.permission.WRITE_SETTINGS" />
 
     <!-- Visualizer -->
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
@@ -68,7 +68,7 @@
             android:icon="@drawable/tuner"
             android:label="@string/lockscreen_targets_message"
             android:theme="@android:style/Theme.Material.Settings"
-            android:process=":cmsettings"
+            android:process=":mksettings"
             android:exported="true">
         </activity>
 
