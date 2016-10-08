@@ -9,6 +9,6 @@ LOCAL_SRC_FILES += \
 
 LOCAL_JAVA_LIBRARIES := services.core
 
-LOCAL_JAVA_LIBRARIES += org.cyanogenmod.platform.internal
+LOCAL_JAVA_LIBRARIES += org.mokee.platform.internal
 
 include $(BUILD_STATIC_JAVA_LIBRARY)

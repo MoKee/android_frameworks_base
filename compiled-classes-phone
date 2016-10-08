@@ -2623,6 +2623,8 @@ android.media.tv.TvInputHardwareInfo$Builder
 android.media.tv.TvInputManager
 android.media.tv.TvStreamConfig
 android.media.tv.TvStreamConfig$Builder
+android.mokee.location.PhoneNumberOfflineGeocoder
+android.mokee.utils.MoKeeUtils
 android.mtp.MtpDatabase
 android.mtp.MtpDevice
 android.mtp.MtpDeviceInfo
@@ -6376,6 +6378,7 @@ com.google.android.mms.MmsException
 com.google.android.mms.pdu.GenericPdu
 com.google.android.mms.pdu.PduComposer
 com.google.android.mms.pdu.PduPersister
+com.mokee.security.SecurityUtils
 dalvik.system.BaseDexClassLoader
 dalvik.system.BlockGuard
 dalvik.system.BlockGuard$1

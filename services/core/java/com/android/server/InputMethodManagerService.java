@@ -143,7 +143,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 /**
  * This class provides a system service that manages input methods.
@@ -514,8 +514,8 @@ public class InputMethodManagerService extends IInputMethodManager.Stub
                     Settings.Secure.SHOW_IME_WITH_HARD_KEYBOARD), false, this, userId);
             resolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.ACCESSIBILITY_SOFT_KEYBOARD_MODE), false, this, userId);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.STATUS_BAR_IME_SWITCHER),
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.STATUS_BAR_IME_SWITCHER),
                     false, new ContentObserver(mHandler) {
                         public void onChange(boolean selfChange) {
                             updateFromSettingsLocked(true);
@@ -1973,11 +1973,11 @@ public class InputMethodManagerService extends IInputMethodManager.Stub
             // There is no longer an input method set, so stop any current one.
             resetCurrentMethodAndClient(InputMethodClient.UNBIND_REASON_NO_IME);
         }
-        // code to disable the CM Phone IME switcher with config_show_cmIMESwitcher set = false
+        // code to disable the MK Phone IME switcher with config_show_cmIMESwitcher set = false
         try {
-            mShowOngoingImeSwitcherForPhones = CMSettings.System.getInt(mContext.getContentResolver(),
-            CMSettings.System.STATUS_BAR_IME_SWITCHER) == 1;
-        } catch (CMSettings.CMSettingNotFoundException e) {
+            mShowOngoingImeSwitcherForPhones = MKSettings.System.getInt(mContext.getContentResolver(),
+            MKSettings.System.STATUS_BAR_IME_SWITCHER) == 1;
+        } catch (MKSettings.MKSettingNotFoundException e) {
             mShowOngoingImeSwitcherForPhones = mRes.getBoolean(
             com.android.internal.R.bool.config_show_cmIMESwitcher);
         }

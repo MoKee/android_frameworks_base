@@ -74,7 +74,7 @@ import com.android.systemui.tuner.TunerService;
 
 import java.text.NumberFormat;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 /**
  * The view to manage the header area in the expanded status bar.
@@ -940,8 +940,8 @@ public class StatusBarHeaderView extends BaseStatusBarHeader implements View.OnC
             super.observe();
 
             ContentResolver resolver = mContext.getContentResolver();
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.STATUS_BAR_SHOW_WEATHER), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.STATUS_BAR_SHOW_WEATHER), false, this, UserHandle.USER_ALL);
             update();
         }
 
@@ -957,8 +957,8 @@ public class StatusBarHeaderView extends BaseStatusBarHeader implements View.OnC
         public void update() {
 
             ContentResolver resolver = mContext.getContentResolver();
-            mShowWeather = CMSettings.System.getInt(
-                    resolver, CMSettings.System.STATUS_BAR_SHOW_WEATHER, 1) == 1;
+            mShowWeather = MKSettings.System.getInt(
+                    resolver, MKSettings.System.STATUS_BAR_SHOW_WEATHER, 1) == 1;
             updateVisibilities();
         }
     }

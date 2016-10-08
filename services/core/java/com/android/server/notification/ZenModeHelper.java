@@ -62,7 +62,7 @@ import android.util.SparseArray;
 import com.android.internal.R;
 import com.android.internal.logging.MetricsLogger;
 import com.android.server.LocalServices;
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 import libcore.io.IoUtils;
 
@@ -732,12 +732,12 @@ public class ZenModeHelper {
         switch (mZenMode) {
             case Global.ZEN_MODE_NO_INTERRUPTIONS:
             case Global.ZEN_MODE_ALARMS:
-                mAllowLights = CMSettings.System.getInt(mContext.getContentResolver(),
-                   CMSettings.System.ZEN_ALLOW_LIGHTS, 1) == 1;
+                mAllowLights = MKSettings.System.getInt(mContext.getContentResolver(),
+                   MKSettings.System.ZEN_ALLOW_LIGHTS, 1) == 1;
                 break;
             case Global.ZEN_MODE_IMPORTANT_INTERRUPTIONS:
-                mAllowLights = CMSettings.System.getInt(mContext.getContentResolver(),
-                   CMSettings.System.ZEN_PRIORITY_ALLOW_LIGHTS, 1) == 1;
+                mAllowLights = MKSettings.System.getInt(mContext.getContentResolver(),
+                   MKSettings.System.ZEN_PRIORITY_ALLOW_LIGHTS, 1) == 1;
                 break;
         }
     }
@@ -1045,10 +1045,10 @@ public class ZenModeHelper {
 
     private final class SettingsObserver extends ContentObserver {
         private final Uri ZEN_MODE = Global.getUriFor(Global.ZEN_MODE);
-        private final Uri ZEN_ALLOW_LIGHTS = CMSettings.System.getUriFor(
-                                               CMSettings.System.ZEN_ALLOW_LIGHTS);
-        private final Uri ZEN_PRIORITY_ALLOW_LIGHTS = CMSettings.System.getUriFor(
-                                               CMSettings.System.ZEN_PRIORITY_ALLOW_LIGHTS);
+        private final Uri ZEN_ALLOW_LIGHTS = MKSettings.System.getUriFor(
+                                               MKSettings.System.ZEN_ALLOW_LIGHTS);
+        private final Uri ZEN_PRIORITY_ALLOW_LIGHTS = MKSettings.System.getUriFor(
+                                               MKSettings.System.ZEN_PRIORITY_ALLOW_LIGHTS);
 
         public SettingsObserver(Handler handler) {
             super(handler);

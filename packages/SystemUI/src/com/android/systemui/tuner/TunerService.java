@@ -49,7 +49,7 @@ import com.android.systemui.statusbar.phone.SystemUIDialog;
 import java.util.HashMap;
 import java.util.Set;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 public class TunerService extends SystemUI {
 
@@ -110,12 +110,12 @@ public class TunerService extends SystemUI {
         setValue(TUNER_VERSION, newVersion);
     }
 
-    private boolean isCMSystem(String key) {
-        return key.startsWith("cmsystem:");
+    private boolean isMKSystem(String key) {
+        return key.startsWith("mksystem:");
     }
 
-    private boolean isCMSecure(String key) {
-        return key.startsWith("cmsecure:");
+    private boolean isMKSecure(String key) {
+        return key.startsWith("mksecure:");
     }
 
     private String chomp(String key) {
@@ -123,23 +123,23 @@ public class TunerService extends SystemUI {
     }
 
     public String getValue(String setting) {
-        if (isCMSecure(setting)) {
-            return CMSettings.Secure.getStringForUser(
+        if (isMKSecure(setting)) {
+            return MKSettings.Secure.getStringForUser(
                     mContentResolver, chomp(setting), mCurrentUser);
         }
-        if (isCMSystem(setting)) {
-            return CMSettings.System.getStringForUser(
+        if (isMKSystem(setting)) {
+            return MKSettings.System.getStringForUser(
                     mContentResolver, chomp(setting), mCurrentUser);
         }
         return Settings.Secure.getStringForUser(mContentResolver, setting, mCurrentUser);
     }
 
     public void setValue(String setting, String value) {
-        if (isCMSecure(setting)) {
-            CMSettings.Secure.putStringForUser(
+        if (isMKSecure(setting)) {
+            MKSettings.Secure.putStringForUser(
                     mContentResolver, chomp(setting), value, mCurrentUser);
-        } else if (isCMSystem(setting)) {
-            CMSettings.System.putStringForUser(
+        } else if (isMKSystem(setting)) {
+            MKSettings.System.putStringForUser(
                     mContentResolver, chomp(setting), value, mCurrentUser);
         } else {
             Settings.Secure.putStringForUser(mContentResolver, setting, value, mCurrentUser);
@@ -147,23 +147,23 @@ public class TunerService extends SystemUI {
     }
 
     public int getValue(String setting, int def) {
-        if (isCMSecure(setting)) {
-            return CMSettings.Secure.getIntForUser(
+        if (isMKSecure(setting)) {
+            return MKSettings.Secure.getIntForUser(
                     mContentResolver, chomp(setting), def, mCurrentUser);
         }
-        if (isCMSystem(setting)) {
-            return CMSettings.System.getIntForUser(
+        if (isMKSystem(setting)) {
+            return MKSettings.System.getIntForUser(
                     mContentResolver, chomp(setting), def, mCurrentUser);
         }
         return Settings.Secure.getIntForUser(mContentResolver, setting, def, mCurrentUser);
     }
 
     public void setValue(String setting, int value) {
-        if (isCMSecure(setting)) {
-            CMSettings.Secure.putIntForUser(
+        if (isMKSecure(setting)) {
+            MKSettings.Secure.putIntForUser(
                     mContentResolver, chomp(setting), value, mCurrentUser);
-        } else if (isCMSystem(setting)) {
-            CMSettings.System.putIntForUser(
+        } else if (isMKSystem(setting)) {
+            MKSettings.System.putIntForUser(
                     mContentResolver, chomp(setting), value, mCurrentUser);
         } else {
             Settings.Secure.putIntForUser(mContentResolver, setting, value, mCurrentUser);
@@ -182,10 +182,10 @@ public class TunerService extends SystemUI {
         }
         mTunableLookup.get(key).add(tunable);
         final Uri uri;
-        if (isCMSecure(key)) {
-            uri = CMSettings.Secure.getUriFor(chomp(key));
-        } else if (isCMSystem(key)) {
-            uri = CMSettings.System.getUriFor(chomp(key));
+        if (isMKSecure(key)) {
+            uri = MKSettings.Secure.getUriFor(chomp(key));
+        } else if (isMKSystem(key)) {
+            uri = MKSettings.System.getUriFor(chomp(key));
         } else {
             uri = Settings.Secure.getUriFor(key);
         }

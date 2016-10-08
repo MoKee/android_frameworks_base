@@ -85,7 +85,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.ListView;
 import android.widget.TextView;
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -1209,8 +1209,8 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
 
     protected void updatePowerMenuActions() {
         ContentResolver resolver = mContext.getContentResolver();
-        mActions = CMSettings.Secure.getStringForUser(resolver,
-                CMSettings.Secure.POWER_MENU_ACTIONS, UserHandle.USER_CURRENT);
+        mActions = MKSettings.Secure.getStringForUser(resolver,
+                MKSettings.Secure.POWER_MENU_ACTIONS, UserHandle.USER_CURRENT);
     }
 
     PhoneStateListener mPhoneStateListener = new PhoneStateListener() {

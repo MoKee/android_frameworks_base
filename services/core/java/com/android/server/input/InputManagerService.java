@@ -109,7 +109,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 import libcore.io.Streams;
 import libcore.util.Objects;
 
@@ -1674,7 +1674,7 @@ public class InputManagerService extends IInputManager.Stub
 
     public void registerVolumeKeysRotationSettingObserver() {
         mContext.getContentResolver().registerContentObserver(
-                CMSettings.System.getUriFor(CMSettings.System.SWAP_VOLUME_KEYS_ON_ROTATION), false,
+                MKSettings.System.getUriFor(MKSettings.System.SWAP_VOLUME_KEYS_ON_ROTATION), false,
                 new ContentObserver(mHandler) {
                     @Override
                     public void onChange(boolean selfChange) {
@@ -1686,9 +1686,9 @@ public class InputManagerService extends IInputManager.Stub
     private int getVolumeKeysRotationSetting(int defaultValue) {
         int result = defaultValue;
         try {
-            result = CMSettings.System.getIntForUser(mContext.getContentResolver(),
-                    CMSettings.System.SWAP_VOLUME_KEYS_ON_ROTATION, UserHandle.USER_CURRENT);
-        } catch (CMSettings.CMSettingNotFoundException snfe) {
+            result = MKSettings.System.getIntForUser(mContext.getContentResolver(),
+                    MKSettings.System.SWAP_VOLUME_KEYS_ON_ROTATION, UserHandle.USER_CURRENT);
+        } catch (MKSettings.MKSettingNotFoundException snfe) {
         }
         return result;
     }

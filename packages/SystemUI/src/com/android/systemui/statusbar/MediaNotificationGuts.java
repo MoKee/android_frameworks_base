@@ -28,7 +28,7 @@ import android.widget.TextView;
 
 import com.android.systemui.R;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 /**
  * The guts of a media notification revealed when performing a long press.
@@ -58,8 +58,8 @@ public class MediaNotificationGuts extends LinearLayout {
         mQueueGroup = (ViewGroup) findViewById(R.id.notification_guts_media_extension);
 
         mSwitch = (Switch) findViewById(R.id.queue_switch);
-        boolean enabled = CMSettings.System.getInt(getContext().getContentResolver(),
-                CMSettings.System.NOTIFICATION_PLAY_QUEUE, 1) == 1;
+        boolean enabled = MKSettings.System.getInt(getContext().getContentResolver(),
+                MKSettings.System.NOTIFICATION_PLAY_QUEUE, 1) == 1;
 
         mSwitch.setChecked(enabled);
         mText = (TextView) findViewById(R.id.switch_label);
@@ -73,8 +73,8 @@ public class MediaNotificationGuts extends LinearLayout {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 buttonView.setChecked(isChecked);
-                CMSettings.System.putInt(getContext().getContentResolver(),
-                        CMSettings.System.NOTIFICATION_PLAY_QUEUE,
+                MKSettings.System.putInt(getContext().getContentResolver(),
+                        MKSettings.System.NOTIFICATION_PLAY_QUEUE,
                         isChecked ? 1 : 0);
             }
         });

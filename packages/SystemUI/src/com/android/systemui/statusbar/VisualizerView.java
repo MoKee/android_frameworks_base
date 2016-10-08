@@ -32,7 +32,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.android.systemui.cm.UserContentObserver;
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 public class VisualizerView extends View implements Palette.PaletteAsyncListener {
 
@@ -372,8 +372,8 @@ public class VisualizerView extends View implements Palette.PaletteAsyncListener
 
         @Override
         protected void update() {
-            mVisualizerEnabled = CMSettings.Secure.getInt(getContext().getContentResolver(),
-                    CMSettings.Secure.LOCKSCREEN_VISUALIZER_ENABLED, 1) != 0;
+            mVisualizerEnabled = MKSettings.Secure.getInt(getContext().getContentResolver(),
+                    MKSettings.Secure.LOCKSCREEN_VISUALIZER_ENABLED, 1) != 0;
             checkStateChanged();
             updateViewVisibility();
         }
@@ -382,7 +382,7 @@ public class VisualizerView extends View implements Palette.PaletteAsyncListener
         protected void observe() {
             super.observe();
             getContext().getContentResolver().registerContentObserver(
-                    CMSettings.Secure.getUriFor(CMSettings.Secure.LOCKSCREEN_VISUALIZER_ENABLED),
+                    MKSettings.Secure.getUriFor(MKSettings.Secure.LOCKSCREEN_VISUALIZER_ENABLED),
                     false, this, UserHandle.USER_CURRENT);
         }
 
