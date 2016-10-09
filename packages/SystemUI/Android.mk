@@ -5,6 +5,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := SystemUI-proto-tags
 
 LOCAL_SRC_FILES := $(call all-proto-files-under,src) \
+    $(call all-java-files-under,../SystemUIExt/src) \
     src/com/android/systemui/EventLogTags.logtags
 
 LOCAL_PROTOC_OPTIMIZE_TYPE := nano
@@ -45,6 +46,7 @@ LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
 LOCAL_RESOURCE_DIR := \
     frameworks/base/packages/Keyguard/res \
+    frameworks/base/packages/SystemUIExt/res \
     $(LOCAL_PATH)/res \
     frameworks/support/v7/preference/res \
     frameworks/support/v14/preference/res \
