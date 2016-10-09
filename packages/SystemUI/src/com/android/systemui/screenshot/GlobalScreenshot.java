@@ -281,6 +281,19 @@ class SaveImageInBackgroundTask extends AsyncTask<Void, Void, Void> {
                     r.getString(com.android.internal.R.string.share), shareAction);
             mNotificationBuilder.addAction(shareActionBuilder.build());
 
+            // Create a edit aciont for the notification
+            Intent editIntent = new Intent(Intent.ACTION_EDIT);
+            editIntent.setDataAndType(uri, "image/png");
+            editIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            Intent editChooserIntent = Intent.createChooser(editIntent, null);
+            editChooserIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    | Intent.FLAG_ACTIVITY_NEW_TASK);
+            Notification.Action.Builder editActionBuilder = new Notification.Action.Builder(
+                    R.drawable.ic_screenshot_edit,
+                    r.getString(com.android.internal.R.string.edit), PendingIntent.getActivity(context, 1, editChooserIntent,
+                    PendingIntent.FLAG_CANCEL_CURRENT));
+            mNotificationBuilder.addAction(editActionBuilder.build());
+
             // Create a delete action for the notification
             PendingIntent deleteAction = PendingIntent.getBroadcast(context,  0,
                     new Intent(context, GlobalScreenshot.DeleteScreenshotReceiver.class)
