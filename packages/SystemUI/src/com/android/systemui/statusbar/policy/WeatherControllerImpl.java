@@ -164,7 +164,7 @@ public class WeatherControllerImpl implements WeatherController {
         try {
             mWeatherUnit = MKSettings.Global.getInt(mContext.getContentResolver(),
                     MKSettings.Global.WEATHER_TEMPERATURE_UNIT);
-        } catch (MKSettings.CMSettingNotFoundException e) {
+        } catch (MKSettings.MKSettingNotFoundException e) {
             //MKSettingsProvider should have taken care of setting a default value for this setting
             //so how is that we ended up here?? We need to set a valid temp unit anyway to keep
             //this going
