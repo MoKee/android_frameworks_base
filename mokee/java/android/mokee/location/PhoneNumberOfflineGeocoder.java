@@ -18,10 +18,6 @@ package android.mokee.location;
 
 import android.text.TextUtils;
 
-/**
-* @hide
-*/
-
 public final class PhoneNumberOfflineGeocoder {
 
     private static String LIBNAME = "mokee-phonelocation";
