@@ -28,10 +28,6 @@ import android.net.NetworkInfo;
 import java.text.DecimalFormat;
 import java.util.Locale;
 
-/**
- * @hide
- */
-
 public class MoKeeUtils {
 
     public static boolean isSupportLanguage(boolean excludeTW) {
