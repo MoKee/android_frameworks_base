@@ -118,8 +118,12 @@ public class TunerService extends SystemUI {
         return key.startsWith("mksecure:");
     }
 
+    private boolean isSystem(String key) {
+        return key.startsWith("system:");
+    }
+
     private String chomp(String key) {
-        return key.replaceFirst("^cms(ecure|ystem):", "");
+        return key.replaceFirst("^(mksecure|mksystem|system):", "");
     }
 
     public String getValue(String setting) {
@@ -131,6 +135,10 @@ public class TunerService extends SystemUI {
             return MKSettings.System.getStringForUser(
                     mContentResolver, chomp(setting), mCurrentUser);
         }
+        if (isSystem(setting)) {
+            return Settings.System.getStringForUser(
+                    mContentResolver, chomp(setting), mCurrentUser);
+        }
         return Settings.Secure.getStringForUser(mContentResolver, setting, mCurrentUser);
     }
 
@@ -140,6 +148,9 @@ public class TunerService extends SystemUI {
                     mContentResolver, chomp(setting), value, mCurrentUser);
         } else if (isMKSystem(setting)) {
             MKSettings.System.putStringForUser(
+                    mContentResolver, chomp(setting), value, mCurrentUser);
+        } else if (isSystem(setting)) {
+            Settings.System.putStringForUser(
                     mContentResolver, chomp(setting), value, mCurrentUser);
         } else {
             Settings.Secure.putStringForUser(mContentResolver, setting, value, mCurrentUser);
@@ -155,6 +166,10 @@ public class TunerService extends SystemUI {
             return MKSettings.System.getIntForUser(
                     mContentResolver, chomp(setting), def, mCurrentUser);
         }
+        if (isSystem(setting)) {
+            return Settings.System.getIntForUser(
+                    mContentResolver, chomp(setting), def, mCurrentUser);
+        }
         return Settings.Secure.getIntForUser(mContentResolver, setting, def, mCurrentUser);
     }
 
@@ -164,6 +179,9 @@ public class TunerService extends SystemUI {
                     mContentResolver, chomp(setting), value, mCurrentUser);
         } else if (isMKSystem(setting)) {
             MKSettings.System.putIntForUser(
+                    mContentResolver, chomp(setting), value, mCurrentUser);
+        } else if (isSystem(setting)) {
+            Settings.System.putIntForUser(
                     mContentResolver, chomp(setting), value, mCurrentUser);
         } else {
             Settings.Secure.putIntForUser(mContentResolver, setting, value, mCurrentUser);
@@ -186,6 +204,8 @@ public class TunerService extends SystemUI {
             uri = MKSettings.Secure.getUriFor(chomp(key));
         } else if (isMKSystem(key)) {
             uri = MKSettings.System.getUriFor(chomp(key));
+        } else if (isSystem(key)) {
+            uri = Settings.System.getUriFor(chomp(key));
         } else {
             uri = Settings.Secure.getUriFor(key);
         }
