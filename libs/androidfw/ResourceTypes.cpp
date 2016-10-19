@@ -4725,6 +4725,12 @@ uint32_t ResTable::findEntry(const PackageGroup* group, ssize_t typeIndex, const
     const size_t typeCount = typeList.size();
     for (size_t i = 0; i < typeCount; i++) {
         const Type* t = typeList[i];
+
+        // Skip packages loaded as overlays.
+        if (t->idmapEntries.hasEntries()) {
+            continue;
+        }
+
         const ssize_t ei = t->package->keyStrings.indexOfString(name, nameLen);
         if (ei < 0) {
             continue;

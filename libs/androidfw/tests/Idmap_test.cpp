@@ -112,4 +112,24 @@ TEST_F(IdmapTest, overlaidResourceHasSameName) {
     EXPECT_EQ(String16("integerArray1"), String16(resName.name, resName.nameLen));
 }
 
+TEST_F(IdmapTest, unusedResourcesInOverlaysDoNotShineThroughInTargetPackage) {
+    const String16 package("com.android.test.basic");
+    const String16 type("string");
+    const String16 name("only_in_overlay");
+
+    uint32_t resid = mOverlayTable.identifierForName(name.string(), name.size(), type.string(),
+            type.size(), package.string(), package.size(), NULL);
+    ASSERT_NE(resid, uint32_t(0));
+
+    resid = mTargetTable.identifierForName(name.string(), name.size(), type.string(),
+            type.size(), package.string(), package.size(), NULL);
+    ASSERT_EQ(resid, uint32_t(0));
+
+    ASSERT_EQ(NO_ERROR, mTargetTable.add(overlay_arsc, overlay_arsc_len, mData, mDataSize));
+
+    resid = mTargetTable.identifierForName(name.string(), name.size(), type.string(),
+            type.size(), package.string(), package.size(), NULL);
+    ASSERT_EQ(resid, uint32_t(0));
+}
+
 } // namespace
