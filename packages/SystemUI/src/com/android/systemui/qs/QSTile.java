@@ -39,7 +39,6 @@ import com.android.systemui.statusbar.phone.ManagedProfileController;
 import com.android.systemui.statusbar.policy.BatteryController;
 import com.android.systemui.statusbar.policy.BluetoothController;
 import com.android.systemui.statusbar.policy.CastController;
-import com.android.systemui.statusbar.policy.NightModeController;
 import com.android.systemui.statusbar.policy.FlashlightController;
 import com.android.systemui.statusbar.policy.HotspotController;
 import com.android.systemui.statusbar.policy.KeyguardMonitor;
@@ -149,6 +148,9 @@ public abstract class QSTile<TState extends State> {
     public interface DetailAdapter {
         CharSequence getTitle();
         Boolean getToggleState();
+        default boolean getToggleEnabled() {
+            return true;
+        }
         View createDetailView(Context context, View convertView, ViewGroup parent);
         Intent getSettingsIntent();
         void setToggleState(boolean state);
@@ -447,7 +449,6 @@ public abstract class QSTile<TState extends State> {
         UserInfoController getUserInfoController();
         BatteryController getBatteryController();
         TileServices getTileServices();
-        NightModeController getNightModeController();
         void removeTile(String tileSpec);
         ManagedProfileController getManagedProfileController();
 
@@ -653,8 +654,6 @@ public abstract class QSTile<TState extends State> {
         public int overlayIconId;
         public boolean filter;
         public boolean isOverlayIconWide;
-        public boolean isShowRoaming;
-        public int subId;
 
         @Override
         public boolean copyTo(State other) {
@@ -662,18 +661,13 @@ public abstract class QSTile<TState extends State> {
             final boolean changed = o.connected != connected || o.activityIn != activityIn
                     || o.activityOut != activityOut
                     || o.overlayIconId != overlayIconId
-                    || o.isOverlayIconWide != isOverlayIconWide
-                    || o.isShowRoaming != isShowRoaming
-                    || o.subId != subId;
-
+                    || o.isOverlayIconWide != isOverlayIconWide;
             o.connected = connected;
             o.activityIn = activityIn;
             o.activityOut = activityOut;
             o.overlayIconId = overlayIconId;
             o.filter = filter;
             o.isOverlayIconWide = isOverlayIconWide;
-            o.isShowRoaming = isShowRoaming;
-            o.subId = subId;
             return super.copyTo(other) || changed;
         }
 
@@ -686,8 +680,6 @@ public abstract class QSTile<TState extends State> {
             rt.insert(rt.length() - 1, ",overlayIconId=" + overlayIconId);
             rt.insert(rt.length() - 1, ",filter=" + filter);
             rt.insert(rt.length() - 1, ",wideOverlayIcon=" + isOverlayIconWide);
-            rt.insert(rt.length() - 1, ",isShowRoaming=" + isShowRoaming);
-            rt.insert(rt.length() - 1, ",subId=" + subId);
             return rt;
         }
     }
