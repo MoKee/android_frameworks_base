@@ -58,6 +58,9 @@ interface INotificationManager
     void setShowNotificationForPackageOnKeyguard(String pkg, int uid, int status);
     int getShowNotificationForPackageOnKeyguard(String pkg, int uid);
 
+    void setPackageNotificationSoundTimeout(String pkg, int uid, long timeout);
+    long getPackageNotificationSoundTimeout(String pkg, int uid);
+
     // TODO: Remove this when callers have been migrated to the equivalent
     // INotificationListener method.
     StatusBarNotification[] getActiveNotifications(String callingPkg);
@@ -80,7 +83,7 @@ interface INotificationManager
     void setInterruptionFilter(String pkg, int interruptionFilter);
 
     ComponentName getEffectsSuppressor();
-    boolean matchesCallFilter(in Bundle extras);
+    boolean[] matchesCallFilter(in Bundle extras);
     boolean isSystemConditionProviderEnabled(String path);
 
     int getZenMode();

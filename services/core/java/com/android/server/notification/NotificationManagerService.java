@@ -76,6 +76,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import android.os.RemoteException;
+import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -100,6 +101,7 @@ import android.util.Log;
 import android.util.LruCache;
 import android.util.Slog;
 import android.util.SparseIntArray;
+import android.util.TimeUtils;
 import android.util.Xml;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
@@ -302,6 +304,7 @@ public class NotificationManagerService extends SystemService {
             new ArrayMap<String, NotificationRecord>();
     final ArrayList<ToastRecord> mToastQueue = new ArrayList<ToastRecord>();
     final ArrayMap<String, NotificationRecord> mSummaryByGroupKey = new ArrayMap<>();
+    final ArrayMap<String, Long> mLastSoundTimestamps = new ArrayMap<>();
     final PolicyAccess mPolicyAccess = new PolicyAccess();
 
     // The last key in this list owns the hardware.
@@ -1264,6 +1267,7 @@ public class NotificationManagerService extends SystemService {
         }
         mZenModeHelper.initZenMode();
         mZenModeHelper.readAllowLightsFromSettings();
+        mZenModeHelper.readVibrationModeFromSettings();
         mInterruptionFilter = mZenModeHelper.getZenModeListenerInterruptionFilter();
 
         mUserProfiles.updateCache(getContext());
@@ -1592,6 +1596,19 @@ public class NotificationManagerService extends SystemService {
         public int getShowNotificationForPackageOnKeyguard(String pkg, int uid) {
             enforceSystemOrSystemUI("INotificationManager.getShowNotificationForPackageOnKeyguard");
             return mRankingHelper.getShowNotificationForPackageOnKeyguard(pkg, uid);
+        }
+
+        @Override
+        public void setPackageNotificationSoundTimeout(String pkg, int uid, long timeout) {
+            checkCallerIsSystem();
+            mRankingHelper.setPackageNotificationSoundTimeout(pkg, uid, timeout);
+            savePolicyFile();
+        }
+
+        @Override
+        public long getPackageNotificationSoundTimeout(String pkg, int uid) {
+            checkCallerIsSystem();
+            return mRankingHelper.getPackageNotificationSoundTimeout(pkg, uid);
         }
 
         /**
@@ -2031,7 +2048,7 @@ public class NotificationManagerService extends SystemService {
         }
 
         @Override
-        public boolean matchesCallFilter(Bundle extras) {
+        public boolean[] matchesCallFilter(Bundle extras) {
             enforceSystemOrSystemUI("INotificationManager.matchesCallFilter");
             return mZenModeHelper.matchesCallFilter(
                     UserHandle.getCallingUserHandle(),
@@ -2315,6 +2332,14 @@ public class NotificationManagerService extends SystemService {
                 }
             } catch (NameNotFoundException e) {
                 // pass
+            }
+
+            long now = SystemClock.elapsedRealtime();
+            pw.println("\n  Last notification sound timestamps:");
+            for (Map.Entry<String, Long> entry: mLastSoundTimestamps.entrySet()) {
+                pw.print("    " + entry.getKey() + " -> ");
+                TimeUtils.formatDuration(entry.getValue(), now, pw);
+                pw.println(" ago");
             }
         }
     }
@@ -2698,21 +2723,29 @@ public class NotificationManagerService extends SystemService {
             ZenLog.traceDisableEffects(record, disableEffects);
         }
 
-        if ((disableEffects == null)
+        boolean readyForBeepOrBuzz = disableEffects == null
                 && (!(record.isUpdate
                     && (notification.flags & Notification.FLAG_ONLY_ALERT_ONCE) != 0 ))
                 && (record.getUserId() == UserHandle.USER_ALL ||
                     record.getUserId() == currentUser ||
                     mUserProfiles.isCurrentProfile(record.getUserId()))
-                && canInterrupt
+                && !isInSoundTimeoutPeriod(record)
                 && mSystemReady
-                && mAudioManager != null) {
+                && mAudioManager != null;
+
+        boolean canBeep = readyForBeepOrBuzz && canInterrupt;
+        boolean canBuzz = readyForBeepOrBuzz &&
+            (canInterrupt || mZenModeHelper.allowVibrationForNotifications());
+        boolean hasValidSound = false;
+
+        if (canBeep || canBuzz) {
             if (DBG) Slog.v(TAG, "Interrupting!");
 
             sendAccessibilityEvent(notification, record.sbn.getPackageName());
+        }
 
-            // sound
-
+        // sound
+        if (canBeep) {
             // should we use the default notification sound? (indicated either by
             // DEFAULT_SOUND or because notification.sound is pointing at
             // Settings.System.NOTIFICATION_SOUND)
@@ -2722,7 +2755,6 @@ public class NotificationManagerService extends SystemService {
                                    .equals(notification.sound);
 
             Uri soundUri = null;
-            boolean hasValidSound = false;
 
             if (useDefaultSound) {
                 soundUri = Settings.System.DEFAULT_NOTIFICATION_URI;
@@ -2763,15 +2795,17 @@ public class NotificationManagerService extends SystemService {
                     }
                 }
             }
+        }
 
-            // vibrate
+
+        // vibrate
+        if (canBuzz) {
             // Does the notification want to specify its own vibration?
             final boolean hasCustomVibrate = notification.vibrate != null;
 
             // new in 4.2: if there was supposed to be a sound and we're in vibrate
             // mode, and no other vibration is specified, we fall back to vibration
-            final boolean convertSoundToVibration =
-                       !hasCustomVibrate
+            final boolean convertSoundToVibration = !hasCustomVibrate
                     && hasValidSound
                     && (mAudioManager.getRingerModeInternal()
                                == AudioManager.RINGER_MODE_VIBRATE);
@@ -2826,11 +2860,33 @@ public class NotificationManagerService extends SystemService {
         } else if (wasShowLights) {
             updateLightsLocked();
         }
+        if (buzz || beep) {
+            mLastSoundTimestamps.put(generateLastSoundTimeoutKey(record),
+                    SystemClock.elapsedRealtime());
+        }
         if (buzz || beep || blink) {
             EventLogTags.writeNotificationAlert(record.getKey(),
                     buzz ? 1 : 0, beep ? 1 : 0, blink ? 1 : 0);
             mHandler.post(mBuzzBeepBlinked);
         }
+    }
+
+    private boolean isInSoundTimeoutPeriod(NotificationRecord record) {
+        long timeoutMillis = mRankingHelper.getPackageNotificationSoundTimeout(
+                record.sbn.getPackageName(), record.sbn.getUid());
+        if (timeoutMillis == 0) {
+            return false;
+        }
+
+        Long value = mLastSoundTimestamps.get(generateLastSoundTimeoutKey(record));
+        if (value == null) {
+            return false;
+        }
+        return SystemClock.elapsedRealtime() - value < timeoutMillis;
+    }
+
+    private String generateLastSoundTimeoutKey(NotificationRecord record) {
+        return record.sbn.getPackageName() + "|" + record.sbn.getUid();
     }
 
     private static AudioAttributes audioAttributesForNotification(Notification n) {
