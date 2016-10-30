@@ -38,6 +38,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.android.internal.statusbar.StatusBarIcon;
+import com.android.systemui.BatteryLevelTextView;
 import com.android.systemui.BatteryMeterView;
 import com.android.systemui.Interpolators;
 import com.android.systemui.R;
@@ -103,6 +104,8 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
 
     private final ArraySet<String> mIconBlacklist = new ArraySet<>();
 
+    private BatteryLevelTextView mBatteryLevelView;
+
     private final Runnable mTransitionDeferringDoneRunnable = new Runnable() {
         @Override
         public void run() {
@@ -142,6 +145,8 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
         mCenterClockLayout = statusBar.findViewById(R.id.center_clock_layout);
         loadDimens();
 
+        mBatteryLevelView = (BatteryLevelTextView) statusBar.findViewById(R.id.battery_level);
+
         TunerService.get(mContext).addTunable(this, ICON_BLACKLIST);
     }
 
@@ -162,10 +167,15 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
         int batteryHeight = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_height);
         int batteryWidth = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_width);
         int marginBottom = res.getDimensionPixelSize(R.dimen.battery_margin_bottom);
+        // Set the start margin of the battery view instead of
+        // the end padding of the signal cluster to prevent
+        // excess padding when the battery view is hidden
+        int marginStart = res.getDimensionPixelSize(R.dimen.signal_cluster_battery_padding);
 
         LinearLayout.LayoutParams scaledLayoutParams = new LinearLayout.LayoutParams(
                 (int) (batteryWidth * iconScaleFactor), (int) (batteryHeight * iconScaleFactor));
-        scaledLayoutParams.setMarginsRelative(0, 0, 0, marginBottom);
+
+        scaledLayoutParams.setMarginsRelative(marginStart, 0, 0, marginBottom);
 
         mBatteryMeterView.setLayoutParams(scaledLayoutParams);
         mBatteryMeterViewKeyguard.setLayoutParams(scaledLayoutParams);
@@ -537,6 +547,7 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
         mBatteryMeterView.setDarkIntensity(
                 isInArea(mTintArea, mBatteryMeterView) ? mDarkIntensity : 0);
         mClockController.setTextColor(mTintArea, mIconTint);
+        mBatteryLevelView.setTextColor(getTint(mTintArea, mBatteryLevelView, mIconTint));
     }
 
     public void appTransitionPending() {
