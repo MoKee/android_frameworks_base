@@ -37,7 +37,7 @@ import android.provider.Settings;
 
 import com.android.systemui.statusbar.policy.BatteryController;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 public class BatteryMeterDrawable extends Drawable implements
         BatteryController.BatteryStateChangeCallback {
@@ -191,7 +191,7 @@ public class BatteryMeterDrawable extends Drawable implements
     public void startListening() {
         mListening = true;
         mContext.getContentResolver().registerContentObserver(
-                CMSettings.System.getUriFor(CMSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT),
+                MKSettings.System.getUriFor(MKSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT),
                 false, mSettingObserver);
         updateShowPercent();
         mBatteryController.addStateChangedCallback(this);
@@ -276,8 +276,8 @@ public class BatteryMeterDrawable extends Drawable implements
     }
 
     private void updateShowPercent() {
-        mShowPercent = CMSettings.System.getInt(mContext.getContentResolver(),
-                CMSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0) == 1;
+        mShowPercent = MKSettings.System.getInt(mContext.getContentResolver(),
+                MKSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0) == 1;
     }
 
     private int getColorForLevel(int percent) {
