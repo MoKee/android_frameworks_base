@@ -12,7 +12,7 @@ import com.android.systemui.R;
 import com.android.systemui.statusbar.policy.Clock;
 import com.android.systemui.tuner.TunerService;
 
-import static com.android.systemui.statusbar.policy.Clock.AM_PM_STYLE_GONE;
+import static com.android.systemui.statusbar.policy.Clock.AM_PM_STYLE_NORMAL;
 import static com.android.systemui.statusbar.policy.Clock.CLOCK_SECONDS;
 
 /**
@@ -33,7 +33,7 @@ public class ClockController implements TunerService.Tunable {
     private final Context mContext;
     private Clock mRightClock, mCenterClock, mLeftClock, mActiveClock;
 
-    private int mAmPmStyle = AM_PM_STYLE_GONE;
+    private int mAmPmStyle = AM_PM_STYLE_NORMAL;
     private int mClockPosition = CLOCK_POSITION_RIGHT;
     private boolean mClockVisible = true;
     private boolean mShowSeconds = false;
@@ -93,7 +93,7 @@ public class ClockController implements TunerService.Tunable {
         if (CLOCK_POSITION.equals(key)) {
             mClockPosition = newValue == null ? CLOCK_POSITION_RIGHT : Integer.valueOf(newValue);
         } else if (CLOCK_STYLE.equals(key)) {
-            mAmPmStyle = newValue == null ? AM_PM_STYLE_GONE : Integer.valueOf(newValue);
+            mAmPmStyle = newValue == null ? AM_PM_STYLE_NORMAL : Integer.valueOf(newValue);
         } else if (CLOCK_SECONDS.equals(key)) {
             mShowSeconds = newValue != null && Integer.parseInt(newValue) != 0;
         }
