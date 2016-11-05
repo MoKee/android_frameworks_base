@@ -1046,9 +1046,10 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 t.setClipViewInStack(false);
                 t.startLaunchTaskAnimation(r, true, true, lockToTask);
             } else {
+                boolean occludesLaunchTarget = launchTargetTask != null &&
+                        launchTargetTask.group != null &&
+                        launchTargetTask.group.isTaskAboveTask(t.getTask(), launchTargetTask);
                 if (launchTargetTask.group == null) return;
-                boolean occludesLaunchTarget = launchTargetTask.group.isTaskAboveTask(t.getTask(),
-                        launchTargetTask);
                 t.startLaunchTaskAnimation(null, false, occludesLaunchTarget, lockToTask);
             }
         }
