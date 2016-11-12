@@ -57,7 +57,8 @@ static const char* kPathWhitelist[] = {
   "/dev/urandom",
   "/dev/ion",
   "@netlink@",
-  "/system/framework/org.mokee.platform-res.apk"
+  "/system/framework/org.mokee.platform-res.apk",
+  "/proc/ged"
 };
 
 static const char* kFdPath = "/proc/self/fd";
