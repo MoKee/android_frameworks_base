@@ -28,6 +28,7 @@
         <item name="android:colorPrimaryDark">@color/primary_dark</item>
         <item name="android:colorPrimary">@color/primary</item>
         <item name="android:colorAccent">@color/accent</item>
+        <item name="android:navigationBarColor">@*android:color/primary_dark</item>
         <item name="android:colorControlActivated">?android:attr/colorAccent</item>
         <item name="android:queryBackground">@color/menu_search_background</item>
 
