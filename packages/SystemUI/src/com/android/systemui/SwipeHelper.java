@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2011 The Android Open Source Project
+ * Copyright (C) 2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +33,8 @@ import android.view.ViewConfiguration;
 import android.view.accessibility.AccessibilityEvent;
 
 import com.android.systemui.classifier.FalsingManager;
+import com.android.systemui.recents.model.Task;
+import com.android.systemui.recents.views.TaskView;
 import com.android.systemui.statusbar.FlingAnimationUtils;
 
 import java.util.HashMap;
@@ -581,9 +584,17 @@ public class SwipeHelper implements Gefingerpoken {
 
                 if (!handleUpEvent(ev, mCurrView, velocity, getTranslation(mCurrView))) {
                     if (isDismissGesture(ev)) {
-                        // flingadingy
-                        dismissChild(mCurrView, velocity,
-                                !swipedFastEnough() /* useAccelerateInterpolator */);
+                        TaskView mTaskView = (TaskView) mCurrView;
+                        Task mTask = mTaskView.getTask();
+                        if (mTask.isLockedTask) {
+                            // snappity
+                            mCallback.onDragCancelled(mCurrView);
+                            snapChild(mCurrView, 0 /* leftTarget */, velocity);
+                        } else {
+                            // flingadingy
+                            dismissChild(mCurrView, velocity,
+                                    !swipedFastEnough() /* useAccelerateInterpolator */);
+                        }
                     } else {
                         // snappity
                         mCallback.onDragCancelled(mCurrView);

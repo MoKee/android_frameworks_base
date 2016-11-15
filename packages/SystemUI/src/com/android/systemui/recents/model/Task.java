@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2015-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -156,6 +157,11 @@ public class Task {
     public int colorBackground;
     @ViewDebug.ExportedProperty(category="recents")
     public boolean useLightOnPrimaryColor;
+    @ViewDebug.ExportedProperty(category="recents")
+    public String packageName;
+    @ViewDebug.ExportedProperty(category="recents")
+    public boolean isLockedTask;
+
 
     /**
      * The bounds of the task, used only if it is a freeform task.
@@ -224,6 +230,8 @@ public class Task {
         this.isDockable = isDockable;
         this.resizeMode = resizeMode;
         this.topActivity = topActivity;
+        this.isLockedTask = false;
+        this.packageName = key.baseIntent.getComponent().getPackageName();
     }
 
     /**
@@ -251,6 +259,8 @@ public class Task {
         this.isDockable = o.isDockable;
         this.resizeMode = o.resizeMode;
         this.topActivity = o.topActivity;
+        this.isLockedTask = o.isLockedTask;
+        this.packageName = o.packageName;
     }
 
     /**

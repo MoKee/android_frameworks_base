@@ -5,7 +5,6 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := SystemUI-proto-tags
 
 LOCAL_SRC_FILES := $(call all-proto-files-under,src) \
-    $(call all-java-files-under,../SystemUIExt/src) \
     src/com/android/systemui/EventLogTags.logtags
 
 LOCAL_PROTOC_OPTIMIZE_TYPE := nano
@@ -19,7 +18,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_SRC_FILES := $(call all-java-files-under, src) $(call all-Iaidl-files-under, src)
+LOCAL_SRC_FILES := $(call all-java-files-under, src) $(call all-Iaidl-files-under, src) $(call all-java-files-under,../SystemUIExt/src)
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
     Keyguard \
@@ -36,7 +35,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     uicommon
 
 LOCAL_JAVA_LIBRARIES := telephony-common
-LOCAL_FULL_LIBS_MANIFEST_FILES := $(LOCAL_PATH)/AndroidManifest_cm.xml
+LOCAL_FULL_LIBS_MANIFEST_FILES := $(LOCAL_PATH)/AndroidManifest_mk.xml
 
 LOCAL_PACKAGE_NAME := SystemUI
 LOCAL_CERTIFICATE := platform
