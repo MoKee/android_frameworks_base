@@ -16,6 +16,7 @@
 
 package com.android.server.power;
 
+import android.app.AppOpsManager;
 import android.os.IDeviceIdleController;
 import android.os.ServiceManager;
 import com.android.internal.util.ArrayUtils;
