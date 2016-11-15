@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +37,8 @@ import com.android.systemui.recents.Recents;
 import com.android.systemui.recents.RecentsConfiguration;
 import com.android.systemui.recents.RecentsDebugFlags;
 import com.android.systemui.recents.misc.SystemServicesProxy;
+
+import com.mokee.systemui.utils.LockTaskHelper;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -124,6 +127,7 @@ public class RecentsTaskLoadPlan {
             boolean includeFrontMostExcludedTask) {
         Resources res = mContext.getResources();
         ArrayList<Task> allTasks = new ArrayList<>();
+        LockTaskHelper mLockTaskHelper = LockTaskHelper.init(mContext);
         if (mRawTasks == null) {
             preloadRawTasks(includeFrontMostExcludedTask);
         }
@@ -183,6 +187,8 @@ public class RecentsTaskLoadPlan {
                     thumbnail, title, titleDescription, dismissDescription, appInfoDescription,
                     activityColor, backgroundColor, isLaunchTarget, isStackTask, isSystemApp,
                     t.isDockable, t.bounds, t.taskDescription, t.resizeMode, t.topActivity);
+
+            task.isLockedTask = mLockTaskHelper.isLockedTask(task.packageName);
 
             allTasks.add(task);
             affiliatedTaskCounts.put(taskKey.id, affiliatedTaskCounts.get(taskKey.id, 0) + 1);
