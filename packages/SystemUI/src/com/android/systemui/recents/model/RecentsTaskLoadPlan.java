@@ -37,8 +37,7 @@ import com.android.systemui.recents.Recents;
 import com.android.systemui.recents.RecentsConfiguration;
 import com.android.systemui.recents.RecentsDebugFlags;
 import com.android.systemui.recents.misc.SystemServicesProxy;
-
-import com.mokee.systemui.utils.LockTaskHelper;
+import com.android.systemui.recents.utils.LockTaskHelper;
 
 import java.util.ArrayList;
 import java.util.Collections;
