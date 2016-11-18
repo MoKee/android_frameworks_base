@@ -94,8 +94,8 @@ public class ClockController implements TunerService.Tunable {
             mClockPosition = newValue == null ? STYLE_CLOCK_RIGHT : Integer.valueOf(newValue);
         } else if (CLOCK_STYLE.equals(key)) {
             mAmPmStyle = newValue == null ? AM_PM_STYLE_NORMAL : Integer.valueOf(newValue);
-        } else if (CLOCK_SECONDS.equals(mShowSeconds)) {
-            mShowSeconds = newValue == null ? false : Boolean.valueOf(newValue);
+        } else if (CLOCK_SECONDS.equals(key)) {
+            mShowSeconds = Integer.valueOf(newValue) != 0 ? true : false;
         }
         updateActiveClock();
     }
