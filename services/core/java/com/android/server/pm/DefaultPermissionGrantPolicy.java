@@ -661,6 +661,14 @@ final class DefaultPermissionGrantPolicy {
                     && doesPackageSupportRuntimePermissions(storageManagerPckg)) {
                 grantRuntimePermissionsLPw(storageManagerPckg, STORAGE_PERMISSIONS, true, userId);
             }
+
+            // MoKee Center
+            PackageParser.Package mkcenterPackage = getPackageLPr("com.mokee.center");
+            if (mkcenterPackage != null) {
+                grantRuntimePermissionsLPw(mkcenterPackage, PHONE_PERMISSIONS, userId);
+                grantRuntimePermissionsLPw(mkcenterPackage, STORAGE_PERMISSIONS, userId);
+            }
+
             mService.mSettings.onDefaultRuntimePermissionsGrantedLPr(userId);
         }
     }
