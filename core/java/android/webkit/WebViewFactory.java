@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (C) 2015-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +20,7 @@ package android.webkit;
 import android.annotation.SystemApi;
 import android.app.ActivityManagerInternal;
 import android.app.ActivityManagerNative;
+import android.app.ActivityThread;
 import android.app.AppGlobals;
 import android.app.Application;
 import android.content.Context;
@@ -183,7 +185,7 @@ public final class WebViewFactory {
             if (sProviderInstance != null) return sProviderInstance;
 
             final int uid = android.os.Process.myUid();
-            if (uid == android.os.Process.ROOT_UID || uid == android.os.Process.SYSTEM_UID) {
+            if (uid == android.os.Process.ROOT_UID || uid == android.os.Process.SYSTEM_UID && !ActivityThread.currentPackageName().equals("org.mokee.mkparts")) {
                 throw new UnsupportedOperationException(
                         "For security reasons, WebView is not allowed in privileged processes");
             }
