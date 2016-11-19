@@ -185,7 +185,8 @@ public final class WebViewFactory {
             if (sProviderInstance != null) return sProviderInstance;
 
             final int uid = android.os.Process.myUid();
-            if (uid == android.os.Process.ROOT_UID || uid == android.os.Process.SYSTEM_UID && !ActivityThread.currentPackageName().equals("org.mokee.mkparts")) {
+            if (uid == android.os.Process.ROOT_UID || uid == android.os.Process.SYSTEM_UID &&
+                    !ActivityThread.currentPackageName().equals("com.mokee.center")) {
                 throw new UnsupportedOperationException(
                         "For security reasons, WebView is not allowed in privileged processes");
             }
