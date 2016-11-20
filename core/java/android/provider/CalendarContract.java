@@ -1715,6 +1715,24 @@ public final class CalendarContract {
         };
     }
 
+    public static final class Alarm implements BaseColumns {
+
+        public static final String AUTHORITY = "com.android.calendar.alarm";
+
+        public static final Uri CONTENT_URI =
+                Uri.parse("content://" + AUTHORITY);
+
+        public static final Uri CONTENT_FILTER_WORKDAY_URI =
+                Uri.parse("content://" + AUTHORITY + "/workday");
+
+        public static final Uri CONTENT_FILTER_HOLIDAY_URI =
+                Uri.parse("content://" + AUTHORITY + "/holiday");
+
+        public static final String DATE = "date";
+
+        public static final String STATE = "state";
+    }
+
     /**
      * Fields and helpers for interacting with Instances. An instance is a
      * single occurrence of an event including time zone specific start and end
