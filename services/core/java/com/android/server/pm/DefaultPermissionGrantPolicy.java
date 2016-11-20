@@ -660,6 +660,13 @@ final class DefaultPermissionGrantPolicy {
                     && doesPackageSupportRuntimePermissions(storageManagerPckg)) {
                 grantRuntimePermissionsLPw(storageManagerPckg, STORAGE_PERMISSIONS, true, userId);
             }
+
+            // DeskClock
+            PackageParser.Package deskClockPackage = getPackageLPr("com.android.deskclock");
+            if (deskClockPackage != null) {
+                grantRuntimePermissionsLPw(deskClockPackage, CALENDAR_PERMISSIONS, userId);
+            }
+
             mService.mSettings.onDefaultRuntimePermissionsGrantedLPr(userId);
         }
     }
