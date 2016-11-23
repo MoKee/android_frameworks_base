@@ -512,7 +512,10 @@
     <protected-broadcast android:name="android.telecom.action.CURRENT_TTY_MODE_CHANGED" />
     <protected-broadcast android:name="com.android.server.retaildemo.ACTION_RESET_DEMO" />
 
-    <protected-broadcast android:name="cyanogenmod.intent.action.LID_STATE_CHANGED" />
+    <!-- Defined in MKCenter -->
+    <protected-broadcast android:name="com.mokee.center.action.NOTIFICATION_CLICKED" />
+
+    <protected-broadcast android:name="mokee.intent.action.LID_STATE_CHANGED" />
     <!-- ====================================================================== -->
     <!--                          RUNTIME PERMISSIONS                           -->
     <!-- ====================================================================== -->
