@@ -503,9 +503,6 @@
 
     <protected-broadcast android:name="com.android.server.retaildemo.ACTION_RESET_DEMO" />
 
-    <!-- Defined in MKCenter -->
-    <protected-broadcast android:name="com.mokee.center.action.NOTIFICATION_CLICKED" />
-
     <!-- ====================================================================== -->
     <!--                          RUNTIME PERMISSIONS                           -->
     <!-- ====================================================================== -->
