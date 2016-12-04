@@ -2715,20 +2715,24 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         mStatusBarHeight =
                 res.getDimensionPixelSize(com.android.internal.R.dimen.status_bar_height);
 
+        // Height of navigation bar buttons
+        int mNavButtonsHeight = MKSettings.System.getIntForUser(resolver,
+                MKSettings.System.NAVIGATION_BAR_HEIGHT, 48, UserHandle.USER_CURRENT);
         // Height of the navigation bar when presented horizontally at bottom
         mNavigationBarHeightForRotationDefault[mPortraitRotation] =
-        mNavigationBarHeightForRotationDefault[mUpsideDownRotation] =
-                res.getDimensionPixelSize(com.android.internal.R.dimen.navigation_bar_height);
+                mNavigationBarHeightForRotationDefault[mUpsideDownRotation] =
+                        mNavButtonsHeight * DisplayMetrics.DENSITY_DEVICE/DisplayMetrics.DENSITY_DEFAULT;
         mNavigationBarHeightForRotationDefault[mLandscapeRotation] =
-        mNavigationBarHeightForRotationDefault[mSeascapeRotation] = res.getDimensionPixelSize(
-                com.android.internal.R.dimen.navigation_bar_height_landscape);
+                mNavigationBarHeightForRotationDefault[mSeascapeRotation] =
+                        mNavButtonsHeight * DisplayMetrics.DENSITY_DEVICE/DisplayMetrics.DENSITY_DEFAULT;
 
         // Width of the navigation bar when presented vertically along one side
         mNavigationBarWidthForRotationDefault[mPortraitRotation] =
-        mNavigationBarWidthForRotationDefault[mUpsideDownRotation] =
-        mNavigationBarWidthForRotationDefault[mLandscapeRotation] =
-        mNavigationBarWidthForRotationDefault[mSeascapeRotation] =
-                res.getDimensionPixelSize(com.android.internal.R.dimen.navigation_bar_width);
+                mNavigationBarWidthForRotationDefault[mUpsideDownRotation] =
+                        mNavigationBarWidthForRotationDefault[mLandscapeRotation] =
+                                mNavigationBarWidthForRotationDefault[mSeascapeRotation] =
+                                        (mNavButtonsHeight - 6) * DisplayMetrics.DENSITY_DEVICE/DisplayMetrics.DENSITY_DEFAULT;
+
 
         // Height of the navigation bar when presented horizontally at bottom
         mNavigationBarHeightForRotationInCarMode[mPortraitRotation] =
