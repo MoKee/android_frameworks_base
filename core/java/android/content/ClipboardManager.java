@@ -119,6 +119,9 @@ public class ClipboardManager extends android.text.ClipboardManager {
         try {
             if (clip != null) {
                 clip.prepareToLeaveProcess(true);
+                Intent intent = new Intent();
+                intent.setClassName("com.mokee.bigbang", "com.mokee.bigbang.service.ListenClipboardService");
+                mContext.startService(intent);
             }
             getService().setPrimaryClip(clip, mContext.getOpPackageName());
         } catch (RemoteException e) {
@@ -234,5 +237,6 @@ public class ClipboardManager extends android.text.ClipboardManager {
         for (int i=0; i<listeners.length; i++) {
             ((OnPrimaryClipChangedListener)listeners[i]).onPrimaryClipChanged();
         }
+
     }
 }
