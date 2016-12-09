@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006-2008 The Android Open Source Project
+ * Copyright (C) 2015-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,6 +58,9 @@ import com.android.server.pm.Installer;
 import com.android.server.statusbar.StatusBarManagerInternal;
 import com.android.server.vr.VrManagerInternal;
 import com.android.server.wm.WindowManagerService;
+
+import com.mokee.aegis.WardenInfo;
+import com.mokee.aegis.WardenUtils;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -198,6 +202,7 @@ import android.service.voice.IVoiceInteractionSession;
 import android.service.voice.VoiceInteractionManagerInternal;
 import android.service.voice.VoiceInteractionSession;
 import android.telecom.TelecomManager;
+import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.text.format.Time;
 import android.text.style.SuggestionSpan;
@@ -17296,6 +17301,27 @@ public final class ActivityManagerService extends ActivityManagerNative
 
         if (callingPackage == null) {
             throw new IllegalArgumentException("callingPackage cannot be null");
+        }
+
+        try {
+            WardenInfo.PackageInfo packageInfo = mAppOpsService.getWardenInfo(userId).get(callingPackage);
+            if (packageInfo.getUidsInfo().get(userId).getMode() == WardenUtils.MODE_ERRORED) {
+                if (TextUtils.isEmpty(mStackSupervisor.mWardenPackageName)
+                        || !TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && !TextUtils.equals(mStackSupervisor.mWardenPackageName, callingPackage)
+                        || service != null && !TextUtils.isEmpty(service.getPackage()) && !TextUtils.equals(callingPackage, service.getPackage())) {
+                    return null;
+                }
+            }
+        } catch (NullPointerException e) {
+        }
+        if (!TextUtils.isEmpty(mStackSupervisor.mWardenCallBackPackageName)) {
+            try {
+                WardenInfo.PackageInfo packageInfo = mAppOpsService.getWardenInfo(userId).get(mStackSupervisor.mWardenCallBackPackageName);
+                if (packageInfo.getUidsInfo().get(userId).getMode() == WardenUtils.MODE_ERRORED) {
+                    return null;
+                }
+            } catch (NullPointerException e) {
+            }
         }
 
         if (DEBUG_SERVICE) Slog.v(TAG_SERVICE,

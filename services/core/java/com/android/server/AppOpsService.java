@@ -3,6 +3,7 @@
  * Not a Contribution.
  *
  * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (C) 2015-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -82,6 +83,11 @@ import com.android.internal.util.Preconditions;
 import com.android.internal.util.XmlUtils;
 import com.android.server.PermissionDialogReqQueue.PermissionDialogReq;
 
+import com.mokee.aegis.PacifierInfo;
+import com.mokee.aegis.PacifierInfo.PacifierInfoCache;
+import com.mokee.aegis.WardenInfo;
+import com.mokee.aegis.WardenInfo.WardenInfoCache;
+
 import libcore.util.EmptyArray;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -132,6 +138,10 @@ public class AppOpsService extends IAppOpsService.Stub {
     };
 
     private final SparseArray<UidState> mUidStates = new SparseArray<>();
+
+    private final PacifierInfoCache mPacifierInfoCache = PacifierInfoCache.getInstance();
+
+    private final WardenInfoCache mWardenInfoCache = WardenInfoCache.getInstance();
 
     /*
      * These are app op restrictions imposed per user from various parties.
@@ -2928,4 +2938,45 @@ public class AppOpsService extends IAppOpsService.Stub {
             scheduleWriteLocked();
         }
     }
+
+    @Override
+    public synchronized Map<String, PacifierInfo.PackageInfo> getPacifierInfo(int userId) {
+        return mPacifierInfoCache.getPacifierInfo(userId);
+    }
+
+    @Override
+    public void addPacifierActionInfo(int mUserId, String mPackageName, int mUid, String mActionName) {
+        mPacifierInfoCache.addActionInfo(mUserId, mPackageName, mUid, mActionName);
+    }
+
+    @Override
+    public void updatePacifierModeFromUid(int mUserId, String mPackageName, int mUid, int mode) {
+        mPacifierInfoCache.updateModeFromUid(mUserId, mPackageName, mUid, mode);
+    }
+
+    @Override
+    public void removePacifierPackageInfoFromUid(int mUserId, String mPackageName, int uid) {
+        mPacifierInfoCache.removePackageInfoFromUid(mUserId, mPackageName, uid);
+    }
+
+    @Override
+    public synchronized Map<String, WardenInfo.PackageInfo> getWardenInfo(int userId) {
+        return mWardenInfoCache.getWardenInfo(userId);
+    }
+
+    @Override
+    public void removeWardenPackageInfoFromUid(int mUserId, String mPackageName, int uid) {
+        mWardenInfoCache.removePackageInfoFromUid(mUserId, mPackageName, uid);
+    }
+
+    @Override
+    public void updateWardenModeFromUid(int mUserId, String mPackageName, int mUid, int mode) {
+        mWardenInfoCache.updateModeFromUid(mUserId, mPackageName, mUid, mode);
+    }
+
+    @Override
+    public void addWardenPackageInfo(int mUserId, String mPackageName, int mUid) {
+        mWardenInfoCache.addPackageInfo(mUserId, mPackageName, mUid);
+    }
+
 }
