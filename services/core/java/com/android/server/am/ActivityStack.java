@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2010 The Android Open Source Project
+ * Copyright (C) 2015-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -132,6 +133,7 @@ import com.android.server.am.ActivityManagerService.ItemMatcher;
 import com.android.server.am.ActivityStackSupervisor.ActivityContainer;
 import com.android.server.wm.TaskGroup;
 import com.android.server.wm.WindowManagerService;
+import com.mokee.aegis.WardenUtils;
 
 import mokee.providers.MKSettings;
 
@@ -1421,6 +1423,39 @@ final class ActivityStack {
             ProcessRecord app = next.task.mActivities.get(0).app;
             if (app != null && app != mService.mHomeProcess) {
                 mService.mHomeProcess = app;
+            }
+        }
+
+        if (!TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && !TextUtils.equals(mStackSupervisor.mWardenPackageName, next.packageName)) {
+            if (next.isHomeActivity()) {
+                if (MKSettings.System.getInt(mService.mContext.getContentResolver(), MKSettings.System.AEGIS_WARDEN_FORCE_STOP, 0) == 1) {
+                    try {
+                        if (mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(mStackSupervisor.mWardenPackageName)
+                                .getUidsInfo().get(UserHandle.myUserId()).getMode() == WardenUtils.MODE_ERRORED
+                                && mLastPausedActivity != null) {
+                            mService.forceStopPackage(mStackSupervisor.mWardenPackageName, mStackSupervisor.mWardenPackageUid);
+                        }
+                    } catch (NullPointerException e) {
+                    }
+                }
+            } else if (next.isApplicationActivity()) {
+                mStackSupervisor.mWardenCallBackPackageName = next.packageName;
+            }
+            if (!TextUtils.equals(mStackSupervisor.mWardenCallBackPackageName, next.packageName)) {
+                mStackSupervisor.mWardenCallBackPackageName = null;
+            }
+            mStackSupervisor.mWardenPackageName = null;
+            mStackSupervisor.mWardenPackageUid = 0;
+        } else {
+            int mode = WardenUtils.MODE_ALLOWED;
+            try {
+                mode = mService.mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(next.packageName)
+                        .getUidsInfo().get(UserHandle.myUserId()).getMode();
+            } catch (NullPointerException e) {
+            }
+            if (TextUtils.isEmpty(mStackSupervisor.mWardenPackageName) && mode == WardenUtils.MODE_ERRORED) {
+                mStackSupervisor.mWardenPackageName = next.packageName;
+                mStackSupervisor.mWardenPackageUid = next.userId;
             }
         }
 

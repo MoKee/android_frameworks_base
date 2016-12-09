@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006 The Android Open Source Project
+ * Copyright (C) 2015-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +26,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import android.app.ActivityManagerNative;
+import android.content.Context;
 import android.net.Uri;
+import android.os.IBinder;
+import android.os.RemoteException;
+import android.os.ServiceManager;
+import android.os.UserHandle;
+import android.text.TextUtils;
 import android.util.FastImmutableArraySet;
 import android.util.ArrayMap;
 import android.util.ArraySet;
@@ -38,7 +46,12 @@ import android.util.Printer;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import com.android.internal.app.IAppOpsService;
 import com.android.internal.util.FastPrintWriter;
+import com.mokee.aegis.PacifierInfo.PackageInfo;
+import com.mokee.aegis.PacifierInfo.Action;
+import com.mokee.aegis.PacifierUtils;
+import com.mokee.aegis.ProtectedActionUtils;
 
 /**
  * {@hide}
@@ -48,6 +61,9 @@ public abstract class IntentResolver<F extends IntentFilter, R extends Object> {
     final private static boolean DEBUG = false;
     final private static boolean localLOGV = DEBUG || false;
     final private static boolean localVerificationLOGV = DEBUG || false;
+
+    IBinder ibinder = ServiceManager.getService(Context.APP_OPS_SERVICE);
+    private final IAppOpsService mAppOps = IAppOpsService.Stub.asInterface(ibinder);
 
     public void addFilter(F f) {
         if (localLOGV) {
@@ -701,6 +717,28 @@ public abstract class IntentResolver<F extends IntentFilter, R extends Object> {
         final String packageName = intent.getPackage();
 
         final boolean excludingStopped = intent.isExcludingStopped();
+        boolean usePacifier = excludingStopped;
+        if (!excludingStopped && !TextUtils.isEmpty(action) && !TextUtils.isEmpty(packageName) && ActivityManagerNative.isSystemReady()) {
+            boolean protectedAction = ProtectedActionUtils.isProtectedAction(packageName, action);
+            if (!protectedAction) {
+                try {
+                    PackageInfo mPackageInfo = (PackageInfo)mAppOps.getPacifierInfo(UserHandle.myUserId()).get(packageName);
+                    Action mAction = mPackageInfo.getUidsInfo().get(UserHandle.myUserId()).getActions().get(action);
+                    if (mAction == null) {
+                        mAppOps.addPacifierActionInfo(UserHandle.myUserId(), packageName, userId, action);
+                    } else {
+                        usePacifier = mAction.getMode() == PacifierUtils.MODE_ERRORED;
+                    }
+                } catch (NullPointerException e) {
+                    try {
+                        mAppOps.addPacifierActionInfo(UserHandle.myUserId(), packageName, userId, action);
+                    } catch (RemoteException ex) {
+                    } catch (NullPointerException ex) {
+                    }
+                } catch (RemoteException e) {
+                }
+            }
+        }
 
         final Printer logPrinter;
         final PrintWriter logPrintWriter;
@@ -720,7 +758,7 @@ public abstract class IntentResolver<F extends IntentFilter, R extends Object> {
             int match;
             if (debug) Slog.v(TAG, "Matching against filter " + filter);
 
-            if (excludingStopped && isFilterStopped(filter, userId)) {
+            if (usePacifier && isFilterStopped(filter, userId)) {
                 if (debug) {
                     Slog.v(TAG, "  Filter's target is stopped; skipping");
                 }

@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2013 The Android Open Source Project
+ * Copyright (C) 2015-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -360,6 +361,11 @@ public final class ActivityStackSupervisor implements DisplayListener {
      * Is the privacy guard currently enabled? Shared between ActivityStacks
      */
     String mPrivacyGuardPackageName = null;
+
+    String mWardenPackageName = null;
+    int mWardenPackageUid = 0;
+
+    String mWardenCallBackPackageName = null;
 
     /**
      * We don't want to allow the device to go to sleep while in the process
