@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2015-2016 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +29,9 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.os.SystemClock;
 import android.os.UserHandle;
 import android.provider.Settings;
@@ -39,6 +43,7 @@ import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 
+import com.android.internal.app.IAppOpsService;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.systemui.Interpolators;
@@ -85,6 +90,8 @@ import com.android.systemui.recents.model.TaskStack;
 import com.android.systemui.recents.views.RecentsView;
 import com.android.systemui.recents.views.SystemBarScrimViews;
 import com.android.systemui.statusbar.BaseStatusBar;
+import com.mokee.aegis.WardenInfo.PackageInfo;
+import com.mokee.aegis.WardenUtils;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -126,6 +133,9 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
     private final Runnable mSendEnterWindowAnimationCompleteRunnable = () -> {
         EventBus.getDefault().send(new EnterRecentsWindowAnimationCompletedEvent());
     };
+
+    IBinder iBinder = ServiceManager.getService(Context.APP_OPS_SERVICE);
+    private IAppOpsService mAppOps = IAppOpsService.Stub.asInterface(iBinder);
 
     /**
      * A common Runnable to finish Recents by launching Home with an animation depending on the
@@ -754,9 +764,21 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
         RecentsTaskLoader loader = Recents.getTaskLoader();
         loader.deleteTaskData(event.task, false);
 
+        // Force stop application
+        ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        try {
+            if (((PackageInfo)mAppOps.getWardenInfo(UserHandle.myUserId()).get(event.task.key.baseIntent.
+                    getComponent().getPackageName())).getUidsInfo().get(UserHandle.myUserId()).getMode() == WardenUtils.MODE_ERRORED) {
+                am.forceStopPackage(event.task.key.baseIntent.getComponent().getPackageName());
+            }
+        } catch (NullPointerException e) {
+        } catch (RemoteException e) {
+        }
+
         // Remove the task from activity manager
         SystemServicesProxy ssp = Recents.getSystemServices();
         ssp.removeTask(event.task.key.id);
+
     }
 
     public final void onBusEvent(AllTaskViewsDismissedEvent event) {
