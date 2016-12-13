@@ -111,6 +111,7 @@ import android.view.KeyCharacterMap;
 import android.view.KeyCharacterMap.FallbackAction;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
+import android.view.ViewRootImpl;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.policy.PhoneWindow;
@@ -156,6 +157,9 @@ import static android.view.WindowManagerPolicy.WindowManagerFuncs.CAMERA_LENS_CO
 import static android.view.WindowManagerPolicy.WindowManagerFuncs.CAMERA_LENS_UNCOVERED;
 import static android.view.WindowManagerPolicy.WindowManagerFuncs.CAMERA_LENS_COVERED;
 import static org.mokee.platform.internal.Manifest.permission.THIRD_PARTY_KEYGUARD;
+
+import android.view.WindowManagerPolicy.PointerEventListener;
+import android.view.WindowManagerPolicy.ThumbModeFuncs;
 
 /**
  * WindowManagerPolicy implementation for the Android phone UI.  This
@@ -219,6 +223,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     static public final String SYSTEM_DIALOG_REASON_RECENT_APPS = "recentapps";
     static public final String SYSTEM_DIALOG_REASON_HOME_KEY = "homekey";
     static public final String SYSTEM_DIALOG_REASON_ASSIST = "assist";
+    static public final String SYSTEM_DIALOG_REASON_EAT_HOME_KEY = "eathomekey";
 
     // Available custom actions to perform on a key press.
     // Must match values for KEY_HOME_LONG_PRESS_ACTION in:
@@ -286,6 +291,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private WindowState mKeyguardScrim;
     private boolean mKeyguardHidden;
     private boolean mKeyguardDrawnOnce;
+
+    private static final String RESET_THUMB = "android.view.ViewRootImpl.returnNormalModeFromThumb";
+    private static final int DELAY_PENDING_DO_THUMB_ANIM = 500;
+    int mCurrentRotation = 0;
 
     /* Table of Application Launch keys.  Maps from key codes to intent categories.
      *
@@ -1006,6 +1015,13 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     private SystemGesturesPointerEventListener mSystemGestures;
 
+    private SystemGesturesPointerEventListenerThumb mSystemGesturesThumb;
+    private ThumbModeFuncs mThumbModeFuncs;
+    private int mThumbState;
+    private float mThumbInterSize;
+    private boolean mShouldRegThumbGestureListener;
+    private static final int DELAY_APPLY_THUMB_WINDOW_MOVE_DOWN = 65;
+
     IStatusBarService getStatusBarService() {
         synchronized (mServiceAquireLock) {
             if (mStatusBarService == null) {
@@ -1456,6 +1472,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         // Turn on the connected TV and switch HDMI input if we're a HDMI playback device.
         getHdmiControl().turnOnTv();
 
+        if (mFocusedWindow != null && mFocusedWindow.getAttrs().isEatHomeKey) {
+            sendCloseSystemWindows(SYSTEM_DIALOG_REASON_EAT_HOME_KEY);
+            return;
+        }
         // If there's a dream running then use home to escape the dream
         // but don't actually go home.
         if (mDreamManagerInternal != null && mDreamManagerInternal.isDreaming()) {
@@ -1575,11 +1595,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     /** {@inheritDoc} */
     @Override
     public void init(Context context, IWindowManager windowManager,
-            WindowManagerFuncs windowManagerFuncs) {
+            WindowManagerFuncs windowManagerFuncs, ThumbModeFuncs thumbModeFuncs) {
         mContext = context;
         mWm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
         mWindowManager = windowManager;
         mWindowManagerFuncs = windowManagerFuncs;
+        mThumbModeFuncs = thumbModeFuncs;
         mWindowManagerInternal = LocalServices.getService(WindowManagerInternal.class);
         mActivityManagerInternal = LocalServices.getService(ActivityManagerInternal.class);
         mDreamManagerInternal = LocalServices.getService(DreamManagerInternal.class);
@@ -1734,6 +1755,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mDockMode = intent.getIntExtra(Intent.EXTRA_DOCK_STATE,
                     Intent.EXTRA_DOCK_STATE_UNDOCKED);
         }
+        filter = new IntentFilter();
+        filter.addAction(RESET_THUMB);
+        context.registerReceiver(resetThumbReceiver, filter);
 
         // register for dream-related broadcasts
         filter = new IntentFilter();
@@ -1799,6 +1823,56 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                         mOrientationListener.onTouchEnd();
                     }
                 });
+        mSystemGesturesThumb = new SystemGesturesPointerEventListenerThumb(context,
+                new SystemGesturesPointerEventListenerThumb.Callbacks() {
+
+                    @Override
+                    public void onSwipeFromTopLeftSidebar() {
+                        if ( (mThumbState & ViewRootImpl.BIT_WINDOW_IN_THUMB_MODE_SIDEBAR) == 0
+                                && !isKeyguardLocked()
+                                && mCurrentRotation == 0) {
+                            mHandler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mThumbModeFuncs
+                                            .requestTraversalToThumbMode(ThumbModeFuncs.ACTION_FROM_TOP_LEFT_PULL_DOWN_SIDEBAR);
+                                }
+                            }, DELAY_APPLY_THUMB_WINDOW_MOVE_DOWN);
+                        }
+                    }
+                    @Override
+                    public void onSwipeFromTopRightSidebar() {
+                        if ( (mThumbState & ViewRootImpl.BIT_WINDOW_IN_THUMB_MODE_SIDEBAR) == 0
+                                && !isKeyguardLocked()
+                                && mCurrentRotation == 0) {
+                            mHandler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mThumbModeFuncs
+                                            .requestTraversalToThumbMode(ThumbModeFuncs.ACTION_FROM_TOP_RIGHT_PULL_DOWN_SIDEBAR);
+                                }
+                            }, DELAY_APPLY_THUMB_WINDOW_MOVE_DOWN);
+                        }
+                    }
+
+                    @Override
+                    public void onSwipeFromBottom() {
+                        if( (mThumbState & ViewRootImpl.BIT_WINDOW_IN_THUMB_MODE_SIDEBAR) != 0
+                                && !isKeyguardLocked() && mCurrentRotation == 0){
+                            mThumbModeFuncs.requestTraversalToThumbMode(ThumbModeFuncs.ACTION_RESET);
+                        }
+                    }
+                    @Override
+                    public void onSwipeFromTopStatusBar() {
+                        if( (mThumbState & ViewRootImpl.BIT_WINDOW_IN_THUMB_MODE_SIDEBAR) != 0){
+                            expandNotiPanel();
+                        }
+                    }
+                });
+
+        mSystemGesturesThumb.setThumbState(mThumbState);
+        mSystemGesturesThumb.setThumbInterSize(mThumbInterSize);
+
         mImmersiveModeConfirmation = new ImmersiveModeConfirmation(mContext);
         mWindowManagerFuncs.registerPointerEventListener(mSystemGestures);
 
@@ -1838,6 +1912,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             startedGoingToSleep(WindowManagerPolicy.OFF_BECAUSE_OF_USER);
             finishedGoingToSleep(WindowManagerPolicy.OFF_BECAUSE_OF_USER);
         }
+
+        updateThumbGestureDetectListener(mShouldRegThumbGestureListener);
 
         mWindowManagerInternal.registerAppTransitionListener(
                 mStatusBarController.getAppTransitionListener());
@@ -1960,6 +2036,15 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         }
 
         mHasPermanentMenuKey = hasPermanentMenu;
+    }
+
+    public void setThumbOffset( int scaleModeVertOffsetS, int scaleModeHoriOffsetS, int screenWidth, int screenHeight){
+        if(mSystemGesturesThumb != null){
+            mSystemGesturesThumb.setThumbOffset(scaleModeVertOffsetS, scaleModeHoriOffsetS, screenWidth, screenHeight);
+        }
+        if(mSystemGestures != null){
+            mSystemGestures.setThumbOffset(scaleModeVertOffsetS);
+        }
     }
 
     @Override
@@ -2601,20 +2686,22 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         case TYPE_DISPLAY_OVERLAY:
             // used to simulate secondary display devices
             return 25;
+        case TYPE_SIDEBAR_TOOLS:
+            return 26;
         case TYPE_DRAG:
             // the drag layer: input for drag-and-drop is associated with this window,
             // which sits above all other focusable windows
-            return 26;
+            return 27;
         case TYPE_ACCESSIBILITY_OVERLAY:
             // overlay put by accessibility services to intercept user interaction
-            return 27;
-        case TYPE_SECURE_SYSTEM_OVERLAY:
             return 28;
-        case TYPE_BOOT_PROGRESS:
+        case TYPE_SECURE_SYSTEM_OVERLAY:
             return 29;
+        case TYPE_BOOT_PROGRESS:
+            return 30;
         case TYPE_POINTER:
             // the (mouse) pointer layer
-            return 30;
+            return 31;
         }
         Log.e(TAG, "Unknown window type: " + type);
         return 2;
@@ -2966,10 +3053,18 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             boolean isKeyguard = (win.getAttrs().privateFlags & PRIVATE_FLAG_KEYGUARD) != 0;
             if (transit == TRANSIT_EXIT
                     || transit == TRANSIT_HIDE) {
-                return isKeyguard ? -1 : R.anim.dock_top_exit;
+                if ( (mThumbState & ViewRootImpl.BIT_WINDOW_IN_THUMB_MODE_SIDEBAR) != 0) {
+                    return R.anim.dock_fade_exit;
+                } else {
+                    return isKeyguard ? -1 : R.anim.dock_top_exit;
+                }
             } else if (transit == TRANSIT_ENTER
                     || transit == TRANSIT_SHOW) {
-                return isKeyguard ? -1 : R.anim.dock_top_enter;
+                if ((mThumbState & ViewRootImpl.BIT_WINDOW_IN_THUMB_MODE_SIDEBAR) != 0) {
+                    return R.anim.dock_fade_enter;
+                } else {
+                    return  isKeyguard ? -1 : R.anim.dock_top_enter;
+                }
             }
         } else if (win == mNavigationBar) {
             if (win.getAttrs().windowAnimations != 0) {
@@ -3284,6 +3379,11 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             }
             return -1;
         } else if (keyCode == KeyEvent.KEYCODE_MENU) {
+            if (isSidebarCovering()) {
+                // pass it to sidebar !
+                return 0;
+            }
+
             // Hijack modified menu keys for debugging features
             final int chordBug = KeyEvent.META_SHIFT_ON;
             if (virtualKey || keyguardOn) {
@@ -4595,6 +4695,33 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             cf.right = vf.right = mStableRight;
             cf.left = vf.left = mStableLeft;
             cf.top = vf.top = mStableTop;
+        } else if(attrs.type == TYPE_SIDEBAR_TOOLS) {
+            pf.left = df.left = of.left = mUnrestrictedScreenLeft;
+            pf.top = df.top = of.top = mUnrestrictedScreenTop;
+            pf.right = df.right = of.right = mUnrestrictedScreenWidth + mUnrestrictedScreenLeft;
+            pf.bottom = df.bottom = of.bottom = mUnrestrictedScreenHeight + mUnrestrictedScreenTop;
+            cf.left = vf.left = mRestrictedScreenLeft;
+            cf.top = vf.top = mRestrictedScreenTop;
+            cf.right = vf.right = mRestrictedScreenLeft + mRestrictedScreenWidth;
+            cf.bottom = vf.bottom = mRestrictedScreenTop + mRestrictedScreenHeight;
+            dcf.left = mSystemLeft;
+            dcf.top = 0;
+            dcf.right = mSystemRight;
+            dcf.bottom = mSystemBottom;
+            if(win.isSidebarSideView()) {
+                int gravity = attrs.gravity;
+                int sidebarWidth = win.getHintWidth();
+                if ((fl & (FLAG_LAYOUT_IN_SCREEN | FLAG_LAYOUT_INSET_DECOR))
+                        == (FLAG_LAYOUT_IN_SCREEN | FLAG_LAYOUT_INSET_DECOR)) {
+                    if (gravity == (Gravity.LEFT | Gravity.FILL_VERTICAL)) {
+                        dcf.left = mSystemLeft;
+                        dcf.right = mSystemLeft + sidebarWidth;
+                    } else if (gravity == (Gravity.RIGHT | Gravity.FILL_VERTICAL)) {
+                        dcf.left = cf.right - sidebarWidth;
+                    }
+                }
+            }
+
         } else if (win == mStatusBar) {
             pf.left = df.left = of.left = mUnrestrictedScreenLeft;
             pf.top = df.top = of.top = mUnrestrictedScreenTop;
@@ -6282,6 +6409,25 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         }
     }
 
+    BroadcastReceiver resetThumbReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            if (RESET_THUMB.equals(intent.getAction())) {
+                if(( (mThumbState & ViewRootImpl.BIT_WINDOW_IN_THUMB_MODE_SIDEBAR) != 0) && !isKeyguardLocked() && mCurrentRotation == 0){
+                    mHandler.removeCallbacks(postResetRun);
+                    mHandler.postDelayed(postResetRun, DELAY_PENDING_DO_THUMB_ANIM);
+                }
+            }
+        }
+    };
+
+    Runnable postResetRun = new Runnable(){
+
+        @Override
+        public void run() {
+            mThumbModeFuncs.requestTraversalToThumbMode(ThumbModeFuncs.ACTION_RESET);
+        }
+    };
+
     void launchVoiceAssistWithWakeLock(boolean keyguardActive) {
         IDeviceIdleController dic = IDeviceIdleController.Stub.asInterface(
                 ServiceManager.getService(Context.DEVICE_IDLE_CONTROLLER));
@@ -7067,6 +7213,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         startedWakingUp();
         screenTurningOn(null);
         screenTurnedOn();
+        mSystemGesturesThumb.setSystemBooted();
     }
 
     BootMsgDialog mBootMsgDialog = null;
@@ -7800,6 +7947,48 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         return true;
     }
 
+    public void dispatchThumbState(int thumbState){
+        mThumbState = thumbState;
+        if(mSystemGesturesThumb != null){
+            mSystemGesturesThumb.setThumbState(mThumbState);
+        }
+        if(mSystemGestures != null){
+            mSystemGestures.setInSidebarMode((mThumbState & ViewRootImpl.BIT_WINDOW_IN_THUMB_MODE_SIDEBAR) != 0);
+        }
+    }
+
+    public void dispatchThumbInterSize(float size){
+        mThumbInterSize = size;
+        if(mSystemGesturesThumb != null){
+            mSystemGesturesThumb.setThumbInterSize(size);
+        }
+    }
+
+    public void updateThumbGestureDetectListener(boolean enable){
+        mShouldRegThumbGestureListener = enable;
+        if(mWindowManagerFuncs != null){
+            try{
+                if(enable){
+                    mWindowManagerFuncs.registerPointerEventListener(mSystemGesturesThumb);
+                }else{
+                    mWindowManagerFuncs.unregisterPointerEventListener(mSystemGesturesThumb);
+                }
+            }catch(IllegalStateException e){
+            }
+        }
+    }
+
+    private void expandNotiPanel(){
+        IStatusBarService service = getStatusBarService();
+        if (service != null) {
+            try {
+                service.expandNotificationsPanel();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     @Override
     public void dump(String prefix, PrintWriter pw, String[] args) {
         pw.print(prefix); pw.print("mSafeMode="); pw.print(mSafeMode);
@@ -8001,5 +8190,13 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     @Override
     public void setLiveLockscreenEdgeDetector(boolean enable) {
         mShowKeyguardOnLeftSwipe = enable;
+    }
+
+    private boolean isSidebarCovering() {
+        if (mFocusedWindow != null
+                && mFocusedWindow.getAttrs().type == WindowManager.LayoutParams.TYPE_SIDEBAR_TOOLS) {
+            return true;
+        }
+        return false;
     }
 }

@@ -2991,6 +2991,8 @@ class DatabaseHelper extends SQLiteOpenHelper {
              */
             loadIntegerSetting(stmt, Settings.Global.CAPTIVE_PORTAL_DETECTION_ENABLED,
                     R.integer.def_captive_portal_detection_enabled);
+
+            loadIntegerSetting(stmt, Settings.Global.SIDE_BAR_MODE, R.integer.def_side_bar_mode);
         } finally {
             if (stmt != null) stmt.close();
         }
