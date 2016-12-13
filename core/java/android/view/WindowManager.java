@@ -106,6 +106,12 @@ public interface WindowManager extends ViewManager {
      */
     public void removeViewImmediate(View view);
 
+    /**
+     * @hide
+     * */
+    public void getThumbModeCrop(Rect outCrop);
+
+
     public static class LayoutParams extends ViewGroup.LayoutParams
             implements Parcelable {
         /**
@@ -565,6 +571,11 @@ public interface WindowManager extends ViewManager {
          * @hide
          */
         public static final int TYPE_VOICE_INTERACTION_STARTING = FIRST_SYSTEM_WINDOW+33;
+
+        /**
+         * @hide
+         */
+        public static final int TYPE_SIDEBAR_TOOLS = FIRST_SYSTEM_WINDOW+34;
 
         /**
          * Window type: Windows that are layered within the keyguard
@@ -1136,6 +1147,10 @@ public interface WindowManager extends ViewManager {
          */
         public static final int PRIVATE_FLAG_FORCE_STATUS_BAR_VISIBLE_TRANSPARENT = 0x00001000;
 
+        /** {@hide} */
+        // SmartisanOS Ext
+        public static final int PRIVATE_FLAG_EXT_FORCE_FULL_SCREEN = 0x00001200;
+
         /**
          * {@hide}
          */
@@ -1649,6 +1664,12 @@ public interface WindowManager extends ViewManager {
          */
         public float blurMaskAlphaThreshold = 0.0f;
 
+        /**
+         * for window eat the home key not pass to back app
+         * @hide
+         */
+        public boolean isEatHomeKey;
+
         public LayoutParams() {
             super(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
             type = TYPE_APPLICATION;
@@ -1757,6 +1778,7 @@ public interface WindowManager extends ViewManager {
             out.writeInt(hasManualSurfaceInsets ? 1 : 0);
             out.writeInt(needsMenuKey);
             out.writeFloat(blurMaskAlphaThreshold);
+            out.writeInt(isEatHomeKey ? 1 : 0);
         }
 
         public static final Parcelable.Creator<LayoutParams> CREATOR
@@ -1809,6 +1831,7 @@ public interface WindowManager extends ViewManager {
             hasManualSurfaceInsets = in.readInt() != 0;
             needsMenuKey = in.readInt();
             blurMaskAlphaThreshold = in.readFloat();
+            isEatHomeKey = in.readInt() != 0;
         }
 
         @SuppressWarnings({"PointlessBitwiseExpression"})
@@ -2008,6 +2031,10 @@ public interface WindowManager extends ViewManager {
             if (hasManualSurfaceInsets != o.hasManualSurfaceInsets) {
                 hasManualSurfaceInsets = o.hasManualSurfaceInsets;
                 changes |= SURFACE_INSETS_CHANGED;
+            }
+
+            if (isEatHomeKey != o.isEatHomeKey) {
+                isEatHomeKey = o.isEatHomeKey;
             }
 
             if (needsMenuKey != o.needsMenuKey) {

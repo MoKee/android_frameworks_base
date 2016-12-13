@@ -1986,7 +1986,7 @@ public class SettingsProvider extends ContentProvider {
         }
 
         private final class UpgradeController {
-            private static final int SETTINGS_VERSION = 123;
+            private static final int SETTINGS_VERSION = 124;
             /**
              * This is the mkl-mr1 database version (DO NOT INCREMENT)
              */
@@ -2182,6 +2182,18 @@ public class SettingsProvider extends ContentProvider {
                 }
 
                 // vXXX: Add new settings above this point.
+
+                if(currentVersion == 123) {
+                    SettingsState globalSettings = getGlobalSettingsLocked();
+                    Setting currentSettings = globalSettings.getSettingLocked(Settings.Global
+                            .SIDE_BAR_MODE);
+                    if (currentSettings == null) {
+                        int defValue = getContext().getResources().getInteger(R.integer.def_side_bar_mode);
+                        globalSettings.insertSettingLocked(Settings.Global.SIDE_BAR_MODE,
+                                String.valueOf(defValue),getCallingPackage());
+                    }
+                    currentVersion = 124;
+                }
 
                 // Return the current version.
                 return currentVersion;

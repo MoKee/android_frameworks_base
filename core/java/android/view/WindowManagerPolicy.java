@@ -388,6 +388,16 @@ public interface WindowManagerPolicy {
          * Check whether the window is currently dimming.
          */
         public boolean isDimming();
+
+        /**
+         * @hide
+         * */
+        public int getHintWidth();
+
+        /**
+         * @hide
+         * */
+        public boolean isSidebarSideView();
     }
 
     /**
@@ -401,6 +411,16 @@ public interface WindowManagerPolicy {
         void dismiss();
     }
 
+    public interface ThumbModeFuncs {
+
+        // thumb state trigger action
+        public static final int ACTION_NONE = -1;
+        public static final int ACTION_RESET = 0;
+        public static final int ACTION_FROM_TOP_LEFT_PULL_DOWN_SIDEBAR = 2;
+        public static final int ACTION_FROM_TOP_RIGHT_PULL_DOWN_SIDEBAR = 3;
+
+        void requestTraversalToThumbMode(int action);
+    }
     /**
      * Interface for calling back in to the window manager that is private
      * between it and the policy.
@@ -508,12 +528,14 @@ public interface WindowManagerPolicy {
      * @param context The system context we are running in.
      */
     public void init(Context context, IWindowManager windowManager,
-            WindowManagerFuncs windowManagerFuncs);
+            WindowManagerFuncs windowManagerFuncs, ThumbModeFuncs thumbModeFuncs);
 
     /**
      * @return true if com.android.internal.R.bool#config_forceDefaultOrientation is true.
      */
     public boolean isDefaultOrientationForced();
+
+    public void setThumbOffset( int scaleModeVertOffsetS, int scaleModeHoriOffsetS,  int screenWidth, int screenHeight);
 
     /**
      * Called by window manager once it has the initial, default native
@@ -921,6 +943,8 @@ public interface WindowManagerPolicy {
     static final int FINISH_LAYOUT_REDO_WALLPAPER = 0x0004;
     /** Need to recompute animations */
     static final int FINISH_LAYOUT_REDO_ANIM = 0x0008;
+    /** Need to inform ThumbModeHelper full screen status*/
+    static final int FINISH_LAYOUT_TOP_FULLSCREEN = 0x0010;
     
     /**
      * Called following layout of all windows before each window has policy applied.
@@ -1328,4 +1352,10 @@ public interface WindowManagerPolicy {
     public void startKeyguardExitAnimation(long startTime, long fadeoutDuration);
 
     public void setLiveLockscreenEdgeDetector(boolean enable);
+
+    public void updateThumbGestureDetectListener(boolean enabled);
+
+    public void dispatchThumbState(int thumbState);
+
+    public void dispatchThumbInterSize(float size);
 }
