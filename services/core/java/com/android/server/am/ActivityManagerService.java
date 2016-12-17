@@ -257,6 +257,7 @@ import mokee.power.PerformanceManagerInternal;
 
 import libcore.io.IoUtils;
 import libcore.util.EmptyArray;
+import mokee.providers.MKSettings;
 
 import static android.Manifest.permission.INTERACT_ACROSS_USERS;
 import static android.Manifest.permission.INTERACT_ACROSS_USERS_FULL;
@@ -4506,6 +4507,18 @@ public final class ActivityManagerService extends ActivityManagerNative
     public final int startActivity(IApplicationThread caller, String callingPackage,
             Intent intent, String resolvedType, IBinder resultTo, String resultWho, int requestCode,
             int startFlags, ProfilerInfo profilerInfo, Bundle bOptions) {
+        if (MKSettings.System.getInt(mContext.getContentResolver(), MKSettings.System.AEGIS_WARDEN_FORCE_STOP, 0) == 1) {
+            try {
+                if (!TextUtils.isEmpty(callingPackage) && intent != null && intent.hasCategory(Intent.CATEGORY_HOME)) {
+                    if (mAppOpsService.getWardenInfo(UserHandle.myUserId()).get(callingPackage)
+                            .getUidsInfo().get(UserHandle.myUserId()).getMode() == WardenUtils.MODE_ERRORED) {
+                        forceStopPackageHook(callingPackage, UserHandle.myUserId());
+                    }
+                }
+            } catch (NullPointerException e) {
+            }
+        }
+
         return startActivityAsUser(caller, callingPackage, intent, resolvedType, resultTo,
                 resultWho, requestCode, startFlags, profilerInfo, bOptions,
                 UserHandle.getCallingUserId());
@@ -5911,6 +5924,10 @@ public final class ActivityManagerService extends ActivityManagerNative
             Slog.w(TAG, msg);
             throw new SecurityException(msg);
         }
+        forceStopPackageHook(packageName, userId);
+    }
+
+    public void forceStopPackageHook(final String packageName, int userId) {
         final int callingPid = Binder.getCallingPid();
         userId = mUserController.handleIncomingUser(callingPid, Binder.getCallingUid(),
                 userId, true, ALLOW_FULL_ONLY, "forceStopPackage", null);
