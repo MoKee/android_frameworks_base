@@ -98,10 +98,7 @@ public class ScreenShotTile extends QSTile<QSTile.BooleanState> {
             if (mScreenshotConnection != null) {
                 return;
             }
-            ComponentName cn = new ComponentName("com.android.systemui",
-                    "com.android.systemui.screenshot.TakeScreenshotService");
-            Intent intent = new Intent();
-            intent.setComponent(cn);
+            Intent intent = new Intent(mContext, TakeScreenshotService.class);
             ServiceConnection conn = new ServiceConnection() {
                 @Override
                 public void onServiceConnected(ComponentName name, IBinder service) {
@@ -127,21 +124,7 @@ public class ScreenShotTile extends QSTile<QSTile.BooleanState> {
                         msg.replyTo = new Messenger(h);
                         msg.arg1 = msg.arg2 = 0;
 
-                        /*  remove for the time being
-                        if (mStatusBar != null && mStatusBar.isVisibleLw())
-                            msg.arg1 = 1;
-                        if (mNavigationBar != null && mNavigationBar.isVisibleLw())
-                            msg.arg2 = 1;
-                         */
-
-                        /* wait for the dialog box to close */
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException ie) {
-                            // Do nothing
-                        }
-
-                        /* take the screenshot */
+                        // Take the screenshot
                         try {
                             messenger.send(msg);
                         } catch (RemoteException e) {
