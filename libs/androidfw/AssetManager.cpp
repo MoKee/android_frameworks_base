@@ -69,6 +69,7 @@ static const char* kAssetsRoot = "assets";
 static const char* kAppZipName = NULL; //"classes.jar";
 static const char* kSystemAssets = "framework/framework-res.apk";
 static const char* kMKSDKAssets = "framework/org.mokee.platform-res.apk";
+static const char* kSmartisanAssets = "framework/smartisan-res.apk";
 static const char* kResourceCache = "resource-cache";
 
 static const char* kExcludeExtension = ".EXCLUDE";
@@ -333,6 +334,12 @@ bool AssetManager::addDefaultAssets()
 
         if (!addAssetPath(pathMK, NULL, false /* appAsLib */, false /* isSystemAsset */)) {
             ALOGE("Failed to load MKSDK resources!");
+        }
+
+        String8 pathST(root);
+        pathST.appendPath(kSmartisanAssets);
+        if (!addAssetPath(pathST, NULL, false /* appAsLib */, false /* isSystemAsset */)) {
+            ALOGE("Failed to load Smartisan resources!");
         }
     }
     return ret;
