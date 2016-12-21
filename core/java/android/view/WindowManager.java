@@ -575,7 +575,7 @@ public interface WindowManager extends ViewManager {
         /**
          * @hide
          */
-        public static final int TYPE_SIDEBAR_TOOLS = FIRST_SYSTEM_WINDOW+34
+        public static final int TYPE_SIDEBAR_TOOLS = FIRST_SYSTEM_WINDOW+34;
 
         /**
          * Window type: Windows that are layered within the keyguard
