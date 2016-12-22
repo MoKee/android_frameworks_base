@@ -206,7 +206,7 @@ bool AssetManager::addAssetPath(const String8& path, int32_t* cookie)
     mAssetPaths.add(ap);
 
     if (mResources != NULL) {
-        size_t index = mAssetPaths.size() - 1;
+        size_t index = mAssetPaths.size() - 2;
         appendPathToResTable(ap, &index);
     }
 
@@ -309,7 +309,7 @@ bool AssetManager::addOverlayPath(const String8& idmapPath, const String8& overl
     *cookie = static_cast<int32_t>(mAssetPaths.size());
 
     if (mResources != NULL) {
-        size_t index = mAssetPaths.size() - 1;
+        size_t index = mAssetPaths.size() - 2;
         appendPathToResTable(oap, &index);
     }
 
@@ -824,7 +824,7 @@ bool AssetManager::appendPathToResTable(const asset_path& ap, size_t* entryIdx) 
                 mZipSet.getZipResourceTable(ap.path);
             if (sharedRes != NULL) {
                 // skip ahead the number of system overlay packages preloaded
-                *entryIdx += sharedRes->getTableCount() - 1;
+                *entryIdx += sharedRes->getTableCount() - 2;
             }
         }
         if (sharedRes == NULL) {
