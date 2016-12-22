@@ -26,6 +26,8 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.os.UserHandle;
+import android.text.format.DateUtils;
+import android.view.WindowManager;
 
 import com.android.systemui.R;
 import com.android.systemui.screenshot.TakeScreenshotService;
@@ -44,9 +46,9 @@ public class ScreenShotTile extends QSTile<QSTile.BooleanState> {
         mHost.collapsePanels();
         mHandler.postDelayed(new Runnable() {
             @Override public void run() {
-                takeScreenshot();
+                takeScreenshot(true);
             }
-        }, 700);
+        }, DateUtils.SECOND_IN_MILLIS);
         return new Intent(Intent.ACTION_GET_CONTENT);
     }
 
@@ -64,9 +66,9 @@ public class ScreenShotTile extends QSTile<QSTile.BooleanState> {
         mHost.collapsePanels();
         mHandler.postDelayed(new Runnable() {
             @Override public void run() {
-                takeScreenshot();
+                takeScreenshot(false);
             }
-        }, 700);
+        }, DateUtils.SECOND_IN_MILLIS);
     }
 
     @Override
@@ -94,7 +96,7 @@ public class ScreenShotTile extends QSTile<QSTile.BooleanState> {
         }
     };
 
-    private void takeScreenshot() {
+    private void takeScreenshot(final boolean partial) {
         synchronized (mScreenshotLock) {
             if (mScreenshotConnection != null) {
                 return;
@@ -109,6 +111,8 @@ public class ScreenShotTile extends QSTile<QSTile.BooleanState> {
                         }
                         Messenger messenger = new Messenger(service);
                         Message msg = Message.obtain(null, 1);
+                        msg.what = partial ? WindowManager.TAKE_SCREENSHOT_SELECTED_REGION
+                                : WindowManager.TAKE_SCREENSHOT_FULLSCREEN;
                         final ServiceConnection myConn = this;
                         Handler h = new Handler(mHandler.getLooper()) {
                             @Override
