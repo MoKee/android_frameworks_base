@@ -2122,6 +2122,10 @@ public class PackageManagerService extends IPackageManager.Stub {
             // code, so don't dexopt it to avoid the resulting log spew
             alreadyDexOpted.add(frameworkDir.getPath() + "/org.mokee.platform-res.apk");
 
+            // Gross hack for now: we know this file doesn't contain any
+            // code, so don't dexopt it to avoid the resulting log spew
+            alreadyDexOpted.add(frameworkDir.getPath() + "/framework-smartisanos-res/framework-smartisanos-res.apk");
+
             /**
              * There are a number of commands implemented in Java, which
              * we currently need to do the dexopt on so that they can be
