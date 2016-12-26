@@ -26,4 +26,7 @@
     <string name="keyguard_indication_dash_charging_time">Dash Charging (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> until full)</string>
     <string name="keyguard_plugged_in_dash_charging">Dash Charging</string>
 
+    <!-- Recents memory view -->
+    <string name="recents_free_ram">FREE RAM: %1$d MB</string>
+
 </resources>
