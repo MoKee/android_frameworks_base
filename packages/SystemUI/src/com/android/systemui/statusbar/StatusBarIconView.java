@@ -90,7 +90,7 @@ public class StatusBarIconView extends AnimatedImageView {
     public void setNotification(Notification notification) {
         mNotification = notification;
         mShowNotificationCount = MKSettings.System.getIntForUser(mContext.getContentResolver(),
-                MKSettings.System.STATUS_BAR_NOTIF_COUNT, 0, UserHandle.USER_CURRENT) == 1;
+                MKSettings.System.STATUS_BAR_NOTIF_COUNT, 1, UserHandle.USER_CURRENT) == 1;
         setContentDescription(notification);
     }
 
@@ -388,7 +388,7 @@ public class StatusBarIconView extends AnimatedImageView {
         @Override
         public void update() {
             boolean showIconCount = MKSettings.System.getIntForUser(mContext.getContentResolver(),
-                    MKSettings.System.STATUS_BAR_NOTIF_COUNT, 0, UserHandle.USER_CURRENT) == 1;
+                    MKSettings.System.STATUS_BAR_NOTIF_COUNT, 1, UserHandle.USER_CURRENT) == 1;
             for (StatusBarIconView sbiv : mIconViews) {
                 sbiv.mShowNotificationCount = showIconCount;
                 sbiv.set(sbiv.mIcon, true);
