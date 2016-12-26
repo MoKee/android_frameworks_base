@@ -18,5 +18,6 @@
 
     <string name="quick_settings_screenshot_label">Screenshot</string>
     <string name="status_bar_su">Su</string>
+    <string name="recents_free_ram">FREE RAM: %1$d MB</string>
 
 </resources>

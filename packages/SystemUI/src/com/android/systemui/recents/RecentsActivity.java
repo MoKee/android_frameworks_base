@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
- * Copyright (C) 2015-2016 The Android Open Source Project
+ * Copyright (C) 2015-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ package com.android.systemui.recents;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.ActivityManager.MemoryInfo;
 import android.app.ActivityOptions;
 import android.app.TaskStackBuilder;
 import android.content.BroadcastReceiver;
@@ -42,6 +43,8 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.android.internal.app.IAppOpsService;
 import com.android.internal.logging.MetricsLogger;
@@ -136,6 +139,11 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
 
     IBinder iBinder = ServiceManager.getService(Context.APP_OPS_SERVICE);
     private IAppOpsService mAppOps = IAppOpsService.Stub.asInterface(iBinder);
+
+    private ActivityManager mAm;
+
+    TextView mMemText;
+    ProgressBar mMemBar;
 
     /**
      * A common Runnable to finish Recents by launching Home with an animation depending on the
@@ -362,6 +370,40 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
 
         // Reload the stack view
         reloadStackView();
+
+        // Recents Memory View
+        mAm = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        mMemText = (TextView) findViewById(R.id.recents_memory_text);
+        mMemBar = (ProgressBar) findViewById(R.id.recents_memory_bar);
+        showMemDisplay();
+    }
+
+    private boolean showMemDisplay() {
+        mMemText.setVisibility(View.VISIBLE);
+        mMemBar.setVisibility(View.VISIBLE);
+
+        updateMemoryStatus();
+        return true;
+    }
+
+    private void updateMemoryStatus() {
+        if (mMemText.getVisibility() == View.GONE
+                || mMemBar.getVisibility() == View.GONE) return;
+
+        MemoryInfo memInfo = new MemoryInfo();
+        mAm.getMemoryInfo(memInfo);
+        int available = (int)(memInfo.availMem / 1048576L);
+        int max = (int)(getTotalMemory() / 1048576L);
+        mMemText.setText(String.format(getResources().getString(R.string.recents_free_ram),available));
+        mMemBar.setMax(max);
+        mMemBar.setProgress(available);
+    }
+
+    public long getTotalMemory() {
+        MemoryInfo memInfo = new MemoryInfo();
+        mAm.getMemoryInfo(memInfo);
+        long totalMem = memInfo.totalMem;
+        return totalMem;
     }
 
     @Override
@@ -779,6 +821,7 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
         SystemServicesProxy ssp = Recents.getSystemServices();
         ssp.removeTask(event.task.key.id);
 
+        updateMemoryStatus();
     }
 
     public final void onBusEvent(AllTaskViewsDismissedEvent event) {
