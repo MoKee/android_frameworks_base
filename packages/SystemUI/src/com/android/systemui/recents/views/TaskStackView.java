@@ -1338,7 +1338,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
         }
 
         // Update the stack action button visibility
-        if (mStackScroller.getStackScroll() < SHOW_STACK_ACTION_BUTTON_SCROLL_THRESHOLD &&
+        if (/* mStackScroller.getStackScroll() < SHOW_STACK_ACTION_BUTTON_SCROLL_THRESHOLD && */
                 getLockedTaskCount() != mStack.getTaskCount()) {
             EventBus.getDefault().send(new ShowStackActionButtonEvent(false /* translate */));
         } else {
@@ -1633,16 +1633,16 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
             relayoutTaskViewsOnNextFrame(animation);
         }
 
-        if (mEnterAnimationComplete) {
-            if (prevScroll > SHOW_STACK_ACTION_BUTTON_SCROLL_THRESHOLD &&
-                    curScroll <= SHOW_STACK_ACTION_BUTTON_SCROLL_THRESHOLD &&
-                        getLockedTaskCount() != mStack.getTaskCount()) {
-                EventBus.getDefault().send(new ShowStackActionButtonEvent(true /* translate */));
-            } else if (prevScroll < HIDE_STACK_ACTION_BUTTON_SCROLL_THRESHOLD &&
-                    curScroll >= HIDE_STACK_ACTION_BUTTON_SCROLL_THRESHOLD) {
-                EventBus.getDefault().send(new HideStackActionButtonEvent());
-            }
-        }
+//        if (mEnterAnimationComplete) {
+//            if (prevScroll > SHOW_STACK_ACTION_BUTTON_SCROLL_THRESHOLD &&
+//                    curScroll <= SHOW_STACK_ACTION_BUTTON_SCROLL_THRESHOLD &&
+//                        getLockedTaskCount() != mStack.getTaskCount()) {
+//                EventBus.getDefault().send(new ShowStackActionButtonEvent(true /* translate */));
+//            } else if (prevScroll < HIDE_STACK_ACTION_BUTTON_SCROLL_THRESHOLD &&
+//                    curScroll >= HIDE_STACK_ACTION_BUTTON_SCROLL_THRESHOLD) {
+//                EventBus.getDefault().send(new HideStackActionButtonEvent());
+//            }
+//        }
     }
 
     /**** EventBus Events ****/
@@ -1770,7 +1770,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
         if (getLockedTaskCount() == mStack.getTaskCount()) {
             EventBus.getDefault().send(new HideStackActionButtonEvent());
         } else {
-            if (mStackScroller.getStackScroll() < TaskStackView.SHOW_STACK_ACTION_BUTTON_SCROLL_THRESHOLD &&
+            if (/* mStackScroller.getStackScroll() < TaskStackView.SHOW_STACK_ACTION_BUTTON_SCROLL_THRESHOLD && */
                         getLockedTaskCount() != mStack.getTaskCount()) {
                 EventBus.getDefault().send(new ShowStackActionButtonEvent(true /* translate */));
             }
