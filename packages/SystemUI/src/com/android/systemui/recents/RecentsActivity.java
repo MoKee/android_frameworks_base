@@ -35,6 +35,7 @@ import android.os.SystemClock;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.provider.Settings.Secure;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -146,8 +147,9 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
 
     private ActivityManager mAm;
 
-    TextView mMemText;
-    ProgressBar mMemBar;
+    private TextView mMemText;
+    private ProgressBar mMemBar;
+    private MemoryInfo mMemInfo;
 
     /**
      * A common Runnable to finish Recents by launching Home with an animation depending on the
@@ -405,34 +407,42 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
         mAm = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         mMemText = (TextView) findViewById(R.id.recents_memory_text);
         mMemBar = (ProgressBar) findViewById(R.id.recents_memory_bar);
+        mMemInfo = new MemoryInfo();
         showMemDisplay();
     }
 
-    private boolean showMemDisplay() {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mHandler.post(updateMemoryStatusRunnable);
+    }
+
+    Runnable updateMemoryStatusRunnable = new Runnable() {
+        @Override
+        public void run() {
+            updateMemoryStatus();
+            mHandler.postDelayed(this, DateUtils.SECOND_IN_MILLIS * 1);
+        }
+    };
+
+    private void showMemDisplay() {
         mMemText.setVisibility(View.VISIBLE);
         mMemBar.setVisibility(View.VISIBLE);
-
+        int max = (int)(getTotalMemory() / 1048576L);
+        mMemBar.setMax(max);
         updateMemoryStatus();
-        return true;
     }
 
     private void updateMemoryStatus() {
-        if (mMemText.getVisibility() == View.GONE
-                || mMemBar.getVisibility() == View.GONE) return;
-
-        MemoryInfo memInfo = new MemoryInfo();
-        mAm.getMemoryInfo(memInfo);
-        int available = (int)(memInfo.availMem / 1048576L);
-        int max = (int)(getTotalMemory() / 1048576L);
+        mAm.getMemoryInfo(mMemInfo);
+        int available = (int)(mMemInfo.availMem / 1048576L);
         mMemText.setText(String.format(getResources().getString(R.string.recents_free_ram),available));
-        mMemBar.setMax(max);
         mMemBar.setProgress(available);
     }
 
     public long getTotalMemory() {
-        MemoryInfo memInfo = new MemoryInfo();
-        mAm.getMemoryInfo(memInfo);
-        long totalMem = memInfo.totalMem;
+        mAm.getMemoryInfo(mMemInfo);
+        long totalMem = mMemInfo.totalMem;
         return totalMem;
     }
 
@@ -584,6 +594,8 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
 
         mIgnoreAltTabRelease = false;
         mIterateTrigger.stopDozing();
+
+        mHandler.removeCallbacks(updateMemoryStatusRunnable);
     }
 
     @Override
@@ -868,8 +880,6 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
         // Remove the task from activity manager
         SystemServicesProxy ssp = Recents.getSystemServices();
         ssp.removeTask(event.task.key.id);
-
-        updateMemoryStatus();
     }
 
     public final void onBusEvent(TaskViewDismissedEvent event) {
