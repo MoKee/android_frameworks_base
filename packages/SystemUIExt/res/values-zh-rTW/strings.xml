@@ -17,4 +17,5 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="quick_settings_screenshot_label">螢幕截圖</string>
   <string name="status_bar_su">超級使用者</string>
+  <string name="recents_free_ram">可用記憶體：%1$d MB</string>
 </resources>
