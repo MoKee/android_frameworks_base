@@ -61,7 +61,7 @@ namespace android {
 
 #define APP_PACKAGE_ID      0x7f
 #define MKSDK_PACKAGE_ID    0x3f
-#define STSDK_PACKAGE_ID    0x02
+#define STSDK_PACKAGE_ID    0x9f
 #define SYS_PACKAGE_ID      0x01
 #define OVERLAY_STSDK_PACKAGE_ID    0x64
 #define OVERLAY_MKSDK_PACKAGE_ID    0x63
@@ -3536,7 +3536,7 @@ void ResTable::Theme::dumpToLog() const
 }
 
 ResTable::ResTable()
-    : mError(NO_INIT), mNextPackageId(Res_FIRSTLIBPACKAGEID)
+    : mError(NO_INIT), mNextPackageId(2)
 {
     memset(&mParams, 0, sizeof(mParams));
     memset(mPackageMap, 0, sizeof(mPackageMap));
@@ -3546,7 +3546,7 @@ ResTable::ResTable()
 }
 
 ResTable::ResTable(const void* data, size_t size, const int32_t cookie, bool copyData)
-    : mError(NO_INIT), mNextPackageId(Res_FIRSTLIBPACKAGEID)
+    : mError(NO_INIT), mNextPackageId(2)
 {
     memset(&mParams, 0, sizeof(mParams));
     memset(mPackageMap, 0, sizeof(mPackageMap));

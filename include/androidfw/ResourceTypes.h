@@ -250,8 +250,6 @@ enum {
 static const size_t Res_MAXPACKAGE = 255;
 static const size_t Res_MAXTYPE = 255;
 
-#define Res_FIRSTLIBPACKAGEID 0x03 // 3
-
 /**
  * Representation of a value in a resource, supplying type
  * information.
