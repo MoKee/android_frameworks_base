@@ -16,4 +16,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="quick_settings_screenshot_label">Здымак экрана</string>
+  <string name="status_bar_su">Su</string>
+  <string name="recents_free_ram">Вольна аператыўнай памяці: %1$d MБ</string>
 </resources>
