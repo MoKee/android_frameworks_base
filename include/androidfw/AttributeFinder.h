@@ -101,7 +101,7 @@ void BackTrackingAttributeFinder<Derived, Iterator>::jumpToClosestAttribute(cons
         case 0x01:
             mCurrent = mFrameworkStart;
             break;
-        case 0x0b:
+        case 0x2f:
             mCurrent = mSTFrameworkStart;
             break;
         case 0x3f:
@@ -140,7 +140,7 @@ void BackTrackingAttributeFinder<Derived, Iterator>::markCurrentPackageId(const 
         case 0x01:
             mFrameworkStart = mCurrent;
             break;
-        case 0x0b:
+        case 0x2f:
             mSTFrameworkStart = mCurrent;
             break;
         case 0x3f:
