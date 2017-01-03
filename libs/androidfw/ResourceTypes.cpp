@@ -61,7 +61,7 @@ namespace android {
 
 #define APP_PACKAGE_ID      0x7f
 #define MKSDK_PACKAGE_ID    0x3f
-#define STSDK_PACKAGE_ID    0x9f
+#define STSDK_PACKAGE_ID    0x2f
 #define SYS_PACKAGE_ID      0x01
 #define OVERLAY_STSDK_PACKAGE_ID    0x64
 #define OVERLAY_MKSDK_PACKAGE_ID    0x63
