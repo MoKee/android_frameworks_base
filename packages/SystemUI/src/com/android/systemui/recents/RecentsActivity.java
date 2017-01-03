@@ -43,6 +43,7 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -147,8 +148,9 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
 
     private ActivityManager mAm;
 
-    private TextView mMemText;
-    private ProgressBar mMemBar;
+    private LinearLayout mMemBar;
+    private TextView mMemInfoText;
+    private ProgressBar mMemInfoBar;
     private MemoryInfo mMemInfo;
 
     /**
@@ -303,6 +305,7 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
      */
     void dismissRecentsToHome(boolean animateTaskViews) {
         dismissRecentsToHome(animateTaskViews, null);
+        showMemStatus(false);
     }
 
     /**
@@ -400,15 +403,16 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
 
         getWindow().addPrivateFlags(LayoutParams.PRIVATE_FLAG_NO_MOVE_ANIMATION);
 
-        // Reload the stack view
-        reloadStackView();
-
         // Recents Memory View
         mAm = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-        mMemText = (TextView) findViewById(R.id.recents_memory_text);
-        mMemBar = (ProgressBar) findViewById(R.id.recents_memory_bar);
         mMemInfo = new MemoryInfo();
-        showMemDisplay();
+        mMemBar = (LinearLayout) findViewById(R.id.recents_membar);
+        mMemInfoText = (TextView) findViewById(R.id.recents_memory_text);
+        mMemInfoBar = (ProgressBar) findViewById(R.id.recents_memory_bar);
+        mMemInfoBar.setMax((int)(getTotalMemory() / 1048576L));
+
+        // Reload the stack view
+        reloadStackView();
     }
 
     @Override
@@ -425,19 +429,29 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
         }
     };
 
-    private void showMemDisplay() {
-        mMemText.setVisibility(View.VISIBLE);
-        mMemBar.setVisibility(View.VISIBLE);
-        int max = (int)(getTotalMemory() / 1048576L);
-        mMemBar.setMax(max);
+    private void initMemStatus() {
         updateMemoryStatus();
+        showMemStatus(true);
+    }
+
+    private void showMemStatus(boolean visible) {
+        mMemBar.animate()
+                .alpha(visible ? 1f : 0f)
+                .setDuration(visible ? 0 : 100)
+                .setInterpolator(Interpolators.FAST_OUT_SLOW_IN)
+                .withEndAction(new Runnable() {
+                    @Override
+                    public void run() {
+                        mMemBar.setVisibility(visible ? View.VISIBLE : View.GONE);
+                    }
+                }).start();
     }
 
     private void updateMemoryStatus() {
         mAm.getMemoryInfo(mMemInfo);
         int available = (int)(mMemInfo.availMem / 1048576L);
-        mMemText.setText(String.format(getResources().getString(R.string.recents_free_ram),available));
-        mMemBar.setProgress(available);
+        mMemInfoText.setText(String.format(getResources().getString(R.string.recents_free_ram),available));
+        mMemInfoBar.setProgress(available);
     }
 
     public long getTotalMemory() {
@@ -567,6 +581,8 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
         // Keep track of the total stack task count
         int taskCount = mRecentsView.getStack().getTaskCount();
         MetricsLogger.histogram(this, "overview_task_count", taskCount);
+
+        initMemStatus();
 
         // After we have resumed, set the visible state until the next onStop() call
         mIsVisible = true;
