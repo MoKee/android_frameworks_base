@@ -142,9 +142,7 @@ status_t NativeInputEventSender::sendMotionEvent(uint32_t seq, const MotionEvent
                 event->getXPrecision(), event->getYPrecision(),
                 event->getDownTime(), event->getHistoricalEventTime(i),
                 event->getPointerCount(), event->getPointerProperties(),
-                event->getHistoricalRawPointerCoords(0, i),
-                event->getThumbMode(),
-                event->getScaleFactor());
+                event->getHistoricalRawPointerCoords(0, i));
         if (status) {
             ALOGW("Failed to send motion event sample on channel '%s'.  status=%d",
                     getInputChannelName(), status);

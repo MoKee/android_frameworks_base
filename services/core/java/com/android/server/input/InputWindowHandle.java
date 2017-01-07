@@ -90,8 +90,6 @@ public final class InputWindowHandle {
     // Display this input is on.
     public final int displayId;
 
-    public boolean inThumbMode;
-
     private native void nativeDispose();
 
     public InputWindowHandle(InputApplicationHandle inputApplicationHandle,

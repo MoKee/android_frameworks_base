@@ -22,7 +22,6 @@ import android.content.ComponentCallbacks2;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
-import android.graphics.Rect;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.os.ServiceManager;
@@ -227,16 +226,6 @@ public final class WindowManagerGlobal {
         }
 
         return null;
-    }
-
-    public void getThumbModeCrop(Rect outCrop) {
-        if(sWindowSession == null) return;
-
-        try {
-            sWindowSession.getThumbModeCrop(outCrop);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
     }
 
     public void addView(View view, ViewGroup.LayoutParams params,

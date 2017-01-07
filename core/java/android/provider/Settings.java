@@ -8642,11 +8642,6 @@ public final class Settings {
          * @hide
          */
         public static final String ENABLE_CELLULAR_ON_BOOT = "enable_cellular_on_boot";
-
-        /**
-         * @hide
-         */
-        public static final String SIDE_BAR_MODE = "side_bar_mode";
     }
 
     /**

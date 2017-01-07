@@ -24,9 +24,7 @@ import android.content.BroadcastReceiver;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.ContentProvider;
-import android.content.CopyHistoryItem;
 import android.content.IClipboard;
-import android.content.IClipboardListener;
 import android.content.IOnPrimaryClipChangedListener;
 import android.content.Context;
 import android.content.Intent;
@@ -46,12 +44,9 @@ import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.UserHandle;
 import android.os.UserManager;
-import android.text.Spanned;
-import android.text.TextUtils;
 import android.util.Slog;
 import android.util.SparseArray;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -68,8 +63,6 @@ public class ClipboardService extends IClipboard.Stub {
     private final PackageManager mPm;
     private final AppOpsManager mAppOps;
     private final IBinder mPermissionOwner;
-    private final CopyHistoryDatabaseHelper mDatabaseHelper;
-    private List<IClipboardListener> mListeners = new ArrayList<IClipboardListener>();
 
     private class ListenerInfo {
         final int mUid;
@@ -114,7 +107,6 @@ public class ClipboardService extends IClipboard.Stub {
             Slog.w("clipboard", "AM dead", e);
         }
         mPermissionOwner = permOwner;
-        mDatabaseHelper = new CopyHistoryDatabaseHelper(context);
 
         // Remove the clipboard if a user is removed
         IntentFilter userFilter = new IntentFilter();
@@ -165,24 +157,7 @@ public class ClipboardService extends IClipboard.Stub {
         }
     }
 
-    private void insertClipData(ClipData clip) {
-        for (int i = 0; i < clip.getItemCount(); i++) {
-            // Get an item as text and remove all spans by toString().
-            CharSequence text = clip.getItemAt(i).coerceToText(mContext);
-            CharSequence paste = (text instanceof Spanned) ? text.toString() : text;
-            if (!TextUtils.isEmpty(paste)) {
-                mDatabaseHelper.insert(paste.toString());
-                notifyListener();
-            }
-        }
-    }
-
-    public void setPrimaryClip(ClipData clip, boolean inHistory, String callingPackage) {
-        // some inputmethod send emoji by setPrimaryClip, disable it !
-        if (callingPackage != null && callingPackage.contains("inputmethod")) {
-            inHistory = false;
-        }
-
+    public void setPrimaryClip(ClipData clip, String callingPackage) {
         synchronized (this) {
             if (clip != null && clip.getItemCount() <= 0) {
                 throw new IllegalArgumentException("No items");
@@ -197,12 +172,6 @@ public class ClipboardService extends IClipboard.Stub {
             PerUserClipboard clipboard = getClipboard(userId);
             revokeUris(clipboard);
             setPrimaryClipInternal(clipboard, clip);
-
-            // add to copy history
-            if (inHistory) {
-                insertClipData(clip);
-            }
-
             List<UserInfo> related = getRelatedProfiles(userId);
             if (related != null) {
                 int size = related.size();
@@ -452,67 +421,6 @@ public class ClipboardService extends IClipboard.Stub {
         final int N = clipboard.primaryClip.getItemCount();
         for (int i=0; i<N; i++) {
             revokeItemLocked(clipboard.primaryClip.getItemAt(i));
-        }
-    }
-
-    public List<CopyHistoryItem> getCopyHistory(){
-        return mDatabaseHelper.getCopyHistory();
-    }
-
-    public void clearCopyHistory() {
-        mDatabaseHelper.clearCopyHistory();
-        notifyListener();
-    }
-
-    public void delete(CopyHistoryItem item) {
-        mDatabaseHelper.delete(item);
-        notifyListener();
-    }
-
-    public void registerListener(IClipboardListener listener) {
-        monitor(listener);
-        synchronized (mListeners) {
-            mListeners.add(listener);
-        }
-    }
-
-    private void notifyListener() {
-        Intent intent = new Intent("android.intent.action.CopyHistoryChange");
-        mContext.sendBroadcast(intent);
-        synchronized (mListeners) {
-            for (IClipboardListener listener : mListeners) {
-                try {
-                    listener.onCopyHistoryChanged();
-                } catch (RemoteException e) {
-                    // NA
-                }
-            }
-        }
-    }
-
-    private void monitor(IClipboardListener listener) {
-        new BinderMonitor(listener);
-    }
-
-    private class BinderMonitor implements IBinder.DeathRecipient {
-
-        private IClipboardListener mListener;
-
-        public BinderMonitor(IClipboardListener listener) {
-            mListener = listener;
-            try {
-                listener.asBinder().linkToDeath(this, 0);
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        }
-
-        @Override
-        public void binderDied() {
-            mListener.asBinder().unlinkToDeath(this, 0);
-            synchronized (mListeners) {
-                mListeners.remove(mListener);
-            }
         }
     }
 }

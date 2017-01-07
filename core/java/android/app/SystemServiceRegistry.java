@@ -115,8 +115,6 @@ import android.view.WindowManagerImpl;
 import android.view.accessibility.AccessibilityManager;
 import android.view.accessibility.CaptioningManager;
 import android.view.inputmethod.InputMethodManager;
-import android.view.onestep.OneStepManager;
-import android.view.onestep.OneStepManagerImpl;
 import android.view.textservice.TextServicesManager;
 
 import java.util.HashMap;
@@ -707,13 +705,6 @@ final class SystemServiceRegistry {
             @Override
             public RadioManager createService(ContextImpl ctx) {
                 return new RadioManager(ctx);
-            }});
-
-        registerService(Context.ONE_STEP_SERVICE, OneStepManager.class,
-                new CachedServiceFetcher<OneStepManager>() {
-            @Override
-            public OneStepManager createService(ContextImpl ctx) {
-                return new OneStepManagerImpl(ctx);
             }});
     }
 

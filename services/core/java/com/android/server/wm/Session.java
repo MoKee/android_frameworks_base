@@ -44,7 +44,6 @@ import android.view.InputChannel;
 import android.view.Surface;
 import android.view.SurfaceControl;
 import android.view.SurfaceSession;
-import android.view.ViewRootImpl;
 import android.view.WindowManager;
 
 import java.io.PrintWriter;
@@ -245,10 +244,6 @@ final class Session extends IWindowSession.Stub
         }
     }
 
-    public void getThumbModeCrop(Rect outCrop) {
-        ThumbModeHelper.getInstance().getCropRect(outCrop);
-    }
-
     public boolean performHapticFeedback(IWindow window, int effectId,
             boolean always) {
         synchronized(mService.mWindowMap) {
@@ -265,9 +260,9 @@ final class Session extends IWindowSession.Stub
 
     /* Drag/drop */
     public IBinder prepareDrag(IWindow window, int flags,
-            int width, int height, Surface outSurface, float delX, float delY, int showAnimDelay) {
+            int width, int height, Surface outSurface) {
         return mService.prepareDragSurface(window, mSurfaceSession, flags,
-                width, height, outSurface, delX, delY, showAnimDelay);
+                width, height, outSurface);
     }
 
     public boolean performDrag(IWindow window, IBinder dragToken,
@@ -322,9 +317,6 @@ final class Session extends IWindowSession.Stub
                 return false;
             }
 
-            touchX = callingWin.mFrame.left + touchX * callingWin.mGlobalScale;
-            touchY = callingWin.mFrame.top + touchY * callingWin.mGlobalScale;
-
             mService.mDragState.mData = data;
             mService.mDragState.mCurrentX = touchX;
             mService.mDragState.mCurrentY = touchY;
@@ -340,20 +332,17 @@ final class Session extends IWindowSession.Stub
                     WindowManagerService.TAG, ">>> OPEN TRANSACTION performDrag");
             SurfaceControl.openTransaction();
             try {
+                surfaceControl.setPosition(touchX - thumbCenterX,
+                        touchY - thumbCenterY);
+                surfaceControl.setAlpha(.7071f);
                 surfaceControl.setLayer(mService.mDragState.getDragLayerLw());
                 surfaceControl.setLayerStack(display.getLayerStack());
-
-                mService.mDragState.setPosition(touchX, touchY);
-                mService.mDragState.scaleSurface(DragState.MAX_SCALE, DragState.MAX_SCALE,
-                        DragState.SCALE_AX_PER, DragState.SCALE_AY_PER);
-
-                //surfaceControl.show();
+                surfaceControl.show();
             } finally {
                 SurfaceControl.closeTransaction();
                 if (WindowManagerService.SHOW_LIGHT_TRANSACTIONS) Slog.i(
                         WindowManagerService.TAG, "<<< CLOSE TRANSACTION performDrag");
             }
-            mService.mDragState.startOnDragAnim();
         }
 
         return true;    // success!
