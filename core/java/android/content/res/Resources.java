@@ -122,8 +122,6 @@ public class Resources {
     public static final int THEME_ICON_PKG_ID = 0x62;
     /** @hide */
     public static final int THEME_MK_PKG_ID = 0x63;
-    /** @hide */
-    public static final int THEME_ST_PKG_ID = 0x64;
     /**
      * The common resource pkg id needs to be less than the THEME_FRAMEWORK_PKG_ID
      * otherwise aapt will complain and fail

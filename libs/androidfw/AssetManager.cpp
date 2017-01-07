@@ -77,7 +77,6 @@ static const char* kAssetsRoot = "assets";
 static const char* kAppZipName = NULL; //"classes.jar";
 static const char* kSystemAssets = "framework/framework-res.apk";
 static const char* kMKSDKAssets = "framework/org.mokee.platform-res.apk";
-static const char* kSTSDKAssets = "framework/framework-smartisanos-res/framework-smartisanos-res.apk";
 static const char* kAndroidManifest = "AndroidManifest.xml";
 static const int   kComposedIconAsset = 128;
 
@@ -512,10 +511,7 @@ bool AssetManager::addDefaultAssets()
     String8 pathMK(root);
     pathMK.appendPath(kMKSDKAssets);
 
-    String8 pathST(root);
-    pathST.appendPath(kSTSDKAssets);
-
-    return addAssetPath(path, NULL) & addAssetPath(pathMK, NULL) & addAssetPath(pathST, NULL);
+    return addAssetPath(path, NULL) & addAssetPath(pathMK, NULL);
 }
 
 int32_t AssetManager::nextAssetPath(const int32_t cookie) const
