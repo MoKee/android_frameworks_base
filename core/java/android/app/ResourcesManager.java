@@ -552,7 +552,6 @@ public class ResourcesManager {
         PackageInfo piTarget = null;
         PackageInfo piAndroid = null;
         PackageInfo piMk = null;
-        PackageInfo piSt = null;
 
         // Some apps run in process of another app (eg keyguard/systemUI) so we must get the
         // package name from the res tables. The 0th base package name will be the android group.
@@ -588,8 +587,6 @@ public class ResourcesManager {
                     UserHandle.getCallingUserId());
             piMk = getPackageManager().getPackageInfo("mokee.platform", 0,
                     UserHandle.getCallingUserId());
-            piSt = getPackageManager().getPackageInfo("smartisanos", 0,
-                    UserHandle.getCallingUserId());
         } catch (RemoteException e) {
         }
 
@@ -597,7 +594,6 @@ public class ResourcesManager {
                     piTarget == null || piTarget.applicationInfo == null ||
                     piAndroid == null || piAndroid.applicationInfo == null ||
                     piMk == null || piMk.applicationInfo == null ||
-                    piSt == null || piSt.applicationInfo == null ||
                     piTheme.mOverlayTargets == null) {
             return false;
         }
@@ -631,23 +627,6 @@ public class ResourcesManager {
             String targetPackagePath = piMk.applicationInfo.publicSourceDir;
             String resApkPath = resCachePath + "/resources.apk";
             String idmapPath = ThemeUtils.getIdmapPath(piMk.packageName, piTheme.packageName);
-            int cookie = assets.addOverlayPath(idmapPath, themePath,
-                    resApkPath, targetPackagePath, prefixPath);
-            if (cookie != 0) {
-                assets.setThemePackageName(themePackageName);
-                assets.addThemeCookie(cookie);
-            }
-        }
-
-        // Attach themed resources for stsdk
-        if (!piTarget.isThemeApk && !piSt.packageName.equals(basePackageName) &&
-                piTheme.mOverlayTargets.contains(piSt.packageName)) {
-            String resCachePath= ThemeUtils.getTargetCacheDir(piSt.packageName,
-                    piTheme.packageName);
-            String prefixPath = ThemeUtils.getOverlayPathToTarget(piSt.packageName);
-            String targetPackagePath = piSt.applicationInfo.publicSourceDir;
-            String resApkPath = resCachePath + "/resources.apk";
-            String idmapPath = ThemeUtils.getIdmapPath(piSt.packageName, piTheme.packageName);
             int cookie = assets.addOverlayPath(idmapPath, themePath,
                     resApkPath, targetPackagePath, prefixPath);
             if (cookie != 0) {
