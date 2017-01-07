@@ -191,14 +191,8 @@ public class OneStepManagerService extends IOneStepManager.Stub {
                 "SideBarManagerService");
     }
 
-    private void enforceSidebarPerission() {
-        mContext.enforceCallingOrSelfPermission(android.Manifest.permission.ONE_STEP,
-                "SideBarManagerService");
-    }
-
     @Override
     public void resumeOneStep() {
-        enforceSidebarPerission();
         if (!isInOneStepMode()) {
             return;
         }
@@ -231,7 +225,6 @@ public class OneStepManagerService extends IOneStepManager.Stub {
 
     @Override
     public void setEnabled(boolean enabled) {
-        enforceSidebarPerission();
         if (mBar != null) {
             try {
                 if (DEBUG) {

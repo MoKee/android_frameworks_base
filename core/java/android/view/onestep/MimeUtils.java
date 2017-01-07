@@ -77,13 +77,6 @@ final class MimeUtils {
     private MimeUtils() {
     }
 
-    /**
-     * Getthe file display Icon according to mimetype and the file extension.
-     * 
-     * @param mimeType
-     * @param extension
-     * @return the icon res id.
-     */
     public static int getFileIconResId(String mimeType, String extension) {
         if (!TextUtils.isEmpty(extension)) {
             if (extensionToIconMap.containsKey(extension)) {
@@ -106,13 +99,6 @@ final class MimeUtils {
         return R.drawable.file_icon_default;
     }
 
-    /**
-     * Get the file display Icon according to mimetype.
-     *
-     * @param mimeType
-     * @param file
-     * @return the icon res id.
-     */
     public static int getFileIconResId(String mimeType, File file) {
         String suffix = null;
         String name = file.getName();
