@@ -7,9 +7,11 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.systemui.R;
 import com.android.systemui.qs.QSPanel.QSTileLayout;
@@ -32,6 +34,8 @@ public class PagedTileLayout extends ViewPager implements QSTileLayout {
     private View mDecorGroup;
     private PageListener mPageListener;
 
+    private TextView mOnestepView;
+
     private int mPosition;
     private boolean mOffPage;
     private boolean mListening;
@@ -44,8 +48,8 @@ public class PagedTileLayout extends ViewPager implements QSTileLayout {
             public void onPageSelected(int position) {
                 if (mPageIndicator == null) return;
                 if (mPageListener != null) {
-                    mPageListener.onPageChanged(isLayoutRtl() ? position == mPages.size() - 1
-                            : position == 0);
+                    mPageListener.onPageChanged(isLayoutRtl() ? position == mPages.size()
+                            : position == 1);
                 }
             }
 
@@ -57,7 +61,7 @@ public class PagedTileLayout extends ViewPager implements QSTileLayout {
                 mPageIndicator.setLocation(position + positionOffset);
                 if (mPageListener != null) {
                     mPageListener.onPageChanged(positionOffsetPixels == 0 &&
-                            (isLayoutRtl() ? position == mPages.size() - 1 : position == 0));
+                            (isLayoutRtl() ? position == mPages.size() : position == 1));
                 }
             }
 
@@ -65,14 +69,14 @@ public class PagedTileLayout extends ViewPager implements QSTileLayout {
             public void onPageScrollStateChanged(int state) {
             }
         });
-        setCurrentItem(0);
+        setCurrentItem(1);
     }
 
     @Override
     public void onRtlPropertiesChanged(int layoutDirection) {
         super.onRtlPropertiesChanged(layoutDirection);
         setAdapter(mAdapter);
-        setCurrentItem(0, false);
+        setCurrentItem(1, false);
     }
 
     @Override
@@ -130,11 +134,12 @@ public class PagedTileLayout extends ViewPager implements QSTileLayout {
     }
 
     private void setPageListening(int position, boolean listening) {
-        if (position >= mPages.size()) return;
+        if (position - 1 >= mPages.size()) return;
         if (isLayoutRtl()) {
             position = mPages.size() - 1 - position;
         }
-        mPages.get(position).setListening(listening);
+        if (position == 0) return;
+        mPages.get(position - 1).setListening(listening);
     }
 
     @Override
@@ -151,6 +156,12 @@ public class PagedTileLayout extends ViewPager implements QSTileLayout {
 
         mPages.add((TilePage) LayoutInflater.from(mContext)
                 .inflate(R.layout.qs_paged_page, this, false));
+
+        mOnestepView = new TextView(mContext);
+        mOnestepView.setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        mOnestepView.setGravity(Gravity.CENTER);
+        mOnestepView.setText("Hello world");
     }
 
     @Override
@@ -210,11 +221,10 @@ public class PagedTileLayout extends ViewPager implements QSTileLayout {
                 mPages.remove(mPages.size() - 1);
             }
             if (DEBUG) Log.d(TAG, "Size: " + mNumPages);
-            mPageIndicator.setNumPages(mNumPages);
-            mDecorGroup.setVisibility(mNumPages > 1 ? View.VISIBLE : View.GONE);
+            mPageIndicator.setNumPages(mNumPages + 1);
             setAdapter(mAdapter);
             mAdapter.notifyDataSetChanged();
-            setCurrentItem(0, false);
+            setCurrentItem(1, false);
         }
     }
 
@@ -238,13 +248,16 @@ public class PagedTileLayout extends ViewPager implements QSTileLayout {
         int maxHeight = 0;
         final int N = getChildCount();
         for (int i = 0; i < N; i++) {
-            int height = getChildAt(i).getMeasuredHeight();
+            View child = getChildAt(i);
+            if (child == mOnestepView) {
+                continue;
+            }
+            int height = child.getMeasuredHeight();
             if (height > maxHeight) {
                 maxHeight = height;
             }
         }
-        setMeasuredDimension(getMeasuredWidth(), maxHeight
-                + (mDecorGroup.getVisibility() != View.GONE ? mDecorGroup.getMeasuredHeight() : 0));
+        setMeasuredDimension(getMeasuredWidth(), maxHeight + mDecorGroup.getMeasuredHeight());
     }
 
     private final Runnable mDistribute = new Runnable() {
@@ -308,14 +321,18 @@ public class PagedTileLayout extends ViewPager implements QSTileLayout {
             if (isLayoutRtl()) {
                 position = mPages.size() - 1 - position;
             }
-            ViewGroup view = mPages.get(position);
+            if (position == 0) {
+                container.addView(mOnestepView);
+                return mOnestepView;
+            }
+            ViewGroup view = mPages.get(position - 1);
             container.addView(view);
             return view;
         }
 
         @Override
         public int getCount() {
-            return mNumPages;
+            return mNumPages + 1;
         }
 
         @Override

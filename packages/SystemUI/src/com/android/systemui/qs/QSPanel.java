@@ -230,7 +230,7 @@ public class QSPanel extends LinearLayout implements Tunable, Callback {
         if (mExpanded == expanded) return;
         mExpanded = expanded;
         if (!mExpanded && mTileLayout instanceof PagedTileLayout) {
-            ((PagedTileLayout) mTileLayout).setCurrentItem(0, false);
+            ((PagedTileLayout) mTileLayout).setCurrentItem(1, false);
         }
         MetricsLogger.visibility(mContext, MetricsEvent.QS_PANEL, mExpanded);
         if (!mExpanded) {
