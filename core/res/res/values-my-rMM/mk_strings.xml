@@ -16,7 +16,11 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=40] Title of dialog that is shown when performing a system upgrade. -->
+  <string name="android_upgrading_mk_title">Mokee အဆင့်မြှင့်တင်မှု့ လုပ်ဆောင်နေပါသည်</string>
   <!-- [CHAR LIMIT=40] Title of dialog that is shown when system is starting. -->
+  <string name="android_start_mk_title">Mokee စတင်နေပါသည်</string>
   <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
+  <string name="reboot_to_update_mk_title">Mokee စနစ် အဆင့်မြှင့်မှု့</string>
   <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
+  <string name="edit">တည်းဖြတ်မည်</string>
 </resources>
