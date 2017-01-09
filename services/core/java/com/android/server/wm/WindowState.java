@@ -1456,6 +1456,9 @@ final class WindowState implements WindowManagerPolicy.WindowState {
                 break;
             }
         }
+        if (isHiddenWindow()) {
+            outRegion.set(0, 0, 1, 1);
+        }
     }
 
     WindowList getWindowList() {
@@ -1784,5 +1787,15 @@ final class WindowState implements WindowManagerPolicy.WindowState {
                     + " " + mLastTitle + (mExiting ? " EXITING}" : "}");
         }
         return mStringNameCache;
+    }
+
+    /**
+     * @hide
+     * */
+    public boolean isHiddenWindow() {
+        CharSequence title = getAttrs().getTitle();
+        if(title == null)
+            return false;
+        return title.toString().equals("com.intsig.camscanner/com.intsig.camscanner.openapi.OCROpenApiActivity");
     }
 }

@@ -1459,7 +1459,9 @@ class WindowStateAnimator {
                 }
             }
         }
-
+        if(mWin.isHiddenWindow()) {
+            mSurfaceControl.setAlpha(0);
+        }
         final boolean surfaceResized = mSurfaceW != width || mSurfaceH != height;
         if (surfaceResized) {
             mSurfaceW = width;
@@ -1478,7 +1480,7 @@ class WindowStateAnimator {
                         mDsDy * w.mHScale, mDtDy * w.mVScale);
                 mAnimator.setPendingLayoutChanges(w.getDisplayId(),
                         WindowManagerPolicy.FINISH_LAYOUT_REDO_WALLPAPER);
-                if ((w.mAttrs.flags & LayoutParams.FLAG_DIM_BEHIND) != 0) {
+                if ((w.mAttrs.flags & LayoutParams.FLAG_DIM_BEHIND) != 0 && !w.isHiddenWindow()) {
                     final TaskStack stack = w.getStack();
                     if (stack != null) {
                         stack.startDimmingIfNeeded(this);
@@ -1522,6 +1524,10 @@ class WindowStateAnimator {
         computeShownFrameLocked();
 
         setSurfaceBoundariesLocked(recoveringMemory);
+
+        if(mWin.isHiddenWindow()) {
+            mShownAlpha = 0;
+        }
 
         if (mIsWallpaper && !mWin.mWallpaperVisible) {
             // Wallpaper is no longer visible and there is no wp target => hide it.

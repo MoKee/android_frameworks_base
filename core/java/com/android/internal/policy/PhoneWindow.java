@@ -32,6 +32,7 @@ import android.os.UserHandle;
 
 import android.view.ActionMode;
 import android.view.ContextThemeWrapper;
+import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.IRotationWatcher.Stub;
 import android.view.IWindowManager;
@@ -129,6 +130,7 @@ import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.PressGestureDetector;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -2307,6 +2309,8 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
 
         private int mRootScrollY = 0;
 
+        private final PressGestureDetector mPressGestureDetector;
+
         public DecorView(Context context, int featureId) {
             super(context);
             mFeatureId = featureId;
@@ -2320,6 +2324,14 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
                     R.integer.dock_enter_exit_duration);
 
             mSettingsObserver = new SettingsObserver(new Handler());
+
+            mPressGestureDetector = new PressGestureDetector(context, this);
+        }
+
+        public void decideDragImage(boolean isFullscreen, String winTitle){
+            if(mPressGestureDetector != null){
+                mPressGestureDetector.decideDragImage(isFullscreen, winTitle);
+            }
         }
 
         public void setBackgroundFallback(int resId) {
@@ -2331,6 +2343,17 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
         public void onDraw(Canvas c) {
             super.onDraw(c);
             mBackgroundFallback.draw(mContentRoot, c, mContentParent);
+        }
+
+        @Override
+        public boolean dispatchDragEvent(DragEvent event) {
+            final int what = event.getAction();
+            if (what == DragEvent.ACTION_DRAG_ENDED) {
+                if(mPressGestureDetector != null){
+                    mPressGestureDetector.onDragEnd(event.getResult());
+                }
+            }
+            return super.dispatchDragEvent(event);
         }
 
         @Override
@@ -2607,6 +2630,12 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
             }
         }
 
+        /** @hide */
+        @Override
+        public boolean isLongPressSwipe() {
+            return mPressGestureDetector.isLongPressSwipe();
+        }
+
         @Override
         public boolean dispatchTouchEvent(MotionEvent ev) {
             // Stylus events with side button pressed are filtered and other
@@ -2616,9 +2645,18 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
                 mStylusFilter.onTouchEvent(ev);
                 return false;
             }
+            final int oldAction = ev.getAction();
+            if (mPressGestureDetector.dispatchTouchEvent(ev, isHandlingTouchEvent())) {
+                ev.setAction(MotionEvent.ACTION_CANCEL);
+            }
+            setHandlingTouchEvent(true);
             final Callback cb = getCallback();
-            return cb != null && !isDestroyed() && mFeatureId < 0 ? cb.dispatchTouchEvent(ev)
+            boolean ret = cb != null && !isDestroyed() && mFeatureId < 0 ? cb.dispatchTouchEvent(ev)
                     : super.dispatchTouchEvent(ev);
+            setHandlingTouchEvent(false);
+            ev.setAction(oldAction);
+            return ret;
+
         }
 
         @Override
@@ -2645,6 +2683,9 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
                         mPrimaryActionMode.finish();
                     }
                     return true;
+                }
+                if (action == KeyEvent.ACTION_UP) {
+                    mPressGestureDetector.handleBackKey();
                 }
             }
 
@@ -3530,6 +3571,10 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
                  */
                 openPanelsAfterRestore();
             }
+
+            if (mPressGestureDetector != null) {
+                mPressGestureDetector.onAttached(getAttributes().type);
+            }
         }
 
         @Override
@@ -3558,6 +3603,8 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
                 mFloatingToolbar.dismiss();
                 mFloatingToolbar = null;
             }
+
+            mPressGestureDetector.onDetached();
 
             PanelFeatureState st = getPanelState(FEATURE_OPTIONS_PANEL, false);
             if (st != null && st.menu != null && mFeatureId < 0) {
