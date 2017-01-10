@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014-2016 The MoKee Open Source Project
+ * Copyright (C) 2014-2017 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@ import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.mokee.utils.MoKeeUtils;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.TrafficStats;
 import android.net.Uri;
 import android.os.Handler;
@@ -37,9 +36,7 @@ import android.os.UserHandle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.AbsoluteSizeSpan;
-import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 
@@ -57,7 +54,6 @@ import com.android.systemui.utils.NetworkTrafficSpan;
 public class NetworkTraffic extends TextView {
     public static final int MASK_UP = 0x00000001; // Least valuable bit
     public static final int MASK_DOWN = 0x00000002; // Second least valuable bit
-    public static final int MASK_PERIOD = 0xFFFF0000; // Most valuable 16 bits
 
     private static final int KILOBYTE = 1024;
 
@@ -141,19 +137,19 @@ public class NetworkTraffic extends TextView {
                     Spannable spannable = new SpannableString(output);
                     spannable.setSpan(new AbsoluteSizeSpan(txtSizeMulti), 0, upIndex,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    spannable.setSpan((new NetworkTrafficSpan(-0.05)), 0, upIndex,
-                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//                    spannable.setSpan((new NetworkTrafficSpan(-0.05)), 0, upIndex,
+//                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     spannable.setSpan(new AbsoluteSizeSpan((int) (txtSizeMulti * 0.7)), upIndex,
                             lineIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    spannable.setSpan(new NetworkTrafficSpan(-0.4), upIndex, lineIndex,
+                    spannable.setSpan(new NetworkTrafficSpan(-0.25), upIndex, lineIndex,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     spannable.setSpan(new AbsoluteSizeSpan(txtSizeMulti), lineIndex, downIndex,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    spannable.setSpan((new NetworkTrafficSpan(0.05)), lineIndex, downIndex,
-                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//                    spannable.setSpan((new NetworkTrafficSpan(0.05)), lineIndex, downIndex,
+//                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     spannable.setSpan(new AbsoluteSizeSpan((int) (txtSizeMulti * 0.7)), downIndex,
                             output.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    spannable.setSpan(new NetworkTrafficSpan(0.4), downIndex,
+                    spannable.setSpan(new NetworkTrafficSpan(0.25), downIndex,
                             output.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     setText(spannable);
                 } else {
