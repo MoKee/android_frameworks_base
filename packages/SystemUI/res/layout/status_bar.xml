@@ -67,6 +67,7 @@
                 android:textAppearance="@style/TextAppearance.StatusBar.NetworkTraffic"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:lineSpacingMultiplier="0.85"
                 android:gravity="end|center_vertical" />
 
             <include layout="@layout/system_icons" />
