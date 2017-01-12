@@ -31,4 +31,14 @@
     <java-symbol type="id" name="boot_icon" />
     <java-symbol type="id" name="boot_progress" />
 
+
+    <!-- Search for Bigbang -->
+    <java-symbol type="layout" name="search_activity"/>
+    <java-symbol type="id" name="search_webview"/>
+    <java-symbol type="id" name="search_progress"/>
+    <java-symbol type="id" name="search_title"/>
+    <java-symbol type="id" name="search_close"/>
+    <java-symbol type="id" name="go_back"/>
+    <java-symbol type="id" name="go_forward"/>
+    <java-symbol type="id" name="goto_browser"/>
 </resources>

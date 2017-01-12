@@ -28,4 +28,7 @@
     <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
     <string name="edit">Edit</string>
 
+    <!-- Search for Bigbang -->
+    <string name="goto_browser">Open in Browser</string>
+    <string name="close">Close</string>
 </resources>

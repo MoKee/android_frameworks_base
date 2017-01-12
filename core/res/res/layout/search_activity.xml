@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/search_popup_width"
+    android:layout_height="@dimen/search_popup_height"
+    android:background="@drawable/search_bg"
+    android:orientation="vertical">
+
+    <WebView
+        android:id="@+id/search_webview"
+        android:layout_marginTop="@dimen/search_webview_vertical_margin"
+        android:layout_marginBottom="@dimen/search_webview_vertical_margin"
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/top_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/search_topbar"
+                android:orientation="horizontal">
+
+                <ProgressBar
+                    android:id="@+id/search_progress"
+                    android:layout_width="@dimen/search_progess_icon_size"
+                    android:layout_height="@dimen/search_progess_icon_size"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:contentDescription="@null"
+                    android:indeterminate="false"
+                    android:indeterminateDrawable="@drawable/search_loading_progess"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/search_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:paddingTop="2dp"
+                    android:maxWidth="178dp"
+                    android:singleLine="true"
+                    android:textColor="#9a000000"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/search_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/search_button_bg"
+                    android:paddingEnd="16dp"
+                    android:paddingStart="16dp"
+                    android:minHeight="0dp"
+                    android:text="@string/close"
+                    android:textColor="#9a000000"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/search_topbar_shadow" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/search_bottombar_shadow" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/search_bottombar"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/go_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/search_button_go_back"
+                    android:enabled="false" />
+
+                <ImageView
+                    android:id="@+id/go_forward"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/go_back"
+                    android:background="@drawable/search_button_go_forward"
+                    android:enabled="false" />
+
+                <Button
+                    android:id="@+id/goto_browser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/search_button_bg"
+                    android:maxWidth="150dp"
+                    android:minWidth="48dp"
+                    android:minHeight="0dp"
+                    android:paddingEnd="16dp"
+                    android:paddingStart="16dp"
+                    android:singleLine="true"
+                    android:text="@string/goto_browser"
+                    android:textColor="#9a000000"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

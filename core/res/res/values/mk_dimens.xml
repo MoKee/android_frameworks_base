@@ -22,4 +22,11 @@
     <dimen name="boot_margin">10dp</dimen>
     <dimen name="boot_message">10dp</dimen>
 
+    <!-- Search for Bigbang -->
+    <dimen name="search_popup_width">350dp</dimen>
+    <dimen name="search_popup_height">538dp</dimen>
+    <dimen name="search_webview_vertical_margin">45dp</dimen>
+    <dimen name="search_progess_icon_size">30dp</dimen>
+    <dimen name="search_button_max_textsize">15dp</dimen>
+
 </resources>
