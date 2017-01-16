@@ -1,6 +1,5 @@
 /**
  * Copyright (c) 2010, The Android Open Source Project
- * Copyright (c) 2016, The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,8 +53,6 @@ public class ClipboardManager extends android.text.ClipboardManager {
     private static IClipboard sService;
 
     private final Context mContext;
-
-    private long previousTime = 0;
 
     private final ArrayList<OnPrimaryClipChangedListener> mPrimaryClipChangedListeners
              = new ArrayList<OnPrimaryClipChangedListener>();
@@ -122,14 +119,6 @@ public class ClipboardManager extends android.text.ClipboardManager {
         try {
             if (clip != null) {
                 clip.prepareToLeaveProcess(true);
-                // Fix twice call
-                long now = System.currentTimeMillis();
-                if (now - previousTime  > 300) {
-                    previousTime = now;
-                    Intent intent = new Intent();
-                    intent.setClassName("com.mokee.bigbang", "com.mokee.bigbang.service.ListenClipboardService");
-                    mContext.startService(intent);
-                }
             }
             getService().setPrimaryClip(clip, mContext.getOpPackageName());
         } catch (RemoteException e) {
@@ -245,6 +234,5 @@ public class ClipboardManager extends android.text.ClipboardManager {
         for (int i=0; i<listeners.length; i++) {
             ((OnPrimaryClipChangedListener)listeners[i]).onPrimaryClipChanged();
         }
-
     }
 }
