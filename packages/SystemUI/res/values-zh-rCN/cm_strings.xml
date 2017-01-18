@@ -94,4 +94,17 @@
   <!-- Path data for portrait battery -->
   <!-- Path data for landscape battery -->
   <!-- Path data for circle battery -->
+  <!-- Volume stream titles - should match the string-array in AOSP -->
+  <string-array name="volume_stream_titles_lineage">
+      <item>通话</item> <!-- STREAM_VOICE_CALL -->
+      <item>系统</item> <!-- STREAM_SYSTEM -->
+      <item>铃声</item> <!-- STREAM_RING -->
+      <item>媒体</item> <!-- STREAM_MUSIC -->
+      <item>闹钟</item> <!-- STREAM_ALARM -->
+      <item>通知</item> <!-- STREAM_NOTIFICATION -->
+      <item>蓝牙</item> <!-- STREAM_BLUETOOTH_SCO -->
+      <item></item> <!-- STREAM_SYSTEM_ENFORCED -->
+      <item></item> <!-- STREAM_DTMF -->
+      <item></item> <!-- STREAM_TTS -->
+  </string-array>
 </resources>
