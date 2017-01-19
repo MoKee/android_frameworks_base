@@ -19,6 +19,7 @@ package android.hardware;
 import android.annotation.SystemApi;
 import android.os.Build;
 import android.os.Handler;
+import android.os.SystemProperties;
 import android.util.Log;
 import android.util.SparseArray;
 
@@ -486,6 +487,8 @@ public abstract class SensorManager {
         // TODO: need to be smarter, for now, just return the 1st sensor
         List<Sensor> l = getSensorList(type);
         boolean wakeUpSensor = false;
+        String device = SystemProperties.get("ro.mk.device", Build.UNKNOWN);
+        boolean firstfind = true;
         // For the following sensor types, return a wake-up sensor. These types are by default
         // defined as wake-up sensors. For the rest of the SDK defined sensor types return a
         // non_wake-up version.
@@ -496,8 +499,19 @@ public abstract class SensorManager {
             wakeUpSensor = true;
         }
 
+        if (type == Sensor.TYPE_PROXIMITY) {
+            firstfind = false;
+        }
+
         for (Sensor sensor : l) {
-            if (sensor.isWakeUpSensor() == wakeUpSensor) return sensor;
+            if (device.equals("nx507j")) {
+                if (sensor.isWakeUpSensor() == wakeUpSensor && firstfind == true) return sensor;
+                if (type == Sensor.TYPE_PROXIMITY) {
+                    firstfind = true;
+                }
+            } else {
+                if (sensor.isWakeUpSensor() == wakeUpSensor) return sensor;
+            }
         }
         return null;
     }
