@@ -16,4 +16,5 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
+  <string name="edit">Edit</string>
 </resources>
