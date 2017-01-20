@@ -33,6 +33,9 @@
     <!-- Force Stop -->
     <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" />
 
+    <!-- Blur surface -->
+    <uses-permission android:name="android.permission.ACCESS_SURFACE_FLINGER" />
+
     <application>
 
         <activity-alias
