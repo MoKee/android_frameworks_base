@@ -1045,7 +1045,7 @@ public class WindowAnimator {
         @Override
         public void onChange(boolean selfChange) {
             mKeyguardBlurEnabled = MKSettings.Secure.getInt(mContext.getContentResolver(),
-                    MKSettings.Secure.LOCK_SCREEN_BLUR_ENABLED, 1) == 1;
+                    MKSettings.Secure.LOCK_SCREEN_BLUR_ENABLED, 0) == 1;
         }
     }
 }
