@@ -1398,7 +1398,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         if (!mPowerKeyHandled) {
             mPowerKeyHandled = true;
             mHandler.removeMessages(MSG_POWER_LONG_PRESS);
-            // See if We deferred screen wake because long press power for torch is enabled
+            // See if we deferred screen wake because long press power for torch is enabled
             if (mResolvedLongPressOnPowerBehavior == LONG_PRESS_POWER_TORCH && !isScreenOn()) {
                 wakeUpFromPowerKey(SystemClock.uptimeMillis());
             }
@@ -1518,8 +1518,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             break;
         case LONG_PRESS_POWER_TORCH:
             mPowerKeyHandled = true;
-            // Toggle torch state asynchronously to help protect again
+            // Toggle torch state asynchronously to help protect against
             // a misbehaving cameraservice from blocking systemui.
+            mHandler.removeMessages(MSG_TOGGLE_TORCH);
             Message msg = mHandler.obtainMessage(MSG_TOGGLE_TORCH);
             msg.setAsynchronous(true);
             msg.sendToTarget();
