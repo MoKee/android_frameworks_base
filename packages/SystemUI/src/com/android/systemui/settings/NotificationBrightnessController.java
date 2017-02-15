@@ -109,11 +109,11 @@ public class NotificationBrightnessController implements ToggleSlider.Listener {
         }
 
         // Read the brightness and set the maximum value for preview
-        mCurrentBrightness = CMSettings.System.getIntForUser(mContext.getContentResolver(),
-                CMSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
+        mCurrentBrightness = MKSettings.System.getIntForUser(mContext.getContentResolver(),
+                MKSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
                 mMaximumBrightness, UserHandle.USER_CURRENT);
-        CMSettings.System.putIntForUser(mContext.getContentResolver(),
-                CMSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
+        MKSettings.System.putIntForUser(mContext.getContentResolver(),
+                MKSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
                 mMaximumBrightness, UserHandle.USER_CURRENT);
 
         // Update the slider and mode before attaching the listener so we don't

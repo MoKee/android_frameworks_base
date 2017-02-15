@@ -56,7 +56,7 @@ import com.android.systemui.tuner.TunerService;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 public class NavigationBarView extends LinearLayout implements TunerService.Tunable {
     final static boolean DEBUG = false;
@@ -774,7 +774,7 @@ public class NavigationBarView extends LinearLayout implements TunerService.Tuna
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         TunerService.get(getContext()).addTunable(this,
-                "cmsystem:" + CMSettings.System.NAVIGATION_BAR_MENU_ARROW_KEYS);
+                "mksystem:" + MKSettings.System.NAVIGATION_BAR_MENU_ARROW_KEYS);
     }
 
     @Override
@@ -785,8 +785,8 @@ public class NavigationBarView extends LinearLayout implements TunerService.Tuna
 
     @Override
     public void onTuningChanged(String key, String newValue) {
-        mShowDpadArrowKeys = CMSettings.System.getInt(getContext().getContentResolver(),
-                CMSettings.System.NAVIGATION_BAR_MENU_ARROW_KEYS, 0) != 0;
+        mShowDpadArrowKeys = MKSettings.System.getInt(getContext().getContentResolver(),
+                MKSettings.System.NAVIGATION_BAR_MENU_ARROW_KEYS, 0) != 0;
         setNavigationIconHints(mNavigationIconHints, true);
     }
 

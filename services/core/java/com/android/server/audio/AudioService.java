@@ -135,7 +135,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 /**
  * The implementation of the volume manager service.
@@ -1278,8 +1278,8 @@ public class AudioService extends IAudioService.Stub {
             readDockAudioSettings(cr);
             sendEncodedSurroundMode(cr);
 
-            mVolumeKeysControlRingStream = CMSettings.System.getIntForUser(cr,
-                    CMSettings.System.VOLUME_KEYS_CONTROL_RING_STREAM, 1,
+            mVolumeKeysControlRingStream = MKSettings.System.getIntForUser(cr,
+                    MKSettings.System.VOLUME_KEYS_CONTROL_RING_STREAM, 1,
                     UserHandle.USER_CURRENT) == 1;
         }
 
@@ -5030,8 +5030,8 @@ public class AudioService extends IAudioService.Stub {
 
             mContentResolver.registerContentObserver(Settings.Secure.getUriFor(
                 Settings.Secure.VOLUME_LINK_NOTIFICATION), false, this);
-            mContentResolver.registerContentObserver(CMSettings.System.getUriFor(
-                CMSettings.System.VOLUME_KEYS_CONTROL_RING_STREAM), false, this);
+            mContentResolver.registerContentObserver(MKSettings.System.getUriFor(
+                MKSettings.System.VOLUME_KEYS_CONTROL_RING_STREAM), false, this);
         }
 
         @Override
@@ -5060,8 +5060,8 @@ public class AudioService extends IAudioService.Stub {
                     createStreamStates();
                     updateStreamVolumeAlias(true, TAG);
                 }
-                mVolumeKeysControlRingStream = CMSettings.System.getIntForUser(mContentResolver,
-                        CMSettings.System.VOLUME_KEYS_CONTROL_RING_STREAM, 1,
+                mVolumeKeysControlRingStream = MKSettings.System.getIntForUser(mContentResolver,
+                        MKSettings.System.VOLUME_KEYS_CONTROL_RING_STREAM, 1,
                         UserHandle.USER_CURRENT) == 1;
             }
         }
@@ -5442,8 +5442,8 @@ public class AudioService extends IAudioService.Stub {
     }
 
     private void launchMusicPlayer() {
-        boolean shouldLaunch = CMSettings.System.getIntForUser(mContext.getContentResolver(),
-                CMSettings.System.HEADSET_CONNECT_PLAYER, 0, UserHandle.USER_CURRENT) == 1;
+        boolean shouldLaunch = MKSettings.System.getIntForUser(mContext.getContentResolver(),
+                MKSettings.System.HEADSET_CONNECT_PLAYER, 0, UserHandle.USER_CURRENT) == 1;
         if (!shouldLaunch) {
             return;
         }

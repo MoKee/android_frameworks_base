@@ -56,9 +56,9 @@ public class StatusBarWindowManager implements RemoteInputController.Callback,
     private static final String ACCELEROMETER_ROTATION =
             "system:" + Settings.System.ACCELEROMETER_ROTATION;
     private static final String LOCKSCREEN_ROTATION =
-            "cmsystem:" + CMSettings.System.LOCKSCREEN_ROTATION;
+            "mksystem:" + MKSettings.System.LOCKSCREEN_ROTATION;
     private static final String LOCK_SCREEN_BLUR_ENABLED =
-            "cmsecure:" + CMSettings.Secure.LOCK_SCREEN_BLUR_ENABLED;
+            "mksecure:" + MKSettings.Secure.LOCK_SCREEN_BLUR_ENABLED;
 
     private static final int TYPE_LAYER_MULTIPLIER = 10000; // Refer to WindowManagerService.TYPE_LAYER_MULTIPLIER
     private static final int TYPE_LAYER_OFFSET = 1000;      // Refer to WindowManagerService.TYPE_LAYER_OFFSET

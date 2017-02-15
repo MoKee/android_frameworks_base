@@ -266,7 +266,7 @@ public class SettingsDrawerActivity extends Activity {
         mShowingMenu = true;
         if(getActionBar() != null){
             getActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
-			getActionBar().setHomeActionContentDescription(R.string.content_description_menu_button);
+            getActionBar().setHomeActionContentDescription(R.string.content_description_menu_button);
             getActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }

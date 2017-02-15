@@ -49,7 +49,7 @@ import android.view.View;
 
 import com.android.systemui.statusbar.policy.BatteryController;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 import org.cyanogenmod.graphics.drawable.StopMotionVectorDrawable;
 
@@ -227,7 +227,7 @@ public class BatteryMeterDrawable extends Drawable implements
     public void startListening() {
         mListening = true;
         mContext.getContentResolver().registerContentObserver(
-                CMSettings.System.getUriFor(CMSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT),
+                MKSettings.System.getUriFor(MKSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT),
                 false, mSettingObserver);
         updateShowPercent();
         mBatteryController.addStateChangedCallback(this);

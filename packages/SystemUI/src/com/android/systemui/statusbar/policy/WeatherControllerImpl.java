@@ -24,19 +24,19 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
-import cyanogenmod.providers.CMSettings;
-import cyanogenmod.providers.WeatherContract;
-import cyanogenmod.weather.CMWeatherManager;
-import cyanogenmod.weather.util.WeatherUtils;
+import mokee.providers.MKSettings;
+import mokee.providers.WeatherContract;
+import mokee.weather.MKWeatherManager;
+import mokee.weather.util.WeatherUtils;
 
 import java.util.ArrayList;
 
-import static cyanogenmod.providers.WeatherContract.WeatherColumns.CURRENT_CITY;
-import static cyanogenmod.providers.WeatherContract.WeatherColumns.CURRENT_CONDITION;
-import static cyanogenmod.providers.WeatherContract.WeatherColumns.CURRENT_TEMPERATURE;
-import static cyanogenmod.providers.WeatherContract.WeatherColumns.CURRENT_TEMPERATURE_UNIT;
-import static cyanogenmod.providers.WeatherContract.WeatherColumns.TempUnit.CELSIUS;
-import static cyanogenmod.providers.WeatherContract.WeatherColumns.TempUnit.FAHRENHEIT;
+import static mokee.providers.WeatherContract.WeatherColumns.CURRENT_CITY;
+import static mokee.providers.WeatherContract.WeatherColumns.CURRENT_CONDITION;
+import static mokee.providers.WeatherContract.WeatherColumns.CURRENT_TEMPERATURE;
+import static mokee.providers.WeatherContract.WeatherColumns.CURRENT_TEMPERATURE_UNIT;
+import static mokee.providers.WeatherContract.WeatherColumns.TempUnit.CELSIUS;
+import static mokee.providers.WeatherContract.WeatherColumns.TempUnit.FAHRENHEIT;
 
 public class WeatherControllerImpl implements WeatherController {
 
@@ -69,7 +69,7 @@ public class WeatherControllerImpl implements WeatherController {
         mHandler = new Handler();
         mWeatherContentObserver = new WeatherContentObserver(mHandler);
         mWeatherTempetarureUri
-                = CMSettings.Global.getUriFor(CMSettings.Global.WEATHER_TEMPERATURE_UNIT);
+                = MKSettings.Global.getUriFor(MKSettings.Global.WEATHER_TEMPERATURE_UNIT);
         mContext.getContentResolver().registerContentObserver(
                 WeatherContract.WeatherColumns.CURRENT_WEATHER_URI,true, mWeatherContentObserver);
         mContext.getContentResolver().registerContentObserver(mWeatherTempetarureUri, true,

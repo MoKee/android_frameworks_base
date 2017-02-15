@@ -84,7 +84,7 @@ import com.android.internal.util.FastXmlSerializer;
 import com.android.internal.util.XmlUtils;
 import com.android.server.am.BatteryStatsService;
 
-import org.cyanogenmod.internal.util.PackageManagerUtils;
+import org.mokee.internal.util.PackageManagerUtils;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;

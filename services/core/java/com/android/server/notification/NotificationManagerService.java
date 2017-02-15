@@ -1427,7 +1427,7 @@ public class NotificationManagerService extends SystemService {
     /** @hide */
     private boolean doLightsSupport(final int capability) {
         final int capabilities = getContext().getResources().getInteger(
-                org.cyanogenmod.platform.internal.R.integer.config_deviceLightCapabilities);
+                org.mokee.platform.internal.R.integer.config_deviceLightCapabilities);
         return (capabilities & capability) != 0;
     }
 
@@ -2388,7 +2388,7 @@ public class NotificationManagerService extends SystemService {
 
         public boolean doLightsSupport(final int capability) {
             final int capabilities = getContext().getResources().getInteger(
-                    org.cyanogenmod.platform.internal.R.integer.config_deviceLightCapabilities);
+                    org.mokee.platform.internal.R.integer.config_deviceLightCapabilities);
             return (capabilities & capability) != 0;
         }
     };

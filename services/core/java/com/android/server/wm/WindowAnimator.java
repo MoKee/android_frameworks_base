@@ -60,7 +60,7 @@ import android.view.WindowManagerPolicy;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -1037,15 +1037,15 @@ public class WindowAnimator {
 
         void observe(Context context) {
             context.getContentResolver().registerContentObserver(
-                    CMSettings.Secure.getUriFor(CMSettings.Secure.LOCK_SCREEN_BLUR_ENABLED),
+                    MKSettings.Secure.getUriFor(MKSettings.Secure.LOCK_SCREEN_BLUR_ENABLED),
                     false, this);
             onChange(true);
         }
 
         @Override
         public void onChange(boolean selfChange) {
-            mKeyguardBlurEnabled = CMSettings.Secure.getInt(mContext.getContentResolver(),
-                    CMSettings.Secure.LOCK_SCREEN_BLUR_ENABLED, 0) == 1;
+            mKeyguardBlurEnabled = MKSettings.Secure.getInt(mContext.getContentResolver(),
+                    MKSettings.Secure.LOCK_SCREEN_BLUR_ENABLED, 0) == 1;
         }
     }
 }

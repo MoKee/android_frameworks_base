@@ -55,7 +55,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     android-support-v7-palette \
     android-support-v4 \
     SystemUI-proto-tags \
-    org.cyanogenmod.platform.internal \
+    org.mokee.platform.internal \
     uicommon
 
 # sign this with platform cert, so this test is allowed to inject key events into

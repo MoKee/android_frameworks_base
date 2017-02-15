@@ -25,15 +25,15 @@ import android.widget.TextView;
 import com.android.systemui.statusbar.policy.BatteryController;
 import com.android.systemui.tuner.TunerService;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 public class BatteryLevelTextView extends TextView implements
         BatteryController.BatteryStateChangeCallback, TunerService.Tunable {
 
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT =
-            "cmsystem:" + CMSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT;
+            "mksystem:" + MKSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT;
     private static final String STATUS_BAR_BATTERY_STYLE =
-            "cmsystem:" + CMSettings.System.STATUS_BAR_BATTERY_STYLE;
+            "mksystem:" + MKSettings.System.STATUS_BAR_BATTERY_STYLE;
 
     private BatteryController mBatteryController;
 

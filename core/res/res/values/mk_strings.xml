@@ -19,4 +19,9 @@
     <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
     <string name="edit">Edit</string>
 
+    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permlab_modifyOverlays">modify theme overlays</string>
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_modifyOverlays">Allows the app to make modifications to theme overlays using OverlayManagerService</string>
+
 </resources>

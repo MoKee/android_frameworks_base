@@ -78,7 +78,7 @@ import com.android.internal.util.ArrayUtils;
 import com.android.internal.util.IndentingPrintWriter;
 import com.android.server.SystemService;
 
-import org.cyanogenmod.internal.util.PackageManagerUtils;
+import org.mokee.internal.util.PackageManagerUtils;
 
 import java.io.File;
 import java.io.FileDescriptor;

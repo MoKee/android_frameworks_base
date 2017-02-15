@@ -49,8 +49,8 @@ import android.media.AudioAttributes;
 import com.android.internal.app.IAppOpsService;
 import com.android.internal.app.IBatteryStats;
 
-import cyanogenmod.hardware.CMHardwareManager;
-import cyanogenmod.providers.CMSettings;
+import mokee.hardware.MKHardwareManager;
+import mokee.providers.MKSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -240,10 +240,10 @@ public class VibratorService extends IVibratorService.Stub
             }
         });
 
-        final CMHardwareManager hardware = CMHardwareManager.getInstance(mContext);
-        if (hardware.isSupported(CMHardwareManager.FEATURE_VIBRATOR)) {
+        final MKHardwareManager hardware = MKHardwareManager.getInstance(mContext);
+        if (hardware.isSupported(MKHardwareManager.FEATURE_VIBRATOR)) {
             mContext.getContentResolver().registerContentObserver(
-                    CMSettings.Secure.getUriFor(CMSettings.Secure.VIBRATOR_INTENSITY),
+                    MKSettings.Secure.getUriFor(MKSettings.Secure.VIBRATOR_INTENSITY),
                     true, mSettingObserver, UserHandle.USER_ALL);
             updateVibratorIntensity();
         }
@@ -270,7 +270,7 @@ public class VibratorService extends IVibratorService.Stub
 
         @Override
         public void onChange(boolean selfChange, Uri uri) {
-            if (uri.equals(CMSettings.Secure.getUriFor(CMSettings.Secure.VIBRATOR_INTENSITY))) {
+            if (uri.equals(MKSettings.Secure.getUriFor(MKSettings.Secure.VIBRATOR_INTENSITY))) {
                 updateVibratorIntensity();
             } else {
                 updateInputDeviceVibrators();
@@ -279,9 +279,9 @@ public class VibratorService extends IVibratorService.Stub
     }
 
     private void updateVibratorIntensity() {
-        final CMHardwareManager hardware = CMHardwareManager.getInstance(mContext);
-        final int intensity = CMSettings.Secure.getIntForUser(mContext.getContentResolver(),
-                CMSettings.Secure.VIBRATOR_INTENSITY, hardware.getVibratorDefaultIntensity(),
+        final MKHardwareManager hardware = MKHardwareManager.getInstance(mContext);
+        final int intensity = MKSettings.Secure.getIntForUser(mContext.getContentResolver(),
+                MKSettings.Secure.VIBRATOR_INTENSITY, hardware.getVibratorDefaultIntensity(),
                 UserHandle.USER_CURRENT);
         hardware.setVibratorIntensity(intensity);
     }

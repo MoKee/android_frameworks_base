@@ -1692,7 +1692,7 @@ public class InputManagerService extends IInputManager.Stub
 
     public void registerStylusIconEnabledSettingObserver() {
         mContext.getContentResolver().registerContentObserver(
-                CMSettings.System.getUriFor(CMSettings.System.STYLUS_ICON_ENABLED), false,
+                MKSettings.System.getUriFor(MKSettings.System.STYLUS_ICON_ENABLED), false,
                 new ContentObserver(mHandler) {
                     @Override
                     public void onChange(boolean selfChange) {
@@ -1704,9 +1704,9 @@ public class InputManagerService extends IInputManager.Stub
     private int getStylusIconEnabled(int defaultValue) {
         int result = defaultValue;
         try {
-            result = CMSettings.System.getInt(mContext.getContentResolver(),
-                CMSettings.System.STYLUS_ICON_ENABLED);
-        } catch (CMSettings.CMSettingNotFoundException snfe) {
+            result = MKSettings.System.getInt(mContext.getContentResolver(),
+                MKSettings.System.STYLUS_ICON_ENABLED);
+        } catch (MKSettings.MKSettingNotFoundException snfe) {
         }
         return result;
     }

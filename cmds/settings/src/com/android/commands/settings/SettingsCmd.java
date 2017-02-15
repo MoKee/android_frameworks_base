@@ -30,7 +30,7 @@ import android.os.RemoteException;
 import android.os.UserHandle;
 import android.provider.Settings;
 
-import cyanogenmod.providers.CMSettings;
+import mokee.providers.MKSettings;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -53,7 +53,7 @@ public final class SettingsCmd {
     String mTable = null;
     String mKey = null;
     String mValue = null;
-    boolean mUseCMSettingsProvider = false;
+    boolean mUseMKSettingsProvider = false;
 
     public static void main(String[] args) {
         if (args == null || args.length < 2) {
@@ -85,8 +85,8 @@ public final class SettingsCmd {
                     } else {
                         mUser = Integer.parseInt(arg);
                     }
-                } else if ("--cm".equals(arg)) {
-                    mUseCMSettingsProvider = true;
+                } else if ("--mk".equals(arg)) {
+                    mUseMKSettingsProvider = true;
                 } else if (mVerb == CommandVerb.UNSPECIFIED) {
                     if ("get".equalsIgnoreCase(arg)) {
                         mVerb = CommandVerb.GET;
@@ -151,7 +151,7 @@ public final class SettingsCmd {
                 IBinder token = new Binder();
                 try {
                     ContentProviderHolder holder = activityManager.getContentProviderExternal(
-                            mUseCMSettingsProvider ? CMSettings.AUTHORITY : Settings.AUTHORITY,
+                            mUseMKSettingsProvider ? MKSettings.AUTHORITY : Settings.AUTHORITY,
                             UserHandle.USER_SYSTEM, token);
                     if (holder == null) {
                         throw new IllegalStateException("Could not find settings provider");
@@ -195,12 +195,12 @@ public final class SettingsCmd {
     }
 
     private List<String> listForUser(IContentProvider provider, int userHandle, String table) {
-        final Uri systemUri = mUseCMSettingsProvider ?
-                CMSettings.System.CONTENT_URI : Settings.System.CONTENT_URI;
-        final Uri secureUri = mUseCMSettingsProvider ?
-                CMSettings.Secure.CONTENT_URI : Settings.Secure.CONTENT_URI;
-        final Uri globalUri = mUseCMSettingsProvider ?
-                CMSettings.Global.CONTENT_URI : Settings.Global.CONTENT_URI;
+        final Uri systemUri = mUseMKSettingsProvider ?
+                MKSettings.System.CONTENT_URI : Settings.System.CONTENT_URI;
+        final Uri secureUri = mUseMKSettingsProvider ?
+                MKSettings.Secure.CONTENT_URI : Settings.Secure.CONTENT_URI;
+        final Uri globalUri = mUseMKSettingsProvider ?
+                MKSettings.Global.CONTENT_URI : Settings.Global.CONTENT_URI;
         final Uri uri = "system".equals(table) ? systemUri
                 : "secure".equals(table) ? secureUri
                 : "global".equals(table) ? globalUri
@@ -239,12 +239,12 @@ public final class SettingsCmd {
 
     String getForUser(IContentProvider provider, int userHandle,
             final String table, final String key) {
-        final String systemGetCommand = mUseCMSettingsProvider ?
-                CMSettings.CALL_METHOD_GET_SYSTEM : Settings.CALL_METHOD_GET_SYSTEM;
-        final String secureGetCommand = mUseCMSettingsProvider ?
-                CMSettings.CALL_METHOD_GET_SECURE : Settings.CALL_METHOD_GET_SECURE;
-        final String globalGetCommand = mUseCMSettingsProvider ?
-                CMSettings.CALL_METHOD_GET_GLOBAL : Settings.CALL_METHOD_GET_GLOBAL;
+        final String systemGetCommand = mUseMKSettingsProvider ?
+                MKSettings.CALL_METHOD_GET_SYSTEM : Settings.CALL_METHOD_GET_SYSTEM;
+        final String secureGetCommand = mUseMKSettingsProvider ?
+                MKSettings.CALL_METHOD_GET_SECURE : Settings.CALL_METHOD_GET_SECURE;
+        final String globalGetCommand = mUseMKSettingsProvider ?
+                MKSettings.CALL_METHOD_GET_GLOBAL : Settings.CALL_METHOD_GET_GLOBAL;
         final String callGetCommand;
         if ("system".equals(table)) callGetCommand = systemGetCommand;
         else if ("secure".equals(table)) callGetCommand = secureGetCommand;
@@ -257,7 +257,7 @@ public final class SettingsCmd {
         String result = null;
         try {
             Bundle arg = new Bundle();
-            arg.putInt(mUseCMSettingsProvider ? CMSettings.CALL_METHOD_USER_KEY
+            arg.putInt(mUseMKSettingsProvider ? MKSettings.CALL_METHOD_USER_KEY
                     : Settings.CALL_METHOD_USER_KEY, userHandle);
             Bundle b = provider.call(resolveCallingPackage(), callGetCommand, key, arg);
             if (b != null) {
@@ -271,12 +271,12 @@ public final class SettingsCmd {
 
     void putForUser(IContentProvider provider, int userHandle,
             final String table, final String key, final String value) {
-        final String systemPutCommand = mUseCMSettingsProvider ?
-                CMSettings.CALL_METHOD_PUT_SYSTEM : Settings.CALL_METHOD_PUT_SYSTEM;
-        final String securePutCommand = mUseCMSettingsProvider ?
-                CMSettings.CALL_METHOD_PUT_SECURE : Settings.CALL_METHOD_PUT_SECURE;
-        final String globalPutCommand = mUseCMSettingsProvider ?
-                CMSettings.CALL_METHOD_PUT_GLOBAL : Settings.CALL_METHOD_PUT_GLOBAL;
+        final String systemPutCommand = mUseMKSettingsProvider ?
+                MKSettings.CALL_METHOD_PUT_SYSTEM : Settings.CALL_METHOD_PUT_SYSTEM;
+        final String securePutCommand = mUseMKSettingsProvider ?
+                MKSettings.CALL_METHOD_PUT_SECURE : Settings.CALL_METHOD_PUT_SECURE;
+        final String globalPutCommand = mUseMKSettingsProvider ?
+                MKSettings.CALL_METHOD_PUT_GLOBAL : Settings.CALL_METHOD_PUT_GLOBAL;
         final String callPutCommand;
         if ("system".equals(table)) callPutCommand = systemPutCommand;
         else if ("secure".equals(table)) callPutCommand = securePutCommand;
@@ -289,7 +289,7 @@ public final class SettingsCmd {
         try {
             Bundle arg = new Bundle();
             arg.putString(Settings.NameValueTable.VALUE, value);
-            arg.putInt(mUseCMSettingsProvider ? CMSettings.CALL_METHOD_USER_KEY
+            arg.putInt(mUseMKSettingsProvider ? MKSettings.CALL_METHOD_USER_KEY
                     : Settings.CALL_METHOD_USER_KEY, userHandle);
             provider.call(resolveCallingPackage(), callPutCommand, key, arg);
         } catch (RemoteException e) {
@@ -299,12 +299,12 @@ public final class SettingsCmd {
 
     int deleteForUser(IContentProvider provider, int userHandle,
             final String table, final String key) {
-        final Uri systemUri = mUseCMSettingsProvider ?
-                CMSettings.System.getUriFor(key) : Settings.System.getUriFor(key);
-        final Uri secureUri = mUseCMSettingsProvider ?
-                CMSettings.Secure.getUriFor(key) : Settings.Secure.getUriFor(key);
-        final Uri globalUri = mUseCMSettingsProvider ?
-                CMSettings.Global.getUriFor(key) : Settings.Global.getUriFor(key);
+        final Uri systemUri = mUseMKSettingsProvider ?
+                MKSettings.System.getUriFor(key) : Settings.System.getUriFor(key);
+        final Uri secureUri = mUseMKSettingsProvider ?
+                MKSettings.Secure.getUriFor(key) : Settings.Secure.getUriFor(key);
+        final Uri globalUri = mUseMKSettingsProvider ?
+                MKSettings.Global.getUriFor(key) : Settings.Global.getUriFor(key);
         Uri targetUri;
         if ("system".equals(table)) targetUri = systemUri;
         else if ("secure".equals(table)) targetUri = secureUri;
@@ -325,14 +325,14 @@ public final class SettingsCmd {
     }
 
     private static void printUsage() {
-        System.err.println("usage:  settings [--user <USER_ID> | current] [--cm] get namespace key");
-        System.err.println("        settings [--user <USER_ID> | current] [--cm] put namespace key value");
-        System.err.println("        settings [--user <USER_ID> | current] [--cm] delete namespace key");
-        System.err.println("        settings [--user <USER_ID> | current] [--cm] list namespace");
+        System.err.println("usage:  settings [--user <USER_ID> | current] [--mk] get namespace key");
+        System.err.println("        settings [--user <USER_ID> | current] [--mk] put namespace key value");
+        System.err.println("        settings [--user <USER_ID> | current] [--mk] delete namespace key");
+        System.err.println("        settings [--user <USER_ID> | current] [--mk] list namespace");
         System.err.println("\n'namespace' is one of {system, secure, global}, case-insensitive");
         System.err.println("If '--user <USER_ID> | current' is not given, the operations are "
                 + "performed on the system user.");
-        System.err.println("If '--cm' is given, the operations are performed on the CMSettings provider.");
+        System.err.println("If '--mk' is given, the operations are performed on the MKSettings provider.");
     }
 
     public static String resolveCallingPackage() {

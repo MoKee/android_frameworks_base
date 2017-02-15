@@ -113,8 +113,6 @@ import android.service.dreams.DreamService;
 import android.service.dreams.IDreamManager;
 import android.speech.RecognizerIntent;
 import android.telecom.TelecomManager;
-import mokee.hardware.MKHardwareManager;
-import mokee.providers.MKSettings;
 import android.util.DisplayMetrics;
 import android.util.EventLog;
 import android.util.Log;
@@ -761,7 +759,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     int mIncallPowerBehavior;
 
     // Behavior of HOME button during an incoming call.
-    // (See CMSettings.Secure.RING_HOME_BUTTON_BEHAVIOR.)
+    // (See MKSettings.Secure.RING_HOME_BUTTON_BEHAVIOR.)
     private int mRingHomeBehavior;
 
     Display mDisplay;
@@ -994,11 +992,11 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.Secure.getUriFor(
-                    CMSettings.Secure.RING_HOME_BUTTON_BEHAVIOR), false, this,
+            resolver.registerContentObserver(MKSettings.Secure.getUriFor(
+                    MKSettings.Secure.RING_HOME_BUTTON_BEHAVIOR), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.TORCH_LONG_PRESS_POWER_GESTURE), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.TORCH_LONG_PRESS_POWER_GESTURE), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.WAKE_GESTURE_ENABLED), false, this,
@@ -2110,9 +2108,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
         final Resources res = mContext.getResources();
         final String[] deviceKeyHandlerLibs = res.getStringArray(
-                org.cyanogenmod.platform.internal.R.array.config_deviceKeyHandlerLibs);
+                org.mokee.platform.internal.R.array.config_deviceKeyHandlerLibs);
         final String[] deviceKeyHandlerClasses = res.getStringArray(
-                org.cyanogenmod.platform.internal.R.array.config_deviceKeyHandlerClasses);
+                org.mokee.platform.internal.R.array.config_deviceKeyHandlerClasses);
 
         for (int i = 0;
                 i < deviceKeyHandlerLibs.length && i < deviceKeyHandlerClasses.length; i++) {
@@ -2174,11 +2172,11 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mDoubleTapOnHomeBehavior = KEY_ACTION_NOTHING;
         }
 
-            mLongPressOnHomeBehavior = MKSettings.System.getIntForUser(resolver,
-                    MKSettings.System.KEY_HOME_LONG_PRESS_ACTION,
+        mLongPressOnHomeBehavior = MKSettings.System.getIntForUser(resolver,
+                MKSettings.System.KEY_HOME_LONG_PRESS_ACTION,
                 mLongPressOnHomeBehavior, UserHandle.USER_CURRENT);
-            mDoubleTapOnHomeBehavior = MKSettings.System.getIntForUser(resolver,
-                    MKSettings.System.KEY_HOME_DOUBLE_TAP_ACTION,
+        mDoubleTapOnHomeBehavior = MKSettings.System.getIntForUser(resolver,
+                MKSettings.System.KEY_HOME_DOUBLE_TAP_ACTION,
                 mDoubleTapOnHomeBehavior, UserHandle.USER_CURRENT);
 
         if (hasMenu) {
@@ -2336,12 +2334,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR,
                     Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_DEFAULT,
                     UserHandle.USER_CURRENT);
-            mRingHomeBehavior = CMSettings.Secure.getIntForUser(resolver,
-                    CMSettings.Secure.RING_HOME_BUTTON_BEHAVIOR,
-                    CMSettings.Secure.RING_HOME_BUTTON_BEHAVIOR_DEFAULT,
+            mRingHomeBehavior = MKSettings.Secure.getIntForUser(resolver,
+                    MKSettings.Secure.RING_HOME_BUTTON_BEHAVIOR,
+                    MKSettings.Secure.RING_HOME_BUTTON_BEHAVIOR_DEFAULT,
                     UserHandle.USER_CURRENT);
-            mTorchLongPressPowerEnabled = CMSettings.System.getIntForUser(
-                    resolver, CMSettings.System.TORCH_LONG_PRESS_POWER_GESTURE, 0,
+            mTorchLongPressPowerEnabled = MKSettings.System.getIntForUser(
+                    resolver, MKSettings.System.TORCH_LONG_PRESS_POWER_GESTURE, 0,
                     UserHandle.USER_CURRENT) == 1;
             mHomeWakeScreen = (MKSettings.System.getIntForUser(resolver,
                     MKSettings.System.HOME_WAKE_SCREEN, 1, UserHandle.USER_CURRENT) == 1) &&
@@ -2370,8 +2368,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     ((mDeviceHardwareWakeKeys & KEY_MASK_VOLUME) != 0);
             mVolBtnMusicControls = (MKSettings.System.getIntForUser(resolver,
                     MKSettings.System.VOLBTN_MUSIC_CONTROLS, 1, UserHandle.USER_CURRENT) == 1);
-            mVolumeAnswerCall = CMSettings.System.getIntForUser(resolver,
-                    CMSettings.System.VOLUME_ANSWER_CALL, 0, UserHandle.USER_CURRENT) == 1;
+            mVolumeAnswerCall = MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.VOLUME_ANSWER_CALL, 0, UserHandle.USER_CURRENT) == 1;
 
             // Height of navigation bar buttons
             int mNavButtonsHeight = MKSettings.System.getIntForUser(resolver,
@@ -2579,7 +2577,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 break;
             case TYPE_KEYGUARD_PANEL:
                 permission =
-                        org.cyanogenmod.platform.internal.Manifest.permission.THIRD_PARTY_KEYGUARD;
+                        org.mokee.platform.internal.Manifest.permission.THIRD_PARTY_KEYGUARD;
                 break;
             default:
                 permission = android.Manifest.permission.INTERNAL_SYSTEM_WINDOW;
@@ -3261,7 +3259,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 break;
             case TYPE_KEYGUARD_PANEL:
                 mContext.enforceCallingOrSelfPermission(
-                        org.cyanogenmod.platform.internal.Manifest.permission.THIRD_PARTY_KEYGUARD,
+                        org.mokee.platform.internal.Manifest.permission.THIRD_PARTY_KEYGUARD,
                         "PhoneWindowManager");
                 if (mKeyguardPanel != null) {
                     return WindowManagerGlobal.ADD_MULTIPLE_SINGLETON;
@@ -3604,7 +3602,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 }
 
                 if ((mRingHomeBehavior
-                        & CMSettings.Secure.RING_HOME_BUTTON_BEHAVIOR_ANSWER) != 0) {
+                        & MKSettings.Secure.RING_HOME_BUTTON_BEHAVIOR_ANSWER) != 0) {
                     final TelecomManager telecomManager = getTelecommService();
                     if (telecomManager != null && telecomManager.isRinging()) {
                         telecomManager.acceptRingingCall();
@@ -3690,7 +3688,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                         mContext.sendOrderedBroadcastAsUser(intent, UserHandle.CURRENT,
                                 null, null, null, 0, null, null);
                         return -1;
-                     }
+                    }
                 } else if (longPress) {
                     if (!keyguardOn && mLongPressOnMenuBehavior != KEY_ACTION_NOTHING) {
                         if (mLongPressOnMenuBehavior != KEY_ACTION_APP_SWITCH) {
@@ -8111,8 +8109,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     private void sendLidChangeBroadcast() {
         Log.d(TAG, "Sending cover change broadcast, mLidState=" + mLidState);
-        Intent intent = new Intent(cyanogenmod.content.Intent.ACTION_LID_STATE_CHANGED);
-        intent.putExtra(cyanogenmod.content.Intent.EXTRA_LID_STATE, mLidState);
+        Intent intent = new Intent(mokee.content.Intent.ACTION_LID_STATE_CHANGED);
+        intent.putExtra(mokee.content.Intent.EXTRA_LID_STATE, mLidState);
         intent.setFlags(Intent.FLAG_RECEIVER_REPLACE_PENDING);
         mContext.sendBroadcastAsUser(intent, UserHandle.SYSTEM);
     }
