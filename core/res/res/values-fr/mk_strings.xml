@@ -19,4 +19,5 @@
   <string name="edit">Édition</string>
   <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permdesc_modifyOverlays">Permet à l\'application de modifier les surcouches des thèmes utilisant OverlayManagerService</string>
 </resources>
