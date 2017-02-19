@@ -110,8 +110,7 @@
             android:paddingBottom="8dp"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            android:background="@color/resolver_list_bg"
-            android:elevation="8dp">
+            android:background="@color/resolver_list_bg">
 
             <Button
                 android:id="@+id/button_once"
