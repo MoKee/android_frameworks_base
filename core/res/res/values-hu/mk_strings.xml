@@ -18,5 +18,7 @@
   <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
   <string name="edit">Szerkeztés</string>
   <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permlab_modifyOverlays">téma átfedések módosítása</string>
   <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permdesc_modifyOverlays">Lehetővé teszi az alkalmazás számára, hogy módosításokat hajtson végre a téma átfedéseken az OverlayManagerService használatával</string>
 </resources>
