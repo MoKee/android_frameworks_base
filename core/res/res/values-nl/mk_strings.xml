@@ -18,5 +18,7 @@
   <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
   <string name="edit">Bewerken</string>
   <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permlab_modifyOverlays">thema overlays aanpassen</string>
   <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permdesc_modifyOverlays">Laat de app toe om wijzigingen aan te brengen aan de thema overlays gebruik makend van OverlayManagerService</string>
 </resources>
