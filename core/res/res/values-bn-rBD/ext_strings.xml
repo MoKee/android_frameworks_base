@@ -22,6 +22,7 @@
   <string name="global_action_screenshot">স্ক্রীনসর্ট</string>
   <!-- label for item that restarts the phone in phone options dialog -->
   <!-- label for current user in phone options dialog -->
+  <string name="global_action_current_user">সাম্প্রতিক</string>
   <!-- status message in phone options dialog for screenshot action -->
   <!-- Restart menu -->
   <!-- Button to restart the phone, within the Restart Options dialog -->
@@ -92,4 +93,5 @@
   <!-- Protected Apps Notification -->
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
+  <!-- Single hand mode -->
 </resources>

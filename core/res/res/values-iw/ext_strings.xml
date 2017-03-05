@@ -33,7 +33,6 @@
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
   <string name="reboot_recovery">שחזור (Recovery)</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
-  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">הורדה</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
@@ -136,4 +135,5 @@
   <string name="lock_to_app_toast_no_navbar">כדי לבטל נעיצת מסך זה, גע והחזק בלחצן \"הקודם\".</string>
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
   <string name="lineage_system_error_manufacturer">זוהתה חוסר התאמה בקושחת הספק (Firmware). בדרך כלל זה אומר שהיא צריכה עדכון. נא וודא שקושחת הספק שלך מתאימה ל־<xliff:g id="fingerprint">%1$s</xliff:g>.</string>
+  <!-- Single hand mode -->
 </resources>

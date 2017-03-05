@@ -33,9 +33,7 @@
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
   <string name="reboot_recovery">Recuperação</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
-  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
-  <string name="reboot_download">Download</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
   <string name="reboot_soft">Reinicialização suave</string>
   <!-- Title of dialog to confirm restarting. -->
@@ -136,4 +134,5 @@
   <string name="lock_to_app_toast_no_navbar">Para soltar este ecrã, toque e segure o botão Anterior.</string>
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
   <string name="lineage_system_error_manufacturer">Foi detetada uma imagem de fornecedor inválida. Normalmente isto significa que a sua imagem de fornecedor está desatualizada. Por favor, certifique-se que a sua imagem de fornecedor corresponde com <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
+  <!-- Single hand mode -->
 </resources>

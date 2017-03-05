@@ -31,9 +31,7 @@
   <!-- Button to restart the phone, within the Restart Options dialog -->
   <string name="reboot_reboot">重新啟動</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
-  <string name="reboot_recovery">Recovery</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
-  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">下載</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
@@ -136,4 +134,5 @@
   <string name="lock_to_app_toast_no_navbar">要解鎖此畫面，請輕觸並按住 [返回] 鍵。</string>
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
   <string name="lineage_system_error_manufacturer">已檢測到供應者的映像檔案不符合。 通常這表示您的供應者的映像檔案已過期。 請確保您的供應者的映像檔案與 <xliff:g id="fingerprint">%1$s</xliff:g> 相符合。</string>
+  <!-- Single hand mode -->
 </resources>

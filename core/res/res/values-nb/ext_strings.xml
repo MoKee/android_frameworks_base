@@ -33,9 +33,8 @@
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
   <string name="reboot_recovery">Gjenoppretting</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
-  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
-  <string name="reboot_download">Download</string>
+  <string name="reboot_download">Last ned</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
   <string name="reboot_soft">Myk omstart</string>
   <!-- Title of dialog to confirm restarting. -->
@@ -136,4 +135,5 @@
   <string name="lock_to_app_toast_no_navbar">For å unpin denne skjermen, trykk og hold tilbake-knappen.</string>
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
   <string name="lineage_system_error_manufacturer">En leverandørbilde-feil har oppstått. Dette betyr vanligvis at leverandørbildet er utdatert. Kontroller at leverandørbildet ditt samsvarer med <xliff:g id="fingerprint">%1$s </xliff:g>.</string>
+  <!-- Single hand mode -->
 </resources>

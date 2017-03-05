@@ -31,11 +31,9 @@
   <!-- Button to restart the phone, within the Restart Options dialog -->
   <string name="reboot_reboot">Перезавантаження</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
-  <string name="reboot_recovery">Recovery</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
-  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
-  <string name="reboot_download">Download</string>
+  <string name="reboot_download">Завантажити</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
   <string name="reboot_soft">Перезавантаження інтерфейсу</string>
   <!-- Title of dialog to confirm restarting. -->
@@ -83,7 +81,7 @@
   <string name="app_ops_mute_unmute_microphone">вимк./увімк. мікрофон</string>
   <string name="app_ops_play_audio">відтворювати аудіо</string>
   <string name="app_ops_post_notification">виводити сповіщення</string>
-  <string name="app_ops_project_media">project media</string>
+  <string name="app_ops_project_media">проект медіа</string>
   <string name="app_ops_read_calendar">читати дані календаря</string>
   <string name="app_ops_read_call_log">читати журнал дзвінків</string>
   <string name="app_ops_read_clipboard">читати буфер обміну</string>
@@ -136,4 +134,5 @@
   <string name="lock_to_app_toast_no_navbar">Щоб відкріпити цей екран, торкніться й утримуйте кнопку назад.</string>
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
   <string name="lineage_system_error_manufacturer">Виявлено несумісний образ виробника пристрою. Як правило, це означає, що необхідно встановити оновлене програмне забезпечення від виробника. Переконайтеся, що його версія буде відповідати <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
+  <!-- Single hand mode -->
 </resources>

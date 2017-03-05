@@ -38,7 +38,19 @@
   <!-- Privacy Guard -->
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
   <!-- App ops requests -->
+  <string name="app_ops_get_usage_stats">consiguir estadístiques d\'usu</string>
+  <string name="app_ops_play_audio">reproducir soníu</string>
+  <string name="app_ops_project_media">proyeutar conteníu multimedia</string>
+  <string name="app_ops_record_audio">grabar soníu</string>
+  <string name="app_ops_toggle_mobile_data">alternar datos móviles</string>
+  <string name="app_ops_toggle_nfc">alternar NFC</string>
+  <string name="app_ops_toggle_wifi">alternar Wi-Fi</string>
+  <string name="app_ops_use_fingerprint">usar buelga</string>
+  <string name="app_ops_use_body_sensors">usar sensores corporales</string>
+  <string name="app_ops_read_cell_broadcasts">lleer tresmisiones celulares</string>
+  <string name="app_ops_read_external_storage">lleer almacenamientu esternu</string>
   <!-- Protected Apps Notification -->
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
+  <!-- Single hand mode -->
 </resources>
