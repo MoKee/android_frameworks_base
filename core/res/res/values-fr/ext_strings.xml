@@ -26,12 +26,14 @@
   <!-- label for current user in phone options dialog -->
   <string name="global_action_current_user">Actuel</string>
   <!-- status message in phone options dialog for screenshot action -->
+  <string name="global_actions_screenshot_status">Appui long pour une capture d\'écran partielle</string>
   <!-- Restart menu -->
   <!-- Button to restart the phone, within the Restart Options dialog -->
   <string name="reboot_reboot">Redémarrer</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
   <string name="reboot_recovery">Récupération</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
+  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">Télécharger</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
@@ -133,5 +135,7 @@
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <string name="lock_to_app_toast_no_navbar">Pour déverrouiller l\'écran, appuyez et maintenez le bouton Retour.</string>
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
+  <string name="lineage_system_error_manufacturer">Une incompatibilité du fichier vendor.img a été détectée. En règle générale, cela signifie que celui-ci n\'est pas à jour. Assurez-vous que le fichier vendor.img correspond à <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
   <!-- Single hand mode -->
+  <string name="singlehandmode_click_hint_message">Appuyer sur l\'extérieur de l\'écran pour quitter le mode d\'utilisation à une main</string>
 </resources>
