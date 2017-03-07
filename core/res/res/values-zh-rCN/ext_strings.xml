@@ -35,7 +35,7 @@
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
   <string name="reboot_bootloader">引导程序 (Bootloader)</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
-  <string name="reboot_download">下载模式</string>
+  <string name="reboot_download">下载模式 (Download)</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
   <string name="reboot_soft">软重启</string>
   <!-- Title of dialog to confirm restarting. -->
