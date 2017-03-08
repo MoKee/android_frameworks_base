@@ -19954,10 +19954,13 @@ Slog.v(TAG, ":: stepped forward, applying functor at tag " + parser.getName());
                 assertPackageKnown(volumeUuid, pkg.packageName);
 
             } catch (PackageParserException | PackageManagerException e) {
+		if (file.getAbsolutePath().equals("/data/app/mcRegistry")) {
+		logCriticalInfo(Log.WARN, "[Decker] We keep " + file.getAbsolutePath() + " due to store fingerprints.");
+		} else {
                 logCriticalInfo(Log.WARN, "Destroying " + file + " due to: " + e);
                 synchronized (mInstallLock) {
                     removeCodePathLI(file);
-                }
+                }}
             }
         }
     }
