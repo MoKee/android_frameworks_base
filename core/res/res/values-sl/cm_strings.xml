@@ -57,6 +57,7 @@
   <string name="permdesc_changePrivacyGuardState">Dovoli aplikaciji spreminjanje, ali se druga aplikacija izvaja s Privacy Guardom. Kadar se aplikacija izvaja s Privacy Guardom, ne bo imela dostopa do osebnih podatkov, kot so stiki, dnevniki klicev ali sporočila.</string>
   <string name="privacy_guard_notification">Privacy Guard dejaven</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> ne bo imel dostopa do osebnih podatkov</string>
+  <string name="privacy_guard_dialog_title">Privacy Guard</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> bi rad <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
   <string name="permission_remember_choice">Zapomni si mojo izbiro</string>
@@ -136,4 +137,5 @@
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
   <string name="lineage_system_error_manufacturer">Zaznano je bilo neujemanje odtisa dobavitelja. Običajno to pomeni, da je odtis dobavitelja zastarel. Prepričajte se, da se odtis dobavitelja ujema s/z <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
   <!-- Single hand mode -->
+  <string name="singlehandmode_click_hint_message">Dotaknite se izven zaslona za izhod iz enoročnega načina</string>
 </resources>

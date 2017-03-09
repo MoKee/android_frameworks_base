@@ -29,14 +29,17 @@
   <string name="global_actions_screenshot_status">Dlouhým dotykem pro získání částečného snímku obrazovky</string>
   <!-- Restart menu -->
   <!-- Button to restart the phone, within the Restart Options dialog -->
-  <string name="reboot_reboot">Restartovat</string>
+  <string name="reboot_reboot">Restart</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
+  <string name="reboot_recovery">Recovery</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
+  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
-  <string name="reboot_download">Ke stažení</string>
+  <string name="reboot_download">Download</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
+  <string name="reboot_soft">Soft restart</string>
   <!-- Title of dialog to confirm restarting. -->
-  <string name="reboot_title">Restartovat</string>
+  <string name="reboot_title">Restart</string>
   <!-- Restart Confirmation Dialog.  When the user chooses to restart the device, there will
          be a confirmation dialog.  This is the message. -->
   <string name="reboot_confirm" product="tablet">Tablet bude restartován.</string>
@@ -134,4 +137,5 @@
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
   <string name="lineage_system_error_manufacturer">Byla zjištěna neshoda obrazu dodavatele. Obvykle to znamená, že obraz dodavatele je zastaralý. Zkontrolujte, zda že obraz dodavatele odpovídá „otisku“ <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
   <!-- Single hand mode -->
+  <string name="singlehandmode_click_hint_message">Pro odchod z Režimu jednou rukou klepněte mimo obrazovku</string>
 </resources>

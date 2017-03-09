@@ -31,9 +31,11 @@
   <!-- Button to restart the phone, within the Restart Options dialog -->
   <string name="reboot_reboot">Riavvia</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
+  <string name="reboot_recovery">Recovery</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
+  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
-  <string name="reboot_download">scarica</string>
+  <string name="reboot_download">Download</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
   <string name="reboot_soft">Riavvio rapido</string>
   <!-- Title of dialog to confirm restarting. -->
@@ -135,4 +137,5 @@
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
   <string name="lineage_system_error_manufacturer">È stata rilevata una mancata corrispondenza con l\'immagine del fornitore. In genere ciò significa che l\'immagine del fornitore è obsoleta. Assicurarsi che l\'immagine del fornitore corrisponda a <xliff:g id="fingerprint">%1$s </xliff:g>.</string>
   <!-- Single hand mode -->
+  <string name="singlehandmode_click_hint_message">Tocca fuori dallo schermo per uscire dalla modalità ad una mano</string>
 </resources>

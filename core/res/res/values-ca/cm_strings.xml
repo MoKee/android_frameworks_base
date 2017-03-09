@@ -33,6 +33,7 @@
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
   <string name="reboot_recovery">Recuperació</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
+  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">Descàrrega</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
@@ -136,4 +137,5 @@
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
   <string name="lineage_system_error_manufacturer">S\'ha detectat una falta de coincidència amb la imatge del proveïdor. Normalment, això significa que la imatge proveïdor està desactualitzada. Si us plau, assegura\'t que la imatge del proveïdor coincideix amb <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
   <!-- Single hand mode -->
+  <string name="singlehandmode_click_hint_message">Toca fora de la pantalla per sortir del mode amb una sola mà</string>
 </resources>

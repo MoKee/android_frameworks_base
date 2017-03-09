@@ -31,9 +31,11 @@
   <!-- Button to restart the phone, within the Restart Options dialog -->
   <string name="reboot_reboot">Reštart</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
+  <string name="reboot_recovery">Recovery</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
+  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
-  <string name="reboot_download">Stiahnuť</string>
+  <string name="reboot_download">Download</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
   <string name="reboot_soft">Soft reštart</string>
   <!-- Title of dialog to confirm restarting. -->
@@ -135,4 +137,5 @@
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
   <string name="lineage_system_error_manufacturer">Bol zistený nesúlad v systémových ovládačoch. Zvyčajne to znamená že ovládače sú zastarané. Skontrolujte, či ovládače zodpovedajú <xliff:g id="fingerprint">%1$s </xliff:g>.</string>
   <!-- Single hand mode -->
+  <string name="singlehandmode_click_hint_message">Pre odchod z Režimu jednou rukou kliknite mimo zmenšenú obrazovku</string>
 </resources>
