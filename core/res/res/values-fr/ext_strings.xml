@@ -137,5 +137,5 @@
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
   <string name="lineage_system_error_manufacturer">Une discordance d\'image fournisseur a été détectée. En général, cela signifie que votre image fournisseur n\'est pas à jour. Veuillez vous assurer que votre image fournisseur correspond à <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
   <!-- Single hand mode -->
-  <string name="singlehandmode_click_hint_message">Toucher en dehors de l’écran pour quitter le mode à une seule main</string>
+  <string name="singlehandmode_click_hint_message">Appuyer sur l\'extérieur de l\'écran pour quitter le mode d\'utilisation à une main</string>
 </resources>
