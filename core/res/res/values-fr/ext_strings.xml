@@ -35,7 +35,7 @@
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
   <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
-  <string name="reboot_download">Télécharger</string>
+  <string name="reboot_download">Download</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
   <string name="reboot_soft">Redémarrage logiciel</string>
   <!-- Title of dialog to confirm restarting. -->
@@ -95,7 +95,7 @@
   <string name="app_ops_send_mms">envoyer un MMS</string>
   <string name="app_ops_send_sms">envoyer un SMS</string>
   <string name="app_ops_start_at_bootup">démarrer avec le système</string>
-  <string name="app_ops_toast_window">afficher les messages toast</string>
+  <string name="app_ops_toast_window">afficher les messages contextuelles</string>
   <string name="app_ops_toggle_bluetooth">activer/désactiver le Bluetooth</string>
   <string name="app_ops_toggle_mobile_data">activer/désactiver les données mobiles</string>
   <string name="app_ops_toggle_nfc">activer/désactiver le NFC</string>
