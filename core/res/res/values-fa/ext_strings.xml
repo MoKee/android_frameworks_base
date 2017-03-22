@@ -108,4 +108,6 @@
   <string name="lock_to_app_toast_no_navbar">برای از سنجاق درآوردن این صفحه، دکمه بازگشت را زده و نگه دارید.</string>
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
   <!-- Single hand mode -->
+  <!-- Strings for tethered notification -->
+  <!-- Shown when the device is tethered -->
 </resources>

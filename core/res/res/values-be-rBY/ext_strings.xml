@@ -138,4 +138,6 @@
   <string name="lineage_system_error_manufacturer">Несумяшчальны вобраз ПЗ вытворцы прылады. Як правіла, гэта азначае, што неабходна ўсталяваць абноўленую прашыўку раздзела vendor. Пераканайцеся, што яе версія будзе адпавядаць <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
   <!-- Single hand mode -->
   <string name="singlehandmode_click_hint_message">Націсніце за межамі экрана, каб выйсці з рэжыму адной рукой</string>
+  <!-- Strings for tethered notification -->
+  <!-- Shown when the device is tethered -->
 </resources>

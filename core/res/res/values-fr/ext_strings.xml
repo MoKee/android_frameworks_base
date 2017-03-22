@@ -138,4 +138,6 @@
   <string name="lineage_system_error_manufacturer">Une incompatibilité du fichier vendor.img a été détectée. En règle générale, cela signifie que celui-ci n\'est pas à jour. Assurez-vous que le fichier vendor.img correspond à <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
   <!-- Single hand mode -->
   <string name="singlehandmode_click_hint_message">Appuyer sur l\'extérieur de l\'écran pour quitter le mode d\'utilisation à une main</string>
+  <!-- Strings for tethered notification -->
+  <!-- Shown when the device is tethered -->
 </resources>

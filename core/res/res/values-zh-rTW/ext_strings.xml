@@ -138,4 +138,6 @@
   <string name="lineage_system_error_manufacturer">已檢測到供應者的映像檔案不符合。 通常這表示您的供應者的映像檔案已過期。 請確保您的供應者的映像檔案與 <xliff:g id="fingerprint">%1$s</xliff:g> 相符合。</string>
   <!-- Single hand mode -->
   <string name="singlehandmode_click_hint_message">觸控螢幕邊緣即可退出單手模式</string>
+  <!-- Strings for tethered notification -->
+  <!-- Shown when the device is tethered -->
 </resources>
