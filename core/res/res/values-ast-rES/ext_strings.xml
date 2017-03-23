@@ -58,10 +58,12 @@
   <string name="app_ops_access_notifications">lleer los tos avisos</string>
   <string name="app_ops_activate_vpn">activar una VPN</string>
   <string name="app_ops_auto_start">executase nel aniciu</string>
+  <string name="app_ops_get_usage_stats">consiguir estadístiques d\'usu</string>
   <string name="app_ops_modify_clipboard">modificar el cartafueyu</string>
   <string name="app_ops_modify_contacts">anovar los tos contautos</string>
   <string name="app_ops_modify_settings">anovar axustes del sistema</string>
   <string name="app_ops_play_audio">reproducir audiu</string>
+  <string name="app_ops_project_media">proyeutar conteníu multimedia</string>
   <string name="app_ops_read_call_log">lleer el rexistru de llamaes</string>
   <string name="app_ops_read_clipboard">lleer el cartafueyu</string>
   <string name="app_ops_read_contacts">lleer los tos contautos</string>
@@ -87,6 +89,7 @@
   <string name="app_ops_assist_structure">usar cadarma d\'asistencia</string>
   <string name="app_ops_assist_screenshot">facer una captura</string>
   <string name="app_ops_use_body_sensors">usar sensores corporales</string>
+  <string name="app_ops_read_cell_broadcasts">lleer tresmisiones celulares</string>
   <string name="app_ops_mock_location">simular l\'allugamientu</string>
   <string name="app_ops_read_external_storage">lleer almacenamientu esternu</string>
   <string name="app_ops_write_external_storage">escribir nel almacenamientu esternu</string>

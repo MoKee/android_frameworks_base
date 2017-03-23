@@ -35,7 +35,7 @@
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
   <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
-  <string name="reboot_download">Download</string>
+  <string name="reboot_download">Unduh</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
   <string name="reboot_soft">Mulai ulang cepat</string>
   <!-- Title of dialog to confirm restarting. -->
@@ -135,6 +135,7 @@
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <string name="lock_to_app_toast_no_navbar">Untuk melepas sematan layar ini, sentuh dan tahan tombol Kembali.</string>
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
+  <string name="lineage_system_error_manufacturer">Ketidakcocokan gambar vendor telah terdeteksi. Biasanya ini berarti gambar vendor Anda sudah kadaluarsa. Pastikan gambar vendor Anda cocok dengan <xliff:g id="fingerprint">%1$s </xliff:g>.</string>
   <!-- Single hand mode -->
   <string name="singlehandmode_click_hint_message">Sentuh bagian luar layar untuk keluar dari mode satu tangan</string>
   <!-- Strings for tethered notification -->

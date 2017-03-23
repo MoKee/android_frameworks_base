@@ -109,7 +109,6 @@
   <string name="app_ops_read_phone_state">ഫോണിന്‍റെ സ്ഥിതി ഉപയോഗിക്കുക</string>
   <string name="app_ops_scan_wifi">സ്കാൻ Wi-Fi നെറ്റ്വർക്കുകൾ</string>
   <string name="app_ops_change_wallpaper">വാൾപേപ്പർ മാറ്റാൻ</string>
-  <string name="app_ops_assist_structure">use assist structure</string>
   <string name="app_ops_assist_screenshot">ഒരു സ്ക്രീൻഷോട്ട് എടുക്കുക</string>
   <string name="app_ops_use_body_sensors">ശരീരം സെൻസറുകൾ ഉപയോഗിക്കാൻ</string>
   <string name="app_ops_read_cell_broadcasts">ഫോണ്‍ പ്രക്ഷേപണങ്ങള്‍ വായിക്കുക</string>
@@ -117,7 +116,6 @@
   <string name="app_ops_read_external_storage">ബാഹ്യ സംഭരണം വായിക്കാൻ</string>
   <string name="app_ops_write_external_storage">ബാഹ്യ സംഭരണം എഴുതാൻ</string>
   <string name="app_ops_turn_on_screen">സ്ക്രീന്‍ ഓണാക്കുക</string>
-  <string name="app_ops_get_accounts">get device accounts</string>
   <string name="app_ops_wifi_change">വൈഫിയുടെ സ്ഥിതി മാറ്റുക</string>
   <string name="app_ops_su">റൂട്ട് പ്രവേശനം നേടുക</string>
   <!-- Protected Apps Notification -->

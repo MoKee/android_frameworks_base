@@ -20,7 +20,7 @@
   <!-- Long-press back kill application -->
   <string name="app_killed_message">App afgesloten</string>
   <!-- label for item that screenshots in phone options dialog -->
-  <string name="global_action_screenshot">Screenshot</string>
+  <string name="global_action_screenshot">Schermafbeelding</string>
   <!-- label for item that restarts the phone in phone options dialog -->
   <string name="global_action_reboot">Herstarten</string>
   <!-- label for current user in phone options dialog -->
@@ -31,9 +31,7 @@
   <!-- Button to restart the phone, within the Restart Options dialog -->
   <string name="reboot_reboot">Herstarten</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
-  <string name="reboot_recovery">Recovery</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
-  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">Download</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->

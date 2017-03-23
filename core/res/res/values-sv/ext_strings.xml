@@ -30,11 +30,9 @@
   <!-- Button to restart the phone, within the Restart Options dialog -->
   <string name="reboot_reboot">Starta om</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
-  <string name="reboot_recovery">Recovery</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
-  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
-  <string name="reboot_download">Download</string>
+  <string name="reboot_download">Hämta</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
   <!-- Title of dialog to confirm restarting. -->
   <string name="reboot_title">Starta om</string>
@@ -124,6 +122,7 @@
   <string name="app_ops_write_external_storage">skriv extern lagring</string>
   <string name="app_ops_turn_on_screen">aktivera skärmen</string>
   <string name="app_ops_get_accounts">hämta enhetskonton</string>
+  <string name="app_ops_run_in_background">kör i bakgrunden</string>
   <string name="app_ops_wifi_change">ändra Wi\u2011Fi status</string>
   <string name="app_ops_su">få root-åtkomst</string>
   <!-- Protected Apps Notification -->

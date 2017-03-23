@@ -31,11 +31,9 @@
   <!-- Button to restart the phone, within the Restart Options dialog -->
   <string name="reboot_reboot">Перезавантаження</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
-  <string name="reboot_recovery">Recovery</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
-  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
-  <string name="reboot_download">Download</string>
+  <string name="reboot_download">Завантажити</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
   <string name="reboot_soft">Перезавантаження інтерфейсу</string>
   <!-- Title of dialog to confirm restarting. -->
@@ -83,7 +81,7 @@
   <string name="app_ops_mute_unmute_microphone">вимк./увімк. мікрофон</string>
   <string name="app_ops_play_audio">відтворювати аудіо</string>
   <string name="app_ops_post_notification">виводити сповіщення</string>
-  <string name="app_ops_project_media">project media</string>
+  <string name="app_ops_project_media">проект медіа</string>
   <string name="app_ops_read_calendar">читати дані календаря</string>
   <string name="app_ops_read_call_log">читати журнал дзвінків</string>
   <string name="app_ops_read_clipboard">читати буфер обміну</string>

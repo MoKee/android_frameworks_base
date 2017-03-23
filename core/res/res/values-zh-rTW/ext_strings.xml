@@ -78,7 +78,7 @@
   <string name="app_ops_modify_calendar">更新您的日曆</string>
   <string name="app_ops_modify_call_log">更新通話紀錄</string>
   <string name="app_ops_modify_clipboard">修改剪貼簿</string>
-  <string name="app_ops_modify_contacts">更新您的連絡人資料</string>
+  <string name="app_ops_modify_contacts">更新您的聯絡人資料</string>
   <string name="app_ops_modify_settings">更新系統設定</string>
   <string name="app_ops_mute_unmute_microphone">麥克風靜音/解除靜音</string>
   <string name="app_ops_play_audio">播放音訊</string>
@@ -141,6 +141,6 @@
   <!-- Strings for tethered notification -->
   <!-- Shown when the device is tethered -->
   <string name="tethered_notification_no_device_message">沒有已連接的裝置</string>
-  <string name="tethered_notification_one_device_message"><xliff:g id="count">%1$s</xliff:g> 個已連接裝置</string>
-  <string name="tethered_notification_multi_device_message"><xliff:g id="count">%1$s</xliff:g> 個已連接裝置</string>
+  <string name="tethered_notification_one_device_message"><xliff:g id="count">%1$s</xliff:g> 個已連接的裝置</string>
+  <string name="tethered_notification_multi_device_message"><xliff:g id="count">%1$s</xliff:g> 個已連接的裝置</string>
 </resources>

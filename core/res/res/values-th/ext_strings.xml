@@ -28,9 +28,7 @@
   <!-- Restart menu -->
   <!-- Button to restart the phone, within the Restart Options dialog -->
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
-  <string name="reboot_recovery">Recovery</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
-  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">ดาวน์โหลด</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
