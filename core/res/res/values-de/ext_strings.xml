@@ -22,16 +22,18 @@
   <!-- label for item that screenshots in phone options dialog -->
   <string name="global_action_screenshot">Bildschirmfoto</string>
   <!-- label for item that restarts the phone in phone options dialog -->
-  <string name="global_action_reboot">Neu starten</string>
+  <string name="global_action_reboot">Neustarten</string>
   <!-- label for current user in phone options dialog -->
   <string name="global_action_current_user">Aktuell</string>
   <!-- status message in phone options dialog for screenshot action -->
-  <string name="global_actions_screenshot_status">Für zugeschnittenen Screenshot gedrückt halten</string>
+  <string name="global_actions_screenshot_status">Drücken Sie lange für einen zugeschnittenen Screenshot</string>
   <!-- Restart menu -->
   <!-- Button to restart the phone, within the Restart Options dialog -->
-  <string name="reboot_reboot">Neu starten</string>
+  <string name="reboot_reboot">Neustarten</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
+  <string name="reboot_recovery">Wiederherstellung</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
+  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">Herunterladen</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
