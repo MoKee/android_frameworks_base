@@ -18,5 +18,7 @@
   <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
   <string name="edit">Επεξεργασία</string>
   <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permlab_modifyOverlays">τροποποίηση επικάλυψης θέματος</string>
   <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permdesc_modifyOverlays">Επίτρεψε στην εφαρμογή να κάνει τροποποιήσεις στις επικαλύψεις των θεμάτων χρησιμοποιώντας το OverlayManagerService</string>
 </resources>
