@@ -31,13 +31,13 @@
   <!-- Button to restart the phone, within the Restart Options dialog -->
   <string name="reboot_reboot">Yeniden Başlat</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
-  <string name="reboot_recovery">Kurtarma modu (Recovery)</string>
+  <string name="reboot_recovery">Kurtarma Modu</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
-  <string name="reboot_bootloader">Ön yükleyici (Bootloader)</string>
+  <string name="reboot_bootloader">Ön Yükleyici</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">İndir</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
-  <string name="reboot_soft">Yazılımsal yeniden başlatma</string>
+  <string name="reboot_soft">Yazılımsal Yeniden Başlat</string>
   <!-- Title of dialog to confirm restarting. -->
   <string name="reboot_title">Yeniden Başlat</string>
   <!-- Restart Confirmation Dialog.  When the user chooses to restart the device, there will
