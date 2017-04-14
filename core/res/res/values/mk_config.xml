@@ -14,11 +14,9 @@
      limitations under the License.
 -->
 
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <java-symbol type="string" name="edit" />
-
-    <!-- Pixel navigation bar animation -->
-    <java-symbol type="bool" name="config_allowOpaLayout" />
+    <!-- Allow Opa (Pixel navbar) layout -->
+    <bool name="config_allowOpaLayout">true</bool>
 
 </resources>
