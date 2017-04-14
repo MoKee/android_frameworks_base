@@ -80,6 +80,7 @@ static volatile int32_t gCount = 0;
 const char* AssetManager::RESOURCES_FILENAME = "resources.arsc";
 const char* AssetManager::IDMAP_BIN = "/system/bin/idmap";
 const char* AssetManager::OVERLAY_DIR = "/vendor/overlay";
+const char* AssetManager::OVERLAY_THEME_DIR_PROPERTY = "ro.boot.vendor.overlay.theme";
 const char* AssetManager::TARGET_PACKAGE_NAME = "android";
 const char* AssetManager::TARGET_APK_PATH = "/system/framework/framework-res.apk";
 const char* AssetManager::IDMAP_DIR = "/data/resource-cache";
@@ -1938,22 +1939,6 @@ AssetManager::ZipSet::~ZipSet(void)
     size_t N = mZipFile.size();
     for (size_t i = 0; i < N; i++)
         closeZip(i);
-}
-
-/*
- * Close a Zip file from path and reset the entry
- */
-void AssetManager::ZipSet::closeZipFromPath(const String8& zip)
-{
-    //close zip fd
-    int fd = getZip(zip)->getFileDescriptor();
-
-    if (fd > 0) {
-        close(fd);
-        //reset zip object and entry
-        int idx = getIndex(zip);
-        mZipFile.editItemAt(idx) = NULL;
-    }
 }
 
 /*

@@ -20,6 +20,7 @@
 #include <vector>
 #include <algorithm>
 
+#include <android-base/strings.h>
 #include <dirent.h>
 #include <fcntl.h>
 #include <grp.h>
@@ -52,7 +53,6 @@ static const char* kPathWhitelist[] = {
   "/dev/null",
   "/dev/socket/zygote",
   "/dev/socket/zygote_secondary",
-  "/system/etc/event-log-tags",
   "/sys/kernel/debug/tracing/trace_marker",
   "/system/framework/framework-res.apk",
   "/dev/urandom",

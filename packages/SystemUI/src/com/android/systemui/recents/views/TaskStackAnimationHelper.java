@@ -107,6 +107,7 @@ public class TaskStackAnimationHelper {
     private static final Interpolator ENTER_WHILE_DOCKING_INTERPOLATOR =
             Interpolators.LINEAR_OUT_SLOW_IN;
 
+    private final int mEnterAndExitFromHomeTranslationOffset;
     private TaskStackView mStackView;
 
     private TaskViewTransform mTmpTransform = new TaskViewTransform();
@@ -115,6 +116,8 @@ public class TaskStackAnimationHelper {
 
     public TaskStackAnimationHelper(Context context, TaskStackView stackView) {
         mStackView = stackView;
+        mEnterAndExitFromHomeTranslationOffset = Recents.getConfiguration().isGridEnabled
+                ? 0 : DOUBLE_FRAME_OFFSET_MS;
     }
 
     /**
@@ -262,7 +265,7 @@ public class TaskStackAnimationHelper {
                 AnimationProps taskAnimation = new AnimationProps()
                         .setInitialPlayTime(AnimationProps.BOUNDS,
                                 Math.min(ENTER_EXIT_NUM_ANIMATING_TASKS, taskIndexFromFront) *
-                                        DOUBLE_FRAME_OFFSET_MS)
+                                        mEnterAndExitFromHomeTranslationOffset)
                         .setStartDelay(AnimationProps.ALPHA,
                                 Math.min(ENTER_EXIT_NUM_ANIMATING_TASKS, taskIndexFromFront) *
                                         FRAME_OFFSET_MS)
@@ -323,7 +326,7 @@ public class TaskStackAnimationHelper {
             AnimationProps taskAnimation;
             if (animated) {
                 int delay = Math.min(ENTER_EXIT_NUM_ANIMATING_TASKS , taskIndexFromFront) *
-                        DOUBLE_FRAME_OFFSET_MS;
+                        mEnterAndExitFromHomeTranslationOffset;
                 taskAnimation = new AnimationProps()
                         .setStartDelay(AnimationProps.BOUNDS, delay)
                         .setDuration(AnimationProps.BOUNDS, EXIT_TO_HOME_TRANSLATION_DURATION)
@@ -392,77 +395,26 @@ public class TaskStackAnimationHelper {
     /**
      * Starts the delete animation for the specified {@link TaskView}.
      */
-    public void startDeleteTaskAnimation(final TaskView deleteTaskView,
+    public void startDeleteTaskAnimation(final TaskView deleteTaskView, boolean gridLayout,
             final ReferenceCountedTrigger postAnimationTrigger) {
-        TaskStackViewTouchHandler touchHandler = mStackView.getTouchHandler();
-        touchHandler.onBeginManualDrag(deleteTaskView);
-
-        postAnimationTrigger.increment();
-        postAnimationTrigger.addLastDecrementRunnable(() -> {
-            touchHandler.onChildDismissed(deleteTaskView);
-        });
-
-        final float dismissSize = touchHandler.getScaledDismissSize();
-        ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f);
-        animator.setDuration(400);
-        animator.addUpdateListener((animation) -> {
-            float progress = (Float) animation.getAnimatedValue();
-            deleteTaskView.setTranslationX(progress * dismissSize);
-            touchHandler.updateSwipeProgress(deleteTaskView, true, progress);
-        });
-        animator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                postAnimationTrigger.decrement();
-            }
-        });
-        animator.start();
+        if (gridLayout) {
+            startTaskGridDeleteTaskAnimation(deleteTaskView, postAnimationTrigger);
+        } else {
+            startTaskStackDeleteTaskAnimation(deleteTaskView, postAnimationTrigger);
+        }
     }
 
     /**
      * Starts the delete animation for all the {@link TaskView}s.
      */
-    public void startDeleteAllTasksAnimation(final List<TaskView> taskViews,
-                                             final ReferenceCountedTrigger postAnimationTrigger) {
-        TaskStackLayoutAlgorithm stackLayout = mStackView.getStackAlgorithm();
-
-        int offscreenXOffset = mStackView.getMeasuredWidth() - stackLayout.mTaskRect.left;
-
-        // Cleanup locked taskviews first
-        Iterator<TaskView> iterator = taskViews.iterator();
-        while (iterator.hasNext()) {
-            TaskView taskView = iterator.next();
-            if (taskView.getTask().isLockedTask) {
-                iterator.remove();
+    public void startDeleteAllTasksAnimation(final List<TaskView> taskViews, boolean gridLayout,
+            final ReferenceCountedTrigger postAnimationTrigger) {
+        if (gridLayout) {
+            for (int i = 0; i < taskViews.size(); i++) {
+                startTaskGridDeleteTaskAnimation(taskViews.get(i), postAnimationTrigger);
             }
-        }
-        List<TaskView> mTaskViews = Collections.unmodifiableList(taskViews);
-        int taskViewCount = mTaskViews.size();
-        for (int i = taskViewCount - 1; i >= 0; i--) {
-            TaskView tv = mTaskViews.get(i);
-            int taskIndexFromFront = taskViewCount - i - 1;
-            int startDelay = taskIndexFromFront * DOUBLE_FRAME_OFFSET_MS;
-
-            // Disabling clipping with the stack while the view is animating away
-            tv.setClipViewInStack(false);
-
-            // Compose the new animation and transform and star the animation
-            AnimationProps taskAnimation = new AnimationProps(startDelay,
-                    DISMISS_ALL_TASKS_DURATION, DISMISS_ALL_TRANSLATION_INTERPOLATOR,
-                    new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    postAnimationTrigger.decrement();
-
-                    // Re-enable clipping with the stack (we will reuse this view)
-                    tv.setClipViewInStack(true);
-                }
-            });
-            postAnimationTrigger.increment();
-
-            mTmpTransform.fillIn(tv);
-            mTmpTransform.rect.offset(offscreenXOffset, 0);
-            mStackView.updateTaskViewToTransform(tv, mTmpTransform, taskAnimation);
+        } else {
+            startTaskStackDeleteAllTasksAnimation(taskViews, postAnimationTrigger);
         }
     }
 
@@ -661,5 +613,90 @@ public class TaskStackAnimationHelper {
      */
     private int calculateStaggeredAnimDuration(int i) {
         return Math.max(100, 100 + ((i - 1) * 50));
+    }
+
+    private void startTaskGridDeleteTaskAnimation(final TaskView deleteTaskView,
+            final ReferenceCountedTrigger postAnimationTrigger) {
+        postAnimationTrigger.increment();
+        postAnimationTrigger.addLastDecrementRunnable(() -> {
+            mStackView.getTouchHandler().onChildDismissed(deleteTaskView);
+        });
+        deleteTaskView.animate().setDuration(300).scaleX(0.9f).scaleY(0.9f).alpha(0).setListener(
+                new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        postAnimationTrigger.decrement();
+                    }}).start();
+    }
+
+    private void startTaskStackDeleteTaskAnimation(final TaskView deleteTaskView,
+            final ReferenceCountedTrigger postAnimationTrigger) {
+        TaskStackViewTouchHandler touchHandler = mStackView.getTouchHandler();
+        touchHandler.onBeginManualDrag(deleteTaskView);
+
+        postAnimationTrigger.increment();
+        postAnimationTrigger.addLastDecrementRunnable(() -> {
+            touchHandler.onChildDismissed(deleteTaskView);
+        });
+
+        final float dismissSize = touchHandler.getScaledDismissSize();
+        ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f);
+        animator.setDuration(400);
+        animator.addUpdateListener((animation) -> {
+            float progress = (Float) animation.getAnimatedValue();
+            deleteTaskView.setTranslationX(progress * dismissSize);
+            touchHandler.updateSwipeProgress(deleteTaskView, true, progress);
+        });
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                postAnimationTrigger.decrement();
+            }
+        });
+        animator.start();
+    }
+
+    private void startTaskStackDeleteAllTasksAnimation(final List<TaskView> taskViews,
+            final ReferenceCountedTrigger postAnimationTrigger) {
+        TaskStackLayoutAlgorithm stackLayout = mStackView.getStackAlgorithm();
+
+        int offscreenXOffset = mStackView.getMeasuredWidth() - stackLayout.getTaskRect().left;
+
+        // Cleanup locked taskviews first
+        Iterator<TaskView> iterator = taskViews.iterator();
+        while (iterator.hasNext()) {
+            TaskView taskView = iterator.next();
+            if (taskView.getTask().isLockedTask) {
+                iterator.remove();
+            }
+        }
+        List<TaskView> mTaskViews = Collections.unmodifiableList(taskViews);
+        int taskViewCount = mTaskViews.size();
+        for (int i = taskViewCount - 1; i >= 0; i--) {
+            TaskView tv = mTaskViews.get(i);
+            int taskIndexFromFront = taskViewCount - i - 1;
+            int startDelay = taskIndexFromFront * DOUBLE_FRAME_OFFSET_MS;
+
+            // Disabling clipping with the stack while the view is animating away
+            tv.setClipViewInStack(false);
+
+            // Compose the new animation and transform and star the animation
+            AnimationProps taskAnimation = new AnimationProps(startDelay,
+                    DISMISS_ALL_TASKS_DURATION, DISMISS_ALL_TRANSLATION_INTERPOLATOR,
+                    new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            postAnimationTrigger.decrement();
+
+                            // Re-enable clipping with the stack (we will reuse this view)
+                            tv.setClipViewInStack(true);
+                        }
+                    });
+            postAnimationTrigger.increment();
+
+            mTmpTransform.fillIn(tv);
+            mTmpTransform.rect.offset(offscreenXOffset, 0);
+            mStackView.updateTaskViewToTransform(tv, mTmpTransform, taskAnimation);
+        }
     }
 }

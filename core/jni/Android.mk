@@ -81,6 +81,7 @@ LOCAL_SRC_FILES:= \
     android_text_AndroidBidi.cpp \
     android_text_StaticLayout.cpp \
     android_os_Debug.cpp \
+    android_os_GraphicsEnvironment.cpp \
     android_os_MemoryFile.cpp \
     android_os_MessageQueue.cpp \
     android_os_Parcel.cpp \
@@ -264,8 +265,7 @@ LOCAL_SHARED_LIBRARIES := \
 
 LOCAL_SHARED_LIBRARIES += \
     libhwui \
-    libdl \
-    libregionalization
+    libdl
 
 # we need to access the private Bionic header
 # <bionic_tls.h> in com_google_android_gles_jni_GLImpl.cpp
