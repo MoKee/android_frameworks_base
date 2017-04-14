@@ -3716,6 +3716,12 @@ public final class Settings {
         public static final String CALL_LOG_DELETE_LIMIT = "call_log_delete_limit";
 
         /**
+         * Whether to enable the pixel navbar animation
+         * @hide
+         */
+        public static final String PIXEL_NAV_ANIMATION = "pixel_nav_animation";
+
+        /**
          * Use MoKee Cloud Location Engine
          * @hide
          */
