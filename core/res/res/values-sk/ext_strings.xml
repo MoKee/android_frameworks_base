@@ -29,7 +29,7 @@
   <string name="global_actions_screenshot_status">Dlhé stlačenie pre získanie čiastočnej snímky obrazovky</string>
   <!-- Restart menu -->
   <!-- Button to restart the phone, within the Restart Options dialog -->
-  <string name="reboot_reboot">Reštart</string>
+  <string name="reboot_reboot">Reštartovať</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
   <string name="reboot_recovery">Recovery</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
