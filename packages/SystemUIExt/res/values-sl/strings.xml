@@ -16,4 +16,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="quick_settings_screenshot_label">Posnetek zaslona</string>
+  <string name="status_bar_su">Su</string>
+  <string name="recents_free_ram">RAM NA VOLJO: %1$d MB</string>
 </resources>
