@@ -378,7 +378,7 @@ public final class ShutdownThread extends Thread {
             // reboot, which might be time-consuming.
             mRebootHasProgressBar = RecoverySystem.UNCRYPT_PACKAGE_FILE.exists()
                     && !(RecoverySystem.BLOCK_MAP_FILE.exists());
-            pd.setTitle(context.getText(com.android.internal.R.string.reboot_to_update_title));
+            pd.setTitle(context.getText(com.android.internal.R.string.mk_reboot_to_update_title));
             if (mRebootHasProgressBar) {
                 pd.setMax(100);
                 pd.setProgress(0);
