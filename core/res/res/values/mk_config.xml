@@ -1,5 +1,5 @@
-<!--
-     Copyright (C) 2014-2018 The MoKee Open Source Project
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2014-2018 The MoKee Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,12 +13,10 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
 
-    <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
-    <java-symbol type="string" name="mk_system_error_manufacturer" />
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Wether device has dash charging support -->
-    <java-symbol type="bool" name="config_hasDashCharger" />
+    <bool name="config_hasDashCharger">false</bool>
 
 </resources>
