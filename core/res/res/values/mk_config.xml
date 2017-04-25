@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2014-2016 The MoKee Open Source Project
+<!-- Copyright (C) 2014-2017 The MoKee Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -18,5 +18,8 @@
 
     <!-- Allow Opa (Pixel navbar) layout -->
     <bool name="config_allowOpaLayout">true</bool>
+
+    <!-- Wether device has dash charging support -->
+    <bool name="config_hasDashCharger">false</bool>
 
 </resources>

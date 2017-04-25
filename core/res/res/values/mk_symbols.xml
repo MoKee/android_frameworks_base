@@ -23,4 +23,7 @@
 
     <java-symbol type="string" name="mk_reboot_to_update_title" />
 
+    <!-- Wether device has dash charging support -->
+    <java-symbol type="bool" name="config_hasDashCharger" />
+
 </resources>
