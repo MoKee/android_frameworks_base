@@ -168,6 +168,7 @@ interface IConnectivityManager
 
     void setAcceptUnvalidated(in Network network, boolean accept, boolean always);
     void setAvoidUnvalidated(in Network network);
+    void startCaptivePortalApp(in Network network);
 
     int getRestoreDefaultNetworkDelay(int networkType);
 
