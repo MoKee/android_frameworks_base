@@ -19,6 +19,7 @@ import static com.android.internal.util.Preconditions.checkNotNull;
 
 import android.annotation.IntDef;
 import android.annotation.Nullable;
+import android.annotation.RequiresPermission;
 import android.annotation.SdkConstant;
 import android.annotation.SdkConstant.SdkConstantType;
 import android.annotation.SystemApi;
@@ -3265,6 +3266,22 @@ public class ConnectivityManager {
     public void setAvoidUnvalidated(Network network) {
         try {
             mService.setAvoidUnvalidated(network);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Requests that the system open the captive portal app on the specified network.
+     *
+     * @param network The network to log into.
+     *
+     * @hide
+     */
+    @RequiresPermission(android.Manifest.permission.CONNECTIVITY_INTERNAL)
+    public void startCaptivePortalApp(Network network) {
+        try {
+            mService.startCaptivePortalApp(network);
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
