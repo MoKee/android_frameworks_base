@@ -6662,6 +6662,9 @@ public final class ActivityManagerService extends ActivityManagerNative
                 Slog.w(TAG, "Unattached app died before broadcast acknowledged, skipping");
                 skipPendingBroadcastLocked(pid);
             }
+            if (app.persistent && !app.isolated) {
+                addAppLocked(app.info, false, null /* ABI override */);
+            }
         } else {
             Slog.w(TAG, "Spurious process start timeout - pid not known for " + app);
         }
@@ -11009,7 +11012,7 @@ public final class ActivityManagerService extends ActivityManagerNative
                 // pending on the process even though we managed to update its
                 // adj level.  Not sure what to do about this, but at least
                 // the race is now smaller.
-                if (!success) {
+                if (!success || cpr.proc.killedByAm) {
                     // Uh oh...  it looks like the provider's process
                     // has been killed on us.  We need to wait for a new
                     // process to be started, and make sure its death
