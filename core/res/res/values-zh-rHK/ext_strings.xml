@@ -37,7 +37,7 @@
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">下載</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
-  <string name="reboot_soft">軟體重新啟動</string>
+  <string name="reboot_soft">軟重新啟動</string>
   <!-- Title of dialog to confirm restarting. -->
   <string name="reboot_title">重新啟動</string>
   <!-- Restart Confirmation Dialog.  When the user chooses to restart the device, there will
