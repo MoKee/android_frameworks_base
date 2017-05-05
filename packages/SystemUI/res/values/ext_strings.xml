@@ -85,7 +85,7 @@
     <string name="play_queue_extension">Show play queue</string>
 
     <!-- Weather string format in keyguard -->
-    <string name="keyguard_status_view_weather_format"><xliff:g id="temp">%1$s</xliff:g> <xliff:g id="condition">%2$s</xliff:g></string>
+    <string name="keyguard_status_view_weather_format" translatable="false"><xliff:g id="temp">%1$s</xliff:g> <xliff:g id="condition">%2$s</xliff:g></string>
 
     <string name="accessibility_dpad_left">Cursor left</string>
     <string name="accessibility_dpad_right">Cursor right</string>
@@ -114,7 +114,7 @@
     </plurals>
 
     <!-- Weather string format in expanded statusbar header -->
-    <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
+    <string name="status_bar_expanded_header_weather_format" translatable="false"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
 
     <!-- Volume stream titles - should match the string-array in AOSP -->
     <string-array name="volume_stream_titles_lineage">
