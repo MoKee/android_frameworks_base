@@ -24,7 +24,7 @@
   <!-- label for item that restarts the phone in phone options dialog -->
   <string name="global_action_reboot">重新啟動</string>
   <!-- label for current user in phone options dialog -->
-  <string name="global_action_current_user">目前版本</string>
+  <string name="global_action_current_user">目前</string>
   <!-- status message in phone options dialog for screenshot action -->
   <string name="global_actions_screenshot_status">長按即可部分螢幕擷取</string>
   <!-- Restart menu -->

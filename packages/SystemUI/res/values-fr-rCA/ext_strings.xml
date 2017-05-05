@@ -20,25 +20,114 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Content description of the light brightness slider (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_notification_brightness">Luminosité</string>
   <!-- Lights settings, LED notification -->
+  <string name="led_notification_title">Paramètres du voyant</string>
+  <string name="led_notification_text">LED activée par les paramètres</string>
   <!-- Notification which notifies user flashlight is enabled -->
+  <string name="quick_settings_tile_flashlight_not_title">Lampe de poche allumée</string>
+  <string name="quick_settings_tile_flashlight_not_summary">Toucher pour éteindre</string>
   <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
+  <string name="cm_power_notification_controls_description">Avec le contrôle supérieur des notifications, vous pouvez donner une importance de 0 à 6 aux notifications d\'une appli.
+        \n\n<b>Niveau 6</b>
+        \n- Affichage en haut de la liste
+        \n- Autorise les interventions en plein écran
+        \n- Toujours intrusives
+        \n\n<b>Niveau 5</b>
+        \n- Empêche les interventions en plein écran
+        \n- Toujours intrusives
+        \n\n<b>Niveau 4</b>
+        \n- Empêche les interventions en plein écran
+        \n- Aucune intrusion
+        \n\n<b>Niveau 3</b>
+        \n- Empêche les interventions en plein écran
+        \n- Aucune intrusion
+        \n- Ne vibre ou sonne jamais
+        \n\n<b>Niveau 2</b>
+        \n- Empêche les interventions en plein écran
+        \n- Aucune intrusion
+        \n- Ne vibre ou sonne jamais
+        \n- Cache les notifications de l\'écran de verrouillage et de la barre d\'état
+        \n- Affichage tout en bas de la liste
+        \n\n<b>Niveau 1</b>
+        \n- Empêche les interventions en plein écran
+        \n- Aucune intrusion
+        \n- Ne vibre ou sonne jamais
+        \n- Cache les notifications de l\'écran de verrouillage et de la barre d\'état
+        \n- Affichage tout en bas de la liste
+        \n\n<b>Niveau 0</b>
+        \n- Bloque toutes les notifications d\'une application
+    </string>
   <!-- Notification importance level title-->
+  <string name="importance_level_title">Importance : niveau %1$d</string>
   <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
+  <string name="notification_importance_very_low">Aucune interruption, notification sonore, vibration, ni d\'aperçu en mode plein écran. Masquée depuis l\'écran de verrouillage.</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
+  <string name="screen_pinning_description_no_navbar">Cela le laisse en vue jusqu\'à ce que vous le détachiez. Appuyez et maintenez le bouton retour pour détacher.</string>
   <!-- Strings for lockscreen shortcut hints -->
+  <string name="left_shortcut_hint">Balayer à droite pour %1$s</string>
+  <string name="right_shortcut_hint">Balayer à gauche pour %1$s</string>
+  <string name="lockscreen_message">Appuyez sur une icône à gauche ou à droite pour réattribuer un raccourci sur l\'écran de verrouillage.</string>
+  <string name="lockscreen_default_target">Défaut</string>
+  <string name="select_application">Sélectionner une application</string>
+  <string name="lockscreen_choose_action_title">Choisir une action</string>
+  <string name="lockscreen_none_target">Aucun</string>
   <!-- Play queue -->
+  <string name="play_queue_extension">Voir la file d\'attente de lecture</string>
   <!-- Weather string format in keyguard -->
+  <string name="accessibility_dpad_left">Curseur gauche</string>
+  <string name="accessibility_dpad_right">Curseur droit</string>
   <!-- NavBar Tuner -->
+  <string name="menu_ime_always_show">(Dés)activation menu / clavier (toujours montrer)</string>
+  <string name="search">Chercher</string>
   <!-- Path data for portrait battery -->
   <!-- Path data for landscape battery -->
   <!-- Path data for circle battery -->
   <!-- Wi-Fi hotspot label when enabled -->
   <!-- Weather string format in expanded statusbar header -->
   <!-- Volume stream titles - should match the string-array in AOSP -->
+  <string-array name="volume_stream_titles_lineage">
+    <item>Appel</item>
+    <!-- STREAM_VOICE_CALL -->
+    <item>Système</item>
+    <!-- STREAM_SYSTEM -->
+    <item>Sonnerie</item>
+    <!-- STREAM_RING -->
+    <item>Média</item>
+    <!-- STREAM_MUSIC -->
+    <item>Alarme</item>
+    <!-- STREAM_ALARM -->
+    <item>Notification</item>
+    <!-- STREAM_NOTIFICATION -->
+    <item>Bluetooth</item>
+    <!-- STREAM_BLUETOOTH_SCO -->
+    <item></item>
+    <!-- STREAM_SYSTEM_ENFORCED -->
+    <item></item>
+    <!-- STREAM_DTMF -->
+    <item></item>
+    <!-- STREAM_TTS -->
+  </string-array>
   <!-- Content description of the data connection type HSPA+ for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
+  <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_battery_saving_label">Économie d\'énergie</string>
+  <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
+  <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
+  <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_detail_title">Lieu</string>
+  <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
+  <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
+  <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->
+  <string name="quick_settings_location_detail_mode_battery_saving_title">Économie d\'énergie</string>
+  <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
+  <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
+  <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
+  <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
 </resources>

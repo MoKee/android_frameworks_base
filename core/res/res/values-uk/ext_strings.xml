@@ -35,7 +35,7 @@
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
   <string name="reboot_bootloader">Завантажувач</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
-  <string name="reboot_download">Режим Завантаження</string>
+  <string name="reboot_download">Завантажити</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
   <string name="reboot_soft">Перезавантаження інтерфейсу</string>
   <!-- Title of dialog to confirm restarting. -->
