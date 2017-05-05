@@ -23,10 +23,10 @@
   <string name="accessibility_notification_brightness">指示灯亮度</string>
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">指示灯设置</string>
-  <string name="led_notification_text">LED 灯由设置启用</string>
+  <string name="led_notification_text">已启用 LED 灯</string>
   <!-- Notification which notifies user flashlight is enabled -->
-  <string name="quick_settings_tile_flashlight_not_title">手电筒已开</string>
-  <string name="quick_settings_tile_flashlight_not_summary">轻按以关闭</string>
+  <string name="quick_settings_tile_flashlight_not_title">已开启手电筒</string>
+  <string name="quick_settings_tile_flashlight_not_summary">点击以关闭</string>
   <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
   <string name="cm_power_notification_controls_description">通过强力通知控制，您可以将应用通知的重要性设为 0 到 6 级。
         \n\n<b>6 级</b>
@@ -67,7 +67,7 @@
   <!-- Strings for lockscreen shortcut hints -->
   <string name="left_shortcut_hint">向右滑动以%1$s</string>
   <string name="right_shortcut_hint">向左滑动以%1$s</string>
-  <string name="lockscreen_message">轻触左边或右边的图标来重新分配锁屏快捷方式。</string>
+  <string name="lockscreen_message">点击左边或右边的图标来重新分配锁屏快捷方式</string>
   <string name="lockscreen_default_target">默认</string>
   <string name="select_application">选择应用</string>
   <string name="lockscreen_choose_action_title">选择操作</string>
@@ -78,7 +78,7 @@
   <string name="accessibility_dpad_left">光标左移</string>
   <string name="accessibility_dpad_right">光标右移</string>
   <!-- NavBar Tuner -->
-  <string name="menu_ime_always_show">菜单 / 键盘切换器 (始终显示)</string>
+  <string name="menu_ime_always_show">菜单 / 键盘切换器（始终显示）</string>
   <string name="search">搜索</string>
   <!-- Path data for portrait battery -->
   <!-- Path data for landscape battery -->
@@ -118,11 +118,11 @@
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
   <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_battery_saving">位置报告：节电模式。</string>
+  <string name="accessibility_quick_settings_location_battery_saving">位置报告：节电模式</string>
   <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_gps_only">位置报告：仅传感器模式。</string>
+  <string name="accessibility_quick_settings_location_gps_only">位置报告：仅传感器模式</string>
   <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_high_accuracy">位置报告：高准确度模式。</string>
+  <string name="accessibility_quick_settings_location_high_accuracy">位置报告：高准确度模式</string>
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_battery_saving_label">省电</string>
   <string name="quick_settings_location_battery_saving_label_twoline">节省\n电量</string>

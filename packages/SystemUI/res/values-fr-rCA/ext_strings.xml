@@ -25,7 +25,7 @@
   <string name="led_notification_title">Paramètres du voyant</string>
   <string name="led_notification_text">LED activée par les paramètres</string>
   <!-- Notification which notifies user flashlight is enabled -->
-  <string name="quick_settings_tile_flashlight_not_title">Lampe de poche allumée</string>
+  <string name="quick_settings_tile_flashlight_not_title">Lampe de poche activée</string>
   <string name="quick_settings_tile_flashlight_not_summary">Toucher pour éteindre</string>
   <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
   <string name="cm_power_notification_controls_description">Avec le contrôle supérieur des notifications, vous pouvez donner une importance de 0 à 6 aux notifications d\'une appli.
