@@ -20,7 +20,7 @@
   <!-- Long-press back kill application -->
   <string name="app_killed_message">已終止應用程式</string>
   <!-- label for item that screenshots in phone options dialog -->
-  <string name="global_action_screenshot">螢幕截圖</string>
+  <string name="global_action_screenshot">屏幕擷取畫面</string>
   <!-- label for item that restarts the phone in phone options dialog -->
   <string name="global_action_reboot">重新啟動</string>
   <!-- label for current user in phone options dialog -->
@@ -97,7 +97,7 @@
   <string name="app_ops_start_at_bootup">開機時啟動</string>
   <string name="app_ops_toast_window">顯示彈出訊息</string>
   <string name="app_ops_toggle_bluetooth">切換藍牙</string>
-  <string name="app_ops_toggle_mobile_data">切換至行動數據</string>
+  <string name="app_ops_toggle_mobile_data">切換至流動數據</string>
   <string name="app_ops_toggle_nfc">切換 NFC</string>
   <string name="app_ops_toggle_wifi">切換至 Wi-Fi</string>
   <string name="app_ops_use_alarm_volume">控制鬧鐘音量</string>

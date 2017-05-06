@@ -18,7 +18,7 @@
   <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
   <string name="edit">編輯</string>
   <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permlab_modifyOverlays">修改主題重疊</string>
+  <string name="permlab_modifyOverlays">修改主題疊加層</string>
   <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <string name="permdesc_modifyOverlays">允許應用程式對主題重疊使用重疊管理員服務進行修改</string>
   <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->

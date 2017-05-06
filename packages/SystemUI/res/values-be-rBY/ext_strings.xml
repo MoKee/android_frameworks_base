@@ -78,17 +78,23 @@
   <string name="accessibility_dpad_left">Курсор налева</string>
   <string name="accessibility_dpad_right">Курсор направа</string>
   <!-- NavBar Tuner -->
+  <string name="menu_ime_always_show">Меню ці выбар метаду ўводу (заўсёды)</string>
   <string name="search">Пошук</string>
   <!-- Path data for portrait battery -->
   <!-- Path data for landscape battery -->
   <!-- Path data for circle battery -->
   <!-- Wi-Fi hotspot label when enabled -->
+  <plurals name="wifi_hotspot_connected_clients_label">
+    <item quantity="one">%1$d кліентаў</item>
+    <item quantity="few">%1$d кліентаў</item>
+    <item quantity="other">%1$d кліентаў</item>
+  </plurals>
   <!-- Weather string format in expanded statusbar header -->
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
     <item>Выклік</item>
     <!-- STREAM_VOICE_CALL -->
-    <item>System</item>
+    <item>Сістэма</item>
     <!-- STREAM_SYSTEM -->
     <item>Ring</item>
     <!-- STREAM_RING -->
