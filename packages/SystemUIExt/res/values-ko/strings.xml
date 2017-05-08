@@ -15,6 +15,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="quick_settings_screenshot_label">스크린샷</string>
+  <!-- su icon switch -->
+  <!-- recent ram info -->
   <string name="recents_free_ram">사용가능 램 : %1$d MB</string>
+  <!-- Screenshot QS Tile -->
+  <string name="quick_settings_screenshot_label">스크린샷</string>
+  <!-- Compass QS Tile -->
+  <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
 </resources>
