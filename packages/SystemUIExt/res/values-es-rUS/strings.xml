@@ -22,5 +22,21 @@
   <!-- Screenshot QS Tile -->
   <string name="quick_settings_screenshot_label">Capturar pantalla</string>
   <!-- Compass QS Tile -->
+  <string name="quick_settings_compass_label">Brújula</string>
+  <string name="quick_settings_compass_init">Inicializando\u2026</string>
+  <string name="accessibility_quick_settings_compass_off">Brújula desactivada.</string>
+  <string name="accessibility_quick_settings_compass_on">Brújula activada.</string>
+  <string name="accessibility_quick_settings_compass_changed_off">La brújula ha sido desactivada.</string>
+  <string name="accessibility_quick_settings_compass_changed_on">La brújula ha sido activada.</string>
+  <string name="quick_settings_compass_N">N</string>
+  <string name="quick_settings_compass_NE">NE</string>
+  <string name="quick_settings_compass_E">E</string>
+  <string name="quick_settings_compass_SE">SE</string>
+  <string name="quick_settings_compass_S">S</string>
+  <string name="quick_settings_compass_SW">SO</string>
+  <string name="quick_settings_compass_W">O</string>
+  <string name="quick_settings_compass_NW">NO</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+  <string name="keyguard_indication_dash_charging_time">Cargando con carga rápida (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> hasta completar)</string>
+  <string name="keyguard_plugged_in_dash_charging">Carga Rápida</string>
 </resources>

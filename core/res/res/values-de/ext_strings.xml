@@ -22,14 +22,14 @@
   <!-- label for item that screenshots in phone options dialog -->
   <string name="global_action_screenshot">Bildschirmfoto</string>
   <!-- label for item that restarts the phone in phone options dialog -->
-  <string name="global_action_reboot">Neustarten</string>
+  <string name="global_action_reboot">Neustart</string>
   <!-- label for current user in phone options dialog -->
   <string name="global_action_current_user">Aktuell</string>
   <!-- status message in phone options dialog for screenshot action -->
   <string name="global_actions_screenshot_status">Drücken Sie lange für einen zugeschnittenen Screenshot</string>
   <!-- Restart menu -->
   <!-- Button to restart the phone, within the Restart Options dialog -->
-  <string name="reboot_reboot">Neustarten</string>
+  <string name="reboot_reboot">Neustart</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
   <string name="reboot_recovery">Wiederherstellung</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
@@ -39,7 +39,7 @@
   <!-- Button to soft restart the device, within the Restart Options dialog -->
   <string name="reboot_soft">Warmstart</string>
   <!-- Title of dialog to confirm restarting. -->
-  <string name="reboot_title">Neu starten</string>
+  <string name="reboot_title">Neustart</string>
   <!-- Restart Confirmation Dialog.  When the user chooses to restart the device, there will
          be a confirmation dialog.  This is the message. -->
   <string name="reboot_confirm" product="tablet">Ihr Tablet wird neu gestartet.</string>
@@ -67,7 +67,7 @@
   <string name="app_ops_access_notifications">auf Benachrichtigungen zuzugreifen</string>
   <string name="app_ops_activate_vpn">ein VPN zu aktivieren</string>
   <string name="app_ops_auto_start">automatisch zu starten</string>
-  <string name="app_ops_delete_call_log">Ihre Anrufliste zu löschen</string>
+  <string name="app_ops_delete_call_log">Anrufliste löschen</string>
   <string name="app_ops_delete_contacts">Ihre Kontakte zu löschen</string>
   <string name="app_ops_delete_mms">Ihre MMS-Nachrichten zu löschen</string>
   <string name="app_ops_delete_sms">Ihre SMS zu löschen</string>
@@ -75,7 +75,7 @@
   <string name="app_ops_get_usage_stats">Nutzungsstatistiken von Apps abrufen</string>
   <string name="app_ops_keep_device_awake">den Ruhezustand zu deaktivieren</string>
   <string name="app_ops_make_phone_call">Anrufe zu tätigen</string>
-  <string name="app_ops_modify_calendar">Ihren Kalender zu aktualisieren</string>
+  <string name="app_ops_modify_calendar">ihre Kalendereinträge ändern</string>
   <string name="app_ops_modify_call_log">die Anrufliste zu ändern</string>
   <string name="app_ops_modify_clipboard">die Zwischenablage zu ändern</string>
   <string name="app_ops_modify_contacts">Kontakte zu ändern</string>
@@ -84,17 +84,17 @@
   <string name="app_ops_play_audio">Audio wiederzugeben</string>
   <string name="app_ops_post_notification">eine Benachrichtigung zu erstellen</string>
   <string name="app_ops_project_media">Medien zu projizieren</string>
-  <string name="app_ops_read_calendar">Kalendereinträge zu lesen</string>
-  <string name="app_ops_read_call_log">die Anrufliste zu lesen</string>
+  <string name="app_ops_read_calendar">ihre Kalendereinträge lesen</string>
+  <string name="app_ops_read_call_log">die Anrufliste lesen</string>
   <string name="app_ops_read_clipboard">die Zwischenablage zu lesen</string>
   <string name="app_ops_read_contacts">Kontakte zu lesen</string>
-  <string name="app_ops_read_mms">MMS zu lesen</string>
+  <string name="app_ops_read_mms">ihre MMS-Nachrichten lesen</string>
   <string name="app_ops_read_sms">Ihre SMS zu lesen</string>
   <string name="app_ops_receive_sms">eine SMS zu empfangen</string>
   <string name="app_ops_record_audio">Audio aufzuzeichnen</string>
   <string name="app_ops_send_mms">eine MMS zu senden</string>
   <string name="app_ops_send_sms">eine SMS zu senden</string>
-  <string name="app_ops_start_at_bootup">beim Einschalten zu starten</string>
+  <string name="app_ops_start_at_bootup">beim Start ausführen</string>
   <string name="app_ops_toast_window">Toast-Nachrichten anzuzeigen</string>
   <string name="app_ops_toggle_bluetooth">Bluetooth ein-/auszuschalten</string>
   <string name="app_ops_toggle_mobile_data">Mobile Daten ein-/ausschalten</string>
@@ -108,27 +108,27 @@
   <string name="app_ops_use_media_volume">die Medienlautstärke zu ändern</string>
   <string name="app_ops_use_notification_volume">die Benachrichtigungslautstärke zu ändern</string>
   <string name="app_ops_use_ring_volume">die Klingeltonlautstärke zu ändern</string>
-  <string name="app_ops_use_vibrate">den Vibrationsalarm zu steuern</string>
+  <string name="app_ops_use_vibrate">Vibrationsalarm verwenden</string>
   <string name="app_ops_use_voice_volume">die Sprachlautstärke zu ändern</string>
   <string name="app_ops_write_mms">eine MMS zu schreiben</string>
   <string name="app_ops_write_sms">eine SMS zu schreiben</string>
   <string name="app_ops_use_fingerprint">den Fingerabdruck zu nutzen</string>
   <string name="app_ops_add_voicemail">eine Sprachnachricht hinzuzufügen</string>
   <string name="app_ops_read_phone_state">auf Telefon-Status zuzugreifen</string>
-  <string name="app_ops_scan_wifi">WLAN-Netzwerke zu scannen</string>
-  <string name="app_ops_change_wallpaper">Hintergrundbild zu ändern</string>
+  <string name="app_ops_scan_wifi">WLAN-Netzwerke suchen</string>
+  <string name="app_ops_change_wallpaper">Hintergrundbild ändern</string>
   <string name="app_ops_assist_structure">Unterstützungsstruktur zu verwenden</string>
   <string name="app_ops_assist_screenshot">Bildschirmfoto aufzunehmen</string>
-  <string name="app_ops_use_body_sensors">Körpersensoren zu verwenden</string>
-  <string name="app_ops_read_cell_broadcasts">Cell-Broadcasts zu lesen</string>
-  <string name="app_ops_mock_location">Ihren Standort zu simulieren</string>
-  <string name="app_ops_read_external_storage">externen Speicher zu lesen</string>
-  <string name="app_ops_write_external_storage">externen Speicher zu beschreiben</string>
-  <string name="app_ops_turn_on_screen">den Bildschirm einzuschalten</string>
-  <string name="app_ops_get_accounts">Geräte-Konten abzurufen</string>
-  <string name="app_ops_run_in_background">im Hintergrund ausgeführt zu werden</string>
+  <string name="app_ops_use_body_sensors">Körpersensoren verwenden</string>
+  <string name="app_ops_read_cell_broadcasts">Cell Broadcast-Nachrichten lesen</string>
+  <string name="app_ops_mock_location">Ihren Standort simulieren</string>
+  <string name="app_ops_read_external_storage">externen Speicher lesen</string>
+  <string name="app_ops_write_external_storage">externen Speicher beschreiben</string>
+  <string name="app_ops_turn_on_screen">Bildschirm einschalten</string>
+  <string name="app_ops_get_accounts">Geräte-Konten abrufen</string>
+  <string name="app_ops_run_in_background">im Hintergrund ausführen</string>
   <string name="app_ops_wifi_change">WLAN-Status zu ändern</string>
-  <string name="app_ops_su">Root-Zugriff zu erhalten</string>
+  <string name="app_ops_su">Root-Zugriff erhalten</string>
   <!-- Protected Apps Notification -->
   <string name="notify_package_component_protected_title">Start der Aktivität blockiert</string>
   <string name="notify_package_component_protected_text"><xliff:g id="app_name">%1$s</xliff:g> ist vom Starten abgehalten worden. Tippen Sie, um sich zu authentifizieren und die App zu starten.</string>
@@ -140,7 +140,7 @@
   <string name="singlehandmode_click_hint_message">Tippen Sie in den freien Bereich, um den Einhandmodus zu beenden</string>
   <!-- Strings for tethered notification -->
   <!-- Shown when the device is tethered -->
-  <string name="tethered_notification_no_device_message">Kein verbundenes Gerät</string>
+  <string name="tethered_notification_no_device_message">Kein Gerät verbunden</string>
   <string name="tethered_notification_one_device_message"><xliff:g id="count">%1$s</xliff:g> verbundenes Gerät</string>
   <string name="tethered_notification_multi_device_message"><xliff:g id="count">%1$s</xliff:g> verbundene Geräte</string>
 </resources>

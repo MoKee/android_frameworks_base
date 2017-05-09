@@ -22,5 +22,21 @@
   <!-- Screenshot QS Tile -->
   <string name="quick_settings_screenshot_label">Kuvakaappaus</string>
   <!-- Compass QS Tile -->
+  <string name="quick_settings_compass_label">Kompassi</string>
+  <string name="quick_settings_compass_init">Alustetaan\u2026</string>
+  <string name="accessibility_quick_settings_compass_off">Kompassi pois.</string>
+  <string name="accessibility_quick_settings_compass_on">Kompassi päällä.</string>
+  <string name="accessibility_quick_settings_compass_changed_off">Kompassi pois päältä.</string>
+  <string name="accessibility_quick_settings_compass_changed_on">Kompassi kytketty päälle.</string>
+  <string name="quick_settings_compass_N">N</string>
+  <string name="quick_settings_compass_NE">NE</string>
+  <string name="quick_settings_compass_E">E</string>
+  <string name="quick_settings_compass_SE">SE</string>
+  <string name="quick_settings_compass_S">S</string>
+  <string name="quick_settings_compass_SW">SW</string>
+  <string name="quick_settings_compass_W">W</string>
+  <string name="quick_settings_compass_NW">NW</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+  <string name="keyguard_indication_dash_charging_time">Ladataan (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> kunnes täynnä</string>
+  <string name="keyguard_plugged_in_dash_charging">Dash-lataus</string>
 </resources>
