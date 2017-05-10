@@ -22,5 +22,6 @@
   <!-- Screenshot QS Tile -->
   <string name="quick_settings_screenshot_label">Знімок екрану</string>
   <!-- Compass QS Tile -->
+  <string name="quick_settings_compass_label">Компас</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
 </resources>

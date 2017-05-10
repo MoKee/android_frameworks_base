@@ -22,5 +22,21 @@
   <!-- Screenshot QS Tile -->
   <string name="quick_settings_screenshot_label">Snímka obrazovky</string>
   <!-- Compass QS Tile -->
+  <string name="quick_settings_compass_label">Kompas</string>
+  <string name="quick_settings_compass_init">Inicializácia\u2026</string>
+  <string name="accessibility_quick_settings_compass_off">Kompas vyputý.</string>
+  <string name="accessibility_quick_settings_compass_on">Kompas zapnutý.</string>
+  <string name="accessibility_quick_settings_compass_changed_off">Kompas je vypnutý.</string>
+  <string name="accessibility_quick_settings_compass_changed_on">Kompas je zapnutý.</string>
+  <string name="quick_settings_compass_N">S</string>
+  <string name="quick_settings_compass_NE">SV</string>
+  <string name="quick_settings_compass_E">V</string>
+  <string name="quick_settings_compass_SE">JV</string>
+  <string name="quick_settings_compass_S">J</string>
+  <string name="quick_settings_compass_SW">JZ</string>
+  <string name="quick_settings_compass_W">Z</string>
+  <string name="quick_settings_compass_NW">SZ</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+  <string name="keyguard_indication_dash_charging_time">Rýchle nabíjanie (úplne nabité za <xliff:g id="4 hours and 2 minutes">%s</xliff:g>)</string>
+  <string name="keyguard_plugged_in_dash_charging">Rýchle nabíjanie</string>
 </resources>
