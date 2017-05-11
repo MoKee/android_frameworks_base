@@ -22,5 +22,18 @@
   <!-- Screenshot QS Tile -->
   <string name="quick_settings_screenshot_label">Posnetek zaslona</string>
   <!-- Compass QS Tile -->
+  <string name="quick_settings_compass_label">Kompas</string>
+  <string name="accessibility_quick_settings_compass_off">Kompas izklopljen.</string>
+  <string name="accessibility_quick_settings_compass_on">Kompas vklopljen.</string>
+  <string name="accessibility_quick_settings_compass_changed_off">Kompas je izklopljen.</string>
+  <string name="accessibility_quick_settings_compass_changed_on">Kompas je vklopljen.</string>
+  <string name="quick_settings_compass_N">S</string>
+  <string name="quick_settings_compass_NE">SV</string>
+  <string name="quick_settings_compass_E">V</string>
+  <string name="quick_settings_compass_SE">JV</string>
+  <string name="quick_settings_compass_S">J</string>
+  <string name="quick_settings_compass_SW">JZ</string>
+  <string name="quick_settings_compass_W">Z</string>
+  <string name="quick_settings_compass_NW">SZ</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
 </resources>
