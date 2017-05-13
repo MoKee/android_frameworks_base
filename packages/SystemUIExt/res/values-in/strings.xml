@@ -22,5 +22,21 @@
   <!-- Screenshot QS Tile -->
   <string name="quick_settings_screenshot_label">Tangkap Layar</string>
   <!-- Compass QS Tile -->
+  <string name="quick_settings_compass_label">Kompas</string>
+  <string name="quick_settings_compass_init">Inisialisasi\u2026</string>
+  <string name="accessibility_quick_settings_compass_off">Kompas mati.</string>
+  <string name="accessibility_quick_settings_compass_on">Kompas hidup.</string>
+  <string name="accessibility_quick_settings_compass_changed_off">Kompas dimatikan.</string>
+  <string name="accessibility_quick_settings_compass_changed_on">Kompas dihidupkan.</string>
+  <string name="quick_settings_compass_N">U</string>
+  <string name="quick_settings_compass_NE">TL</string>
+  <string name="quick_settings_compass_E">T</string>
+  <string name="quick_settings_compass_SE">TG</string>
+  <string name="quick_settings_compass_S">S</string>
+  <string name="quick_settings_compass_SW">BD</string>
+  <string name="quick_settings_compass_W">B</string>
+  <string name="quick_settings_compass_NW">BL</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+  <string name="keyguard_indication_dash_charging_time">Pengisian Cepat (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> Sampai Penuh)</string>
+  <string name="keyguard_plugged_in_dash_charging">Pengisian Cepat</string>
 </resources>
