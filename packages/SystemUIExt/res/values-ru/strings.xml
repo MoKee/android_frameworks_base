@@ -22,5 +22,21 @@
   <!-- Screenshot QS Tile -->
   <string name="quick_settings_screenshot_label">Снимок экрана</string>
   <!-- Compass QS Tile -->
+  <string name="quick_settings_compass_label">Компас</string>
+  <string name="quick_settings_compass_init">Инициализация</string>
+  <string name="accessibility_quick_settings_compass_off">Компас выкл.</string>
+  <string name="accessibility_quick_settings_compass_on">Включить компас.</string>
+  <string name="accessibility_quick_settings_compass_changed_off">Компас выключен.</string>
+  <string name="accessibility_quick_settings_compass_changed_on">Компас включен.</string>
+  <string name="quick_settings_compass_N">С</string>
+  <string name="quick_settings_compass_NE">СВ</string>
+  <string name="quick_settings_compass_E">В</string>
+  <string name="quick_settings_compass_SE">ЮВ</string>
+  <string name="quick_settings_compass_S">Ю</string>
+  <string name="quick_settings_compass_SW">ЮЗ</string>
+  <string name="quick_settings_compass_W">З</string>
+  <string name="quick_settings_compass_NW">СЗ</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+  <string name="keyguard_indication_dash_charging_time">Зарядка (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s </xliff:g> до полной)</string>
+  <string name="keyguard_plugged_in_dash_charging">Зарядка</string>
 </resources>

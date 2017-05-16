@@ -16,7 +16,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
+  <string name="edit">Dəyiş</string>
   <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
+  <string name="mk_reboot_to_update_title">MoKee sistem təzələməsi</string>
 </resources>

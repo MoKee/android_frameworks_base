@@ -17,8 +17,19 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- su icon switch -->
   <!-- recent ram info -->
+  <string name="recents_free_ram">空きメモリ: %1$d MB</string>
   <!-- Screenshot QS Tile -->
   <string name="quick_settings_screenshot_label">スクリーンショット</string>
   <!-- Compass QS Tile -->
+  <string name="quick_settings_compass_N">北</string>
+  <string name="quick_settings_compass_NE">北東</string>
+  <string name="quick_settings_compass_E">東</string>
+  <string name="quick_settings_compass_SE">南東</string>
+  <string name="quick_settings_compass_S">南</string>
+  <string name="quick_settings_compass_SW">南西</string>
+  <string name="quick_settings_compass_W">西</string>
+  <string name="quick_settings_compass_NW">北西</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+  <string name="keyguard_indication_dash_charging_time">充電中（フル充電まで<xliff:g id="Charging_TIME_LEFT">%s</xliff:g>）</string>
+  <string name="keyguard_plugged_in_dash_charging">充電中</string>
 </resources>
