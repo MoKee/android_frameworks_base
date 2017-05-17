@@ -22,5 +22,21 @@
   <!-- Screenshot QS Tile -->
   <string name="quick_settings_screenshot_label">Captura de tela</string>
   <!-- Compass QS Tile -->
+  <string name="quick_settings_compass_label">Bússola</string>
+  <string name="quick_settings_compass_init">Inicializando\u2026</string>
+  <string name="accessibility_quick_settings_compass_off">Bússola desligada.</string>
+  <string name="accessibility_quick_settings_compass_on">Bússola ligada.</string>
+  <string name="accessibility_quick_settings_compass_changed_off">A bússola foi desligada.</string>
+  <string name="accessibility_quick_settings_compass_changed_on">A bússola foi ligada.</string>
+  <string name="quick_settings_compass_N">N</string>
+  <string name="quick_settings_compass_NE">NE</string>
+  <string name="quick_settings_compass_E">E</string>
+  <string name="quick_settings_compass_SE">SE</string>
+  <string name="quick_settings_compass_S">S</string>
+  <string name="quick_settings_compass_SW">SO</string>
+  <string name="quick_settings_compass_W">O</string>
+  <string name="quick_settings_compass_NW">NO</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+  <string name="keyguard_indication_dash_charging_time">Carregando lentamente (<xliff:g id="tempo_restante_de_carregamento">%s</xliff:g> para conclusão)</string>
+  <string name="keyguard_plugged_in_dash_charging">Carregando Lentamente</string>
 </resources>

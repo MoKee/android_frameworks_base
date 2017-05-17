@@ -20,7 +20,7 @@
   <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <string name="permlab_modifyOverlays">modificar as sobreposições de tema</string>
   <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permdesc_modifyOverlays">Permite o aplicativo fazer modificações de sobreposições de tema usando OverlayManagerService</string>
+  <string name="permdesc_modifyOverlays">Permite o aplicativo fazer modificações de sobreposições de tema usando o Serviço de Gestão de Sobreposição</string>
   <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
-  <string name="mk_reboot_to_update_title">Atualização de sistema da Mokee</string>
+  <string name="mk_reboot_to_update_title">Atualização do sistema Mokee</string>
 </resources>
