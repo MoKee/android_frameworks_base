@@ -119,14 +119,20 @@
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
   <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_location_battery_saving">Определение местоположения: режим экономии энергии.</string>
   <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_location_gps_only">Определение местоположения: только GPS.</string>
   <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_location_high_accuracy">Определение местоположения: режим высокой точности.</string>
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_battery_saving_label">Энергосебережение</string>
+  <string name="quick_settings_location_battery_saving_label_twoline">Экономия\nэнергии</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_gps_only_label">Только GPS</string>
   <string name="quick_settings_location_gps_only_label_twoline">Только GPS</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_high_accuracy_label">Высокая точность</string>
+  <string name="quick_settings_location_high_accuracy_label_twoline">Высокая\nточность</string>
   <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_detail_title">Размещение</string>
   <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
@@ -138,6 +144,8 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">Только устройство</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">Использовать GPS, Wi\u2011Fi, Bluetooth или мобильную сеть для определения местоположения </string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
+  <string name="quick_settings_location_detail_mode_sensors_only_description">Использовать GPS для определения вашего местоположения</string>
 </resources>
