@@ -74,6 +74,7 @@
   <!-- Play queue -->
   <string name="play_queue_extension">Zobrazit frontu přehrávání</string>
   <!-- Weather string format in keyguard -->
+  <string name="keyguard_status_view_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="accessibility_dpad_left">Kurzor doleva</string>
   <string name="accessibility_dpad_right">Kurzor doprava</string>
   <!-- NavBar Tuner -->
@@ -89,6 +90,7 @@
     <item quantity="other">%1$d klientů</item>
   </plurals>
   <!-- Weather string format in expanded statusbar header -->
+  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
     <item>Hovor</item>
@@ -103,7 +105,7 @@
     <!-- STREAM_ALARM -->
     <item>Oznámení</item>
     <!-- STREAM_NOTIFICATION -->
-    <item>Zařízení Bluetooth</item>
+    <item>Bluetooth</item>
     <!-- STREAM_BLUETOOTH_SCO -->
     <item></item>
     <!-- STREAM_SYSTEM_ENFORCED -->
@@ -119,22 +121,22 @@
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
   <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_battery_saving">Hlášení polohy: úspora baterie.</string>
+  <string name="accessibility_quick_settings_location_battery_saving">Zjištění polohy: úsporný režim.</string>
   <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_gps_only">Hlášení polohy: pouze GPS.</string>
+  <string name="accessibility_quick_settings_location_gps_only">Zjištění polohy: pouze GPS.</string>
   <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_high_accuracy">Hlášení polohy: vysoká přesnost.</string>
+  <string name="accessibility_quick_settings_location_high_accuracy">Zjištění polohy: vysoká přesnost.</string>
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_battery_saving_label">Úspora baterie</string>
-  <string name="quick_settings_location_battery_saving_label_twoline">Úspora baterie</string>
+  <string name="quick_settings_location_battery_saving_label_twoline">Úspora\nbaterie</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_gps_only_label">Pouze GPS</string>
   <string name="quick_settings_location_gps_only_label_twoline">Pouze GPS</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">Vysoká přesnost</string>
-  <string name="quick_settings_location_high_accuracy_label_twoline">Vysoká přesnost</string>
+  <string name="quick_settings_location_high_accuracy_label_twoline">Vysoká\npřesnost</string>
   <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_detail_title">Místo</string>
+  <string name="quick_settings_location_detail_title">Poloha</string>
   <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_detail_menu_title">Zvolte režim:</string>
   <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
@@ -144,9 +146,9 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">Pouze zařízení</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-  <string name="quick_settings_location_detail_mode_high_accuracy_description">K určování polohy používat GPS, Wi-Fi, Bluetooth nebo mobilní sítě </string>
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">K určování polohy používat GPS, Wi\u2011Fi, Bluetooth nebo mobilní sítě</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
-  <string name="quick_settings_location_detail_mode_battery_saving_description">K určování polohy používat Wi-Fi, Bluetooth nebo mobilní sítě</string>
+  <string name="quick_settings_location_detail_mode_battery_saving_description">K určování polohy používat Wi\u2011Fi, Bluetooth nebo mobilní sítě</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_description">K určování polohy používat GPS</string>
 </resources>

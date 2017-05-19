@@ -27,7 +27,6 @@
   <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <!-- Strings for lockscreen shortcut hints -->
-  <string name="lockscreen_default_target">Default</string>
   <!-- Play queue -->
   <!-- Weather string format in keyguard -->
   <!-- NavBar Tuner -->

@@ -25,7 +25,7 @@
   <string name="led_notification_title">Paramètres du voyant</string>
   <string name="led_notification_text">LED activée par les paramètres</string>
   <!-- Notification which notifies user flashlight is enabled -->
-  <string name="quick_settings_tile_flashlight_not_title">Lampe de poche activée</string>
+  <string name="quick_settings_tile_flashlight_not_title">Lampe de poche allumée</string>
   <string name="quick_settings_tile_flashlight_not_summary">Toucher pour éteindre</string>
   <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
   <string name="cm_power_notification_controls_description">Avec le contrôle supérieur des notifications, vous pouvez donner une importance de 0 à 6 aux notifications d\'une appli.
@@ -75,6 +75,7 @@
   <!-- Play queue -->
   <string name="play_queue_extension">Voir la file d\'attente de lecture</string>
   <!-- Weather string format in keyguard -->
+  <string name="keyguard_status_view_weather_format"><xliff:g id="temp">%1$s</xliff:g> <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="accessibility_dpad_left">Curseur gauche</string>
   <string name="accessibility_dpad_right">Curseur droit</string>
   <!-- NavBar Tuner -->
@@ -89,6 +90,7 @@
     <item quantity="other">%1$d clients</item>
   </plurals>
   <!-- Weather string format in expanded statusbar header -->
+  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
     <item>Appel</item>
@@ -121,32 +123,23 @@
   <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_quick_settings_location_battery_saving">Localisation : mode économie de batterie.</string>
   <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_gps_only">Mode de localisation: GPS de l\'appareil uniquement.</string>
+  <string name="accessibility_quick_settings_location_gps_only">Localisation : mode appareil uniquement.</string>
   <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_quick_settings_location_high_accuracy">Localisation : mode haute précision.</string>
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_battery_saving_label">Économie d\'énergie</string>
-  <string name="quick_settings_location_battery_saving_label_twoline">Economie de\nla batterie</string>
+  <string name="quick_settings_location_battery_saving_label">Économie de batterie</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_gps_only_label">GPS seulement</string>
-  <string name="quick_settings_location_gps_only_label_twoline">GPS seulement</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">Haute précision</string>
-  <string name="quick_settings_location_high_accuracy_label_twoline">Haute\nprécision</string>
   <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_detail_title">Emplacement</string>
   <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_detail_menu_title">Sélection du mode :</string>
   <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
   <string name="quick_settings_location_detail_mode_high_accuracy_title">Haute précision</string>
   <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->
-  <string name="quick_settings_location_detail_mode_battery_saving_title">Économie d\'énergie</string>
+  <string name="quick_settings_location_detail_mode_battery_saving_title">Économie de batterie</string>
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">Appareil uniquement</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-  <string name="quick_settings_location_detail_mode_high_accuracy_description">Utiliser le GPS, le Wi\u2011Fi, le Bluetooth ou les réseaux mobiles pour déterminer la localisation</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
-  <string name="quick_settings_location_detail_mode_battery_saving_description">Utiliser le Wi\u2011Fi, le Bluetooth ou les réseaux mobiles pour déterminer la localisation</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
-  <string name="quick_settings_location_detail_mode_sensors_only_description">Utiliser le GPS pour déterminer votre localisation</string>
 </resources>
