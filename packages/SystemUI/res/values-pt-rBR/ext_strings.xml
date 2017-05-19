@@ -28,7 +28,7 @@
   <string name="quick_settings_tile_flashlight_not_title">A lanterna está ligada</string>
   <string name="quick_settings_tile_flashlight_not_summary">Toque para desligar</string>
   <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
-  <string name="cm_power_notification_controls_description">Com os controles poderosos de notificação, você pode definir um nível de importância de 0 a 6 para as notificações do aplicativo.
+  <string name="cm_power_notification_controls_description">Com os controles de notificação de energia, você pode definir um nível de importância de 0 a 6 para as notificações do aplicativo.
         \n\n<b>Nível 6</b>
         \n- Mostrar na parte superior da lista de notificações
         \n- Permitir interrupção em tela cheia
@@ -63,7 +63,7 @@
   <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
   <string name="notification_importance_very_low">Sem interrupção em tela cheia, espiar, som, ou vibração. Ocultar da tela de bloqueio.</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
-  <string name="screen_pinning_description_no_navbar">Isto a manterá na tela até ser desafixada. Toque e segure o botão Voltar para desafixar.</string>
+  <string name="screen_pinning_description_no_navbar">Irá ficar visível até que o solte. Toque e segure o botão Anterior para soltar.</string>
   <!-- Strings for lockscreen shortcut hints -->
   <string name="left_shortcut_hint">Deslize para a direita para %1$s</string>
   <string name="right_shortcut_hint">Deslize para a esquerda para %1$s</string>
@@ -75,7 +75,6 @@
   <!-- Play queue -->
   <string name="play_queue_extension">Mostrar fila de reprodução</string>
   <!-- Weather string format in keyguard -->
-  <string name="keyguard_status_view_weather_format"><xliff:g id="tempo">%1$s</xliff:g> - <xliff:g id="condição">%2$s</xliff:g></string>
   <string name="accessibility_dpad_left">Cursor à esquerda</string>
   <string name="accessibility_dpad_right">Cursor à direita</string>
   <!-- NavBar Tuner -->
@@ -90,7 +89,6 @@
     <item quantity="other">%1$d clientes</item>
   </plurals>
   <!-- Weather string format in expanded statusbar header -->
-  <string name="status_bar_expanded_header_weather_format"><xliff:g id="tempo">%1$s</xliff:g> - <xliff:g id="condição">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
     <item>Chamada</item>
@@ -128,12 +126,17 @@
   <string name="accessibility_quick_settings_location_high_accuracy">Relatório de localização: modo de alta precisão.</string>
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_battery_saving_label">Economia de bateria</string>
+  <string name="quick_settings_location_battery_saving_label_twoline">Economia de\n energia</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_gps_only_label">Somente GPS</string>
+  <string name="quick_settings_location_gps_only_label_twoline">Somente GPS</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">Alta precisão</string>
+  <string name="quick_settings_location_high_accuracy_label_twoline">Alta\nprecisão</string>
   <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_detail_title">Localização</string>
   <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_detail_menu_title">Selecione o modo:</string>
   <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
   <string name="quick_settings_location_detail_mode_high_accuracy_title">Alta precisão</string>
   <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->
@@ -141,6 +144,9 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">Somente no dispositivo</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">Use GPS, Wi\u2011Fi, Bluetooth, ou rede celular para determinar localização </string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
+  <string name="quick_settings_location_detail_mode_battery_saving_description">Usar Wi\u2011Fi, Bluetooth, ou redes celulares para determinar localização</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
+  <string name="quick_settings_location_detail_mode_sensors_only_description">Usar somente o GPS para determinar sua localização</string>
 </resources>

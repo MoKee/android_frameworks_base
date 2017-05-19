@@ -30,6 +30,7 @@
   <!-- Strings for lockscreen shortcut hints -->
   <string name="left_shortcut_hint">%1$s üçün sağa sürüşdürün</string>
   <string name="right_shortcut_hint">%1$s üçün sola sürüşdürün</string>
+  <string name="lockscreen_default_target">İlkin</string>
   <string name="select_application">Tətbiqetmə seç</string>
   <string name="lockscreen_choose_action_title">Hərəkət seç</string>
   <string name="lockscreen_none_target">Yoxdur</string>
@@ -44,7 +45,6 @@
   <!-- Path data for circle battery -->
   <!-- Wi-Fi hotspot label when enabled -->
   <!-- Weather string format in expanded statusbar header -->
-  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <!-- Content description of the data connection type HSPA+ for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <!-- Text to use when the number in a notification info is too large

@@ -75,7 +75,6 @@
   <!-- Play queue -->
   <string name="play_queue_extension">Oynatma kuyruğunu göster</string>
   <!-- Weather string format in keyguard -->
-  <string name="keyguard_status_view_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="accessibility_dpad_left">Sol imleç</string>
   <string name="accessibility_dpad_right">Sağ imleç</string>
   <!-- NavBar Tuner -->
@@ -90,7 +89,6 @@
     <item quantity="other">%1$d istemci</item>
   </plurals>
   <!-- Weather string format in expanded statusbar header -->
-  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
     <item>Çağrı</item>
@@ -115,7 +113,6 @@
     <!-- STREAM_TTS -->
   </string-array>
   <!-- Content description of the data connection type HSPA+ for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_data_connection_hspap">HSPA+</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.

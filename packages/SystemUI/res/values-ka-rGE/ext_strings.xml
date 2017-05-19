@@ -27,6 +27,7 @@
   <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <!-- Strings for lockscreen shortcut hints -->
+  <string name="lockscreen_none_target">არც ერთი</string>
   <!-- Play queue -->
   <!-- Weather string format in keyguard -->
   <!-- NavBar Tuner -->

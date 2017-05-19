@@ -22,7 +22,7 @@
   <!-- Content description of the light brightness slider (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_notification_brightness">Ajuste de brillo</string>
   <!-- Lights settings, LED notification -->
-  <string name="led_notification_title">Ajustes de luz de notificación</string>
+  <string name="led_notification_title">Ajustes de led de notificación</string>
   <string name="led_notification_text">Luz LED activada por ajustes</string>
   <!-- Notification which notifies user flashlight is enabled -->
   <string name="quick_settings_tile_flashlight_not_title">La linterna está encendida</string>
@@ -61,25 +61,24 @@
   <!-- Notification importance level title-->
   <string name="importance_level_title">Importancia: Nivel %1$d</string>
   <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
-  <string name="notification_importance_very_low">Sin interrupción de pantalla completa, vistazo, sonido o vibración. Ocultado en la pantalla de bloqueo.</string>
+  <string name="notification_importance_very_low">Sin interrupción en pantalla completa, vistazo, sonido o vibración. Oculto en la pantalla de bloqueo.</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <string name="screen_pinning_description_no_navbar">Esto fija la pantalla en esta vista hasta que se desancla. Mantén pulsado el botón Atrás para desanclar.</string>
   <!-- Strings for lockscreen shortcut hints -->
   <string name="left_shortcut_hint">Deslizar a la derecha para %1$s</string>
   <string name="right_shortcut_hint">Deslizar a la izquierda para %1$s</string>
   <string name="lockscreen_message">Pulsa el icono de la izquierda o derecha para reasignar un atajo a la pantalla de bloqueo.</string>
-  <string name="lockscreen_default_target">Predefinido</string>
-  <string name="select_application">Selecciona una aplicación</string>
+  <string name="lockscreen_default_target">Por defecto</string>
+  <string name="select_application">Seleccionar una aplicación</string>
   <string name="lockscreen_choose_action_title">Elegir acción</string>
-  <string name="lockscreen_none_target">Ninguna</string>
+  <string name="lockscreen_none_target">Ninguno</string>
   <!-- Play queue -->
   <string name="play_queue_extension">Mostrar la cola de reproducción</string>
   <!-- Weather string format in keyguard -->
-  <string name="keyguard_status_view_weather_format"><xliff:g id="temp">%1$s</xliff:g> <xliff:g id="condition">%2$s</xliff:g></string>
-  <string name="accessibility_dpad_left">Cursor izquierda</string>
-  <string name="accessibility_dpad_right">Cursor derecha</string>
+  <string name="accessibility_dpad_left">Cursor izquierdo</string>
+  <string name="accessibility_dpad_right">Cursor derecho</string>
   <!-- NavBar Tuner -->
-  <string name="menu_ime_always_show">Menú / Conmutador de teclado (mostrar siempre)</string>
+  <string name="menu_ime_always_show">Menú / Selector de teclado (mostrar siempre)</string>
   <string name="search">Buscar</string>
   <!-- Path data for portrait battery -->
   <!-- Path data for landscape battery -->
@@ -90,14 +89,13 @@
     <item quantity="other">%1$d clientes</item>
   </plurals>
   <!-- Weather string format in expanded statusbar header -->
-  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
     <item>Llamada</item>
     <!-- STREAM_VOICE_CALL -->
     <item>Sistema</item>
     <!-- STREAM_SYSTEM -->
-    <item>Sonido</item>
+    <item>Timbre</item>
     <!-- STREAM_RING -->
     <item>Multimedia</item>
     <!-- STREAM_MUSIC -->
@@ -121,11 +119,11 @@
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
   <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_battery_saving">Informes de ubicación: modo de ahorro de batería.</string>
+  <string name="accessibility_quick_settings_location_battery_saving">Reporte de ubicación: modo ahorro de batería.</string>
   <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_gps_only">Informes de ubicación: modo de solo sensores.</string>
+  <string name="accessibility_quick_settings_location_gps_only">Reporte de ubicación: modo sólo dispositivo.</string>
   <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_high_accuracy">Informes de ubicación: modo de alta precisión.</string>
+  <string name="accessibility_quick_settings_location_high_accuracy">Reporte de ubicación: modo alta precisión.</string>
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_battery_saving_label">Ahorro de batería</string>
   <string name="quick_settings_location_battery_saving_label_twoline">Ahorro\nde batería</string>
@@ -144,11 +142,11 @@
   <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->
   <string name="quick_settings_location_detail_mode_battery_saving_title">Ahorro de batería</string>
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
-  <string name="quick_settings_location_detail_mode_sensors_only_title">Solo dispositivo</string>
+  <string name="quick_settings_location_detail_mode_sensors_only_title">Sólo dispositivo</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-  <string name="quick_settings_location_detail_mode_high_accuracy_description">Usa el GPS, Wi\u2011Fi, Bluetooth o redes móviles para determinar la ubicación </string>
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">Usar GPS, Wi\u2011Fi, Bluetooth o redes móviles para determinar la ubicación </string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
-  <string name="quick_settings_location_detail_mode_battery_saving_description">Usa el Wi\u2011Fi, Bluetooth o redes móviles para determinar la ubicación</string>
+  <string name="quick_settings_location_detail_mode_battery_saving_description">Usar Wi\u2011Fi, Bluetooth o redes móviles para determinar la ubicación</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
-  <string name="quick_settings_location_detail_mode_sensors_only_description">Usa el GPS para determinar la ubicación</string>
+  <string name="quick_settings_location_detail_mode_sensors_only_description">Usar el GPS para determinar la ubicación</string>
 </resources>
