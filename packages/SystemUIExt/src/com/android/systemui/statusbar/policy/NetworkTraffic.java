@@ -61,6 +61,8 @@ public class NetworkTraffic extends TextView {
 
     private static final int KILOBYTE = 1024;
 
+    final Resources resources = getResources();
+
     private static DecimalFormat decimalFormat = new DecimalFormat("##0.#");
     static {
         decimalFormat.setMaximumIntegerDigits(4);
@@ -237,10 +239,7 @@ public class NetworkTraffic extends TextView {
      */
     public NetworkTraffic(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        final Resources resources = getResources();
         mConnectivityService = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        txtSizeSingle = resources.getDimensionPixelSize(R.dimen.net_traffic_single_text_size);
-        txtSizeMulti = resources.getDimensionPixelSize(R.dimen.net_traffic_multi_text_size);
         Handler mHandler = new Handler();
         SettingsObserver settingsObserver = new SettingsObserver(mHandler);
         settingsObserver.observe();
@@ -254,6 +253,7 @@ public class NetworkTraffic extends TextView {
             mAttached = true;
             IntentFilter filter = new IntentFilter();
             filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+            filter.addAction(Intent.ACTION_CONFIGURATION_CHANGED);
             mContext.registerReceiver(mIntentReceiver, filter, null, getHandler());
         }
         updateSettings();
@@ -272,13 +272,15 @@ public class NetworkTraffic extends TextView {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            if (action != null && action.equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
+            if (action != null) {
                 updateSettings();
             }
         }
     };
 
     public void updateSettings() {
+        txtSizeSingle = resources.getDimensionPixelSize(R.dimen.net_traffic_single_text_size);
+        txtSizeMulti = resources.getDimensionPixelSize(R.dimen.net_traffic_multi_text_size);
         mState = MKSettings.System.getIntForUser(mContext.getContentResolver(),
                 MKSettings.System.STATUS_BAR_NETWORK_TRAFFIC_STYLE, 3 , UserHandle.USER_CURRENT);
 
