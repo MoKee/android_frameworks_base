@@ -56,12 +56,12 @@ public class NetworkTraffic extends TextView {
 
     private ConnectivityManager mConnectivityService;
 
+    private final Resources resources = getResources();
+
     public static final int MASK_UP = 0x00000001; // Least valuable bit
     public static final int MASK_DOWN = 0x00000002; // Second least valuable bit
 
     private static final int KILOBYTE = 1024;
-
-    final Resources resources = getResources();
 
     private static DecimalFormat decimalFormat = new DecimalFormat("##0.#");
     static {
