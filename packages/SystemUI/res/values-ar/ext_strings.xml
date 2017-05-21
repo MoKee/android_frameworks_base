@@ -29,6 +29,7 @@
   <string name="quick_settings_tile_flashlight_not_summary">المس لإيقاف التشغيل</string>
   <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
   <!-- Notification importance level title-->
+  <string name="importance_level_title">مستوى: الأهمية %1$d</string>
   <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <string name="screen_pinning_description_no_navbar">ستظل ظاهرة حتى يمكنك إزالتها. المس مع الاستمرار زر العودة لإزالتها.</string>
@@ -46,6 +47,7 @@
   <string name="accessibility_dpad_left">المؤشر إلى اليسار</string>
   <string name="accessibility_dpad_right">المؤشر الى اليمين</string>
   <!-- NavBar Tuner -->
+  <string name="search">بحث</string>
   <!-- Path data for portrait battery -->
   <!-- Path data for landscape battery -->
   <!-- Path data for circle battery -->
@@ -53,7 +55,7 @@
   <!-- Weather string format in expanded statusbar header -->
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
-    <item>Call</item>
+    <item>اتّصل</item>
     <!-- STREAM_VOICE_CALL -->
     <item>System</item>
     <!-- STREAM_SYSTEM -->

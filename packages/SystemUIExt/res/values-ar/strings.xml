@@ -16,9 +16,16 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- su icon switch -->
+  <string name="status_bar_su">مدير الروت</string>
   <!-- recent ram info -->
+  <string name="recents_free_ram">الذاكرة المتبقية: %1$d ميغابايت</string>
   <!-- Screenshot QS Tile -->
   <string name="quick_settings_screenshot_label">لقطة للشاشة</string>
   <!-- Compass QS Tile -->
+  <string name="quick_settings_compass_label">البوصلة</string>
+  <string name="quick_settings_compass_init">تهيئة/u2026</string>
+  <string name="quick_settings_compass_E">E</string>
+  <string name="quick_settings_compass_SE">جنوب. شرقي</string>
+  <string name="quick_settings_compass_S">جنوب</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
 </resources>
