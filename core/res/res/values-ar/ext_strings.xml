@@ -37,10 +37,12 @@
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">التنزيل</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
+  <string name="reboot_soft">إعادة تشغيل سريع</string>
   <!-- Title of dialog to confirm restarting. -->
   <string name="reboot_title">إعادة التشغيل</string>
   <!-- Restart Confirmation Dialog.  When the user chooses to restart the device, there will
          be a confirmation dialog.  This is the message. -->
+  <string name="reboot_confirm" product="tablet">سيتم إعادة تشغيل جهازك اللوحي.</string>
   <string name="reboot_confirm" product="default">سيتم إعادة تشغيل هاتفك.</string>
   <!-- Restart Progress Dialog. This is shown if the user chooses to restart the phone. -->
   <string name="reboot_progress">جارٍ إعادة التشغيل/u2026</string>

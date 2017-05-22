@@ -31,6 +31,7 @@
   <!-- Notification importance level title-->
   <string name="importance_level_title">مستوى: الأهمية %1$d</string>
   <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
+  <string name="notification_importance_very_low">تشغيل الشاشة في الوضع الكامل دون انقطاع ، تطفل، صوت،او اهتزاز. إخفاء من قفل الشاشة.</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <string name="screen_pinning_description_no_navbar">ستظل ظاهرة حتى يمكنك إزالتها. المس مع الاستمرار زر العودة لإزالتها.</string>
   <!-- Strings for lockscreen shortcut hints -->
@@ -63,11 +64,11 @@
     <!-- STREAM_RING -->
     <item>وسائط</item>
     <!-- STREAM_MUSIC -->
-    <item>Alarm</item>
+    <item>المنبّه</item>
     <!-- STREAM_ALARM -->
-    <item>Notification</item>
+    <item>الاشعارات</item>
     <!-- STREAM_NOTIFICATION -->
-    <item>Bluetooth</item>
+    <item>البلوتوث</item>
     <!-- STREAM_BLUETOOTH_SCO -->
     <item></item>
     <!-- STREAM_SYSTEM_ENFORCED -->
@@ -93,6 +94,7 @@
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">دقة عالية</string>
   <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_detail_title">الموقع الجغرافيّ</string>
   <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
   <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
   <string name="quick_settings_location_detail_mode_high_accuracy_title">دقة عالية</string>

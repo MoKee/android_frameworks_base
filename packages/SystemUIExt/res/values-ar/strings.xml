@@ -24,8 +24,15 @@
   <!-- Compass QS Tile -->
   <string name="quick_settings_compass_label">البوصلة</string>
   <string name="quick_settings_compass_init">تهيئة/u2026</string>
+  <string name="accessibility_quick_settings_compass_off">البوصلة لا تعمل.</string>
+  <string name="accessibility_quick_settings_compass_on">البوصلة تعمل.</string>
+  <string name="accessibility_quick_settings_compass_changed_off">إيقاف تشغيل البوصلة.</string>
+  <string name="accessibility_quick_settings_compass_changed_on">تشغيل البوصلة.</string>
+  <string name="quick_settings_compass_N">شمال</string>
+  <string name="quick_settings_compass_NE">الشمال الشرقي</string>
   <string name="quick_settings_compass_E">E</string>
   <string name="quick_settings_compass_SE">جنوب. شرقي</string>
   <string name="quick_settings_compass_S">جنوب</string>
+  <string name="quick_settings_compass_SW">ج. غ</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
 </resources>
