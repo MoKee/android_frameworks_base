@@ -28,6 +28,35 @@
   <string name="quick_settings_tile_flashlight_not_title">ضوء الفلاش مشغل</string>
   <string name="quick_settings_tile_flashlight_not_summary">المس لإيقاف التشغيل</string>
   <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
+  <string name="cm_power_notification_controls_description">مع متحكم الإشعارات، يمكنك ضبط مستوى أهمية الاشعار من 0 - 6 لتطبيق (6 اعلى قيمة اهمية).
+        \n\n<b>المستوى 6</b>
+        \n- الظهور في اعلى قائمة الإشعارات
+        \n- السماح بالتدخل في الشاشة (اضاءة. تنبيه الشاشة)
+        \n- التعليق دومًا في اعلى قائمة الاشعارات
+        \n\n<b>المستوى 5</b>
+        \n- عدم التدخل في الشاشة
+        \n- التعليق دومًا في اعلى قائمة الاشعارات
+        \n\n<b>المستوى 4</b>
+        \n- عدم التدخل في الشاشة (منع اضاءة او تنبيه الشاشة)
+        \n- لايكون في اعلى قائمة الاشعارات
+        \n\n<b>المستوى 3</b>
+        \n- عدم التدخل في الشاشة (منع اضاءة او تنبيه الشاشة)
+        \n- لايكون ابدا في اعلى قائمة الاشعارات
+        \n- ممنوع اصدار صوت أو اهتزاز
+        \n\n<b>المستوى 2</b>
+        \n- عدم التدخل في الشاشة (منع اضاءة او تنبيه الشاشة)
+        \n- لايكون في اعلى قائمة الاشعارات
+        \n- ممنوع اصدار صوت أو اهتزاز
+        \n- الإخفاء من شاشة القفل
+        \n- الظهور في أسفل قائمة الإشعارات
+        \n\n<b>المستوى 1</b>
+        \n- عدم التدخل في الشاشة
+        \n- لايكون في اعلى قائمة الاشعارات
+        \n- ممنوع اصدار صوت أو اهتزاز
+        \n- الإخفاء من شاشة القفل وشريط الحالة
+        \n- الظهور في أسفل قائمة الإشعارات
+        \n\n<b>المستوى 0</b>
+        \n- حظر جميع إشعارات و تنبيهات التطبيق    </string>
   <!-- Notification importance level title-->
   <string name="importance_level_title">مستوى: الأهمية %1$d</string>
   <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
@@ -48,6 +77,7 @@
   <string name="accessibility_dpad_left">المؤشر إلى اليسار</string>
   <string name="accessibility_dpad_right">المؤشر الى اليمين</string>
   <!-- NavBar Tuner -->
+  <string name="menu_ime_always_show">القائمة / مبدل لوحة المفاتيح (اضهار دائمًا)</string>
   <string name="search">بحث</string>
   <!-- Path data for portrait battery -->
   <!-- Path data for landscape battery -->

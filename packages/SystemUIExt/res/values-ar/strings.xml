@@ -34,5 +34,9 @@
   <string name="quick_settings_compass_SE">جنوب. شرقي</string>
   <string name="quick_settings_compass_S">جنوب</string>
   <string name="quick_settings_compass_SW">ج. غ</string>
+  <string name="quick_settings_compass_W">غرب</string>
+  <string name="quick_settings_compass_NW">الشمال الغربي</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+  <string name="keyguard_indication_dash_charging_time">الشحن السريع (<xliff:g id="charging_time_left" example=" اربع ساعات و 2 دقيقة">%s</xliff:g> حتى الإمتلاء)</string>
+  <string name="keyguard_plugged_in_dash_charging">الشحن السريع</string>
 </resources>

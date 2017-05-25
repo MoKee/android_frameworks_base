@@ -22,5 +22,21 @@
   <!-- Screenshot QS Tile -->
   <string name="quick_settings_screenshot_label">Ekran Görüntüsü</string>
   <!-- Compass QS Tile -->
+  <string name="quick_settings_compass_label">Pusula</string>
+  <string name="quick_settings_compass_init">Başlatılıyor/u2026</string>
+  <string name="accessibility_quick_settings_compass_off">Pusula Kapalı.</string>
+  <string name="accessibility_quick_settings_compass_on">Pusula Açık.</string>
+  <string name="accessibility_quick_settings_compass_changed_off">Pusula Kapatıldı.</string>
+  <string name="accessibility_quick_settings_compass_changed_on">Pusula Açıldı.</string>
+  <string name="quick_settings_compass_N">K</string>
+  <string name="quick_settings_compass_NE">KB</string>
+  <string name="quick_settings_compass_E">B</string>
+  <string name="quick_settings_compass_SE">GD</string>
+  <string name="quick_settings_compass_S">G</string>
+  <string name="quick_settings_compass_SW">GB</string>
+  <string name="quick_settings_compass_W">B</string>
+  <string name="quick_settings_compass_NW">KB</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+  <string name="keyguard_indication_dash_charging_time">Dash Şarj Oluyor (tam dolmasına <xliff:g id="charging_time_left" example="4 saat ve 2 dakika">%s</xliff:g> kaldı)</string>
+  <string name="keyguard_plugged_in_dash_charging">Şarj Oluyor</string>
 </resources>

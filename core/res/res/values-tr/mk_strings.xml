@@ -20,7 +20,7 @@
   <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <string name="permlab_modifyOverlays">tema katmanlarını düzenle</string>
   <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permdesc_modifyOverlays">Uygulamanın OverlayManagerServices kullanarak tema katmanlarını değiştirmesine izin verir</string>
+  <string name="permdesc_modifyOverlays">Uygulamanın Oms kullanarak tema katmanlarını değiştirmesine izin verir</string>
   <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
   <string name="mk_reboot_to_update_title">MoKee sistem güncelleme</string>
 </resources>
