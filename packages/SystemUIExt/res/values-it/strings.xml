@@ -37,5 +37,6 @@
   <string name="quick_settings_compass_W">W</string>
   <string name="quick_settings_compass_NW">NW</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+  <string name="keyguard_indication_dash_charging_time">In carica (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> alla fine)</string>
   <string name="keyguard_plugged_in_dash_charging">Ricarica Rapida</string>
 </resources>

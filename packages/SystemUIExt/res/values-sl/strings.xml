@@ -36,4 +36,6 @@
   <string name="quick_settings_compass_W">Z</string>
   <string name="quick_settings_compass_NW">SZ</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+  <string name="keyguard_indication_dash_charging_time">Hitro polnjenje (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s </xliff:g> do napolnjenosti)</string>
+  <string name="keyguard_plugged_in_dash_charging">Hitro polnjenje</string>
 </resources>

@@ -26,7 +26,7 @@
   <!-- label for current user in phone options dialog -->
   <string name="global_action_current_user">Aktuell</string>
   <!-- status message in phone options dialog for screenshot action -->
-  <string name="global_actions_screenshot_status">Drücken Sie lange für einen zugeschnittenen Screenshot</string>
+  <string name="global_actions_screenshot_status">Für zugeschnittenen Screenshot gedrückt halten</string>
   <!-- Restart menu -->
   <!-- Button to restart the phone, within the Restart Options dialog -->
   <string name="reboot_reboot">Neustart</string>
