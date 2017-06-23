@@ -64,9 +64,7 @@
   <string name="notification_importance_very_low">Aucune interruption, notification sonore, vibration, ni d\'aperçu en mode plein écran. Masquée depuis l\'écran de verrouillage.</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <string name="screen_pinning_description_no_navbar">Cela le laisse en vue jusqu\'à ce que vous le détachiez. Appuyez et maintenez le bouton retour pour détacher.</string>
-  <!-- Strings for lockscreen shortcut hints -->
-  <string name="left_shortcut_hint">Balayer à droite pour %1$s</string>
-  <string name="right_shortcut_hint">Balayer à gauche pour %1$s</string>
+  <!-- String for lockscreen shortcut hints -->
   <string name="lockscreen_message">Appuyez sur une icône à gauche ou à droite pour réattribuer un raccourci sur l\'écran de verrouillage.</string>
   <string name="lockscreen_default_target">Par défaut</string>
   <string name="select_application">Sélectionner une application</string>

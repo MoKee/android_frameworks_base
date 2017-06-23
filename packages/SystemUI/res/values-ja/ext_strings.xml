@@ -64,9 +64,7 @@
   <string name="notification_importance_very_low">全画面表示の中断、ポップアップ通知、通知音、バイブレーションが無効になります。ロック画面から非表示になります。</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <string name="screen_pinning_description_no_navbar">固定を解除するまで表示し続けます。固定を解除するには戻るボタンを押し続けます。</string>
-  <!-- Strings for lockscreen shortcut hints -->
-  <string name="left_shortcut_hint">右にスワイプして%1$s</string>
-  <string name="right_shortcut_hint">左にスワイプして%1$s</string>
+  <!-- String for lockscreen shortcut hints -->
   <string name="lockscreen_message">左右のアイコンをタップしてロック画面のショートカットを変更します。</string>
   <string name="lockscreen_default_target">デフォルト</string>
   <string name="select_application">アプリケーションを選択</string>

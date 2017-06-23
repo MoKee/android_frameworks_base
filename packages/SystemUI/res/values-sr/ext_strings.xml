@@ -35,9 +35,7 @@
   <string name="notification_importance_very_low">Без прекида целог екрана, завиривања, звука или вибрације. Сакриј на закључаном екрану.</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <string name="screen_pinning_description_no_navbar">Ово задржава преглед док га не уклониш. Додирни и држи дугме за назад да уклониш.</string>
-  <!-- Strings for lockscreen shortcut hints -->
-  <string name="left_shortcut_hint">Превуци десно за %1$s</string>
-  <string name="right_shortcut_hint">Превуци лево за %1$s</string>
+  <!-- String for lockscreen shortcut hints -->
   <string name="lockscreen_message">Додирни икону лево или десно да доделиш пречицу за закључани екран.</string>
   <string name="lockscreen_default_target">Подразумевано</string>
   <string name="select_application">Изабери апликацију</string>

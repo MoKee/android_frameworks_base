@@ -63,9 +63,7 @@
   <string name="notification_importance_very_low">Nie pokazuj powiadomień na pełnym ekranie (ani ich podglądu) i nie sygnalizuj ich dźwiękiem ani wibracjami. Ukrywaj je na ekranie blokady.</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <string name="screen_pinning_description_no_navbar">Zostaje na widoku do czasu odpięcia. Dotknij i przytrzymaj przycisk Wstecz, aby odpiąć.</string>
-  <!-- Strings for lockscreen shortcut hints -->
-  <string name="left_shortcut_hint">Przesuń palcem w prawo do %1$s</string>
-  <string name="right_shortcut_hint">Przesuń palcem w lewo do %1$s</string>
+  <!-- String for lockscreen shortcut hints -->
   <string name="lockscreen_message">Dotknij ikony po lewej lub prawej, aby przypisać skrót ekranu blokady.</string>
   <string name="lockscreen_default_target">Domyślna</string>
   <string name="select_application">Wybierz aplikację</string>

@@ -64,9 +64,8 @@
   <string name="notification_importance_very_low">不允许全屏时打扰、显示速览、发出声音或振动。在锁屏界面中隐藏。</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <string name="screen_pinning_description_no_navbar">这将会固定显示此屏幕，直到您取消固定为止。触摸并按住返回键即可取消固定。</string>
-  <!-- Strings for lockscreen shortcut hints -->
-  <string name="left_shortcut_hint">向右滑动以%1$s</string>
-  <string name="right_shortcut_hint">向左滑动以%1$s</string>
+  <!-- String for lockscreen shortcut hints -->
+  <string name="shortcut_hint">滑动图标即可%1$s</string>
   <string name="lockscreen_message">点击左边或右边的图标来重新分配锁屏快捷方式</string>
   <string name="lockscreen_default_target">默认</string>
   <string name="select_application">选择应用</string>
