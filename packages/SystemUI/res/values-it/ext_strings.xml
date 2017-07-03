@@ -64,6 +64,7 @@
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <string name="screen_pinning_description_no_navbar">Tienilo in vista fino a quando non sblocchi. Tieni premuto il tasto Indietro per sbloccare.</string>
   <!-- String for lockscreen shortcut hints -->
+  <string name="shortcut_hint">Scorri dall\'icona per %1$s</string>
   <string name="lockscreen_message">Tocca un\'icona per riassegnare un collegamento nel blocco schermo.</string>
   <string name="lockscreen_default_target">Predefinito</string>
   <string name="select_application">Seleziona applicazione</string>
