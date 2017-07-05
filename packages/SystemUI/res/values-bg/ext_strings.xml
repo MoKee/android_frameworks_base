@@ -4,6 +4,7 @@
 /**
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
+ * Copyright (c) 2017, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -145,4 +146,19 @@
   <string name="quick_settings_location_detail_mode_battery_saving_description">Използвай Wi\u2011Fi, Bluetooth или клетъчни мрежи за определяне на местоположението</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_description">Използвай GPS за определяне на местоположението</string>
+  <!-- Adb over network QS tile -->
+  <string name="quick_settings_network_adb_label">ADB чрез мрежата</string>
+  <!-- Ambient display QS tile -->
+  <string name="quick_settings_ambient_display_label">Активнен дисплей</string>
+  <!-- Caffeine -->
+  <string name="quick_settings_caffeine_label">Кофеин</string>
+  <!-- Heads up QS tile -->
+  <string name="quick_settings_heads_up_label">Изскачащи известия</string>
+  <!-- Sync QS tile -->
+  <string name="quick_settings_sync_label">Синхронизирай</string>
+  <!-- USB tethering QS tile -->
+  <string name="quick_settings_usb_tether_label">Тетъринг през USB</string>
+  <!-- Volume panel QS tile -->
+  <string name="quick_settings_sync_label">Синхронизирай</string>
+  <string name="quick_settings_volume_panel_label">Звуков панел</string>
 </resources>

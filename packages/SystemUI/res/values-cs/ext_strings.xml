@@ -4,6 +4,7 @@
 /**
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
+ * Copyright (c) 2017, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -148,4 +149,33 @@
   <string name="quick_settings_location_detail_mode_battery_saving_description">K určování polohy používat Wi-Fi, Bluetooth nebo mobilní sítě</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_description">K určování polohy používat GPS</string>
+  <!-- Adb over network QS tile -->
+  <string name="quick_settings_network_adb_label">ADB přes síť</string>
+  <!-- Ambient display QS tile -->
+  <string name="quick_settings_ambient_display_label">Ambientní displej</string>
+  <string name="accessibility_quick_settings_ambient_display_off">Ambientní displej vypnut.</string>
+  <string name="accessibility_quick_settings_ambient_display_on">Ambientní displej zapnut.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_off">Ambientní displej vypnut.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_on">Ambientní displej zapnut.</string>
+  <!-- Caffeine -->
+  <string name="quick_settings_caffeine_label">Čas na kávu</string>
+  <string name="accessibility_quick_settings_caffeine_off">Kofein vyp.</string>
+  <string name="accessibility_quick_settings_caffeine_on">Kofein zap.</string>
+  <!-- Heads up QS tile -->
+  <string name="quick_settings_heads_up_label">Plovoucí upozornění</string>
+  <string name="accessibility_quick_settings_heads_up_off">Plovoucí upozornění vypnuto.</string>
+  <string name="accessibility_quick_settings_heads_up_on">Plovoucí upozornění zapnuto.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_off">Plovoucí upozornění bylo vypnuto.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_on">Plovoucí upozornění bylo zapnuto.</string>
+  <!-- Sync QS tile -->
+  <string name="quick_settings_sync_label">Synchronizovat</string>
+  <string name="accessibility_quick_settings_sync_off">Synchronizace vypnuta.</string>
+  <string name="accessibility_quick_settings_sync_on">Synchronizace zapnuta.</string>
+  <string name="accessibility_quick_settings_sync_changed_off">Synchronizace byla vypnuta.</string>
+  <string name="accessibility_quick_settings_sync_changed_on">Synchronizace byla zapnuta.</string>
+  <!-- USB tethering QS tile -->
+  <string name="quick_settings_usb_tether_label">Připojení přes USB</string>
+  <!-- Volume panel QS tile -->
+  <string name="quick_settings_sync_label">Synchronizovat</string>
+  <string name="quick_settings_volume_panel_label">Panel hlasitosti</string>
 </resources>

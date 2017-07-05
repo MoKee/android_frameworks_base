@@ -4,6 +4,7 @@
 /**
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
+ * Copyright (c) 2017, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -149,4 +150,33 @@
   <string name="quick_settings_location_detail_mode_battery_saving_description">Использовать Wi\u2011Fi, Bluetooth или мобильную сеть для определения местоположения</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_description">Использовать GPS для определения вашего местоположения</string>
+  <!-- Adb over network QS tile -->
+  <string name="quick_settings_network_adb_label">Отладка по сети</string>
+  <!-- Ambient display QS tile -->
+  <string name="quick_settings_ambient_display_label">Индикация событий</string>
+  <string name="accessibility_quick_settings_ambient_display_off">Интерактивный дисплей выключен.</string>
+  <string name="accessibility_quick_settings_ambient_display_on">Интерактивный дисплей включен.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_off">Интерактивный дисплей был выключен.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_on">Интерактивный дисплей был включен.</string>
+  <!-- Caffeine -->
+  <string name="quick_settings_caffeine_label">Запрет сна</string>
+  <string name="accessibility_quick_settings_caffeine_off">Запрет сна выключен</string>
+  <string name="accessibility_quick_settings_caffeine_on">Запрет сна включен</string>
+  <!-- Heads up QS tile -->
+  <string name="quick_settings_heads_up_label">Всплывающие уведомления</string>
+  <string name="accessibility_quick_settings_heads_up_off">Всплывающие уведомления выкл.</string>
+  <string name="accessibility_quick_settings_heads_up_on">Всплывающие уведомления вкл.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_off">Всплывающие уведомления были выключены.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_on">Всплывающие уведомления были включены.</string>
+  <!-- Sync QS tile -->
+  <string name="quick_settings_sync_label">Синхронизация</string>
+  <string name="accessibility_quick_settings_sync_off">Синхронизация выкл.</string>
+  <string name="accessibility_quick_settings_sync_on">Синхронизация вкл.</string>
+  <string name="accessibility_quick_settings_sync_changed_off">Синхронизация была отключена.</string>
+  <string name="accessibility_quick_settings_sync_changed_on">Синхронизация была включена.</string>
+  <!-- USB tethering QS tile -->
+  <string name="quick_settings_usb_tether_label">USB-модем</string>
+  <!-- Volume panel QS tile -->
+  <string name="quick_settings_sync_label">Синхронизация</string>
+  <string name="quick_settings_volume_panel_label">Панель громкости</string>
 </resources>

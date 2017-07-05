@@ -4,6 +4,7 @@
 /**
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
+ * Copyright (c) 2017, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -145,4 +146,12 @@
   <string name="quick_settings_location_detail_mode_battery_saving_description">Wi\u2011Fi, 블루투스 또는 이동통신망을 사용하여 위치를 찾습니다.</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_description">GPS를 사용하여 위치를 찾습니다.</string>
+  <!-- Adb over network QS tile -->
+  <string name="quick_settings_network_adb_label">네트워크를 통한 ADB</string>
+  <!-- Ambient display QS tile -->
+  <!-- Caffeine -->
+  <!-- Heads up QS tile -->
+  <!-- Sync QS tile -->
+  <!-- USB tethering QS tile -->
+  <!-- Volume panel QS tile -->
 </resources>

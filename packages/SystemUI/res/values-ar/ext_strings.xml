@@ -4,6 +4,7 @@
 /**
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
+ * Copyright (c) 2017, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -133,4 +134,18 @@
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
+  <!-- Adb over network QS tile -->
+  <string name="quick_settings_network_adb_label">ADB عبر الشبكة</string>
+  <!-- Ambient display QS tile -->
+  <!-- Caffeine -->
+  <string name="quick_settings_caffeine_label">وضع الكافيين</string>
+  <!-- Heads up QS tile -->
+  <string name="quick_settings_heads_up_label">الإشعارات العائمة</string>
+  <!-- Sync QS tile -->
+  <string name="quick_settings_sync_label">مزامنة</string>
+  <!-- USB tethering QS tile -->
+  <string name="quick_settings_usb_tether_label">المشاركة عبر USB</string>
+  <!-- Volume panel QS tile -->
+  <string name="quick_settings_sync_label">مزامنة</string>
+  <string name="quick_settings_volume_panel_label">لوحة تحكم الصوت</string>
 </resources>

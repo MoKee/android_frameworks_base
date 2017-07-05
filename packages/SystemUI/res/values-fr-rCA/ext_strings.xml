@@ -4,6 +4,7 @@
 /**
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
+ * Copyright (c) 2017, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -147,4 +148,19 @@
   <string name="quick_settings_location_detail_mode_battery_saving_description">Utiliser le Wi\u2011Fi, le Bluetooth ou les réseaux mobiles pour déterminer la localisation</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_description">Utiliser le GPS pour déterminer votre localisation</string>
+  <!-- Adb over network QS tile -->
+  <string name="quick_settings_network_adb_label">ADB par réseau</string>
+  <!-- Ambient display QS tile -->
+  <string name="quick_settings_ambient_display_label">Affichage ambiant</string>
+  <!-- Caffeine -->
+  <string name="quick_settings_caffeine_label">Caffeine</string>
+  <!-- Heads up QS tile -->
+  <string name="quick_settings_heads_up_label">Notifications flottantes</string>
+  <!-- Sync QS tile -->
+  <string name="quick_settings_sync_label">Synchronisation</string>
+  <!-- USB tethering QS tile -->
+  <string name="quick_settings_usb_tether_label">Partage de connexion USB</string>
+  <!-- Volume panel QS tile -->
+  <string name="quick_settings_sync_label">Synchronisation</string>
+  <string name="quick_settings_volume_panel_label">Pan. de réglage du volume</string>
 </resources>

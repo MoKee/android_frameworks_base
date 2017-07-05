@@ -144,7 +144,6 @@
   <!-- Adb over network QS tile -->
   <string name="quick_settings_network_adb_label">Sare gaineko ADB</string>
   <!-- Ambient display QS tile -->
-  <string name="quick_settings_ambient_display_label">Ambient display</string>
   <string name="accessibility_quick_settings_ambient_display_off">Ambient display itzalita.</string>
   <string name="accessibility_quick_settings_ambient_display_on">Ambient display piztuta.</string>
   <string name="accessibility_quick_settings_ambient_display_changed_off">Ambient display itzalita.</string>
@@ -164,7 +163,6 @@
   <string name="accessibility_quick_settings_sync_changed_off">Sinkronizazioa ezgaituta.</string>
   <string name="accessibility_quick_settings_sync_changed_on">Sinkronizazioa gaituta.</string>
   <!-- USB tethering QS tile -->
-  <string name="quick_settings_usb_tether_label">USB tethering</string>
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Sinkronizazioa</string>
   <string name="quick_settings_volume_panel_label">Bolumen panela</string>

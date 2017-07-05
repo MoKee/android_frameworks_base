@@ -4,6 +4,7 @@
 /**
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
+ * Copyright (c) 2017, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -36,6 +37,7 @@
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <string name="screen_pinning_description_no_navbar">Dies fixiert die aktuelle Ansicht. Zum Lösen die Zurück-Taste drücken und halten.</string>
   <!-- String for lockscreen shortcut hints -->
+  <string name="shortcut_hint">Zum Öffnen von %1$s vom Symbol wegwischen</string>
   <string name="lockscreen_message">Berühren Sie das linke oder rechte Symbol, um eine Sperrbildschirm-Verknüpfung festzulegen.</string>
   <string name="lockscreen_default_target">Standard</string>
   <string name="select_application">App wählen</string>
@@ -118,4 +120,33 @@
   <string name="quick_settings_location_detail_mode_battery_saving_description">WLAN, Bluetooth oder Mobilfunknetze zur Standortbestimmung nutzen</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_description">GPS zur Standortbestimmung nutzen</string>
+  <!-- Adb over network QS tile -->
+  <string name="quick_settings_network_adb_label">ADB über Netzwerk</string>
+  <!-- Ambient display QS tile -->
+  <string name="quick_settings_ambient_display_label">Inaktivitätsdisplay</string>
+  <string name="accessibility_quick_settings_ambient_display_off">Ambient Display aus.</string>
+  <string name="accessibility_quick_settings_ambient_display_on">Ambient Display an.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_off">Ambient Display wurde ausgeschaltet.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_on">Ambient Display wurde eingeschaltet.</string>
+  <!-- Caffeine -->
+  <string name="quick_settings_caffeine_label">Koffein</string>
+  <string name="accessibility_quick_settings_caffeine_off">Caffeine aus</string>
+  <string name="accessibility_quick_settings_caffeine_on">Caffeine an</string>
+  <!-- Heads up QS tile -->
+  <string name="quick_settings_heads_up_label">Heads-up</string>
+  <string name="accessibility_quick_settings_heads_up_off">Heads Up-Benachrichtigungen aus.</string>
+  <string name="accessibility_quick_settings_heads_up_on">Heads Up-Benachrichtigungen an.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_off">Heads Up-Benachrichtigungen ausgeschaltet.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_on">Heads Up-Benachrichtigungen eingeschaltet.</string>
+  <!-- Sync QS tile -->
+  <string name="quick_settings_sync_label">Synchronisieren</string>
+  <string name="accessibility_quick_settings_sync_off">Synchronisation aus.</string>
+  <string name="accessibility_quick_settings_sync_on">Synchronisation an.</string>
+  <string name="accessibility_quick_settings_sync_changed_off">Synchronisation ausgeschaltet.</string>
+  <string name="accessibility_quick_settings_sync_changed_on">Synchronisation eingeschaltet.</string>
+  <!-- USB tethering QS tile -->
+  <string name="quick_settings_usb_tether_label">USB-Tethering</string>
+  <!-- Volume panel QS tile -->
+  <string name="quick_settings_sync_label">Synchronisieren</string>
+  <string name="quick_settings_volume_panel_label">Lautstärkeregler</string>
 </resources>
