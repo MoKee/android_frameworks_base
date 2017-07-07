@@ -35,6 +35,10 @@ interface IFingerprintDaemon {
     int closeHal();
     void init(IFingerprintDaemonCallback callback);
     int postEnroll();
-    int enumerate();
-    int cancelEnumeration();
+    //delete
+    //int enumerate();
+    //int cancelEnumeration();
+    //add
+    void gxCmd(int cmd, int param1, int param2, in byte[] reqData);
+    byte[] processCmd(in byte[] send_buf, int length);
 }
