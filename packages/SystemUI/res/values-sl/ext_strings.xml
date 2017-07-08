@@ -156,10 +156,16 @@
   <string name="quick_settings_ambient_display_label">Okoliški zaslon</string>
   <!-- Caffeine -->
   <string name="quick_settings_caffeine_label">Kofein</string>
+  <string name="accessibility_quick_settings_caffeine_off">Kofein izklopljen</string>
+  <string name="accessibility_quick_settings_caffeine_on">Kofein vklopljen</string>
   <!-- Heads up QS tile -->
   <string name="quick_settings_heads_up_label">Obvestila na zaslonu</string>
   <!-- Sync QS tile -->
   <string name="quick_settings_sync_label">Sinhronizacija</string>
+  <string name="accessibility_quick_settings_sync_off">Sinh. izklopljena.</string>
+  <string name="accessibility_quick_settings_sync_on">Sinh. vklopljena.</string>
+  <string name="accessibility_quick_settings_sync_changed_off">Sinhronizacija izklopljen.</string>
+  <string name="accessibility_quick_settings_sync_changed_on">Sinhronizacija vklopljena.</string>
   <!-- USB tethering QS tile -->
   <string name="quick_settings_usb_tether_label">Internet preko USB</string>
   <!-- Volume panel QS tile -->
