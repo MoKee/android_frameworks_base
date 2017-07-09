@@ -14,6 +14,11 @@ LOCAL_SRC_FILES += \
     ../../../../system/netd/server/binder/android/net/INetd.aidl \
     ../../../../system/netd/server/binder/android/net/metrics/INetdEventListener.aidl \
 
+ifeq ($(BOARD_HAVE_NUBIA_GOODIX_FP),)
+LOCAL_SRC_FILES += \
+    $(call all-java-files-under,ext)
+endif
+
 LOCAL_AIDL_INCLUDES += \
     system/netd/server/binder
 
