@@ -66,6 +66,7 @@
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <string name="screen_pinning_description_no_navbar">Hal ini membuatnya tetap dalam pandangan sampai Anda melepas sematan. Sentuh dan tahan tombol kembali untuk melepas sematan.</string>
   <!-- String for lockscreen shortcut hints -->
+  <string name="shortcut_hint">Geser dari ikon untuk %1$s</string>
   <string name="lockscreen_message">Ketuk ikon di sebelah kiri atau kanan untuk mengatur pintasan kunci layar.</string>
   <string name="lockscreen_default_target">Standar</string>
   <string name="select_application">Pilih aplikasi</string>
@@ -151,12 +152,26 @@
   <string name="quick_settings_network_adb_label">ADB melalui jaringan</string>
   <!-- Ambient display QS tile -->
   <string name="quick_settings_ambient_display_label">Tampilan ambien</string>
+  <string name="accessibility_quick_settings_ambient_display_off">Tampilan Ambient mati.</string>
+  <string name="accessibility_quick_settings_ambient_display_on">Tampilan ambient hidup.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_off">Tampilan ambient dimatikan.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_on">Tampilan ambient dihidupkan.</string>
   <!-- Caffeine -->
   <string name="quick_settings_caffeine_label">Kafein</string>
+  <string name="accessibility_quick_settings_caffeine_off">Kafein mati</string>
+  <string name="accessibility_quick_settings_caffeine_on">Kafein hidup</string>
   <!-- Heads up QS tile -->
   <string name="quick_settings_heads_up_label">Heads up</string>
+  <string name="accessibility_quick_settings_heads_up_off">Heads up mati.</string>
+  <string name="accessibility_quick_settings_heads_up_on">Heads up hidup.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_off">Heads up dimatikan.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_on">Heads up dihidupkan.</string>
   <!-- Sync QS tile -->
   <string name="quick_settings_sync_label">Sinkron</string>
+  <string name="accessibility_quick_settings_sync_off">Sinkronisasi mati.</string>
+  <string name="accessibility_quick_settings_sync_on">Sinkronisasi hidup.</string>
+  <string name="accessibility_quick_settings_sync_changed_off">Sinkronisasi dimatikan.</string>
+  <string name="accessibility_quick_settings_sync_changed_on">Sinkronisasi dihidupkan.</string>
   <!-- USB tethering QS tile -->
   <string name="quick_settings_usb_tether_label">Tethering USB</string>
   <!-- Volume panel QS tile -->
