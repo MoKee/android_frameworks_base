@@ -16,33 +16,40 @@
 
 package com.android.server.policy;
 
-import android.content.Context;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.WindowManagerPolicy.PointerEventListener;
 
-public class ANBIHandler implements PointerEventListener {
+public class PointerHandler implements PointerEventListener {
 
-    private static final String TAG = ANBIHandler.class.getSimpleName();
+    private static final String TAG = PointerHandler.class.getSimpleName();
     private static final boolean DEBUG = false;
+    private static final int SWIPE_THRESHOLD = 175;
 
     private boolean mScreenTouched;
+    private int mDownY;
 
-    private Context mContext;
-
-    public ANBIHandler(Context context) {
-        mContext = context;
-    }
+    private ThreeFingerListener mListener;
 
     @Override
     public void onPointerEvent(MotionEvent event) {
+        int pointerCount = event.getPointerCount();
         int action = event.getActionMasked();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-            case MotionEvent.ACTION_MOVE:
             case MotionEvent.ACTION_POINTER_DOWN:
+                mDownY = (int) event.getY();
+            case MotionEvent.ACTION_MOVE:
                 mScreenTouched = true;
                 break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_POINTER_UP:
+                if (pointerCount == 3 && event.getY() - mDownY > SWIPE_THRESHOLD) {
+                    if (mListener != null) {
+                        mListener.onThreeFingersSwipe();
+                    }
+                }
+                // fall through
             default:
                 mScreenTouched = false;
                 break;
@@ -52,10 +59,18 @@ public class ANBIHandler implements PointerEventListener {
         }
     }
 
+    public void setListener(ThreeFingerListener listener) {
+        mListener = listener;
+    }
+
     public boolean isScreenTouched() {
         if (DEBUG) {
             Log.d(TAG, "isScreenTouched: mScreenTouched= " + mScreenTouched);
         }
         return mScreenTouched;
+    }
+
+    public interface ThreeFingerListener {
+        public abstract void onThreeFingersSwipe();
     }
 }

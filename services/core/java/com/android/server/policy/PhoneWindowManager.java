@@ -403,9 +403,19 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     BurnInProtectionHelper mBurnInProtectionHelper;
     AppOpsManager mAppOpsManager;
     AlarmManager mAlarmManager;
-    ANBIHandler mANBIHandler;
+    PointerHandler mPointerHandler;
 
     private boolean mANBIEnabled;
+    private boolean mPointerHandlerRegistered;
+    private boolean mThreeFingerScreenshotEnabled;
+
+    private final PointerHandler.ThreeFingerListener mThreeFingerListener =
+            new PointerHandler.ThreeFingerListener() {
+        @Override
+        public void onThreeFingersSwipe() {
+            takeScreenshot(TAKE_SCREENSHOT_FULLSCREEN);
+        }
+    };
 
     private boolean mHasFeatureWatch;
 
@@ -1125,8 +1135,11 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(MKSettings.System.getUriFor(
                     MKSettings.System.NAVBAR_LEFT_IN_LANDSCAPE), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.ANBI_ENABLED), false, this,
+            resolver.registerContentObserver(MKSettings.Secure.getUriFor(
+                    MKSettings.Secure.ANBI_ENABLED), false, this,
+                    UserHandle.USER_ALL);
+            resolver.registerContentObserver(MKSettings.Secure.getUriFor(
+                    MKSettings.Secure.THREE_FINGER_SCREENSHOT_ENABLED), false, this,
                     UserHandle.USER_ALL);
             updateSettings();
         }
@@ -2604,16 +2617,29 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 }
             }
 
-            final boolean ANBIEnabled = MKSettings.System.getIntForUser(resolver,
-                    MKSettings.System.ANBI_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
-            if (mANBIHandler != null) {
-                if (mANBIEnabled != ANBIEnabled) {
-                    mANBIEnabled = ANBIEnabled;
-                    if (mANBIEnabled) {
-                        mWindowManagerFuncs.registerPointerEventListener(mANBIHandler);
-                    } else {
-                        mWindowManagerFuncs.unregisterPointerEventListener(mANBIHandler);
-                    }
+            final boolean ANBIEnabled = MKSettings.Secure.getIntForUser(resolver,
+                    MKSettings.Secure.ANBI_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
+            final boolean threeFingerScreenshotEnabled = MKSettings.Secure.getIntForUser(resolver,
+                    MKSettings.Secure.THREE_FINGER_SCREENSHOT_ENABLED, 0,
+                    UserHandle.USER_CURRENT) == 1;
+
+            if (mPointerHandler != null &&
+                    (mThreeFingerScreenshotEnabled != threeFingerScreenshotEnabled
+                    || mANBIEnabled != ANBIEnabled)) {
+                mThreeFingerScreenshotEnabled = threeFingerScreenshotEnabled;
+                mANBIEnabled = ANBIEnabled;
+                if (!mPointerHandlerRegistered && (threeFingerScreenshotEnabled || ANBIEnabled)) {
+                    mWindowManagerFuncs.registerPointerEventListener(mPointerHandler);
+                    mPointerHandlerRegistered = true;
+                } else if (mPointerHandlerRegistered && !threeFingerScreenshotEnabled
+                        && !ANBIEnabled) {
+                    mWindowManagerFuncs.unregisterPointerEventListener(mPointerHandler);
+                    mPointerHandlerRegistered = false;
+                }
+                if (!threeFingerScreenshotEnabled) {
+                    mPointerHandler.setListener(null);
+                } else {
+                    mPointerHandler.setListener(mThreeFingerListener);
                 }
             }
 
@@ -6514,6 +6540,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
         final boolean isInjected = (policyFlags & WindowManagerPolicy.FLAG_INJECTED) != 0;
 
+        final boolean navBarKey = source == InputDevice.SOURCE_NAVIGATION_BAR;
         final boolean appSwitchKey = keyCode == KeyEvent.KEYCODE_APP_SWITCH;
         final boolean homeKey = keyCode == KeyEvent.KEYCODE_HOME;
         final boolean menuKey = keyCode == KeyEvent.KEYCODE_MENU;
@@ -6534,8 +6561,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     + " policyFlags=" + Integer.toHexString(policyFlags));
         }
 
-        if (mANBIHandler != null && mANBIEnabled && mANBIHandler.isScreenTouched()
-                && !navBarKey && (appSwitchKey || homeKey || menuKey || backKey)) {
+        if (mDeviceHardwareKeys > 0 && mPointerHandler != null && mANBIEnabled
+                && mPointerHandler.isScreenTouched() && !navBarKey
+                && (appSwitchKey || homeKey || menuKey || backKey)) {
             return 0;
         }
 
@@ -8065,9 +8093,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         // CMHardwareService to be up and running
         mSettingsObserver.observe();
 
-        if (mDeviceHardwareKeys > 0) {
-            mANBIHandler = new ANBIHandler(mContext);
-        }
+        mPointerHandler = new PointerHandler();
 
         readCameraLensCoverState();
         updateUiMode();
