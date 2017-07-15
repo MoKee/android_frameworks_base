@@ -2257,5 +2257,10 @@ message MetricsEvent {
 
     // Location detail adapter
     QS_LOCATION_DETAIL = 504;
+
+    // OPEN: QS Key Disabler tile shown
+    // ACTION: QS Key Disabler tile tapped
+    // CATEGORY: QUICK_SETTINGS
+    QS_KEY_DISABLER = 900;
   }
 }
