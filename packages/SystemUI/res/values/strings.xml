@@ -1671,4 +1671,11 @@
     <!-- Text body for dialog alerting user that their phone has reached a certain temperature and may start to slow down in order to cool down. [CHAR LIMIT=300] -->
     <string name="high_temp_dialog_message">Your phone will automatically try to cool down. You can still use your phone, but it may run slower.\n\nOnce your phone has cooled down, it will run normally.</string>
 
+    <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
+    <string name="key_disabler">Disable keys</string>
+    <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_key_disabler_changed_off">Keys enabled.</string>
+    <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_key_disabler_changed_on">Keys disabled.</string>
+
 </resources>
