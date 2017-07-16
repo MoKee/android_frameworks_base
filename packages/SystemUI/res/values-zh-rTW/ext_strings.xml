@@ -149,7 +149,7 @@
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_description">使用 GPS 判斷您的所在位置</string>
   <!-- Adb over network QS tile -->
-  <string name="quick_settings_network_adb_label">網路 ADB</string>
+  <string name="quick_settings_network_adb_label">透過 ADB 網路</string>
   <!-- Ambient display QS tile -->
   <string name="quick_settings_ambient_display_label">環境顯示</string>
   <string name="accessibility_quick_settings_ambient_display_off">環境顯示關閉。</string>
@@ -167,7 +167,7 @@
   <string name="accessibility_quick_settings_heads_up_changed_off">浮動通知已關閉。</string>
   <string name="accessibility_quick_settings_heads_up_changed_on">浮動通知已開啟。</string>
   <!-- Sync QS tile -->
-  <string name="quick_settings_sync_label">同步資料</string>
+  <string name="quick_settings_sync_label">同步處理</string>
   <string name="accessibility_quick_settings_sync_off">同步處理關閉。</string>
   <string name="accessibility_quick_settings_sync_on">同步處理開啟。</string>
   <string name="accessibility_quick_settings_sync_changed_off">同步處理已關閉。</string>
@@ -175,6 +175,6 @@
   <!-- USB tethering QS tile -->
   <string name="quick_settings_usb_tether_label">USB 網路共用</string>
   <!-- Volume panel QS tile -->
-  <string name="quick_settings_sync_label">同步資料</string>
+  <string name="quick_settings_sync_label">同步處理</string>
   <string name="quick_settings_volume_panel_label">音量面板</string>
 </resources>
