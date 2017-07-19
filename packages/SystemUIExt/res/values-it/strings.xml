@@ -41,5 +41,7 @@
   <string name="keyguard_plugged_in_dash_charging">Ricarica Rapida</string>
   <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
   <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_key_disabler_changed_off">Tasti abilitati.</string>
   <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_key_disabler_changed_on">Tasti disabilitati.</string>
 </resources>
