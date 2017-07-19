@@ -149,9 +149,16 @@
   <!-- Adb over network QS tile -->
   <string name="quick_settings_network_adb_label">네트워크를 통한 ADB</string>
   <!-- Ambient display QS tile -->
+  <string name="quick_settings_ambient_display_label">앰비언트 디스플레이</string>
   <!-- Caffeine -->
+  <string name="quick_settings_caffeine_label">카페인</string>
   <!-- Heads up QS tile -->
+  <string name="quick_settings_heads_up_label">헤드업 알림</string>
   <!-- Sync QS tile -->
+  <string name="quick_settings_sync_label">동기화</string>
   <!-- USB tethering QS tile -->
+  <string name="quick_settings_usb_tether_label">USB 테더링</string>
   <!-- Volume panel QS tile -->
+  <string name="quick_settings_sync_label">동기화</string>
+  <string name="quick_settings_volume_panel_label">볼륨 패널</string>
 </resources>

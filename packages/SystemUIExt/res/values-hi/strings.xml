@@ -21,4 +21,7 @@
   <string name="quick_settings_screenshot_label">स्क्रीनशॉट</string>
   <!-- Compass QS Tile -->
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+  <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
+  <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
 </resources>

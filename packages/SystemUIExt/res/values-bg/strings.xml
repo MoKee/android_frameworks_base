@@ -22,5 +22,22 @@
   <!-- Screenshot QS Tile -->
   <string name="quick_settings_screenshot_label">Снимка на екрана</string>
   <!-- Compass QS Tile -->
+  <string name="quick_settings_compass_label">Компас</string>
+  <string name="quick_settings_compass_init">Подготвяне\u2026</string>
+  <string name="accessibility_quick_settings_compass_changed_off">Компасът е изключен.</string>
+  <string name="accessibility_quick_settings_compass_changed_on">Компасът е включен.</string>
+  <string name="quick_settings_compass_N">С</string>
+  <string name="quick_settings_compass_NE">СИ</string>
+  <string name="quick_settings_compass_E">И</string>
+  <string name="quick_settings_compass_SE">ЮИ</string>
+  <string name="quick_settings_compass_S">Ю</string>
+  <string name="quick_settings_compass_SW">ЮЗ</string>
+  <string name="quick_settings_compass_W">З</string>
+  <string name="quick_settings_compass_NW">СЗ</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+  <string name="keyguard_indication_dash_charging_time">Бързо зареждане (<xliff:g id="charging_time_left" example="4 часа и 2 минути">%s</xliff:g> до пълно зареждане)</string>
+  <string name="keyguard_plugged_in_dash_charging">Бързо зареждане</string>
+  <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
+  <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
 </resources>
