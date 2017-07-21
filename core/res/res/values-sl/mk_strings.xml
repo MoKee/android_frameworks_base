@@ -20,6 +20,7 @@
   <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <string name="permlab_modifyOverlays">spremenjanje teme prosojnic</string>
   <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permdesc_modifyOverlays">Omogoča aplikaciji spreminjanje slojev teme z uporabo OverlayManagerService</string>
   <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
   <string name="mk_reboot_to_update_title">MoKee nadgradnja sistema</string>
 </resources>

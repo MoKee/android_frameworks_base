@@ -154,12 +154,26 @@
   <string name="quick_settings_network_adb_label">Адладка па сетцы</string>
   <!-- Ambient display QS tile -->
   <string name="quick_settings_ambient_display_label">Актыўны дысплей</string>
+  <string name="accessibility_quick_settings_ambient_display_off">Індыкацыя падзей адключана.</string>
+  <string name="accessibility_quick_settings_ambient_display_on">Індыкацыя падзей уключана.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_off">Індыкацыя падзей была адключана.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_on">Індыкацыя падзей была ўключана.</string>
   <!-- Caffeine -->
   <string name="quick_settings_caffeine_label">Забарона сну</string>
+  <string name="accessibility_quick_settings_caffeine_off">Пераход у спячы рэжым дазволены</string>
+  <string name="accessibility_quick_settings_caffeine_on">Пераход у спячы рэжым забаронены</string>
   <!-- Heads up QS tile -->
   <string name="quick_settings_heads_up_label">Усплывальныя апавяшчэнні</string>
+  <string name="accessibility_quick_settings_heads_up_off">Усплывальныя апавяшчэння выкл.</string>
+  <string name="accessibility_quick_settings_heads_up_on">Усплывальныя апавяшчэння укл.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_off">Усплывальныя паведамлення былі адключаны.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_on">Усплывальныя паведамлення былі ўключаны.</string>
   <!-- Sync QS tile -->
   <string name="quick_settings_sync_label">Сінхранізацыя</string>
+  <string name="accessibility_quick_settings_sync_off">Сінхранізацыя адключаная.</string>
+  <string name="accessibility_quick_settings_sync_on">Сінхранізацыя ўключана.</string>
+  <string name="accessibility_quick_settings_sync_changed_off">Сінхранізацыя была адключаная.</string>
+  <string name="accessibility_quick_settings_sync_changed_on">Сінхранізацыя была ўключана.</string>
   <!-- USB tethering QS tile -->
   <string name="quick_settings_usb_tether_label">USB-мадэм</string>
   <!-- Volume panel QS tile -->

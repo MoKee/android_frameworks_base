@@ -66,6 +66,7 @@
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <string name="screen_pinning_description_no_navbar">고정을 해제할 때까지 계속 표시합니다. 뒤로 버튼을 계속 눌러 고정을 해제하세요.</string>
   <!-- String for lockscreen shortcut hints -->
+  <string name="shortcut_hint">%1$s 기능을 사용하려면 아이콘을 스와이프하세요.</string>
   <string name="lockscreen_message">잠금화면 바로가기를 다시 지정하려면 왼쪽이나 오른쪽의 아이콘을 탭하세요.</string>
   <string name="lockscreen_default_target">기본</string>
   <string name="select_application">앱 선택</string>
@@ -111,16 +112,17 @@
     <!-- STREAM_TTS -->
   </string-array>
   <!-- Content description of the data connection type HSPA+ for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_data_connection_hspap">HSPA+</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
   <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_battery_saving">위치 보고: 배터리 절약 모드.</string>
+  <string name="accessibility_quick_settings_location_battery_saving">위치 확인: 배터리 절약 모드.</string>
   <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_gps_only">위치 보고: 기기 전용 모드.</string>
+  <string name="accessibility_quick_settings_location_gps_only">위치 확인: 기기 전용 모드</string>
   <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_high_accuracy">위치 보고: 높은 정확성 모드.</string>
+  <string name="accessibility_quick_settings_location_high_accuracy">위치 확인: 높은 정확성 모드.</string>
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_battery_saving_label">배터리 절약</string>
   <string name="quick_settings_location_battery_saving_label_twoline">배터리\n절약</string>
@@ -150,12 +152,26 @@
   <string name="quick_settings_network_adb_label">네트워크를 통한 ADB</string>
   <!-- Ambient display QS tile -->
   <string name="quick_settings_ambient_display_label">앰비언트 디스플레이</string>
+  <string name="accessibility_quick_settings_ambient_display_off">앰비언트 디스플레이 해제.</string>
+  <string name="accessibility_quick_settings_ambient_display_on">앰비언트 디스플레이 허용.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_off">앰비언트 디스플레이 해제됨.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_on">앰비언트 디스플레이 허용됨.</string>
   <!-- Caffeine -->
   <string name="quick_settings_caffeine_label">카페인</string>
+  <string name="accessibility_quick_settings_caffeine_off">카페인 해제</string>
+  <string name="accessibility_quick_settings_caffeine_on">카페인 사용</string>
   <!-- Heads up QS tile -->
   <string name="quick_settings_heads_up_label">헤드업 알림</string>
+  <string name="accessibility_quick_settings_heads_up_off">헤드 업 알림 해제.</string>
+  <string name="accessibility_quick_settings_heads_up_on">헤드 업 알림 허용.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_off">헤드 업 알림 해제됨.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_on">헤드 업 알림 허용됨.</string>
   <!-- Sync QS tile -->
   <string name="quick_settings_sync_label">동기화</string>
+  <string name="accessibility_quick_settings_sync_off">동기화 해제.</string>
+  <string name="accessibility_quick_settings_sync_on">동기화 허용.</string>
+  <string name="accessibility_quick_settings_sync_changed_off">동기화 해제됨.</string>
+  <string name="accessibility_quick_settings_sync_changed_on">동기화 허용됨.</string>
   <!-- USB tethering QS tile -->
   <string name="quick_settings_usb_tether_label">USB 테더링</string>
   <!-- Volume panel QS tile -->
