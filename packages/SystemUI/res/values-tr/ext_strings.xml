@@ -153,12 +153,26 @@
   <string name="quick_settings_network_adb_label">Ağ üzerinden ADB</string>
   <!-- Ambient display QS tile -->
   <string name="quick_settings_ambient_display_label">Ambient display</string>
+  <string name="accessibility_quick_settings_ambient_display_off">Ortam ekranı kapalı.</string>
+  <string name="accessibility_quick_settings_ambient_display_on">Ortam ekranı açık.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_off">Ortam ekranı kapatıldı.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_on">Ortam ekranı açıldı.</string>
   <!-- Caffeine -->
   <string name="quick_settings_caffeine_label">Kafein</string>
+  <string name="accessibility_quick_settings_caffeine_off">Kafein kapalı</string>
+  <string name="accessibility_quick_settings_caffeine_on">Kafein açık</string>
   <!-- Heads up QS tile -->
   <string name="quick_settings_heads_up_label">Dikkat et</string>
+  <string name="accessibility_quick_settings_heads_up_off">Bildirim pencereleri kapalı.</string>
+  <string name="accessibility_quick_settings_heads_up_on">Bildirim pencereleri açık.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_off">Bildirim pencereleri kapatıldı.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_on">Bildirim pencereleri açıldı.</string>
   <!-- Sync QS tile -->
   <string name="quick_settings_sync_label">Senkronize</string>
+  <string name="accessibility_quick_settings_sync_off">Senkronizasyon kapalı.</string>
+  <string name="accessibility_quick_settings_sync_on">Senkronizasyon açık.</string>
+  <string name="accessibility_quick_settings_sync_changed_off">Senkronizasyon kapatıldı.</string>
+  <string name="accessibility_quick_settings_sync_changed_on">Senkronizasyon açıldı.</string>
   <!-- USB tethering QS tile -->
   <string name="quick_settings_usb_tether_label">USB Bağlama</string>
   <!-- Volume panel QS tile -->

@@ -40,6 +40,9 @@
   <string name="keyguard_indication_dash_charging_time">Dash Şarj Oluyor (tam dolmasına <xliff:g id="charging_time_left" example="4 saat ve 2 dakika">%s</xliff:g> kaldı)</string>
   <string name="keyguard_plugged_in_dash_charging">Şarj Oluyor</string>
   <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
+  <string name="key_disabler">Tuşlar devredışı</string>
   <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_key_disabler_changed_off">Tuşlar aktif edildi.</string>
   <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_key_disabler_changed_on">Tuşlar devredışı bırakıldı.</string>
 </resources>
