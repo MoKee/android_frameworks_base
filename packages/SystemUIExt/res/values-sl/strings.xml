@@ -39,6 +39,9 @@
   <string name="keyguard_indication_dash_charging_time">Hitro polnjenje (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s </xliff:g> do napolnjenosti)</string>
   <string name="keyguard_plugged_in_dash_charging">Hitro polnjenje</string>
   <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
+  <string name="key_disabler">Onesposobi tipke</string>
   <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_key_disabler_changed_off">Tipke omogočene.</string>
   <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_key_disabler_changed_on">Tipke onemogočene.</string>
 </resources>
