@@ -14,7 +14,7 @@ LOCAL_SRC_FILES += \
     ../../../../system/netd/server/binder/android/net/INetd.aidl \
     ../../../../system/netd/server/binder/android/net/metrics/INetdEventListener.aidl \
 
-ifeq ($(BOARD_HAVE_NUBIA_GOODIX_FP),)
+ifeq ($(BOARD_HAVE_NUBIA_GOODIX_FP_V1),)
 LOCAL_SRC_FILES += \
     $(call all-java-files-under,ext)
 endif
