@@ -471,9 +471,12 @@ LOCAL_SRC_FILES += \
 	telephony/java/com/android/internal/telephony/ISmsSecurityService.aidl \
 	telephony/java/com/android/internal/telephony/ISmsSecurityAgent.aidl \
 
-ifeq ($(BOARD_HAVE_NUBIA_GOODIX_FP),true)
+ifeq ($(BOARD_HAVE_NUBIA_GOODIX_FP_V1),true)
 LOCAL_SRC_FILES += \
-	mokee/java/android/hardware/fingerprint/IFingerprintDaemon.aidl
+	mokee/java/android/hardware/fingerprint/v1/IFingerprintDaemon.aidl
+else ifeq ($(BOARD_HAVE_NUBIA_GOODIX_FP_V2),true)
+LOCAL_SRC_FILES += \
+	mokee/java/android/hardware/fingerprint/v2/IFingerprintDaemon.aidl
 else
 LOCAL_SRC_FILES += \
 	core/java/android/hardware/fingerprint/IFingerprintDaemon.aidl
