@@ -473,10 +473,10 @@ LOCAL_SRC_FILES += \
 
 ifeq ($(BOARD_HAVE_NUBIA_GOODIX_FP_V1),true)
 LOCAL_SRC_FILES += \
-	mokee/java/android/hardware/fingerprint/v1/IFingerprintDaemon.aidl
+	mokee/hook/nubia/goodix_fp_v1/android/hardware/fingerprint/IFingerprintDaemon.aidl
 else ifeq ($(BOARD_HAVE_NUBIA_GOODIX_FP_V2),true)
 LOCAL_SRC_FILES += \
-	mokee/java/android/hardware/fingerprint/v2/IFingerprintDaemon.aidl
+	mokee/hook/nubia/goodix_fp_v2/android/hardware/fingerprint/IFingerprintDaemon.aidl
 else
 LOCAL_SRC_FILES += \
 	core/java/android/hardware/fingerprint/IFingerprintDaemon.aidl
