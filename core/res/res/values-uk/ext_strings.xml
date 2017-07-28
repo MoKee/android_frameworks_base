@@ -53,11 +53,11 @@
   <!-- ADB notification message-->
   <string name="adb_active_generic_notification_message">Торкніться, аби вимкнути налагодження.</string>
   <!-- Privacy Guard -->
-  <string name="permlab_changePrivacyGuardState">увімк. або вимк. Сторожа Приватності</string>
-  <string name="permdesc_changePrivacyGuardState">Програма може вибрати, чи буде друга програма працювати в захищеному режимі. Коли програму запущено в захищеному режимі, вона не отримає доступ до персональних даних, таких як контакти, повідомлення чи журнал дзвінків.</string>
-  <string name="privacy_guard_notification">Сторож Приватності активний</string>
+  <string name="permlab_changePrivacyGuardState">увімк. або вимк. Вартового Приватності</string>
+  <string name="permdesc_changePrivacyGuardState">Програма може обирати, чи буде інша програма працювати в захищеному режимі. Коли програму запущено в захищеному режимі, вона не отримає доступ до персональних даних, таких як контакти, повідомлення чи журнал дзвінків.</string>
+  <string name="privacy_guard_notification">Вартовий Приватності активний</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> буде заборонено доступ до персональних даних</string>
-  <string name="privacy_guard_dialog_title">Сторож Приватності</string>
+  <string name="privacy_guard_dialog_title">Вартовий Приватності</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> намагається <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
   <string name="permission_remember_choice">Запам\'ятати мій вибір</string>
