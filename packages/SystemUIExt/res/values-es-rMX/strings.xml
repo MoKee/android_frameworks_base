@@ -40,6 +40,9 @@
   <string name="keyguard_indication_dash_charging_time">Carga rápida (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> hasta completar)</string>
   <string name="keyguard_plugged_in_dash_charging">Hoy</string>
   <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
+  <string name="key_disabler">Desactivar las teclas físicas</string>
   <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_key_disabler_changed_off">Teclas habilitadas.</string>
   <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_key_disabler_changed_on">Teclas deshabilitadas.</string>
 </resources>
