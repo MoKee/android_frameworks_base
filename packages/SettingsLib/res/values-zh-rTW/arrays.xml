@@ -58,7 +58,7 @@
     <!-- Status message of Wi-Fi when it is connecting to a network. -->
     <item>正在連線到 <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
     <!-- Status message of Wi-Fi when it is authenticating with a network. -->
-    <item>正在取得 <<xliff:g id="network_name">%1$s</xliff:g> 的授權\u2026</item>
+    <item>正在取得 <xliff:g id="network_name">%1$s</xliff:g> 的授權\u2026</item>
     <!-- Status message of Wi-Fi when it is obtaining IP address from a network. -->
     <item>正在由 <xliff:g id="network_name">%1$s</xliff:g> 取得 IP 位址\u2026</item>
     <!-- Status message of Wi-Fi when it is connected to a network. -->
