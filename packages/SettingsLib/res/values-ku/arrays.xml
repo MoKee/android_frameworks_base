@@ -22,6 +22,32 @@
   <!-- Wi-Fi settings -->
   <!-- Match this with the order of NetworkInfo.DetailedState. -->
   <!-- Wi-Fi settings. The status messages when the network is unknown. -->
+  <string-array name="wifi_status">
+    <!-- Status message of Wi-Fi when it is idle. -->
+    <item></item>
+    <!-- Status message of Wi-Fi when it is scanning. -->
+    <item>Scanning\u2026</item>
+    <!-- Status message of Wi-Fi when it is connecting. -->
+    <item>بەستنەوە\u2026</item>
+    <!-- Status message of Wi-Fi when it is authenticating. -->
+    <item>Authenticating\u2026</item>
+    <!-- Status message of Wi-Fi when it is obtaining IP address. -->
+    <item>Obtaining IP address\u2026</item>
+    <!-- Status message of Wi-Fi when it is connected. -->
+    <item>Connected</item>
+    <!-- Status message of Wi-Fi when it is suspended. -->
+    <item>Suspended</item>
+    <!-- Status message of Wi-Fi when it is disconnecting. -->
+    <item>Disconnecting\u2026</item>
+    <!-- Status message of Wi-Fi when it is disconnected. -->
+    <item>Disconnected</item>
+    <!-- Status message of Wi-Fi when it is a failure. -->
+    <item>Unsuccessful</item>
+    <!-- Status message of Wi-Fi when it is blocked. -->
+    <item>Blocked</item>
+    <!-- Status message of Wi-Fi when connectiong is being verified. -->
+    <item>Temporarily avoiding poor connection</item>
+  </string-array>
   <!-- Match this with the order of NetworkInfo.DetailedState. -->
   <!-- Wi-Fi settings. The status messages when the network is known. -->
   <!-- Titles for HDCP checking preference. [CHAR LIMIT=35] -->
@@ -41,8 +67,28 @@
   <!-- Titles for animator duration scale preference. [CHAR LIMIT=35] -->
   <!-- Values for animator duration scale preference. -->
   <!-- Titles for overlay display devices preference. [CHAR LIMIT=35] -->
+  <string-array name="overlay_display_devices_entries">
+    <item>هیچیان</item>
+    <item>480p</item>
+    <item>480p (secure)</item>
+    <item>720p</item>
+    <item>720p (secure)</item>
+    <item>1080p</item>
+    <item>1080p (secure)</item>
+    <item>4K</item>
+    <item>4K (secure)</item>
+    <item>4K (upscaled)</item>
+    <item>4K (upscaled, secure)</item>
+    <item>720p, 1080p (dual screen)</item>
+  </string-array>
   <!-- Values for overlay display devices preference. -->
   <!-- Titles for OpenGL traces preference. [CHAR LIMIT=35] -->
+  <string-array name="enable_opengl_traces_entries">
+    <item>هیچیان</item>
+    <item>Logcat</item>
+    <item>Systrace (Graphics)</item>
+    <item>Call stack on glGetError</item>
+  </string-array>
   <!-- Values for OpenGL traces preference. -->
   <!-- Titles for non-rectangular clipping preference. [CHAR LIMIT=35] -->
   <!-- Values for non-rectangular clipping preference. -->

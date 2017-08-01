@@ -74,7 +74,7 @@
     <!-- Status message of Wi-Fi when it is blocked. -->
     <item>Blocked</item>
     <!-- Status message of Wi-Fi when connectiong is being verified. -->
-    <item>Temporarily avoiding poor connection</item>
+    <item>Evitando temporalmente conexón probe</item>
   </string-array>
   <!-- Titles for HDCP checking preference. [CHAR LIMIT=35] -->
   <string-array name="hdcp_checking_titles">
@@ -90,21 +90,7 @@
     <item>Usa siempres la comprobación HDCP</item>
   </string-array>
   <!-- Titles for logd limit size selection preference. [CHAR LIMIT=14] -->
-  <string-array name="select_logd_size_titles">
-    <item>Off</item>
-    <item>64K</item>
-    <item>256K</item>
-    <item>1M</item>
-    <item>4M</item>
-    <item>16M</item>
-  </string-array>
   <!-- Titles for logd limit size lowram selection preference. [CHAR LIMIT=14] -->
-  <string-array name="select_logd_size_lowram_titles">
-    <item>Off</item>
-    <item>64K</item>
-    <item>256K</item>
-    <item>1M</item>
-  </string-array>
   <!-- Values for logd limit size selection preference. -->
   <!-- Summaries for logd limit size selection preference. [CHAR LIMIT=50]-->
   <!-- Values for logpersist state selection preference. -->
@@ -120,6 +106,7 @@
   <string-array name="window_animation_scale_entries">
     <item>Animation off</item>
     <item>Escala d\'animación 0,5x</item>
+    <item>Animation scale .75x</item>
     <item>Escala d\'animación 1x</item>
     <item>Escala d\'animación 1,5x</item>
     <item>Escala d\'animación 2x</item>
