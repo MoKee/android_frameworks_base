@@ -31,7 +31,7 @@
   <!-- Titles for transition animation scale preference. [CHAR LIMIT=35] -->
   <string-array name="mk_transition_animation_scale_entries">
     <item>Animácia je vypnutá</item>
-    <item>Mierka animácie 0,5x</item>
+    <item>Mierka animácie 0.5x</item>
     <item>Mierka animácie 0.75x</item>
     <item>Mierka animácie 1x</item>
     <item>Mierka animácie 1.5x</item>
@@ -43,7 +43,7 @@
   <!-- Titles for animator duration scale preference. [CHAR LIMIT=35] -->
   <string-array name="mk_animator_duration_scale_entries">
     <item>Animácia je vypnutá</item>
-    <item>Mierka animácie 0,5x</item>
+    <item>Mierka animácie 0.5x</item>
     <item>Mierka animácie 0.75x</item>
     <item>Mierka animácie 1x</item>
     <item>Mierka animácie 1.5x</item>

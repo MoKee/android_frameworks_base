@@ -19,13 +19,13 @@
   <!-- Titles for window animation scale preference. [CHAR LIMIT=35] -->
   <string-array name="mk_window_animation_scale_entries">
     <item>Animación desactivada</item>
-    <item>Escala de animación 0.5x</item>
-    <item>Escala de animación 0.75x</item>
-    <item>Animación de escala 1x</item>
-    <item>Animación de escala 1.5x</item>
-    <item>Animación de escala 2x</item>
-    <item>Animación de escala 5x</item>
-    <item>Animación de la escala 10x</item>
+    <item>Escala de animación .5x</item>
+    <item>Escala de animación .75x</item>
+    <item>Escala de animación 1x</item>
+    <item>Escala de animación 1.5x</item>
+    <item>Escala de animación 2x</item>
+    <item>Escala de animación 5x</item>
+    <item>Escala de animación 10x</item>
   </string-array>
   <!-- Values for window animation scale preference. -->
   <!-- Titles for transition animation scale preference. [CHAR LIMIT=35] -->
