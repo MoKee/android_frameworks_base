@@ -19,8 +19,7 @@
 #define ALOGV LOGV
 #endif
 
-#define XPOSED_DIR "/data/data/de.robv.android.xposed.installer/"
-#define XPOSED_DIR_DE "/data/user_de/0/de.robv.android.xposed.installer/"
+#define XPOSED_DIR "/data/user_de/0/de.robv.android.xposed.installer/"
 
 namespace xposed {
 
