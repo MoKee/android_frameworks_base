@@ -15,6 +15,7 @@
 #define XPOSED_JAR               "/system/framework/XposedBridge.jar"
 #define XPOSED_JAR_NEWVERSION    XPOSED_DIR "bin/XposedBridge.jar.newversion"
 #define XPOSED_LOAD_BLOCKER      XPOSED_DIR "conf/disabled"
+#define XPOSED_LOAD_ENABLED      XPOSED_DIR "conf/enabled"
 #define XPOSED_SAFEMODE_NODELAY  XPOSED_DIR "conf/safemode_nodelay"
 #define XPOSED_SAFEMODE_DISABLE  XPOSED_DIR "conf/safemode_disable"
 

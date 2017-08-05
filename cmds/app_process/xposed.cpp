@@ -241,8 +241,8 @@ bool isDisabled() {
     if (zygote_access(XPOSED_LOAD_BLOCKER, F_OK) == 0) {
         ALOGE("Found %s, not loading Xposed", XPOSED_LOAD_BLOCKER);
         return true;
-    } else if (zygote_access(XPOSED_DIR, F_OK) == -1) {
-        ALOGE("Not found %s, not loading Xposed", XPOSED_DIR);
+    } else if (zygote_access(XPOSED_LOAD_ENABLED, F_OK) == -1) {
+        ALOGE("Not found %s, not loading Xposed", XPOSED_LOAD_ENABLED);
         return true;
     }
     return false;
