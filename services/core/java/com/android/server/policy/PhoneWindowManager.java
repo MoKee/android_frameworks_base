@@ -2618,7 +2618,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             }
 
             final boolean ANBIEnabled = MKSettings.Secure.getIntForUser(resolver,
-                    MKSettings.Secure.ANBI_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
+                    MKSettings.Secure.ANBI_ENABLED, 1, UserHandle.USER_CURRENT) == 1;
             final boolean threeFingerScreenshotEnabled = MKSettings.Secure.getIntForUser(resolver,
                     MKSettings.Secure.THREE_FINGER_SCREENSHOT_ENABLED, 0,
                     UserHandle.USER_CURRENT) == 1;
@@ -6540,7 +6540,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
         final boolean isInjected = (policyFlags & WindowManagerPolicy.FLAG_INJECTED) != 0;
 
-        final boolean navBarKey = source == InputDevice.SOURCE_NAVIGATION_BAR;
+        final boolean navBarKey = event.getSource() == InputDevice.SOURCE_NAVIGATION_BAR;
         final boolean appSwitchKey = keyCode == KeyEvent.KEYCODE_APP_SWITCH;
         final boolean homeKey = keyCode == KeyEvent.KEYCODE_HOME;
         final boolean menuKey = keyCode == KeyEvent.KEYCODE_MENU;
