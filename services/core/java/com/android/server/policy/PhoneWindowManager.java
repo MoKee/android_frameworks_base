@@ -6565,6 +6565,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 && mPointerHandler.isScreenTouched() && !navBarKey
                 && (appSwitchKey || homeKey || menuKey || backKey)) {
             return 0;
+        } else if (mDevForceNavbar && !navBarKey && (appSwitchKey || homeKey || menuKey || backKey)) {
+            return 0;
         }
 
         // Basic policy based on interactive state.
