@@ -40,6 +40,9 @@
   <string name="keyguard_indication_dash_charging_time">Carregando lentamente (<xliff:g id="tempo_restante_de_carregamento">%s</xliff:g> para conclusão)</string>
   <string name="keyguard_plugged_in_dash_charging">Carregando Lentamente</string>
   <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
+  <string name="key_disabler">Desabilitar teclas</string>
   <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_key_disabler_changed_off">Chaves habilitadas.</string>
   <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_key_disabler_changed_on">Chaves desabilitadas.</string>
 </resources>
