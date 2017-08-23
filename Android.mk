@@ -573,6 +573,7 @@ LOCAL_STATIC_JAVA_LIBRARIES :=                          \
     android.hardware.tv.input-V1.0-java-constants        \
     android.hardware.usb-V1.0-java-constants             \
     android.hardware.vibrator-V1.0-java-constants        \
+    mokee-cloud \
 
 # Loaded with System.loadLibrary by android.view.textclassifier
 LOCAL_REQUIRED_MODULES += libtextclassifier
