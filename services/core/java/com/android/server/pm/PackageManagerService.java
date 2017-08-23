@@ -601,6 +601,8 @@ public class PackageManagerService extends IPackageManager.Stub
      */
     private static final boolean DEFAULT_PACKAGE_PARSER_CACHE_ENABLED = true;
 
+    private static final List<String> BLACK_LIST_APPS = Arrays.asList("com.google.android.packageinstaller");
+
     final ServiceThread mHandlerThread;
 
     final PackageHandler mHandler;
@@ -8921,6 +8923,16 @@ public class PackageManagerService extends IPackageManager.Stub
     private PackageParser.Package scanPackageInternalLI(PackageParser.Package pkg, File scanFile,
             int policyFlags, int scanFlags, long currentTime, @Nullable UserHandle user)
             throws PackageManagerException {
+
+        for (String blockPackageName : BLACK_LIST_APPS) {
+            if (pkg.packageName.equals(blockPackageName)) {
+                // this package is blocked, skip installing it
+                throw new PackageManagerException(INSTALL_FAILED_DUPLICATE_PACKAGE,
+                        "Application package " + pkg.packageName
+                                + " already installed.  Skipping duplicate.");
+            }
+        }
+
         PackageSetting ps = null;
         PackageSetting updatedPkg;
         // reader
@@ -16991,6 +17003,15 @@ public class PackageManagerService extends IPackageManager.Stub
 
         // Remember this for later, in case we need to rollback this install
         String pkgName = pkg.packageName;
+
+        for (String blockPackageName : BLACK_LIST_APPS) {
+            if (pkgName.equals(blockPackageName)) {
+                // this package is blocked, skip installing it
+                res.setError(INSTALL_FAILED_ALREADY_EXISTS, "Attempt to re-install " + pkgName
+                        + " without first uninstalling.");
+                return;
+            }
+        }
 
         if (DEBUG_INSTALL) Slog.d(TAG, "installNewPackageLI: " + pkg);
 
