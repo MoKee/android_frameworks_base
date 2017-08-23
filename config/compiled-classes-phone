@@ -2797,6 +2797,8 @@ android.media.tv.TvInputHardwareInfo$Builder
 android.media.tv.TvInputManager
 android.media.tv.TvStreamConfig
 android.media.tv.TvStreamConfig$Builder
+android.mokee.location.PhoneNumberOfflineGeocoder
+android.mokee.utils.MoKeeUtils
 android.metrics.LogMaker
 android.mtp.MtpDatabase
 android.mtp.MtpDevice
@@ -6501,6 +6503,7 @@ com.google.android.gles_jni.EGLImpl
 com.google.android.gles_jni.EGLSurfaceImpl
 com.google.android.gles_jni.GLImpl
 com.google.android.mms.MmsException
+com.mokee.security.SecurityUtils
 dalvik.annotation.optimization.CriticalNative
 dalvik.annotation.optimization.FastNative
 dalvik.system.-$Lambda$xxvwQBVHC44UYbpcpA8j0sUqLOo
