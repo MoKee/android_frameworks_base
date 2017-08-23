@@ -1564,6 +1564,8 @@ android.media.session.PlaybackState$Builder
 android.media.session.PlaybackState$CustomAction$1
 android.media.soundtrigger.SoundTriggerManager
 android.media.tv.TvInputManager
+android.mokee.location.PhoneNumberOfflineGeocoder
+android.mokee.utils.MoKeeUtils
 android.metrics.LogMaker
 android.mtp.MtpDeviceInfo
 android.mtp.MtpEvent
@@ -3237,6 +3239,7 @@ com.google.android.gles_jni.EGLDisplayImpl
 com.google.android.gles_jni.EGLImpl
 com.google.android.gles_jni.EGLSurfaceImpl
 com.google.android.gles_jni.GLImpl
+com.mokee.security.SecurityUtils
 dalvik.annotation.optimization.CriticalNative
 dalvik.annotation.optimization.FastNative
 dalvik.system.-$Lambda$xxvwQBVHC44UYbpcpA8j0sUqLOo
