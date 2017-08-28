@@ -45,7 +45,7 @@
   <string name="reboot_confirm" product="tablet">Máy tính bảng của bạn sẽ khởi động lại.</string>
   <string name="reboot_confirm" product="default">Điện thoại của bạn sẽ khởi động lại.</string>
   <!-- Restart Progress Dialog. This is shown if the user chooses to restart the phone. -->
-  <string name="reboot_progress">Đang khởi động lại\u2026</string>
+  <string name="reboot_progress">Đang khởi động lại</string>
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">Đã bật ADB qua mạng</string>
   <!-- ADB over USB and network notification -->
