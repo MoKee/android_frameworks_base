@@ -19,11 +19,11 @@
   <!-- Titles for window animation scale preference. [CHAR LIMIT=35] -->
   <string-array name="mk_window_animation_scale_entries">
     <item>Animazione disattivata</item>
-    <item>Animation scale .5x</item>
-    <item>Animation scale .75x</item>
-    <item>Animation scale 1x</item>
-    <item>Animation scale 1.5x</item>
-    <item>Animation scale 2x</item>
+    <item>Scala dell\'animazione .5x</item>
+    <item>Scala dell\'animazione .75x</item>
+    <item>Scala dell\'animazione 1x</item>
+    <item>Scala dell\'animazione 1.5x</item>
+    <item>Scala dell\'animazione 2x</item>
     <item>Animation scale 5x</item>
     <item>Animation scale 10x</item>
   </string-array>
@@ -31,11 +31,11 @@
   <!-- Titles for transition animation scale preference. [CHAR LIMIT=35] -->
   <string-array name="mk_transition_animation_scale_entries">
     <item>Animazione disattivata</item>
-    <item>Animation scale .5x</item>
-    <item>Animation scale .75x</item>
-    <item>Animation scale 1x</item>
-    <item>Animation scale 1.5x</item>
-    <item>Animation scale 2x</item>
+    <item>Scala dell\'animazione .5x</item>
+    <item>Scala dell\'animazione .75x</item>
+    <item>Scala dell\'animazione 1x</item>
+    <item>Scala dell\'animazione 1.5x</item>
+    <item>Scala dell\'animazione 2x</item>
     <item>Animation scale 5x</item>
     <item>Animation scale 10x</item>
   </string-array>
@@ -43,11 +43,11 @@
   <!-- Titles for animator duration scale preference. [CHAR LIMIT=35] -->
   <string-array name="mk_animator_duration_scale_entries">
     <item>Animazione disattivata</item>
-    <item>Animation scale .5x</item>
-    <item>Animation scale .75x</item>
-    <item>Animation scale 1x</item>
-    <item>Animation scale 1.5x</item>
-    <item>Animation scale 2x</item>
+    <item>Scala dell\'animazione .5x</item>
+    <item>Scala dell\'animazione .75x</item>
+    <item>Scala dell\'animazione 1x</item>
+    <item>Scala dell\'animazione 1.5x</item>
+    <item>Scala dell\'animazione 2x</item>
     <item>Animation scale 5x</item>
     <item>Animation scale 10x</item>
   </string-array>
