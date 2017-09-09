@@ -20,7 +20,7 @@
   <string-array name="mk_window_animation_scale_entries">
     <item>關閉動畫</item>
     <item>動畫比例 0.5x</item>
-    <item>動畫比例 0.5x</item>
+    <item>動畫比例 0.75x</item>
     <item>動畫比例 1x</item>
     <item>動畫比例 1.5x</item>
     <item>動畫比例 2x</item>
@@ -32,7 +32,7 @@
   <string-array name="mk_transition_animation_scale_entries">
     <item>關閉動畫</item>
     <item>動畫比例 0.5x</item>
-    <item>動畫比例 0.5x</item>
+    <item>動畫比例 0.75x</item>
     <item>動畫比例 1x</item>
     <item>動畫比例 1.5x</item>
     <item>動畫比例 2x</item>
@@ -44,7 +44,7 @@
   <string-array name="mk_animator_duration_scale_entries">
     <item>關閉動畫</item>
     <item>動畫比例 0.5x</item>
-    <item>動畫比例 0.5x</item>
+    <item>動畫比例 0.75x</item>
     <item>動畫比例 1x</item>
     <item>動畫比例 1.5x</item>
     <item>動畫比例 2x</item>
