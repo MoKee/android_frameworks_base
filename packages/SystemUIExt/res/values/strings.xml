@@ -52,5 +52,7 @@
     <string name="accessibility_quick_settings_key_disabler_changed_off">Keys enabled.</string>
     <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
     <string name="accessibility_quick_settings_key_disabler_changed_on">Keys disabled.</string>
+    <!-- Text for switch default data sub in expanded CellularTile -->
+    <string name="use_data">Use %s data</string>
 
 </resources>

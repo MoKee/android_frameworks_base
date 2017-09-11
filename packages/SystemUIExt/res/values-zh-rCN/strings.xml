@@ -45,4 +45,6 @@
   <string name="accessibility_quick_settings_key_disabler_changed_off">按键已启用</string>
   <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_quick_settings_key_disabler_changed_on">按键已屏蔽</string>
+  <!-- Text for switch default data sub in expanded CellularTile -->
+  <string name="use_data">使用 %s 数据</string>
 </resources>
