@@ -138,7 +138,7 @@ public class DataUsageDetailView extends LinearLayout {
             for (int slotId = 0; slotId < activeSimCount; slotId++) {
                 String carrierName = getCarrierName(slotId);
                 RadioButton radioButton = new RadioButton(mContext);
-                radioButton.setText(mContext.getString(R.string.use_data, carrierName));
+                radioButton.setText(mContext.getString(R.string.quick_settings_cellular_detail_use_data, carrierName));
                 mRadioGroup.addView(radioButton, LayoutParams.MATCH_PARENT,
                         LayoutParams.WRAP_CONTENT);
             }
