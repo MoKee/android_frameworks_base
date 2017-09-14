@@ -45,4 +45,5 @@
   <string name="accessibility_quick_settings_key_disabler_changed_off">Tlačítka povoleny.</string>
   <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_quick_settings_key_disabler_changed_on">Tlačítka zakázány.</string>
+  <!-- Text for switch default data sub in expanded CellularTile -->
 </resources>

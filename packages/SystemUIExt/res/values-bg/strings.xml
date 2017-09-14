@@ -40,4 +40,5 @@
   <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
   <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
   <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <!-- Text for switch default data sub in expanded CellularTile -->
 </resources>
