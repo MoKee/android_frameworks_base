@@ -46,5 +46,5 @@
   <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_quick_settings_key_disabler_changed_on">Ключи выключены.</string>
   <!-- Text for switch default data sub in expanded CellularTile -->
-  <string name="quick_settings_cellular_detail_use_data">Использовать данные %s</string>
+  <string name="quick_settings_cellular_detail_use_data">Использование данных %s</string>
 </resources>
