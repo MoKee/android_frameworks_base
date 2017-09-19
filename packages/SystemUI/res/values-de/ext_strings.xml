@@ -46,7 +46,6 @@
   <!-- Play queue -->
   <string name="play_queue_extension">Warteschlange anzeigen</string>
   <!-- Weather string format in keyguard -->
-  <string name="keyguard_status_view_weather_format"><xliff:g id="temp">%1$s</xliff:g> – <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="accessibility_dpad_left">Pfeiltaste links</string>
   <string name="accessibility_dpad_right">Pfeiltaste rechts</string>
   <!-- NavBar Tuner -->
@@ -61,7 +60,6 @@
     <item quantity="other">%1$d Clients</item>
   </plurals>
   <!-- Weather string format in expanded statusbar header -->
-  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> – <xliff:g id="condition">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
     <item>Anruf</item>
@@ -117,7 +115,7 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">Nur Gerät</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-  <string name="quick_settings_location_detail_mode_high_accuracy_description">GPS, WLAN, Bluetooth oder Mobilfunknetze zur Standortbestimmung nutzen</string>
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">GPS, WLAN, Bluetooth oder Mobilfunknetze zur Standortbestimmung nutzen </string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
   <string name="quick_settings_location_detail_mode_battery_saving_description">WLAN, Bluetooth oder Mobilfunknetze zur Standortbestimmung nutzen</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
@@ -151,6 +149,4 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Synchronisieren</string>
   <string name="quick_settings_volume_panel_label">Lautstärke</string>
-  <!-- Content description for Accessibility on unlocked tasks in recents -->
-  <!-- Content description for Accessibility on locked tasks in recents -->
 </resources>

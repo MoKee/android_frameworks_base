@@ -65,7 +65,7 @@
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <string name="screen_pinning_description_no_navbar">Zůstává zobrazeno, dokud není uvolněn. Dotykem a podržením tlačítka Zpět bude provedeno uvolnění.</string>
   <!-- String for lockscreen shortcut hints -->
-  <string name="shortcut_hint">Přejeďte prstem od ikony pro %1$s</string>
+  <string name="shortcut_hint">Přejeďte prstem přes ikonu %1$s</string>
   <string name="lockscreen_message">Dotykem na ikonu na levé nebo pravé straně zamykací obrazovky změňte zástupce.</string>
   <string name="lockscreen_default_target">Výchozí</string>
   <string name="select_application">Vybrat aplikaci</string>
@@ -74,7 +74,6 @@
   <!-- Play queue -->
   <string name="play_queue_extension">Zobrazit frontu přehrávání</string>
   <!-- Weather string format in keyguard -->
-  <string name="keyguard_status_view_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="accessibility_dpad_left">Kurzor doleva</string>
   <string name="accessibility_dpad_right">Kurzor doprava</string>
   <!-- NavBar Tuner -->
@@ -90,7 +89,6 @@
     <item quantity="other">%1$d klientů</item>
   </plurals>
   <!-- Weather string format in expanded statusbar header -->
-  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
     <item>Hovor</item>
@@ -105,7 +103,7 @@
     <!-- STREAM_ALARM -->
     <item>Oznámení</item>
     <!-- STREAM_NOTIFICATION -->
-    <item>Bluetooth</item>
+    <item>Zařízení Bluetooth</item>
     <!-- STREAM_BLUETOOTH_SCO -->
     <item></item>
     <!-- STREAM_SYSTEM_ENFORCED -->
@@ -121,22 +119,22 @@
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
   <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_battery_saving">Zjištění polohy: úsporný režim.</string>
+  <string name="accessibility_quick_settings_location_battery_saving">Hlášení polohy: úspora baterie.</string>
   <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_gps_only">Zjištění polohy: pouze GPS.</string>
+  <string name="accessibility_quick_settings_location_gps_only">Hlášení polohy: pouze GPS.</string>
   <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_high_accuracy">Zjištění polohy: vysoká přesnost.</string>
+  <string name="accessibility_quick_settings_location_high_accuracy">Hlášení polohy: vysoká přesnost.</string>
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_battery_saving_label">Úspora baterie</string>
-  <string name="quick_settings_location_battery_saving_label_twoline">Úspora\nbaterie</string>
+  <string name="quick_settings_location_battery_saving_label_twoline">Úspora baterie</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_gps_only_label">Pouze zařízení</string>
-  <string name="quick_settings_location_gps_only_label_twoline">Pouze\nGPS</string>
+  <string name="quick_settings_location_gps_only_label">Pouze GPS</string>
+  <string name="quick_settings_location_gps_only_label_twoline">Pouze GPS</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">Vysoká přesnost</string>
-  <string name="quick_settings_location_high_accuracy_label_twoline">Vysoká\npřesnost</string>
+  <string name="quick_settings_location_high_accuracy_label_twoline">Vysoká přesnost</string>
   <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_detail_title">Poloha</string>
+  <string name="quick_settings_location_detail_title">Místo</string>
   <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_detail_menu_title">Zvolte režim:</string>
   <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
@@ -146,40 +144,38 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">Pouze zařízení</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-  <string name="quick_settings_location_detail_mode_high_accuracy_description">K určování polohy používat GPS, Wi\u2011Fi, Bluetooth nebo mobilní sítě</string>
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">K určování polohy používat GPS, Wi-Fi, Bluetooth nebo mobilní sítě </string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
-  <string name="quick_settings_location_detail_mode_battery_saving_description">K určování polohy používat Wi\u2011Fi, Bluetooth nebo mobilní sítě</string>
+  <string name="quick_settings_location_detail_mode_battery_saving_description">K určování polohy používat Wi-Fi, Bluetooth nebo mobilní sítě</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_description">K určování polohy používat GPS</string>
   <!-- Adb over network QS tile -->
   <string name="quick_settings_network_adb_label">ADB přes síť</string>
   <!-- Ambient display QS tile -->
-  <string name="quick_settings_ambient_display_label">Ambientní zobrazení</string>
-  <string name="accessibility_quick_settings_ambient_display_off">Ambientní zobrazení vypnuto.</string>
-  <string name="accessibility_quick_settings_ambient_display_on">Ambientní zobrazení zapnuto.</string>
-  <string name="accessibility_quick_settings_ambient_display_changed_off">Ambientní zobrazení vypnuto.</string>
-  <string name="accessibility_quick_settings_ambient_display_changed_on">Ambientní zobrazení zapnuto.</string>
+  <string name="quick_settings_ambient_display_label">Ambientní displej</string>
+  <string name="accessibility_quick_settings_ambient_display_off">Ambientní displej vypnut.</string>
+  <string name="accessibility_quick_settings_ambient_display_on">Ambientní displej zapnut.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_off">Ambientní displej vypnut.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_on">Ambientní displej zapnut.</string>
   <!-- Caffeine -->
-  <string name="quick_settings_caffeine_label">Kofein</string>
+  <string name="quick_settings_caffeine_label">Čas na kávu</string>
   <string name="accessibility_quick_settings_caffeine_off">Kofein vyp.</string>
   <string name="accessibility_quick_settings_caffeine_on">Kofein zap.</string>
   <!-- Heads up QS tile -->
   <string name="quick_settings_heads_up_label">Plovoucí upozornění</string>
-  <string name="accessibility_quick_settings_heads_up_off">Plovoucí upozorněn vyp.</string>
-  <string name="accessibility_quick_settings_heads_up_on">Plovoucí upozornění zap.</string>
-  <string name="accessibility_quick_settings_heads_up_changed_off">Plovoucí upozorněn vyp.</string>
-  <string name="accessibility_quick_settings_heads_up_changed_on">Plovoucí upozornění zap.</string>
+  <string name="accessibility_quick_settings_heads_up_off">Plovoucí upozornění vypnuto.</string>
+  <string name="accessibility_quick_settings_heads_up_on">Plovoucí upozornění zapnuto.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_off">Plovoucí upozornění bylo vypnuto.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_on">Plovoucí upozornění bylo zapnuto.</string>
   <!-- Sync QS tile -->
-  <string name="quick_settings_sync_label">Synchronizace</string>
-  <string name="accessibility_quick_settings_sync_off">Synch. vyp.</string>
-  <string name="accessibility_quick_settings_sync_on">Synch. zap.</string>
-  <string name="accessibility_quick_settings_sync_changed_off">Synchronizace vypnuta.</string>
-  <string name="accessibility_quick_settings_sync_changed_on">Synchronizace zapnuta.</string>
+  <string name="quick_settings_sync_label">Synchronizovat</string>
+  <string name="accessibility_quick_settings_sync_off">Synchronizace vypnuta.</string>
+  <string name="accessibility_quick_settings_sync_on">Synchronizace zapnuta.</string>
+  <string name="accessibility_quick_settings_sync_changed_off">Synchronizace byla vypnuta.</string>
+  <string name="accessibility_quick_settings_sync_changed_on">Synchronizace byla zapnuta.</string>
   <!-- USB tethering QS tile -->
-  <string name="quick_settings_usb_tether_label">USB tethering</string>
+  <string name="quick_settings_usb_tether_label">Připojení přes USB</string>
   <!-- Volume panel QS tile -->
-  <string name="quick_settings_sync_label">Synchronizace</string>
+  <string name="quick_settings_sync_label">Synchronizovat</string>
   <string name="quick_settings_volume_panel_label">Panel hlasitosti</string>
-  <!-- Content description for Accessibility on unlocked tasks in recents -->
-  <!-- Content description for Accessibility on locked tasks in recents -->
 </resources>

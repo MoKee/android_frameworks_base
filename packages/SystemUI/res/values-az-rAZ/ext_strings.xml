@@ -29,6 +29,7 @@
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <string name="screen_pinning_description_no_navbar">Ekrandan çıxarılana qədər görsənəcək. Çıxartmaq üçün Geri düyməsinə toxunub basılı tutun.</string>
   <!-- String for lockscreen shortcut hints -->
+  <string name="lockscreen_default_target">İlkin</string>
   <string name="select_application">Tətbiqetmə seç</string>
   <string name="lockscreen_choose_action_title">Hərəkət seç</string>
   <string name="lockscreen_none_target">Yoxdur</string>
@@ -43,7 +44,6 @@
   <!-- Path data for circle battery -->
   <!-- Wi-Fi hotspot label when enabled -->
   <!-- Weather string format in expanded statusbar header -->
-  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <!-- Content description of the data connection type HSPA+ for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <!-- Text to use when the number in a notification info is too large
@@ -63,6 +63,7 @@
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">Yüksək həssaslıq</string>
   <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_detail_title">Yer</string>
   <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
   <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
   <string name="quick_settings_location_detail_mode_high_accuracy_title">Yüksək həssaslıq</string>
@@ -99,6 +100,4 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Eyniləşdirmə</string>
   <string name="quick_settings_volume_panel_label">Səs paneli</string>
-  <!-- Content description for Accessibility on unlocked tasks in recents -->
-  <!-- Content description for Accessibility on locked tasks in recents -->
 </resources>

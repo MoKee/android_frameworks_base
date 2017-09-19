@@ -74,7 +74,6 @@
   <!-- Play queue -->
   <string name="play_queue_extension">Покажи опашка за изпълнение</string>
   <!-- Weather string format in keyguard -->
-  <string name="keyguard_status_view_weather_format"><xliff:g id="temp">%1$s </xliff:g> <xliff:g id="condition">%2$s </xliff:g></string>
   <string name="accessibility_dpad_left">Курсора наляво</string>
   <string name="accessibility_dpad_right">Курсора надясно</string>
   <!-- NavBar Tuner -->
@@ -89,7 +88,6 @@
     <item quantity="other">%1$d клиента</item>
   </plurals>
   <!-- Weather string format in expanded statusbar header -->
-  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s </xliff:g> - <xliff:g id="condition">%2$s </xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
     <item>Обаждане</item>
@@ -145,7 +143,7 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">Само по GPS</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-  <string name="quick_settings_location_detail_mode_high_accuracy_description">Използвай GPS, Wi\u2011Fi, Bluetooth или клетъчни мрежи за определяне на местоположението</string>
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">Използвай GPS, Wi\u2011Fi, Bluetooth или клетъчни мрежи за определяне на местоположението </string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
   <string name="quick_settings_location_detail_mode_battery_saving_description">Използвай Wi\u2011Fi, Bluetooth или клетъчни мрежи за определяне на местоположението</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
@@ -179,6 +177,4 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Синхронизация</string>
   <string name="quick_settings_volume_panel_label">Звуков панел</string>
-  <!-- Content description for Accessibility on unlocked tasks in recents -->
-  <!-- Content description for Accessibility on locked tasks in recents -->
 </resources>

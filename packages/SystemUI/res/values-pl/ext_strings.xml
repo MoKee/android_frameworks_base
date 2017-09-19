@@ -74,7 +74,6 @@
   <!-- Play queue -->
   <string name="play_queue_extension">Pokaż kolejkę odtwarzania</string>
   <!-- Weather string format in keyguard -->
-  <string name="keyguard_status_view_weather_format"><xliff:g id="temp">%1$s</xliff:g> <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="accessibility_dpad_left">Kursor w lewo</string>
   <string name="accessibility_dpad_right">Kursor w prawo</string>
   <!-- NavBar Tuner -->
@@ -90,7 +89,6 @@
     <item quantity="other">%1$d klientów</item>
   </plurals>
   <!-- Weather string format in expanded statusbar header -->
-  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
     <item>Połączenia</item>
@@ -180,6 +178,4 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Synchronizacja</string>
   <string name="quick_settings_volume_panel_label">Panel głośności</string>
-  <!-- Content description for Accessibility on unlocked tasks in recents -->
-  <!-- Content description for Accessibility on locked tasks in recents -->
 </resources>

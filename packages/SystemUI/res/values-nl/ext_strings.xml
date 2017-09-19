@@ -75,7 +75,6 @@
   <!-- Play queue -->
   <string name="play_queue_extension">Wachtrij weergeven</string>
   <!-- Weather string format in keyguard -->
-  <string name="keyguard_status_view_weather_format"><xliff:g id="temp">%1$s</xliff:g> <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="accessibility_dpad_left">Cursor links</string>
   <string name="accessibility_dpad_right">Cursor rechts</string>
   <!-- NavBar Tuner -->
@@ -87,10 +86,9 @@
   <!-- Wi-Fi hotspot label when enabled -->
   <plurals name="wifi_hotspot_connected_clients_label">
     <item quantity="one">%1$d client</item>
-    <item quantity="other">%1$d clients</item>
+    <item quantity="other">%1$d clienten</item>
   </plurals>
   <!-- Weather string format in expanded statusbar header -->
-  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
     <item>Oproep</item>
@@ -101,7 +99,7 @@
     <!-- STREAM_RING -->
     <item>Media</item>
     <!-- STREAM_MUSIC -->
-    <item>Alarm</item>
+    <item>Wekker</item>
     <!-- STREAM_ALARM -->
     <item>Melding</item>
     <!-- STREAM_NOTIFICATION -->
@@ -180,6 +178,4 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Synchroniseren</string>
   <string name="quick_settings_volume_panel_label">Volumepaneel</string>
-  <!-- Content description for Accessibility on unlocked tasks in recents -->
-  <!-- Content description for Accessibility on locked tasks in recents -->
 </resources>

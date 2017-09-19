@@ -74,7 +74,6 @@
   <!-- Play queue -->
   <string name="play_queue_extension">Visualizza coda di riproduzione</string>
   <!-- Weather string format in keyguard -->
-  <string name="keyguard_status_view_weather_format"><xliff:g id="temp">%1$s</xliff:g> <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="accessibility_dpad_left">Cursore a sinistra</string>
   <string name="accessibility_dpad_right">Cursore a destra</string>
   <!-- NavBar Tuner -->
@@ -89,7 +88,6 @@
     <item quantity="other">%1$d client</item>
   </plurals>
   <!-- Weather string format in expanded statusbar header -->
-  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
     <item>Chiamate</item>
@@ -153,7 +151,7 @@
   <!-- Adb over network QS tile -->
   <string name="quick_settings_network_adb_label">ADB attraverso la rete</string>
   <!-- Ambient display QS tile -->
-  <string name="quick_settings_ambient_display_label">Ambient display</string>
+  <string name="quick_settings_ambient_display_label">Display Ambient</string>
   <string name="accessibility_quick_settings_ambient_display_off">Ambient display disattivato.</string>
   <string name="accessibility_quick_settings_ambient_display_on">Ambient display attivato.</string>
   <string name="accessibility_quick_settings_ambient_display_changed_off">Ambient display disattivato.</string>
@@ -179,6 +177,4 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Sincronizzazione</string>
   <string name="quick_settings_volume_panel_label">Pannello volume</string>
-  <!-- Content description for Accessibility on unlocked tasks in recents -->
-  <!-- Content description for Accessibility on locked tasks in recents -->
 </resources>

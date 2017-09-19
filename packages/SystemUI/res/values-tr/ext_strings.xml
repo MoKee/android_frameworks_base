@@ -26,7 +26,7 @@
   <string name="led_notification_title">Işık ayarları</string>
   <string name="led_notification_text">LED ışık ayarlar tarafından etkinleştirilmiş</string>
   <!-- Notification which notifies user flashlight is enabled -->
-  <string name="quick_settings_tile_flashlight_not_title">El feneri açık</string>
+  <string name="quick_settings_tile_flashlight_not_title">Flaş ışığı açık</string>
   <string name="quick_settings_tile_flashlight_not_summary">Kapatmak için dokunun</string>
   <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
   <string name="cm_power_notification_controls_description">Güçlü bildirim kontrolleriyle. bir uygulamanın bildirimleri için 0 ile 6 arasında önem düzeyini ayarlayabilirsiniz.
@@ -60,11 +60,11 @@
         \n- Uygulamadan gelen tüm bildirimleri engelle
     </string>
   <!-- Notification importance level title-->
-  <string name="importance_level_title">Önem: Seviye %1$d</string>
+  <string name="importance_level_title">Önem: %1$d. Düzey</string>
   <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
   <string name="notification_importance_very_low">Tam ekran kesintisi, ekranda kısaca belirme, ses veya titreşim yok. Kilit ekranından gizlensin.</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
-  <string name="screen_pinning_description_no_navbar">Bu, siz sabitleyene kadar onu korur. Sabitlemek için Geri düğmesine dokunun ve basılı tutun.</string>
+  <string name="screen_pinning_description_no_navbar">Ekrandan kaldırana kadar görünümde tutar. Kaldırmak için Geri tuşuna dokunun ve tutun.</string>
   <!-- String for lockscreen shortcut hints -->
   <string name="shortcut_hint">%1$s için simgeyi kaydırın</string>
   <string name="lockscreen_message">Kilit ekranı kısayolunu atamak için sol veya sağdaki bir simgeye dokunun.</string>
@@ -75,7 +75,6 @@
   <!-- Play queue -->
   <string name="play_queue_extension">Oynatma kuyruğunu göster</string>
   <!-- Weather string format in keyguard -->
-  <string name="keyguard_status_view_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="accessibility_dpad_left">Sol imleç</string>
   <string name="accessibility_dpad_right">Sağ imleç</string>
   <!-- NavBar Tuner -->
@@ -90,7 +89,6 @@
     <item quantity="other">%1$d cihaz</item>
   </plurals>
   <!-- Weather string format in expanded statusbar header -->
-  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
     <item>Arama</item>
@@ -180,6 +178,4 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Eşitleme</string>
   <string name="quick_settings_volume_panel_label">Ses paneli</string>
-  <!-- Content description for Accessibility on unlocked tasks in recents -->
-  <!-- Content description for Accessibility on locked tasks in recents -->
 </resources>
