@@ -49,7 +49,7 @@ public class ScreenShotTile extends QSTile<QSTile.BooleanState> {
                 takeScreenshot(true);
             }
         }, DateUtils.SECOND_IN_MILLIS);
-        return new Intent(Intent.ACTION_GET_CONTENT);
+        return null;
     }
 
     @Override
