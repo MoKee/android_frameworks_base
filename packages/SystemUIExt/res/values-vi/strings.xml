@@ -22,6 +22,12 @@
   <!-- Screenshot QS Tile -->
   <string name="quick_settings_screenshot_label">Ảnh chụp màn hình</string>
   <!-- Compass QS Tile -->
+  <string name="quick_settings_compass_label">La bàn</string>
+  <string name="quick_settings_compass_init">Đang khởi tạo\u2026</string>
+  <string name="accessibility_quick_settings_compass_off">Tắt la bàn.</string>
+  <string name="accessibility_quick_settings_compass_on">Mở la bàn.</string>
+  <string name="accessibility_quick_settings_compass_changed_off">La bàn đang tắt.</string>
+  <string name="accessibility_quick_settings_compass_changed_on">La bàn đang bật.</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
   <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
   <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
