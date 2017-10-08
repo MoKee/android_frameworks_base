@@ -55,12 +55,12 @@ bool onVmCreated(JNIEnv*) {
 // Utility methods
 ////////////////////////////////////////////////////////////
 void logExceptionStackTrace() {
-    ScopedObjectAccess soa(Thread::Current());
-
+    Thread* self = Thread::Current();
+    ScopedObjectAccess soa(self);
 #if PLATFORM_SDK_VERSION >= 23
-    XLOG(ERROR) << soa.Self()->GetException()->Dump();
+    XLOG(ERROR) << self->GetException()->Dump();
 #else
-    XLOG(ERROR) << soa.Self()->GetException(nullptr)->Dump();
+    XLOG(ERROR) << self->GetException(nullptr)->Dump();
 #endif
 }
 
@@ -80,9 +80,8 @@ void prepareSubclassReplacement(JNIEnv* env, jclass clazz) {
 
 void XposedBridge_hookMethodNative(JNIEnv* env, jclass, jobject javaReflectedMethod,
             jobject, jint, jobject javaAdditionalInfo) {
-    ScopedObjectAccess soa(env);
-
     // Detect usage errors.
+    ScopedObjectAccess soa(env);
     if (javaReflectedMethod == nullptr) {
 #if PLATFORM_SDK_VERSION >= 23
         ThrowIllegalArgumentException("method must not be null");
@@ -105,7 +104,7 @@ jobject XposedBridge_invokeOriginalMethodNative(JNIEnv* env, jclass, jobject jav
     if (UNLIKELY(!isResolved)) {
         ArtMethod* artMethod = ArtMethod::FromReflectedMethod(soa, javaMethod);
         if (LIKELY(artMethod->IsXposedHookedMethod())) {
-            javaMethod = artMethod->GetXposedHookInfo()->reflectedMethod;
+            javaMethod = artMethod->GetXposedHookInfo()->reflected_method;
         }
     }
 #if PLATFORM_SDK_VERSION >= 23

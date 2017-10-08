@@ -8,6 +8,7 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <sys/prctl.h>
 #include <unistd.h>
 
 #include "xposed.h"
@@ -33,7 +34,11 @@ char marker[50];
 
 static void execLogcat() {
     // Ensure that we're allowed to read all log entries
+    if (prctl(PR_SET_KEEPCAPS, 1, 0, 0, 0) < 0) {
+        ALOGE("Failed to keep capabilities: %s", strerror(errno));
+    }
     setresgid(AID_LOG, AID_LOG, AID_LOG);
+    setresuid(AID_LOG, AID_LOG, AID_LOG);
     int8_t keep[] = { CAP_SYSLOG, -1 };
     xposed::dropCapabilities(keep);
 
@@ -154,14 +159,12 @@ void start() {
         ALOGE("Could not allocate pipe for logcat output: %s", strerror(errno));
         exit(EXIT_FAILURE);
     }
+    fcntl(pipeFds[0], F_SETPIPE_SZ, 1048576);
 
     if ((pid = fork()) < 0) {
         ALOGE("Fork for logcat execution failed: %s", strerror(errno));
         exit(EXIT_FAILURE);
     } else if (pid == 0) {
-        close(pipeFds[1]);
-        runDaemon(pipeFds[0]);
-    } else {
         close(pipeFds[0]);
         if (dup2(pipeFds[1], STDOUT_FILENO) == -1) {
             ALOGE("Could not redirect stdout: %s", strerror(errno));
@@ -172,6 +175,9 @@ void start() {
             exit(EXIT_FAILURE);
         }
         execLogcat();
+    } else {
+        close(pipeFds[1]);
+        runDaemon(pipeFds[0]);
     }
 
     // Should never reach this point
