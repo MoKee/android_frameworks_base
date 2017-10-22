@@ -23,12 +23,17 @@
   <!-- Content description of the light brightness slider (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_notification_brightness">Argiaren distira</string>
   <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_profiles_off">Profilak ezgaituta.</string>
   <!-- Content description of the profiles tile in quick settings (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_profiles">Profila: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
   <!-- Announcement made when the profiles tile changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_profiles_changed_off">Profilak ezgaituta.</string>
   <!-- Announcement made when the profiles tile changes (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_profiles_changed">Profil honetara aldatu da: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
   <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_profiles_off">Profilak ezgaituta.</string>
   <!-- Content description of the system profiles  -->
-  <string name="quick_settings_profiles">Sistema-profilak</string>
+  <string name="quick_settings_profiles">Sistema profilak</string>
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">Argi ezarpenak</string>
   <string name="led_notification_text">LED argia ezarpenetan gaituta</string>

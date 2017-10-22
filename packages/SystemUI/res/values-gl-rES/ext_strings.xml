@@ -23,11 +23,17 @@
   <!-- Content description of the light brightness slider (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_notification_brightness">Brillo da luz</string>
   <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_profiles_off">Perfís desactivados.</string>
   <!-- Content description of the profiles tile in quick settings (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_profiles">Perfil: <xliff:g id="profile" example="Predeterminado">%s</xliff:g>.</string>
   <!-- Announcement made when the profiles tile changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_profiles_changed_off">Perfís desactivados.</string>
   <!-- Announcement made when the profiles tile changes (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_profiles_changed">Perfil cambiado a <xliff:g id="profile" example="Predeterminado">%s</xliff:g>.</string>
   <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_profiles_off">Perfís desactivados.</string>
   <!-- Content description of the system profiles  -->
+  <string name="quick_settings_profiles">Perfís do sistema</string>
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">Configuración de luz</string>
   <string name="led_notification_text">Luz LED activada por configuración</string>
