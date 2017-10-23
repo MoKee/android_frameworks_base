@@ -34,6 +34,7 @@
   <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <!-- String for lockscreen shortcut hints -->
+  <string name="lockscreen_none_target">Asl</string>
   <!-- Play queue -->
   <!-- Weather string format in keyguard -->
   <!-- NavBar Tuner -->
@@ -69,6 +70,4 @@
   <!-- Sync QS tile -->
   <!-- USB tethering QS tile -->
   <!-- Volume panel QS tile -->
-  <!-- Content description for Accessibility on unlocked tasks in recents -->
-  <!-- Content description for Accessibility on locked tasks in recents -->
 </resources>
