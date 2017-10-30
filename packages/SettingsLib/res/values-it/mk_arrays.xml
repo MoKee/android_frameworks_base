@@ -24,8 +24,8 @@
     <item>Scala dell\'animazione 1x</item>
     <item>Scala dell\'animazione 1.5x</item>
     <item>Scala dell\'animazione 2x</item>
-    <item>Animation scale 5x</item>
-    <item>Animation scale 10x</item>
+    <item>Scala animazione 5x</item>
+    <item>Scala animazione 10x</item>
   </string-array>
   <!-- Values for window animation scale preference. -->
   <!-- Titles for transition animation scale preference. [CHAR LIMIT=35] -->
@@ -36,8 +36,8 @@
     <item>Scala dell\'animazione 1x</item>
     <item>Scala dell\'animazione 1.5x</item>
     <item>Scala dell\'animazione 2x</item>
-    <item>Animation scale 5x</item>
-    <item>Animation scale 10x</item>
+    <item>Scala animazione 5x</item>
+    <item>Scala animazione 10x</item>
   </string-array>
   <!-- Values for transition animation scale preference. -->
   <!-- Titles for animator duration scale preference. [CHAR LIMIT=35] -->
@@ -48,8 +48,8 @@
     <item>Scala dell\'animazione 1x</item>
     <item>Scala dell\'animazione 1.5x</item>
     <item>Scala dell\'animazione 2x</item>
-    <item>Animation scale 5x</item>
-    <item>Animation scale 10x</item>
+    <item>Scala animazione 5x</item>
+    <item>Scala animazione 10x</item>
   </string-array>
   <!-- Values for animator duration scale preference. -->
 </resources>
