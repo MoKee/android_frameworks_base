@@ -231,6 +231,15 @@ public class KeyguardUpdateMonitorCallback {
     public void onFingerprintAuthenticated(int userId) { }
 
     /**
+     * Called when a fingerprint is recognized.
+     * @param userId the user id for which the fingerprint was authenticated
+     * @param fingerId the finger id which the user used to authenticate
+     */
+    public void onFingerprintAuthenticated(int userId, int fingerId) {
+        onFingerprintAuthenticated(userId);
+    }
+
+    /**
      * Called when fingerprint provides help string (e.g. "Try again")
      * @param msgId
      * @param helpString
