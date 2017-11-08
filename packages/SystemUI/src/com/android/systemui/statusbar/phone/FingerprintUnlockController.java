@@ -96,6 +96,7 @@ public class FingerprintUnlockController extends KeyguardUpdateMonitorCallback {
     private PhoneStatusBar mPhoneStatusBar;
     private boolean mGoingToSleep;
     private int mPendingAuthenticatedUserId = -1;
+    private int mPendingAuthenticatedFingerId = -1;
 
     public FingerprintUnlockController(Context context,
             StatusBarWindowManager statusBarWindowManager,
@@ -167,10 +168,11 @@ public class FingerprintUnlockController extends KeyguardUpdateMonitorCallback {
     }
 
     @Override
-    public void onFingerprintAuthenticated(int userId) {
+    public void onFingerprintAuthenticated(int userId, int fingerId) {
         Trace.beginSection("FingerprintUnlockController#onFingerprintAuthenticated");
         if (mUpdateMonitor.isGoingToSleep()) {
             mPendingAuthenticatedUserId = userId;
+            mPendingAuthenticatedFingerId = fingerId;
             Trace.endSection();
             return;
         }
@@ -212,7 +214,7 @@ public class FingerprintUnlockController extends KeyguardUpdateMonitorCallback {
                 Trace.beginSection("MODE_WAKE_AND_UNLOCK");
                 mStatusBarWindowManager.setStatusBarFocusable(false);
                 mDozeScrimController.abortPulsing();
-                mKeyguardViewMediator.onWakeAndUnlocking();
+                mKeyguardViewMediator.onWakeAndUnlocking(fingerId);
                 mScrimController.setWakeAndUnlocking();
                 if (mPhoneStatusBar.getNavigationBarView() != null) {
                     mPhoneStatusBar.getNavigationBarView().setWakeAndUnlocking(true);
@@ -233,6 +235,7 @@ public class FingerprintUnlockController extends KeyguardUpdateMonitorCallback {
     @Override
     public void onStartedGoingToSleep(int why) {
         mPendingAuthenticatedUserId = -1;
+        mPendingAuthenticatedFingerId = -1;
     }
 
     @Override
@@ -244,11 +247,13 @@ public class FingerprintUnlockController extends KeyguardUpdateMonitorCallback {
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    onFingerprintAuthenticated(mPendingAuthenticatedUserId);
+                    onFingerprintAuthenticated(mPendingAuthenticatedUserId,
+                            mPendingAuthenticatedFingerId);
                 }
             });
         }
         mPendingAuthenticatedUserId = -1;
+        mPendingAuthenticatedFingerId = -1;
         Trace.endSection();
     }
 
