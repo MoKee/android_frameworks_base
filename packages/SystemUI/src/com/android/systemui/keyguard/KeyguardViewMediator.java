@@ -67,6 +67,7 @@ import android.view.animation.AnimationUtils;
 
 import mokee.app.Profile;
 import mokee.app.ProfileManager;
+import mokee.fingerprint.FingerprintShortcutManager;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
@@ -220,6 +221,9 @@ public class KeyguardViewMediator extends SystemUI {
 
     /** SearchManager for determining whether or not search assistant is available */
     private SearchManager mSearchManager;
+
+    /** FingerprintShortcutManager for launching shortcuts with finger */
+    private FingerprintShortcutManager mFingerprintShortcutManager;
 
     /**
      * Used to keep the device awake while to ensure the keyguard finishes opening before
@@ -669,6 +673,8 @@ public class KeyguardViewMediator extends SystemUI {
         mShowKeyguardWakeLock = mPM.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "show keyguard");
         mShowKeyguardWakeLock.setReferenceCounted(false);
         mProfileManager = ProfileManager.getInstance(mContext);
+
+        mFingerprintShortcutManager = new FingerprintShortcutManager(mContext);
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(DELAYED_KEYGUARD_ACTION);
@@ -1981,6 +1987,18 @@ public class KeyguardViewMediator extends SystemUI {
         mWakeAndUnlocking = true;
         keyguardDone(true /* authenticated */);
         Trace.endSection();
+    }
+
+    public void onWakeAndUnlocking(int fingerId) {
+        onWakeAndUnlocking();
+        final int currentUserId = KeyguardUpdateMonitor.getCurrentUser();
+        final UserHandle currentUser = new UserHandle(currentUserId);
+        try {
+            mFingerprintShortcutManager.startShortcutAsUser(
+                    fingerId, currentUser);
+        } catch (Exception e) {
+            Log.e(TAG, "Error while starting fingerprint shortcut", e);
+        }
     }
 
     public StatusBarKeyguardViewManager registerStatusBar(PhoneStatusBar phoneStatusBar,
