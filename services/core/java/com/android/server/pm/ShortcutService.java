@@ -2505,6 +2505,10 @@ public class ShortcutService extends IShortcutService.Stub {
         @Override
         public boolean hasShortcutHostPermission(int launcherUserId,
                 @NonNull String callingPackage) {
+            // Hack to allow shortcuts be started via fingerprint unlock
+            if ("com.android.systemui".equals(callingPackage)) {
+                return true;
+            }
             return ShortcutService.this.hasShortcutHostPermission(callingPackage, launcherUserId);
         }
     }
