@@ -1983,6 +1983,11 @@ public class KeyguardViewMediator extends SystemUI {
         Trace.endSection();
     }
 
+    public void onWakeAndUnlocking(int fingerId) {
+        onWakeAndUnlocking();
+        FingerprintShortcuts.launchAppByFinger(mContext, fingerId);
+    }
+
     public StatusBarKeyguardViewManager registerStatusBar(PhoneStatusBar phoneStatusBar,
             ViewGroup container, StatusBarWindowManager statusBarWindowManager,
             ScrimController scrimController,
