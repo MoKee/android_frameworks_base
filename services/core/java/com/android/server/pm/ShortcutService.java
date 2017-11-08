@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2017-2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2792,6 +2793,11 @@ public class ShortcutService extends IShortcutService.Stub {
         @Override
         public boolean hasShortcutHostPermission(int launcherUserId,
                 @NonNull String callingPackage, int callingPid, int callingUid) {
+            // Hack to allow shortcuts be started via fingerprint unlock
+            if ("com.android.systemui".equals(callingPackage) ||
+                    "org.mokee.mkparts".equals(callingPackage)) {
+                return true;
+            }
             return ShortcutService.this.hasShortcutHostPermission(callingPackage, launcherUserId,
                     callingPid, callingUid);
         }

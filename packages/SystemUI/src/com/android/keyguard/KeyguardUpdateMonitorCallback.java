@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (C) 2017-2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -230,6 +231,15 @@ public class KeyguardUpdateMonitorCallback {
      * @param userId the user id for which the fingerprint was authenticated
      */
     public void onFingerprintAuthenticated(int userId) { }
+
+    /**
+     * Called when a fingerprint is recognized.
+     * @param userId the user id for which the fingerprint was authenticated
+     * @param fingerId the finger id which the user used to authenticate
+     */
+    public void onFingerprintAuthenticated(int userId, int fingerId) {
+        onFingerprintAuthenticated(userId);
+    }
 
     /**
      * Called when fingerprint provides help string (e.g. "Try again")

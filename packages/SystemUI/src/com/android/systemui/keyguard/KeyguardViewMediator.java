@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2017-2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,6 +61,8 @@ import android.view.ViewGroup;
 import android.view.WindowManagerPolicyConstants;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+
+import mokee.fingerprint.FingerprintShortcutManager;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto;
@@ -214,6 +217,9 @@ public class KeyguardViewMediator extends SystemUI {
 
     /** TrustManager for letting it know when we change visibility */
     private TrustManager mTrustManager;
+
+    /** FingerprintShortcutManager for launching shortcuts with finger */
+    private FingerprintShortcutManager mFingerprintShortcutManager;
 
     /**
      * Used to keep the device awake while to ensure the keyguard finishes opening before
@@ -700,6 +706,8 @@ public class KeyguardViewMediator extends SystemUI {
 
         mShowKeyguardWakeLock = mPM.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "show keyguard");
         mShowKeyguardWakeLock.setReferenceCounted(false);
+
+        mFingerprintShortcutManager = new FingerprintShortcutManager(mContext);
 
         mProfileManager = ProfileManager.getInstance(mContext);
         IntentFilter filter = new IntentFilter();
@@ -2079,6 +2087,18 @@ public class KeyguardViewMediator extends SystemUI {
         mWakeAndUnlocking = true;
         keyguardDone();
         Trace.endSection();
+    }
+
+    public void onWakeAndUnlocking(int fingerId) {
+        onWakeAndUnlocking();
+        final int currentUserId = KeyguardUpdateMonitor.getCurrentUser();
+        final UserHandle currentUser = new UserHandle(currentUserId);
+        try {
+            mFingerprintShortcutManager.startShortcutAsUser(
+                    fingerId, currentUser);
+        } catch (Exception e) {
+            Log.e(TAG, "Error while starting fingerprint shortcut", e);
+        }
     }
 
     public StatusBarKeyguardViewManager registerStatusBar(StatusBar statusBar,

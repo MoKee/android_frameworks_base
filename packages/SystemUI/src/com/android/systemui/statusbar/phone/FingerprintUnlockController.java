@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2015 The Android Open Source Project
+ * Copyright (C) 2017-2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -108,6 +109,7 @@ public class FingerprintUnlockController extends KeyguardUpdateMonitorCallback {
     private final UnlockMethodCache mUnlockMethodCache;
     private final Context mContext;
     private int mPendingAuthenticatedUserId = -1;
+    private int mPendingAuthenticatedFingerId = -1;
     private boolean mPendingShowBouncer;
     private boolean mHasScreenTurnedOnSinceAuthenticating;
 
@@ -187,17 +189,22 @@ public class FingerprintUnlockController extends KeyguardUpdateMonitorCallback {
     }
 
     @Override
-    public void onFingerprintAuthenticated(int userId) {
+    public void onFingerprintAuthenticated(int userId, int fingerId) {
         Trace.beginSection("FingerprintUnlockController#onFingerprintAuthenticated");
         if (mUpdateMonitor.isGoingToSleep()) {
             mPendingAuthenticatedUserId = userId;
+            mPendingAuthenticatedFingerId = fingerId;
             Trace.endSection();
             return;
         }
-        startWakeAndUnlock(calculateMode());
+        startWakeAndUnlock(calculateMode(), fingerId);
     }
 
     public void startWakeAndUnlock(int mode) {
+        startWakeAndUnlock(mode, -1);
+    }
+
+    public void startWakeAndUnlock(int mode, int fingerId) {
         // TODO(b/62444020): remove when this bug is fixed
         Log.v(TAG, "startWakeAndUnlock(" + mode + ")");
         boolean wasDeviceInteractive = mUpdateMonitor.isDeviceInteractive();
@@ -267,7 +274,7 @@ public class FingerprintUnlockController extends KeyguardUpdateMonitorCallback {
                 if (delayWakeUp) {
                     mHandler.postDelayed(wakeUp, 50);
                 } else {
-                    mKeyguardViewMediator.onWakeAndUnlocking();
+                    mKeyguardViewMediator.onWakeAndUnlocking(fingerId);
                 }
                 if (mStatusBar.getNavigationBarView() != null) {
                     mStatusBar.getNavigationBarView().setWakeAndUnlocking(true);
@@ -295,6 +302,7 @@ public class FingerprintUnlockController extends KeyguardUpdateMonitorCallback {
     public void onStartedGoingToSleep(int why) {
         resetMode();
         mPendingAuthenticatedUserId = -1;
+        mPendingAuthenticatedFingerId = -1;
     }
 
     @Override
@@ -306,11 +314,13 @@ public class FingerprintUnlockController extends KeyguardUpdateMonitorCallback {
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    onFingerprintAuthenticated(mPendingAuthenticatedUserId);
+                    onFingerprintAuthenticated(mPendingAuthenticatedUserId,
+                            mPendingAuthenticatedFingerId);
                 }
             });
         }
         mPendingAuthenticatedUserId = -1;
+        mPendingAuthenticatedFingerId = -1;
         Trace.endSection();
     }
 

@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008 The Android Open Source Project
+ * Copyright (C) 2017-2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,6 +48,7 @@ import android.content.pm.IPackageManager;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.database.ContentObserver;
+import android.hardware.fingerprint.Fingerprint;
 import android.hardware.fingerprint.FingerprintManager;
 import android.hardware.fingerprint.FingerprintManager.AuthenticationCallback;
 import android.hardware.fingerprint.FingerprintManager.AuthenticationResult;
@@ -518,7 +520,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener,
         }
     }
 
-    private void onFingerprintAuthenticated(int userId) {
+    private void onFingerprintAuthenticated(int userId, int fingerId) {
         Trace.beginSection("KeyGuardUpdateMonitor#onFingerPrintAuthenticated");
         mUserFingerprintAuthenticated.put(userId, true);
         // Update/refresh trust state only if user can skip bouncer
@@ -530,7 +532,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener,
         for (int i = 0; i < mCallbacks.size(); i++) {
             KeyguardUpdateMonitorCallback cb = mCallbacks.get(i).get();
             if (cb != null) {
-                cb.onFingerprintAuthenticated(userId);
+                cb.onFingerprintAuthenticated(userId, fingerId);
             }
         }
 
@@ -565,7 +567,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener,
         }
     }
 
-    private void handleFingerprintAuthenticated(int authUserId) {
+    private void handleFingerprintAuthenticated(int authUserId, int fingerId) {
         Trace.beginSection("KeyGuardUpdateMonitor#handlerFingerPrintAuthenticated");
         try {
             final int userId;
@@ -583,7 +585,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener,
                 Log.d(TAG, "Fingerprint disabled by DPM for userId: " + userId);
                 return;
             }
-            onFingerprintAuthenticated(userId);
+            onFingerprintAuthenticated(userId, fingerId);
         } finally {
             setFingerprintRunningState(FINGERPRINT_STATE_STOPPED);
         }
@@ -889,7 +891,9 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener,
         @Override
         public void onAuthenticationSucceeded(AuthenticationResult result) {
             Trace.beginSection("KeyguardUpdateMonitor#onAuthenticationSucceeded");
-            handleFingerprintAuthenticated(result.getUserId());
+            final Fingerprint fp = result.getFingerprint();
+            final int fingerId = fp == null ? -1 : fp.getFingerId();
+            handleFingerprintAuthenticated(result.getUserId(), fingerId);
             Trace.endSection();
         }
 
