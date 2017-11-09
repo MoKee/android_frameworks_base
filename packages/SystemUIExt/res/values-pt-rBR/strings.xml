@@ -37,8 +37,8 @@
   <string name="quick_settings_compass_W">O</string>
   <string name="quick_settings_compass_NW">NO</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
-  <string name="keyguard_indication_dash_charging_time">Carregando lentamente (<xliff:g id="tempo_restante_de_carregamento">%s</xliff:g> para conclusão)</string>
-  <string name="keyguard_plugged_in_dash_charging">Carregando Lentamente</string>
+  <string name="keyguard_indication_dash_charging_time">Carregamento Rápido (<xliff:g id="charging_time_left" example="4 horas e 2 minutos">%s</xliff:g> até à carga completa)</string>
+  <string name="keyguard_plugged_in_dash_charging">Carregamento Rápido</string>
   <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
   <string name="key_disabler">Desabilitar teclas</string>
   <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->

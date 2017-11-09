@@ -27,9 +27,9 @@
   <!-- Content description of the profiles tile in quick settings (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_quick_settings_profiles">Profil: <xliff:g id="profile" example="Default">%s </xliff:g>.</string>
   <!-- Announcement made when the profiles tile changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_profiles_changed_off">Profil dimatikan.</string>
+  <string name="accessibility_quick_settings_profiles_changed_off">Profil Mati.</string>
   <!-- Announcement made when the profiles tile changes (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_profiles_changed">Profil berubah menjadi <xliff:g id="profile" example="Default">%s </xliff:g>.</string>
+  <string name="accessibility_quick_settings_profiles_changed">Ubah Profil  menjadi <xliff:g id="profile" example="Default">%s </xliff:g>.</string>
   <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="quick_settings_profiles_off">Profil mati.</string>
   <!-- Content description of the system profiles  -->
