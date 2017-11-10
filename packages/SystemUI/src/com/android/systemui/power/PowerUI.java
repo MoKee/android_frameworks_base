@@ -44,7 +44,7 @@ import com.android.systemui.R;
 import com.android.systemui.SystemUI;
 import com.android.systemui.statusbar.phone.StatusBar;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -367,8 +367,8 @@ public class PowerUI extends SystemUI {
     }
 
     private void playPowerNotificationSound() {
-        String soundPath = LineageSettings.Global.getString(mContext.getContentResolver(),
-                LineageSettings.Global.POWER_NOTIFICATIONS_RINGTONE);
+        String soundPath = MKSettings.Global.getString(mContext.getContentResolver(),
+                MKSettings.Global.POWER_NOTIFICATIONS_RINGTONE);
 
         if (soundPath != null && !soundPath.equals("silent")) {
             Ringtone powerRingtone = RingtoneManager.getRingtone(mContext, Uri.parse(soundPath));
@@ -377,8 +377,8 @@ public class PowerUI extends SystemUI {
             }
         }
 
-        if (LineageSettings.Global.getInt(mContext.getContentResolver(),
-                LineageSettings.Global.POWER_NOTIFICATIONS_VIBRATE, 0) == 1) {
+        if (MKSettings.Global.getInt(mContext.getContentResolver(),
+                MKSettings.Global.POWER_NOTIFICATIONS_VIBRATE, 0) == 1) {
             Vibrator vibrator = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
             if (vibrator != null) {
                 vibrator.vibrate(250);

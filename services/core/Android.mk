@@ -31,7 +31,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     android.hardware.biometrics.fingerprint-V2.1-java-static \
     android.hardware.vibrator-V1.0-java-constants \
 
-LOCAL_JAVA_LIBRARIES += org.lineageos.platform.internal
+LOCAL_JAVA_LIBRARIES += org.mokee.platform.internal
 
 ifneq ($(INCREMENTAL_BUILDS),)
     LOCAL_PROGUARD_ENABLED := disabled

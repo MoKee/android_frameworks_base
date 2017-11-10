@@ -44,7 +44,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := $(addprefix services.,$(services)) \
     android.hidl.base-V1.0-java-static \
     android.hardware.biometrics.fingerprint-V2.1-java-static
 
-LOCAL_JAVA_LIBRARIES += org.lineageos.platform.internal
+LOCAL_JAVA_LIBRARIES += org.mokee.platform.internal
 
 ifeq ($(EMMA_INSTRUMENT_FRAMEWORK),true)
 LOCAL_EMMA_INSTRUMENT := true

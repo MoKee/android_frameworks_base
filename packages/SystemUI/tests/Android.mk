@@ -55,7 +55,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     SystemUI-tags \
     legacy-android-test \
     testables \
-    org.lineageos.platform.internal
+    org.mokee.platform.internal
 
 LOCAL_JAVA_LIBRARIES := android.test.runner telephony-common android.car
 

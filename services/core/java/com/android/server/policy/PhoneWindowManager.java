@@ -2141,9 +2141,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
         final Resources res = mContext.getResources();
         final String[] deviceKeyHandlerLibs = res.getStringArray(
-                org.lineageos.platform.internal.R.array.config_deviceKeyHandlerLibs);
+                org.mokee.platform.internal.R.array.config_deviceKeyHandlerLibs);
         final String[] deviceKeyHandlerClasses = res.getStringArray(
-                org.lineageos.platform.internal.R.array.config_deviceKeyHandlerClasses);
+                org.mokee.platform.internal.R.array.config_deviceKeyHandlerClasses);
 
         for (int i = 0;
                 i < deviceKeyHandlerLibs.length && i < deviceKeyHandlerClasses.length; i++) {
@@ -7547,8 +7547,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     private void sendLidChangeBroadcast() {
         Log.d(TAG, "Sending cover change broadcast, mLidState=" + mLidState);
-        Intent intent = new Intent(lineageos.content.Intent.ACTION_LID_STATE_CHANGED);
-        intent.putExtra(lineageos.content.Intent.EXTRA_LID_STATE, mLidState);
+        Intent intent = new Intent(mokee.content.Intent.ACTION_LID_STATE_CHANGED);
+        intent.putExtra(mokee.content.Intent.EXTRA_LID_STATE, mLidState);
         intent.setFlags(Intent.FLAG_RECEIVER_REPLACE_PENDING);
         mContext.sendBroadcastAsUser(intent, UserHandle.SYSTEM);
     }

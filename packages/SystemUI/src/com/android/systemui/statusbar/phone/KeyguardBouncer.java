@@ -40,7 +40,7 @@ import com.android.systemui.DejankUtils;
 import com.android.systemui.classifier.FalsingManager;
 import com.android.systemui.keyguard.DismissCallbackRegistry;
 
-import org.lineageos.internal.util.LineageLockPatternUtils;
+import org.mokee.internal.util.MKLockPatternUtils;
 
 import static com.android.keyguard.KeyguardHostView.OnDismissAction;
 import static com.android.keyguard.KeyguardSecurityModel.SecurityMode;
@@ -55,7 +55,7 @@ public class KeyguardBouncer {
     protected final Context mContext;
     protected final ViewMediatorCallback mCallback;
     protected final LockPatternUtils mLockPatternUtils;
-    private final LineageLockPatternUtils mLineageLockPatternUtils;
+    private final MKLockPatternUtils mMKLockPatternUtils;
     protected final ViewGroup mContainer;
     private final FalsingManager mFalsingManager;
     private final DismissCallbackRegistry mDismissCallbackRegistry;
@@ -89,7 +89,7 @@ public class KeyguardBouncer {
         mFalsingManager = FalsingManager.getInstance(mContext);
         mDismissCallbackRegistry = dismissCallbackRegistry;
         mHandler = new Handler();
-        mLineageLockPatternUtils = new LineageLockPatternUtils(mContext);
+        mMKLockPatternUtils = new MKLockPatternUtils(mContext);
     }
 
     public void show(boolean resetSecuritySelection) {
@@ -283,7 +283,7 @@ public class KeyguardBouncer {
                 return UNLOCK_SEQUENCE_FORCE_BOUNCER;
             } else if ((mode == SecurityMode.Pattern || mode == SecurityMode.Password
                     || mode == SecurityMode.PIN) && (mLockPatternUtils != null
-                    && mLineageLockPatternUtils.shouldPassToSecurityView(
+                    && mMKLockPatternUtils.shouldPassToSecurityView(
                             KeyguardUpdateMonitor.getCurrentUser()))) {
                 // "Bouncer first" mode is only available to some security methods
                 return UNLOCK_SEQUENCE_BOUNCER_FIRST;
@@ -303,7 +303,7 @@ public class KeyguardBouncer {
                 return UNLOCK_SEQUENCE_FORCE_BOUNCER;
             } else if ((mode == SecurityMode.Pattern || mode == SecurityMode.Password
                     || mode == SecurityMode.PIN) && (mLockPatternUtils != null
-                    && mLineageLockPatternUtils.shouldPassToSecurityView(
+                    && mMKLockPatternUtils.shouldPassToSecurityView(
                             KeyguardUpdateMonitor.getCurrentUser()))) {
                 // "Bouncer first" mode is only available to some security methods
                 return UNLOCK_SEQUENCE_BOUNCER_FIRST;
