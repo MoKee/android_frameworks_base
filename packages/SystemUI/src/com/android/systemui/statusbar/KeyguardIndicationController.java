@@ -45,13 +45,14 @@ import com.android.systemui.statusbar.phone.KeyguardIndicationTextView;
 import com.android.systemui.statusbar.phone.LockIcon;
 import com.android.systemui.statusbar.phone.StatusBarKeyguardViewManager;
 
+import mokee.providers.MKSettings;
+
 /**
  * Controls the indications and error messages shown on the Keyguard
  */
 public class KeyguardIndicationController {
 
     private static final String TAG = "KeyguardIndication";
-    private static final boolean DEBUG_CHARGING_SPEED = false;
 
     private static final int MSG_HIDE_TRANSIENT = 1;
     private static final int MSG_CLEAR_FP_MSG = 2;
@@ -170,9 +171,12 @@ public class KeyguardIndicationController {
                 mTextView.setTextColor(mTransientTextColor);
 
             } else if (mPowerPluggedIn) {
+                boolean showChargingSpeed = MKSettings.System.getInt(
+                        mContext.getContentResolver(),
+                        MKSettings.System.SHOW_CHARGING_SPEED, 0) != 0;
                 String indication = computePowerIndication();
-                if (DEBUG_CHARGING_SPEED) {
-                    indication += ",  " + (mChargingWattage / 1000) + " mW";
+                if (showChargingSpeed) {
+                    indication += "\n" + (mChargingWattage / 1000) + " mW";
                 }
                 mTextView.switchIndication(indication);
                 mTextView.setTextColor(Color.WHITE);
