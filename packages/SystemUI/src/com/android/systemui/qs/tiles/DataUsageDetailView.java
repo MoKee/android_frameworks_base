@@ -134,6 +134,7 @@ public class DataUsageDetailView extends LinearLayout {
         mRadioGroup.removeAllViews();
         int activeSimCount = getActiveSimCount();
         if (activeSimCount > 1) {
+            mRadioGroup.setOnCheckedChangeListener(null);
             mRadioGroup.setVisibility(View.VISIBLE);
             for (int slotId = 0; slotId < activeSimCount; slotId++) {
                 String carrierName = getCarrierName(slotId);
