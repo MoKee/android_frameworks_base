@@ -87,6 +87,8 @@ import com.android.systemui.recents.events.ui.StackViewScrolledEvent;
 import com.android.systemui.recents.events.ui.TaskViewDismissedEvent;
 import com.android.systemui.recents.events.ui.UpdateFreeformTaskViewVisibilityEvent;
 import com.android.systemui.recents.events.ui.UserInteractionEvent;
+import com.android.systemui.recents.events.ui.dragndrop.DragEndEvent;
+import com.android.systemui.recents.events.ui.dragndrop.DragStartEvent;
 import com.android.systemui.recents.events.ui.focus.DismissFocusedTaskViewEvent;
 import com.android.systemui.recents.events.ui.focus.FocusNextTaskViewEvent;
 import com.android.systemui.recents.events.ui.focus.FocusPreviousTaskViewEvent;
@@ -119,6 +121,10 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
 
     public final static int EVENT_BUS_PRIORITY = Recents.EVENT_BUS_PRIORITY + 1;
     public final static int INCOMPATIBLE_APP_ALPHA_DURATION = 150;
+
+    // Should be the same with STACK_ACTION_BUTTON's in RecentsView
+    private static final int SHOW_MEMORY_BAR_DURATION = 134;
+    private static final int HIDE_MEMORY_BAR_DURATION = 100;
 
     private RecentsPackageMonitor mPackageMonitor;
     private Handler mHandler = new Handler();
@@ -449,8 +455,8 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
 
     private void updateMemoryStatus() {
         mAm.getMemoryInfo(mMemInfo);
-        int available = (int)(mMemInfo.availMem / 1048576L);
-        mMemInfoText.setText(String.format(getResources().getString(R.string.recents_free_ram),available));
+        int available = (int) (mMemInfo.availMem / 1048576L);
+        mMemInfoText.setText(getString(R.string.recents_free_ram, available));
         mMemInfoBar.setProgress(available);
     }
 
@@ -979,6 +985,26 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
         }
         EventBus.getDefault().send(new MultiWindowStateChangedEvent(isInMultiWindowMode,
                 showDeferredAnimation, stack));
+    }
+
+    public final void onBusEvent(DragStartEvent event) {
+        if (mMemBar != null) {
+            mMemBar.animate()
+                    .alpha(0f)
+                    .setDuration(HIDE_MEMORY_BAR_DURATION)
+                    .setInterpolator(Interpolators.ALPHA_OUT)
+                    .start();
+        }
+    }
+
+    public final void onBusEvent(final DragEndEvent event) {
+        if (mMemBar != null) {
+            mMemBar.animate()
+                    .alpha(1f)
+                    .setDuration(SHOW_MEMORY_BAR_DURATION)
+                    .setInterpolator(Interpolators.ALPHA_IN)
+                    .start();
+        }
     }
 
     @Override
