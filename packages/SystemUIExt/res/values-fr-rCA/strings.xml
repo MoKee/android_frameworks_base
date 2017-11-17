@@ -40,7 +40,11 @@
   <string name="keyguard_indication_dash_charging_time">Charge rapide\nCharge complète dans <xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g></string>
   <string name="keyguard_plugged_in_dash_charging">Charge rapide</string>
   <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
+  <string name="key_disabler">Désactiver les touches</string>
   <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_key_disabler_changed_off">Clés activées.</string>
   <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_key_disabler_changed_on">Clés désactivées.</string>
   <!-- Text for switch default data sub in expanded CellularTile -->
+  <string name="quick_settings_cellular_detail_use_data">Utilisation %s donnée</string>
 </resources>
