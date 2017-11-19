@@ -43,6 +43,9 @@
     <!--Switch data sub-->
     <uses-permission android:name="android.permission.WRITE_APN_SETTINGS"/>
 
+    <!-- LiveDisplay tile -->
+    <uses-permission android:name="mokee.permission.MANAGE_LIVEDISPLAY" />
+
     <application>
 
         <activity-alias

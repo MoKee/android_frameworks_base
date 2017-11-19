@@ -49,7 +49,7 @@ import java.util.UUID;
 public class ProfilesTile extends QSTile<QSTile.State> implements KeyguardMonitor.Callback {
 
     private static final Intent PROFILES_SETTINGS =
-            new Intent("org.cyanogenmod.cmparts.PROFILES_SETTINGS");
+            new Intent("org.mokee.mkparts.PROFILES_SETTINGS");
 
     private boolean mListening;
     private ProfilesObserver mObserver;
