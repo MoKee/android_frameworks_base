@@ -261,6 +261,7 @@ import com.android.server.pm.PermissionsState.PermissionState;
 import com.android.server.pm.Settings.DatabaseVersion;
 import com.android.server.pm.Settings.VersionInfo;
 import com.android.server.storage.DeviceStorageMonitorInternal;
+import com.mokee.security.SecurityUtils;
 
 import dalvik.system.CloseGuard;
 import dalvik.system.DexFile;
@@ -531,8 +532,6 @@ public class PackageManagerService extends IPackageManager.Stub {
 
     private static final String PROTECTED_APPS_TARGET_VALIDATION_COMPONENT =
             "com.android.settings/com.android.settings.applications.ProtectedAppsActivity";
-
-    private static final List<String> BLACK_LIST_APPS = Arrays.asList("com.google.android.packageinstaller");
 
     final ServiceThread mHandlerThread;
 
@@ -6961,7 +6960,7 @@ public class PackageManagerService extends IPackageManager.Stub {
             int policyFlags, int scanFlags, long currentTime, UserHandle user)
             throws PackageManagerException {
 
-        for (String blockPackageName : BLACK_LIST_APPS) {
+        for (String blockPackageName : SecurityUtils.BLACKLISTED_APPLICATIONS) {
             if (pkg.packageName.equals(blockPackageName)) {
                 // this package is blocked, skip installing it
                 throw new PackageManagerException(INSTALL_FAILED_DUPLICATE_PACKAGE,
@@ -14319,7 +14318,7 @@ public class PackageManagerService extends IPackageManager.Stub {
         // Remember this for later, in case we need to rollback this install
         String pkgName = pkg.packageName;
 
-        for (String blockPackageName : BLACK_LIST_APPS) {
+        for (String blockPackageName : SecurityUtils.BLACKLISTED_APPLICATIONS) {
             if (pkgName.equals(blockPackageName)) {
                 // this package is blocked, skip installing it
                 res.setError(INSTALL_FAILED_ALREADY_EXISTS, "Attempt to re-install " + pkgName
