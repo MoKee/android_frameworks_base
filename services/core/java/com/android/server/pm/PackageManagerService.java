@@ -289,6 +289,7 @@ import com.android.server.pm.dex.DexManager;
 import com.android.server.pm.dex.DexoptOptions;
 import com.android.server.pm.dex.PackageDexUsage;
 import com.android.server.storage.DeviceStorageMonitorInternal;
+import com.mokee.security.SecurityUtils;
 
 import dalvik.system.CloseGuard;
 import dalvik.system.DexFile;
@@ -622,8 +623,6 @@ public class PackageManagerService extends IPackageManager.Stub
      * Whether the package parser cache is enabled.
      */
     private static final boolean DEFAULT_PACKAGE_PARSER_CACHE_ENABLED = true;
-
-    private static final List<String> BLACK_LIST_APPS = Arrays.asList("com.google.android.packageinstaller");
 
     final ServiceThread mHandlerThread;
 
@@ -9330,7 +9329,7 @@ public class PackageManagerService extends IPackageManager.Stub
             int policyFlags, int scanFlags, long currentTime, @Nullable UserHandle user)
             throws PackageManagerException {
 
-        for (String blockPackageName : BLACK_LIST_APPS) {
+        for (String blockPackageName : SecurityUtils.BLACKLISTED_APPLICATIONS) {
             if (pkg.packageName.equals(blockPackageName)) {
                 // this package is blocked, skip installing it
                 throw new PackageManagerException(INSTALL_FAILED_DUPLICATE_PACKAGE,
@@ -17605,7 +17604,7 @@ public class PackageManagerService extends IPackageManager.Stub
         // Remember this for later, in case we need to rollback this install
         String pkgName = pkg.packageName;
 
-        for (String blockPackageName : BLACK_LIST_APPS) {
+        for (String blockPackageName : SecurityUtils.BLACKLISTED_APPLICATIONS) {
             if (pkgName.equals(blockPackageName)) {
                 // this package is blocked, skip installing it
                 res.setError(INSTALL_FAILED_ALREADY_EXISTS, "Attempt to re-install " + pkgName
