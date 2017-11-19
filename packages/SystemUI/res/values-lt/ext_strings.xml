@@ -127,4 +127,10 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Sinchronizavimas</string>
   <string name="quick_settings_volume_panel_label">Garsumo skydelis</string>
+  <!-- LiveDisplay strings -->
+  <string name="live_display_off">Išjungti</string>
+  <string name="live_display_day">Diena</string>
+  <string name="live_display_day_summary">Naudoti tik dienos nustatymus</string>
+  <string name="live_display_night">Naktis</string>
+  <string name="live_display_night_summary">Naudoti tik nakties nustatymus</string>
 </resources>

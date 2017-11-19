@@ -179,4 +179,16 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Sincronizare</string>
   <string name="quick_settings_volume_panel_label">Panou volum</string>
+  <!-- LiveDisplay strings -->
+  <string name="live_display_auto">Automat</string>
+  <string name="live_display_off">Oprit</string>
+  <string name="live_display_off_summary">Dezactivează toate ajustările</string>
+  <string name="live_display_day">Zi</string>
+  <string name="live_display_day_summary">Utilizează numai setările pentru zi</string>
+  <string name="live_display_night">Noapte</string>
+  <string name="live_display_night_summary">Utilizează numai setările pentru noapte</string>
+  <string name="live_display_outdoor">Afară (soare strălucitor)</string>
+  <string name="accessibility_quick_settings_live_display_off">LiveDisplay oprit.</string>
+  <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: mod auto.</string>
+  <string name="accessibility_quick_settings_live_display_day">LiveDisplay: mod zi.</string>
 </resources>

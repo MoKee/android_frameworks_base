@@ -125,4 +125,5 @@
   <string name="quick_settings_usb_tether_label">यूएसबी टेदरिंग</string>
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">संकालन</string>
+  <!-- LiveDisplay strings -->
 </resources>

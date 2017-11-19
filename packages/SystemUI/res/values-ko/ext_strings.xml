@@ -184,4 +184,26 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">동기화</string>
   <string name="quick_settings_volume_panel_label">볼륨 패널</string>
+  <!-- LiveDisplay strings -->
+  <string name="live_display_auto">자동</string>
+  <string name="live_display_auto_summary">스크린의 색 온도를 자동으로 조정</string>
+  <string name="live_display_off">끄기</string>
+  <string name="live_display_off_summary">모든 설정 사용하지 않음</string>
+  <string name="live_display_day">주간</string>
+  <string name="live_display_day_summary">주간 모드만 사용합니다.</string>
+  <string name="live_display_night">야간</string>
+  <string name="live_display_night_summary">야간 모드만 사용합니다.</string>
+  <string name="live_display_outdoor">야외 모드 (밝은 태양)</string>
+  <string name="live_display_outdoor_summary">야외 모드만을 사용합니다.</string>
+  <string name="live_display_hint">LiveDisplay은 눈의 피로를 줄이고 당신이 밤에 잠을 도움이 도움이 될 수 있습니다. 그것을 밖으로 시도하려면 여기를 클릭!</string>
+  <string name="accessibility_quick_settings_live_display_off">LiveDisplay 꺼짐.</string>
+  <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: 자동 모드입니다.</string>
+  <string name="accessibility_quick_settings_live_display_day">LiveDisplay: 주간 모드입니다.</string>
+  <string name="accessibility_quick_settings_live_display_night">LiveDisplay: 야간 모드입니다.</string>
+  <string name="accessibility_quick_settings_live_display_outdoor">LiveDisplay: 야외 모드입니다.</string>
+  <string name="accessibility_quick_settings_live_display_changed_off">LiveDisplay는 해제 되어 있습니다.</string>
+  <string name="accessibility_quick_settings_live_display_changed_auto">LiveDisplay 자동 모드 변경.</string>
+  <string name="accessibility_quick_settings_live_display_changed_day">LiveDisplay 주간 모드 변경.</string>
+  <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay 야간 모드 변경.</string>
+  <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay 야외 모드 변경.</string>
 </resources>

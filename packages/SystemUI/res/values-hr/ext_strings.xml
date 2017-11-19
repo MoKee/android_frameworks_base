@@ -175,4 +175,5 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Sinkronizacija</string>
   <string name="quick_settings_volume_panel_label">Zvučna ploča</string>
+  <!-- LiveDisplay strings -->
 </resources>

@@ -190,4 +190,26 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Synchroniseren</string>
   <string name="quick_settings_volume_panel_label">Volumepaneel</string>
+  <!-- LiveDisplay strings -->
+  <string name="live_display_auto">Automatisch</string>
+  <string name="live_display_auto_summary">Automatisch instellen van de kleurtemperatuur van scherm na zonsondergang en zonsopgang</string>
+  <string name="live_display_off">Uit</string>
+  <string name="live_display_off_summary">Alle wijzigingen uitschakelen</string>
+  <string name="live_display_day">Dag</string>
+  <string name="live_display_day_summary">Gerbuik alleen dag instellingen</string>
+  <string name="live_display_night">Nacht</string>
+  <string name="live_display_night_summary">Alleen nacht instellingen gebruiken</string>
+  <string name="live_display_outdoor">Buitenshuis (heldere zon)</string>
+  <string name="live_display_outdoor_summary">Gebruik alleen buitenshuis instellingen</string>
+  <string name="live_display_hint">LiveDisplay kan u helpen bij verminderen van vermoeide ogen en helpt bij het slapen. Klik hier om het uit te proberen!</string>
+  <string name="accessibility_quick_settings_live_display_off">LiveDisplay uit.</string>
+  <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: auto-modus.</string>
+  <string name="accessibility_quick_settings_live_display_day">LiveDisplay: dag modus.</string>
+  <string name="accessibility_quick_settings_live_display_night">LiveDisplay: Nachtmodus.</string>
+  <string name="accessibility_quick_settings_live_display_outdoor">LiveDisplay: buiten modus.</string>
+  <string name="accessibility_quick_settings_live_display_changed_off">LiveDisplay is uitgeschakeld.</string>
+  <string name="accessibility_quick_settings_live_display_changed_auto">LiveDisplay gewijzigd in Automodus.</string>
+  <string name="accessibility_quick_settings_live_display_changed_day">LiveDisplay gewijzigd in dag modus.</string>
+  <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay gewijzigd in Nachtmodus.</string>
+  <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay veranderd naar buiten modus.</string>
 </resources>

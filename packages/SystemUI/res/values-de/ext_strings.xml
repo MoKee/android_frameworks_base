@@ -156,4 +156,26 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Synchronisieren</string>
   <string name="quick_settings_volume_panel_label">Lautstärke</string>
+  <!-- LiveDisplay strings -->
+  <string name="live_display_auto">Automatisch</string>
+  <string name="live_display_auto_summary">Farbtemperatur des Bildschirms nach Sonnenaufgang &amp; Sonnenuntergang automatisch anpassen</string>
+  <string name="live_display_off">Deaktiviert</string>
+  <string name="live_display_off_summary">Alle Anpassungen deaktivieren</string>
+  <string name="live_display_day">Tag</string>
+  <string name="live_display_day_summary">Nur Tag-Modus verwenden</string>
+  <string name="live_display_night">Nacht</string>
+  <string name="live_display_night_summary">Nur Nacht-Modus verwenden</string>
+  <string name="live_display_outdoor">Nur Outdoor Modus verwenden (helle Sonne)</string>
+  <string name="live_display_outdoor_summary">Nur Outdoor Einstellungen verwenden</string>
+  <string name="live_display_hint">LiveDisplay entlastet Ihre Augen und lässt Sie nachts besser schlafen. Klicken Sie hier, um es auszuprobieren!</string>
+  <string name="accessibility_quick_settings_live_display_off">LiveDisplay Aus.</string>
+  <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: Auto-Modus.</string>
+  <string name="accessibility_quick_settings_live_display_day">LiveDisplay: Tag-Modus.</string>
+  <string name="accessibility_quick_settings_live_display_night">LiveDisplay: Nacht-Modus.</string>
+  <string name="accessibility_quick_settings_live_display_outdoor">LiveDisplay: Outdoor Modus.</string>
+  <string name="accessibility_quick_settings_live_display_changed_off">LiveDisplay ausgeschaltet.</string>
+  <string name="accessibility_quick_settings_live_display_changed_auto">LiveDisplay wechselt zu Auto-Modus.</string>
+  <string name="accessibility_quick_settings_live_display_changed_day">LiveDisplay wechselt zu Tag-Modus.</string>
+  <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay auf Nacht-Modus geändert.</string>
+  <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay auf Outdoor Modus geändert.</string>
 </resources>

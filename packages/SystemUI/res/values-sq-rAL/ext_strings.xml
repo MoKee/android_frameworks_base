@@ -147,4 +147,5 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Sinkronizimi</string>
   <string name="quick_settings_volume_panel_label">Paneli i volumit</string>
+  <!-- LiveDisplay strings -->
 </resources>

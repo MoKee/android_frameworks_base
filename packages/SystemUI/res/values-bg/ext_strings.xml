@@ -184,4 +184,26 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Синхронизация</string>
   <string name="quick_settings_volume_panel_label">Звуков панел</string>
+  <!-- LiveDisplay strings -->
+  <string name="live_display_auto">Автоматичен</string>
+  <string name="live_display_auto_summary">Автоматична настройка на цветовата температура на екрана след залез и изгрев</string>
+  <string name="live_display_off">Изкл</string>
+  <string name="live_display_off_summary">Забрани всички корекции</string>
+  <string name="live_display_day">Ден</string>
+  <string name="live_display_day_summary">Използвайте само настройките за ден</string>
+  <string name="live_display_night">Нощ</string>
+  <string name="live_display_night_summary">Използвайте само настройките за нощ</string>
+  <string name="live_display_outdoor">На открито (ясно слънце)</string>
+  <string name="live_display_outdoor_summary">Използвайте само настройките на открито</string>
+  <string name="live_display_hint">LiveDisplay може да помогне за намаляване умората на очите и ви помогне да спите през нощта. Щракнете тук, за изпробване!</string>
+  <string name="accessibility_quick_settings_live_display_off">LiveDisplay изкл.</string>
+  <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: автоматичен режим.</string>
+  <string name="accessibility_quick_settings_live_display_day">LiveDisplay: дневен режим.</string>
+  <string name="accessibility_quick_settings_live_display_night">LiveDisplay: нощен режим.</string>
+  <string name="accessibility_quick_settings_live_display_outdoor">LiveDisplay: режим на открито.</string>
+  <string name="accessibility_quick_settings_live_display_changed_off">LiveDisplay изключен.</string>
+  <string name="accessibility_quick_settings_live_display_changed_auto">LiveDisplay променен на автоматичен режим.</string>
+  <string name="accessibility_quick_settings_live_display_changed_day">LiveDisplay променен на дневен режим.</string>
+  <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay променен на нощен режим.</string>
+  <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay променя на режим открито.</string>
 </resources>

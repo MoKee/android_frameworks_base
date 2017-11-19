@@ -185,4 +185,26 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Synkronointi</string>
   <string name="quick_settings_volume_panel_label">Äänenvoimakkuuspaneeli</string>
+  <!-- LiveDisplay strings -->
+  <string name="live_display_auto">Automaattinen</string>
+  <string name="live_display_auto_summary">Säädä automaattisesti näytön väri auringonlaskun ja nousun mukaan</string>
+  <string name="live_display_off">Pois</string>
+  <string name="live_display_off_summary">Poista kaikki mukautukset</string>
+  <string name="live_display_day">Päivä</string>
+  <string name="live_display_day_summary">Käytä vain päivällä</string>
+  <string name="live_display_night">Yö</string>
+  <string name="live_display_night_summary">Käytä vain yö-asetuksia</string>
+  <string name="live_display_outdoor">Ulkoilma (kirkas aurinko)</string>
+  <string name="live_display_outdoor_summary">Käytä vain ulkoilma-asetuksia</string>
+  <string name="live_display_hint">LiveDisplay voi auttaa vähentämään silmien rasitusta ja auttaa nukkumaan yöllä. Klikkaa tästä jos haluat kokeilla!</string>
+  <string name="accessibility_quick_settings_live_display_off">LiveDisplay pois.</string>
+  <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: Automaattinen.</string>
+  <string name="accessibility_quick_settings_live_display_day">LiveDisplay: päivä-tila.</string>
+  <string name="accessibility_quick_settings_live_display_night">LiveDisplay: yö-tila.</string>
+  <string name="accessibility_quick_settings_live_display_outdoor">LiveDisplay: ulkoilma-tila.</string>
+  <string name="accessibility_quick_settings_live_display_changed_off">LiveDisplay pois käytöstä.</string>
+  <string name="accessibility_quick_settings_live_display_changed_auto">LiveDisplay muutettiin automaattitilaan.</string>
+  <string name="accessibility_quick_settings_live_display_changed_day">LiveDisplay muutettiin päivä-tilaan.</string>
+  <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay muutettiin Yö-tilaan.</string>
+  <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay muuttui ulkoilma-tilaan.</string>
 </resources>

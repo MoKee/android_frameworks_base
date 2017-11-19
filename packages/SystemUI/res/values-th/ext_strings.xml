@@ -137,4 +137,5 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">ซิงค์</string>
   <string name="quick_settings_volume_panel_label">แผงควบคุมระดับเสียง</string>
+  <!-- LiveDisplay strings -->
 </resources>

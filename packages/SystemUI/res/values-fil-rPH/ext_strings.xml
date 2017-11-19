@@ -92,4 +92,23 @@
   <!-- Sync QS tile -->
   <!-- USB tethering QS tile -->
   <!-- Volume panel QS tile -->
+  <!-- LiveDisplay strings -->
+  <string name="live_display_auto">Awtomatiko</string>
+  <string name="live_display_auto_summary">Awtomatikong i-adjust ang temperatura ng kulay ng screen pagkatapos ng paglubog ng araw at pagsikat ng araw</string>
+  <string name="live_display_off">Patay</string>
+  <string name="live_display_off_summary">Huwag paganahin ang lahat ng mga pagbabago</string>
+  <string name="live_display_day">Araw</string>
+  <string name="live_display_night">Gabi</string>
+  <string name="live_display_outdoor">Labasan (maliwanag)</string>
+  <string name="live_display_outdoor_summary">Gamitin ang mga setting ng panlabas lamang</string>
+  <string name="accessibility_quick_settings_live_display_off">Patay ang LiveDisplay.</string>
+  <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: awtomatikong mode.</string>
+  <string name="accessibility_quick_settings_live_display_day">LiveDisplay: pang-araw na mode.</string>
+  <string name="accessibility_quick_settings_live_display_night">LiveDisplay: panggabing mode.</string>
+  <string name="accessibility_quick_settings_live_display_outdoor">LiveDisplay: panlabas na mode.</string>
+  <string name="accessibility_quick_settings_live_display_changed_off">Nakapatay ang mga LiveDisplay.</string>
+  <string name="accessibility_quick_settings_live_display_changed_auto">Ang LiveDisplay ay nabago sa awtomatikong mode.</string>
+  <string name="accessibility_quick_settings_live_display_changed_day">Ang LiveDisplay ay nabago sa pang-araw na mode.</string>
+  <string name="accessibility_quick_settings_live_display_changed_night">Ang LiveDisplay ay nabago sa panggabing mode.</string>
+  <string name="accessibility_quick_settings_live_display_changed_outdoor">Ang LiveDisplay ay nabago sa panlabas na mode.</string>
 </resources>

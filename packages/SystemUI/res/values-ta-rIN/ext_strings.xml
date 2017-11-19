@@ -135,4 +135,9 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">ஒத்திசை</string>
   <string name="quick_settings_volume_panel_label">வால்யூம் பேனல்</string>
+  <!-- LiveDisplay strings -->
+  <string name="live_display_off">அணை</string>
+  <string name="live_display_day">பகல்</string>
+  <string name="live_display_day_summary">பகல் நேர அமைப்புகளை மட்டும் பயன்படுத்து</string>
+  <string name="live_display_night">இரவு</string>
 </resources>

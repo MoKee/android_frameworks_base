@@ -187,4 +187,6 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Sinkronizazioa</string>
   <string name="quick_settings_volume_panel_label">Bolumen panela</string>
+  <!-- LiveDisplay strings -->
+  <string name="live_display_night">Gaua</string>
 </resources>

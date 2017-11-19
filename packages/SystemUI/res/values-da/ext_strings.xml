@@ -184,4 +184,26 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Synkr.</string>
   <string name="quick_settings_volume_panel_label">Lydstyrkepanel</string>
+  <!-- LiveDisplay strings -->
+  <string name="live_display_auto">Automatisk</string>
+  <string name="live_display_auto_summary">Justér automatisk farvetemperaturen på skærmen efter solnedgang og -opgang</string>
+  <string name="live_display_off">Inaktivt</string>
+  <string name="live_display_off_summary">Deaktivér alle justeringer</string>
+  <string name="live_display_day">Dag</string>
+  <string name="live_display_day_summary">Benyt kun dagindstillinger</string>
+  <string name="live_display_night">Nat</string>
+  <string name="live_display_night_summary">Benyt kun natindstillinger</string>
+  <string name="live_display_outdoor">Udendørs (klart solskin)</string>
+  <string name="live_display_outdoor_summary">Benyt alene udendørsindstillinger</string>
+  <string name="live_display_hint">LiveDisplay kan reducere øjenanstrengelse og hjælpe dig med at sove om natten. Tryk her for at prøve det!</string>
+  <string name="accessibility_quick_settings_live_display_off">LiveDisplay inaktiv.</string>
+  <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: autotilstand.</string>
+  <string name="accessibility_quick_settings_live_display_day">LiveDisplay: dagstilstand.</string>
+  <string name="accessibility_quick_settings_live_display_night">LiveDisplay: nattetilstand.</string>
+  <string name="accessibility_quick_settings_live_display_outdoor">LiveDisplay: udendørstilstand.</string>
+  <string name="accessibility_quick_settings_live_display_changed_off">LiveDisplay inaktiv.</string>
+  <string name="accessibility_quick_settings_live_display_changed_auto">LiveDisplay skiftede til autotilstand.</string>
+  <string name="accessibility_quick_settings_live_display_changed_day">LiveDisplay skiftede til dagtilstand.</string>
+  <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay skiftede til nattilstand.</string>
+  <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay skiftede til udendørstilstand.</string>
 </resources>

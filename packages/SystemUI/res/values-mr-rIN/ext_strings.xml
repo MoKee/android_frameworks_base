@@ -135,4 +135,5 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">संकालन करा</string>
   <string name="quick_settings_volume_panel_label">ध्वनी पॅनेल</string>
+  <!-- LiveDisplay strings -->
 </resources>

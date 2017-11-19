@@ -189,4 +189,26 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Sinkronisasi</string>
   <string name="quick_settings_volume_panel_label">Panel volume</string>
+  <!-- LiveDisplay strings -->
+  <string name="live_display_auto">Otomatis</string>
+  <string name="live_display_auto_summary">Otomatis mengatur temperatur warna layar setelah matahari terbenam dan matahari terbit</string>
+  <string name="live_display_off">Mati</string>
+  <string name="live_display_off_summary">Matikan semua penyesuaian</string>
+  <string name="live_display_day">Siang</string>
+  <string name="live_display_day_summary">Gunakan hanya ketika siang saja</string>
+  <string name="live_display_night">Malam</string>
+  <string name="live_display_night_summary">Gunakan hanya ketika malam saja</string>
+  <string name="live_display_outdoor">Luar ruangan (matahari terang)</string>
+  <string name="live_display_outdoor_summary">Gunakan hanya di luar ruangan saja</string>
+  <string name="live_display_hint">LiveDisplay dapat membantu mengurangi kelelahan mata dan membantu anda tidur di malam hari. Klik di sini untuk mencobanya!</string>
+  <string name="accessibility_quick_settings_live_display_off">LiveDisplay mati.</string>
+  <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: otomatis.</string>
+  <string name="accessibility_quick_settings_live_display_day">LiveDisplay: siang.</string>
+  <string name="accessibility_quick_settings_live_display_night">LiveDisplay: malam.</string>
+  <string name="accessibility_quick_settings_live_display_outdoor">LiveDisplay: diluar.</string>
+  <string name="accessibility_quick_settings_live_display_changed_off">LiveDisplay dimatikan.</string>
+  <string name="accessibility_quick_settings_live_display_changed_auto">LiveDisplay dirubah ke mode otomatis.</string>
+  <string name="accessibility_quick_settings_live_display_changed_day">LiveDisplay dirubah ke mode siang hari.</string>
+  <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay dirubah ke mode malam hari.</string>
+  <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay dirubah ke mode diluar ruangan.</string>
 </resources>

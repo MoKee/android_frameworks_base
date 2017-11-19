@@ -192,4 +192,26 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Sinhronizacija</string>
   <string name="quick_settings_volume_panel_label">Plošča za glasnost</string>
+  <!-- LiveDisplay strings -->
+  <string name="live_display_auto">Samodejno</string>
+  <string name="live_display_auto_summary">Samodejno spremeni barvno temperaturo zaslona po sončnem zahod in vzhodu</string>
+  <string name="live_display_off">Izklopljen</string>
+  <string name="live_display_off_summary">Onemogočite vse prilagoditve</string>
+  <string name="live_display_day">Dan</string>
+  <string name="live_display_day_summary">Uporabite samo dnevne nastavitve</string>
+  <string name="live_display_night">Noč</string>
+  <string name="live_display_night_summary">Uporabite samo nočne nastavitve</string>
+  <string name="live_display_outdoor">ZunaJ (močno sonce)</string>
+  <string name="live_display_outdoor_summary">Uporabi samo nastavitve za zunaj</string>
+  <string name="live_display_hint">LiveDisplay lahko pomaga zmanjšati obremenitev oči in vam pomaga spati ponoči. Kliknite tukaj, da ga preizkusite!</string>
+  <string name="accessibility_quick_settings_live_display_off">ŽiviZaslon izklopljen.</string>
+  <string name="accessibility_quick_settings_live_display_auto">ŽiviZaslon: samodejno.</string>
+  <string name="accessibility_quick_settings_live_display_day">ŽiviZaslon: dnevni način.</string>
+  <string name="accessibility_quick_settings_live_display_night">ŽiviZaslon: nočni način.</string>
+  <string name="accessibility_quick_settings_live_display_outdoor">ŽiviZaslon: zunaj.</string>
+  <string name="accessibility_quick_settings_live_display_changed_off">ŽiviZaslon je izklopljen.</string>
+  <string name="accessibility_quick_settings_live_display_changed_auto">ŽiviZaslon spremenjen na samodejno.</string>
+  <string name="accessibility_quick_settings_live_display_changed_day">ŽiviZaslon spremenjen na dnevni način.</string>
+  <string name="accessibility_quick_settings_live_display_changed_night">ŽiviZaslon spremenjen na nočni način.</string>
+  <string name="accessibility_quick_settings_live_display_changed_outdoor">ŽiviZaslon spremenjen na zunaj.</string>
 </resources>

@@ -181,4 +181,26 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Đồng bộ</string>
   <string name="quick_settings_volume_panel_label">Bảng điều khiển âm lượng</string>
+  <!-- LiveDisplay strings -->
+  <string name="live_display_auto">Tự động</string>
+  <string name="live_display_auto_summary">Tự động điều chỉnh nhiệt màu của màn hình sau khi mặt trời lặn và mặt trời mọc</string>
+  <string name="live_display_off">Tắt</string>
+  <string name="live_display_off_summary">Vô hiệu hoá tất cả các điều chỉnh</string>
+  <string name="live_display_day">Ngày</string>
+  <string name="live_display_day_summary">Sử dụng cài đặt chỉ ban ngày</string>
+  <string name="live_display_night">Đêm</string>
+  <string name="live_display_night_summary">Sử dụng cài đặt chỉ ban đêm</string>
+  <string name="live_display_outdoor">Ngoài trời (Mặt trời sáng chói)</string>
+  <string name="live_display_outdoor_summary">Sử dụng cài đặt chỉ ngoài trời</string>
+  <string name="live_display_hint">LiveDisplay có thể giúp làm giảm mỏi mắt và giúp bạn ngủ vào ban đêm. Click vào đây để thử nó!</string>
+  <string name="accessibility_quick_settings_live_display_off">LiveDisplay tắt.</string>
+  <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: chế độ tự động.</string>
+  <string name="accessibility_quick_settings_live_display_day">LiveDisplay: chế độ ngày.</string>
+  <string name="accessibility_quick_settings_live_display_night">LiveDisplay: chế độ ban đêm.</string>
+  <string name="accessibility_quick_settings_live_display_outdoor">LiveDisplay: chế độ ngoài trời.</string>
+  <string name="accessibility_quick_settings_live_display_changed_off">LiveDisplay tắt.</string>
+  <string name="accessibility_quick_settings_live_display_changed_auto">LiveDisplay thay đổi chế độ tự động.</string>
+  <string name="accessibility_quick_settings_live_display_changed_day">LiveDisplay thay đổi chế độ ngày.</string>
+  <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay thay đổi chế độ ban đêm.</string>
+  <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay thay đổi chế độ ngoài trời.</string>
 </resources>
