@@ -9329,13 +9329,11 @@ public class PackageManagerService extends IPackageManager.Stub
             int policyFlags, int scanFlags, long currentTime, @Nullable UserHandle user)
             throws PackageManagerException {
 
-        for (String blockPackageName : SecurityUtils.BLACKLISTED_APPLICATIONS) {
-            if (pkg.packageName.equals(blockPackageName)) {
-                // this package is blocked, skip installing it
-                throw new PackageManagerException(INSTALL_FAILED_DUPLICATE_PACKAGE,
-                        "Application package " + pkg.packageName
-                                + " already installed.  Skipping duplicate.");
-            }
+        if (SecurityUtils.BLACKLISTED_APPLICATIONS.contains(pkg.packageName)) {
+            // this package is blocked, skip installing it
+            throw new PackageManagerException(INSTALL_FAILED_DUPLICATE_PACKAGE,
+                    "Application package " + pkg.packageName
+                            + " already installed.  Skipping duplicate.");
         }
 
         PackageSetting ps = null;
@@ -17604,13 +17602,11 @@ public class PackageManagerService extends IPackageManager.Stub
         // Remember this for later, in case we need to rollback this install
         String pkgName = pkg.packageName;
 
-        for (String blockPackageName : SecurityUtils.BLACKLISTED_APPLICATIONS) {
-            if (pkgName.equals(blockPackageName)) {
-                // this package is blocked, skip installing it
-                res.setError(INSTALL_FAILED_ALREADY_EXISTS, "Attempt to re-install " + pkgName
-                        + " without first uninstalling.");
-                return;
-            }
+        if (SecurityUtils.BLACKLISTED_APPLICATIONS.contains(pkgName)) {
+            // this package is blocked, skip installing it
+            res.setError(INSTALL_FAILED_ALREADY_EXISTS, "Attempt to re-install " + pkgName
+                    + " without first uninstalling.");
+            return;
         }
 
         if (DEBUG_INSTALL) Slog.d(TAG, "installNewPackageLI: " + pkg);
