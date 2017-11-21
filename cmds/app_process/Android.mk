@@ -1,59 +1,37 @@
-##########################################################
-# Customized app_process executable
-##########################################################
-
 LOCAL_PATH:= $(call my-dir)
+
+# This is a list of libraries that need to be included in order to avoid
+# bad apps. This prevents a library from having a mismatch when resolving
+# new/delete from an app shared library.
+# See b/21032018 for more details.
+app_process_common_shared_libs := \
+    libwilhelm \
+
 include $(CLEAR_VARS)
 
-ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 21)))
-  LOCAL_SRC_FILES := app_main2.cpp
-  LOCAL_MULTILIB := both
-  LOCAL_MODULE_STEM_32 := app_process32
-  LOCAL_MODULE_STEM_64 := app_process64
-else
-  LOCAL_SRC_FILES := app_main.cpp
-  LOCAL_MODULE_STEM := app_process
-endif
+LOCAL_SRC_FILES:= \
+    app_main.cpp
 
-LOCAL_SRC_FILES += \
-  xposed.cpp \
-  xposed_logcat.cpp \
-  xposed_service.cpp \
-  xposed_safemode.cpp
+LOCAL_LDFLAGS := -Wl,--version-script,art/sigchainlib/version-script.txt -Wl,--export-dynamic
 
 LOCAL_SHARED_LIBRARIES := \
-  libcutils \
-  libutils \
-  liblog \
-  libbinder \
-  libandroid_runtime \
-  libdl
+    libdl \
+    libcutils \
+    libutils \
+    liblog \
+    libbinder \
+    libnativeloader \
+    libandroid_runtime \
+    $(app_process_common_shared_libs) \
 
-LOCAL_CFLAGS += -Wall -Werror -Wextra -Wunused
-LOCAL_CFLAGS += -DPLATFORM_SDK_VERSION=$(PLATFORM_SDK_VERSION)
+LOCAL_WHOLE_STATIC_LIBRARIES := libsigchain
 
-ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 17)))
-  LOCAL_SHARED_LIBRARIES += libselinux
-  LOCAL_CFLAGS += -DXPOSED_WITH_SELINUX=1
-endif
+LOCAL_MODULE:= app_process
+LOCAL_MULTILIB := both
+LOCAL_MODULE_STEM_32 := app_process32
+LOCAL_MODULE_STEM_64 := app_process64
 
-ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 22)))
-  LOCAL_WHOLE_STATIC_LIBRARIES := libsigchain
-  LOCAL_LDFLAGS := -Wl,--version-script,art/sigchainlib/version-script.txt -Wl,--export-dynamic
-endif
-
-ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 23)))
-  LOCAL_SHARED_LIBRARIES += libwilhelm
-endif
-
-LOCAL_MODULE := app_process
-LOCAL_MODULE_TAGS := optional
-LOCAL_STRIP_MODULE := keep_symbols
-
-# Always build both architectures (if applicable)
-ifeq ($(TARGET_IS_64_BIT),true)
-  $(LOCAL_MODULE): $(LOCAL_MODULE)$(TARGET_2ND_ARCH_MODULE_SUFFIX)
-endif
+LOCAL_CFLAGS += -Wall -Werror -Wunused -Wunreachable-code
 
 include $(BUILD_EXECUTABLE)
 
@@ -61,11 +39,39 @@ include $(BUILD_EXECUTABLE)
 # depending on the target configuration.
 include  $(BUILD_SYSTEM)/executable_prefer_symlink.mk
 
-##########################################################
-# Library for Dalvik-/ART-specific functions
-##########################################################
-ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 21)))
-  include frameworks/base/cmds/app_process/ART.mk
-else
-  include frameworks/base/cmds/app_process/Dalvik.mk
-endif
+# Build a variant of app_process binary linked with ASan runtime.
+# ARM-only at the moment.
+ifeq ($(TARGET_ARCH),arm)
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES:= \
+    app_main.cpp
+
+LOCAL_SHARED_LIBRARIES := \
+    libcutils \
+    libutils \
+    liblog \
+    libbinder \
+    libandroid_runtime \
+    $(app_process_common_shared_libs) \
+
+LOCAL_WHOLE_STATIC_LIBRARIES := libsigchain
+
+LOCAL_LDFLAGS := -ldl -Wl,--version-script,art/sigchainlib/version-script.txt -Wl,--export-dynamic
+LOCAL_CPPFLAGS := -std=c++11
+
+LOCAL_MODULE := app_process__asan
+LOCAL_MULTILIB := both
+LOCAL_MODULE_STEM_32 := app_process32
+LOCAL_MODULE_STEM_64 := app_process64
+
+LOCAL_SANITIZE := address
+LOCAL_CLANG := true
+LOCAL_MODULE_PATH := $(TARGET_OUT_EXECUTABLES)/asan
+
+LOCAL_CFLAGS += -Wall -Werror -Wunused -Wunreachable-code
+
+include $(BUILD_EXECUTABLE)
+
+endif # ifeq($(TARGET_ARCH),arm)
