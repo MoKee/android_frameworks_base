@@ -20,6 +20,7 @@ import android.annotation.ColorInt;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.provider.Settings;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -47,6 +48,8 @@ public class DataUsageDetailView extends LinearLayout {
     private static final double KB = 1024;
     private static final double MB = 1024 * KB;
     private static final double GB = 1024 * MB;
+
+    private static final String SETTING_USER_PREF_DATA_SUB = "user_preferred_data_sub";
 
     private final DecimalFormat FORMAT = new DecimalFormat("#.##");
 
@@ -158,6 +161,8 @@ public class DataUsageDetailView extends LinearLayout {
                         if ((mRadioGroup.getChildAt(slotId).getId() == checkedId)) {
                             int[] subId = SubscriptionManager.getSubId(slotId);
                             SubscriptionManager.from(mContext).setDefaultDataSubId(subId[0]);
+                            Settings.Global.putInt(mContext.getContentResolver(),
+                                    SETTING_USER_PREF_DATA_SUB, subId[0]);
                         }
                     }
                 }
