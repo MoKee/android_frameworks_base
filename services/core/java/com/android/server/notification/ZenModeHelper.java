@@ -751,6 +751,8 @@ public class ZenModeHelper {
                 mAllowLights = MKSettings.System.getInt(mContext.getContentResolver(),
                    MKSettings.System.ZEN_PRIORITY_ALLOW_LIGHTS, 1) == 1;
                 break;
+            default:
+                mAllowLights = true;
         }
     }
 
