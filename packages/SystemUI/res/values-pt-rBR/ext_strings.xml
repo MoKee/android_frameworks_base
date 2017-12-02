@@ -90,7 +90,7 @@
   <string name="accessibility_dpad_left">Cursor à esquerda</string>
   <string name="accessibility_dpad_right">Cursor à direita</string>
   <!-- NavBar Tuner -->
-  <string name="menu_ime_always_show">Menu / Alternador de Teclado (sempre mostrar)</string>
+  <string name="menu_ime_always_show">Alternador de Menu / Teclado (mostrar sempre)</string>
   <string name="search">Procurar</string>
   <!-- Path data for portrait battery -->
   <!-- Path data for landscape battery -->
@@ -140,8 +140,8 @@
   <string name="quick_settings_location_battery_saving_label">Economia de bateria</string>
   <string name="quick_settings_location_battery_saving_label_twoline">Economia\nde energia</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_gps_only_label">Somente no dispositivo</string>
-  <string name="quick_settings_location_gps_only_label_twoline">Somente no\ndispositivo</string>
+  <string name="quick_settings_location_gps_only_label">Somente GPS</string>
+  <string name="quick_settings_location_gps_only_label_twoline">Somente\nGPS</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">Alta precisão</string>
   <string name="quick_settings_location_high_accuracy_label_twoline">Alta\nprecisão</string>
@@ -154,19 +154,19 @@
   <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->
   <string name="quick_settings_location_detail_mode_battery_saving_title">Economia de bateria</string>
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
-  <string name="quick_settings_location_detail_mode_sensors_only_title">Somente no dispositivo</string>
+  <string name="quick_settings_location_detail_mode_sensors_only_title">Somente GPS</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-  <string name="quick_settings_location_detail_mode_high_accuracy_description">Usar GPS, Wi\u2011Fi, Bluetooth ou redes celulares para determinar a localização</string>
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">Utilizar GPS, Wi\u2011Fi, Bluetooth ou redes móveis para determinar a localização</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
-  <string name="quick_settings_location_detail_mode_battery_saving_description">Usar Wi\u2011Fi, Bluetooth ou redes celulares para determinar a localização</string>
+  <string name="quick_settings_location_detail_mode_battery_saving_description">Usar Wi\u2011Fi, Bluetooth ou redes móveis para determinar a localização</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
-  <string name="quick_settings_location_detail_mode_sensors_only_description">Usar o GPS para determinar sua localização</string>
+  <string name="quick_settings_location_detail_mode_sensors_only_description">Usar somente o GPS para determinar sua localização</string>
   <!-- Adb over network QS tile -->
   <string name="quick_settings_network_adb_label">ADB sobre rede</string>
   <!-- Ambient display QS tile -->
   <string name="quick_settings_ambient_display_label">Tela ambiente</string>
-  <string name="accessibility_quick_settings_ambient_display_off">Tela ambiente desativado.</string>
-  <string name="accessibility_quick_settings_ambient_display_on">Tela ambiente ativada.</string>
+  <string name="accessibility_quick_settings_ambient_display_off">Tela Ambiente desligada.</string>
+  <string name="accessibility_quick_settings_ambient_display_on">Tela Ambiente ligada.</string>
   <string name="accessibility_quick_settings_ambient_display_changed_off">Tela ambiente foi desligada.</string>
   <string name="accessibility_quick_settings_ambient_display_changed_on">Tela ambiente foi ligada.</string>
   <!-- Caffeine -->
@@ -174,24 +174,24 @@
   <string name="accessibility_quick_settings_caffeine_off">Cafeína desligada</string>
   <string name="accessibility_quick_settings_caffeine_on">Cafeína ligada</string>
   <!-- Heads up QS tile -->
-  <string name="quick_settings_heads_up_label">Heads up</string>
-  <string name="accessibility_quick_settings_heads_up_off">Heads up desligado.</string>
-  <string name="accessibility_quick_settings_heads_up_on">Heads up ligado.</string>
-  <string name="accessibility_quick_settings_heads_up_changed_off">Heads up foi desligado.</string>
-  <string name="accessibility_quick_settings_heads_up_changed_on">Heads up foi ligado.</string>
+  <string name="quick_settings_heads_up_label">Notificações pop-up</string>
+  <string name="accessibility_quick_settings_heads_up_off">Notificações pop-up desativadas.</string>
+  <string name="accessibility_quick_settings_heads_up_on">Notificações pop-up ativadas.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_off">As notificações pop-up foram desativadas.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_on">As notificações pop-up foram ativadas.</string>
   <!-- Sync QS tile -->
   <string name="quick_settings_sync_label">Sincronização</string>
   <string name="accessibility_quick_settings_sync_off">Sincronização desligada.</string>
   <string name="accessibility_quick_settings_sync_on">Sincronização ligada.</string>
-  <string name="accessibility_quick_settings_sync_changed_off">Sincronização foi desligada.</string>
-  <string name="accessibility_quick_settings_sync_changed_on">Sincronização foi ligada.</string>
+  <string name="accessibility_quick_settings_sync_changed_off">A sincronização foi desativada.</string>
+  <string name="accessibility_quick_settings_sync_changed_on">A sincronização foi ativada.</string>
   <!-- USB tethering QS tile -->
   <string name="quick_settings_usb_tether_label">Compartilhamento USB</string>
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Sincronização</string>
   <string name="quick_settings_volume_panel_label">Painel de volume</string>
   <!-- LiveDisplay strings -->
-  <string name="live_display_auto">Automática</string>
+  <string name="live_display_auto">Automático</string>
   <string name="live_display_auto_summary">Ajusta automaticamente a cor da temperatura da tela depois do pôr e nascer do sol</string>
   <string name="live_display_off">Desligado</string>
   <string name="live_display_off_summary">Desativar todos os ajustes</string>

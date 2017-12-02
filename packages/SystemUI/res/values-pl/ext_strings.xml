@@ -23,10 +23,15 @@
   <!-- Content description of the light brightness slider (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_notification_brightness">Jasność światła</string>
   <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_profiles_off">Wyłącz profile.</string>
   <!-- Content description of the profiles tile in quick settings (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_profiles">Profil: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
   <!-- Announcement made when the profiles tile changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_profiles_changed_off">Profile są wyłączone.</string>
   <!-- Announcement made when the profiles tile changes (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_profiles_changed">Zmieniono profil na <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
   <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_profiles_off">Wyłącz profile.</string>
   <!-- Content description of the system profiles  -->
   <string name="quick_settings_profiles">Profile systemu</string>
   <!-- Lights settings, LED notification -->

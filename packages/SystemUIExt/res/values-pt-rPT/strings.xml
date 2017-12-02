@@ -20,6 +20,20 @@
   <!-- Screenshot QS Tile -->
   <string name="quick_settings_screenshot_label">Captura de Ecrã</string>
   <!-- Compass QS Tile -->
+  <string name="quick_settings_compass_label">Bússola</string>
+  <string name="quick_settings_compass_init">A iniciar\u2026</string>
+  <string name="accessibility_quick_settings_compass_off">Bússola desligada.</string>
+  <string name="accessibility_quick_settings_compass_on">Bússola ligada.</string>
+  <string name="accessibility_quick_settings_compass_changed_off">Bússola, desligada.</string>
+  <string name="accessibility_quick_settings_compass_changed_on">Bússola, ligada.</string>
+  <string name="quick_settings_compass_N">Norte</string>
+  <string name="quick_settings_compass_NE">Nordeste</string>
+  <string name="quick_settings_compass_E">Este</string>
+  <string name="quick_settings_compass_SE">Sudeste</string>
+  <string name="quick_settings_compass_S">Sud</string>
+  <string name="quick_settings_compass_SW">Sudoeste</string>
+  <string name="quick_settings_compass_W">Oeste</string>
+  <string name="quick_settings_compass_NW">Noroeste</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
   <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
   <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
