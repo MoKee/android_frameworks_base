@@ -35,14 +35,17 @@ import android.os.SystemClock;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.provider.Settings.Secure;
+import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -110,6 +113,8 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.List;
 
+import mokee.providers.MKSettings;
+
 /**
  * The main Recents activity that is started from RecentsComponent.
  */
@@ -158,6 +163,8 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
     private TextView mMemInfoText;
     private ProgressBar mMemInfoBar;
     private MemoryInfo mMemInfo;
+
+    private boolean mShowMemoryBar;
 
     /**
      * A common Runnable to finish Recents by launching Home with an animation depending on the
@@ -441,6 +448,9 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
     }
 
     private void showMemStatus(boolean visible) {
+        if (!mShowMemoryBar) {
+            return;
+        }
         mMemBar.animate()
                 .alpha(visible ? 1f : 0f)
                 .setDuration(visible ? 0 : 100)
@@ -464,6 +474,29 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
         mAm.getMemoryInfo(mMemInfo);
         long totalMem = mMemInfo.totalMem;
         return totalMem;
+    }
+
+    private String getMemoryBarPosition() {
+        final String position = MKSettings.System.getString(
+                getContentResolver(),
+                MKSettings.System.SHOW_MEMORY_BAR_IN_RECENTS);
+        return TextUtils.isEmpty(position) ? "top" : position;
+    }
+
+    private void updateMemoryBarPosition() {
+        final String position = getMemoryBarPosition();
+        mShowMemoryBar = !position.equals("hidden");
+        mMemBar.setVisibility(mShowMemoryBar ? View.VISIBLE : View.GONE);
+        final FrameLayout.LayoutParams lp =
+                (FrameLayout.LayoutParams) mMemBar.getLayoutParams();
+        switch (position) {
+            case "bottom":
+                lp.gravity = Gravity.BOTTOM;
+                break;
+            default: // defaults to "top"
+                lp.gravity = Gravity.TOP;
+                break;
+        }
     }
 
     @Override
@@ -588,6 +621,7 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
         int taskCount = mRecentsView.getStack().getTaskCount();
         MetricsLogger.histogram(this, "overview_task_count", taskCount);
 
+        updateMemoryBarPosition();
         initMemStatus();
 
         // After we have resumed, set the visible state until the next onStop() call
@@ -988,7 +1022,7 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
     }
 
     public final void onBusEvent(DragStartEvent event) {
-        if (mMemBar != null) {
+        if (mMemBar != null && mShowMemoryBar) {
             mMemBar.animate()
                     .alpha(0f)
                     .setDuration(HIDE_MEMORY_BAR_DURATION)
@@ -998,7 +1032,7 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
     }
 
     public final void onBusEvent(final DragEndEvent event) {
-        if (mMemBar != null) {
+        if (mMemBar != null && mShowMemoryBar) {
             mMemBar.animate()
                     .alpha(1f)
                     .setDuration(SHOW_MEMORY_BAR_DURATION)
