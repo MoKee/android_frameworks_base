@@ -56,7 +56,7 @@ import android.util.Slog;
 import android.util.proto.ProtoOutputStream;
 
 import org.mokee.internal.notification.LedValues;
-import org.mokee.internal.notification.MKNotificationLights;
+import org.mokee.internal.notification.MKBatteryLights;
 
 import java.io.File;
 import java.io.FileDescriptor;
@@ -159,7 +159,7 @@ public final class BatteryService extends SystemService {
 
     private ActivityManagerInternal mActivityManagerInternal;
 
-    private MKNotificationLights mMKNotificationLights;
+    private MKBatteryLights mMKBatteryLights;
 
     public BatteryService(Context context) {
         super(context);
@@ -233,14 +233,14 @@ public final class BatteryService extends SystemService {
                 updateBatteryWarningLevelLocked();
             }
         } else if (phase == PHASE_BOOT_COMPLETED) {
-            mMKNotificationLights = new MKNotificationLights(mContext,
-                    new MKNotificationLights.LedUpdater() {
+            mMKBatteryLights = new MKBatteryLights(mContext,
+                    new MKBatteryLights.LedUpdater() {
                 public void update() {
                     updateLedPulse();
                 }
             });
 
-            // Update light state now that mMKNotificationLights has been initialized.
+            // Update light state now that mMKBatteryLights has been initialized.
             updateLedPulse();
         }
     }
@@ -930,15 +930,15 @@ public final class BatteryService extends SystemService {
                 Slog.w(TAG, "updateLightsLocked: mBatteryProps is null; skipping");
                 return;
             }
-            // mMKNotificationLights is initialized during PHASE_BOOT_COMPLETED
+            // mMKBatteryLights is initialized during PHASE_BOOT_COMPLETED
             // This means we don't have MoKee battery settings yet so skip.
-            if (mMKNotificationLights == null) {
-                Slog.w(TAG, "updateLightsLocked: mMKNotificationLights is not yet ready; skipping");
+            if (mMKBatteryLights == null) {
+                Slog.w(TAG, "updateLightsLocked: mMKBatteryLights is not yet ready; skipping");
                 return;
             }
 
             LedValues ledValues = new LedValues(0 /* color */, mBatteryLedOn, mBatteryLedOff);
-            mMKNotificationLights.calcLights(ledValues,
+            mMKBatteryLights.calcLights(ledValues,
                     mBatteryProps.batteryLevel, mBatteryProps.batteryStatus,
                     mBatteryProps.batteryLevel <= mLowBatteryWarningLevel);
 
