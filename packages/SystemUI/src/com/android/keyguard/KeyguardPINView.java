@@ -26,7 +26,7 @@ import android.widget.LinearLayout;
 import com.android.settingslib.animation.AppearAnimationUtils;
 import com.android.settingslib.animation.DisappearAnimationUtils;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -118,8 +118,8 @@ public class KeyguardPINView extends KeyguardPinBasedInputView {
                         null, mEcaView, null
                 }};
 
-        boolean scramblePin = (LineageSettings.System.getInt(getContext().getContentResolver(),
-                LineageSettings.System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT, 0) == 1);
+        boolean scramblePin = (MKSettings.System.getInt(getContext().getContentResolver(),
+                MKSettings.System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT, 0) == 1);
 
         if (scramblePin) {
             Collections.shuffle(sNumbers);

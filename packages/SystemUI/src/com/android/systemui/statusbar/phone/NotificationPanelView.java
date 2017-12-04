@@ -30,10 +30,12 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.os.PowerManager;
 import android.util.AttributeSet;
 import android.util.EventLog;
 import android.util.FloatProperty;
 import android.util.MathUtils;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
@@ -48,6 +50,7 @@ import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.keyguard.KeyguardStatusView;
 import com.android.systemui.DejankUtils;
+import com.android.systemui.Dependency;
 import com.android.systemui.Interpolators;
 import com.android.systemui.R;
 import com.android.systemui.classifier.FalsingManager;
@@ -67,6 +70,10 @@ import com.android.systemui.statusbar.policy.KeyguardUserSwitcher;
 import com.android.systemui.statusbar.policy.OnHeadsUpChangedListener;
 import com.android.systemui.statusbar.stack.NotificationStackScrollLayout;
 import com.android.systemui.statusbar.stack.StackStateAnimator;
+import com.android.systemui.tuner.TunerService;
+import com.android.systemui.tuner.TunerServiceImpl;
+
+import mokee.providers.MKSettings;
 
 import java.util.List;
 
@@ -74,7 +81,7 @@ public class NotificationPanelView extends PanelView implements
         ExpandableView.OnHeightChangedListener,
         View.OnClickListener, NotificationStackScrollLayout.OnOverscrollTopChangedListener,
         KeyguardAffordanceHelper.Callback, NotificationStackScrollLayout.OnEmptySpaceClickListener,
-        OnHeadsUpChangedListener, QS.HeightListener {
+        OnHeadsUpChangedListener, QS.HeightListener, TunerService.Tunable {
 
     private static final boolean DEBUG = false;
 
@@ -88,6 +95,11 @@ public class NotificationPanelView extends PanelView implements
     static final String COUNTER_PANEL_OPEN = "panel_open";
     static final String COUNTER_PANEL_OPEN_QS = "panel_open_qs";
     private static final String COUNTER_PANEL_OPEN_PEEK = "panel_open_peek";
+
+    private static final String STATUS_BAR_QUICK_QS_PULLDOWN =
+            "mksystem:" + MKSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN;
+    private static final String DOUBLE_TAP_SLEEP_GESTURE =
+            "mksystem:" + MKSettings.System.DOUBLE_TAP_SLEEP_GESTURE;
 
     private static final Rect mDummyDirtyRect = new Rect(0, 0, 1, 1);
 
@@ -231,12 +243,27 @@ public class NotificationPanelView extends PanelView implements
     private boolean mNoVisibleNotifications = true;
     private ValueAnimator mDarkAnimator;
 
+    private int mOneFingerQuickSettingsIntercept;
+    private boolean mDoubleTapToSleepEnabled;
+    private int mStatusBarHeaderHeight;
+    private GestureDetector mDoubleTapGesture;
+
     public NotificationPanelView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setWillNotDraw(!DEBUG);
         mFalsingManager = FalsingManager.getInstance(context);
         mQsOverscrollExpansionEnabled =
                 getResources().getBoolean(R.bool.config_enableQuickSettingsOverscrollExpansion);
+        mDoubleTapGesture = new GestureDetector(mContext,
+                new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onDoubleTap(MotionEvent e) {
+                PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+                if (pm != null)
+                    pm.goToSleep(e.getEventTime());
+                return true;
+            }
+        });
     }
 
     public void setStatusBar(StatusBar bar) {
@@ -270,12 +297,16 @@ public class NotificationPanelView extends PanelView implements
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         FragmentHostManager.get(this).addTagListener(QS.TAG, mFragmentListener);
+        Dependency.get(TunerService.class).addTunable(this,
+                STATUS_BAR_QUICK_QS_PULLDOWN,
+                DOUBLE_TAP_SLEEP_GESTURE);
     }
 
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         FragmentHostManager.get(this).removeTagListener(QS.TAG, mFragmentListener);
+        Dependency.get(TunerService.class).removeTunable(this);
     }
 
     @Override
@@ -299,6 +330,8 @@ public class NotificationPanelView extends PanelView implements
                 R.dimen.max_notification_fadeout_height);
         mIndicationBottomPadding = getResources().getDimensionPixelSize(
                 R.dimen.keyguard_indication_bottom_padding);
+        mStatusBarHeaderHeight =
+                getResources().getDimensionPixelSize(R.dimen.status_bar_header_height);
     }
 
     public void updateResources() {
@@ -774,6 +807,10 @@ public class NotificationPanelView extends PanelView implements
         if (mBlockTouches || (mQs != null && mQs.isCustomizing())) {
             return false;
         }
+        if (mDoubleTapToSleepEnabled
+                && mStatusBarState == StatusBarState.KEYGUARD) {
+            mDoubleTapGesture.onTouchEvent(event);
+        }
         initDownStates(event);
         if (mListenForHeadsUp && !mHeadsUpTouchHelper.isTrackingHeadsUp()
                 && mHeadsUpTouchHelper.onInterceptTouchEvent(event)) {
@@ -870,7 +907,22 @@ public class NotificationPanelView extends PanelView implements
                 && (event.isButtonPressed(MotionEvent.BUTTON_SECONDARY)
                         || event.isButtonPressed(MotionEvent.BUTTON_TERTIARY));
 
-        return twoFingerDrag || stylusButtonClickDrag || mouseButtonClickDrag;
+        final float w = getMeasuredWidth();
+        final float x = event.getX();
+        float region = w * 1.f / 4.f; // TODO overlay region fraction?
+        boolean showQsOverride = false;
+
+        switch (mOneFingerQuickSettingsIntercept) {
+            case 1: // Right side pulldown
+                showQsOverride = isLayoutRtl() ? x < region : w - region < x;
+                break;
+            case 2: // Left side pulldown
+                showQsOverride = isLayoutRtl() ? w - region < x : x < region;
+                break;
+        }
+        showQsOverride &= mStatusBarState == StatusBarState.SHADE;
+
+        return twoFingerDrag || showQsOverride || stylusButtonClickDrag || mouseButtonClickDrag;
     }
 
     private void handleQsDown(MotionEvent event) {
@@ -2548,5 +2600,20 @@ public class NotificationPanelView extends PanelView implements
 
     public void setPulsing(boolean pulsing) {
         mKeyguardStatusView.setPulsing(pulsing);
+    }
+
+    @Override
+    public void onTuningChanged(String key, String newValue) {
+        switch (key) {
+            case STATUS_BAR_QUICK_QS_PULLDOWN:
+                mOneFingerQuickSettingsIntercept =
+                        newValue == null ? 1 : Integer.parseInt(newValue);
+                break;
+            case DOUBLE_TAP_SLEEP_GESTURE:
+                mDoubleTapToSleepEnabled = newValue == null || Integer.parseInt(newValue) == 1;
+                break;
+            default:
+                break;
+        }
     }
 }
