@@ -118,7 +118,7 @@
   <string name="app_ops_scan_wifi">procurar rede Wi-Fi</string>
   <string name="app_ops_change_wallpaper">mudar o papel de parede</string>
   <string name="app_ops_assist_structure">usar estrutura de assistência</string>
-  <string name="app_ops_assist_screenshot">capturar a tela</string>
+  <string name="app_ops_assist_screenshot">capturar tela</string>
   <string name="app_ops_use_body_sensors">usar sensores corporais</string>
   <string name="app_ops_read_cell_broadcasts">ler transmissões da rede de celular</string>
   <string name="app_ops_mock_location">simular a sua localização</string>
@@ -128,19 +128,19 @@
   <string name="app_ops_get_accounts">obter as contas do dispositivo</string>
   <string name="app_ops_run_in_background">executar em segundo plano</string>
   <string name="app_ops_wifi_change">alterar o estado do Wi-Fi</string>
-  <string name="app_ops_su">obter acesso super usuário</string>
+  <string name="app_ops_su">obter acesso root</string>
   <!-- Protected Apps Notification -->
-  <string name="notify_package_component_protected_title">Início de atividade foi bloqueado</string>
-  <string name="notify_package_component_protected_text"><xliff:g id="app_name">%1$s</xliff:g> está protegido de ser iniciado. Toque para autenticar e iniciar o aplicativo.</string>
+  <string name="notify_package_component_protected_title">Início de atividade bloqueado</string>
+  <string name="notify_package_component_protected_text"><xliff:g id="app_name">%1$s</xliff:g> está impedido de ser iniciado. Toque para autenticar e iniciar o aplicativo.</string>
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <string name="lock_to_app_toast_no_navbar">Para desafixar esta tela, toque e segure o botão Voltar.</string>
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
   <string name="lineage_system_error_manufacturer">Foi detectada uma incompatibilidade de imagem do fornecedor. Normalmente, isto significa que a sua imagem de fornecedor está desatualizada. Por favor, certifique-se de que a sua imagem de fornecedor corresponde a <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
   <!-- Single hand mode -->
-  <string name="singlehandmode_click_hint_message">Toque na área escurecida para sair do modo de uma mão</string>
+  <string name="singlehandmode_click_hint_message">Toque fora da tela para sair do modo mão única</string>
   <!-- Strings for tethered notification -->
   <!-- Shown when the device is tethered -->
   <string name="tethered_notification_no_device_message">Nenhum dispositivo conectado</string>
-  <string name="tethered_notification_one_device_message"><xliff:g id="count">%1$s</xliff:g> dispositivo conectado</string>
-  <string name="tethered_notification_multi_device_message"><xliff:g id="count">%1$s</xliff:g> dispositivos conectados</string>
+  <string name="tethered_notification_one_device_message">dispositivo <xliff:g id="count">%1$s</xliff:g> conectado</string>
+  <string name="tethered_notification_multi_device_message">dispositivos <xliff:g id="count">%1$s</xliff:g> conectados</string>
 </resources>

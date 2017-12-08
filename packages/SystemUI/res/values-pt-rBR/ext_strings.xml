@@ -23,20 +23,20 @@
   <!-- Content description of the light brightness slider (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_notification_brightness">Brilho da luz</string>
   <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_profiles_off">Perfis de fora.</string>
+  <string name="accessibility_quick_settings_profiles_off">Perfis desativados.</string>
   <!-- Content description of the profiles tile in quick settings (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_quick_settings_profiles">Perfil: <xliff:g id="profile" example="Default">%s </xliff:g>.</string>
   <!-- Announcement made when the profiles tile changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_profiles_changed_off">O Wi-Fi foi desativado.</string>
+  <string name="accessibility_quick_settings_profiles_changed_off">Os Perfis foram desativados.</string>
   <!-- Announcement made when the profiles tile changes (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_quick_settings_profiles_changed">Perfil mudado para <xliff:g id="profile" example="Default">%s </xliff:g>.</string>
   <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_profiles_off">Perfis de fora.</string>
+  <string name="quick_settings_profiles_off">Perfis desativados.</string>
   <!-- Content description of the system profiles  -->
   <string name="quick_settings_profiles">Perfis de sistema</string>
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">Configurações de luz</string>
-  <string name="led_notification_text">Luz de LED ativada pelas configurações</string>
+  <string name="led_notification_text">Luz de LED ativada por padrão</string>
   <!-- Notification which notifies user flashlight is enabled -->
   <string name="quick_settings_tile_flashlight_not_title">A lanterna está ligada</string>
   <string name="quick_settings_tile_flashlight_not_summary">Toque para desligar</string>
@@ -74,18 +74,18 @@
   <!-- Notification importance level title-->
   <string name="importance_level_title">Importância: Nível %1$d</string>
   <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
-  <string name="notification_importance_very_low">Sem interrupção, exibição, som ou vibração em tela cheia. Ocultar da tela de bloqueio.</string>
+  <string name="notification_importance_very_low">Sem interrupção em tela cheia, espiar, som, ou vibração. Ocultar da tela de bloqueio.</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
-  <string name="screen_pinning_description_no_navbar">Irá ficar visível até que o solte. Toque e segure o botão Anterior para soltar.</string>
+  <string name="screen_pinning_description_no_navbar">Isto a manterá na tela até ser desafixada. Toque e segure o botão Voltar para desafixar.</string>
   <!-- String for lockscreen shortcut hints -->
-  <string name="shortcut_hint">Deslize a partir do ícone de %1$s</string>
+  <string name="shortcut_hint">Deslize a partir do ícone para %1$s</string>
   <string name="lockscreen_message">Toque em um ícone da esquerda ou da direita para reatribuir o atalho da tela de bloqueio.</string>
   <string name="lockscreen_default_target">Padrão</string>
   <string name="select_application">Selecionar aplicativo</string>
   <string name="lockscreen_choose_action_title">Escolher ação</string>
   <string name="lockscreen_none_target">Nenhum</string>
   <!-- Play queue -->
-  <string name="play_queue_extension">Mostrar fila de reprodução</string>
+  <string name="play_queue_extension">Mostrar a fila de reprodução</string>
   <!-- Weather string format in keyguard -->
   <string name="accessibility_dpad_left">Cursor à esquerda</string>
   <string name="accessibility_dpad_right">Cursor à direita</string>
@@ -196,20 +196,20 @@
   <string name="live_display_off">Desligado</string>
   <string name="live_display_off_summary">Desativar todos os ajustes</string>
   <string name="live_display_day">Dia</string>
-  <string name="live_display_day_summary">Apenas usar configurações do dia</string>
+  <string name="live_display_day_summary">Usar apenas as configurações do modo diurno</string>
   <string name="live_display_night">Noite</string>
-  <string name="live_display_night_summary">Apenas usar configurações da noite</string>
-  <string name="live_display_outdoor">Externo (sol intenso)</string>
-  <string name="live_display_outdoor_summary">Apenas usar configurações do modo externo</string>
+  <string name="live_display_night_summary">Usar apenas as configurações do modo noturno</string>
+  <string name="live_display_outdoor">Ao ar livre (sol forte)</string>
+  <string name="live_display_outdoor_summary">Usar apenas as configurações do modo ao ar livre</string>
   <string name="live_display_hint">LiveDisplay pode te ajudar a reduzir cansaço dos olhos e ajudar você a dormir durante a noite. Clique aqui para testar!</string>
   <string name="accessibility_quick_settings_live_display_off">LiveDisplay off.</string>
-  <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: modo automatico.</string>
-  <string name="accessibility_quick_settings_live_display_day">LiveDisplay: modo dia.</string>
-  <string name="accessibility_quick_settings_live_display_night">LiveDisplay: modo noite.</string>
-  <string name="accessibility_quick_settings_live_display_outdoor">LiveDisplay: modo ar livre.</string>
+  <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: modo automático.</string>
+  <string name="accessibility_quick_settings_live_display_day">LiveDisplay: modo diurno.</string>
+  <string name="accessibility_quick_settings_live_display_night">LiveDisplay: modo noturno.</string>
+  <string name="accessibility_quick_settings_live_display_outdoor">LiveDisplay: modo ao ar livre.</string>
   <string name="accessibility_quick_settings_live_display_changed_off">LiveDisplay desligado.</string>
-  <string name="accessibility_quick_settings_live_display_changed_auto">LiveDisplay alterado para o modo automatico.</string>
-  <string name="accessibility_quick_settings_live_display_changed_day">LiveDisplay alterado para o modo dia.</string>
-  <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay alterado para modo noite.</string>
-  <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay alterado para modo ar livre.</string>
+  <string name="accessibility_quick_settings_live_display_changed_auto">LiveDisplay alterado para o modo automático.</string>
+  <string name="accessibility_quick_settings_live_display_changed_day">LiveDisplay alterado para o modo diurno.</string>
+  <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay alterado para o modo noturno.</string>
+  <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay alterado para o modo ao ar livre.</string>
 </resources>
