@@ -22,6 +22,7 @@
   <string name="global_action_screenshot">තිර සේයාව</string>
   <!-- label for item that restarts the phone in phone options dialog -->
   <!-- label for current user in phone options dialog -->
+  <string name="global_action_current_user">වර්තමාන</string>
   <!-- status message in phone options dialog for screenshot action -->
   <!-- Restart menu -->
   <!-- Button to restart the phone, within the Restart Options dialog -->

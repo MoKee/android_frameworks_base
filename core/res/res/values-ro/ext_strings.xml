@@ -31,9 +31,7 @@
   <!-- Button to restart the phone, within the Restart Options dialog -->
   <string name="reboot_reboot">Reporniți</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
-  <string name="reboot_recovery">Recovery</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
-  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">Descărcare</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
@@ -57,7 +55,6 @@
   <string name="permdesc_changePrivacyGuardState">Permite aplicației să stabilească dacă o altă aplicație rulează cu garda de confidențialitate. Când o aplicație rulează cu garda de confidențialitate, nu va avea acces la date personale, cum ar fi contacte, jurnalul de apeluri sau mesaje.</string>
   <string name="privacy_guard_notification">Protejarea datelor activată</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> nu va putea accesa datele personale</string>
-  <string name="privacy_guard_dialog_title">Privacy Guard</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> dorește să <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
   <string name="permission_remember_choice">Memorează alegerea mea</string>

@@ -57,7 +57,6 @@
   <string name="permdesc_changePrivacyGuardState">Beste aplikazio bat Privacy Guard menpean dagoen aldatzea ahalbidetzen dio aplikazioari. Aplikazio bat Privacy Guard menpean dagoenean ezin izango du datu pertsonalik ikusi, ez kontakturik, ez dei erregistrorik, ezta mezurik ere.</string>
   <string name="privacy_guard_notification">Privacy Guard aktibo</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> aplikazioak ezingo du datu pertsonalik irakurri</string>
-  <string name="privacy_guard_dialog_title">Privacy Guard</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> aplikazioak <xliff:g id="op">%2$s</xliff:g> ahal izatea nahi du.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
   <string name="permission_remember_choice">Gogoratu nire aukera</string>

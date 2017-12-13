@@ -87,7 +87,6 @@
   <!-- Play queue -->
   <string name="play_queue_extension">Näytä toistojono</string>
   <!-- Weather string format in keyguard -->
-  <string name="keyguard_status_view_weather_format"><xliff:g id="temp">%1$s</xliff:g> <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="accessibility_dpad_left">Kohdistin vasemmalle</string>
   <string name="accessibility_dpad_right">Kohdistin oikealle</string>
   <!-- NavBar Tuner -->
@@ -102,7 +101,6 @@
     <item quantity="other">%1$d yhdistettyä laitetta</item>
   </plurals>
   <!-- Weather string format in expanded statusbar header -->
-  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
     <item>Puhelu</item>
@@ -135,24 +133,24 @@
   <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_quick_settings_location_battery_saving">Sijainnin raportointi: virransäästötila.</string>
   <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_gps_only">Sijainti: Vain laite.</string>
+  <string name="accessibility_quick_settings_location_gps_only">Sijainnin raportointi: vain GPS.</string>
   <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_quick_settings_location_high_accuracy">Sijainnin raportointi: korkea tarkkuus.</string>
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_battery_saving_label">Virransäästö</string>
-  <string name="quick_settings_location_battery_saving_label_twoline">Virran-\nsäästö</string>
+  <string name="quick_settings_location_battery_saving_label_twoline">Virransäästö</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_gps_only_label">Vain laite</string>
   <string name="quick_settings_location_gps_only_label_twoline">Vain\nlaite</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_high_accuracy_label">Korkea tarkkuus</string>
+  <string name="quick_settings_location_high_accuracy_label">Suuri tarkkuus</string>
   <string name="quick_settings_location_high_accuracy_label_twoline">Suuri\ntarkkuus</string>
   <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_detail_title">Sijainti</string>
   <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_detail_menu_title">Valitse tila:</string>
   <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
-  <string name="quick_settings_location_detail_mode_high_accuracy_title">Korkea tarkkuus</string>
+  <string name="quick_settings_location_detail_mode_high_accuracy_title">Suuri tarkkuus</string>
   <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->
   <string name="quick_settings_location_detail_mode_battery_saving_title">Virransäästö</string>
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
@@ -160,9 +158,9 @@
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
   <string name="quick_settings_location_detail_mode_high_accuracy_description">Paikanna GPS:n ja Wi\u2011Fi-, Bluetooth- ja mobiiliverkkojen avulla</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
-  <string name="quick_settings_location_detail_mode_battery_saving_description">Paikanna WiF\u2011i-, Bluetooth- ja mobiiliverkkojen avulla</string>
+  <string name="quick_settings_location_detail_mode_battery_saving_description">Paikanna Wi-Fi-, Bluetooth- ja mobiiliverkkojen avulla</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
-  <string name="quick_settings_location_detail_mode_sensors_only_description">Paikanna sijaintisi GPS:n avulla</string>
+  <string name="quick_settings_location_detail_mode_sensors_only_description">Paikanna sijaintisi GPS: n avulla</string>
   <!-- Adb over network QS tile -->
   <string name="quick_settings_network_adb_label">ADB verkon yli</string>
   <!-- Ambient display QS tile -->
@@ -176,7 +174,7 @@
   <string name="accessibility_quick_settings_caffeine_off">Kofeiini pois päältä</string>
   <string name="accessibility_quick_settings_caffeine_on">Kofeiini päälle</string>
   <!-- Heads up QS tile -->
-  <string name="quick_settings_heads_up_label">Heads up</string>
+  <string name="quick_settings_heads_up_label">Leijuvat ilmoitukset</string>
   <string name="accessibility_quick_settings_heads_up_off">Heads up pois.</string>
   <string name="accessibility_quick_settings_heads_up_on">Heads up päällä.</string>
   <string name="accessibility_quick_settings_heads_up_changed_off">Heads up pois päältä.</string>
@@ -192,7 +190,26 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Synkronointi</string>
   <string name="quick_settings_volume_panel_label">Äänenvoimakkuuspaneeli</string>
-  <!-- Content description for Accessibility on unlocked tasks in recents -->
-  <!-- Content description for Accessibility on locked tasks in recents -->
   <!-- LiveDisplay strings -->
+  <string name="live_display_auto">Automaattinen</string>
+  <string name="live_display_auto_summary">Säädä automaattisesti näytön väri auringonlaskun ja nousun mukaan</string>
+  <string name="live_display_off">Pois</string>
+  <string name="live_display_off_summary">Poista kaikki mukautukset</string>
+  <string name="live_display_day">Päivä</string>
+  <string name="live_display_day_summary">Käytä vain päivällä</string>
+  <string name="live_display_night">Yö</string>
+  <string name="live_display_night_summary">Käytä vain yö-asetuksia</string>
+  <string name="live_display_outdoor">Ulkoilma (kirkas aurinko)</string>
+  <string name="live_display_outdoor_summary">Käytä vain ulkoilma-asetuksia</string>
+  <string name="live_display_hint">LiveDisplay voi auttaa vähentämään silmien rasitusta ja auttaa nukkumaan yöllä. Klikkaa tästä jos haluat kokeilla!</string>
+  <string name="accessibility_quick_settings_live_display_off">LiveDisplay pois.</string>
+  <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: Automaattinen.</string>
+  <string name="accessibility_quick_settings_live_display_day">LiveDisplay: päivä-tila.</string>
+  <string name="accessibility_quick_settings_live_display_night">LiveDisplay: yö-tila.</string>
+  <string name="accessibility_quick_settings_live_display_outdoor">LiveDisplay: ulkoilma-tila.</string>
+  <string name="accessibility_quick_settings_live_display_changed_off">LiveDisplay pois käytöstä.</string>
+  <string name="accessibility_quick_settings_live_display_changed_auto">LiveDisplay muutettiin automaattitilaan.</string>
+  <string name="accessibility_quick_settings_live_display_changed_day">LiveDisplay muutettiin päivä-tilaan.</string>
+  <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay muutettiin Yö-tilaan.</string>
+  <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay muuttui ulkoilma-tilaan.</string>
 </resources>

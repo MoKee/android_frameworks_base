@@ -29,17 +29,17 @@
   <string name="global_actions_screenshot_status">Dlouhým dotykem pro získání částečného snímku obrazovky</string>
   <!-- Restart menu -->
   <!-- Button to restart the phone, within the Restart Options dialog -->
-  <string name="reboot_reboot">Restart</string>
+  <string name="reboot_reboot">Restartovat</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
   <string name="reboot_recovery">Recovery</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
   <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
-  <string name="reboot_download">Download</string>
+  <string name="reboot_download">Ke stažení</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
   <string name="reboot_soft">Soft restart</string>
   <!-- Title of dialog to confirm restarting. -->
-  <string name="reboot_title">Restart</string>
+  <string name="reboot_title">Restartovat</string>
   <!-- Restart Confirmation Dialog.  When the user chooses to restart the device, there will
          be a confirmation dialog.  This is the message. -->
   <string name="reboot_confirm" product="tablet">Tablet bude restartován.</string>

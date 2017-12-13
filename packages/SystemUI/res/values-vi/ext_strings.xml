@@ -86,7 +86,6 @@
   <!-- Play queue -->
   <string name="play_queue_extension">Hiện danh sách chờ phát</string>
   <!-- Weather string format in keyguard -->
-  <string name="keyguard_status_view_weather_format"><xliff:g id="temp">%1$s</xliff:g> <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="accessibility_dpad_left">Trỏ trái</string>
   <string name="accessibility_dpad_right">Trỏ phải</string>
   <!-- NavBar Tuner -->
@@ -100,7 +99,6 @@
     <item quantity="other">%1$d máy khách</item>
   </plurals>
   <!-- Weather string format in expanded statusbar header -->
-  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
     <item>Gọi</item>
@@ -156,7 +154,7 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">Chỉ thiết bị</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-  <string name="quick_settings_location_detail_mode_high_accuracy_description">Sử dụng GPS, Wi\u2011Fi, Bluetooth hoặc mạng di động để xác định vị trí</string>
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">Sử dụng GPS, Wi\u2011Fi, Bluetooth hoặc mạng di động để xác định vị trí </string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
   <string name="quick_settings_location_detail_mode_battery_saving_description">Sử dụng Wi\u2011Fi, Bluetooth hoặc mạng di động để xác định vị trí</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
@@ -174,7 +172,6 @@
   <string name="accessibility_quick_settings_caffeine_off">Tắt Cafein</string>
   <string name="accessibility_quick_settings_caffeine_on">Bật Cafein</string>
   <!-- Heads up QS tile -->
-  <string name="quick_settings_heads_up_label">Heads up</string>
   <string name="accessibility_quick_settings_heads_up_off">Heads up tắt.</string>
   <string name="accessibility_quick_settings_heads_up_on">Heads up bật.</string>
   <string name="accessibility_quick_settings_heads_up_changed_off">Heads up đã tắt.</string>
@@ -190,10 +187,6 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Đồng bộ</string>
   <string name="quick_settings_volume_panel_label">Bảng điều khiển âm lượng</string>
-  <!-- Content description for Accessibility on unlocked tasks in recents -->
-  <string name="accessibility_lock_task">Ngăn chặn <xliff:g id="task">%1$s</xliff:g> bị bỏ qua</string>
-  <!-- Content description for Accessibility on locked tasks in recents -->
-  <string name="accessibility_unlock_task">Cho phép <xliff:g id="task">%1$s</xliff:g> được bỏ qua</string>
   <!-- LiveDisplay strings -->
   <string name="live_display_auto">Tự động</string>
   <string name="live_display_auto_summary">Tự động điều chỉnh nhiệt màu của màn hình sau khi mặt trời lặn và mặt trời mọc</string>

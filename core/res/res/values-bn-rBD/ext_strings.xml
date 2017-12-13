@@ -23,6 +23,7 @@
   <!-- label for item that restarts the phone in phone options dialog -->
   <string name="global_action_reboot">রিস্টার্ট</string>
   <!-- label for current user in phone options dialog -->
+  <string name="global_action_current_user">সাম্প্রতিক</string>
   <!-- status message in phone options dialog for screenshot action -->
   <string name="global_actions_screenshot_status">আংশিক স্ক্রিনশটের জন্য দীর্ঘ চাপ দিন</string>
   <!-- Restart menu -->
@@ -97,6 +98,7 @@
   <string name="app_ops_use_voice_volume">ভয়েস কলের ভলিউম নিয়ন্ত্রণ</string>
   <string name="app_ops_write_mms">এমএমএস বার্তা লিখুন</string>
   <string name="app_ops_write_sms">এসএমএস বার্তা লিখুন</string>
+  <string name="app_ops_run_in_background">নেপথ্যে চালনা করুন</string>
   <!-- Protected Apps Notification -->
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
