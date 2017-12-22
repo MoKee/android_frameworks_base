@@ -44,7 +44,7 @@
   <!-- Weather string format in expanded statusbar header -->
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
-    <item>Call</item>
+    <item>Tumawag</item>
     <!-- STREAM_VOICE_CALL -->
     <item>System</item>
     <!-- STREAM_SYSTEM -->
