@@ -31,9 +31,9 @@
   <!-- Button to restart the phone, within the Restart Options dialog -->
   <string name="reboot_reboot">Перезапуск</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
-  <string name="reboot_recovery">Режим восстановления</string>
+  <string name="reboot_recovery">Меню Recovery</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
-  <string name="reboot_bootloader">Загрузчик</string>
+  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">Режим обновления ПО</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
@@ -42,10 +42,10 @@
   <string name="reboot_title">Перезапуск</string>
   <!-- Restart Confirmation Dialog.  When the user chooses to restart the device, there will
          be a confirmation dialog.  This is the message. -->
-  <string name="reboot_confirm" product="tablet">Ваш планшет будет перезапущен.</string>
-  <string name="reboot_confirm" product="default">Ваш телефон будет перезапущен.</string>
+  <string name="reboot_confirm" product="tablet">Ваш устройство будет перезагружено.</string>
+  <string name="reboot_confirm" product="default">Ваш устройство будет перезагружено.</string>
   <!-- Restart Progress Dialog. This is shown if the user chooses to restart the phone. -->
-  <string name="reboot_progress">Перезапуск\u2026</string>
+  <string name="reboot_progress">Перезапуск устройства...</string>
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">Отладка по сети разрешена</string>
   <!-- ADB over USB and network notification -->
