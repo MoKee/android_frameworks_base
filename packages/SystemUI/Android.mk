@@ -43,11 +43,11 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
 LOCAL_STATIC_JAVA_LIBRARIES := \
     SystemUI-tags \
     SystemUI-proto \
-    org.lineageos.platform.internal
+    org.mokee.platform.internal
 
 LOCAL_JAVA_LIBRARIES := telephony-common
 LOCAL_JAVA_LIBRARIES += android.car
-LOCAL_FULL_LIBS_MANIFEST_FILES := $(LOCAL_PATH)/LineageManifest.xml
+LOCAL_FULL_LIBS_MANIFEST_FILES := $(LOCAL_PATH)/MoKeeManifest.xml
 
 LOCAL_PACKAGE_NAME := SystemUI
 LOCAL_CERTIFICATE := platform

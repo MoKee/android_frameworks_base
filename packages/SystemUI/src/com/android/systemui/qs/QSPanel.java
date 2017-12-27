@@ -53,15 +53,15 @@ import com.android.systemui.tuner.TunerService.Tunable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 /** View that represents the quick settings tile panel. **/
 public class QSPanel extends LinearLayout implements Tunable, Callback, BrightnessMirrorListener {
 
     public static final String QS_SHOW_BRIGHTNESS_SLIDER =
-            "lineagesecure:" + LineageSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER;
+            "mksecure:" + MKSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER;
     public static final String QS_SHOW_AUTO_BRIGHTNESS =
-            "lineagesecure:" + LineageSettings.Secure.QS_SHOW_AUTO_BRIGHTNESS;
+            "mksecure:" + MKSettings.Secure.QS_SHOW_AUTO_BRIGHTNESS;
 
     protected final Context mContext;
     protected final ArrayList<TileRecord> mRecords = new ArrayList<TileRecord>();

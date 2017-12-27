@@ -10,7 +10,7 @@ LOCAL_SRC_FILES += \
 LOCAL_JAVA_LIBRARIES := services.core \
 android.hidl.manager-V1.0-java
 
-LOCAL_JAVA_LIBRARIES += org.lineageos.platform.internal
+LOCAL_JAVA_LIBRARIES += org.mokee.platform.internal
 
 LOCAL_STATIC_JAVA_LIBRARIES := android.hardware.usb-V1.0-java \
 android.hardware.usb-V1.1-java

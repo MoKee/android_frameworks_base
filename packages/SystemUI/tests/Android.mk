@@ -56,7 +56,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     legacy-android-test \
     testables \
     truth-prebuilt \
-    org.lineageos.platform.internal
+    org.mokee.platform.internal
 
 LOCAL_JAVA_LIBRARIES := android.test.runner telephony-common android.car
 

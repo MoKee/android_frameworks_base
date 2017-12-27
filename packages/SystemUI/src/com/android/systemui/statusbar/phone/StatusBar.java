@@ -268,7 +268,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 public class StatusBar extends SystemUI implements DemoMode,
         DragDownHelper.DragDownCallback, ActivityStarter, OnUnlockMethodChangedListener,
@@ -398,7 +398,7 @@ public class StatusBar extends SystemUI implements DemoMode,
     private static final String SCREEN_BRIGHTNESS_MODE =
             "system:" + Settings.System.SCREEN_BRIGHTNESS_MODE;
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL =
-            "lineagesystem:" + LineageSettings.System.STATUS_BAR_BRIGHTNESS_CONTROL;
+            "mksystem:" + MKSettings.System.STATUS_BAR_BRIGHTNESS_CONTROL;
 
     static {
         boolean onlyCoreApps;
