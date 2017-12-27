@@ -16,7 +16,7 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
-LOCAL_FULL_LIBS_MANIFEST_FILES := $(LOCAL_PATH)/LineageManifest.xml
+LOCAL_FULL_LIBS_MANIFEST_FILES := $(LOCAL_PATH)/MoKeeManifest.xml
 
 LOCAL_USE_AAPT2 := true
 LOCAL_NO_STANDARD_LIBRARIES := true

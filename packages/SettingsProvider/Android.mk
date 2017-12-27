@@ -8,7 +8,7 @@ LOCAL_SRC_FILES := $(call all-java-files-under, src) \
 
 LOCAL_JAVA_LIBRARIES := telephony-common ims-common
 LOCAL_STATIC_JAVA_LIBRARIES := junit legacy-android-test \
-    org.lineageos.platform.internal
+    org.mokee.platform.internal
 
 LOCAL_PACKAGE_NAME := SettingsProvider
 LOCAL_CERTIFICATE := platform

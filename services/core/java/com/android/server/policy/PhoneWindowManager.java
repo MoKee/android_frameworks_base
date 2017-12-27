@@ -257,7 +257,7 @@ import com.android.server.vr.VrManagerInternal;
 import com.android.server.wm.AppTransition;
 
 import lineageos.hardware.LineageHardwareManager;
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import org.lineageos.internal.util.ActionUtils;
 import static org.lineageos.internal.util.DeviceKeysConstants.*;
@@ -1072,8 +1072,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(Settings.Global.getUriFor(
                     Settings.Global.POLICY_CONTROL), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                    LineageSettings.System.ACCELEROMETER_ROTATION_ANGLES), false, this,
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.ACCELEROMETER_ROTATION_ANGLES), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(LineageSettings.Global.getUriFor(
                     LineageSettings.Global.DEV_FORCE_SHOW_NAVBAR), false, this,
@@ -2389,9 +2389,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
         final Resources res = mContext.getResources();
         final String[] deviceKeyHandlerLibs = res.getStringArray(
-                org.lineageos.platform.internal.R.array.config_deviceKeyHandlerLibs);
+                org.mokee.platform.internal.R.array.config_deviceKeyHandlerLibs);
         final String[] deviceKeyHandlerClasses = res.getStringArray(
-                org.lineageos.platform.internal.R.array.config_deviceKeyHandlerClasses);
+                org.mokee.platform.internal.R.array.config_deviceKeyHandlerClasses);
 
         for (int i = 0;
                 i < deviceKeyHandlerLibs.length && i < deviceKeyHandlerClasses.length; i++) {
@@ -2718,8 +2718,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 updateOrientationListenerLp();
             }
 
-            mUserRotationAngles = LineageSettings.System.getInt(resolver,
-                    LineageSettings.System.ACCELEROMETER_ROTATION_ANGLES, -1);
+            mUserRotationAngles = MKSettings.System.getInt(resolver,
+                    MKSettings.System.ACCELEROMETER_ROTATION_ANGLES, -1);
 
             if (mSystemReady) {
                 int pointerLocation = Settings.System.getIntForUser(resolver,
@@ -8308,8 +8308,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     private void sendLidChangeBroadcast() {
         Log.d(TAG, "Sending cover change broadcast, mLidState=" + mLidState);
-        Intent intent = new Intent(lineageos.content.Intent.ACTION_LID_STATE_CHANGED);
-        intent.putExtra(lineageos.content.Intent.EXTRA_LID_STATE, mLidState);
+        Intent intent = new Intent(mokee.content.Intent.ACTION_LID_STATE_CHANGED);
+        intent.putExtra(mokee.content.Intent.EXTRA_LID_STATE, mLidState);
         intent.setFlags(Intent.FLAG_RECEIVER_REPLACE_PENDING);
         mContext.sendBroadcastAsUser(intent, UserHandle.SYSTEM);
     }

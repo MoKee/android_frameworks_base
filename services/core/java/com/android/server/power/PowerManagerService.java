@@ -99,7 +99,7 @@ import com.android.server.lights.Light;
 import com.android.server.lights.LightsManager;
 import com.android.server.power.BatterySaverPolicy.ServiceType;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -857,8 +857,8 @@ public final class PowerManagerService extends SystemService
         resolver.registerContentObserver(Settings.Global.getUriFor(
                 Settings.Global.DEVICE_DEMO_MODE),
                 false, mSettingsObserver, UserHandle.USER_SYSTEM);
-        resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                LineageSettings.System.PROXIMITY_ON_WAKE),
+        resolver.registerContentObserver(MKSettings.System.getUriFor(
+                MKSettings.System.PROXIMITY_ON_WAKE),
                 false, mSettingsObserver, UserHandle.USER_ALL);
         resolver.registerContentObserver(LineageSettings.Global.getUriFor(
                 LineageSettings.Global.DEV_FORCE_SHOW_NAVBAR),
@@ -938,11 +938,11 @@ public final class PowerManagerService extends SystemService
         mSupportsDoubleTapWakeConfig = resources.getBoolean(
                 com.android.internal.R.bool.config_supportDoubleTapWake);
         mProximityWakeSupported = resources.getBoolean(
-                org.lineageos.platform.internal.R.bool.config_proximityCheckOnWake);
+                org.mokee.platform.internal.R.bool.config_proximityCheckOnWake);
         mProximityWakeEnabledByDefaultConfig = resources.getBoolean(
-                org.lineageos.platform.internal.R.bool.config_proximityCheckOnWakeEnabledByDefault);
+                org.mokee.platform.internal.R.bool.config_proximityCheckOnWakeEnabledByDefault);
         mProximityTimeOut = resources.getInteger(
-                org.lineageos.platform.internal.R.integer.config_proximityCheckTimeout);
+                org.mokee.platform.internal.R.integer.config_proximityCheckTimeout);
         if (mProximityWakeSupported) {
             mProximityWakeLock = mContext.getSystemService(PowerManager.class)
                     .newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "ProximityWakeLock");
@@ -1029,8 +1029,8 @@ public final class PowerManagerService extends SystemService
             updateLowPowerModeLocked();
         }
 
-        mProximityWakeEnabled = LineageSettings.System.getInt(resolver,
-                LineageSettings.System.PROXIMITY_ON_WAKE,
+        mProximityWakeEnabled = MKSettings.System.getInt(resolver,
+                MKSettings.System.PROXIMITY_ON_WAKE,
                 mProximityWakeEnabledByDefaultConfig ? 1 : 0) == 1;
         mDevForceNavbar = LineageSettings.Global.getIntForUser(resolver,
                 LineageSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
