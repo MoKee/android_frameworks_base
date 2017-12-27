@@ -30,7 +30,7 @@ import android.widget.TextView;
 
 import com.android.internal.widget.LockPatternUtils;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 public class NumPadKey extends ViewGroup {
     // list of "ABC", etc per digit, starting with '0'
@@ -114,8 +114,8 @@ public class NumPadKey extends ViewGroup {
     }
 
     private void updateText() {
-        boolean scramblePin = (LineageSettings.System.getInt(getContext().getContentResolver(),
-                LineageSettings.System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT, 0) == 1);
+        boolean scramblePin = (MKSettings.System.getInt(getContext().getContentResolver(),
+                MKSettings.System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT, 0) == 1);
 
         if (mDigit >= 0) {
             mDigitText.setText(Integer.toString(mDigit));
