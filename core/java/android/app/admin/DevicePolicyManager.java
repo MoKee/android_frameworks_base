@@ -8111,7 +8111,7 @@ public class DevicePolicyManager {
     }
 
     /**
-     * Lineage: check if secure keyguard is required
+     * MoKee: check if secure keyguard is required
      * @hide
      */
     public boolean requireSecureKeyguard() {
