@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2007 The Android Open Source Project
+ * Copyright (C) 2018-2020 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,6 +61,8 @@ public class KeyguardHostView extends FrameLayout implements SecurityCallback {
     private OnDismissAction mDismissAction;
     private Runnable mCancelAction;
 
+    private KeyguardUpdateMonitor mKeyguardUpdateMonitor;
+
     private final KeyguardUpdateMonitorCallback mUpdateCallback =
             new KeyguardUpdateMonitorCallback() {
 
@@ -93,6 +96,14 @@ public class KeyguardHostView extends FrameLayout implements SecurityCallback {
                 }
             }
         }
+
+        @Override
+        public void onTrustChanged(int userId) {
+            if (userId != KeyguardUpdateMonitor.getCurrentUser()) return;
+            if (mKeyguardUpdateMonitor.getUserCanSkipBouncer(userId) && mKeyguardUpdateMonitor.getUserHasTrust(userId)){
+                dismiss(false, userId, false);
+            }
+        }
     };
 
     // Whether the volume keys should be handled by keyguard. If true, then
@@ -111,7 +122,8 @@ public class KeyguardHostView extends FrameLayout implements SecurityCallback {
 
     public KeyguardHostView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        Dependency.get(KeyguardUpdateMonitor.class).registerCallback(mUpdateCallback);
+        mKeyguardUpdateMonitor = Dependency.get(KeyguardUpdateMonitor.class);
+        mKeyguardUpdateMonitor.registerCallback(mUpdateCallback);
     }
 
     @Override
