@@ -97,7 +97,7 @@
   <!-- Path data for circle battery -->
   <!-- Wi-Fi hotspot label when enabled -->
   <plurals name="wifi_hotspot_connected_clients_label">
-    <item quantity="other">%1$d 客戶端</item>
+    <item quantity="other">%1$d 使用者</item>
   </plurals>
   <!-- Weather string format in expanded statusbar header -->
   <!-- Volume stream titles - should match the string-array in AOSP -->
