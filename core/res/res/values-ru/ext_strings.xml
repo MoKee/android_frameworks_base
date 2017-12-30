@@ -31,9 +31,9 @@
   <!-- Button to restart the phone, within the Restart Options dialog -->
   <string name="reboot_reboot">Перезапуск</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
-  <string name="reboot_recovery">Меню Recovery</string>
+  <string name="reboot_recovery">Режим восстановления</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
-  <string name="reboot_bootloader">Bootloader</string>
+  <string name="reboot_bootloader">Загрузчик</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">Режим обновления ПО</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
