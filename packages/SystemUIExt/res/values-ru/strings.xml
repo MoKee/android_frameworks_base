@@ -18,7 +18,7 @@
   <!-- su icon switch -->
   <string name="status_bar_su">SU</string>
   <!-- recent ram info -->
-  <string name="recents_free_ram">СВОБОДНО ОЗУ: %1$d МБ</string>
+  <string name="recents_free_ram">СВОБОДНО: %1$d МБ</string>
   <!-- Screenshot QS Tile -->
   <string name="quick_settings_screenshot_label">Снимок экрана</string>
   <!-- Compass QS Tile -->

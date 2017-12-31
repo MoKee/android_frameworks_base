@@ -37,7 +37,7 @@
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">Режим обновления ПО</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
-  <string name="reboot_soft">Перезапуск интерфейса</string>
+  <string name="reboot_soft">Быстрая перезагрузка</string>
   <!-- Title of dialog to confirm restarting. -->
   <string name="reboot_title">Перезапуск</string>
   <!-- Restart Confirmation Dialog.  When the user chooses to restart the device, there will
@@ -60,7 +60,7 @@
   <string name="privacy_guard_dialog_title">Режим конфиденциальности</string>
   <string name="privacy_guard_dialog_summary">Приложение «<xliff:g id="app">%1$s</xliff:g>» пытается <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
-  <string name="permission_remember_choice">Запомнить разрешение</string>
+  <string name="permission_remember_choice">Запомнить мой выбор</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">получить доступ к камере</string>
   <string name="app_ops_access_location">получить доступ к местоположению устройства</string>
@@ -97,7 +97,7 @@
   <string name="app_ops_start_at_bootup">назначить запуск при включении устройства</string>
   <string name="app_ops_toast_window">отображать всплывающие уведомления</string>
   <string name="app_ops_toggle_bluetooth">переключить состояние Bluetooth</string>
-  <string name="app_ops_toggle_mobile_data">переключить состояние мобильного интернета</string>
+  <string name="app_ops_toggle_mobile_data">Переключение состояния мобильного интернета</string>
   <string name="app_ops_toggle_nfc">переключить состояние модуля NFC</string>
   <string name="app_ops_toggle_wifi">переключить состояние Wi-Fi</string>
   <string name="app_ops_use_alarm_volume">получить управление громкостью будильника</string>
