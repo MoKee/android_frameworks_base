@@ -164,11 +164,32 @@
   <!-- Adb over network QS tile -->
   <string name="quick_settings_network_adb_label">ADB sa ibabaw ng network</string>
   <!-- Ambient display QS tile -->
+  <string name="quick_settings_ambient_display_label">Ambient na naka-display</string>
+  <string name="accessibility_quick_settings_ambient_display_off">Ambient na naka-display na off.</string>
+  <string name="accessibility_quick_settings_ambient_display_on">Ambient na naka-display na on.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_off">Ambient na naka-diplay na naka-turned off.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_on">Ambient na naka-display na naka-turned on.</string>
   <!-- Caffeine -->
+  <string name="quick_settings_caffeine_label">Caffeine</string>
+  <string name="accessibility_quick_settings_caffeine_off">Caffeine naka-off</string>
+  <string name="accessibility_quick_settings_caffeine_on">Caffeine naka-on</string>
   <!-- Heads up QS tile -->
+  <string name="quick_settings_heads_up_label">Naka-heads up</string>
+  <string name="accessibility_quick_settings_heads_up_off">Heads up ay naka-off.</string>
+  <string name="accessibility_quick_settings_heads_up_on">Heads up ay naka-on.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_off">Heads up ay naka-turned off.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_on">Heads up ay naka-turned-on.</string>
   <!-- Sync QS tile -->
+  <string name="quick_settings_sync_label">I-Sync</string>
+  <string name="accessibility_quick_settings_sync_off">Naka-Sync off.</string>
+  <string name="accessibility_quick_settings_sync_on">Naka-Sync on.</string>
+  <string name="accessibility_quick_settings_sync_changed_off">Sync na naka-turned off.</string>
+  <string name="accessibility_quick_settings_sync_changed_on">Sync na naka-turned on.</string>
   <!-- USB tethering QS tile -->
+  <string name="quick_settings_usb_tether_label">USB tethering</string>
   <!-- Volume panel QS tile -->
+  <string name="quick_settings_sync_label">I-Sync</string>
+  <string name="quick_settings_volume_panel_label">Volume panel</string>
   <!-- LiveDisplay strings -->
   <string name="live_display_auto">Awtomatiko</string>
   <string name="live_display_auto_summary">Awtomatikong i-adjust ang temperatura ng kulay ng screen pagkatapos ng paglubog ng araw at pagsikat ng araw</string>
