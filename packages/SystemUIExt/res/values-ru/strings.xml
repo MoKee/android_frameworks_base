@@ -37,8 +37,8 @@
   <string name="quick_settings_compass_W">З</string>
   <string name="quick_settings_compass_NW">СЗ</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
-  <string name="keyguard_indication_dash_charging_time">Зарядка (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s </xliff:g> до полной)</string>
-  <string name="keyguard_plugged_in_dash_charging">Зарядка</string>
+  <string name="keyguard_indication_dash_charging_time">Быстрая зарядка (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s </xliff:g> до полной)</string>
+  <string name="keyguard_plugged_in_dash_charging">Быстрая зарядка</string>
   <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
   <string name="key_disabler">Отключить кнопки</string>
   <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
