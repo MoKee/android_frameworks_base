@@ -34,6 +34,7 @@
   <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <!-- String for lockscreen shortcut hints -->
+  <string name="lockscreen_default_target">Pangunahin</string>
   <string name="lockscreen_none_target">Wala</string>
   <!-- Play queue -->
   <!-- Weather string format in keyguard -->
@@ -93,4 +94,14 @@
   <!-- USB tethering QS tile -->
   <!-- Volume panel QS tile -->
   <!-- LiveDisplay strings -->
+  <string name="live_display_auto">Awtomatiko</string>
+  <string name="live_display_auto_summary">Awtomatikong i-adjust ang temperatura ng kulay ng screen pagkatapos ng paglubog ng araw at pagsikat ng araw</string>
+  <string name="live_display_off">I-off</string>
+  <string name="live_display_off_summary">Huwag paganahin ang lahat ng mga pagbabago</string>
+  <string name="live_display_day">Araw</string>
+  <string name="live_display_day_summary">Gamitin ang mga setting ng araw lamang</string>
+  <string name="live_display_night">Gabi</string>
+  <string name="live_display_night_summary">Gamitin ang mga setting ng gabi lamang</string>
+  <string name="live_display_outdoor">Labasan (maliwanag)</string>
+  <string name="live_display_outdoor_summary">Gamitin ang mga setting ng panlabas lamang</string>
 </resources>
