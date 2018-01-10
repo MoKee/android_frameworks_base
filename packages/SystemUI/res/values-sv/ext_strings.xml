@@ -154,6 +154,7 @@
   <string name="live_display_day_summary">Använd endast daginställningar</string>
   <string name="live_display_night">Natt</string>
   <string name="live_display_night_summary">Använd endast nattinställningar</string>
+  <string name="live_display_outdoor">Utomhus (ljus sol)</string>
   <string name="live_display_outdoor_summary">Använd endast utomhusinställningar</string>
   <string name="accessibility_quick_settings_live_display_off">LiveDisplay av.</string>
   <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: autoläge.</string>

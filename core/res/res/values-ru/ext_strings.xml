@@ -57,7 +57,7 @@
   <string name="permdesc_changePrivacyGuardState">Приложение сможет изменять состояние защищённого режима для других приложений. Когда приложение запущено в защищённом режиме, оно не получает доступ к персональным данным, таким как контакты, сообщения или журнал звонков.</string>
   <string name="privacy_guard_notification">Защищённый режим включён</string>
   <string name="privacy_guard_notification_detail">У «<xliff:g id="app">%1$s</xliff:g>» нет доступа к персональным данным</string>
-  <string name="privacy_guard_dialog_title">Режим конфиденциальности</string>
+  <string name="privacy_guard_dialog_title">Защищённый режим</string>
   <string name="privacy_guard_dialog_summary">Приложение «<xliff:g id="app">%1$s</xliff:g>» пытается <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
   <string name="permission_remember_choice">Запомнить мой выбор</string>

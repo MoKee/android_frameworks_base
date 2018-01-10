@@ -71,4 +71,5 @@
   <!-- USB tethering QS tile -->
   <!-- Volume panel QS tile -->
   <!-- LiveDisplay strings -->
+  <string name="live_display_night">ည</string>
 </resources>
