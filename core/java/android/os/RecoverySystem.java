@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2010 The Android Open Source Project
+ * Copyright (C) 2018 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -95,6 +96,7 @@ public class RecoverySystem {
 
     /** Used to communicate with recovery.  See bootable/recovery/recovery.cpp. */
     private static final File RECOVERY_DIR = new File("/cache/recovery");
+    private static final File COMMAND_FILE = new File(RECOVERY_DIR, "command");
     private static final File LOG_FILE = new File(RECOVERY_DIR, "log");
     private static final File LAST_INSTALL_FILE = new File(RECOVERY_DIR, "last_install");
     private static final String LAST_PREFIX = "last_";
@@ -606,6 +608,105 @@ public class RecoverySystem {
 
             throw new IOException("Reboot failed (no permissions?)");
         }
+    }
+
+    /**
+     * If the package hasn't been processed (i.e. uncrypt'd), set up
+     * UNCRYPT_PACKAGE_FILE and delete BLOCK_MAP_FILE to trigger uncrypt during the
+     * reboot.
+     *
+     * @param context      the Context to use
+     * @param packageFile  the update package to install.  Must be on a
+     * partition mountable by recovery.
+     * @param processed    if the package has been processed (uncrypt'd).
+     *
+     * @throws IOException if writing the recovery command file fails, or if
+     * the reboot itself fails.
+     *
+     * @hide
+     */
+    @SystemApi
+    public static void installPackageLegacy(Context context, File packageFile, boolean processed)
+            throws IOException {
+        synchronized (sRequestLock) {
+            LOG_FILE.delete();
+            // Must delete the file in case it was created by system server.
+            UNCRYPT_PACKAGE_FILE.delete();
+
+            String filename = packageFile.getCanonicalPath();
+            Log.w(TAG, "!!! REBOOTING TO INSTALL " + filename + " !!!");
+
+            // If the package name ends with "_s.zip", it's a security update.
+            boolean securityUpdate = filename.endsWith("_s.zip");
+
+            // If the package is on the /data partition, the package needs to
+            // be processed (i.e. uncrypt'd). The caller specifies if that has
+            // been done in 'processed' parameter.
+            if (filename.startsWith("/data/")) {
+                if (processed) {
+                    if (!BLOCK_MAP_FILE.exists()) {
+                        Log.e(TAG, "Package claimed to have been processed but failed to find "
+                                + "the block map file.");
+                        throw new IOException("Failed to find block map file");
+                    }
+                } else {
+                    FileWriter uncryptFile = new FileWriter(UNCRYPT_PACKAGE_FILE);
+                    try {
+                        uncryptFile.write(filename + "\n");
+                    } finally {
+                        uncryptFile.close();
+                    }
+                    // UNCRYPT_PACKAGE_FILE needs to be readable and writable
+                    // by system server.
+                    if (!UNCRYPT_PACKAGE_FILE.setReadable(true, false)
+                            || !UNCRYPT_PACKAGE_FILE.setWritable(true, false)) {
+                        Log.e(TAG, "Error setting permission for " + UNCRYPT_PACKAGE_FILE);
+                    }
+
+                    BLOCK_MAP_FILE.delete();
+                }
+
+                // If the package is on the /data partition, use the block map
+                // file as the package name instead.
+                filename = "@/cache/recovery/block.map";
+            }
+
+            final String filenameArg = "--update_package=" + filename + "\n";
+            final String localeArg = "--locale=" + Locale.getDefault().toLanguageTag() + "\n";
+
+            bootCommandLegacy(context, filenameArg, localeArg);
+
+            throw new IOException("Reboot failed (no permissions?)");
+        }
+    }
+
+    /**
+     * Reboot into the recovery system with the supplied argument.
+     * @param args to pass to the recovery utility.
+     * @throws IOException if something goes wrong.
+     */
+    private static void bootCommandLegacy(Context context, String... args) throws IOException {
+        RECOVERY_DIR.mkdirs();  // In case we need it
+        COMMAND_FILE.delete();  // In case it's not writable
+        LOG_FILE.delete();
+
+        FileWriter command = new FileWriter(COMMAND_FILE);
+        try {
+            for (String arg : args) {
+                if (!TextUtils.isEmpty(arg)) {
+                    command.write(arg);
+                    command.write("\n");
+                }
+            }
+        } finally {
+            command.close();
+        }
+
+        // Having written the command file, go ahead and reboot
+        PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        pm.reboot(PowerManager.REBOOT_RECOVERY_UPDATE);
+
+        throw new IOException("Reboot failed (no permissions?)");
     }
 
     /**
