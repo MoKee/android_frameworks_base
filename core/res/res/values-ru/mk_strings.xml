@@ -18,9 +18,9 @@
   <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
   <string name="edit">Изменить</string>
   <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permlab_modifyOverlays">Изменение слоев тем</string>
+  <string name="permlab_modifyOverlays">Изменение слоёв тем</string>
   <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permdesc_modifyOverlays">Позволить приложению изменять слои темы используя OverlayManagerService</string>
+  <string name="permdesc_modifyOverlays">Позволяет приложению изменять слои темы используя OverlayManagerService</string>
   <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
   <string name="mk_reboot_to_update_title">Обновление системы MoKee</string>
 </resources>
