@@ -9144,6 +9144,15 @@ public final class Settings {
          *
          * @hide
          */
+        public static final String CAPTIVE_PORTAL_SECOND_FALLBACK_URLS =
+                "captive_portal_second_fallback_urls";
+
+        /**
+         * A comma separated list of URLs used for captive portal detection in addition to the
+         * fallback HTTP url associated with the CAPTIVE_PORTAL_FALLBACK_URL settings.
+         *
+         * @hide
+         */
         public static final String CAPTIVE_PORTAL_OTHER_FALLBACK_URLS =
                 "captive_portal_other_fallback_urls";
 
