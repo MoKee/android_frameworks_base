@@ -26,6 +26,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.mokee.utils.MoKeeUtils;
 import android.net.CaptivePortal;
 import android.net.ConnectivityManager;
 import android.net.ICaptivePortal;
@@ -94,7 +95,11 @@ public class NetworkMonitor extends StateMachine {
     private static final String DEFAULT_HTTPS_URL     = "https://www.google.com/generate_204";
     private static final String DEFAULT_HTTP_URL      =
             "http://connectivitycheck.gstatic.com/generate_204";
+    private static final String DEFAULT_HTTPS_URL_CN     = "https://captive.v2ex.co/generate_204";
+    private static final String DEFAULT_HTTP_URL_CN      = "http://captive.v2ex.co/generate_204";
     private static final String DEFAULT_FALLBACK_URL  = "http://www.google.com/gen_204";
+    private static final String DEFAULT_SECOND_FALLBACK_URLS =
+            "https://download.mokeedev.com/generate_204";
     private static final String DEFAULT_OTHER_FALLBACK_URLS =
             "http://play.googleapis.com/generate_204";
     private static final String DEFAULT_USER_AGENT    = "Mozilla/5.0 (X11; Linux x86_64) "
@@ -706,18 +711,22 @@ public class NetworkMonitor extends StateMachine {
     }
 
     private static String getCaptivePortalServerHttpsUrl(Context context) {
-        return getSetting(context, Settings.Global.CAPTIVE_PORTAL_HTTPS_URL, DEFAULT_HTTPS_URL);
+        return getSetting(context, Settings.Global.CAPTIVE_PORTAL_HTTPS_URL,
+                MoKeeUtils.isSupportLanguage(true) ? DEFAULT_HTTPS_URL_CN : DEFAULT_HTTPS_URL);
     }
 
     public static String getCaptivePortalServerHttpUrl(Context context) {
-        return getSetting(context, Settings.Global.CAPTIVE_PORTAL_HTTP_URL, DEFAULT_HTTP_URL);
+        return getSetting(context, Settings.Global.CAPTIVE_PORTAL_HTTP_URL,
+                MoKeeUtils.isSupportLanguage(true) ? DEFAULT_HTTP_URL_CN : DEFAULT_HTTP_URL);
     }
 
     private URL[] makeCaptivePortalFallbackUrls(Context context) {
         String separator = ",";
         String firstUrl = getSetting(context,
                 Settings.Global.CAPTIVE_PORTAL_FALLBACK_URL, DEFAULT_FALLBACK_URL);
-        String joinedUrls = firstUrl + separator + getSetting(context,
+        String secondUrl = getSetting(context,
+                Settings.Global.CAPTIVE_PORTAL_SECOND_FALLBACK_URLS, DEFAULT_SECOND_FALLBACK_URLS);
+        String joinedUrls = firstUrl + separator + secondUrl + separator + getSetting(context,
                 Settings.Global.CAPTIVE_PORTAL_OTHER_FALLBACK_URLS, DEFAULT_OTHER_FALLBACK_URLS);
         List<URL> urls = new ArrayList<>();
         for (String s : joinedUrls.split(separator)) {
