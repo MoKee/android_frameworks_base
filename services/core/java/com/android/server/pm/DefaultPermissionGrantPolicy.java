@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2015 The Android Open Source Project
+ * Copyright (C) 2018 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -737,6 +738,14 @@ final class DefaultPermissionGrantPolicy {
                     && doesPackageSupportRuntimePermissions(ringtonePickerPackage)) {
                 grantRuntimePermissionsLPw(ringtonePickerPackage,
                         STORAGE_PERMISSIONS, true, userId);
+            }
+
+            // Lawnchair
+            PackageParser.Package LawnchairPackage = getSystemPackageLPr("org.mokee.lawnchair");
+            if (LawnchairPackage != null
+                    && doesPackageSupportRuntimePermissions(LawnchairPackage)) {
+                grantRuntimePermissionsLPw(LawnchairPackage, LOCATION_PERMISSIONS, true, userId);
+                grantRuntimePermissionsLPw(LawnchairPackage, STORAGE_PERMISSIONS, userId);
             }
 
             mService.mSettings.onDefaultRuntimePermissionsGrantedLPr(userId);
