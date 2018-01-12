@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006 The Android Open Source Project
+ * Copyright (C) 2018 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3273,4 +3274,38 @@ public final class Telephony {
          */
         public static final String IS_USING_CARRIER_AGGREGATION = "is_using_carrier_aggregation";
     }
+
+    /**
+     * @hide
+     */
+    public static final class PhoneLocation implements BaseColumns {
+
+        public static final Uri CONTENT_URI =
+                Uri.parse("content://phonelocation");
+
+        public static final Uri CONTENT_FILTER_BYNUMBER_URI =
+                Uri.parse("content://phonelocation/bynumber");
+
+        public static final Uri CONTENT_FILTER_BYTYPE_URI =
+                Uri.parse("content://phonelocation/byphonetype");
+
+        public static final Uri CONTENT_FILTER_BYLOCATION_URI =
+                Uri.parse("content://phonelocation/bylocation");
+
+        public static final String DEFAULT_SORT_ORDER = "number ASC";
+
+        public static final String NUMBER = "number";
+
+        public static final String PHONE_TYPE = "phone_type";
+
+        public static final String ENGINE_TYPE = "engine_type";
+
+        public static final String LOCATION = "location";
+
+        public static final String USER_MARK = "user_mark";
+
+        public static final String UPDATE_TIME = "update_time";
+
+    }
+
 }
