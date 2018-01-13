@@ -1265,7 +1265,7 @@ public class NotificationManagerService extends SystemService {
                         new Intent(NotificationManager.ACTION_INTERRUPTION_FILTER_CHANGED_INTERNAL)
                                 .addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY_BEFORE_BOOT),
                         UserHandle.ALL, android.Manifest.permission.MANAGE_NOTIFICATIONS);
-                mLineageNotificationLights.setZenMode(mZenModeHelper.getZenMode());
+                mMKNotificationLights.setZenMode(mZenModeHelper.getZenMode());
                 synchronized (mNotificationLock) {
                     updateInterruptionFilterLocked();
                 }
@@ -5045,7 +5045,7 @@ public class NotificationManagerService extends SystemService {
         }
 
         LedValues ledValues = new LedValues(light.color, light.onMs, light.offMs);
-        mLineageNotificationLights.calcLights(ledValues, ledNotification.sbn.getPackageName(),
+        mMKNotificationLights.calcLights(ledValues, ledNotification.sbn.getPackageName(),
                 ledNotification.sbn.getNotification(), mScreenOn || mInCall,
                 ledNotification.getSuppressedVisualEffects());
 
@@ -5060,7 +5060,7 @@ public class NotificationManagerService extends SystemService {
 
     private boolean isLedForcedOn(NotificationRecord nr) {
         return nr != null ?
-                mLineageNotificationLights.isForcedOn(nr.sbn.getNotification()) : false;
+                mMKNotificationLights.isForcedOn(nr.sbn.getNotification()) : false;
     }
 
     @GuardedBy("mNotificationLock")
