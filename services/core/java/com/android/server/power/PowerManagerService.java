@@ -663,6 +663,8 @@ public final class PowerManagerService extends SystemService
     private SensorEventListener mProximityListener;
     private android.os.PowerManager.WakeLock mProximityWakeLock;
 
+    private boolean mDevForceNavbar;
+
     public PowerManagerService(Context context) {
         super(context);
         mContext = context;
@@ -848,6 +850,9 @@ public final class PowerManagerService extends SystemService
         resolver.registerContentObserver(MKSettings.System.getUriFor(
                 MKSettings.System.PROXIMITY_ON_WAKE),
                 false, mSettingsObserver, UserHandle.USER_ALL);
+        resolver.registerContentObserver(MKSettings.Global.getUriFor(
+                MKSettings.Global.DEV_FORCE_SHOW_NAVBAR),
+                false, mSettingsObserver, UserHandle.USER_ALL);
         IVrManager vrManager = (IVrManager) getBinderService(Context.VR_SERVICE);
         if (vrManager != null) {
             try {
@@ -1011,6 +1016,8 @@ public final class PowerManagerService extends SystemService
         mProximityWakeEnabled = MKSettings.System.getInt(resolver,
                 MKSettings.System.PROXIMITY_ON_WAKE,
                 mProximityWakeEnabledByDefaultConfig ? 1 : 0) == 1;
+        mDevForceNavbar = MKSettings.Global.getIntForUser(resolver,
+                MKSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
 
         mDirty |= DIRTY_SETTINGS;
     }
@@ -1998,7 +2005,7 @@ public final class PowerManagerService extends SystemService
                     nextTimeout = mLastUserActivityTime
                             + screenOffTimeout - screenDimDuration;
                     if (now < nextTimeout) {
-                        if (now > mLastUserActivityTime + BUTTON_ON_DURATION) {
+                        if (mDevForceNavbar || now > mLastUserActivityTime + BUTTON_ON_DURATION) {
                             mButtonsLight.setBrightness(0);
                         } else {
                             if (!mProximityPositive) {
