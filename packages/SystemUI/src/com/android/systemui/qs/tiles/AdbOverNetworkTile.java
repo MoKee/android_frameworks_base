@@ -35,8 +35,8 @@ import com.android.systemui.R;
 
 import java.net.InetAddress;
 
-import lineageos.providers.LineageSettings;
-import org.lineageos.internal.logging.LineageMetricsLogger;
+import mokee.providers.MKSettings;
+import org.mokee.internal.logging.MKMetricsLogger;
 
 /** Quick settings tile: AdbOverNetwork **/
 public class AdbOverNetworkTile extends QSTileImpl<BooleanState> {
@@ -57,8 +57,8 @@ public class AdbOverNetworkTile extends QSTileImpl<BooleanState> {
 
     @Override
     protected void handleClick() {
-        LineageSettings.Secure.putIntForUser(mContext.getContentResolver(),
-                LineageSettings.Secure.ADB_PORT, getState().value ? -1 : 5555,
+        MKSettings.Secure.putIntForUser(mContext.getContentResolver(),
+                MKSettings.Secure.ADB_PORT, getState().value ? -1 : 5555,
                 UserHandle.USER_CURRENT);
     }
 
@@ -99,7 +99,7 @@ public class AdbOverNetworkTile extends QSTileImpl<BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return LineageMetricsLogger.TILE_ADB_OVER_NETWORK;
+        return MKMetricsLogger.TILE_ADB_OVER_NETWORK;
     }
 
     private boolean isAdbEnabled() {
@@ -108,8 +108,8 @@ public class AdbOverNetworkTile extends QSTileImpl<BooleanState> {
     }
 
     private boolean isAdbNetworkEnabled() {
-        return LineageSettings.Secure.getInt(mContext.getContentResolver(),
-                LineageSettings.Secure.ADB_PORT, 0) > 0;
+        return MKSettings.Secure.getInt(mContext.getContentResolver(),
+                MKSettings.Secure.ADB_PORT, 0) > 0;
     }
 
     private ContentObserver mObserver = new ContentObserver(mHandler) {
@@ -125,7 +125,7 @@ public class AdbOverNetworkTile extends QSTileImpl<BooleanState> {
             mListening = listening;
             if (listening) {
                 mContext.getContentResolver().registerContentObserver(
-                        LineageSettings.Secure.getUriFor(LineageSettings.Secure.ADB_PORT),
+                        MKSettings.Secure.getUriFor(MKSettings.Secure.ADB_PORT),
                         false, mObserver);
                 mContext.getContentResolver().registerContentObserver(
                         Settings.Global.getUriFor(Settings.Global.ADB_ENABLED),
