@@ -170,7 +170,7 @@
   <string name="accessibility_quick_settings_ambient_display_changed_off">Ambientní displej vypnut.</string>
   <string name="accessibility_quick_settings_ambient_display_changed_on">Ambientní displej zapnut.</string>
   <!-- Caffeine -->
-  <string name="quick_settings_caffeine_label">Čas na kávu</string>
+  <string name="quick_settings_caffeine_label">Kofein</string>
   <string name="accessibility_quick_settings_caffeine_off">Kofein vyp.</string>
   <string name="accessibility_quick_settings_caffeine_on">Kofein zap.</string>
   <!-- Heads up QS tile -->
