@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006 The Android Open Source Project
+ * Copyright (C) 2012-2018 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3916,6 +3917,12 @@ public final class Settings {
                 }
             }
         };
+
+        /**
+         * Use MoKee Cloud Location Engine
+         * @hide
+         */
+        public static final String ENABLE_CLOUD_LOCATION_LOOKUP = "enable_cloud_location_lookup";
 
         /**
          * Setting to determine whether or not to show the battery percentage in the status bar.
