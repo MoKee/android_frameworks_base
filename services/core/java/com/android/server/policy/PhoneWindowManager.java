@@ -712,7 +712,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     boolean mForcingShowNavBar;
     int mForcingShowNavBarLayer;
 
-    boolean mDevForceNavbar = false;
+    int mDevForceNavbar = -1;
 
     // States of keyguard dismiss.
     private static final int DISMISS_KEYGUARD_NONE = 0; // Keyguard not being dismissed.
@@ -2300,7 +2300,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private void updateKeyAssignments() {
         int activeHardwareKeys = mDeviceHardwareKeys;
 
-        if (mDevForceNavbar) {
+        if (mDevForceNavbar == 1) {
             activeHardwareKeys = 0;
         }
         final boolean hasMenu = (activeHardwareKeys & KEY_MASK_MENU) != 0;
@@ -2574,12 +2574,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 updateWakeGestureListenerLp();
             }
 
-            boolean devForceNavbar = MKSettings.Global.getIntForUser(resolver,
-                    MKSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
+            int devForceNavbar = MKSettings.Global.getIntForUser(resolver,
+                    MKSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT);
             if (devForceNavbar != mDevForceNavbar) {
                 mDevForceNavbar = devForceNavbar;
                 if (mMKHardware.isSupported(MKHardwareManager.FEATURE_KEY_DISABLE)) {
-                    mMKHardware.set(MKHardwareManager.FEATURE_KEY_DISABLE, mDevForceNavbar);
+                    mMKHardware.set(MKHardwareManager.FEATURE_KEY_DISABLE, mDevForceNavbar == 1);
                 }
             }
 
@@ -6568,7 +6568,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 && mPointerHandler.isScreenTouched() && !navBarKey
                 && (appSwitchKey || homeKey || menuKey || backKey)) {
             return 0;
-        } else if (mDevForceNavbar && !navBarKey && (appSwitchKey || homeKey || menuKey || backKey)) {
+        } else if (mDevForceNavbar == 1 && !navBarKey && (appSwitchKey || homeKey || menuKey || backKey)) {
             return 0;
         }
 
@@ -8962,7 +8962,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     // overridden by qemu.hw.mainkeys in the emulator.
     @Override
     public boolean hasNavigationBar() {
-        return mHasNavigationBar || mDevForceNavbar;
+        return mHasNavigationBar || mDevForceNavbar == 1;
     }
 
     public boolean needsNavigationBar() {
