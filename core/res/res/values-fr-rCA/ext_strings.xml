@@ -33,11 +33,11 @@
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
   <string name="reboot_recovery">Récupération</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
-  <string name="reboot_bootloader">Chargeur de démarrage</string>
+  <string name="reboot_bootloader">Chargeur d’amorçage</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">Télécharger</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
-  <string name="reboot_soft">Redémarrage logiciel</string>
+  <string name="reboot_soft">Redémarrage à chaud</string>
   <!-- Title of dialog to confirm restarting. -->
   <string name="reboot_title">Redémarrer</string>
   <!-- Restart Confirmation Dialog.  When the user chooses to restart the device, there will
