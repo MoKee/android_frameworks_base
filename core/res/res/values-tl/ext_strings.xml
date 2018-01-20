@@ -121,6 +121,7 @@
   <string name="app_ops_assist_screenshot">kumuha ng isang screenshot</string>
   <string name="app_ops_use_body_sensors">gumamit ng mga body sensor</string>
   <string name="app_ops_read_cell_broadcasts">basahin ang mga broadcast ng cell</string>
+  <string name="app_ops_mock_location">i-mock ang iyong lokasyon</string>
   <string name="app_ops_read_external_storage">basahin ang external storage</string>
   <string name="app_ops_write_external_storage">sulatan ang external storage</string>
   <string name="app_ops_turn_on_screen">buksan ang screen</string>

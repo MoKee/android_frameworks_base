@@ -39,6 +39,7 @@
   <!-- ADB over USB and network notification -->
   <!-- ADB notification message-->
   <!-- Privacy Guard -->
+  <string name="privacy_guard_dialog_title">Pengawal privasi</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
   <!-- App ops requests -->
   <!-- Protected Apps Notification -->

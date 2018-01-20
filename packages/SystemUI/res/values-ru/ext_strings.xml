@@ -33,7 +33,7 @@
   <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="quick_settings_profiles_off">Профили выключены.</string>
   <!-- Content description of the system profiles  -->
-  <string name="quick_settings_profiles">Системные профили</string>
+  <string name="quick_settings_profiles">Профили системы</string>
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">Настройки яркости</string>
   <string name="led_notification_text">Светодиод включен параметрами</string>
