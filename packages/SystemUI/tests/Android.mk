@@ -30,8 +30,7 @@ LOCAL_COMPATIBILITY_SUITE := device-tests
 
 LOCAL_SRC_FILES := $(call all-java-files-under, src) \
     $(call all-Iaidl-files-under, src) \
-    $(call all-java-files-under, ../src) \
-    $(call all-java-files-under, ../src-mokee)
+    $(call all-java-files-under, ../src)
 
 LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res \
     frameworks/base/packages/SystemUI/res \
