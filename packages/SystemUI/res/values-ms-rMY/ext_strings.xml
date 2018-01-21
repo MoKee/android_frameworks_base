@@ -90,10 +90,16 @@
   <!-- Adb over network QS tile -->
   <!-- Ambient display QS tile -->
   <!-- Caffeine -->
+  <string name="quick_settings_caffeine_label">Kafein</string>
   <!-- Heads up QS tile -->
+  <string name="quick_settings_heads_up_label">Mengetuai</string>
   <!-- Sync QS tile -->
+  <string name="quick_settings_sync_label">Penyegerakan</string>
   <!-- USB tethering QS tile -->
+  <string name="quick_settings_usb_tether_label">Penambatan USB</string>
   <!-- Volume panel QS tile -->
+  <string name="quick_settings_sync_label">Penyegerakan</string>
+  <string name="quick_settings_volume_panel_label">Panel kelantangan</string>
   <!-- LiveDisplay strings -->
   <string name="live_display_auto">Automatik</string>
   <string name="live_display_auto_summary">Melaraskan warna suhu skrin secara automatik selepas matahari terbenam dan terbit</string>
