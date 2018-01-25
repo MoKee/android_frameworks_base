@@ -860,14 +860,14 @@ public final class PowerManagerService extends SystemService
         resolver.registerContentObserver(MKSettings.System.getUriFor(
                 MKSettings.System.PROXIMITY_ON_WAKE),
                 false, mSettingsObserver, UserHandle.USER_ALL);
-        resolver.registerContentObserver(LineageSettings.Global.getUriFor(
-                LineageSettings.Global.DEV_FORCE_SHOW_NAVBAR),
+        resolver.registerContentObserver(MKSettings.Global.getUriFor(
+                MKSettings.Global.DEV_FORCE_SHOW_NAVBAR),
                 false, mSettingsObserver, UserHandle.USER_ALL);
-        resolver.registerContentObserver(LineageSettings.Secure.getUriFor(
-                LineageSettings.Secure.BUTTON_BRIGHTNESS),
+        resolver.registerContentObserver(MKSettings.Secure.getUriFor(
+                MKSettings.Secure.BUTTON_BRIGHTNESS),
                 false, mSettingsObserver, UserHandle.USER_ALL);
-        resolver.registerContentObserver(LineageSettings.Secure.getUriFor(
-                LineageSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT),
+        resolver.registerContentObserver(MKSettings.Secure.getUriFor(
+                MKSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT),
                 false, mSettingsObserver, UserHandle.USER_ALL);
         IVrManager vrManager = (IVrManager) getBinderService(Context.VR_SERVICE);
         if (vrManager != null) {
@@ -1032,13 +1032,13 @@ public final class PowerManagerService extends SystemService
         mProximityWakeEnabled = MKSettings.System.getInt(resolver,
                 MKSettings.System.PROXIMITY_ON_WAKE,
                 mProximityWakeEnabledByDefaultConfig ? 1 : 0) == 1;
-        mDevForceNavbar = LineageSettings.Global.getIntForUser(resolver,
-                LineageSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
-        mButtonTimeout = LineageSettings.Secure.getIntForUser(resolver,
-                LineageSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT,
+        mDevForceNavbar = MKSettings.Global.getIntForUser(resolver,
+                MKSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
+        mButtonTimeout = MKSettings.Secure.getIntForUser(resolver,
+                MKSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT,
                 DEFAULT_BUTTON_ON_DURATION, UserHandle.USER_CURRENT);
-        mButtonBrightness = LineageSettings.Secure.getIntForUser(resolver,
-                LineageSettings.Secure.BUTTON_BRIGHTNESS, mButtonBrightnessSettingDefault,
+        mButtonBrightness = MKSettings.Secure.getIntForUser(resolver,
+                MKSettings.Secure.BUTTON_BRIGHTNESS, mButtonBrightnessSettingDefault,
                 UserHandle.USER_CURRENT);
 
         mDirty |= DIRTY_SETTINGS;

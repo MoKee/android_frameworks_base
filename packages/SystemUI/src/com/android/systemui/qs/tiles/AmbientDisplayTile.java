@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2015 The CyanogenMod Project
  * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017-2018 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +32,7 @@ import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.qs.SecureSetting;
 import com.android.systemui.R;
 
-import org.lineageos.internal.logging.LineageMetricsLogger;
+import org.mok33.internal.logging.MKMetricsLogger;
 
 /** Quick settings tile: Ambient Display **/
 public class AmbientDisplayTile extends QSTileImpl<BooleanState> {
@@ -108,7 +109,7 @@ public class AmbientDisplayTile extends QSTileImpl<BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return LineageMetricsLogger.TILE_AMBIENT_DISPLAY;
+        return MKMetricsLogger.TILE_AMBIENT_DISPLAY;
     }
 
     @Override

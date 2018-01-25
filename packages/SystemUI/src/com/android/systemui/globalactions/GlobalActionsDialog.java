@@ -2,6 +2,7 @@
  * Copyright (C) 2017 The Android Open Source Project
  * Copyright (C) 2010-2015 CyanogenMod Project
  * Copyright (C) 2017-2018 The LineageOS Project
+ * Copyright (C) 2017-2018 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
  * except in compliance with the License. You may obtain a copy of the License at
@@ -106,10 +107,10 @@ import android.widget.TextView;
 
 import com.android.internal.colorextraction.drawable.GradientDrawable;
 
-import lineageos.providers.LineageSettings;
-import org.lineageos.internal.util.PowerMenuUtils;
+import mokee.providers.MKSettings;
+import org.mokee.internal.util.PowerMenuUtils;
 
-import static org.lineageos.internal.util.PowerMenuConstants.*;
+import static org.mokee.internal.util.PowerMenuConstants.*;
 
 import java.util.ArrayList;
 import java.util.BitSet;
@@ -179,7 +180,7 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener, DialogIn
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
-        filter.addAction(lineageos.content.Intent.ACTION_UPDATE_POWER_MENU);
+        filter.addAction(mokee.content.Intent.ACTION_UPDATE_POWER_MENU);
         filter.addAction(TelephonyIntents.ACTION_EMERGENCY_CALLBACK_MODE_CHANGED);
         context.registerReceiver(mBroadcastReceiver, filter);
 
@@ -214,7 +215,7 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener, DialogIn
         mDefaultMenuActions = mContext.getResources().getStringArray(
                 com.android.internal.R.array.config_globalActionsList);
         mRestartMenuActions = mContext.getResources().getStringArray(
-                org.lineageos.platform.internal.R.array.config_restartActionsList);
+                org.mokee.platform.internal.R.array.config_restartActionsList);
 
         updatePowerMenuActions();
     }
@@ -326,7 +327,7 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener, DialogIn
         List<Action> items = new ArrayList<Action>();
 
         String[] restartMenuActions = mContext.getResources().getStringArray(
-                    org.lineageos.platform.internal.R.array.config_restartActionsList);
+                    org.mokee.platform.internal.R.array.config_restartActionsList);
         for (int i = 0; i < restartMenuActions.length; i++) {
             String actionKey = restartMenuActions[i];
             if (GLOBAL_ACTION_KEY_RESTART_RECOVERY.equals(actionKey)) {
@@ -1475,7 +1476,7 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener, DialogIn
                     mIsWaitingForEcmExit = false;
                     changeAirplaneModeSystemSetting(true);
                 }
-            } else if (lineageos.content.Intent.ACTION_UPDATE_POWER_MENU.equals(action)) {
+            } else if (mokee.content.Intent.ACTION_UPDATE_POWER_MENU.equals(action)) {
                 updatePowerMenuActions();
             }
         }
@@ -1483,8 +1484,8 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener, DialogIn
 
     protected void updatePowerMenuActions() {
         ContentResolver resolver = mContext.getContentResolver();
-        final String powerMenuActions = LineageSettings.Secure.getStringForUser(resolver,
-                LineageSettings.Secure.POWER_MENU_ACTIONS, UserHandle.USER_CURRENT);
+        final String powerMenuActions = MKSettings.Secure.getStringForUser(resolver,
+                MKSettings.Secure.POWER_MENU_ACTIONS, UserHandle.USER_CURRENT);
 
         if (powerMenuActions != null) {
             mRootMenuActions = powerMenuActions.split("\\|");

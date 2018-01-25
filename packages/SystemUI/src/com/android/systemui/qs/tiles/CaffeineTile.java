@@ -31,7 +31,7 @@ import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.plugins.qs.QSTile.BooleanState;
 import com.android.systemui.R;
 
-import org.lineageos.internal.logging.LineageMetricsLogger;
+import org.mokee.internal.logging.MKMetricsLogger;
 
 /** Quick settings tile: Caffeine **/
 public class CaffeineTile extends QSTileImpl<BooleanState> {
@@ -129,7 +129,7 @@ public class CaffeineTile extends QSTileImpl<BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return LineageMetricsLogger.TILE_CAFFEINE;
+        return MKMetricsLogger.TILE_CAFFEINE;
     }
 
     private void startCountDown(long duration) {

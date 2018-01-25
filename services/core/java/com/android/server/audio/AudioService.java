@@ -131,7 +131,7 @@ import com.android.server.pm.UserManagerService;
 
 import org.xmlpull.v1.XmlPullParserException;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -1283,8 +1283,8 @@ public class AudioService extends IAudioService.Stub
             readDockAudioSettings(cr);
             sendEncodedSurroundMode(cr, "readPersistedSettings");
 
-            mVolumeKeysControlRingStream = LineageSettings.System.getIntForUser(mContentResolver,
-                    LineageSettings.System.VOLUME_KEYS_CONTROL_RING_STREAM, 1,
+            mVolumeKeysControlRingStream = MKSettings.System.getIntForUser(mContentResolver,
+                    MKSettings.System.VOLUME_KEYS_CONTROL_RING_STREAM, 1,
                     UserHandle.USER_CURRENT) == 1;
         }
 
@@ -5159,8 +5159,8 @@ public class AudioService extends IAudioService.Stub
             mContentResolver.registerContentObserver(Settings.Global.getUriFor(
                     Settings.Global.ENCODED_SURROUND_OUTPUT), false, this);
 
-            mContentResolver.registerContentObserver(LineageSettings.System.getUriFor(
-                    LineageSettings.System.VOLUME_KEYS_CONTROL_RING_STREAM), false, this);
+            mContentResolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.VOLUME_KEYS_CONTROL_RING_STREAM), false, this);
             mContentResolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.VOLUME_LINK_NOTIFICATION), false, this);
         }
@@ -5184,8 +5184,8 @@ public class AudioService extends IAudioService.Stub
                 updateMasterMono(mContentResolver);
                 updateEncodedSurroundOutput();
 
-                mVolumeKeysControlRingStream = LineageSettings.System.getIntForUser(mContentResolver,
-                        LineageSettings.System.VOLUME_KEYS_CONTROL_RING_STREAM, 1,
+                mVolumeKeysControlRingStream = MKSettings.System.getIntForUser(mContentResolver,
+                        MKSettings.System.VOLUME_KEYS_CONTROL_RING_STREAM, 1,
                         UserHandle.USER_CURRENT) == 1;
 
                 boolean linkNotificationWithVolume = Settings.Secure.getInt(mContentResolver,

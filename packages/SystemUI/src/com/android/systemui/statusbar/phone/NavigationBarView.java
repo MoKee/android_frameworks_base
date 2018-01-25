@@ -58,7 +58,7 @@ import com.android.systemui.statusbar.policy.DeadZone;
 import com.android.systemui.statusbar.policy.KeyButtonDrawable;
 import com.android.systemui.tuner.TunerService;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -765,7 +765,7 @@ public class NavigationBarView extends FrameLayout implements PluginListener<Nav
         Dependency.get(PluginManager.class).addPluginListener(this,
                 NavGesture.class, false /* Only one */);
         Dependency.get(TunerService.class).addTunable(this,
-                "lineagesystem:" + LineageSettings.System.NAVIGATION_BAR_MENU_ARROW_KEYS);
+                "mksystem:" + MKSettings.System.NAVIGATION_BAR_MENU_ARROW_KEYS);
     }
 
     @Override
@@ -797,8 +797,8 @@ public class NavigationBarView extends FrameLayout implements PluginListener<Nav
 
     @Override
     public void onTuningChanged(String key, String newValue) {
-        mShowDpadArrowKeys = LineageSettings.System.getInt(getContext().getContentResolver(),
-                LineageSettings.System.NAVIGATION_BAR_MENU_ARROW_KEYS, 0) != 0;
+        mShowDpadArrowKeys = MKSettings.System.getInt(getContext().getContentResolver(),
+                MKSettings.System.NAVIGATION_BAR_MENU_ARROW_KEYS, 0) != 0;
         setNavigationIconHints(mNavigationIconHints, true);
     }
 
