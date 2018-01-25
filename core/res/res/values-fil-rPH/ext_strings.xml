@@ -143,4 +143,6 @@
   <string name="tethered_notification_no_device_message">Walang konektadong aparato</string>
   <string name="tethered_notification_one_device_message"><xliff:g id="count">%1$s</xliff:g> nakakonektang aparato</string>
   <string name="tethered_notification_multi_device_message"><xliff:g id="count">%1$s</xliff:g> mga nakakonektang device</string>
+  <!-- Zen mode buttons -->
+  <string name="silent_mode_none">Wala</string>
 </resources>
