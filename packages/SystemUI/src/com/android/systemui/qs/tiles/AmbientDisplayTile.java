@@ -32,7 +32,7 @@ import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.qs.SecureSetting;
 import com.android.systemui.R;
 
-import org.mok33.internal.logging.MKMetricsLogger;
+import org.mokee.internal.logging.MKMetricsLogger;
 
 /** Quick settings tile: Ambient Display **/
 public class AmbientDisplayTile extends QSTileImpl<BooleanState> {
