@@ -5,6 +5,7 @@
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
  * Copyright (c) 2017, The LineageOS Project
+ * Copyright (c) 2017-2018, The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,4 +53,21 @@
   <string name="accessibility_dpad_left">المؤشر إلى اليسار</string>
   <string name="accessibility_dpad_right">المؤشر الى اليمين</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
+  <!-- Label for current user in power menu options dialog -->
+  <string name="global_action_current_user">الحالي</string>
+  <!-- Label for item that screenshots in power menu options dialog -->
+  <string name="global_action_screenshot">لقطة للشاشة</string>
+  <!-- Advanced restart menu -->
+  <!-- Button to restart the device, within the Restart Options dialog -->
+  <!-- Button to restart the device into recovery mode, within the Restart Options dialog -->
+  <string name="global_action_restart_recovery">استرداد</string>
+  <!-- Button to restart the device into bootloader mode, within the Restart Options dialog -->
+  <string name="global_action_restart_bootloader">محمل التمهيد</string>
+  <!-- Button to restart the device into download mode, within the Restart Options dialog -->
+  <string name="global_action_restart_download">تنزيل</string>
+  <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
+  <string name="global_action_restart_progress">جارٍ إعادة التشغيل/u2026</string>
+  <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
+  <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
+  <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
 </resources>

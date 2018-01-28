@@ -3,6 +3,7 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
+     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +20,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permlab_preventpower">覆寫電源鍵</string>
   <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permdesc_preventpower">允許應用程式覆寫電源鍵的功能。</string>
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">已啟用網路 ADB</string>
   <!-- ADB over USB and network notification -->
