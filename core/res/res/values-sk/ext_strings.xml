@@ -3,6 +3,7 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
+     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,13 +20,15 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permlab_preventpower">zmeniť funkciu tlačidla Napájanie</string>
   <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permdesc_preventpower">Umožní aplikácii zmeniť správanie tlačidla Napájanie.</string>
   <!-- ADB over network notification -->
-  <string name="adb_net_active_notification_title">ADB cez sieť povolené</string>
+  <string name="adb_net_active_notification_title">ADB po sieti povolené</string>
   <!-- ADB over USB and network notification -->
-  <string name="adb_both_active_notification_title">ADB cez USB a sieť povolené</string>
+  <string name="adb_both_active_notification_title">ADB cez USB a po sieti povolené</string>
   <!-- ADB notification message-->
-  <string name="adb_active_generic_notification_message">Dotykom zakážate ladenie.</string>
+  <string name="adb_active_generic_notification_message">Dotykom zakázať ladenie.</string>
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <string name="lock_to_app_toast_no_navbar">Na odopnutie tejto obrazovky stlačte a podržte tlačidlo Späť.</string>
 </resources>
