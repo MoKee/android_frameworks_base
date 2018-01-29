@@ -61,7 +61,7 @@
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <string name="screen_pinning_description_no_navbar">Приложение останется активным, пока вы не отмените блокировку, нажав и удерживая кнопку \"Назад\".</string>
   <!-- Label for current user in power menu options dialog -->
-  <string name="global_action_current_user">Текущая</string>
+  <string name="global_action_current_user">Текущий</string>
   <!-- Label for item that screenshots in power menu options dialog -->
   <string name="global_action_screenshot">Снимок экрана</string>
   <!-- Advanced restart menu -->
