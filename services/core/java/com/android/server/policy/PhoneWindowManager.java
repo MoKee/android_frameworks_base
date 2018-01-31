@@ -764,7 +764,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     int mInitialMetaState;
     boolean mForceShowSystemBars;
 
-    boolean mDevForceNavbar;
+    int mDevForceNavbar = -1;
 
     // Tracks user-customisable behavior for certain key events
     private Action mHomeLongPressAction;
@@ -2430,7 +2430,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private void updateKeyAssignments() {
         int activeHardwareKeys = mDeviceHardwareKeys;
 
-        if (mDevForceNavbar) {
+        if (mDevForceNavbar == 1) {
             activeHardwareKeys = 0;
         }
 
@@ -2496,10 +2496,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mAppSwitchPressAction = Action.fromSettings(resolver,
                     MKSettings.System.KEY_APP_SWITCH_ACTION,
                     mAppSwitchPressAction);
-            mAppSwitchLongPressAction = Action.fromSettings(resolver,
-                    MKSettings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION,
-                    mAppSwitchLongPressAction);
         }
+        mAppSwitchLongPressAction = Action.fromSettings(resolver,
+                MKSettings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION,
+                mAppSwitchLongPressAction);
 
         mShortPressWindowBehavior = SHORT_PRESS_WINDOW_NOTHING;
         if (mContext.getPackageManager().hasSystemFeature(FEATURE_PICTURE_IN_PICTURE)) {
@@ -2689,12 +2689,13 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 updateWakeGestureListenerLp();
             }
 
-            boolean devForceNavbar = MKSettings.Global.getIntForUser(resolver,
-                    MKSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
+            int devForceNavbar = MKSettings.Global.getIntForUser(resolver,
+                    MKSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT);
             if (devForceNavbar != mDevForceNavbar) {
                 mDevForceNavbar = devForceNavbar;
                 if (mMKHardware.isSupported(MKHardwareManager.FEATURE_KEY_DISABLE)) {
-                    mMKHardware.set(MKHardwareManager.FEATURE_KEY_DISABLE, mDevForceNavbar);
+                    mMKHardware.set(MKHardwareManager.FEATURE_KEY_DISABLE,
+                            mDevForceNavbar == 1);
                 }
             }
 
@@ -8915,7 +8916,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     // overridden by qemu.hw.mainkeys in the emulator.
     @Override
     public boolean hasNavigationBar() {
-        return mHasNavigationBar || mDevForceNavbar;
+        return mHasNavigationBar || mDevForceNavbar == 1;
     }
 
     public boolean needsNavigationBar() {
