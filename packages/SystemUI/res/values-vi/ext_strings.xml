@@ -21,7 +21,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Content description of the light brightness slider (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_notification_brightness">Độ sáng đèn</string>
+  <string name="accessibility_notification_brightness">Độ sáng</string>
   <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_quick_settings_profiles_off">Hồ sơ tắt.</string>
   <!-- Content description of the profiles tile in quick settings (not shown on the screen). [CHAR LIMIT=NONE] -->
@@ -172,6 +172,7 @@
   <string name="accessibility_quick_settings_caffeine_off">Tắt Cafein</string>
   <string name="accessibility_quick_settings_caffeine_on">Bật Cafein</string>
   <!-- Heads up QS tile -->
+  <string name="quick_settings_heads_up_label">Hiện trên cùng</string>
   <string name="accessibility_quick_settings_heads_up_off">Heads up tắt.</string>
   <string name="accessibility_quick_settings_heads_up_on">Heads up bật.</string>
   <string name="accessibility_quick_settings_heads_up_changed_off">Heads up đã tắt.</string>
