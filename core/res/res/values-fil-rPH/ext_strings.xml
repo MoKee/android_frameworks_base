@@ -20,7 +20,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permlab_preventpower">i-override ang power key</string>
   <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permdesc_preventpower">Pinapayagan ang app na i-override ang power key.</string>
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">Pinagana ang ADB sa network</string>
   <!-- ADB over USB and network notification -->
