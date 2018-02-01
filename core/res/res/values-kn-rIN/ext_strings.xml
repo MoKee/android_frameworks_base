@@ -20,24 +20,32 @@
   <!-- Long-press back kill application -->
   <string name="app_killed_message">ಆಪ್ ಕೊಲ್ಲಲಾಗಿದೆ</string>
   <!-- label for item that screenshots in phone options dialog -->
-  <string name="global_action_screenshot">ಸ್ಕ್ರೀನ್‍ಶಾಟ್</string>
+  <string name="global_action_screenshot">ಪರದೆಚಿತ್ರ</string>
   <!-- label for item that restarts the phone in phone options dialog -->
+  <string name="global_action_reboot">ಮರುಪ್ರಾರಂಭಿಸಿ</string>
   <!-- label for current user in phone options dialog -->
   <string name="global_action_current_user">ಪ್ರಸ್ತುತ</string>
   <!-- status message in phone options dialog for screenshot action -->
+  <string name="global_actions_screenshot_status">ಭಾಗಶಃ ಪರದೆಚಿತ್ರಕ್ಕೆ ಒತ್ತಿ-ಹಿಡಿಯಿರಿ</string>
   <!-- Restart menu -->
   <!-- Button to restart the phone, within the Restart Options dialog -->
+  <string name="reboot_reboot">ಮರುಪ್ರಾರಂಭಿಸಿ</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
-  <string name="reboot_recovery">ರಿಕವರಿ</string>
+  <string name="reboot_recovery">ಮರುಸಂಗ್ರಹಣೆ</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
   <string name="reboot_bootloader">ಬೂಟ್‍ಲೋಡರ್</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">ಡೌನ್‍ಲೋಡ್</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
+  <string name="reboot_soft">ಸೂಕ್ಷ್ಮ ಮರುಪ್ರಾರಂಭ</string>
   <!-- Title of dialog to confirm restarting. -->
+  <string name="reboot_title">ಮರುಪ್ರಾರಂಭಿಸಿ</string>
   <!-- Restart Confirmation Dialog.  When the user chooses to restart the device, there will
          be a confirmation dialog.  This is the message. -->
+  <string name="reboot_confirm" product="tablet">ನಿಮ್ಮ ಟ್ಯಾಬ್ಲೆಟ್ ಮರುಪ್ರಾರಂಭಗೊಳ್ಳುತ್ತದೆ.</string>
+  <string name="reboot_confirm" product="default">ನಿಮ್ಮ ಫೋನ್ ಮರುಪ್ರಾರಂಭಗೊಳ್ಳುತ್ತದೆ.</string>
   <!-- Restart Progress Dialog. This is shown if the user chooses to restart the phone. -->
+  <string name="reboot_progress">ಮರುಪ್ರಾರಂಭಗೊಳ್ಳುತ್ತಿದೆ\u2026</string>
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ನೆಟ್‍ವರ್ಕ್‍ನಿಂದ ಎಡಿಬಿ ಸಕ್ರಿಯಗೊಂಡಿದೆ</string>
   <!-- ADB over USB and network notification -->
@@ -118,6 +126,7 @@
   <string name="app_ops_write_external_storage">ಬಾಹ್ಯ ಸಂಗ್ರಹವನ್ನು ಬರೆಯಿರಿ</string>
   <string name="app_ops_turn_on_screen">ಸ್ಕ್ರೀನ್ ಆನ್ ಮಾಡಿ</string>
   <string name="app_ops_get_accounts">ಸಾಧನ ಖಾತೆಗಳನ್ನು ಪಡೆಯಿರಿ</string>
+  <string name="app_ops_run_in_background">ಹಿಂಬದಿಯಲ್ಲಿ ಚಲಾಯಿಸಿ</string>
   <string name="app_ops_wifi_change">ವೈಫೈ ಸ್ಥಿತಿ ಬದಲಿಸಿ</string>
   <string name="app_ops_su">ರೂಟ್ ಪ್ರವೇಶ ಪಡೆ</string>
   <!-- Protected Apps Notification -->
@@ -126,12 +135,15 @@
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <string name="lock_to_app_toast_no_navbar">ಪರದೆಯನ್ನು ಅನ್‍ಪಿನ್‍ಮಾಡಲು, ಹಿಂದೆ ಬಟನ್‍ ಸ್ಪರ್ಶಿಸಿ ಹಿಡಿಯಿರಿ.</string>
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
+  <string name="lineage_system_error_manufacturer">ವ್ಯಾಪಾರಿ ಚಿತ್ರವು ಹೊಂದಾಣಿಕೆಯಾಗದಿರುವುದು ಕಂಡುಬಂದಿದೆ. ಸಾಧಾರಣವಾಗಿ ಇದು ನಿಮ್ಮ ವ್ಯಾಪಾರಿಯ ಚಿತ್ರದ ಅವಧಿ ಮುಗಿದು ಹೋಗಿದೆ ಎಂದರ್ಥ. ದಯವಿಟ್ಟು ನಿಮ್ಮ ವ್ಯಾಪಾರಿಯ ಚಿತ್ರವು ಹೊಂದಾಣಿಕೆಯಾಗುತ್ತಿದೆ ಎಂದು ಖಚಿತಪಡಿಸಿ <xliff:g id="ಬೆರಳಚ್ಚು">%1$s</xliff:g>.</string>
   <!-- Single hand mode -->
+  <string name="singlehandmode_click_hint_message">ಒಂದು ಕೈ ಮಾದರಿಯಿಂದ ಹೊರಬರಲು ಪರದೆಯ ಹೊರಗೆ ಸ್ಪರ್ಶಿಸಿ</string>
   <!-- Strings for tethered notification -->
   <!-- Shown when the device is tethered -->
   <string name="tethered_notification_no_device_message">ಯಾವುದೇ ಸಂಪರ್ಕಗೊಂಡ ಸಾಧನವಿಲ್ಲ</string>
   <string name="tethered_notification_one_device_message"><xliff:g id="count">%1$s</xliff:g> ಸಂಪರ್ಕಗೊಳಿಸಿದ ಸಾಧನ</string>
   <string name="tethered_notification_multi_device_message"><xliff:g id="count">%1$s</xliff:g> ಸಂಪರ್ಕಗೊಳಿಸಿದ ಸಾಧನಗಳು</string>
   <!-- Zen mode buttons -->
+  <string name="silent_mode_priority">ಆದ್ಯತೆ</string>
   <string name="silent_mode_none">ಯಾವುದೂ ಇಲ್ಲ</string>
 </resources>
