@@ -62,6 +62,7 @@
   <!-- Button to restart the device into download mode, within the Restart Options dialog -->
   <string name="global_action_restart_download">ಡೌನ್‍ಲೋಡ್</string>
   <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
+  <string name="global_action_restart_progress">ಮರುಪ್ರಾರಂಭಗೊಳ್ಳುತ್ತಿದೆ\u2026</string>
   <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
   <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
   <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
