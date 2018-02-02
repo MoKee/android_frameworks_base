@@ -98,10 +98,11 @@ public class NetworkMonitor extends StateMachine {
     private static final String DEFAULT_HTTPS_URL_CN     = "https://captive.v2ex.co/generate_204";
     private static final String DEFAULT_HTTP_URL_CN      = "http://captive.v2ex.co/generate_204";
     private static final String DEFAULT_FALLBACK_URL  = "http://www.google.com/gen_204";
+    private static final String DEFAULT_FALLBACK_URL_CN  = "http://g.cn/generate_204";
     private static final String DEFAULT_SECOND_FALLBACK_URLS =
             "https://download.mokeedev.com/generate_204";
     private static final String DEFAULT_OTHER_FALLBACK_URLS =
-            "http://play.googleapis.com/generate_204";
+            "https://connect.rom.miui.com/generate_204";
     private static final String DEFAULT_USER_AGENT    = "Mozilla/5.0 (X11; Linux x86_64) "
                                                       + "AppleWebKit/537.36 (KHTML, like Gecko) "
                                                       + "Chrome/60.0.3112.32 Safari/537.36";
@@ -723,7 +724,7 @@ public class NetworkMonitor extends StateMachine {
     private URL[] makeCaptivePortalFallbackUrls(Context context) {
         String separator = ",";
         String firstUrl = getSetting(context,
-                Settings.Global.CAPTIVE_PORTAL_FALLBACK_URL, DEFAULT_FALLBACK_URL);
+                Settings.Global.CAPTIVE_PORTAL_FALLBACK_URL, MoKeeUtils.isSupportLanguage(true) ? DEFAULT_FALLBACK_URL_CN : DEFAULT_FALLBACK_URL);
         String secondUrl = getSetting(context,
                 Settings.Global.CAPTIVE_PORTAL_SECOND_FALLBACK_URLS, DEFAULT_SECOND_FALLBACK_URLS);
         String joinedUrls = firstUrl + separator + secondUrl + separator + getSetting(context,
