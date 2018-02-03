@@ -16,7 +16,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- su icon switch -->
-  <string name="status_bar_su">SU</string>
+  <string name="status_bar_su">Суперпользователь</string>
   <!-- recent ram info -->
   <string name="recents_free_ram">СВОБОДНО: %1$d МБ</string>
   <!-- Screenshot QS Tile -->
