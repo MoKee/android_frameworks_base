@@ -81,4 +81,5 @@
   <string name="global_action_restart_bootloader_progress">重新启动到引导模式\u2026</string>
   <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
   <string name="global_action_restart_download_progress">重新启动到下载模式\u2026</string>
+  <!-- Content description of the superuser tile -->
 </resources>
