@@ -29,4 +29,74 @@
   <string name="adb_active_generic_notification_message">גע להשבתת איתור באגים.</string>
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <string name="lock_to_app_toast_no_navbar">כדי לבטל נעיצת מסך זה, גע והחזק בלחצן \"הקודם\".</string>
+  <!-- Privacy Guard -->
+  <string name="permlab_changePrivacyGuardState">הפעלה או השבתה של שומר הפרטיות</string>
+  <string name="permdesc_changePrivacyGuardState">מאפשר ליישום לשנות הרשאות של יישום אחר כדי שיפעל תחת שומר הפרטיות. כאשר יישום פועל תחת שומר הפרטיות, לא תהיה לו גישה למידע פרטי כמו אנשי קשר, יומן שיחות והודעות.</string>
+  <string name="privacy_guard_notification">שומר הפרטיות פעיל</string>
+  <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> לא יוכל לגשת למידע אישי</string>
+  <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> מבקש/ת <xliff:g id="op">%2$s</xliff:g>.</string>
+  <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <!-- App ops requests -->
+  <string name="app_ops_access_camera">גישה למצלמה</string>
+  <string name="app_ops_access_location">גישה למיקום שלך</string>
+  <string name="app_ops_access_notifications">קריאת ההתראות שלך</string>
+  <string name="app_ops_activate_vpn">הפעל VPN</string>
+  <string name="app_ops_add_voicemail">הוסף תא קולי</string>
+  <string name="app_ops_assist_screenshot">צלם מסך</string>
+  <string name="app_ops_assist_structure">שימוש בתבנית המידע ליישום הסיוע</string>
+  <string name="app_ops_auto_start">התחל פעילות בהדלקת המכשיר</string>
+  <string name="app_ops_change_wallpaper">החלף טפט</string>
+  <string name="app_ops_delete_call_log">מחיקת יומן השיחות שלך</string>
+  <string name="app_ops_delete_contacts">מחיקת אנשי הקשר שלך</string>
+  <string name="app_ops_delete_mms">מחיקת הודעות ה-MMS שלך</string>
+  <string name="app_ops_delete_sms">מחיקת הודעות ה-SMS שלך</string>
+  <string name="app_ops_draw_on_top">הצגת תוכן מעל יישומים אחרים</string>
+  <string name="app_ops_get_accounts">קבל חשבונות מכשיר</string>
+  <string name="app_ops_get_usage_stats">קבל נתוני שימוש של היישום</string>
+  <string name="app_ops_keep_device_awake">השארת המכשיר ער</string>
+  <string name="app_ops_make_phone_call">ביצוע שיחת טלפון</string>
+  <string name="app_ops_mock_location">הסווה את מיקומך</string>
+  <string name="app_ops_modify_calendar">עדכון לוח השנה שלך</string>
+  <string name="app_ops_modify_call_log">עדכון יומן השיחות</string>
+  <string name="app_ops_modify_clipboard">שינוי לוח ההעתקה</string>
+  <string name="app_ops_modify_contacts">עדכון אנשי הקשר שלך</string>
+  <string name="app_ops_modify_settings">עדכון הגדרות המערכת</string>
+  <string name="app_ops_mute_unmute_microphone">השתקת/הפעלת המיקרופון</string>
+  <string name="app_ops_play_audio">נגן שמע</string>
+  <string name="app_ops_post_notification">פרסום התראה</string>
+  <string name="app_ops_project_media">הקרן מדיה</string>
+  <string name="app_ops_read_calendar">קריאת לוח השנה שלך</string>
+  <string name="app_ops_read_call_log">קריאת יומן השיחות</string>
+  <string name="app_ops_read_cell_broadcasts">קרא שידורים סלולריים</string>
+  <string name="app_ops_read_clipboard">קריאת לוח ההעתקה</string>
+  <string name="app_ops_read_contacts">קריאת אנשי הקשר שלך</string>
+  <string name="app_ops_read_external_storage">קרא אחסון חיצוני</string>
+  <string name="app_ops_read_mms">קריאת הודעות ה-MMS שלך</string>
+  <string name="app_ops_read_phone_state">גש למצב הטלפון</string>
+  <string name="app_ops_read_sms">קריאת הודעות ה-SMS שלך</string>
+  <string name="app_ops_receive_sms">קבלת הודעת SMS</string>
+  <string name="app_ops_record_audio">הקלט שמע</string>
+  <string name="app_ops_run_in_background">פועל ברקע</string>
+  <string name="app_ops_send_mms">שליחת הודעת MMS</string>
+  <string name="app_ops_send_sms">שליחת הודעת SMS</string>
+  <string name="app_ops_start_at_bootup">התחל פעילות בהדלקת המכשיר</string>
+  <string name="app_ops_toast_window">הצגת הודעות קופצות</string>
+  <string name="app_ops_toggle_bluetooth">שינוי מצב ה-Bluetooth</string>
+  <string name="app_ops_toggle_nfc">הפעל/כבה NFC</string>
+  <string name="app_ops_turn_on_screen">הפעל המסך</string>
+  <string name="app_ops_use_alarm_volume">שליטה בעוצמת השעון המעורר</string>
+  <string name="app_ops_use_audio_focus">שליטה במיקוד השמע</string>
+  <string name="app_ops_use_bluetooth_volume">שליטה בעוצמת קול ב-Bluetooth</string>
+  <string name="app_ops_use_body_sensors">השתמש בחיישני הגוף</string>
+  <string name="app_ops_use_fingerprint">השתמש בטביעת אצבע</string>
+  <string name="app_ops_use_master_volume">שליטה בעוצמת הקול הראשית</string>
+  <string name="app_ops_use_media_buttons">שימוש בלחצני המדיה</string>
+  <string name="app_ops_use_media_volume">שליטה בעוצמת קול למדיה</string>
+  <string name="app_ops_use_notification_volume">שליטה בעוצמת קול ההתראות</string>
+  <string name="app_ops_use_ring_volume">שליטה בעוצמת קול לרינגטון</string>
+  <string name="app_ops_use_vibrate">שימוש במשוב רטט</string>
+  <string name="app_ops_use_voice_volume">שליטה על עוצמת הקול בשיחה</string>
+  <string name="app_ops_write_external_storage">כתוב לאחסון חיצוני</string>
+  <string name="app_ops_write_mms">כתיבת הודעת MMS</string>
+  <string name="app_ops_write_sms">כתיבת הודעת SMS</string>
 </resources>
