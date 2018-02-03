@@ -81,4 +81,6 @@
   <string name="global_action_restart_bootloader_progress">Restartování do režimu bootloader\u2026</string>
   <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
   <string name="global_action_restart_download_progress">Restartování do režimu stahování\u2026</string>
+  <!-- Content description of the superuser tile -->
+  <string name="accessibility_su_active">Aktivní režim Superuser</string>
 </resources>
