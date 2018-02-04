@@ -22,6 +22,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Content description of the data connection type HSPA+ for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_data_connection_hspap">HSPA+</string>
   <!-- Content description for Accessibility on unlocked tasks in recents -->
   <!-- Content description for Accessibility on locked tasks in recents -->
   <!-- ADB over network QS tile -->
@@ -32,18 +33,23 @@
   <string name="accessibility_quick_settings_ambient_display_changed_off">Afișaj ambiental dezactivat.</string>
   <string name="accessibility_quick_settings_ambient_display_changed_on">Afișaj ambiental activat.</string>
   <!-- Caffeine QS tile -->
+  <string name="quick_settings_caffeine_label">Caffeine</string>
   <!-- Heads up QS tile -->
+  <string name="quick_settings_heads_up_label">Atenționare</string>
   <string name="accessibility_quick_settings_heads_up_off">Heads-up oprit.</string>
   <string name="accessibility_quick_settings_heads_up_on">Heads-up pornit.</string>
   <string name="accessibility_quick_settings_heads_up_changed_off">Heads-up a fost oprit.</string>
   <string name="accessibility_quick_settings_heads_up_changed_on">Heads-up a fost pornit.</string>
   <!-- Sync QS tile -->
+  <string name="quick_settings_sync_label">Sincronizare</string>
   <string name="accessibility_quick_settings_sync_off">Sincronizare oprită.</string>
   <string name="accessibility_quick_settings_sync_on">Sincronizare pornită.</string>
   <string name="accessibility_quick_settings_sync_changed_off">Sincronizare oprită.</string>
   <string name="accessibility_quick_settings_sync_changed_on">Sincronizare pornită.</string>
   <!-- USB tethering QS tile -->
+  <string name="quick_settings_usb_tether_label">Tethering USB</string>
   <!-- Volume panel QS tile -->
+  <string name="quick_settings_volume_panel_label">Panou volum</string>
   <!-- Navigation bar dpad -->
   <string name="accessibility_dpad_left">Cursor stânga</string>
   <string name="accessibility_dpad_right">Cursor dreapta</string>
@@ -56,7 +62,9 @@
   <!-- Button to restart the device, within the Restart Options dialog -->
   <string name="global_action_restart_system">Sistem</string>
   <!-- Button to restart the device into recovery mode, within the Restart Options dialog -->
+  <string name="global_action_restart_recovery">Recuperare</string>
   <!-- Button to restart the device into bootloader mode, within the Restart Options dialog -->
+  <string name="global_action_restart_bootloader">Bootloader</string>
   <!-- Button to restart the device into download mode, within the Restart Options dialog -->
   <string name="global_action_restart_download">Descarcă</string>
   <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
