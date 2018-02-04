@@ -50,6 +50,7 @@
   <string name="app_ops_app_start_foreground">Мгновенный запуск приложений</string>
   <string name="app_ops_assist_screenshot">сделать скриншот</string>
   <string name="app_ops_assist_structure">использовать структуру ассистента</string>
+  <string name="app_ops_audio_accessibility_volume">Доступная громкость звука</string>
   <string name="app_ops_auto_start">назначить запуск при включении устройства</string>
   <string name="app_ops_change_wallpaper">изменить обои</string>
   <string name="app_ops_delete_call_log">удалить журнал звонков</string>
