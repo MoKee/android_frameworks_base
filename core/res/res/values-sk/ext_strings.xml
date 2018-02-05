@@ -29,13 +29,13 @@
   <string name="global_actions_screenshot_status">Dlhé stlačenie pre získanie čiastočnej snímky obrazovky</string>
   <!-- Restart menu -->
   <!-- Button to restart the phone, within the Restart Options dialog -->
-  <string name="reboot_reboot">Reštart</string>
+  <string name="reboot_reboot">Reštartovať</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
   <string name="reboot_recovery">Recovery</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
   <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
-  <string name="reboot_download">Download</string>
+  <string name="reboot_download">Stiahnuť</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
   <string name="reboot_soft">Soft reštart</string>
   <!-- Title of dialog to confirm restarting. -->

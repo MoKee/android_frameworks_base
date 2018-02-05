@@ -23,6 +23,7 @@
   <string name="global_action_screenshot">Ekrānattēls</string>
   <!-- label for item that restarts the phone in phone options dialog -->
   <!-- label for current user in phone options dialog -->
+  <string name="global_action_current_user">Pašreizējā</string>
   <!-- status message in phone options dialog for screenshot action -->
   <!-- Restart menu -->
   <!-- Button to restart the phone, within the Restart Options dialog -->
@@ -111,4 +112,5 @@
   <string name="tethered_notification_one_device_message"><xliff:g id="count">%1$s </xliff:g> pievienota ierīce</string>
   <string name="tethered_notification_multi_device_message"><xliff:g id="count">%1$s </xliff:g> pievienotas ierīces</string>
   <!-- Zen mode buttons -->
+  <string name="silent_mode_none">Nav</string>
 </resources>

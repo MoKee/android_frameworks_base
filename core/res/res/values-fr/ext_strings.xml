@@ -33,11 +33,11 @@
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
   <string name="reboot_recovery">Récupération</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
-  <string name="reboot_bootloader">Bootloader</string>
+  <string name="reboot_bootloader">Chargeur d\'amorçage</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">Download</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
-  <string name="reboot_soft">Redémarrage logiciel</string>
+  <string name="reboot_soft">Redémarrage à chaud</string>
   <!-- Title of dialog to confirm restarting. -->
   <string name="reboot_title">Redémarrer</string>
   <!-- Restart Confirmation Dialog.  When the user chooses to restart the device, there will
@@ -95,7 +95,7 @@
   <string name="app_ops_send_mms">envoyer un MMS</string>
   <string name="app_ops_send_sms">envoyer un SMS</string>
   <string name="app_ops_start_at_bootup">démarrer avec le système</string>
-  <string name="app_ops_toast_window">afficher les messages toast</string>
+  <string name="app_ops_toast_window">afficher les messages contextuelles</string>
   <string name="app_ops_toggle_bluetooth">activer/désactiver le Bluetooth</string>
   <string name="app_ops_toggle_mobile_data">activer/désactiver les données mobiles</string>
   <string name="app_ops_toggle_nfc">activer/désactiver le NFC</string>
@@ -126,7 +126,7 @@
   <string name="app_ops_write_external_storage">écrire sur le stockage externe</string>
   <string name="app_ops_turn_on_screen">allumer l\'écran</string>
   <string name="app_ops_get_accounts">obtenir les comptes de l\'appareil</string>
-  <string name="app_ops_run_in_background">exécuter en arrière-plan</string>
+  <string name="app_ops_run_in_background">ouvrir en arrière-plan</string>
   <string name="app_ops_wifi_change">changer l\'état du Wi-Fi</string>
   <string name="app_ops_su">obtenir l\'accès root</string>
   <!-- Protected Apps Notification -->
@@ -135,9 +135,9 @@
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <string name="lock_to_app_toast_no_navbar">Pour déverrouiller l\'écran, appuyez et maintenez le bouton Retour.</string>
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
-  <string name="lineage_system_error_manufacturer">Une discordance d\'image fournisseur a été détectée. En général, cela signifie que votre image fournisseur n\'est pas à jour. Veuillez vous assurer que votre image fournisseur correspond à <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
+  <string name="lineage_system_error_manufacturer">Une incompatibilité du fichier vendor.img a été détectée. En règle générale, cela signifie que celui-ci n\'est pas à jour. Assurez-vous que le fichier vendor.img correspond à <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
   <!-- Single hand mode -->
-  <string name="singlehandmode_click_hint_message">Toucher en dehors de l’écran pour quitter le mode à une seule main</string>
+  <string name="singlehandmode_click_hint_message">Appuyer sur l\'extérieur de l\'écran pour quitter le mode d\'utilisation à une main</string>
   <!-- Strings for tethered notification -->
   <!-- Shown when the device is tethered -->
   <string name="tethered_notification_no_device_message">Aucun appareil connecté</string>

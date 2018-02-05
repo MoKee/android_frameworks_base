@@ -42,10 +42,10 @@
   <string name="reboot_title">Перезапуск</string>
   <!-- Restart Confirmation Dialog.  When the user chooses to restart the device, there will
          be a confirmation dialog.  This is the message. -->
-  <string name="reboot_confirm" product="tablet">Ваш планшет будет перезапущен.</string>
-  <string name="reboot_confirm" product="default">Ваш телефон будет перезапущен.</string>
+  <string name="reboot_confirm" product="tablet">Ваш устройство будет перезагружено.</string>
+  <string name="reboot_confirm" product="default">Ваш устройство будет перезагружено.</string>
   <!-- Restart Progress Dialog. This is shown if the user chooses to restart the phone. -->
-  <string name="reboot_progress">Перезапуск\u2026</string>
+  <string name="reboot_progress">Перезапуск устройства...</string>
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">Отладка по сети разрешена</string>
   <!-- ADB over USB and network notification -->
@@ -60,7 +60,7 @@
   <string name="privacy_guard_dialog_title">Защищённый режим</string>
   <string name="privacy_guard_dialog_summary">Приложение «<xliff:g id="app">%1$s</xliff:g>» пытается <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
-  <string name="permission_remember_choice">Запомнить разрешение</string>
+  <string name="permission_remember_choice">Запомнить мой выбор</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">получить доступ к камере</string>
   <string name="app_ops_access_location">получить доступ к местоположению устройства</string>
@@ -144,6 +144,6 @@
   <string name="tethered_notification_one_device_message"><xliff:g id="count">%1$s</xliff:g> подключенное устройство</string>
   <string name="tethered_notification_multi_device_message">Подключено устройств: <xliff:g id="count">%1$s</xliff:g></string>
   <!-- Zen mode buttons -->
-  <string name="silent_mode_priority">Важные</string>
+  <string name="silent_mode_priority">Приоритет</string>
   <string name="silent_mode_none">Нет</string>
 </resources>

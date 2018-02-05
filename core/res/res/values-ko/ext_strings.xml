@@ -62,8 +62,8 @@
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
   <string name="permission_remember_choice">선택 사항 기억하기</string>
   <!-- App ops requests -->
-  <string name="app_ops_access_camera">카메라에 액세스</string>
-  <string name="app_ops_access_location">위치 정보에 액세스</string>
+  <string name="app_ops_access_camera">카메라에 접근</string>
+  <string name="app_ops_access_location">위치 정보에 접근</string>
   <string name="app_ops_access_notifications">알림 읽기</string>
   <string name="app_ops_activate_vpn">VPN 활성화</string>
   <string name="app_ops_auto_start">전원을 켤 때 실행</string>
@@ -71,7 +71,7 @@
   <string name="app_ops_delete_contacts">연락처 삭제</string>
   <string name="app_ops_delete_mms">MMS 메시지 삭제</string>
   <string name="app_ops_delete_sms">SMS 메시지 삭제</string>
-  <string name="app_ops_draw_on_top">창을 맨 위에 그리기</string>
+  <string name="app_ops_draw_on_top">맨 위에 창 그리기</string>
   <string name="app_ops_get_usage_stats">앱 사용 통계 확인</string>
   <string name="app_ops_keep_device_awake">기기 켜짐 상태 유지</string>
   <string name="app_ops_make_phone_call">전화 걸기</string>
@@ -117,7 +117,7 @@
   <string name="app_ops_read_phone_state">전화 상태에 접근</string>
   <string name="app_ops_scan_wifi">Wi-Fi 네트워크 스캔</string>
   <string name="app_ops_change_wallpaper">배경화면을 변경</string>
-  <string name="app_ops_assist_structure">어시스트 구조 사용</string>
+  <string name="app_ops_assist_structure">보조 구조 사용</string>
   <string name="app_ops_assist_screenshot">현재 화면을 캡쳐</string>
   <string name="app_ops_use_body_sensors">신체 센서를 사용함</string>
   <string name="app_ops_read_cell_broadcasts">셀 브로드캐스트 읽기</string>
@@ -131,9 +131,9 @@
   <string name="app_ops_su">루트 권한 얻기</string>
   <!-- Protected Apps Notification -->
   <string name="notify_package_component_protected_title">액티비티 실행 제한됨</string>
-  <string name="notify_package_component_protected_text"><xliff:g id="app_name">%1$s</xliff:g>은(는) 실행이 제한되어 있습니다. 탭하여 제한을 해제하고 애플리케이션을 실행하세요.</string>
+  <string name="notify_package_component_protected_text"><xliff:g id="app_name">%1$s</xliff:g>은(는) 실행이 제한되어 있습니다. 탭하여 애플리케이션을 인증하고 실행하세요.</string>
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
-  <string name="lock_to_app_toast_no_navbar">화면 고정을 해제하려면 뒤로 버튼을 길게 누르세요.</string>
+  <string name="lock_to_app_toast_no_navbar">화면 고정을 해제하려면 뒤로가기 버튼을 길게 누르세요.</string>
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
   <string name="lineage_system_error_manufacturer">공급 업체 이미지가 일치하지 않습니다. 이는 일반적으로 사용자의 공급 업체 이미지가 오래되었음을 의미합니다. 공급 업체 이미지가 <xliff:g id="fingerprint">%1$s</xliff:g>과 일치하는지 확인하십시오.</string>
   <!-- Single hand mode -->
