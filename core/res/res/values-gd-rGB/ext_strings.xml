@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">Tha ADB thar lìonra an comas</string>
   <!-- ADB over USB and network notification -->
@@ -36,6 +34,7 @@
   <string name="privacy_guard_notification_detail">Cha bhi cothrom aig <xliff:g id="app">%1$s</xliff:g> air dàta pearsanta</string>
   <string name="privacy_guard_dialog_summary">Bu toigh le <xliff:g id="app">%1$s</xliff:g> <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Cuimhnich mo roghainn</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">cothrom air a’ chamara</string>
   <string name="app_ops_access_location">cothrom air d’ ionad</string>
@@ -70,9 +69,11 @@
   <string name="app_ops_read_phone_state">cothrom fhaighinn air staid an fhòn</string>
   <string name="app_ops_read_sms">na teachdaireachdan SMS agad a leughadh</string>
   <string name="app_ops_receive_sms">teachdaireachd SMS fhaighinn</string>
+  <string name="app_ops_scan_wifi">na lìonraidhean WiFi a sganadh</string>
   <string name="app_ops_send_mms">teachdaireachd MMS a chur</string>
   <string name="app_ops_send_sms">teachdaireachd SMS a chur</string>
   <string name="app_ops_start_at_bootup">tòiseachaidh nuair a thòisicheas an t-uidheam</string>
+  <string name="app_ops_su">inntrigeadh root fhaighinn</string>
   <string name="app_ops_toast_window">teachdaireachdan toast a shealltainn</string>
   <string name="app_ops_toggle_bluetooth">Bluetooth a thoglachadh</string>
   <string name="app_ops_turn_on_screen">an sgrìn a chur air</string>
@@ -86,6 +87,7 @@
   <string name="app_ops_use_ring_volume">smachd fhaighinn air àirde fuaim nan seirmean</string>
   <string name="app_ops_use_vibrate">d’ aire a tharraing le bhith a’ crith</string>
   <string name="app_ops_use_voice_volume">smachd fhaighinn air àirde fuaim nan gairmean-gutha</string>
+  <string name="app_ops_wifi_change">an staid WiFi atharrachadh</string>
   <string name="app_ops_write_external_storage">sgrìobhadh air stòras air an taobh a-muigh</string>
   <string name="app_ops_write_mms">teachdaireachd MMS a sgrìobhadh</string>
   <string name="app_ops_write_sms">teachdaireachd SMS a sgrìobhadh</string>

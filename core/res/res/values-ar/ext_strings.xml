@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">تمكين ADB عبر الشبكة</string>
   <!-- ADB over USB and network notification -->
@@ -36,6 +34,7 @@
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> لن تكون قادراً على الوصول إلى البيانات الشخصية</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> يرغب في <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">تذكر خياري</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">الوصول إلى الكاميرا</string>
   <string name="app_ops_access_location">الوصول إلى موقعك</string>
@@ -76,12 +75,16 @@
   <string name="app_ops_read_sms">قراءة الرسائل النصية القصيرة الخاصة بك</string>
   <string name="app_ops_receive_sms">استلام رسالة نصية قصيرة</string>
   <string name="app_ops_record_audio">تسجيل الصوت</string>
+  <string name="app_ops_scan_wifi">فحص شبكات Wi-Fi</string>
   <string name="app_ops_send_mms">إرسال رسالة نصية قصيرة</string>
   <string name="app_ops_send_sms">إرسال رسالة نصية قصيرة</string>
   <string name="app_ops_start_at_bootup">البدء عند تشغيل الجهاز</string>
+  <string name="app_ops_su">الحصول على صلاحيات الجذر</string>
   <string name="app_ops_toast_window">عرض الإعلامات المنبثقة</string>
   <string name="app_ops_toggle_bluetooth">تبديل بلوتوث</string>
+  <string name="app_ops_toggle_mobile_data">تبديل البيانات الخلوية</string>
   <string name="app_ops_toggle_nfc">تبديل NFC</string>
+  <string name="app_ops_toggle_wifi">تبديل Wi-Fi</string>
   <string name="app_ops_turn_on_screen">فتح الشاشة</string>
   <string name="app_ops_use_alarm_volume">التحكم في مستوى صوت الإنذار</string>
   <string name="app_ops_use_audio_focus">التحكم في تركيز الصوت</string>
@@ -95,6 +98,7 @@
   <string name="app_ops_use_ring_volume">التحكم في مستوى صوت نغمة الرنين</string>
   <string name="app_ops_use_vibrate">إستخدام نتائج اللمس</string>
   <string name="app_ops_use_voice_volume">التحكم في مستوى صوت المكالمة الصوتية</string>
+  <string name="app_ops_wifi_change">تغيير حالة الـ Wi-Fi</string>
   <string name="app_ops_write_external_storage">كتابة الذاكرة الخارجية</string>
   <string name="app_ops_write_mms">كتابة رسالة MMS</string>
   <string name="app_ops_write_sms">كتابة رسالة نصية قصيرة</string>

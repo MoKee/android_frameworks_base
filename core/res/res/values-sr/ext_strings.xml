@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB преко мреже је омогућен</string>
   <!-- ADB over USB and network notification -->
@@ -36,6 +34,7 @@
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> неће моћи да приступи личним подацима.</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> захтева <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Запамти мој избор</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">приступ камери</string>
   <string name="app_ops_access_location">приступ локацији</string>
@@ -77,12 +76,16 @@
   <string name="app_ops_receive_sms">пријем SMS порука</string>
   <string name="app_ops_record_audio">снимање аудио-записа</string>
   <string name="app_ops_run_in_background">рад у позадини</string>
+  <string name="app_ops_scan_wifi">скенирање Wi-Fi мрежа</string>
   <string name="app_ops_send_mms">слање MMS порука</string>
   <string name="app_ops_send_sms">слање SMS порука</string>
   <string name="app_ops_start_at_bootup">покретање са системом</string>
+  <string name="app_ops_su">приступ правима суперкорисника</string>
   <string name="app_ops_toast_window">приказивање искачућих порука</string>
   <string name="app_ops_toggle_bluetooth">укључивање/искључивање Bluetooth-а</string>
+  <string name="app_ops_toggle_mobile_data">укључивање/искључивање мобилних података</string>
   <string name="app_ops_toggle_nfc">укључивање/искључивање NFC-а</string>
+  <string name="app_ops_toggle_wifi">укључивање/искључивање Wi-Fi-а</string>
   <string name="app_ops_turn_on_screen">укључивање екрана</string>
   <string name="app_ops_use_alarm_volume">управљање јачином звука аларма</string>
   <string name="app_ops_use_audio_focus">управљање аудио-фокусом</string>
@@ -96,6 +99,7 @@
   <string name="app_ops_use_ring_volume">управљање јачином звука звона</string>
   <string name="app_ops_use_vibrate">коришћење вибрације</string>
   <string name="app_ops_use_voice_volume">управљање јачином звука позива</string>
+  <string name="app_ops_wifi_change">мењање стања Wi-Fi-а</string>
   <string name="app_ops_write_external_storage">упис података у екстерни меморијски простор</string>
   <string name="app_ops_write_mms">писање MMS порука</string>
   <string name="app_ops_write_sms">писање SMS порука</string>

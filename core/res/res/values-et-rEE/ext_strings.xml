@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB üle võrgu aktiveeritud</string>
   <!-- ADB over USB and network notification -->
@@ -36,6 +34,7 @@
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> ei pääse ligi isiklikele andmetele</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> tahab <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Jäta meelde minu valik</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">kontrollida kaamerat</string>
   <string name="app_ops_access_location">kontrollida asukohta</string>
@@ -73,9 +72,11 @@
   <string name="app_ops_read_sms">lugeda SMS sõnumeid</string>
   <string name="app_ops_receive_sms">võtta vastu SMS sõnum</string>
   <string name="app_ops_record_audio">salvesta heli</string>
+  <string name="app_ops_scan_wifi">otsida Wi-Fi võrke</string>
   <string name="app_ops_send_mms">saata MMS sõnum</string>
   <string name="app_ops_send_sms">saata SMS sõnum</string>
   <string name="app_ops_start_at_bootup">käivitada sisselülitamisel</string>
+  <string name="app_ops_su">saada root ligipääsu</string>
   <string name="app_ops_toast_window">näidata lühisõnumeid</string>
   <string name="app_ops_toggle_bluetooth">lülitada Bluetooth\'i</string>
   <string name="app_ops_turn_on_screen">lülitada ekraan sisse</string>
@@ -89,6 +90,7 @@
   <string name="app_ops_use_ring_volume">muuta helina tugevust</string>
   <string name="app_ops_use_vibrate">kasutada puute vibratsiooni</string>
   <string name="app_ops_use_voice_volume">muuta telefoni kõne helitugevust</string>
+  <string name="app_ops_wifi_change">muuta Wi-Fi olekut</string>
   <string name="app_ops_write_external_storage">kirjutada välisele andmekandjale</string>
   <string name="app_ops_write_mms">kirjutada MMS sõnumit</string>
   <string name="app_ops_write_sms">kirjutada SMS sõnumit</string>

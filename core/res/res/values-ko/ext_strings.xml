@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">네트워크 ADB 활성화됨</string>
   <!-- ADB over USB and network notification -->
@@ -37,6 +35,7 @@
   <string name="privacy_guard_dialog_title">프라이버시 가드</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g>이(가) <xliff:g id="op">%2$s</xliff:g>을(를) 원합니다.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">선택 사항 기억하기</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">카메라에 접근</string>
   <string name="app_ops_access_location">위치 정보에 접근</string>
@@ -78,12 +77,16 @@
   <string name="app_ops_receive_sms">SMS 메시지 받기</string>
   <string name="app_ops_record_audio">오디오 녹음</string>
   <string name="app_ops_run_in_background">백그라운드에서 실행</string>
+  <string name="app_ops_scan_wifi">Wi-Fi 네트워크 스캔</string>
   <string name="app_ops_send_mms">MMS 메시지 보내기</string>
   <string name="app_ops_send_sms">SMS 메시지 보내기</string>
   <string name="app_ops_start_at_bootup">전원을 켤 때 실행</string>
+  <string name="app_ops_su">루트 권한 얻기</string>
   <string name="app_ops_toast_window">팝업 메시지 표시</string>
   <string name="app_ops_toggle_bluetooth">블루투스 켜기/끄기</string>
+  <string name="app_ops_toggle_mobile_data">셀룰러 데이터 켜기/끄기</string>
   <string name="app_ops_toggle_nfc">NFC 켜기/끄기</string>
+  <string name="app_ops_toggle_wifi">Wi-Fi 켜기/끄기</string>
   <string name="app_ops_turn_on_screen">화면을 켬</string>
   <string name="app_ops_use_alarm_volume">알람 볼륨 제어</string>
   <string name="app_ops_use_audio_focus">오디오 포커스 제어</string>
@@ -97,6 +100,7 @@
   <string name="app_ops_use_ring_volume">벨소리 볼륨 제어</string>
   <string name="app_ops_use_vibrate">터치 진동 사용</string>
   <string name="app_ops_use_voice_volume">음성 통화 볼륨 제어</string>
+  <string name="app_ops_wifi_change">Wi-Fi 상태 변경</string>
   <string name="app_ops_write_external_storage">외부 저장소에 쓰기</string>
   <string name="app_ops_write_mms">MMS 메시지 작성</string>
   <string name="app_ops_write_sms">SMS 메시지 작성</string>

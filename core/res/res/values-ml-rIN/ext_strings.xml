@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">നെറ്റ്‌വർക്കിലൂടെയുള്ള ADB പ്രാപ്തമാക്കി</string>
   <!-- ADB over USB and network notification -->
@@ -36,6 +34,7 @@
   <string name="privacy_guard_notification_detail">സ്വകാര്യത ഡാറ്റ പ്രവേശനം ചെയ്യാന്‍ <xliff:g id="app">%1$s</xliff:g> ന് കഴിയില്ല</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g>, <xliff:g id="op">%1$s</xliff:g> ആഗ്രഹിക്കുന്നു.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">എന്റെ ചോയ്‌സ് ഓർമ്മിക്കുക</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">ക്യാമറ ആക്സസ് ചെയ്യുക</string>
   <string name="app_ops_access_location">നിങ്ങളുടെ സ്ഥാനം ആക്സസ് ചെയ്യുക</string>
@@ -74,12 +73,16 @@
   <string name="app_ops_read_sms">നിങ്ങളുടെ SMS സന്ദേശങ്ങൾ വായിക്കുക</string>
   <string name="app_ops_receive_sms">ഒരു SMS സന്ദേശം സ്വീകരിക്കുക</string>
   <string name="app_ops_record_audio">ഓഡിയോ റെക്കോർഡ് ചെയ്യുക</string>
+  <string name="app_ops_scan_wifi">സ്കാൻ Wi-Fi നെറ്റ്വർക്കുകൾ</string>
   <string name="app_ops_send_mms">ഒരു MMS സന്ദേശം അയയ്ക്കുക</string>
   <string name="app_ops_send_sms">ഒരു SMS സന്ദേശം അയയ്ക്കുക</string>
   <string name="app_ops_start_at_bootup">പവര്‍ ലഭിക്കുമ്പോള്‍ ആരംഭിക്കുക</string>
+  <string name="app_ops_su">റൂട്ട് പ്രവേശനം നേടുക</string>
   <string name="app_ops_toast_window">ടോസ്റ്റ് സന്ദേശങ്ങൾ ഡിസ്പ്ലേ ചെയ്യുക</string>
   <string name="app_ops_toggle_bluetooth">ടോഗിള്‍ Bluetooth</string>
+  <string name="app_ops_toggle_mobile_data">ടോഗിൾ മൊബൈൽ ഡാറ്റ</string>
   <string name="app_ops_toggle_nfc">NFC ടോഗിൾ</string>
+  <string name="app_ops_toggle_wifi">ടോഗിൾ Wi-Fi</string>
   <string name="app_ops_turn_on_screen">സ്ക്രീന്‍ ഓണാക്കുക</string>
   <string name="app_ops_use_alarm_volume">അലാറം വോളിയം നിയന്ത്രിക്കുക</string>
   <string name="app_ops_use_audio_focus">ഓഡിയോ ഫോക്കസ് നിയന്ത്രിക്കുക</string>
@@ -93,6 +96,7 @@
   <string name="app_ops_use_ring_volume">റിംഗ്ടോൺ വോളിയം നിയന്ത്രിക്കുക</string>
   <string name="app_ops_use_vibrate">സ്പര്‍ശന പ്രതികരണം ഉപയോഗിക്കുക</string>
   <string name="app_ops_use_voice_volume">വോയ്സ് കോൾ വോളിയം നിയന്ത്രിക്കുക</string>
+  <string name="app_ops_wifi_change">വൈഫിയുടെ സ്ഥിതി മാറ്റുക</string>
   <string name="app_ops_write_external_storage">ബാഹ്യ സംഭരണം എഴുതാൻ</string>
   <string name="app_ops_write_mms">MMS സന്ദേശം റൈറ്റ് ചെയ്യുക</string>
   <string name="app_ops_write_sms">ഒരു SMS സന്ദേശം റൈറ്റ് ചെയ്യുക</string>
