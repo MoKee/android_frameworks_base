@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB over netwerk ingeschakeld</string>
   <!-- ADB over USB and network notification -->
@@ -37,6 +35,7 @@
   <string name="privacy_guard_dialog_title">Privacybescherming</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> wil <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Keuze onthouden</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">toegang tot camera</string>
   <string name="app_ops_access_location">toegang tot uw locatie</string>
@@ -78,12 +77,16 @@
   <string name="app_ops_receive_sms">sms-bericht ontvangen</string>
   <string name="app_ops_record_audio">audio opnemen</string>
   <string name="app_ops_run_in_background">op de achtergrond uitvoeren</string>
+  <string name="app_ops_scan_wifi">wifi-netwerken scannen</string>
   <string name="app_ops_send_mms">mms-bericht versturen</string>
   <string name="app_ops_send_sms">sms-bericht versturen</string>
   <string name="app_ops_start_at_bootup">starten tijdens opstarten</string>
+  <string name="app_ops_su">root-toegang krijgen</string>
   <string name="app_ops_toast_window">meldingen weergeven</string>
   <string name="app_ops_toggle_bluetooth">Bluetooth aan-/uitzetten</string>
+  <string name="app_ops_toggle_mobile_data">mobiele gegevens aan-/uitzetten</string>
   <string name="app_ops_toggle_nfc">NFC aan-/uitzetten</string>
+  <string name="app_ops_toggle_wifi">wifi aan-/uitzetten</string>
   <string name="app_ops_turn_on_screen">scherm aanzetten</string>
   <string name="app_ops_use_alarm_volume">alarmvolume beheren</string>
   <string name="app_ops_use_audio_focus">audiofocus beheren</string>
@@ -97,6 +100,7 @@
   <string name="app_ops_use_ring_volume">beltoonvolume beheren</string>
   <string name="app_ops_use_vibrate">trillen gebruiken</string>
   <string name="app_ops_use_voice_volume">stemvolume beheren</string>
+  <string name="app_ops_wifi_change">wifi-status aanpassen</string>
   <string name="app_ops_write_external_storage">naar externe opslag schrijven</string>
   <string name="app_ops_write_mms">mms-bericht schrijven</string>
   <string name="app_ops_write_sms">sms-bericht schrijven</string>
