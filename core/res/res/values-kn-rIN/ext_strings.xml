@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ನೆಟ್‍ವರ್ಕ್‍ನಿಂದ ಎಡಿಬಿ ಸಕ್ರಿಯಗೊಂಡಿದೆ</string>
   <!-- ADB over USB and network notification -->
@@ -36,6 +34,7 @@
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g>ಗೆ ಖಾಸಗಿ ಡೇಟಾವನ್ನು ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> ನೀವು ಹೀಗೆ <xliff:g id="op">%2$s</xliff:g> ಬಯಸುವಿರಾ.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">ನನ್ನ ಆಯ್ಕೆಯನ್ನು ನೆನಪಿಡು</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">ಕ್ಯಾಮೆರಾ ಪ್ರವೇಶ</string>
   <string name="app_ops_access_location">ನಿಮ್ಮ  ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸುವಿಕೆ</string>
@@ -76,12 +75,16 @@
   <string name="app_ops_read_sms">ನಿಮ್ಮ ಎಸ್ಎಂಎಸ್ ಸಂದೇಶಗಳನ್ನು ಓದು</string>
   <string name="app_ops_receive_sms">ಎಸ್ಎಂಎಸ್ ಸಂದೇಶಗಳನ್ನು ಸ್ವೀಕರಿಸು</string>
   <string name="app_ops_record_audio">ಆಡಿಯೋ ರಿಕಾರ್ಡ್ ಮಾಡು</string>
+  <string name="app_ops_scan_wifi">Wi-Fi ನೆಟ್‌ವರ್ಕ್‌ಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
   <string name="app_ops_send_mms">ಎಂಎಂಎಸ್ ಸಂದೇಶವನ್ನು ಕಳುಹಿಸು</string>
   <string name="app_ops_send_sms">ಎಸ್ಎಂಎಸ್ ಸಂದೇಶವನ್ನು ಕಳುಹಿಸು</string>
   <string name="app_ops_start_at_bootup">ಪವರ್ ಅಪ್ ವೇಳೆ ಆರಂಭವಾಗು</string>
+  <string name="app_ops_su">ರೂಟ್ ಪ್ರವೇಶ ಪಡೆ</string>
   <string name="app_ops_toast_window">ಟೋಸ್ಟ್ ಸಂದೇಶಗಳನ್ನು ಪ್ರದರ್ಶಿಸು</string>
   <string name="app_ops_toggle_bluetooth">ಟಾಗಲ್ ಬ್ಲೂಟೂತ್</string>
+  <string name="app_ops_toggle_mobile_data">ಮೊಬೈಲ್ ಡಾಟಾ ಟಾಗಲ್ ಮಾಡು</string>
   <string name="app_ops_toggle_nfc">NFC ಟಾಗಲ್ ಮಾಡು</string>
+  <string name="app_ops_toggle_wifi">Wi-Fi ಟಾಗಲ್ ಮಾಡು</string>
   <string name="app_ops_turn_on_screen">ಸ್ಕ್ರೀನ್ ಆನ್ ಮಾಡಿ</string>
   <string name="app_ops_use_alarm_volume">ಅಲಾರಂ ವಾಲ್ಯೂಂ ನಿಯಂತ್ರಿಸು</string>
   <string name="app_ops_use_audio_focus">ಆಡಿಯೋ ಫೋಕಸ್ ನಿಯಂತ್ರಿಸು</string>
@@ -95,6 +98,7 @@
   <string name="app_ops_use_ring_volume">ರಿಂಗ್‍ಟೋನ್ ವಾಲ್ಯೂಂನ್ನು ನಿಯಂತ್ರಿಸು</string>
   <string name="app_ops_use_vibrate">ಸ್ಪಾರ್ಶ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಉಪಯೋಗಿಸು</string>
   <string name="app_ops_use_voice_volume">ಧ್ವನಿ ಕರೆ ವಾಲ್ಯೂಂನ್ನು ನಿಯಂತ್ರಿಸು</string>
+  <string name="app_ops_wifi_change">ವೈಫೈ ಸ್ಥಿತಿ ಬದಲಿಸಿ</string>
   <string name="app_ops_write_external_storage">ಬಾಹ್ಯ ಸಂಗ್ರಹವನ್ನು ಬರೆಯಿರಿ</string>
   <string name="app_ops_write_mms">ಎಂಎಂಎಸ್ ಸಂದೇಶ ಬರೆ</string>
   <string name="app_ops_write_sms">ಎಸ್ಎಂಎಸ್ ಸಂದೇಶ ಬರೆ</string>

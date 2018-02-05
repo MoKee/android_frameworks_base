@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB über Netzwerk aktiviert</string>
   <!-- ADB over USB and network notification -->
@@ -37,6 +35,7 @@
   <string name="privacy_guard_dialog_title">Datenschutz</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> versucht, <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Meine Auswahl merken</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">auf die Kamera zuzugreifen</string>
   <string name="app_ops_access_location">den Standort abzurufen</string>
@@ -78,12 +77,16 @@
   <string name="app_ops_receive_sms">eine SMS zu empfangen</string>
   <string name="app_ops_record_audio">Audio aufzeichnen</string>
   <string name="app_ops_run_in_background">im Hintergrund ausgeführt zu werden</string>
+  <string name="app_ops_scan_wifi">WLAN-Netzwerke suchen</string>
   <string name="app_ops_send_mms">eine MMS zu senden</string>
   <string name="app_ops_send_sms">eine SMS zu senden</string>
   <string name="app_ops_start_at_bootup">automatisch zu starten</string>
+  <string name="app_ops_su">Root-Zugriff erhalten</string>
   <string name="app_ops_toast_window">Toast-Nachrichten anzuzeigen</string>
   <string name="app_ops_toggle_bluetooth">Bluetooth ein-/auszuschalten</string>
+  <string name="app_ops_toggle_mobile_data">Mobile Daten ein-/ausschalten</string>
   <string name="app_ops_toggle_nfc">NFC ein-/ausschalten</string>
+  <string name="app_ops_toggle_wifi">WLAN ein-/ausschalten</string>
   <string name="app_ops_turn_on_screen">Bildschirm einschalten</string>
   <string name="app_ops_use_alarm_volume">die Weckerlautstärke zu ändern</string>
   <string name="app_ops_use_audio_focus">den Audiofokus zu ändern</string>
@@ -97,6 +100,7 @@
   <string name="app_ops_use_ring_volume">die Klingeltonlautstärke zu ändern</string>
   <string name="app_ops_use_vibrate">Vibrationsalarm verwenden</string>
   <string name="app_ops_use_voice_volume">die Sprachlautstärke zu ändern</string>
+  <string name="app_ops_wifi_change">WLAN-Status zu ändern</string>
   <string name="app_ops_write_external_storage">externen Speicher beschreiben</string>
   <string name="app_ops_write_mms">eine MMS zu schreiben</string>
   <string name="app_ops_write_sms">eine SMS zu schreiben</string>
