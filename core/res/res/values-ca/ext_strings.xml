@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB sobre xarxa habilitat</string>
   <!-- ADB over USB and network notification -->
@@ -36,6 +34,7 @@
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> no tindrà accés a dades personals</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> voldria <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Recorda la meva elecció</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">accedir a la càmera</string>
   <string name="app_ops_access_location">accedir a la teva ubicació</string>
@@ -77,12 +76,16 @@
   <string name="app_ops_receive_sms">rebre un missatge SMS</string>
   <string name="app_ops_record_audio">enregistra so</string>
   <string name="app_ops_run_in_background">executa en segon pla</string>
+  <string name="app_ops_scan_wifi">escannejar xarxes Wi-Fi</string>
   <string name="app_ops_send_mms">enviar un missatge MMS</string>
   <string name="app_ops_send_sms">enviar un missatge SMS</string>
   <string name="app_ops_start_at_bootup">iniciar-se a l\'engegar</string>
+  <string name="app_ops_su">obtenir accés de superusuari</string>
   <string name="app_ops_toast_window">mostra missatges emergents</string>
   <string name="app_ops_toggle_bluetooth">canviar el Bluetooth</string>
+  <string name="app_ops_toggle_mobile_data">commuta les dades mòbils</string>
   <string name="app_ops_toggle_nfc">canviar l\'NFC</string>
+  <string name="app_ops_toggle_wifi">canviar el Wi-Fi</string>
   <string name="app_ops_turn_on_screen">encendre la pantalla</string>
   <string name="app_ops_use_alarm_volume">controlar el volum de l\'alarma</string>
   <string name="app_ops_use_audio_focus">controlar el focus del so</string>
@@ -96,6 +99,7 @@
   <string name="app_ops_use_ring_volume">controlar el volum del to de trucada</string>
   <string name="app_ops_use_vibrate">utilitzar resposta hàptica</string>
   <string name="app_ops_use_voice_volume">controlar el volum de la veu de la trucada</string>
+  <string name="app_ops_wifi_change">canviar l\'estat del Wi-Fi</string>
   <string name="app_ops_write_external_storage">escriure en un emmagatzematge extern</string>
   <string name="app_ops_write_mms">escriure un missatge MMS</string>
   <string name="app_ops_write_sms">escriure un missatge SMS</string>

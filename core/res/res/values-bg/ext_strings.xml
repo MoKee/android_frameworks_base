@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB над мрежата е активиран</string>
   <!-- ADB over USB and network notification -->
@@ -37,6 +35,7 @@
   <string name="privacy_guard_dialog_title">Защитен режим</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s </xliff:g> иска да <xliff:g id="op">%2$s </xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Запомни избора ми</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">достъп до камерата</string>
   <string name="app_ops_access_location">достъп до вашето местоположение</string>
@@ -78,12 +77,16 @@
   <string name="app_ops_receive_sms">получихте SMS съобщение</string>
   <string name="app_ops_record_audio">записване на звук</string>
   <string name="app_ops_run_in_background">работа във фонов режим</string>
+  <string name="app_ops_scan_wifi">сканирай за Wi-Fi мрежи</string>
   <string name="app_ops_send_mms">Изпращане на MMS съобщение</string>
   <string name="app_ops_send_sms">Изпращане на SMS съобщение</string>
   <string name="app_ops_start_at_bootup">изпълнение при включване</string>
+  <string name="app_ops_su">получете администраторски права</string>
   <string name="app_ops_toast_window">показвай изкачащи уведомления</string>
   <string name="app_ops_toggle_bluetooth">активиране/деактивиране Блутуут</string>
+  <string name="app_ops_toggle_mobile_data">Включване / Изключване на мобилни данни</string>
   <string name="app_ops_toggle_nfc">активиране/деактивиране NFC</string>
+  <string name="app_ops_toggle_wifi">активирай/деактивирай Wi-Fi</string>
   <string name="app_ops_turn_on_screen">включи екрана</string>
   <string name="app_ops_use_alarm_volume">контрол на силата на алармата</string>
   <string name="app_ops_use_audio_focus">контрол на силата на звука</string>
@@ -97,6 +100,7 @@
   <string name="app_ops_use_ring_volume">контрол на звука при повикване</string>
   <string name="app_ops_use_vibrate">Използвайте haptic feedback</string>
   <string name="app_ops_use_voice_volume">контрол на звука при разговор</string>
+  <string name="app_ops_wifi_change">променете състоянието на Wi-Fi</string>
   <string name="app_ops_write_external_storage">пиши върху външната памет</string>
   <string name="app_ops_write_mms">Напишете MMS съобщение</string>
   <string name="app_ops_write_sms">Напишете SMS съобщение</string>

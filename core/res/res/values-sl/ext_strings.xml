@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB prek omrežja omogočen</string>
   <!-- ADB over USB and network notification -->
@@ -37,6 +35,7 @@
   <string name="privacy_guard_dialog_title">Varovanje zasebnosti</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> bi rad <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Zapomni si mojo izbiro</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">dostop do fotoaparata</string>
   <string name="app_ops_access_location">dostop do lokacije</string>
@@ -78,12 +77,16 @@
   <string name="app_ops_receive_sms">prejemanje sporočil SMS</string>
   <string name="app_ops_record_audio">snemanje zvoka</string>
   <string name="app_ops_run_in_background">izvajanje v ozadju</string>
+  <string name="app_ops_scan_wifi">preiskovanje omrežij Wi-Fi</string>
   <string name="app_ops_send_mms">pošiljanje sporočil MMS</string>
   <string name="app_ops_send_sms">pošiljanje sporočil SMS</string>
   <string name="app_ops_start_at_bootup">zagon ob vklopu</string>
+  <string name="app_ops_su">pridobitev skrbniškega dostopa</string>
   <string name="app_ops_toast_window">prikazovanje pojavnih obvestil</string>
   <string name="app_ops_toggle_bluetooth">preklapljanje Bluetootha</string>
+  <string name="app_ops_toggle_mobile_data">preklapljanje mobilnih podatkov</string>
   <string name="app_ops_toggle_nfc">vklop/izklop NFC-ja</string>
+  <string name="app_ops_toggle_wifi">vklop/izklop omr. Wi-Fi</string>
   <string name="app_ops_turn_on_screen">vklapljanje zaslona</string>
   <string name="app_ops_use_alarm_volume">nadzor glasnosti budilke</string>
   <string name="app_ops_use_audio_focus">nadzor žarišča zvoka</string>
@@ -97,6 +100,7 @@
   <string name="app_ops_use_ring_volume">nadzor glasnosti zvonjenja</string>
   <string name="app_ops_use_vibrate">uporaba haptičnega zaznavanja</string>
   <string name="app_ops_use_voice_volume">nadzor glasnosti klicev</string>
+  <string name="app_ops_wifi_change">spreminjanje stanja Wi-Fi</string>
   <string name="app_ops_write_external_storage">pisanje zunanje pomnilniške naprave</string>
   <string name="app_ops_write_mms">sestavljanje sporočil MMS</string>
   <string name="app_ops_write_sms">sestavljanje sporočil SMS</string>

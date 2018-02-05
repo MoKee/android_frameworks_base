@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB prin rețea activ</string>
   <!-- ADB over USB and network notification -->
@@ -36,6 +34,7 @@
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> nu va putea accesa datele personale</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> dorește să <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Memorează alegerea mea</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">accesează camera</string>
   <string name="app_ops_access_location">accesează locația</string>
@@ -77,12 +76,16 @@
   <string name="app_ops_receive_sms">primește un mesaj SMS</string>
   <string name="app_ops_record_audio">înregistrare audio</string>
   <string name="app_ops_run_in_background">rulați în fundal</string>
+  <string name="app_ops_scan_wifi">scanează rețelele Wi-Fi</string>
   <string name="app_ops_send_mms">trimite un mesaj MMS</string>
   <string name="app_ops_send_sms">trimite un mesaj SMS</string>
   <string name="app_ops_start_at_bootup">lansează la pornire</string>
+  <string name="app_ops_su">obțină acces root</string>
   <string name="app_ops_toast_window">afișează mesajele temporare</string>
   <string name="app_ops_toggle_bluetooth">comută Bluetooth</string>
+  <string name="app_ops_toggle_mobile_data">comutare date mobile</string>
   <string name="app_ops_toggle_nfc">comută NFC</string>
+  <string name="app_ops_toggle_wifi">comută Wi-Fi</string>
   <string name="app_ops_turn_on_screen">pornește ecranul</string>
   <string name="app_ops_use_alarm_volume">controlează volumul alarmei</string>
   <string name="app_ops_use_audio_focus">controlează focalizarea audio</string>
@@ -96,6 +99,7 @@
   <string name="app_ops_use_ring_volume">controlează volumul la sonerie</string>
   <string name="app_ops_use_vibrate">folosește răspunsul tactil</string>
   <string name="app_ops_use_voice_volume">controlează volumul apelului de voce</string>
+  <string name="app_ops_wifi_change">schimbă starea Wi-Fi</string>
   <string name="app_ops_write_external_storage">scrie stocare externă</string>
   <string name="app_ops_write_mms">scrie un mesaj MMS</string>
   <string name="app_ops_write_sms">scrie un mesaj SMS</string>

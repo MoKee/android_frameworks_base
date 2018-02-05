@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB ఓవర్ నెట్వర్క్ ప్రారంభించబడింది</string>
   <!-- ADB over USB and network notification -->
@@ -36,6 +34,7 @@
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> వ్యక్తిగత డేటాకు ప్రాప్యతను కలిగి ఉండదు</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%2$s</xliff:g> ను చేయడానికి <xliff:g id="op">%1$s</xliff:g> ఇష్టపడుతుంది.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">నా ఎంపికను గుర్తుంచుకో</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">కెమెరాను ప్రాప్యత చేయుము</string>
   <string name="app_ops_access_location">మీ స్థానానికి ప్రాప్యత చేయుము</string>
@@ -76,12 +75,16 @@
   <string name="app_ops_read_sms">మీ యొక్క SMS మెసేజులను చదువుము</string>
   <string name="app_ops_receive_sms">SMS మెసేజ్ అందుకొనుము</string>
   <string name="app_ops_record_audio">ఆడియోను రికార్డ్ చేయడం</string>
+  <string name="app_ops_scan_wifi">Wi-Fi నెట్వర్క్స్ స్కాన్ చేయి</string>
   <string name="app_ops_send_mms">MMS మెసేజును పంపుము</string>
   <string name="app_ops_send_sms">SMS మెసేజును పంపుము</string>
   <string name="app_ops_start_at_bootup">పవర్ అప్ వద్ద ప్రారంభించుము</string>
+  <string name="app_ops_su">మూలాంశ ప్రాప్యతను పొందుము</string>
   <string name="app_ops_toast_window">టోస్ట్ మెసేజులను ప్రదర్శించుము</string>
   <string name="app_ops_toggle_bluetooth">బ్లూటూతును ద్విక్రియం చేయుము</string>
+  <string name="app_ops_toggle_mobile_data">మొబైల్ డేటాను ద్విక్రియం చేయుము</string>
   <string name="app_ops_toggle_nfc">NFCను ద్విక్రియ చేయుము</string>
+  <string name="app_ops_toggle_wifi">Wi-Fiను ద్విక్రియ చేయుము</string>
   <string name="app_ops_turn_on_screen">తెరను ఆన్ చేయుము</string>
   <string name="app_ops_use_alarm_volume">అలారం శబ్దాన్ని నియంత్రించుము</string>
   <string name="app_ops_use_audio_focus">ఆడియో కేంద్రీకరణను నియంత్రించుము</string>
@@ -95,6 +98,7 @@
   <string name="app_ops_use_ring_volume">రింగ్ టోన్ శబ్దాన్ని నియంత్రించుము</string>
   <string name="app_ops_use_vibrate">చేతి సంబంధ అభిప్రాయాన్ని ఉపయోగించుము</string>
   <string name="app_ops_use_voice_volume">స్వర కాల్ శబ్దాన్ని నియంత్రించుము</string>
+  <string name="app_ops_wifi_change">Wi-Fi స్థితిని మార్చు</string>
   <string name="app_ops_write_external_storage">బాహ్య నిల్వకు వ్రాయుము</string>
   <string name="app_ops_write_mms">MMS మెసేజును వ్రాయుము</string>
   <string name="app_ops_write_sms">SMS  మెసేజును వ్రాయుము</string>

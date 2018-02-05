@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB sobre red activado</string>
   <!-- ADB over USB and network notification -->
@@ -37,6 +35,7 @@
   <string name="privacy_guard_dialog_title">Proteger Privacidad</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> quiere <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Recordar mi elección</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">acceder a la cámara</string>
   <string name="app_ops_access_location">acceder a tu ubicación</string>
@@ -78,12 +77,16 @@
   <string name="app_ops_receive_sms">recibir un mensaje SMS</string>
   <string name="app_ops_record_audio">grabar sonido</string>
   <string name="app_ops_run_in_background">ejecutar en segundo plano</string>
+  <string name="app_ops_scan_wifi">buscar redes Wi-Fi</string>
   <string name="app_ops_send_mms">enviar un mensaje MMS</string>
   <string name="app_ops_send_sms">enviar un mensaje SMS</string>
   <string name="app_ops_start_at_bootup">ejecutar al inicio</string>
+  <string name="app_ops_su">obtener acceso administrativo</string>
   <string name="app_ops_toast_window">mostrar notificaciones emergentes</string>
   <string name="app_ops_toggle_bluetooth">alternar Bluetooth</string>
+  <string name="app_ops_toggle_mobile_data">conmutar los datos móviles</string>
   <string name="app_ops_toggle_nfc">conmutar NFC</string>
+  <string name="app_ops_toggle_wifi">conmutar Wi-Fi</string>
   <string name="app_ops_turn_on_screen">encender la pantalla</string>
   <string name="app_ops_use_alarm_volume">controlar el volumen de la alarma</string>
   <string name="app_ops_use_audio_focus">controlar volumen del sonido</string>
@@ -97,6 +100,7 @@
   <string name="app_ops_use_ring_volume">controlar el volumen del tono de llamada</string>
   <string name="app_ops_use_vibrate">usar la respuesta háptica</string>
   <string name="app_ops_use_voice_volume">controlar el volumen del teléfono</string>
+  <string name="app_ops_wifi_change">cambiar el estado de Wi-Fi</string>
   <string name="app_ops_write_external_storage">escribir en almacenamiento externo</string>
   <string name="app_ops_write_mms">escribir un mensaje MMS</string>
   <string name="app_ops_write_sms">escribir un mensaje SMS</string>

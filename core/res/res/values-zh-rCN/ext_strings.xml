@@ -19,10 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permlab_preventpower">修改电源键功能</string>
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permdesc_preventpower">允许应用程序修改电源键功能</string>
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">网络 ADB 调试已启用</string>
   <!-- ADB over USB and network notification -->
@@ -40,7 +36,6 @@
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> 希望 <xliff:g id="op">%2$s</xliff:g>。</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
   <string name="permission_remember_choice">记住</string>
-  <string name="permission">权限</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">访问摄像头</string>
   <string name="app_ops_access_location">访问您的位置信息</string>

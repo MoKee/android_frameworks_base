@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB অভাৰ নেটৱৰ্ক সক্ষম কৰা হৈছে</string>
   <!-- ADB over USB and network notification -->
@@ -36,6 +34,7 @@
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> এ ব্যক্তিগত ডাটাত প্ৰৱেশ কৰিব নোৱাৰে</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="op">%2$s</xliff:g> এ <xliff:g id="app">%1$s</xliff:g> কৰিবলৈ বিচাৰে।</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">মোৰ পচন্দ মনত ৰাখক</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">কেমেৰাত প্ৰৱেশ কৰক</string>
   <string name="app_ops_access_location">আপোনাৰ অৱস্থানত প্ৰৱেশ কৰক</string>
@@ -75,12 +74,16 @@
   <string name="app_ops_read_sms">আপোনাৰ SMS বাৰ্তাবোৰ পঢ়া</string>
   <string name="app_ops_receive_sms">এটা SMS বাৰ্তা প্ৰাপ্ত কৰা</string>
   <string name="app_ops_record_audio">অডিঅ’ ৰেকৰ্ড</string>
+  <string name="app_ops_scan_wifi">Wi-Fi নেটৱৰ্ক স্কেন কৰক</string>
   <string name="app_ops_send_mms">MMS বাৰ্তা প্ৰেৰণ কৰা</string>
   <string name="app_ops_send_sms">SMS বাৰ্তা প্ৰেৰণ কৰা</string>
   <string name="app_ops_start_at_bootup">পাৱাৰ আপৰ সময়ত আৰম্ভ কৰা</string>
+  <string name="app_ops_su">ৰুট প্ৰৱেশাধিকাৰ প্ৰাপ্ত কৰা</string>
   <string name="app_ops_toast_window">টোষ্ট বাৰ্তা প্ৰদৰ্শন কৰা</string>
   <string name="app_ops_toggle_bluetooth">Bluetooth টগল কৰা</string>
+  <string name="app_ops_toggle_mobile_data">ম\'বাইল ডাটা টগল কৰা</string>
   <string name="app_ops_toggle_nfc">NFC টগল কৰা</string>
+  <string name="app_ops_toggle_wifi">Wi-Fi টগল কৰক</string>
   <string name="app_ops_turn_on_screen">স্ক্ৰীণ অন কৰক</string>
   <string name="app_ops_use_alarm_volume">এলাৰ্ম ভলিউম নিয়ন্ত্ৰণ কৰা</string>
   <string name="app_ops_use_audio_focus">অডিঅ\' ফোকাচ নিয়ন্ত্ৰণ কৰা</string>
@@ -94,6 +97,7 @@
   <string name="app_ops_use_ring_volume">ৰিংটোন ভলিউম নিয়ন্ত্ৰণ কৰা</string>
   <string name="app_ops_use_vibrate">হেপ্টিক ফীডবেক ব্যৱহাৰ কৰা</string>
   <string name="app_ops_use_voice_volume">ভইচ কল ভলিউম নিয়ন্ত্ৰণ কৰা</string>
+  <string name="app_ops_wifi_change">Wi-Fi অৱস্থা পৰিৱৰ্তন কৰক</string>
   <string name="app_ops_write_external_storage">বাহ্যিক ষ্ট\'ৰেজলৈ লিখক</string>
   <string name="app_ops_write_mms">এটা MMS বাৰ্তা লিখক</string>
   <string name="app_ops_write_sms">এটা SMS বাৰ্তা লিখক</string>

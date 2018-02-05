@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">Didayakan melalui rangkaian ADB</string>
   <!-- ADB over USB and network notification -->
@@ -36,6 +34,7 @@
   <string name="privacy_guard_dialog_title">Pengawal privasi</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> berminat untuk <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Ingat pilihan saya</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">mengakses kamera</string>
   <string name="app_ops_access_location">mengakses lokasi anda</string>
@@ -65,6 +64,7 @@
   <string name="app_ops_read_phone_state">akses keadaan telefon</string>
   <string name="app_ops_read_sms">membaca mesej SMS anda</string>
   <string name="app_ops_receive_sms">menerima mesej SMS</string>
+  <string name="app_ops_scan_wifi">imbas rangkaian Wifi</string>
   <string name="app_ops_send_mms">hantar mesej MMS</string>
   <string name="app_ops_send_sms">hantar mesej SMS</string>
   <string name="app_ops_start_at_bootup">mulakan pada permulaan</string>

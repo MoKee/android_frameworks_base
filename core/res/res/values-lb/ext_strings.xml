@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB iwwer Netzwierk aktivéiert</string>
   <!-- ADB over USB and network notification -->
@@ -36,6 +34,7 @@
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> huet keen Accès op perséinlech Daten</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> wëll <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Mäi Choix verhalen</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">op d\'Kamera zougräifen</string>
   <string name="app_ops_access_location">op de Standuert zougräifen</string>
@@ -76,12 +75,15 @@
   <string name="app_ops_read_sms">SMS-Messagë liesen</string>
   <string name="app_ops_receive_sms">en SMS-Message empfänken</string>
   <string name="app_ops_record_audio">Toun ophuelen</string>
+  <string name="app_ops_scan_wifi">WLAN-Netzwierker scannen</string>
   <string name="app_ops_send_mms">en MMS-Message schécken</string>
   <string name="app_ops_send_sms">eng SMS-Message schécken</string>
   <string name="app_ops_start_at_bootup">Automatesch starten</string>
+  <string name="app_ops_su">Root-Accès kréien</string>
   <string name="app_ops_toast_window">Kuerzzäit-Notifikatiounen uweisen</string>
   <string name="app_ops_toggle_bluetooth">Bluetooth un-/ausschalten</string>
   <string name="app_ops_toggle_nfc">NFC un-/ausschalten</string>
+  <string name="app_ops_toggle_wifi">WLAN un-/ausschalten</string>
   <string name="app_ops_turn_on_screen">Schierm uschalten</string>
   <string name="app_ops_use_alarm_volume">d\'Lautstäerkt vum Wecker änneren</string>
   <string name="app_ops_use_audio_focus">den Tounfokus änneren</string>
@@ -95,6 +97,7 @@
   <string name="app_ops_use_ring_volume">d\'Schelllautstäerkt änneren</string>
   <string name="app_ops_use_vibrate">de Vibratiounsalarm steieren</string>
   <string name="app_ops_use_voice_volume">d\'Sproochlautstäerkt änneren</string>
+  <string name="app_ops_wifi_change">WLAN-Status änneren</string>
   <string name="app_ops_write_external_storage">op externe Späicher schreiwen</string>
   <string name="app_ops_write_mms">eng MMS schreiwen</string>
   <string name="app_ops_write_sms">eng SMS schreiwen</string>

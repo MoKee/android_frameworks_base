@@ -19,10 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permlab_preventpower">i-override ang power key</string>
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permdesc_preventpower">Pinapayagan ang app na i-override ang power key.</string>
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">Pinagana ang ADB sa network</string>
   <!-- ADB over USB and network notification -->
@@ -39,6 +35,7 @@
   <string name="privacy_guard_dialog_title">Privacy Guard</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> nais na <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Tandaan ang aking pinili</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">i-access ang camera</string>
   <string name="app_ops_access_location">ma-access ang iyong lokasyon</string>
@@ -80,12 +77,16 @@
   <string name="app_ops_receive_sms">makatanggap ng isang mensaheng SMS</string>
   <string name="app_ops_record_audio">mag-rekord ng audio</string>
   <string name="app_ops_run_in_background">buksan sa background</string>
+  <string name="app_ops_scan_wifi">mag-scan ng mga Wi-Fi network</string>
   <string name="app_ops_send_mms">magpadala ng isang mensaheng MMS</string>
   <string name="app_ops_send_sms">magpadala ng isang mensaheng SMS</string>
   <string name="app_ops_start_at_bootup">simulan sa power up</string>
+  <string name="app_ops_su">makakuha ng root access</string>
   <string name="app_ops_toast_window">magpakita ng mga toast messages</string>
   <string name="app_ops_toggle_bluetooth">toggle Bluetooth</string>
+  <string name="app_ops_toggle_mobile_data">i-toggle ang cellular data</string>
   <string name="app_ops_toggle_nfc">i-toggle ang NFC</string>
+  <string name="app_ops_toggle_wifi">i-toggle ang Wi-Fi</string>
   <string name="app_ops_turn_on_screen">buksan ang screen</string>
   <string name="app_ops_use_alarm_volume">kontrolin ang alarm volume</string>
   <string name="app_ops_use_audio_focus">kontrolin ang audio focus</string>
@@ -99,6 +100,7 @@
   <string name="app_ops_use_ring_volume">kontrolin ang ringtone volume</string>
   <string name="app_ops_use_vibrate">gamitin ang haptic feedback</string>
   <string name="app_ops_use_voice_volume">kontrolin ang voice call volume</string>
+  <string name="app_ops_wifi_change">baguhin ang katayuan ng Wi-Fi</string>
   <string name="app_ops_write_external_storage">sulatan ang external storage</string>
   <string name="app_ops_write_mms">magsulat ng isang mensaheng MMS</string>
   <string name="app_ops_write_sms">magsulat ng isang mensaheng SMS</string>

@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB preko mreže je omogućen</string>
   <!-- ADB over USB and network notification -->
@@ -36,6 +34,7 @@
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> neće moći pristupiti osobnim podacima</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> želi <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Zapamti moj odabir</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">pristupiti fotoaparatu</string>
   <string name="app_ops_access_location">pristupiti vašoj lokaciji</string>
@@ -77,12 +76,16 @@
   <string name="app_ops_receive_sms">primiti SMS poruku</string>
   <string name="app_ops_record_audio">snimi zvuk</string>
   <string name="app_ops_run_in_background">pokreni u pozadini</string>
+  <string name="app_ops_scan_wifi">skenirati Wi-Fi mreže</string>
   <string name="app_ops_send_mms">poslati MMS poruku</string>
   <string name="app_ops_send_sms">poslati SMS poruku</string>
   <string name="app_ops_start_at_bootup">pokretati se pri uključivanju uređaja</string>
+  <string name="app_ops_su">dobiti root pristup</string>
   <string name="app_ops_toast_window">prikazivati tost poruke</string>
   <string name="app_ops_toggle_bluetooth">upravljati Bluetoothom</string>
+  <string name="app_ops_toggle_mobile_data">uključi/isključi mobilne podatke</string>
   <string name="app_ops_toggle_nfc">uključi/isključi NFC</string>
+  <string name="app_ops_toggle_wifi">upravljati Wi-Fi-em</string>
   <string name="app_ops_turn_on_screen">uključiti zaslon</string>
   <string name="app_ops_use_alarm_volume">kontrolirati glasnoću alarma</string>
   <string name="app_ops_use_audio_focus">kontrolirati fokus zvuka</string>
@@ -96,6 +99,7 @@
   <string name="app_ops_use_ring_volume">kontrolirati glasnoću zvona zvona</string>
   <string name="app_ops_use_vibrate">upotrebljavati vibraciju</string>
   <string name="app_ops_use_voice_volume">kontrolirati glasnoću glasovnog poziva</string>
+  <string name="app_ops_wifi_change">mijenjati Wi-Fi stanje</string>
   <string name="app_ops_write_external_storage">pisati po vanjskoj pohrani</string>
   <string name="app_ops_write_mms">napisati MMS poruku</string>
   <string name="app_ops_write_sms">napisati SMS poruku</string>

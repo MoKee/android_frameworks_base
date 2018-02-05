@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">नेटवर्क पर एडीबी को सक्षम कर दिया गया</string>
   <!-- ADB over USB and network notification -->
@@ -36,6 +34,7 @@
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> निजी डेटा में पहुँच नहीं सकेगा</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> क्या आप <xliff:g id="op">%2$s</xliff:g> करना चाहते हैं।</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">मेरी पसंद को याद रखें</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">कैमरे में पहुँचें</string>
   <string name="app_ops_access_location">अपने स्थान का उपयोग करें</string>
@@ -69,6 +68,7 @@
   <string name="app_ops_send_mms">एमएमएस संदेश भेजें</string>
   <string name="app_ops_send_sms">एसएमएस संदेश भेजें</string>
   <string name="app_ops_start_at_bootup">पावर अप के दौरान चालू करें</string>
+  <string name="app_ops_su">मूल तक पहुँच प्राप्त करें</string>
   <string name="app_ops_toast_window">टोस्ट संदेश प्रदर्शित करें</string>
   <string name="app_ops_toggle_bluetooth">ब्लूटूथ को बंद-चालू करें</string>
   <string name="app_ops_use_alarm_volume">अलार्म वोल्यूम को नियंत्रित करें</string>

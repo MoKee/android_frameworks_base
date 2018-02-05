@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB per rede activáu</string>
   <!-- ADB over USB and network notification -->
@@ -36,6 +34,7 @@
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> nun sedrá a acceder a los datos personales</string>
   <string name="privacy_guard_dialog_summary">A <xliff:g id="app">%1$s</xliff:g> prestaría-y <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Recordar la mio escoyeta</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">acceder a la cámara</string>
   <string name="app_ops_access_location">acceder al to allugamientu</string>
@@ -77,12 +76,16 @@
   <string name="app_ops_receive_sms">recibir un mensaxe SMS</string>
   <string name="app_ops_record_audio">grabar audiu</string>
   <string name="app_ops_run_in_background">executase de fondu</string>
+  <string name="app_ops_scan_wifi">escaniar redes Wi-Fi</string>
   <string name="app_ops_send_mms">unviar un mensaxe MMS</string>
   <string name="app_ops_send_sms">unviar un mensaxe SMS</string>
   <string name="app_ops_start_at_bootup">executase nel aniciu</string>
+  <string name="app_ops_su">consiguir accesu root</string>
   <string name="app_ops_toast_window">notificaciones emerxentes</string>
   <string name="app_ops_toggle_bluetooth">alternar Bluetooth</string>
+  <string name="app_ops_toggle_mobile_data">alternar datos móviles</string>
   <string name="app_ops_toggle_nfc">alternar NFC</string>
+  <string name="app_ops_toggle_wifi">alternar Wi-Fi</string>
   <string name="app_ops_turn_on_screen">prender pantalla</string>
   <string name="app_ops_use_alarm_volume">controlar volume d\'alarma</string>
   <string name="app_ops_use_audio_focus">remanar el volume de soníu</string>
@@ -96,6 +99,7 @@
   <string name="app_ops_use_ring_volume">controlar el volume del timbre</string>
   <string name="app_ops_use_vibrate">usar rempuesta háptica</string>
   <string name="app_ops_use_voice_volume">remanar el volume de la llamada</string>
+  <string name="app_ops_wifi_change">camudar estáu del Wi-Fi</string>
   <string name="app_ops_write_external_storage">escribir nel almacenamientu esternu</string>
   <string name="app_ops_write_mms">escribir un mensaxe MMS</string>
   <string name="app_ops_write_sms">escribir un mensaxe SMS</string>

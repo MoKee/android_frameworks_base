@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB mbi rrjet u aktivizua</string>
   <!-- ADB over USB and network notification -->
@@ -35,6 +33,7 @@
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> nuk do të jetë në gjendje të aksesojë të dhëna personale</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> kërkon të <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Kujtoje zgjedhjen</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">aksesojë kamerën</string>
   <string name="app_ops_access_location">aksesojë vendndodhjen</string>
@@ -71,11 +70,15 @@
   <string name="app_ops_receive_sms">marrë një mesazh SMS</string>
   <string name="app_ops_record_audio">regjistro audio</string>
   <string name="app_ops_run_in_background">puno në sfond</string>
+  <string name="app_ops_scan_wifi">kërkojë për rrjete Wi-Fi</string>
   <string name="app_ops_send_mms">dërgojë një mesazh MMS</string>
   <string name="app_ops_send_sms">dërgojë një mesazh SMS</string>
   <string name="app_ops_start_at_bootup">niset kur ndizet telefoni</string>
+  <string name="app_ops_su">marrë akses Root</string>
   <string name="app_ops_toggle_bluetooth">aktivizojë/çaktivizojë Bluetoothin</string>
+  <string name="app_ops_toggle_mobile_data">aktivizo/çaktivizo internetin e celularit</string>
   <string name="app_ops_toggle_nfc">ndiz/fik NFC</string>
+  <string name="app_ops_toggle_wifi">aktivizo/çaktivizo Wi-Fi</string>
   <string name="app_ops_turn_on_screen">ndezi ekranin</string>
   <string name="app_ops_use_alarm_volume">kontrollojë volumin e alarmit</string>
   <string name="app_ops_use_audio_focus">kontrollojë fokusin e audios</string>
@@ -88,6 +91,7 @@
   <string name="app_ops_use_ring_volume">kontrollojë volumin e zileve</string>
   <string name="app_ops_use_vibrate">përdorë reagimin haptik</string>
   <string name="app_ops_use_voice_volume">kontrollojë volumin e thirrjeve</string>
+  <string name="app_ops_wifi_change">ndërrojë statusin e Wi-Fi</string>
   <string name="app_ops_write_external_storage">shkruajë në memorien e jashtme</string>
   <string name="app_ops_write_mms">shkruajë një mesazh MMS</string>
   <string name="app_ops_write_sms">shkruajë një mesazh SMS</string>

@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB μέσω δικτύου ενεργοποιημένο</string>
   <!-- ADB over USB and network notification -->
@@ -37,6 +35,7 @@
   <string name="privacy_guard_dialog_title">Προστασία Απορρήτου</string>
   <string name="privacy_guard_dialog_summary">Το <xliff:g id="app">%1$s</xliff:g> ζητά: <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Απομνημόνευση της επιλογής μου</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">πρόσβαση στην φωτογρ. μηχανή</string>
   <string name="app_ops_access_location">πρόσβαση στην τοποθεσία σας</string>
@@ -78,12 +77,16 @@
   <string name="app_ops_receive_sms">λήψη ενός μηνύματος SMS</string>
   <string name="app_ops_record_audio">εγγραφή ήχου</string>
   <string name="app_ops_run_in_background">εκτέλεση στο παρασκήνιο</string>
+  <string name="app_ops_scan_wifi">σάρωση δίκτυων Wi-Fi</string>
   <string name="app_ops_send_mms">αποστολή ενός μηνύματος MMS</string>
   <string name="app_ops_send_sms">αποστολή ενός μηνύματος SMS</string>
   <string name="app_ops_start_at_bootup">άνοιγμα κατά την εκκίνηση</string>
+  <string name="app_ops_su">πρόσβαση root</string>
   <string name="app_ops_toast_window">εμφάνιση αναδυόμενων μηνυμάτων</string>
   <string name="app_ops_toggle_bluetooth">εναλλαγή Bluetooth</string>
+  <string name="app_ops_toggle_mobile_data">εναλλαγή δεδομένων κινητής τηλεφωνίας</string>
   <string name="app_ops_toggle_nfc">εναλλαγή NFC</string>
+  <string name="app_ops_toggle_wifi">εναλλαγή Wi-Fi</string>
   <string name="app_ops_turn_on_screen">ενεργοποίηση της οθόνης</string>
   <string name="app_ops_use_alarm_volume">έλεγχο έντασης ξυπνητηριού</string>
   <string name="app_ops_use_audio_focus">έλεγχο της εστίασης ήχου</string>
@@ -97,6 +100,7 @@
   <string name="app_ops_use_ring_volume">έλεγχο της έντασης ήχου κλήσης</string>
   <string name="app_ops_use_vibrate">χρήση απτικής ανάδρασης</string>
   <string name="app_ops_use_voice_volume">έλεγχο της έντασης φωνητικής κλήσης</string>
+  <string name="app_ops_wifi_change">αλλαγή κατάστασης Wi-Fi</string>
   <string name="app_ops_write_external_storage">εγγραφή εξωτερικού αποθ. χώρου</string>
   <string name="app_ops_write_mms">εγγραφή ενός μηνύματος MMS</string>
   <string name="app_ops_write_sms">εγγραφή ενός μηνύματος SMS</string>

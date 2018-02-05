@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB דרך רשת מופעל</string>
   <!-- ADB over USB and network notification -->
@@ -36,6 +34,7 @@
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> לא יוכל לגשת למידע אישי</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> מבקש/ת <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">זכור את הבחירה שלי</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">גישה למצלמה</string>
   <string name="app_ops_access_location">גישה למיקום שלך</string>
@@ -77,12 +76,16 @@
   <string name="app_ops_receive_sms">קבלת הודעת SMS</string>
   <string name="app_ops_record_audio">הקלט שמע</string>
   <string name="app_ops_run_in_background">פועל ברקע</string>
+  <string name="app_ops_scan_wifi">סרוק רשתות Wi-Fi</string>
   <string name="app_ops_send_mms">שליחת הודעת MMS</string>
   <string name="app_ops_send_sms">שליחת הודעת SMS</string>
   <string name="app_ops_start_at_bootup">התחל פעילות בהדלקת המכשיר</string>
+  <string name="app_ops_su">קבלת גישת שורש (Root)</string>
   <string name="app_ops_toast_window">הצגת הודעות קופצות</string>
   <string name="app_ops_toggle_bluetooth">שינוי מצב ה-Bluetooth</string>
+  <string name="app_ops_toggle_mobile_data">הפעל/כבה תקשורת נתונים סלולרית</string>
   <string name="app_ops_toggle_nfc">הפעל/כבה NFC</string>
+  <string name="app_ops_toggle_wifi">שנה את מצב הרשת האלחוטית</string>
   <string name="app_ops_turn_on_screen">הפעל המסך</string>
   <string name="app_ops_use_alarm_volume">שליטה בעוצמת השעון המעורר</string>
   <string name="app_ops_use_audio_focus">שליטה במיקוד השמע</string>
@@ -96,6 +99,7 @@
   <string name="app_ops_use_ring_volume">שליטה בעוצמת קול לרינגטון</string>
   <string name="app_ops_use_vibrate">שימוש במשוב רטט</string>
   <string name="app_ops_use_voice_volume">שליטה על עוצמת הקול בשיחה</string>
+  <string name="app_ops_wifi_change">שנה מצב Wi-Fi</string>
   <string name="app_ops_write_external_storage">כתוב לאחסון חיצוני</string>
   <string name="app_ops_write_mms">כתיבת הודעת MMS</string>
   <string name="app_ops_write_sms">כתיבת הודעת SMS</string>

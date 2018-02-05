@@ -19,8 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">நெட்வொர்க் மீது ADB செயல்படுத்தப்பட்டது</string>
   <!-- ADB over USB and network notification -->
@@ -36,6 +34,7 @@
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> தனிநபர் தரவை அணுக முடியாது</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g>  <xliff:g id="op">%2$s</xliff:g> செய்ய விரும்புகிறார்.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">எனது விருப்பத்தேர்வை நினைவில்கொள்</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">கேமராவை அணுகவும்</string>
   <string name="app_ops_access_location">உங்கள் இருப்பிடத்தை அணுகவும்</string>
@@ -76,12 +75,16 @@
   <string name="app_ops_read_sms">உங்கள் SMS செய்திகளை படிக்கவும்</string>
   <string name="app_ops_receive_sms">உங்கள் SMS செய்திகளை பெறவும்</string>
   <string name="app_ops_record_audio">ஆடியோவைப் பதிவுசெய்தல்</string>
+  <string name="app_ops_scan_wifi">Wi-Fi பிணையங்களை ஸ்கேன்செய்</string>
   <string name="app_ops_send_mms">ஒரு MMS குறுந்தகவல் அனுப்புக</string>
   <string name="app_ops_send_sms">ஒரு SMS குறுந்தகவல் அனுப்புக</string>
   <string name="app_ops_start_at_bootup">மின்சக்தி அப்பில் தொடங்கவும்</string>
+  <string name="app_ops_su">மூல அணுகலைப் பெறு</string>
   <string name="app_ops_toast_window">டோஸ்ட் செய்திகளை காண்பி</string>
   <string name="app_ops_toggle_bluetooth">டோக்கில் ப்ளுடுத்</string>
+  <string name="app_ops_toggle_mobile_data">மொபைல் தரவு நிலைமாற்று</string>
   <string name="app_ops_toggle_nfc">NFC நிலைமாற்று</string>
+  <string name="app_ops_toggle_wifi">Wi-Fi நிலைமாற்று</string>
   <string name="app_ops_turn_on_screen">திரையை ஆன் செய்</string>
   <string name="app_ops_use_alarm_volume">அலார ஒலியளவை கட்டுப்படுத்து</string>
   <string name="app_ops_use_audio_focus">ஆடியோ குவிமையத்தைக் கட்டுப்படுத்து</string>
@@ -95,6 +98,7 @@
   <string name="app_ops_use_ring_volume">ரிங்டோன் ஒலியளவை கட்டுப்படுத்து</string>
   <string name="app_ops_use_vibrate">தீண்டும் பின்னூட்டத்தைப் பயன்படுத்து</string>
   <string name="app_ops_use_voice_volume">குரல் அழைப்பு ஒலியளவை கட்டுப்படுத்து</string>
+  <string name="app_ops_wifi_change">Wi-fi நிலையை மாற்று</string>
   <string name="app_ops_write_external_storage">உட்புற சேமிப்பகத்தை எழுது</string>
   <string name="app_ops_write_mms">ஒரு MMS செய்தி எழுது</string>
   <string name="app_ops_write_sms">ஒரு SMS செய்தி எழுது</string>

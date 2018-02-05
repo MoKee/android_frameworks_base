@@ -19,10 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permlab_preventpower">Переопределение клавиши питания</string>
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permdesc_preventpower">Позволяет приложению переопределять кнопку питания.</string>
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">Отладка по сети разрешена</string>
   <!-- ADB over USB and network notification -->
@@ -40,7 +36,6 @@
   <string name="privacy_guard_dialog_summary">Приложение «<xliff:g id="app">%1$s</xliff:g>» пытается <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
   <string name="permission_remember_choice">Запомнить выбор</string>
-  <string name="permission">Разрешение</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">получить доступ к камере</string>
   <string name="app_ops_access_location">получить доступ к местоположению устройства</string>
@@ -50,7 +45,7 @@
   <string name="app_ops_app_start_foreground">Мгновенный запуск приложений</string>
   <string name="app_ops_assist_screenshot">сделать скриншот</string>
   <string name="app_ops_assist_structure">использовать структуру ассистента</string>
-  <string name="app_ops_audio_accessibility_volume">Доступная громкость звука</string>
+  <string name="app_ops_audio_accessibility_volume">получить доступ к изменению громкости</string>
   <string name="app_ops_auto_start">назначить запуск при включении устройства</string>
   <string name="app_ops_change_wallpaper">изменить обои</string>
   <string name="app_ops_delete_call_log">удалить журнал звонков</string>
@@ -72,12 +67,12 @@
   <string name="app_ops_mute_unmute_microphone">выключить или включить микрофон</string>
   <string name="app_ops_phone_calls">Ответ на телефонные звонки</string>
   <string name="app_ops_picture_in_picture">Использование картинки в картинке</string>
-  <string name="app_ops_play_audio">воспроизведение аудио</string>
+  <string name="app_ops_play_audio">воспроизвести аудио</string>
   <string name="app_ops_post_notification">вывести уведомление</string>
-  <string name="app_ops_project_media">трансляция контента</string>
+  <string name="app_ops_project_media">выполнить трансляцию контента</string>
   <string name="app_ops_read_calendar">считать данные календаря</string>
   <string name="app_ops_read_call_log">считать данные списка вызовов</string>
-  <string name="app_ops_read_cell_broadcasts">Чтение сообщений сети</string>
+  <string name="app_ops_read_cell_broadcasts">читать сообщения сети</string>
   <string name="app_ops_read_clipboard">считать содержимое буфера обмена</string>
   <string name="app_ops_read_contacts">считать данные контактов</string>
   <string name="app_ops_read_external_storage">прочитать данные с внешнего накопителя</string>
@@ -86,7 +81,7 @@
   <string name="app_ops_read_phone_state">получить данные о состоянии телефона</string>
   <string name="app_ops_read_sms">считать SMS-сообщения</string>
   <string name="app_ops_receive_sms">получить SMS-сообщение</string>
-  <string name="app_ops_record_audio">запись аудио</string>
+  <string name="app_ops_record_audio">записать аудио</string>
   <string name="app_ops_run_in_background">работать в фоновом режиме</string>
   <string name="app_ops_scan_wifi">Сканирование сетей Wi-Fi</string>
   <string name="app_ops_send_mms">отправить MMS-сообщение</string>

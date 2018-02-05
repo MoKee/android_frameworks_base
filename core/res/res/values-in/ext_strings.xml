@@ -19,10 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permlab_preventpower">mengubah tombol daya</string>
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permdesc_preventpower">Memungkinkan aplikasi mengubah perilaku tombol daya.</string>
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB melalui jaringan diaktifkan</string>
   <!-- ADB over USB and network notification -->
@@ -39,6 +35,7 @@
   <string name="privacy_guard_dialog_title">Penjaga Privasi</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> ingin <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Ingat pilihan saya</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">mengakses kamera</string>
   <string name="app_ops_access_location">mengakses lokasi Anda</string>
@@ -80,12 +77,16 @@
   <string name="app_ops_receive_sms">menerima pesan SMS</string>
   <string name="app_ops_record_audio">merekam audio</string>
   <string name="app_ops_run_in_background">berjalan di latar belakang</string>
+  <string name="app_ops_scan_wifi">memindai jaringan Wi-Fi</string>
   <string name="app_ops_send_mms">mengirim pesan MMS</string>
   <string name="app_ops_send_sms">mengirim pesan SMS</string>
   <string name="app_ops_start_at_bootup">mulai pada saat dinyalakan</string>
+  <string name="app_ops_su">dapatkan akses root</string>
   <string name="app_ops_toast_window">tampilkan pesan toast</string>
   <string name="app_ops_toggle_bluetooth">hidup/matikan Bluetooth</string>
+  <string name="app_ops_toggle_mobile_data">hidup/matikan data selular</string>
   <string name="app_ops_toggle_nfc">hidup/matikan NFC</string>
+  <string name="app_ops_toggle_wifi">hidup/matikan Wi-Fi</string>
   <string name="app_ops_turn_on_screen">aktifkan layar</string>
   <string name="app_ops_use_alarm_volume">mengatur volume alarm</string>
   <string name="app_ops_use_audio_focus">mengatur fokus audio</string>
@@ -99,6 +100,7 @@
   <string name="app_ops_use_ring_volume">mengatur volume nada dering</string>
   <string name="app_ops_use_vibrate">gunakan tanggapan sentuhan</string>
   <string name="app_ops_use_voice_volume">mengatur volume panggilan suara</string>
+  <string name="app_ops_wifi_change">ubah status Wi-Fi</string>
   <string name="app_ops_write_external_storage">menulis penyimpanan eksternal</string>
   <string name="app_ops_write_mms">tulis pesan MMS</string>
   <string name="app_ops_write_sms">tulis pesan SMS</string>

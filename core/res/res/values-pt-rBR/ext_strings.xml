@@ -19,10 +19,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permlab_preventpower">substituir o botão de ligar</string>
-  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permdesc_preventpower">Permite que um aplicativo substitua o botão liga/desliga.</string>
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB sobre rede ativado</string>
   <!-- ADB over USB and network notification -->
@@ -39,6 +35,7 @@
   <string name="privacy_guard_dialog_title">Privacy Guard</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> gostaria de <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+  <string name="permission_remember_choice">Lembrar minha escolha</string>
   <!-- App ops requests -->
   <string name="app_ops_access_camera">acessar a câmera</string>
   <string name="app_ops_access_location">acessar sua localização</string>
@@ -80,12 +77,16 @@
   <string name="app_ops_receive_sms">receber uma mensagem SMS</string>
   <string name="app_ops_record_audio">gravar áudio</string>
   <string name="app_ops_run_in_background">executar em segundo plano</string>
+  <string name="app_ops_scan_wifi">procurar rede Wi-Fi</string>
   <string name="app_ops_send_mms">enviar uma mensagem MMS</string>
   <string name="app_ops_send_sms">enviar uma mensagem SMS</string>
   <string name="app_ops_start_at_bootup">iniciar ao ligar</string>
+  <string name="app_ops_su">obter acesso root</string>
   <string name="app_ops_toast_window">exibir mensagens de aviso na tela</string>
   <string name="app_ops_toggle_bluetooth">ligar/desligar o Bluetooth</string>
+  <string name="app_ops_toggle_mobile_data">alternar dados móveis</string>
   <string name="app_ops_toggle_nfc">alternar NFC</string>
+  <string name="app_ops_toggle_wifi">alternar Wi-Fi</string>
   <string name="app_ops_turn_on_screen">ligar a tela</string>
   <string name="app_ops_use_alarm_volume">controlar volume do alarme</string>
   <string name="app_ops_use_audio_focus">controlar o foco do áudio</string>
@@ -99,6 +100,7 @@
   <string name="app_ops_use_ring_volume">controlar o volume do toque</string>
   <string name="app_ops_use_vibrate">usar toque na tela vibratório</string>
   <string name="app_ops_use_voice_volume">controlar o volume de chamadas de voz</string>
+  <string name="app_ops_wifi_change">alterar o estado do Wi-Fi</string>
   <string name="app_ops_write_external_storage">gravar no armazenamento externo</string>
   <string name="app_ops_write_mms">escrever uma mensagem MMS</string>
   <string name="app_ops_write_sms">escrever uma mensagem SMS</string>
