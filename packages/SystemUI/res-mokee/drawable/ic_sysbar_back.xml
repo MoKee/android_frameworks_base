@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2016 The MoKee Open Source Project
+<!--
+     Copyright (C) 2013-2018 The MoKee Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,12 +15,11 @@
      limitations under the License.
 -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="24dp"
-    android:height="24dp"
     android:viewportWidth="88"
-    android:viewportHeight="88">
-
+    android:viewportHeight="88"
+    android:width="24.0dp"
+    android:height="24.0dp">
     <path
-        android:fillColor="#fff"
-        android:pathData="M16.11,16.11C34.41,15.87 52.74,16.05 71.05,16.02C74.76,15.94 77.25,20.45 75.4,23.61C66.61,39.03 57.76,54.44 48.87,69.8C46.91,72.92 42.05,72.85 39.97,69.88C30.84,54.46 21.66,39.05 12.58,23.61C10.99,20.69 12.76,16.63 16.11,16.11Z"/>
+        android:pathData="M72 21c0 0 0 44 0 44 -0.01 3.31 0.56 8.72 -3.23 10.22C65.01 76.71 59.2 72.67 56 70.85 56 70.85 27 54.28 27 54.28 23.21 52.13 15.01 48.55 16.66 43.04c1 -3.39 5.48 -5.67 8.34 -7.32 0 0 20 -11.92 20 -11.92 4.8 -2.87 15.31 -9.36 20 -11.1 6.16 -0.36 6.9 2.9 7 8.3z"
+        android:fillColor="#ffffffff" />
 </vector>

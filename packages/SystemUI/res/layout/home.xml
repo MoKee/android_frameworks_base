@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2016 The Android Open Source Project
+<!--
+     Copyright (C) 2013-2018 The MoKee Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,19 +14,68 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<com.android.systemui.statusbar.policy.KeyButtonView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.systemui.OpaLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:systemui="http://schemas.android.com/apk/res-auto"
     android:id="@+id/home"
     android:layout_width="@dimen/navigation_key_width"
-    android:layout_height="match_parent"
-    android:layout_weight="0"
-    systemui:keyCode="3"
-    android:scaleType="fitCenter"
-    android:contentDescription="@string/accessibility_home"
-    android:paddingTop="@dimen/home_padding"
-    android:paddingBottom="@dimen/home_padding"
-    android:paddingStart="@dimen/navigation_key_padding"
+    android:layout_height="fill_parent"
+    android:layout_weight="0.0"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     android:paddingEnd="@dimen/navigation_key_padding"
-    />
+    android:paddingStart="@dimen/navigation_key_padding">
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:id="@+id/red"
+            style="@style/DotStyle"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_sysbar_opa_red" />
+
+        <ImageView
+            android:id="@+id/blue"
+            style="@style/DotStyle"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_sysbar_opa_blue" />
+
+        <ImageView
+            android:id="@+id/green"
+            style="@style/DotStyle"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_sysbar_opa_green" />
+
+        <ImageView
+            android:id="@+id/yellow"
+            style="@style/DotStyle"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_sysbar_opa_yellow" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_sysbar_home" />
+
+    <com.android.systemui.statusbar.policy.KeyButtonView
+        android:id="@+id/home_button"
+        android:layout_width="@dimen/navigation_key_width"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:contentDescription="@string/accessibility_home"
+        android:scaleType="fitCenter"
+        systemui:keyCode="3" />
+
+    <ImageView
+        android:id="@+id/halo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:importantForAccessibility="no"
+        android:src="@drawable/halo" />
+</com.google.android.systemui.OpaLayout>
