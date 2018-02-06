@@ -14,8 +14,13 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<shape android:shape="ring" android:useLevel="false" android:innerRadius="@dimen/halo_inner_radius" android:thickness="@dimen/halo_thickness"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ffffffff" />
-    <size android:height="@dimen/halo_diameter" android:width="@dimen/halo_diameter" />
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:innerRadius="@dimen/halo_inner_radius"
+    android:shape="ring"
+    android:thickness="@dimen/halo_thickness"
+    android:useLevel="false">
+    <solid android:color="#FFFFFFFF" />
+    <size
+        android:width="@dimen/halo_diameter"
+        android:height="@dimen/halo_diameter" />
 </shape>
