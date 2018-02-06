@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2016-2018 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
  * except in compliance with the License. You may obtain a copy of the License at
@@ -156,7 +157,11 @@ public class NavigationBarInflaterView extends FrameLayout
     @Override
     public void onTuningChanged(String key, String newValue) {
         if (NAV_BAR_VIEWS.equals(key)) {
-            if (!Objects.equals(mCurrentLayout, newValue)) {
+            if (!Objects.equals(mCurrentLayout, newValue) ||
+                    // Re-inflate layout even after the saved layout happens to match
+                    // the default one. When onTuningChanged is run again, all Views will
+                    // be inflated correctly.
+                    Objects.equals(mCurrentLayout, getDefaultLayout())) {
                 clearViews();
                 inflateLayout(newValue);
             }

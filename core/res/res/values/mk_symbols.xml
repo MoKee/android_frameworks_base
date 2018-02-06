@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2014-2018 The MoKee Open Source Project
 
@@ -14,6 +15,9 @@
      limitations under the License.
 -->
 <resources>
+
+    <!-- Pixel navigation bar animation -->
+    <java-symbol type="bool" name="config_allowOpaLayout" />
 
     <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
     <java-symbol type="string" name="mk_system_error_manufacturer" />
