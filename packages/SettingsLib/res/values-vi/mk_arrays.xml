@@ -20,7 +20,7 @@
   <string-array name="mk_window_animation_scale_entries">
     <item>Tắt hình động</item>
     <item>Tỷ lệ hình động 0,5x</item>
-    <item>Tỷ lệ hình động 0,5x</item>
+    <item>Tỷ lệ hình động 0,75x</item>
     <item>Tỷ lệ hình động 1x</item>
     <item>Tỷ lệ hình động 1,5x</item>
     <item>Tỷ lệ hình động 2x</item>
@@ -32,7 +32,7 @@
   <string-array name="mk_transition_animation_scale_entries">
     <item>Tắt hình động</item>
     <item>Tỷ lệ hình động 0,5x</item>
-    <item>Tỷ lệ hình động 0,5x</item>
+    <item>Tỷ lệ hình động 0,75x</item>
     <item>Tỷ lệ hình động 1x</item>
     <item>Tỷ lệ hình động 1,5x</item>
     <item>Tỷ lệ hình động 2x</item>
@@ -44,7 +44,7 @@
   <string-array name="mk_animator_duration_scale_entries">
     <item>Tắt hình động</item>
     <item>Tỷ lệ hình động 0,5x</item>
-    <item>Tỷ lệ hình động 0,5x</item>
+    <item>Tỷ lệ hình động 0,75x</item>
     <item>Tỷ lệ hình động 1x</item>
     <item>Tỷ lệ hình động 1,5x</item>
     <item>Tỷ lệ hình động 2x</item>
