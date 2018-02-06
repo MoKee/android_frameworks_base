@@ -28,6 +28,7 @@
   <!-- ADB over network QS tile -->
   <string name="quick_settings_network_adb_label">ADB prin rețea</string>
   <!-- Ambient display QS tile -->
+  <string name="quick_settings_ambient_display_label">Afișare ambientală</string>
   <string name="accessibility_quick_settings_ambient_display_off">Afișare ambientală oprită.</string>
   <string name="accessibility_quick_settings_ambient_display_on">Afișare ambientală pornită.</string>
   <string name="accessibility_quick_settings_ambient_display_changed_off">Afișaj ambiental dezactivat.</string>
