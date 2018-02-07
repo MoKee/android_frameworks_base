@@ -31,16 +31,16 @@
   <string name="quick_settings_compass_N">B</string>
   <string name="quick_settings_compass_NE">ĐB</string>
   <string name="quick_settings_compass_E">Đ</string>
-  <string name="quick_settings_compass_SE">Đông Nam</string>
+  <string name="quick_settings_compass_SE">ĐN</string>
   <string name="quick_settings_compass_S">N</string>
   <string name="quick_settings_compass_SW">TN</string>
   <string name="quick_settings_compass_W">T</string>
   <string name="quick_settings_compass_NW">TB</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
-  <string name="keyguard_indication_dash_charging_time">Đang sạc (<xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g> nữa sẽ đầy!)</string>
+  <string name="keyguard_indication_dash_charging_time">Đang sạc (<xliff:g id="Charging_TIME_LEFT">%s</xliff:g> sẽ đầy!)</string>
   <string name="keyguard_plugged_in_dash_charging">Đang sạc</string>
   <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
-  <string name="key_disabler">Tắt các phím cứng</string>
+  <string name="key_disabler">Tắt phím cảm ứng</string>
   <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_quick_settings_key_disabler_changed_off">Bật phím.</string>
   <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
