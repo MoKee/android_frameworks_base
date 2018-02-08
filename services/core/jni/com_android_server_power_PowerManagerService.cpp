@@ -19,6 +19,7 @@
 //#define LOG_NDEBUG 0
 
 #include <android/hardware/power/1.1/IPower.h>
+#include <vendor/mokee/power/1.0/IMoKeePower.h>
 #include "JNIHelp.h"
 #include "jni.h"
 
@@ -45,6 +46,7 @@ using android::hardware::power::V1_1::IPower;
 using android::hardware::power::V1_0::PowerHint;
 using android::hardware::power::V1_0::Feature;
 using android::String8;
+using vendor::mokee::power::V1_0::MoKeeFeature;
 
 namespace android {
 
@@ -59,7 +61,9 @@ static struct {
 static jobject gPowerManagerServiceObj;
 sp<android::hardware::power::V1_0::IPower> gPowerHalV1_0 = nullptr;
 sp<android::hardware::power::V1_1::IPower> gPowerHalV1_1 = nullptr;
+sp<vendor::mokee::power::V1_0::IMoKeePower> gMoKeePowerHalV1_0 = nullptr;
 bool gPowerHalExists = true;
+bool gMoKeePowerHalExists = true;
 std::mutex gPowerHalMutex;
 static nsecs_t gLastEventTime[USER_ACTIVITY_EVENT_LAST + 1];
 
@@ -92,6 +96,21 @@ bool getPowerHal() {
         }
     }
     return gPowerHalV1_0 != nullptr;
+}
+
+// Check validity of current handle to the mokee power HAL service, and call getService() if necessary.
+// The caller must be holding gPowerHalMutex.
+bool getMoKeePowerHal() {
+    if (gMoKeePowerHalExists && gMoKeePowerHalV1_0 == nullptr) {
+        gMoKeePowerHalV1_0 = vendor::mokee::power::V1_0::IMoKeePower::getService();
+        if (gMoKeePowerHalV1_0 != nullptr) {
+            ALOGI("Loaded power HAL service");
+        } else {
+            ALOGI("Couldn't load power HAL service");
+            gMoKeePowerHalExists = false;
+        }
+    }
+    return gMoKeePowerHalV1_0 != nullptr;
 }
 
 // Check if a call to a power HAL function failed; if so, log the failure and invalidate the
@@ -214,6 +233,17 @@ static void nativeSetFeature(JNIEnv *env, jclass clazz, jint featureId, jint dat
     }
 }
 
+static jint nativeGetFeature(JNIEnv *env, jclass clazz, jint featureId) {
+    int value = -1;
+
+    std::lock_guard<std::mutex> lock(gPowerHalMutex);
+    if (getMoKeePowerHal()) {
+        value = gMoKeePowerHalV1_0->getFeature((MoKeeFeature)featureId);
+    }
+
+    return (jint)value;
+}
+
 // ----------------------------------------------------------------------------
 
 static const JNINativeMethod gPowerManagerServiceMethods[] = {
@@ -232,6 +262,8 @@ static const JNINativeMethod gPowerManagerServiceMethods[] = {
             (void*) nativeSendPowerHint },
     { "nativeSetFeature", "(II)V",
             (void*) nativeSetFeature },
+    { "nativeGetFeature", "(I)I",
+            (void*) nativeGetFeature },
 };
 
 #define FIND_CLASS(var, className) \
