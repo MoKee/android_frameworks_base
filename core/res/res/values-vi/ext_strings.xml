@@ -71,7 +71,7 @@
   <string name="app_ops_delete_contacts">xóa danh bạ</string>
   <string name="app_ops_delete_mms">xoá tin nhắn MMS</string>
   <string name="app_ops_delete_sms">xoá tin nhắn SMS</string>
-  <string name="app_ops_draw_on_top">hiện cửa sổ trên cùng</string>
+  <string name="app_ops_draw_on_top">hiện thông báo nổi</string>
   <string name="app_ops_get_usage_stats">lấy thống kê sử dụng ứng dụng</string>
   <string name="app_ops_keep_device_awake">giữ màn hình sáng</string>
   <string name="app_ops_make_phone_call">thực hiện cuộc gọi</string>

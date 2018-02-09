@@ -172,7 +172,7 @@
   <string name="accessibility_quick_settings_caffeine_off">Tắt Cafein</string>
   <string name="accessibility_quick_settings_caffeine_on">Bật Cafein</string>
   <!-- Heads up QS tile -->
-  <string name="quick_settings_heads_up_label">Hiện trên cùng</string>
+  <string name="quick_settings_heads_up_label">Thông báo nổi</string>
   <string name="accessibility_quick_settings_heads_up_off">Tắt thông báo nổi.</string>
   <string name="accessibility_quick_settings_heads_up_on">Bật thông báo nổi.</string>
   <string name="accessibility_quick_settings_heads_up_changed_off">Thông báo nổi đã tắt.</string>
@@ -199,15 +199,15 @@
   <string name="live_display_night_summary">Chỉ sử dụng cài đặt ban đêm</string>
   <string name="live_display_outdoor">Ngoài trời (ánh sáng mạnh)</string>
   <string name="live_display_outdoor_summary">Chỉ sử dụng cài đặt ngoài trời</string>
-  <string name="live_display_hint">LiveDisplay giúp làm giảm mỏi mắt và bảo vệ mắt khỏi ánh sáng xanh. Chạm để thử!</string>
-  <string name="accessibility_quick_settings_live_display_off">LiveDisplay tắt.</string>
-  <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: chế độ tự động.</string>
-  <string name="accessibility_quick_settings_live_display_day">LiveDisplay: chế độ ngày.</string>
-  <string name="accessibility_quick_settings_live_display_night">LiveDisplay: chế độ ban đêm.</string>
-  <string name="accessibility_quick_settings_live_display_outdoor">LiveDisplay: chế độ ngoài trời.</string>
-  <string name="accessibility_quick_settings_live_display_changed_off">LiveDisplay tắt.</string>
-  <string name="accessibility_quick_settings_live_display_changed_auto">LiveDisplay thay đổi chế độ tự động.</string>
-  <string name="accessibility_quick_settings_live_display_changed_day">LiveDisplay thay đổi chế độ ngày.</string>
-  <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay thay đổi chế độ ban đêm.</string>
-  <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay thay đổi chế độ ngoài trời.</string>
+  <string name="live_display_hint">Chế độ Đọc sách giúp làm giảm mỏi mắt và bảo vệ mắt khỏi ánh sáng xanh. Chạm để thử!</string>
+  <string name="accessibility_quick_settings_live_display_off">Đọc sách tắt.</string>
+  <string name="accessibility_quick_settings_live_display_auto">Đọc sách: tự động.</string>
+  <string name="accessibility_quick_settings_live_display_day">Đọc sách: ngày.</string>
+  <string name="accessibility_quick_settings_live_display_night">Đọc sách: đêm.</string>
+  <string name="accessibility_quick_settings_live_display_outdoor">Đọc sách: ngoài trời.</string>
+  <string name="accessibility_quick_settings_live_display_changed_off">Đọc sách tắt.</string>
+  <string name="accessibility_quick_settings_live_display_changed_auto">Đọc sách thay đổi chế độ tự động.</string>
+  <string name="accessibility_quick_settings_live_display_changed_day">Đọc sách thay đổi chế độ ngày.</string>
+  <string name="accessibility_quick_settings_live_display_changed_night">Đọc sách thay đổi chế độ ban đêm.</string>
+  <string name="accessibility_quick_settings_live_display_changed_outdoor">Đọc sách thay đổi chế độ ngoài trời.</string>
 </resources>
