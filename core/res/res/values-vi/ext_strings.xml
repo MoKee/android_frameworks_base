@@ -52,7 +52,7 @@
   <string name="app_ops_delete_contacts">xóa danh bạ của bạn</string>
   <string name="app_ops_delete_mms">xoá tin nhắn MMS của bạn</string>
   <string name="app_ops_delete_sms">xoá tin nhắn SMS của bạn</string>
-  <string name="app_ops_draw_on_top">hiện cửa sổ trên cùng</string>
+  <string name="app_ops_draw_on_top">hiện thông báo nổi</string>
   <string name="app_ops_get_accounts">lấy thông tin tài khoản thiết bị</string>
   <string name="app_ops_get_usage_stats">lấy thống kê sử dụng ứng dụng</string>
   <string name="app_ops_install_packages">cài đặt gói</string>
