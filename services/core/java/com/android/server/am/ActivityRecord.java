@@ -159,7 +159,7 @@ import android.view.WindowManager.LayoutParams;
 
 import com.android.internal.annotations.VisibleForTesting;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import com.android.internal.app.ResolverActivity;
 import com.android.internal.content.ReferrerIntent;
@@ -1759,9 +1759,9 @@ final class ActivityRecord extends ConfigurationContainer implements AppWindowCo
 
         boolean privacy = service.mAppOpsService.getPrivacyGuardSettingForPackage(
                 this.app.uid, this.packageName);
-        boolean privacyNotification = (LineageSettings.Secure.getInt(
+        boolean privacyNotification = (MKSettings.Secure.getInt(
                 service.mContext.getContentResolver(),
-                LineageSettings.Secure.PRIVACY_GUARD_NOTIFICATION, 1) == 1);
+                MKSettings.Secure.PRIVACY_GUARD_NOTIFICATION, 1) == 1);
 
         if (privacyGuardPackageName != null && !privacy) {
             Message msg = service.mHandler.obtainMessage(
