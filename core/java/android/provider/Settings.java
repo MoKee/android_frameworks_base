@@ -3722,7 +3722,13 @@ public final class Settings {
         public static final String PIXEL_NAV_ANIMATION = "pixel_nav_animation";
 
         /**
-         * Use MoKee Cloud Location Engine
+         * MoKee Unique registration ids
+         * @hide
+         */
+        public static final String UNIQUE_REGISTRATION_IDS = "unique_registration_ids";
+
+        /**
+         * MoKee Cloud Location Engine
          * @hide
          */
         public static final String ENABLE_CLOUD_LOCATION_LOOKUP = "enable_cloud_location_lookup";
