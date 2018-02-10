@@ -248,7 +248,7 @@ import android.util.jar.StrictJarFile;
 import android.util.proto.ProtoOutputStream;
 import android.view.Display;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import com.android.internal.R;
 import com.android.internal.annotations.GuardedBy;
@@ -2073,9 +2073,9 @@ public class PackageManagerService extends IPackageManager.Stub
             }
 
             if (!update && !isSystemApp(res.pkg)) {
-                boolean privacyGuard = LineageSettings.Secure.getIntForUser(
+                boolean privacyGuard = MKSettings.Secure.getIntForUser(
                         mContext.getContentResolver(),
-                        LineageSettings.Secure.PRIVACY_GUARD_DEFAULT,
+                        MKSettings.Secure.PRIVACY_GUARD_DEFAULT,
                         0, UserHandle.USER_CURRENT) == 1;
                 if (privacyGuard) {
                     mAppOps.setPrivacyGuardSettingForPackage(
