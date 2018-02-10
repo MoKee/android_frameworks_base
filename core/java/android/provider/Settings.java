@@ -5176,12 +5176,6 @@ public final class Settings {
         }
 
         /**
-         * MoKee Unique registration ids
-         * @hide
-         */
-        public static final String UNIQUE_REGISTRATION_IDS = "unique_registration_ids";
-
-        /**
          * @deprecated Use {@link android.provider.Settings.Global#DEVELOPMENT_SETTINGS_ENABLED}
          * instead
          */
