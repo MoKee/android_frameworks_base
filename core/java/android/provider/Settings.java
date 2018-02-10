@@ -3934,7 +3934,7 @@ public final class Settings {
         };
 
         /**
-         * Use MoKee Cloud Location Engine
+         * MoKee Cloud Location Engine
          * @hide
          */
         public static final String ENABLE_CLOUD_LOCATION_LOOKUP = "enable_cloud_location_lookup";
@@ -5174,6 +5174,12 @@ public final class Settings {
                 int userHandle) {
             return putStringForUser(cr, name, Float.toString(value), userHandle);
         }
+
+        /**
+         * MoKee Unique registration ids
+         * @hide
+         */
+        public static final String UNIQUE_REGISTRATION_IDS = "unique_registration_ids";
 
         /**
          * @deprecated Use {@link android.provider.Settings.Global#DEVELOPMENT_SETTINGS_ENABLED}
