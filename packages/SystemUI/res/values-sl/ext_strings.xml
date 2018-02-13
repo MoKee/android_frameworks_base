@@ -35,6 +35,8 @@
   <string name="accessibility_quick_settings_ambient_display_changed_on">Okoliški zaslon vklopljen.</string>
   <!-- Caffeine QS tile -->
   <string name="quick_settings_caffeine_label">Kofein</string>
+  <string name="accessibility_quick_settings_caffeine_off">Kofein izklopljen.</string>
+  <string name="accessibility_quick_settings_caffeine_on">Kofein vklopljen.</string>
   <!-- Heads up QS tile -->
   <string name="quick_settings_heads_up_label">Obvestila na zaslonu</string>
   <string name="accessibility_quick_settings_heads_up_off">Obvestila na zas. izk.</string>
@@ -71,6 +73,9 @@
   <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
   <string name="global_action_restart_progress">Ponovno zaganjanje \u2026</string>
   <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
+  <string name="global_action_restart_recovery_progress">Ponovno zaganjanje v način obnovitve \u2026</string>
   <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
+  <string name="global_action_restart_bootloader_progress">Ponovno zaganjanje v način zagonskega nalagalnika \u2026</string>
   <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
+  <string name="global_action_restart_download_progress">Ponovno zaganjanje v način prenosa \u2026</string>
 </resources>
