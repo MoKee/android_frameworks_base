@@ -48,6 +48,10 @@
   <string name="accessibility_dpad_left">કર્સર ડાબું</string>
   <string name="accessibility_dpad_right">કર્સર જમણું</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
+  <!-- Text to use when the number in a notification info is too large
+         (greater than status_bar_notification_info_maxnum, defined in
+         values/config.xml) and must be truncated.
+         [CHAR LIMIT=4] -->
   <!-- Label for current user in power menu options dialog -->
   <string name="global_action_current_user">ચાલુ</string>
   <!-- Label for item that screenshots in power menu options dialog -->
@@ -62,4 +66,25 @@
   <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
   <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
   <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
+  <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_location_battery_saving">સ્થાન રિપોર્ટિંગ: બૅટરી બચત મોડ.</string>
+  <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_location_gps_only">સ્થાન રિપોર્ટિંગ: ફક્ત સેન્સર્સ મોડ.</string>
+  <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_location_high_accuracy">સ્થાન રિપોર્ટિંગ: ઉચ્ચ સચોટતા મોડ.</string>
+  <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
+  <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
+  <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_high_accuracy_label">ઉચ્ચ સચોટતા</string>
+  <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_detail_title">&quot;સ્થાન&quot;</string>
+  <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
+  <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
+  <string name="quick_settings_location_detail_mode_high_accuracy_title">ઉચ્ચ સચોટતા</string>
+  <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->
+  <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
+  <string name="quick_settings_location_detail_mode_sensors_only_title">ફક્ત ઉપકરણ</string>
+  <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
+  <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
+  <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
 </resources>
