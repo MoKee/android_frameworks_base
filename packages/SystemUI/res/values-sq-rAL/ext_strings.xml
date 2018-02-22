@@ -51,6 +51,10 @@
   <string name="accessibility_dpad_left">Kursori majtas</string>
   <string name="accessibility_dpad_right">Kursori djathtas</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
+  <!-- Text to use when the number in a notification info is too large
+         (greater than status_bar_notification_info_maxnum, defined in
+         values/config.xml) and must be truncated.
+         [CHAR LIMIT=4] -->
   <!-- Label for current user in power menu options dialog -->
   <string name="global_action_current_user">Aktuali</string>
   <!-- Label for item that screenshots in power menu options dialog -->
@@ -65,4 +69,30 @@
   <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
   <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
   <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
+  <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_location_battery_saving">Raportimi i vendndodhjes: kursim i baterisë.</string>
+  <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_location_gps_only">Raportimi i vendndodhjes: vetëm nga sensorët.</string>
+  <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_location_high_accuracy">Raportimi i vendndodhjes: me saktësi të lartë.</string>
+  <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_battery_saving_label_twoline">Kursim i\nbaterisë</string>
+  <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
+  <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_high_accuracy_label">Saktësi e lartë</string>
+  <string name="quick_settings_location_high_accuracy_label_twoline">Saktësi\ne lartë</string>
+  <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_detail_title">Vendndodhja</string>
+  <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_detail_menu_title">Zgjidh profilin:</string>
+  <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
+  <string name="quick_settings_location_detail_mode_high_accuracy_title">Saktësi e lartë</string>
+  <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->
+  <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
+  <string name="quick_settings_location_detail_mode_sensors_only_title">Vetëm pajisja</string>
+  <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
+  <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
+  <string name="quick_settings_location_detail_mode_battery_saving_description">Përdor Wi\u2011Fi, Bluetooth, ose rrjetet celulare për të përcaktuar vendndodhjen</string>
+  <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
+  <string name="quick_settings_location_detail_mode_sensors_only_description">Përdor GPS për të përcaktuar vendndodhjen</string>
 </resources>
