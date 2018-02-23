@@ -3951,6 +3951,42 @@ public final class Settings {
         public static final String PIXEL_NAV_ANIMATION = "pixel_nav_animation";
 
         /**
+         * Whether to use edge gestures to navigate.
+         * @hide
+         */
+        public static final String EDGE_GESTURES_ENABLED = "edge_gestures_enabled";
+
+        /**
+         * Haptic feedback duration on edge gesture navigation.
+         * @hide
+         */
+        public static final String EDGE_GESTURES_FEEDBACK_DURATION = "edge_gestures_feedback_duration";
+
+        /**
+         * Long press duration on edge gesture navigation.
+         * @hide
+         */
+        public static final String EDGE_GESTURES_LONG_PRESS_DURATION = "edge_gestures_long_press_duration";
+
+        /**
+         * Back gesture active on this edges.
+         * @hide
+         */
+        public static final String EDGE_GESTURES_BACK_EDGES = "edge_gestures_back_edges";
+
+        /**
+         * Back gesture active on this edges when on landscape.
+         * @hide
+         */
+        public static final String EDGE_GESTURES_LANDSCAPE_BACK_EDGES = "edge_gestures_landscape_back_edges";
+
+        /**
+         * Activate back gestures only when Y position > than this % of screen.
+         * @hide
+         */
+        public static final String EDGE_GESTURES_BACK_SCREEN_PERCENT = "edge_gestures_back_screen_percent";
+
+        /**
          * Setting to determine whether or not to show the battery percentage in the status bar.
          *    0 - Don't show percentage
          *    1 - Show percentage
