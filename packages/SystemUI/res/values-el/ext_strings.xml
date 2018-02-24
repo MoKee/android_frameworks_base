@@ -79,6 +79,8 @@
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_battery_saving_label_twoline">Εξοικονόμηση\nμπαταρίας</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_gps_only_label">Μόνο συσκευή</string>
+  <string name="quick_settings_location_gps_only_label_twoline">Μόνο\nσυσκευή</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">Υψηλή ακρίβεια</string>
   <string name="quick_settings_location_high_accuracy_label_twoline">Υψηλή\nακρίβεια</string>
@@ -92,6 +94,7 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">Μόνο συσκευή</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">Χρήση GPS, Wi\u2011Fi, Bluetooth ή δικτύων κινητής τηλεφωνίας για τον καθορισμό της τοποθεσίας</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
   <string name="quick_settings_location_detail_mode_battery_saving_description">Χρήση Wi\u2011Fi, Bluetooth ή δικτύων κινητής τηλεφωνίας για καθορισμό τοποθεσίας</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->

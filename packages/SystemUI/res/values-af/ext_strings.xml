@@ -75,6 +75,8 @@
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_battery_saving_label_twoline">Battery\nbesparend</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_gps_only_label">Slegs Toestel</string>
+  <string name="quick_settings_location_gps_only_label_twoline">Slegs\ntoestel</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">Hoë akkuraatheid</string>
   <string name="quick_settings_location_high_accuracy_label_twoline">Hoë\nakkuraatheid</string>
@@ -88,6 +90,7 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">Slegs Toestel</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">Gebruik GPS, Wi\u2011Fi, Bluetooth of sellulêre netwerke om ligging te bepaal</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
   <string name="quick_settings_location_detail_mode_battery_saving_description">Gebruik Wi-Fi, Bluetooth of sellulêre netwerke om ligging te bepaal</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->

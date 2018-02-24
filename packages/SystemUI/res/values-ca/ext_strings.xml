@@ -80,6 +80,8 @@
   <string name="quick_settings_location_battery_saving_label">Estalvi de bateria</string>
   <string name="quick_settings_location_battery_saving_label_twoline">Estalvi\nde bateria</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_gps_only_label">Només dispositiu</string>
+  <string name="quick_settings_location_gps_only_label_twoline">Només\ndispositiu</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">Alta precisió</string>
   <string name="quick_settings_location_high_accuracy_label_twoline">Alta\nprecisió</string>
@@ -94,6 +96,7 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">Només dispositiu</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">Utilitza el GPS, la Wi\u2011Fi, el Bluetooth, o les xarxes mòbils per determinar la ubicació</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
   <string name="quick_settings_location_detail_mode_battery_saving_description">Utilitza la Wi\u2011Fi, el Bluetooth o les xarxes mòbils per determinar la ubicació</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->

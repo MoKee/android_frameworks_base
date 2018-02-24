@@ -78,6 +78,7 @@
   <string name="accessibility_quick_settings_location_high_accuracy">ಸ್ಥಳ ವರದಿಸಲ್ಲಿಸುವಿಕೆ: ಗರಿಷ್ಟ ನಿಖರತೆ ಮೋಡ್.</string>
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_gps_only_label">ಸಾಧನ ಮಾತ್ರ</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">ಗರಿಷ್ಠ ನಿಖರತೆ</string>
   <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->

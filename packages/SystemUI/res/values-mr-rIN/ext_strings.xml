@@ -74,6 +74,7 @@
   <string name="accessibility_quick_settings_location_high_accuracy">स्थान अहवाल देणे: उच्च अचूकता मोड.</string>
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_gps_only_label">केवळ डिव्हाइस</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">उच्च अचूकता</string>
   <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->

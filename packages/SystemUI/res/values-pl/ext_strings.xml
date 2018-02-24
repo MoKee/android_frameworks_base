@@ -95,8 +95,8 @@
   <string name="quick_settings_location_battery_saving_label">Oszczędzanie energii</string>
   <string name="quick_settings_location_battery_saving_label_twoline">Oszczędzanie\nenergii</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_gps_only_label">Tylko GPS</string>
-  <string name="quick_settings_location_gps_only_label_twoline">Tylko GPS</string>
+  <string name="quick_settings_location_gps_only_label">Tylko urządzenie</string>
+  <string name="quick_settings_location_gps_only_label_twoline">Tylko\nurządzenie</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">Wysoka dokładność</string>
   <string name="quick_settings_location_high_accuracy_label_twoline">Wysoka\ndokładność</string>
@@ -111,7 +111,7 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">Tylko urządzenie</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-  <string name="quick_settings_location_detail_mode_high_accuracy_description">Ustalaj lokalizację przez GPS, Wi‑Fi, Bluetooth lub sieci komórkowe </string>
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">Używaj GPS, Wi\u2011Fi, Bluetooth oraz sieci komórkowej, aby ustalić lokalizację</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
   <string name="quick_settings_location_detail_mode_battery_saving_description">Ustalaj lokalizację przez Wi‑Fi, Bluetooth lub sieci komórkowe</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->

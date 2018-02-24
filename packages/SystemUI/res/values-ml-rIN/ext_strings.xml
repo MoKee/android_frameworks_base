@@ -76,6 +76,7 @@
   <string name="accessibility_quick_settings_location_high_accuracy">സ്ഥാനം റിപ്പോർട്ടിംഗ്: ഉയർന്ന കൃത്യതാ മോഡ്.</string>
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_gps_only_label">ഉപകരണം മാത്രം</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">ഉയർന്ന കൃത്യത</string>
   <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->

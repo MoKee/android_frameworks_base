@@ -75,6 +75,8 @@
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_battery_saving_label_twoline">Aforru\nd\'enerxía</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_gps_only_label">Namái preséu</string>
+  <string name="quick_settings_location_gps_only_label_twoline">Namái\npreséu</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">Precisión alta</string>
   <string name="quick_settings_location_high_accuracy_label_twoline">Precisión\nalto</string>
@@ -88,6 +90,7 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">Namái preséu</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">Usa\'l GPS, Wi\u2011Fi, Bluetooth o redes móviles pa determinar l\'allugamientu </string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
   <string name="quick_settings_location_detail_mode_battery_saving_description">Usa\'l Wi\u2011Fi, Bluetooth o redes móviles pa determinar l\'allugamientu</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->

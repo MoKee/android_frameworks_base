@@ -78,6 +78,8 @@
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_battery_saving_label_twoline">חיסכון\nבסוללה</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_gps_only_label">מכשיר בלבד</string>
+  <string name="quick_settings_location_gps_only_label_twoline">מכשיר\nבלבד</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">דיוק מרבי</string>
   <string name="quick_settings_location_high_accuracy_label_twoline">דיוק\nמרבי</string>
@@ -91,6 +93,7 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">מכשיר בלבד</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">‏השתמש ב-GPS‏, Wi\u2011Fi‏, Bluetooth או רשתות סלולריות כדי לקבוע מיקום</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
   <string name="quick_settings_location_detail_mode_battery_saving_description">‏השתמש ב-Wi\u2011Fi‏, Bluetooth או רשתות סלולריות כדי לקבוע מיקום</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->

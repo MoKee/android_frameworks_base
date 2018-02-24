@@ -95,8 +95,8 @@
   <string name="quick_settings_location_battery_saving_label">Энергосебережение</string>
   <string name="quick_settings_location_battery_saving_label_twoline">По коорди-\nнатам сети</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_gps_only_label">Только GPS</string>
-  <string name="quick_settings_location_gps_only_label_twoline">Только GPS</string>
+  <string name="quick_settings_location_gps_only_label">По спутникам GPS</string>
+  <string name="quick_settings_location_gps_only_label_twoline">Только\nGPS</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">По всем источникам</string>
   <string name="quick_settings_location_high_accuracy_label_twoline">По всем\nисточникам</string>
@@ -111,7 +111,7 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">По спутникам GPS</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-  <string name="quick_settings_location_detail_mode_high_accuracy_description">Использовать GPS, Wi-Fi, Bluetooth или мобильную сеть для определения местоположения </string>
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">Использовать GPS, Wi‑Fi, Bluetooth и мобильные сети для определения местоположения</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
   <string name="quick_settings_location_detail_mode_battery_saving_description">Использовать Wi‑Fi, Bluetooth и мобильные сети для определения местоположения</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->

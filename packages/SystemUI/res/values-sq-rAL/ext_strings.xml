@@ -78,6 +78,7 @@
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_battery_saving_label_twoline">Kursim i\nbaterisë</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_gps_only_label">Vetëm pajisja</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">Saktësi e lartë</string>
   <string name="quick_settings_location_high_accuracy_label_twoline">Saktësi\ne lartë</string>

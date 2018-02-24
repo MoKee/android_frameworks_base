@@ -95,6 +95,8 @@
   <string name="quick_settings_location_battery_saving_label">Энергазберажэнне</string>
   <string name="quick_settings_location_battery_saving_label_twoline">Энерга\nзберажэнне</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_gps_only_label">Па спадарожніках GPS</string>
+  <string name="quick_settings_location_gps_only_label_twoline">Толькі GPS</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">Па ўсіх крыніцах</string>
   <string name="quick_settings_location_high_accuracy_label_twoline">Высокая\nдакладнасць</string>
@@ -109,6 +111,7 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">Па спадарожніках GPS</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">Выкарыстанне GPS, Wi\u2011Fi, Bluetooth, або сотавыя сеткі для вызначэння месцазнаходжання </string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
   <string name="quick_settings_location_detail_mode_battery_saving_description">Выкарыстанне Wi\u2011Fi, Bluetooth, або сотавыя сеткі для вызначэння месцазнаходжання</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->

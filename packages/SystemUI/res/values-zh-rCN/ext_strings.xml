@@ -95,6 +95,8 @@
   <string name="quick_settings_location_battery_saving_label">省电</string>
   <string name="quick_settings_location_battery_saving_label_twoline">节省\n电量</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_gps_only_label">仅限设备</string>
+  <string name="quick_settings_location_gps_only_label_twoline">仅 GPS</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">高精确度</string>
   <string name="quick_settings_location_high_accuracy_label_twoline">高\n精确度</string>
@@ -109,6 +111,7 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">仅限设备</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">使用 GPS、WLAN、蓝牙或移动网络确定位置</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
   <string name="quick_settings_location_detail_mode_battery_saving_description">使用 WLAN、蓝牙或移动网络确定位置</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
