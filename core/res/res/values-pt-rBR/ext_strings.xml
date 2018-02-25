@@ -3,6 +3,7 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
+     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +25,6 @@
   <string name="adb_both_active_notification_title">ABD sobre USB e rede ativado</string>
   <!-- ADB notification message-->
   <string name="adb_active_generic_notification_message">Toque para desativar a depuração.</string>
-  <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
-  <string name="lineage_system_error_manufacturer">Foi detectada uma incompatibilidade de imagem do fornecedor. Normalmente, isto significa que a sua imagem de fornecedor está desatualizada. Por favor, certifique-se de que a sua imagem de fornecedor corresponde a <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <string name="lock_to_app_toast_no_navbar">Para desafixar esta tela, toque e segure o botão Voltar.</string>
   <!-- Privacy Guard -->
@@ -43,8 +42,10 @@
   <string name="app_ops_access_notifications">ler suas notificações</string>
   <string name="app_ops_activate_vpn">ativar uma VPN</string>
   <string name="app_ops_add_voicemail">adicionar uma mensagem de voz</string>
+  <string name="app_ops_app_start_foreground">iniciar aplicação instantânea em primeiro plano</string>
   <string name="app_ops_assist_screenshot">capturar a tela</string>
   <string name="app_ops_assist_structure">usar estrutura de assistência</string>
+  <string name="app_ops_audio_accessibility_volume">volume de acessibilidade de áudio</string>
   <string name="app_ops_auto_start">iniciar ao ligar</string>
   <string name="app_ops_change_wallpaper">mudar o papel de parede</string>
   <string name="app_ops_delete_call_log">deletar seu registro de chamadas</string>
@@ -64,6 +65,8 @@
   <string name="app_ops_modify_contacts">atualizar seus contatos</string>
   <string name="app_ops_modify_settings">atualizar configurações de sistema</string>
   <string name="app_ops_mute_unmute_microphone">ligar/desligar o microfone</string>
+  <string name="app_ops_phone_calls">atender telefonemas</string>
+  <string name="app_ops_picture_in_picture">usar Picture-in-Picture</string>
   <string name="app_ops_play_audio">reproduzir áudio</string>
   <string name="app_ops_post_notification">exibir uma notificação</string>
   <string name="app_ops_project_media">projetar mídia</string>
@@ -74,6 +77,7 @@
   <string name="app_ops_read_contacts">ler seus contatos</string>
   <string name="app_ops_read_external_storage">ler o armazenamento externo</string>
   <string name="app_ops_read_mms">ler suas mensagens MMS</string>
+  <string name="app_ops_read_phone_numbers">ler números de telefone</string>
   <string name="app_ops_read_phone_state">acessar estado do telefone</string>
   <string name="app_ops_read_sms">ler suas mensagens SMS</string>
   <string name="app_ops_receive_sms">receber uma mensagem SMS</string>
