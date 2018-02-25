@@ -579,7 +579,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             boolean visible = MKSettings.Global.getIntForUser(mContext.getContentResolver(),
                     MKSettings.Global.DEV_FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) == 1;
 
-            if (visible) {
+            if (visible && mNavigationBarView == null) {
                 createNavigationBar();
             } else if (mNavigationBarView != null) {
                 mWindowManager.removeViewImmediate(mNavigationBarView);
@@ -1631,6 +1631,11 @@ public class StatusBar extends SystemUI implements DemoMode,
                 animateCollapsePanels(CommandQueue.FLAG_EXCLUDE_NONE);
             }
         };
+
+        if (hideAnimatedList.isEmpty()) {
+            animationFinishAction.run();
+            return;
+        }
 
         // let's disable our normal animations
         mStackScroller.setDismissAllInProgress(true);
