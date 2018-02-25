@@ -3,7 +3,6 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
-     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,6 +24,8 @@
   <string name="adb_both_active_notification_title">ADB μέσω USB &amp; δικτύου ενεργοποιημένο</string>
   <!-- ADB notification message-->
   <string name="adb_active_generic_notification_message">Αγγίξτε για απενεργοποίηση του εντοπισμού σφαλμάτων.</string>
+  <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
+  <string name="lineage_system_error_manufacturer">Εντοπίστηκε μια ασυμφωνία κατάτμησης vendor. Συνήθως αυτό σημαίνει ότι η κατάτμηση vendor της συσκευής σας δεν είναι ενημερωμένη. Παρακαλούμε βεβαιωθείτε ότι έχετε ενημερώσει την κατάτμηση vendor στην έκδοση <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <string name="lock_to_app_toast_no_navbar">Για να ξεκαρφιτσώσετε αυτήν την οθόνη, αγγίξτε και κρατήστε πατημένο το πλήκτρο Πίσω.</string>
   <!-- Privacy Guard -->
@@ -42,8 +43,10 @@
   <string name="app_ops_access_notifications">ανάγνωση των ειδοποιήσεών σας</string>
   <string name="app_ops_activate_vpn">ενεργοποίηση ενός VPN</string>
   <string name="app_ops_add_voicemail">προσθήκη φωνητικού μηνύματος</string>
+  <string name="app_ops_app_start_foreground">εκκίνηση instant app στο προσκήνιο</string>
   <string name="app_ops_assist_screenshot">λήψη στιγμιότυπου οθόνης</string>
   <string name="app_ops_assist_structure">χρήση της βοηθητικής εφαρμογής</string>
+  <string name="app_ops_audio_accessibility_volume">ένταση ήχου προσβασιμότητας</string>
   <string name="app_ops_auto_start">άνοιγμα κατά την εκκίνηση</string>
   <string name="app_ops_change_wallpaper">αλλαγή της ταπετσαρίας</string>
   <string name="app_ops_delete_call_log">διαγραφή του ιστορικού κλήσεων σας</string>
@@ -53,6 +56,7 @@
   <string name="app_ops_draw_on_top">εμφάνιση παραθύρων στην κορυφή</string>
   <string name="app_ops_get_accounts">ανάγνωση λογαριασμών συσκευής</string>
   <string name="app_ops_get_usage_stats">λήψη στατιστικών χρήσης εφαρμογών</string>
+  <string name="app_ops_install_packages">εγκατάσταση πακέτων</string>
   <string name="app_ops_keep_device_awake">διατήρηση της συσκευής σας σε αφύπνιση</string>
   <string name="app_ops_make_phone_call">πραγματοποίηση μιας τηλεφωνικής κλήσης</string>
   <string name="app_ops_mock_location">αναφορά ψευδής τοποθεσίας</string>
@@ -62,6 +66,8 @@
   <string name="app_ops_modify_contacts">ενημέρωση των επαφών σας</string>
   <string name="app_ops_modify_settings">ενημέρωση των ρυθμίσεων συστήματος</string>
   <string name="app_ops_mute_unmute_microphone">σίγαση/κατάργηση σίγασης του μικροφώνου</string>
+  <string name="app_ops_phone_calls">απάντηση τηλεφωνικών κλήσεων</string>
+  <string name="app_ops_picture_in_picture">χρήση λειτουργίας εικόνα σε εικόνα</string>
   <string name="app_ops_play_audio">αναπαραγωγή ήχου</string>
   <string name="app_ops_post_notification">εμφάνιση μιας ειδοποίησης</string>
   <string name="app_ops_project_media">εμφάνιση πολυμέσων</string>
@@ -72,6 +78,7 @@
   <string name="app_ops_read_contacts">ανάγνωση των επαφών σας</string>
   <string name="app_ops_read_external_storage">ανάγνωση εξωτερικού αποθ. χώρου</string>
   <string name="app_ops_read_mms">ανάγνωση των μηνυμάτων MMS σας</string>
+  <string name="app_ops_read_phone_numbers">ανάγνωση τηλεφωνικών αριθμών</string>
   <string name="app_ops_read_phone_state">πρόσβαση στην κατάσταση τηλεφώνου</string>
   <string name="app_ops_read_sms">ανάγνωση των μηνυμάτων SMS σας</string>
   <string name="app_ops_receive_sms">λήψη ενός μηνύματος SMS</string>

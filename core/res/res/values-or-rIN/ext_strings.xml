@@ -3,7 +3,6 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
-     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,6 +24,7 @@
   <string name="adb_both_active_notification_title">USB ଓ ନେଟ୍‍ୱା‌ର୍କ୍‍ରେ ADB ସଷମ କରାଯାଇଛି</string>
   <!-- ADB notification message-->
   <string name="adb_active_generic_notification_message">ଡିବଗିଙ୍ଗ ଅଷମ କରିବା ପାଇଁ ସ୍ପର୍ଶ ଅକରନ୍ତୁ।</string>
+  <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <string name="lock_to_app_toast_no_navbar">ଏହି ସ୍କ୍ରିନ୍‍ ଅନ୍‍ପିନ୍‍ କରିବା ପାଇଁ, ବ୍ୟାକ୍‍ ବଟନ୍‍ ସ୍ପର୍ଶ କରନ୍ତୁ ଓ ଧରିରଖନ୍ତୁ।</string>
   <!-- Privacy Guard -->
@@ -32,6 +32,7 @@
   <string name="permdesc_changePrivacyGuardState">ପ୍ରାଇଭେସି ଗାର୍ଡ ସହିତ ଅନ୍ୟ ଏକ ଆପ୍ଲିକେସ‌‌ନ୍‍ ର‌ନ୍‍ କରିପାରିବ କି ନାହିଁ ତାହା ପରିବର୍ତ୍ତନ କରିବା ପାଇଁ ଏକ ଆପ୍ଲିକେସ‌କୁ ଅନୁମତି ଦିଏ। ଯେତେବେଳେ ପ୍ରାଇଭେସି ଗାର୍ଡ ସହିତ ଏକ ଆପ୍ଲିକେସନ୍‍ ଚାଳନା କରାଯାଉଥାଏ, ଏହା ବ୍ୟକ୍ତିଗତ ତଥ୍ୟ ଯଥା ସମ୍ପର୍କ, କଲ୍‍ ସୂୀ, ବା ସନ୍ଦେଶଗୁ୍ଡିକ ଆକ୍‍ସେସ୍‍ କରିପାରିବ ନାହିଁ।</string>
   <string name="privacy_guard_notification">ପ୍ରାଇଭେସି ଗାର୍ଡ ଆକ୍ଟିଭ୍‍</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> ବ୍ୟକ୍ତିଗତ ତଥ୍ୟ ଆକ୍‍ସେସ୍‍ କରିବା ପାଇଁ ସଷମ ହେବ ନାହିଁ</string>
+  <string name="privacy_guard_dialog_title">ପ୍ରାଇଭେସି ଗାର୍ଡ</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$Sଚାହିଁବ</xliff:g> ଚାହିଁବ <xliff:g id="op">%2$s</xliff:g>।</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
   <string name="permission_remember_choice">ମୋ ପସନ୍ଦ ମନେରଖନ୍ତୁ</string>
@@ -51,6 +52,7 @@
   <string name="app_ops_delete_sms">ଆପଣଙ୍କ SMS ସନ୍ଦେଶ ବିଲୋପ କରନ୍ତୁ</string>
   <string name="app_ops_draw_on_top">ଶୀଷରେ ୱିଣ୍ଡୋଜ୍‍ ଆଙ୍କନ୍ତୁ</string>
   <string name="app_ops_get_accounts">ଡିଭାଇସ୍ ଆକାଉଣ୍ଟ ମିଳିଲା</string>
+  <string name="app_ops_get_usage_stats">ଆପ୍ଲିକେସନ୍‍ ବ୍ୟବହାରର ପରିସଂଖ୍ୟାନ ପ୍ରାପ୍ତ କରନ୍ତୁ</string>
   <string name="app_ops_keep_device_awake">ଆପଣଙ୍କ ଡିଭାଇ‌ସ୍‍କୁ ଜାଗ୍ରତ ରଖନ୍ତୁ</string>
   <string name="app_ops_make_phone_call">ଏକ ଫୋନ୍‍ କଲ୍‍ କରନ୍ତୁ</string>
   <string name="app_ops_mock_location"> ଆପଣଙ୍କ ନକଲି ଅବସ୍ଥାନ</string>
@@ -65,10 +67,10 @@
   <string name="app_ops_project_media">ପ୍ରୋଜେକ୍ଟ ମିଡିଆ</string>
   <string name="app_ops_read_calendar">ଆପଣଙ୍କ କ୍ୟା୍ଲେଣ୍ଡର ପଢନ୍ତୁ</string>
   <string name="app_ops_read_call_log">କଲ୍‍ ସୂଚୀ ପଢନ୍ତୁ</string>
-  <string name="app_ops_read_cell_broadcasts">ସେଲ୍‍ ବ୍ର୍ଡ୍‍କାଷ୍ଟ ପଢନ୍ତୁ</string>
+  <string name="app_ops_read_cell_broadcasts">ସେଲ୍ ପ୍ରସାରଣ ପଢ</string>
   <string name="app_ops_read_clipboard">କ୍ଲିପ୍‍ବୋର୍ଡ ପଢନ୍ତୁ</string>
   <string name="app_ops_read_contacts">ଆପଣଙ୍କ ସମ୍ପର୍କଗୁଡିକ ପଢନ୍ତୁ</string>
-  <string name="app_ops_read_external_storage">ବାହ୍ୟ ଷ୍ଟୋରେଜ୍‍ ପଢନ୍ତୁ</string>
+  <string name="app_ops_read_external_storage">ବାହ୍ୟ ଷ୍ଟୋରେଜ୍ ପଢନ୍ତୁ</string>
   <string name="app_ops_read_mms">ଆପଣଙ୍କ MMS ସନ୍ଦେଶ ପଢନ୍ତୁ</string>
   <string name="app_ops_read_phone_state">ଆକ୍ସେସ୍ ଫୋନ୍ ସ୍ଟେଟ</string>
   <string name="app_ops_read_sms">ଆପଣଙ୍କ SMS ସନ୍ଦେଶ ପଢନ୍ତୁ</string>
@@ -81,14 +83,14 @@
   <string name="app_ops_su">ରୁଟ୍‍ ପ୍ରବେଶ ପ୍ରାପ୍ତ କରନ୍ତୁ</string>
   <string name="app_ops_toast_window">ଟୋଷ୍ଟ ସନ୍ଦେଶ ପ୍ରଦର୍ଶନ କରନ୍ତୁ</string>
   <string name="app_ops_toggle_bluetooth">ବ୍ଲୁଟୁଥ୍‍ ଟୋଗଲ୍‍ କରନ୍ତୁ</string>
-  <string name="app_ops_toggle_mobile_data">ମୋବାଇଲ୍‍ ଡାଟା ଟୋଗଲ୍‍ କରନ୍ତୁ</string>
+  <string name="app_ops_toggle_mobile_data">ଡାଟା ଟୋଗଲ୍‍ କରନ୍ତୁ</string>
   <string name="app_ops_toggle_nfc">NFC ଟୋଗଲ୍‍ କରନ୍ତୁ</string>
-  <string name="app_ops_toggle_wifi">Wi-Fi ଟୋଗଲ୍‍ କରନ୍ତୁ</string>
+  <string name="app_ops_toggle_wifi">WiFi ଟୋଗଲ୍‍ କରନ୍ତୁ</string>
   <string name="app_ops_turn_on_screen">ସ୍କ୍ରିନ୍‍ ଅନ କରନ୍ତୁ</string>
   <string name="app_ops_use_alarm_volume">ଆଲାର୍ମ୍‍ ଭୋଲ୍ୟୁମ୍‍ ନିୟନ୍ତ୍ରଣ କରନ୍ତୁ</string>
   <string name="app_ops_use_audio_focus">ଅଡିଓ ଫୋକସ୍‍‍ ନିୟନ୍ତ୍ରଣ କରନ୍ତୁ</string>
   <string name="app_ops_use_bluetooth_volume">ବ୍ଲୁଟୁଥ୍‍ ଭୋଲ୍ୟୁମ୍‍‍ ନିୟନ୍ତ୍ରଣ କରନ୍ତୁ</string>
-  <string name="app_ops_use_body_sensors">ବଡି ସେନ୍‍ସର୍‍ ବ୍ୟବହାର କରନ୍ତୁ</string>
+  <string name="app_ops_use_body_sensors">ବଡି ସେନସର୍ ବ୍ୟବହାର କରନ୍ତୁ</string>
   <string name="app_ops_use_fingerprint">ଫିଙ୍ଗର୍‍ପ୍ରିଣ୍ଟ ବ୍ୟବହାର କରନ୍ତୁ</string>
   <string name="app_ops_use_master_volume">ମାଷ୍ଟର୍‍ ଭୋଲ୍ୟୁମ୍‍‍ ନିୟନ୍ତ୍ରଣ କରନ୍ତୁ</string>
   <string name="app_ops_use_media_buttons">ମିଡିଆ ବଟ‌ନ୍‍ଗୁଡିକ ବ୍ୟବହାର କରନ୍ତୁ</string>

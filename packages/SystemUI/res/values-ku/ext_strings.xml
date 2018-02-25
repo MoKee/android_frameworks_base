@@ -5,7 +5,6 @@
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
  * Copyright (c) 2017, The LineageOS Project
- * Copyright (c) 2017-2018, The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,12 +24,15 @@
   <!-- Content description for Accessibility on unlocked tasks in recents -->
   <!-- Content description for Accessibility on locked tasks in recents -->
   <!-- ADB over network QS tile -->
-  <string name="quick_settings_network_adb_label">تۆڕی ئه‌نته‌رنێتی ADB</string>
+  <string name="quick_settings_network_adb_label">ADB لەڕێی تۆڕەوە</string>
   <!-- Ambient display QS tile -->
+  <string name="quick_settings_ambient_display_label">پیشاندەری دەوروبەر</string>
   <!-- Caffeine QS tile -->
   <!-- Heads up QS tile -->
+  <string name="quick_settings_heads_up_label">فه‌رمووه‌کان</string>
   <!-- Sync QS tile -->
   <!-- USB tethering QS tile -->
+  <string name="quick_settings_usb_tether_label">گرتنەدەستی USB</string>
   <!-- Volume panel QS tile -->
   <!-- Navigation bar dpad -->
   <string name="accessibility_dpad_left">جێنیشانده‌ر بۆ لای چه‌پ</string>
@@ -41,14 +43,11 @@
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
   <!-- Label for current user in power menu options dialog -->
-  <string name="global_action_current_user">ئێستا</string>
   <!-- Label for item that screenshots in power menu options dialog -->
   <!-- Advanced restart menu -->
   <!-- Button to restart the device, within the Restart Options dialog -->
   <!-- Button to restart the device into recovery mode, within the Restart Options dialog -->
-  <string name="global_action_restart_recovery">ڕیکەڤەری</string>
   <!-- Button to restart the device into bootloader mode, within the Restart Options dialog -->
-  <string name="global_action_restart_bootloader">بووتلەودەر</string>
   <!-- Button to restart the device into download mode, within the Restart Options dialog -->
   <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
   <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
@@ -61,16 +60,17 @@
   <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_quick_settings_location_high_accuracy">دۆزینەوەی شوێن: شێوازی بەکارهێنانی تەواو.</string>
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_battery_saving_label">پاراستنی ووزە</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_gps_only_label">تەنها ئامێر</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">بەکارهێنانی زۆر</string>
   <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_detail_title">شوێن</string>
   <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
   <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
   <string name="quick_settings_location_detail_mode_high_accuracy_title">بەکارهێنانی زۆر</string>
   <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->
+  <string name="quick_settings_location_detail_mode_battery_saving_title">پاراستنی ووزە</string>
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">تەنها ئامێر</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->

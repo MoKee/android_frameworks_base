@@ -3,7 +3,6 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
-     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,6 +24,8 @@
   <string name="adb_both_active_notification_title">ADB melalui USB &amp; jaringan diaktifkan</string>
   <!-- ADB notification message-->
   <string name="adb_active_generic_notification_message">Sentuh untuk menonaktifkan debugging.</string>
+  <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
+  <string name="lineage_system_error_manufacturer">Ketidakcocokan Vendor Image telah terdeteksi. Biasanya ini berarti Vendor Image Anda sudah kadaluarsa. Pastikan Vendor Image Anda cocok dengan <xliff:g id="fingerprint">%1$s </xliff:g>.</string>
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <string name="lock_to_app_toast_no_navbar">Untuk melepas sematan layar ini, sentuh dan tahan tombol Kembali.</string>
   <!-- Privacy Guard -->
@@ -52,7 +53,7 @@
   <string name="app_ops_delete_sms">hapus pesan SMS Anda</string>
   <string name="app_ops_draw_on_top">menarik jendela di atas</string>
   <string name="app_ops_get_accounts">dapatkan akun perangkat</string>
-  <string name="app_ops_get_usage_stats">dapatkan statistik penggunaan</string>
+  <string name="app_ops_get_usage_stats">dapatkan statistik penggunaan aplikasi</string>
   <string name="app_ops_keep_device_awake">jaga perangkat Anda tetap bangun</string>
   <string name="app_ops_make_phone_call">membuat panggilan telepon</string>
   <string name="app_ops_mock_location">memalsukan lokasi Anda</string>
@@ -62,21 +63,21 @@
   <string name="app_ops_modify_contacts">memperbarui kontak Anda</string>
   <string name="app_ops_modify_settings">memperbarui pengaturan sistem</string>
   <string name="app_ops_mute_unmute_microphone">diam/mengaktifkan suara mikrofon</string>
-  <string name="app_ops_play_audio">memutar audio</string>
+  <string name="app_ops_play_audio">mainkan audio</string>
   <string name="app_ops_post_notification">mengirim pemberitahuan</string>
   <string name="app_ops_project_media">proyek media</string>
   <string name="app_ops_read_calendar">membaca kalender Anda</string>
   <string name="app_ops_read_call_log">membaca log panggilan</string>
-  <string name="app_ops_read_cell_broadcasts">membaca siaran seluler</string>
+  <string name="app_ops_read_cell_broadcasts">baca siaran seluler</string>
   <string name="app_ops_read_clipboard">membaca clipboard</string>
   <string name="app_ops_read_contacts">membaca kontak Anda</string>
-  <string name="app_ops_read_external_storage">membaca penyimpanan luar</string>
+  <string name="app_ops_read_external_storage">membaca penyimpanan eksternal</string>
   <string name="app_ops_read_mms">membaca pesan MMS Anda</string>
   <string name="app_ops_read_phone_state">akses status ponsel</string>
   <string name="app_ops_read_sms">membaca pesan SMS Anda</string>
   <string name="app_ops_receive_sms">menerima pesan SMS</string>
   <string name="app_ops_record_audio">merekam audio</string>
-  <string name="app_ops_run_in_background">berjalan di latar belakang</string>
+  <string name="app_ops_run_in_background">jalankan di latar belakang</string>
   <string name="app_ops_scan_wifi">memindai jaringan Wi-Fi</string>
   <string name="app_ops_send_mms">mengirim pesan MMS</string>
   <string name="app_ops_send_sms">mengirim pesan SMS</string>
@@ -84,14 +85,14 @@
   <string name="app_ops_su">dapatkan akses root</string>
   <string name="app_ops_toast_window">tampilkan pesan toast</string>
   <string name="app_ops_toggle_bluetooth">hidup/matikan Bluetooth</string>
-  <string name="app_ops_toggle_mobile_data">hidup/matikan data selular</string>
+  <string name="app_ops_toggle_mobile_data">hidup/matikan data seluler</string>
   <string name="app_ops_toggle_nfc">hidup/matikan NFC</string>
   <string name="app_ops_toggle_wifi">hidup/matikan Wi-Fi</string>
   <string name="app_ops_turn_on_screen">aktifkan layar</string>
   <string name="app_ops_use_alarm_volume">mengatur volume alarm</string>
   <string name="app_ops_use_audio_focus">mengatur fokus audio</string>
   <string name="app_ops_use_bluetooth_volume">mengatur volume Bluetooth</string>
-  <string name="app_ops_use_body_sensors">menggunakan sensor tubuh</string>
+  <string name="app_ops_use_body_sensors">menggunakan sensor badan</string>
   <string name="app_ops_use_fingerprint">gunakan sidik jari</string>
   <string name="app_ops_use_master_volume">mengatur volume utama</string>
   <string name="app_ops_use_media_buttons">menggunakan tombol media</string>

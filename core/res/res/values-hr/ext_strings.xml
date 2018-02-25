@@ -3,7 +3,6 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
-     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,6 +24,8 @@
   <string name="adb_both_active_notification_title">ADB preko USB-a i mreže je omogućen</string>
   <!-- ADB notification message-->
   <string name="adb_active_generic_notification_message">Dodirnite da onemogućite ispravljanje grešaka.</string>
+  <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
+  <string name="lineage_system_error_manufacturer">Otkriveno je nepodudaranje slike dobavljača. To obično znači da je slika dobavljača zastarjela. Provjerite odgovara li vaša slika dobavljača <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <string name="lock_to_app_toast_no_navbar">Da biste otkvačili ovaj zaslon dodirnite i držite tipku za natrag.</string>
   <!-- Privacy Guard -->
@@ -32,6 +33,7 @@
   <string name="permdesc_changePrivacyGuardState">Dopušta aplikaciji odrediti hoće li druga aplikacija biti pokrenuta pod Nadzorom privatnosti. Kada ja aplikacija pod Nadzorom privatnosti, neće imati pristup osobnim podacima kao što su kontakti, zapisi poziva ili poruke.</string>
   <string name="privacy_guard_notification">Nadzor privatnosti je aktivan</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> neće moći pristupiti osobnim podacima</string>
+  <string name="privacy_guard_dialog_title">Nadzor privatnosti</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> želi <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
   <string name="permission_remember_choice">Zapamti moj odabir</string>
@@ -51,7 +53,7 @@
   <string name="app_ops_delete_sms">brisati SMS poruke</string>
   <string name="app_ops_draw_on_top">iscrtavati prozore na vrhu</string>
   <string name="app_ops_get_accounts">dobiti račune uređaja</string>
-  <string name="app_ops_get_usage_stats">pribavi statistiku korištenja</string>
+  <string name="app_ops_get_usage_stats">skupljati statistiku o uporabi aplikacije</string>
   <string name="app_ops_keep_device_awake">održavati uređaj budnim</string>
   <string name="app_ops_make_phone_call">uspostaviti poziv</string>
   <string name="app_ops_mock_location">lažirati vašu lokaciju</string>
@@ -61,20 +63,20 @@
   <string name="app_ops_modify_contacts">ažurirati kontakte</string>
   <string name="app_ops_modify_settings">ažurirati postavke sustava</string>
   <string name="app_ops_mute_unmute_microphone">isključiti/uključiti mikrofon</string>
-  <string name="app_ops_play_audio">producirati zvuk</string>
+  <string name="app_ops_play_audio">reproducirati zvuk</string>
   <string name="app_ops_post_notification">poslati obavijest</string>
-  <string name="app_ops_project_media">projicitati multimediju</string>
+  <string name="app_ops_project_media">projektirati medij</string>
   <string name="app_ops_read_calendar">čitati vaš kalendar</string>
   <string name="app_ops_read_call_log">čitati zapisnik poziva</string>
-  <string name="app_ops_read_cell_broadcasts">pročitati signal odašiljača</string>
+  <string name="app_ops_read_cell_broadcasts">čitati signal odašiljača</string>
   <string name="app_ops_read_clipboard">čitati međuspremnik</string>
   <string name="app_ops_read_contacts">čitati vaše kontakte</string>
-  <string name="app_ops_read_external_storage">čitaj vanjsku pohranu</string>
+  <string name="app_ops_read_external_storage">čitati vanjsku pohranu</string>
   <string name="app_ops_read_mms">čitati vaše MMS poruke</string>
   <string name="app_ops_read_phone_state">pristupati stanju telefona</string>
   <string name="app_ops_read_sms">čitati vaše SMS poruke</string>
   <string name="app_ops_receive_sms">primiti SMS poruku</string>
-  <string name="app_ops_record_audio">snimi zvuk</string>
+  <string name="app_ops_record_audio">snimati zvuk</string>
   <string name="app_ops_run_in_background">pokreni u pozadini</string>
   <string name="app_ops_scan_wifi">skenirati Wi-Fi mreže</string>
   <string name="app_ops_send_mms">poslati MMS poruku</string>
@@ -83,15 +85,15 @@
   <string name="app_ops_su">dobiti root pristup</string>
   <string name="app_ops_toast_window">prikazivati tost poruke</string>
   <string name="app_ops_toggle_bluetooth">upravljati Bluetoothom</string>
-  <string name="app_ops_toggle_mobile_data">uključi/isključi mobilne podatke</string>
-  <string name="app_ops_toggle_nfc">uključi/isključi NFC</string>
-  <string name="app_ops_toggle_wifi">upravljati Wi-Fi-em</string>
+  <string name="app_ops_toggle_mobile_data">uključivati/isključivati mobilne podatke</string>
+  <string name="app_ops_toggle_nfc">uključivati/isključivati NFC</string>
+  <string name="app_ops_toggle_wifi">uključivati/isključivati Wi-Fi</string>
   <string name="app_ops_turn_on_screen">uključiti zaslon</string>
   <string name="app_ops_use_alarm_volume">kontrolirati glasnoću alarma</string>
   <string name="app_ops_use_audio_focus">kontrolirati fokus zvuka</string>
   <string name="app_ops_use_bluetooth_volume">kontrolirati glasnoću Bluetootha</string>
-  <string name="app_ops_use_body_sensors">koristi senzore</string>
-  <string name="app_ops_use_fingerprint">koristi otisak prsta</string>
+  <string name="app_ops_use_body_sensors">upotrebljavati senzore</string>
+  <string name="app_ops_use_fingerprint">upotrebljavati otisak prsta</string>
   <string name="app_ops_use_master_volume">kontrolirati glavnu glasnoću zvuka</string>
   <string name="app_ops_use_media_buttons">koristiti tipke medija</string>
   <string name="app_ops_use_media_volume">kontrolirati glasnoću medija</string>

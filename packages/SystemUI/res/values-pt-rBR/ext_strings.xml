@@ -5,7 +5,6 @@
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
  * Copyright (c) 2017, The LineageOS Project
- * Copyright (c) 2017-2018, The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,29 +27,29 @@
   <!-- Content description for Accessibility on locked tasks in recents -->
   <string name="accessibility_unlock_task">Permitir que <xliff:g id="task">%1$s</xliff:g> seja encerrado</string>
   <!-- ADB over network QS tile -->
-  <string name="quick_settings_network_adb_label">ADB pela rede</string>
+  <string name="quick_settings_network_adb_label">ADB sobre rede</string>
   <!-- Ambient display QS tile -->
   <string name="quick_settings_ambient_display_label">Tela ambiente</string>
-  <string name="accessibility_quick_settings_ambient_display_off">Tela Ambiente desligada.</string>
-  <string name="accessibility_quick_settings_ambient_display_on">Tela Ambiente ligada.</string>
+  <string name="accessibility_quick_settings_ambient_display_off">Tela ambiente desativado.</string>
+  <string name="accessibility_quick_settings_ambient_display_on">Tela ambiente ativada.</string>
   <string name="accessibility_quick_settings_ambient_display_changed_off">Tela ambiente foi desligada.</string>
   <string name="accessibility_quick_settings_ambient_display_changed_on">Tela ambiente foi ligada.</string>
   <!-- Caffeine QS tile -->
   <string name="quick_settings_caffeine_label">Cafeína</string>
-  <string name="accessibility_quick_settings_caffeine_off">Cafeína desligada.</string>
-  <string name="accessibility_quick_settings_caffeine_on">Cafeína ligada.</string>
+  <string name="accessibility_quick_settings_caffeine_off">Cafeína desligado.</string>
+  <string name="accessibility_quick_settings_caffeine_on">Cafeína ligado.</string>
   <!-- Heads up QS tile -->
-  <string name="quick_settings_heads_up_label">Notificações pop-up</string>
-  <string name="accessibility_quick_settings_heads_up_off">Notificações pop-up desativadas.</string>
-  <string name="accessibility_quick_settings_heads_up_on">Notificações pop-up ativadas.</string>
-  <string name="accessibility_quick_settings_heads_up_changed_off">As notificações pop-up foram desativadas.</string>
-  <string name="accessibility_quick_settings_heads_up_changed_on">As notificações pop-up foram ativadas.</string>
+  <string name="quick_settings_heads_up_label">Heads up</string>
+  <string name="accessibility_quick_settings_heads_up_off">Heads up desligado.</string>
+  <string name="accessibility_quick_settings_heads_up_on">Heads up ligado.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_off">Heads up foi desligado.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_on">Heads up foi ligado.</string>
   <!-- Sync QS tile -->
   <string name="quick_settings_sync_label">Sincronização</string>
   <string name="accessibility_quick_settings_sync_off">Sincronização desligada.</string>
   <string name="accessibility_quick_settings_sync_on">Sincronização ligada.</string>
-  <string name="accessibility_quick_settings_sync_changed_off">A sincronização foi desativada.</string>
-  <string name="accessibility_quick_settings_sync_changed_on">A sincronização foi ativada.</string>
+  <string name="accessibility_quick_settings_sync_changed_off">Sincronização foi desligada.</string>
+  <string name="accessibility_quick_settings_sync_changed_on">Sincronização foi ligada.</string>
   <!-- USB tethering QS tile -->
   <string name="quick_settings_usb_tether_label">Compartilhamento USB</string>
   <!-- Volume panel QS tile -->
@@ -59,26 +58,19 @@
   <string name="accessibility_dpad_left">Cursor à esquerda</string>
   <string name="accessibility_dpad_right">Cursor à direita</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
-  <string name="screen_pinning_description_no_navbar">Ela é mantida à vista até que seja liberada. Toque &amp; em \"Voltar\" e mantenha essa opção pressionada para liberar.</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
   <!-- Label for current user in power menu options dialog -->
-  <string name="global_action_current_user">Atual</string>
   <!-- Label for item that screenshots in power menu options dialog -->
-  <string name="global_action_screenshot">Captura de tela</string>
   <!-- Advanced restart menu -->
   <!-- Button to restart the device, within the Restart Options dialog -->
   <string name="global_action_restart_system">Sistema</string>
   <!-- Button to restart the device into recovery mode, within the Restart Options dialog -->
-  <string name="global_action_restart_recovery">Recuperação</string>
   <!-- Button to restart the device into bootloader mode, within the Restart Options dialog -->
-  <string name="global_action_restart_bootloader">Bootloader</string>
   <!-- Button to restart the device into download mode, within the Restart Options dialog -->
-  <string name="global_action_restart_download">Baixar</string>
   <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
-  <string name="global_action_restart_progress">Reiniciando\u2026</string>
   <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
   <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
   <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
@@ -92,8 +84,8 @@
   <string name="quick_settings_location_battery_saving_label">Economia de bateria</string>
   <string name="quick_settings_location_battery_saving_label_twoline">Economia\nde energia</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_gps_only_label">Somente GPS</string>
-  <string name="quick_settings_location_gps_only_label_twoline">Somente\nGPS</string>
+  <string name="quick_settings_location_gps_only_label">Somente no dispositivo</string>
+  <string name="quick_settings_location_gps_only_label_twoline">Somente no\ndispositivo</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">Alta precisão</string>
   <string name="quick_settings_location_high_accuracy_label_twoline">Alta\nprecisão</string>
@@ -106,11 +98,11 @@
   <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->
   <string name="quick_settings_location_detail_mode_battery_saving_title">Economia de bateria</string>
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
-  <string name="quick_settings_location_detail_mode_sensors_only_title">Somente GPS</string>
+  <string name="quick_settings_location_detail_mode_sensors_only_title">Somente no dispositivo</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-  <string name="quick_settings_location_detail_mode_high_accuracy_description">Utilizar GPS, Wi\u2011Fi, Bluetooth ou redes móveis para determinar a localização</string>
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">Usar GPS, Wi\u2011Fi, Bluetooth ou redes celulares para determinar a localização</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
-  <string name="quick_settings_location_detail_mode_battery_saving_description">Usar Wi\u2011Fi, Bluetooth ou redes móveis para determinar a localização</string>
+  <string name="quick_settings_location_detail_mode_battery_saving_description">Usar Wi\u2011Fi, Bluetooth ou redes celulares para determinar a localização</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
-  <string name="quick_settings_location_detail_mode_sensors_only_description">Usar somente o GPS para determinar sua localização</string>
+  <string name="quick_settings_location_detail_mode_sensors_only_description">Usar o GPS para determinar sua localização</string>
 </resources>

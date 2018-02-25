@@ -3,7 +3,6 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
-     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,6 +24,8 @@
   <string name="adb_both_active_notification_title">ADB sur USB et réseau activé</string>
   <!-- ADB notification message-->
   <string name="adb_active_generic_notification_message">Appuyez pour désactiver le débogage.</string>
+  <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
+  <string name="lineage_system_error_manufacturer">Une discordance d\'image fournisseur a été détectée. En général, cela signifie que votre image fournisseur n\'est pas à jour. Veuillez vous assurer que votre image fournisseur correspond à <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <string name="lock_to_app_toast_no_navbar">Pour déverrouiller l\'écran, appuyez et maintenez le bouton Retour.</string>
   <!-- Privacy Guard -->
@@ -54,8 +55,8 @@
   <string name="app_ops_delete_sms">supprimer vos messages SMS</string>
   <string name="app_ops_draw_on_top">déplacer au dessus</string>
   <string name="app_ops_get_accounts">obtenir les comptes de l\'appareil</string>
-  <string name="app_ops_get_usage_stats">obtenir les statistiques d\'utilisation des applications</string>
-  <string name="app_ops_install_packages">Installer les paquets</string>
+  <string name="app_ops_get_usage_stats">obtenir les statistiques d\'utilisation de l\'application</string>
+  <string name="app_ops_install_packages">installer des paquets</string>
   <string name="app_ops_keep_device_awake">garder votre appareil allumé</string>
   <string name="app_ops_make_phone_call">passer un appel téléphonique</string>
   <string name="app_ops_mock_location">simuler votre position</string>
@@ -65,30 +66,28 @@
   <string name="app_ops_modify_contacts">mettre à jour vos contacts</string>
   <string name="app_ops_modify_settings">mettre à jour les paramètres du système</string>
   <string name="app_ops_mute_unmute_microphone">activer/désactiver le microphone</string>
-  <string name="app_ops_phone_calls">Répondre aux appels</string>
-  <string name="app_ops_picture_in_picture">Utiliser l’incrustation d\'image</string>
+  <string name="app_ops_phone_calls">répondre aux appels téléphoniques</string>
   <string name="app_ops_play_audio">lecture audio</string>
   <string name="app_ops_post_notification">afficher une notification</string>
   <string name="app_ops_project_media">projeter média</string>
   <string name="app_ops_read_calendar">lire votre agenda</string>
   <string name="app_ops_read_call_log">lire le journal d\'appels</string>
-  <string name="app_ops_read_cell_broadcasts">lire les messages reçus via un canal de diffusion cellulaire</string>
+  <string name="app_ops_read_cell_broadcasts">lire les diffusions cellulaires</string>
   <string name="app_ops_read_clipboard">lire le presse-papiers</string>
   <string name="app_ops_read_contacts">lire vos contacts</string>
   <string name="app_ops_read_external_storage">lire le stockage externe</string>
   <string name="app_ops_read_mms">lire vos messages MMS</string>
-  <string name="app_ops_read_phone_numbers">Lire les numéros de téléphone</string>
   <string name="app_ops_read_phone_state">accéder à l\'état du téléphone</string>
   <string name="app_ops_read_sms">lire vos messages SMS</string>
   <string name="app_ops_receive_sms">recevoir un SMS</string>
-  <string name="app_ops_record_audio">enregistrement audio</string>
+  <string name="app_ops_record_audio">enregistrer un son</string>
   <string name="app_ops_run_in_background">exécuter en arrière-plan</string>
   <string name="app_ops_scan_wifi">rechercher les réseaux Wi-Fi</string>
   <string name="app_ops_send_mms">envoyer un MMS</string>
   <string name="app_ops_send_sms">envoyer un SMS</string>
   <string name="app_ops_start_at_bootup">démarrer avec le système</string>
   <string name="app_ops_su">obtenir l\'accès root</string>
-  <string name="app_ops_toast_window">afficher les messages contextuelles</string>
+  <string name="app_ops_toast_window">afficher les messages toast</string>
   <string name="app_ops_toggle_bluetooth">activer/désactiver le Bluetooth</string>
   <string name="app_ops_toggle_mobile_data">activer/désactiver les données mobiles</string>
   <string name="app_ops_toggle_nfc">activer/désactiver le NFC</string>

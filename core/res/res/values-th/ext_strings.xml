@@ -3,7 +3,6 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
-     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,6 +24,7 @@
   <string name="adb_both_active_notification_title">ADB บน USB และ &amp; เครือข่ายถูกเปิดใช้งาน</string>
   <!-- ADB notification message-->
   <string name="adb_active_generic_notification_message">แตะเพื่อปิดการแก้ไขข้อบกพร่อง</string>
+  <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <string name="lock_to_app_toast_no_navbar">เพื่อยกเลิกการปักหมุดหน้าจอนี้ กดปุ่มกลับค้างไว้</string>
   <!-- Privacy Guard -->
@@ -32,6 +32,7 @@
   <string name="permdesc_changePrivacyGuardState">อนุญาตให้แอปเปลี่ยนแปลงไม่ว่าแอปอื่นทำงานโดยใช้การป้องกันความเป็นส่วนตัวหรือไม่ก็ตาม เมื่อแอปกำลังทำงานโดยใช้การป้องกันความเป็นส่วนตัว แอปจะไม่สามารถเข้าถึงข้อมูลส่วนบุคคล เช่น รายชื่อติดต่อ ประวัติการโทร หรือข้อความได้</string>
   <string name="privacy_guard_notification">การป้องกันความเป็นส่วนตัวทำงาน</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> จะไม่สามารถเข้าถึงข้อมูลส่วนตัวได้</string>
+  <string name="privacy_guard_dialog_title">รักษาความเป็นส่วนตัว</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> ต้องการ <xliff:g id="op">%2$s</xliff:g></string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
   <string name="permission_remember_choice">จำตัวเลือกของฉัน</string>
@@ -51,7 +52,7 @@
   <string name="app_ops_delete_sms">ลบข้อความ SMS ของคุณ</string>
   <string name="app_ops_draw_on_top">วาดหน้าต่างทับ</string>
   <string name="app_ops_get_accounts">เข้าถึงบัญชีของอุปกรณ์</string>
-  <string name="app_ops_get_usage_stats">ดูสถิติการใช้งาน</string>
+  <string name="app_ops_get_usage_stats">รับสถิติการใช้งานแอป</string>
   <string name="app_ops_keep_device_awake">เปิดจอค้าง</string>
   <string name="app_ops_make_phone_call">โทรออก</string>
   <string name="app_ops_mock_location">จำลองที่ตั้ง</string>
@@ -84,7 +85,7 @@
   <string name="app_ops_toggle_bluetooth">สลับบลูทูธ</string>
   <string name="app_ops_toggle_mobile_data">สลับข้อมูลโทรศัพท์มือถือ</string>
   <string name="app_ops_toggle_nfc">สลับ NFC</string>
-  <string name="app_ops_toggle_wifi">สลับ Wi-Fi</string>
+  <string name="app_ops_toggle_wifi">สลับ WiFi</string>
   <string name="app_ops_turn_on_screen">เปิดหน้าจอ</string>
   <string name="app_ops_use_alarm_volume">ควบคุมระดับเสียงนาฬิกาปลุก</string>
   <string name="app_ops_use_audio_focus">ควบคุมการโฟกัสเสียง</string>

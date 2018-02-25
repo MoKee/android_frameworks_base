@@ -3,7 +3,6 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
-     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,6 +24,8 @@
   <string name="adb_both_active_notification_title">USBとネットワーク経由のADBが有効です</string>
   <!-- ADB notification message-->
   <string name="adb_active_generic_notification_message">タップしてデバッグを無効にします。</string>
+  <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
+  <string name="lineage_system_error_manufacturer">ベンダーイメージの不一致を検出しました。ベンダーイメージが最新でない可能性があります。ベンダーイメージが<xliff:g id="fingerprint">%1$s</xliff:g>と一致しているか確認してください。</string>
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <string name="lock_to_app_toast_no_navbar">この画面の固定を解除するには、戻るボタンを長押しします。</string>
   <!-- Privacy Guard -->
@@ -32,6 +33,7 @@
   <string name="permdesc_changePrivacyGuardState">他のアプリでプライバシーガードを有効にするかどうかの変更をアプリに許可します。プライバシーガードを有効にしてアプリを実行すると、そのアプリは連絡先、通話履歴、メッセージなどの個人データにアクセスできなくなります。</string>
   <string name="privacy_guard_notification">プライバシーガードが有効です</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g>は個人データにアクセスできません</string>
+  <string name="privacy_guard_dialog_title">プライバシーガード</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g>が<xliff:g id="op">%2$s</xliff:g>をしようとしています。</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
   <string name="permission_remember_choice">選択を保存</string>
@@ -51,7 +53,7 @@
   <string name="app_ops_delete_sms">SMSメッセージの削除</string>
   <string name="app_ops_draw_on_top">上部への描画</string>
   <string name="app_ops_get_accounts">端末のアカウントの取得</string>
-  <string name="app_ops_get_usage_stats">使用統計の取得</string>
+  <string name="app_ops_get_usage_stats">アプリの使用統計の取得</string>
   <string name="app_ops_keep_device_awake">端末のスリープの無効化</string>
   <string name="app_ops_make_phone_call">通話の発信</string>
   <string name="app_ops_mock_location">位置情報の仮想</string>
@@ -79,7 +81,7 @@
   <string name="app_ops_scan_wifi">Wi-Fiネットワークのスキャン</string>
   <string name="app_ops_send_mms">MMSメッセージの送信</string>
   <string name="app_ops_send_sms">SMSメッセージの送信</string>
-  <string name="app_ops_start_at_bootup">電源投入時の実行</string>
+  <string name="app_ops_start_at_bootup">起動時の実行</string>
   <string name="app_ops_su">ルートアクセスの取得</string>
   <string name="app_ops_toast_window">トーストメッセージの表示</string>
   <string name="app_ops_toggle_bluetooth">Bluetoothの切り替え</string>

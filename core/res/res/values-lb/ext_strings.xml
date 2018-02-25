@@ -3,7 +3,6 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
-     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,6 +24,7 @@
   <string name="adb_both_active_notification_title">ADB iwwer USB an Netzwierk aktivéiert</string>
   <!-- ADB notification message-->
   <string name="adb_active_generic_notification_message">Drécke fir Debugging ze desaktivéieren.</string>
+  <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <string name="lock_to_app_toast_no_navbar">Fir dëse Schierm lasszeléisen, dréck den Zréck-Knäppchen an hal e gedréckt.</string>
   <!-- Privacy Guard -->
@@ -32,6 +32,7 @@
   <string name="permdesc_changePrivacyGuardState">Erlaabt der App, z\'änneren ob eng aner App mam Privatsphärschutz leeft. Wann eng App mam Privatsphärschutz leeft, huet se keen Accès op perséinlech Date wéi Kontakter, Uruffprotokoller oder Messagen.</string>
   <string name="privacy_guard_notification">Privatsphärschutz aktiv</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> huet keen Accès op perséinlech Daten</string>
+  <string name="privacy_guard_dialog_title">Privatsphärschutz</string>
   <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> wëll <xliff:g id="op">%2$s</xliff:g>.</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
   <string name="permission_remember_choice">Mäi Choix verhalen</string>
@@ -51,7 +52,7 @@
   <string name="app_ops_delete_sms">SMS-Messagë läschen</string>
   <string name="app_ops_draw_on_top">Virun aneren Appen ablenden</string>
   <string name="app_ops_get_accounts">Konte vum Apparat opruffen</string>
-  <string name="app_ops_get_usage_stats">Benotzungsstatistiken ausliesen</string>
+  <string name="app_ops_get_usage_stats">App-Benotzungsstatistiken ausliesen</string>
   <string name="app_ops_keep_device_awake">de Rouzoustand desaktivéieren</string>
   <string name="app_ops_make_phone_call">en Telefonsuruff maachen</string>
   <string name="app_ops_mock_location">Standuert simuléieren</string>
@@ -66,7 +67,7 @@
   <string name="app_ops_project_media">Projektioun vu Medieninhalter</string>
   <string name="app_ops_read_calendar">de Kalenner liesen</string>
   <string name="app_ops_read_call_log">d\'Urufflëscht liesen</string>
-  <string name="app_ops_read_cell_broadcasts">Zelliwwerdrounge liesen</string>
+  <string name="app_ops_read_cell_broadcasts">Cell-Broadcasts liesen</string>
   <string name="app_ops_read_clipboard">d\'Tëschenoflag liesen</string>
   <string name="app_ops_read_contacts">d\'Kontakter liesen</string>
   <string name="app_ops_read_external_storage">externe Späicher ausliesen</string>
@@ -78,17 +79,18 @@
   <string name="app_ops_scan_wifi">WLAN-Netzwierker scannen</string>
   <string name="app_ops_send_mms">en MMS-Message schécken</string>
   <string name="app_ops_send_sms">eng SMS-Message schécken</string>
-  <string name="app_ops_start_at_bootup">Automatesch starten</string>
+  <string name="app_ops_start_at_bootup">automatesch starten</string>
   <string name="app_ops_su">Root-Accès kréien</string>
   <string name="app_ops_toast_window">Kuerzzäit-Notifikatiounen uweisen</string>
   <string name="app_ops_toggle_bluetooth">Bluetooth un-/ausschalten</string>
+  <string name="app_ops_toggle_mobile_data">Mobil Daten un-/ausschalten</string>
   <string name="app_ops_toggle_nfc">NFC un-/ausschalten</string>
   <string name="app_ops_toggle_wifi">WLAN un-/ausschalten</string>
   <string name="app_ops_turn_on_screen">Schierm uschalten</string>
   <string name="app_ops_use_alarm_volume">d\'Lautstäerkt vum Wecker änneren</string>
   <string name="app_ops_use_audio_focus">den Tounfokus änneren</string>
   <string name="app_ops_use_bluetooth_volume">d\'Bluetooth-Lautstäerkt änneren</string>
-  <string name="app_ops_use_body_sensors">Kierpersensoren benotzen</string>
+  <string name="app_ops_use_body_sensors">Kierpersensore benotzen</string>
   <string name="app_ops_use_fingerprint">Fangerofdrock benotzen</string>
   <string name="app_ops_use_master_volume">d\'Gesamtlautstäerkt änneren</string>
   <string name="app_ops_use_media_buttons">d\'Medieknäppercher benotzen</string>

@@ -3,7 +3,6 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
-     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,6 +24,8 @@
   <string name="adb_both_active_notification_title">ADB USB-n &amp; hálózaton keresztül engedélyezve</string>
   <!-- ADB notification message-->
   <string name="adb_active_generic_notification_message">Érintse meg a hibakeresés letiltásához.</string>
+  <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
+  <string name="lineage_system_error_manufacturer">Gyártói kép eltérés észlelve. Ez jellemzően azt jelenti, hogy a gyártói kép elavult. Ellenőrizze, hogy a gyártói képe megfelel ennek: <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <string name="lock_to_app_toast_no_navbar">Képernyő rögzítésének feloldásához érintse meg és tartsa nyomva a Vissza gombot.</string>
   <!-- Privacy Guard -->
@@ -52,7 +53,7 @@
   <string name="app_ops_delete_sms">SMS-üzenetek törlése</string>
   <string name="app_ops_draw_on_top">átfedő ablakok rajzolása</string>
   <string name="app_ops_get_accounts">eszköz fiókok lekérése</string>
-  <string name="app_ops_get_usage_stats">használati statisztikák lekérése</string>
+  <string name="app_ops_get_usage_stats">hozzáférés alkalmazás használati statisztikákhoz</string>
   <string name="app_ops_keep_device_awake">készülék ébrentartása</string>
   <string name="app_ops_make_phone_call">hívást kezdeményezhet</string>
   <string name="app_ops_mock_location">helyutánzatok engedélyezése</string>
@@ -64,7 +65,7 @@
   <string name="app_ops_mute_unmute_microphone">mikrofon némítása/némítás feloldása</string>
   <string name="app_ops_play_audio">zene lejátszása</string>
   <string name="app_ops_post_notification">értesítés küldése</string>
-  <string name="app_ops_project_media">média vetítése</string>
+  <string name="app_ops_project_media">hozzáférés a médiához</string>
   <string name="app_ops_read_calendar">naptár olvasása</string>
   <string name="app_ops_read_call_log">hívásnapló olvasása</string>
   <string name="app_ops_read_cell_broadcasts">hálózati üzenetek olvasása</string>
@@ -75,7 +76,7 @@
   <string name="app_ops_read_phone_state">hozzáférés telefon állapotához</string>
   <string name="app_ops_read_sms">SMS üzenetek olvasása</string>
   <string name="app_ops_receive_sms">SMS üzenet fogadása</string>
-  <string name="app_ops_record_audio">hangfelvétel</string>
+  <string name="app_ops_record_audio">hangfelvétel készítése</string>
   <string name="app_ops_run_in_background">futtatás a háttérben</string>
   <string name="app_ops_scan_wifi">Wi-Fi hálózatok keresése</string>
   <string name="app_ops_send_mms">MMS üzenet küldése</string>
