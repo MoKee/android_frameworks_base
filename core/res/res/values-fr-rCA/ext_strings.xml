@@ -65,7 +65,7 @@
   <string name="app_ops_access_camera">accéder à l\'appareil photo</string>
   <string name="app_ops_access_location">accéder à votre position</string>
   <string name="app_ops_access_notifications">lire vos notifications</string>
-  <string name="app_ops_activate_vpn">activer un VPN</string>
+  <string name="app_ops_activate_vpn">activer un RPV</string>
   <string name="app_ops_auto_start">démarrer avec le système</string>
   <string name="app_ops_delete_call_log">supprimer votre journal d\'appels</string>
   <string name="app_ops_delete_contacts">supprimer vos contacts</string>

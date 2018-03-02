@@ -39,7 +39,7 @@
   <string name="led_notification_text">LED argia ezarpenetan gaituta</string>
   <!-- Notification which notifies user flashlight is enabled -->
   <string name="quick_settings_tile_flashlight_not_title">Linterna piztuta dago</string>
-  <string name="quick_settings_tile_flashlight_not_summary">Sakatu itzaltzeko</string>
+  <string name="quick_settings_tile_flashlight_not_summary">Ukitu itzaltzeko</string>
   <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
   <string name="cm_power_notification_controls_description">Jakinarazpen ahaltsuen kontrolekin aplikazio baten jakinarazpenei 0 eta 6 bitarteko garrantzi maila ezarri diezaiekezu.
         \n\n<b>6. maila</b>
@@ -83,7 +83,7 @@
   <string name="lockscreen_default_target">Lehenetsia</string>
   <string name="select_application">Hautatu aplikazioa</string>
   <string name="lockscreen_choose_action_title">Aukeratu ekintza</string>
-  <string name="lockscreen_none_target">Bat ere ez</string>
+  <string name="lockscreen_none_target">Ezer ez</string>
   <!-- Play queue -->
   <string name="play_queue_extension">Bistaratu erreprodukzio ilara</string>
   <!-- Weather string format in keyguard -->
@@ -164,6 +164,7 @@
   <!-- Adb over network QS tile -->
   <string name="quick_settings_network_adb_label">Sare gaineko ADB</string>
   <!-- Ambient display QS tile -->
+  <string name="quick_settings_ambient_display_label">Ambient display</string>
   <string name="accessibility_quick_settings_ambient_display_off">Ambient display itzalita.</string>
   <string name="accessibility_quick_settings_ambient_display_on">Ambient display piztuta.</string>
   <string name="accessibility_quick_settings_ambient_display_changed_off">Ambient display itzalita.</string>

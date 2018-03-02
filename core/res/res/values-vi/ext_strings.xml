@@ -31,7 +31,7 @@
   <!-- Button to restart the phone, within the Restart Options dialog -->
   <string name="reboot_reboot">Khởi động lại</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
-  <string name="reboot_recovery">Chế độ Recovery</string>
+  <string name="reboot_recovery">Chế độ recovery</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
   <string name="reboot_bootloader">Chế độ bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
@@ -51,7 +51,7 @@
   <!-- ADB over USB and network notification -->
   <string name="adb_both_active_notification_title">Đã kích hoạt ADB qua USB &amp; mạng</string>
   <!-- ADB notification message-->
-  <string name="adb_active_generic_notification_message">Chạm để tắt Gỡ lỗi.</string>
+  <string name="adb_active_generic_notification_message">Chạm để tắt gỡ lỗi.</string>
   <!-- Privacy Guard -->
   <string name="permlab_changePrivacyGuardState">bật hoặc tắt Bảo vệ quyền riêng tư</string>
   <string name="permdesc_changePrivacyGuardState">Cho phép ứng dụng thay đổi ứng dụng khác chạy với Bảo vệ quyền riêng tư. Khi một ứng dụng chạy với Bảo vệ quyền riêng tư, nó sẽ không có quyền truy cập dữ liệu cá nhân như số liên lạc, nhật ký cuộc gọi hoặc tin nhắn.</string>
