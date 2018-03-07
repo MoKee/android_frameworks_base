@@ -16,6 +16,8 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+  <java-symbol type="bool" name="config_useDarkBgNotificationIconTextTinting" />
+
   <java-symbol type="integer" name="nav_gesture_swipe_min_length" />
   <java-symbol type="integer" name="nav_gesture_swipe_timout" />
   <java-symbol type="integer" name="nav_gesture_move_threshold" />
