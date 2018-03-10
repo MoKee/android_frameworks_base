@@ -45,7 +45,7 @@
   <string name="reboot_confirm" product="tablet">سيتم إعادة تشغيل جهازك اللوحي.</string>
   <string name="reboot_confirm" product="default">سيتم إعادة تشغيل هاتفك.</string>
   <!-- Restart Progress Dialog. This is shown if the user chooses to restart the phone. -->
-  <string name="reboot_progress">جارٍ إعادة التشغيل/u2026</string>
+  <string name="reboot_progress">جارٍ إعادة التشغيل</string>
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">تمكين ADB عبر الشبكة</string>
   <!-- ADB over USB and network notification -->
@@ -126,6 +126,7 @@
   <string name="app_ops_write_external_storage">كتابة الذاكرة الخارجية</string>
   <string name="app_ops_turn_on_screen">فتح الشاشة</string>
   <string name="app_ops_get_accounts">احصل على حسابات الجهاز</string>
+  <string name="app_ops_run_in_background">يعمل في الخلفية</string>
   <string name="app_ops_wifi_change">تغيير حالة الـ Wi-Fi</string>
   <string name="app_ops_su">الحصول على صلاحيات الجذر</string>
   <!-- Protected Apps Notification -->
@@ -135,6 +136,7 @@
   <string name="lock_to_app_toast_no_navbar">لإلغاء تثبيت هذه الشاشة، المس واستمر في ضغط زر الرجوع.</string>
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
   <!-- Single hand mode -->
+  <string name="singlehandmode_click_hint_message">اللمس خارج الشاشة للخروج من وضع اليد الواحدة</string>
   <!-- Strings for tethered notification -->
   <!-- Shown when the device is tethered -->
   <string name="tethered_notification_no_device_message">لا يوجد جهاز متصل</string>
