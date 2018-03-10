@@ -23,8 +23,10 @@
     <!-- signification move threshold - if stays below will trigger action -->
     <integer name="nav_gesture_move_threshold">4</integer>
 
-    <!-- True if the notification's dynamic app icon tint should be optimised for dark
-         backgrounds -->
+    <!-- True if the notification's dynamic app icon/title tint should be optimised for dark
+    backgrounds (requires config_allowNotificationIconTextTinting to be true)-->
     <bool name="config_useDarkBgNotificationIconTextTinting">false</bool>
+    <bool name="config_useDarkBgNotificationTinting_override">false</bool>
+    <bool name="config_notificationTinting_override">false</bool>
 
 </resources>
