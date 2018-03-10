@@ -80,7 +80,7 @@
   <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
   <string name="global_action_restart_progress">Перезапуск устройства...</string>
   <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
-  <string name="global_action_restart_recovery_progress">Перезапуск в режим восстановления...</string>
+  <string name="global_action_restart_recovery_progress">Перезапуск в рекавери...</string>
   <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
   <string name="global_action_restart_bootloader_progress">Перезапуск в режим загрузчика...</string>
   <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
