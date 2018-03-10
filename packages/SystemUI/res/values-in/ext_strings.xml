@@ -59,6 +59,7 @@
   <string name="accessibility_dpad_left">Kursor kiri</string>
   <string name="accessibility_dpad_right">Kursor kanan</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
+  <string name="screen_pinning_description_no_navbar">Hal ini terus terlihat sampai Anda berhenti. Sentuh &amp; tahan Kembali ke unpin.</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.
@@ -79,8 +80,11 @@
   <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
   <string name="global_action_restart_progress">Memulai ulang\u2026</string>
   <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
+  <string name="global_action_restart_recovery_progress">Mulai ulang ke mode pemulihan\u2026</string>
   <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
+  <string name="global_action_restart_bootloader_progress">Mulai ulang ke mode bootloader\u2026</string>
   <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
+  <string name="global_action_restart_download_progress">Mulai ulang untuk mendownload mode\u2026</string>
   <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_quick_settings_location_battery_saving">Laporan Lokasi: mode hemat baterai.</string>
   <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
