@@ -33,7 +33,7 @@
   <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="quick_settings_profiles_off">Profilak ezgaituta.</string>
   <!-- Content description of the system profiles  -->
-  <string name="quick_settings_profiles">Sistema profilak</string>
+  <string name="quick_settings_profiles">Sistema-profilak</string>
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">Argi ezarpenak</string>
   <string name="led_notification_text">LED argia ezarpenetan gaituta</string>
@@ -83,7 +83,7 @@
   <string name="lockscreen_default_target">Lehenetsia</string>
   <string name="select_application">Hautatu aplikazioa</string>
   <string name="lockscreen_choose_action_title">Aukeratu ekintza</string>
-  <string name="lockscreen_none_target">Ezer ez</string>
+  <string name="lockscreen_none_target">Bat ere ez</string>
   <!-- Play queue -->
   <string name="play_queue_extension">Bistaratu erreprodukzio ilara</string>
   <!-- Weather string format in keyguard -->
