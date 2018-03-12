@@ -35,6 +35,9 @@
     <!-- Fingerprint shortcuts -->
     <uses-permission android:name="android.permission.MANAGE_FINGERPRINT" />
 
+    <!-- DayNight mode -->
+    <uses-permission android:name="android.permission.MODIFY_DAY_NIGHT_MODE" />
+
     <!-- SystemUI Tuner -->
     <application>
         <activity-alias
