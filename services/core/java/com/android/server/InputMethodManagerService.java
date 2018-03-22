@@ -291,7 +291,7 @@ public class InputMethodManagerService extends IInputMethodManager.Stub
     private boolean mShowOngoingImeSwitcherForPhones;
     private boolean mNotificationShown;
 
-    private MKHardwareManager mLineageHardware;
+    private MKHardwareManager mMKHardware;
 
     static class SessionState {
         final ClientState client;
@@ -784,13 +784,13 @@ public class InputMethodManagerService extends IInputMethodManager.Stub
                     Settings.Secure.SHOW_IME_WITH_HARD_KEYBOARD), false, this, userId);
             resolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.ACCESSIBILITY_SOFT_KEYBOARD_MODE), false, this, userId);
-            if (mLineageHardware.isSupported(
+            if (mMKHardware.isSupported(
                     MKHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
                 resolver.registerContentObserver(MKSettings.System.getUriFor(
                         MKSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE),
                         false, this, userId);
             }
-            if (mLineageHardware.isSupported(MKHardwareManager.FEATURE_TOUCH_HOVERING)) {
+            if (mMKHardware.isSupported(MKHardwareManager.FEATURE_TOUCH_HOVERING)) {
                 resolver.registerContentObserver(MKSettings.Secure.getUriFor(
                         MKSettings.Secure.FEATURE_TOUCH_HOVERING), false, this, userId);
             }
@@ -1471,7 +1471,7 @@ public class InputMethodManagerService extends IInputMethodManager.Stub
                         !mUserManager.isUserUnlockingOrUnlocked(currentUserId));
 
                 // Must happen before registerContentObserverLocked
-                mLineageHardware = MKHardwareManager.getInstance(mContext);
+                mMKHardware = MKHardwareManager.getInstance(mContext);
 
                 updateTouchHovering();
                 updateTouchSensitivity();
@@ -2413,21 +2413,21 @@ public class InputMethodManagerService extends IInputMethodManager.Stub
     }
 
     private void updateTouchSensitivity() {
-        if (!mLineageHardware.isSupported(MKHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
+        if (!mMKHardware.isSupported(MKHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
             return;
         }
         final boolean enabled = MKSettings.System.getInt(mContext.getContentResolver(),
                 MKSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE, 0) == 1;
-        mLineageHardware.set(MKHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY, enabled);
+        mMKHardware.set(MKHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY, enabled);
     }
 
     private void updateTouchHovering() {
-        if (!mLineageHardware.isSupported(MKHardwareManager.FEATURE_TOUCH_HOVERING)) {
+        if (!mMKHardware.isSupported(MKHardwareManager.FEATURE_TOUCH_HOVERING)) {
             return;
         }
         final boolean enabled = MKSettings.Secure.getInt(mContext.getContentResolver(),
                 MKSettings.Secure.FEATURE_TOUCH_HOVERING, 0) == 1;
-        mLineageHardware.set(MKHardwareManager.FEATURE_TOUCH_HOVERING, enabled);
+        mMKHardware.set(MKHardwareManager.FEATURE_TOUCH_HOVERING, enabled);
     }
 
     public void updateKeyboardFromSettingsLocked() {
