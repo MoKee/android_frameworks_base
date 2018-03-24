@@ -89,7 +89,12 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := fonts.xml
 LOCAL_MODULE_CLASS := ETC
+
+ifeq ($(USE_REDUCED_CJK_FONT_WEIGHTS),true)
 LOCAL_PREBUILT_MODULE_FILE := frameworks/base/data/fonts/fonts.xml
+else
+LOCAL_PREBUILT_MODULE_FILE := frameworks/base/data/fonts/fonts_full_cjk.xml
+endif
 
 include $(BUILD_PREBUILT)
 
