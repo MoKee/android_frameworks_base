@@ -23,6 +23,10 @@ def main(argv):
     if len(argv) == 3:
         output_file_path = argv[1]
         override_file_path = argv[2]
+    elif len(argv) == 4:
+        output_file_path = argv[1]
+        override_file_path = argv[2]
+        original_file = argv[3]
     else:
         raise ValueError("Wrong number of arguments %s" % len(argv))
 
