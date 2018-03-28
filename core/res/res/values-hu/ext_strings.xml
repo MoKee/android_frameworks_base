@@ -31,7 +31,9 @@
   <!-- Button to restart the phone, within the Restart Options dialog -->
   <string name="reboot_reboot">Újraindítás</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
+  <string name="reboot_recovery">Recovery</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
+  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">Letöltés</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
@@ -69,7 +71,7 @@
   <string name="app_ops_delete_contacts">névjegyek törlése</string>
   <string name="app_ops_delete_mms">MMS-üzenetek törlése</string>
   <string name="app_ops_delete_sms">SMS-üzenetek törlése</string>
-  <string name="app_ops_draw_on_top">átfedő ablakok rajzolása</string>
+  <string name="app_ops_draw_on_top">többi alkalmazás felett futtatás</string>
   <string name="app_ops_get_usage_stats">hozzáférés alkalmazás használati statisztikákhoz</string>
   <string name="app_ops_keep_device_awake">készülék ébrentartása</string>
   <string name="app_ops_make_phone_call">hívást kezdeményezhet</string>

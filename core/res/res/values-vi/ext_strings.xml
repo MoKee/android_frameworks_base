@@ -31,9 +31,9 @@
   <!-- Button to restart the phone, within the Restart Options dialog -->
   <string name="reboot_reboot">Khởi động lại</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
-  <string name="reboot_recovery">Chế độ recovery</string>
+  <string name="reboot_recovery">Chế độ Recovery</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
-  <string name="reboot_bootloader">Chế độ bootloader</string>
+  <string name="reboot_bootloader">Chế độ Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">Tải về</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->

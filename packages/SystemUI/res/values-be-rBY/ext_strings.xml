@@ -96,6 +96,12 @@
   <!-- Path data for landscape battery -->
   <!-- Path data for circle battery -->
   <!-- Wi-Fi hotspot label when enabled -->
+  <plurals name="wifi_hotspot_connected_clients_label">
+    <item quantity="one">%1$d кліент</item>
+    <item quantity="few">%1$d кліента</item>
+    <item quantity="many">%1$d кліентаў</item>
+    <item quantity="other">%1$d кліентаў</item>
+  </plurals>
   <!-- Weather string format in expanded statusbar header -->
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">

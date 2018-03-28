@@ -53,7 +53,7 @@
   <!-- ADB notification message-->
   <string name="adb_active_generic_notification_message">Нажмите, чтобы отключить отладку.</string>
   <!-- Privacy Guard -->
-  <string name="permlab_changePrivacyGuardState">Включение или выключение защищённого режима</string>
+  <string name="permlab_changePrivacyGuardState">включение или выключение защищённого режима</string>
   <string name="permdesc_changePrivacyGuardState">Приложение сможет изменять состояние защищённого режима для других приложений. Когда приложение запущено в защищённом режиме, оно не получает доступ к персональным данным, таким как контакты, сообщения или журнал звонков.</string>
   <string name="privacy_guard_notification">Защищённый режим включён</string>
   <string name="privacy_guard_notification_detail">У «<xliff:g id="app">%1$s</xliff:g>» нет доступа к персональным данным</string>
