@@ -19,5 +19,8 @@
   <!-- su icon switch -->
   <string name="status_bar_su">Su</string>
   <!-- vpn icon switch -->
+  <string name="status_bar_vpn">VPN</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+  <string name="keyguard_indication_dash_charging_time">Gyorstöltés (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> a teljes feltöltődésig)</string>
+  <string name="keyguard_plugged_in_dash_charging">Gyorstöltés</string>
 </resources>
