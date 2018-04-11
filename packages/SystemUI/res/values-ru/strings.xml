@@ -255,6 +255,15 @@
       <item quantity="many">Ещё <xliff:g id="NUMBER_1">%s</xliff:g> уведомлений.</item>
       <item quantity="other">Ещё <xliff:g id="NUMBER_1">%s</xliff:g> уведомления.</item>
     </plurals>
+    <string name="stream_voice_call" msgid="4410002696470423714">"Вызов"</string>
+    <string name="stream_system" msgid="7493299064422163147">"Система"</string>
+    <string name="stream_ring" msgid="8213049469184048338">"Звонок"</string>
+    <string name="stream_music" msgid="9086982948697544342">"Мультимедиа"</string>
+    <string name="stream_alarm" msgid="5209444229227197703">"Будильник"</string>
+    <string name="stream_notification" msgid="2563720670905665031">"Уведомления"</string>
+    <string name="stream_bluetooth_sco" msgid="2055645746402746292">"Bluetooth"</string>
+    <string name="stream_dtmf" msgid="2447177903892477915">"Тональный набор"</string>
+    <string name="stream_accessibility" msgid="301136219144385106">"Специальные возможности"</string>
     <string name="status_bar_notification_inspect_item_title" msgid="5668348142410115323">"Настройки уведомлений"</string>
     <string name="status_bar_notification_app_settings_title" msgid="5525260160341558869">"Настройки приложения \"<xliff:g id="APP_NAME">%s</xliff:g>\""</string>
     <string name="accessibility_rotation_lock_off" msgid="4062780228931590069">"Экран будет поворачиваться автоматически."</string>
