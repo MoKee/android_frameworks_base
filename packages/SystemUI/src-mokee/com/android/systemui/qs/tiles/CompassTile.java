@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2015 The CyanogenMod Project
- * Copyright (C) 2017 The MoKee Open Source Project
+ * Copyright (C) 2017-2018 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,12 +24,16 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.widget.ImageView;
-import com.android.internal.logging.MetricsProto.MetricsEvent;
-import com.android.systemui.R;
-import com.android.systemui.qs.QSIconView;
-import com.android.systemui.qs.QSTile;
 
-public class CompassTile extends QSTile<QSTile.BooleanState> implements SensorEventListener {
+import com.android.systemui.R;
+import com.android.systemui.plugins.qs.QSIconView;
+import com.android.systemui.plugins.qs.QSTile.BooleanState;
+import com.android.systemui.qs.QSHost;
+import com.android.systemui.qs.tileimpl.QSTileImpl;
+
+import org.mokee.internal.logging.MKMetricsLogger;
+
+public class CompassTile extends QSTileImpl<BooleanState> implements SensorEventListener {
     private final static float ALPHA = 0.97f;
 
     private boolean mActive = false;
@@ -44,7 +48,7 @@ public class CompassTile extends QSTile<QSTile.BooleanState> implements SensorEv
     private ImageView mImage;
     private boolean mListeningSensors;
 
-    public CompassTile(Host host) {
+    public CompassTile(QSHost host) {
         super(host);
         mSensorManager = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
         mAccelerationSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -142,7 +146,7 @@ public class CompassTile extends QSTile<QSTile.BooleanState> implements SensorEv
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.DEVELOPMENT;
+        return MKMetricsLogger.TILE_COMPASS;
     }
 
     @Override
@@ -155,7 +159,7 @@ public class CompassTile extends QSTile<QSTile.BooleanState> implements SensorEv
     }
 
     @Override
-    public void setListening(boolean listening) {
+    public void handleSetListening(boolean listening) {
         if (!listening) {
             setListeningSensors(false);
             mActive = false;
