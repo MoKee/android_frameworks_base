@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The MoKee Open Source Project
+ * Copyright (C) 2016-2018 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,18 +30,21 @@ import android.text.format.DateUtils;
 import android.view.WindowManager;
 
 import com.android.systemui.R;
-import com.android.systemui.qs.QSTile;
+import com.android.systemui.plugins.qs.QSTile.BooleanState;
+import com.android.systemui.qs.QSHost;
+import com.android.systemui.qs.tileimpl.QSTileImpl;
+import com.android.systemui.screenshot.TakeScreenshotService;
 
 import org.mokee.internal.logging.MKMetricsLogger;
 
-public class ScreenShotTile extends QSTile<QSTile.BooleanState> {
+public class ScreenShotTile extends QSTileImpl<BooleanState> {
 
-    public ScreenShotTile(Host host) {
+    public ScreenShotTile(QSHost host) {
         super(host);
     }
 
     @Override
-    public void setListening(boolean listening) {
+    public void handleSetListening(boolean listening) {
     }
 
     @Override
