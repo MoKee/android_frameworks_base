@@ -272,8 +272,10 @@ public abstract class QSTileImpl<TState extends State> implements QSTile {
     }
 
     protected void handleLongClick() {
+        final Intent longClickIntent = getLongClickIntent();
+        if (longClickIntent == null) return;
         Dependency.get(ActivityStarter.class).postStartActivityDismissingKeyguard(
-                getLongClickIntent(), 0);
+                longClickIntent, 0);
     }
 
     public abstract Intent getLongClickIntent();
