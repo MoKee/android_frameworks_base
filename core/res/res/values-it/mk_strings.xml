@@ -22,5 +22,5 @@
   <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <string name="permdesc_modifyOverlays">Consente all\'app di modificare gli overlay del tema tramite OverlayManagerService</string>
   <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
-  <string name="mk_reboot_to_update_title">Aggiornamento di sistema MoKee</string>
+  <string name="mk_reboot_to_update_title">Aggiornamento di MoKee</string>
 </resources>

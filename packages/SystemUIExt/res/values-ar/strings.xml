@@ -20,7 +20,7 @@
   <!-- recent ram info -->
   <string name="recents_free_ram">                                            الذاكرة المتبقية: %1$d ميغابايت</string>
   <!-- Screenshot QS Tile -->
-  <string name="quick_settings_screenshot_label">لقطة للشاشة</string>
+  <string name="quick_settings_screenshot_label">لقطة الشاشة</string>
   <!-- Compass QS Tile -->
   <string name="quick_settings_compass_label">البوصلة</string>
   <string name="quick_settings_compass_init">تهيئة</string>
@@ -33,7 +33,7 @@
   <string name="quick_settings_compass_E">شرق</string>
   <string name="quick_settings_compass_SE">جنوب. شرقي</string>
   <string name="quick_settings_compass_S">جنوب</string>
-  <string name="quick_settings_compass_SW">ج. غ</string>
+  <string name="quick_settings_compass_SW">جنوب غربي</string>
   <string name="quick_settings_compass_W">غرب</string>
   <string name="quick_settings_compass_NW">الشمال الغربي</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->

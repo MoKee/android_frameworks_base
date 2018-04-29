@@ -199,9 +199,9 @@
   <string name="live_display_auto_summary">ضبط درجة حرارة اللون للشاشة تلقائياً بعد غروب الشمس وشروقها</string>
   <string name="live_display_off">إيقاف</string>
   <string name="live_display_off_summary">تعطيل جميع التعديلات</string>
-  <string name="live_display_day">اليوم</string>
+  <string name="live_display_day">               النهار</string>
   <string name="live_display_day_summary">استخدام إعدادات اليوم فقط</string>
-  <string name="live_display_night">ليلي</string>
+  <string name="live_display_night">               ليلي</string>
   <string name="live_display_night_summary">استخدام إعدادات الليل فقط</string>
   <string name="live_display_outdoor">خارج المنزل ( شمس ساطعة)</string>
   <string name="live_display_outdoor_summary">استخدم إعدادات خارج المنزل فقط</string>
