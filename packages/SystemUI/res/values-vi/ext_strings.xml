@@ -117,4 +117,5 @@
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_description">Sử dụng GPS để xác định vị trí của bạn</string>
   <!-- SysUI Tuner: Button that controls inversion of layout of navigation bar [CHAR LIMIT=60] -->
+  <string name="nav_bar_layout_inverse">Hoán đổi bố cục nút</string>
 </resources>
