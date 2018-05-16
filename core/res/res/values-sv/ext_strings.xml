@@ -62,6 +62,7 @@
   <string name="app_ops_modify_contacts">uppdatera dina kontakter</string>
   <string name="app_ops_modify_settings">uppdatera systeminställningar</string>
   <string name="app_ops_mute_unmute_microphone">slå på/av mikrofonen</string>
+  <string name="app_ops_picture_in_picture">använd bild i bild</string>
   <string name="app_ops_play_audio">spela ljud</string>
   <string name="app_ops_post_notification">skicka en avisering</string>
   <string name="app_ops_project_media">projektmedia</string>

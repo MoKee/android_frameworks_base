@@ -22,6 +22,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Content description of the data connection type HSPA+ for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_data_connection_hspap">HSPA+</string>
   <!-- Content description for Accessibility on unlocked tasks in recents -->
   <!-- Content description for Accessibility on locked tasks in recents -->
   <!-- ADB over network QS tile -->
@@ -64,6 +65,7 @@
   <string name="global_action_screenshot">Skärmdump</string>
   <!-- Advanced restart menu -->
   <!-- Button to restart the device, within the Restart Options dialog -->
+  <string name="global_action_restart_system">System</string>
   <!-- Button to restart the device into recovery mode, within the Restart Options dialog -->
   <!-- Button to restart the device into bootloader mode, within the Restart Options dialog -->
   <!-- Button to restart the device into download mode, within the Restart Options dialog -->
