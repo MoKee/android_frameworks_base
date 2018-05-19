@@ -722,7 +722,7 @@ public class OpaLayout extends FrameLayout implements ButtonInterface {
     private void updateIconColor() {
         int mIconColor = mIconTint;
         updateHomeDrawable(mIconColor);
-		updateHaloDrawable(mIconColor);
+        updateHaloDrawable(mIconColor);
     }
 
     private int getColorForDarkIntensity(float intensity, int lightColor, int darkColor) {
