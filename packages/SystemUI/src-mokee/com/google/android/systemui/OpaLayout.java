@@ -47,7 +47,6 @@ import com.android.systemui.Interpolators;
 import com.android.systemui.R;
 import com.android.systemui.plugins.statusbar.phone.NavBarButtonProvider.ButtonInterface;
 import com.android.systemui.statusbar.policy.KeyButtonView;
-import com.android.settingslib.Utils;
 
 public class OpaLayout extends FrameLayout implements ButtonInterface {
 
@@ -63,7 +62,6 @@ public class OpaLayout extends FrameLayout implements ButtonInterface {
     private static final int LINE_ANIMATION_DURATION_X = 133;
     private static final int RETRACT_ANIMATION_DURATION = 300;
     private static final int DIAMOND_ANIMATION_DURATION = 200;
-    private static final int HALO_ANIMATION_DURATION = 100;
     private static final int OPA_FADE_IN_DURATION = 50;
     private static final int OPA_FADE_OUT_DURATION = 250;
 
@@ -143,21 +141,15 @@ public class OpaLayout extends FrameLayout implements ButtonInterface {
         mDotsFullSizeInterpolator = new PathInterpolator(0.4f, 0f, 0f, 1f);
         mRetractInterpolator = new PathInterpolator(0.4f, 0f, 0f, 1f);
         mDiamondInterpolator = new PathInterpolator(0.2f, 0f, 0.2f, 1f);
-        mCheckLongPress = new Runnable() {
-            @Override
-            public void run() {
-                if (mIsPressed) {
-                    mLongClicked = true;
-                }
+        mCheckLongPress = () -> {
+            if (mIsPressed) {
+                mLongClicked = true;
             }
         };
-        mRetract = new Runnable() {
-            @Override
-            public void run() {
-                cancelCurrentAnimation();
-                startRetractAnimation();
-                hideAllOpa();
-            }
+        mRetract = () -> {
+            cancelCurrentAnimation();
+            startRetractAnimation();
+            hideAllOpa();
         };
         mAnimationState = ANIMATION_STATE_NONE;
         mCurrentAnimators = new ArraySet<Animator>();
@@ -177,21 +169,15 @@ public class OpaLayout extends FrameLayout implements ButtonInterface {
         mDotsFullSizeInterpolator = new PathInterpolator(0.4f, 0f, 0f, 1f);
         mRetractInterpolator = new PathInterpolator(0.4f, 0f, 0f, 1f);
         mDiamondInterpolator = new PathInterpolator(0.2f, 0f, 0.2f, 1f);
-        mCheckLongPress = new Runnable() {
-            @Override
-            public void run() {
-                if (mIsPressed) {
-                    mLongClicked = true;
-                }
+        mCheckLongPress = () -> {
+            if (mIsPressed) {
+                mLongClicked = true;
             }
         };
-        mRetract = new Runnable() {
-            @Override
-            public void run() {
-                cancelCurrentAnimation();
-                startRetractAnimation();
-                hideAllOpa();
-            }
+        mRetract = () -> {
+            cancelCurrentAnimation();
+            startRetractAnimation();
+            hideAllOpa();
         };
         mAnimationState = ANIMATION_STATE_NONE;
         mCurrentAnimators = new ArraySet<Animator>();
@@ -211,21 +197,15 @@ public class OpaLayout extends FrameLayout implements ButtonInterface {
         mDotsFullSizeInterpolator = new PathInterpolator(0.4f, 0f, 0f, 1f);
         mRetractInterpolator = new PathInterpolator(0.4f, 0f, 0f, 1f);
         mDiamondInterpolator = new PathInterpolator(0.2f, 0f, 0.2f, 1f);
-        mCheckLongPress = new Runnable() {
-            @Override
-            public void run() {
-                if (mIsPressed) {
-                    mLongClicked = true;
-                }
+        mCheckLongPress = () -> {
+            if (mIsPressed) {
+                mLongClicked = true;
             }
         };
-        mRetract = new Runnable() {
-            @Override
-            public void run() {
-                cancelCurrentAnimation();
-                startRetractAnimation();
-                hideAllOpa();
-            }
+        mRetract = () -> {
+            cancelCurrentAnimation();
+            startRetractAnimation();
+            hideAllOpa();
         };
         mAnimationState = ANIMATION_STATE_NONE;
         mCurrentAnimators = new ArraySet<Animator>();
@@ -245,21 +225,15 @@ public class OpaLayout extends FrameLayout implements ButtonInterface {
         mDotsFullSizeInterpolator = new PathInterpolator(0.4f, 0f, 0f, 1f);
         mRetractInterpolator = new PathInterpolator(0.4f, 0f, 0f, 1f);
         mDiamondInterpolator = new PathInterpolator(0.2f, 0f, 0.2f, 1f);
-        mCheckLongPress = new Runnable() {
-            @Override
-            public void run() {
-                if (mIsPressed) {
-                    mLongClicked = true;
-                }
+        mCheckLongPress = () -> {
+            if (mIsPressed) {
+                mLongClicked = true;
             }
         };
-        mRetract = new Runnable() {
-            @Override
-            public void run() {
-                cancelCurrentAnimation();
-                startRetractAnimation();
-                hideAllOpa();
-            }
+        mRetract = () -> {
+            cancelCurrentAnimation();
+            startRetractAnimation();
+            hideAllOpa();
         };
         mAnimationState = ANIMATION_STATE_NONE;
         mCurrentAnimators = new ArraySet<Animator>();
@@ -272,7 +246,7 @@ public class OpaLayout extends FrameLayout implements ButtonInterface {
     private void startAll(ArraySet<Animator> animators) {
         showAllOpa();
         for(int i=0; i < animators.size(); i++) {
-            Animator curAnim = (Animator) mCurrentAnimators.valueAt(i);
+            Animator curAnim = mCurrentAnimators.valueAt(i);
             curAnim.start();
         }
     }
@@ -309,7 +283,7 @@ public class OpaLayout extends FrameLayout implements ButtonInterface {
         if(mCurrentAnimators.isEmpty())
             return;
         for(int i=0; i < mCurrentAnimators.size(); i++) {
-            Animator curAnim = (Animator) mCurrentAnimators.valueAt(i);
+            Animator curAnim = mCurrentAnimators.valueAt(i);
             curAnim.removeAllListeners();
             curAnim.cancel();
         }
@@ -321,7 +295,7 @@ public class OpaLayout extends FrameLayout implements ButtonInterface {
         if(mCurrentAnimators.isEmpty())
             return;
         for(int i=0; i < mCurrentAnimators.size(); i++) {
-            Animator curAnim = (Animator) mCurrentAnimators.valueAt(i);
+            Animator curAnim = mCurrentAnimators.valueAt(i);
             curAnim.removeAllListeners();
             curAnim.end();
         }
@@ -540,7 +514,7 @@ public class OpaLayout extends FrameLayout implements ButtonInterface {
         Animator longestAnim = null;
 
         for(int i=0; i < animators.size(); i++) {
-            Animator a = (Animator) animators.valueAt(i);
+            Animator a = animators.valueAt(i);
             if(a.getTotalDuration() > longestDuration) {
                 longestDuration = a.getTotalDuration();
                 longestAnim = a;
@@ -560,9 +534,9 @@ public class OpaLayout extends FrameLayout implements ButtonInterface {
         mBlue = findViewById(R.id.blue);
         mYellow = findViewById(R.id.yellow);
         mGreen = findViewById(R.id.green);
-        mWhite = (ImageView) findViewById(R.id.white);
-        mHalo = (ImageView) findViewById(R.id.halo);
-        mHome = (KeyButtonView) findViewById(R.id.home_button);
+        mWhite = findViewById(R.id.white);
+        mHalo = findViewById(R.id.halo);
+        mHome = findViewById(R.id.home_button);
 
         setOpaEnabled(true);
 
