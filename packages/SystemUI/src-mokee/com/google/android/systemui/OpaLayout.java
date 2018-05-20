@@ -730,17 +730,19 @@ public class OpaLayout extends FrameLayout implements ButtonInterface {
     }
 
     private void updateHomeDrawable(int homeColor) {
-        int intHomeDrawable = R.drawable.ic_sysbar_home;
-        Drawable drawHomeIcon = getResources().getDrawable(intHomeDrawable);
-        drawHomeIcon.setColorFilter(homeColor, PorterDuff.Mode.SRC_IN);
-        setImageDrawable(drawHomeIcon);
+        Drawable drawHomeIcon = mWhite.getDrawable();
+        if (drawHomeIcon != null) {
+            drawHomeIcon.setColorFilter(homeColor, PorterDuff.Mode.SRC_IN);
+            setImageDrawable(drawHomeIcon);
+        }
     }
 
     private void updateHaloDrawable(int haloColor) {
-        int intHaloDrawable = R.drawable.halo;
-        Drawable drawHaloIcon = getResources().getDrawable(intHaloDrawable);
-        drawHaloIcon.setColorFilter(haloColor, PorterDuff.Mode.SRC_IN);
-        setHaloImageDrawable(drawHaloIcon);
+        Drawable drawHaloIcon = mHalo.getDrawable();
+        if (drawHaloIcon != null) {
+            drawHaloIcon.setColorFilter(haloColor, PorterDuff.Mode.SRC_IN);
+            setHaloImageDrawable(drawHaloIcon);
+        }
     }
 
 }

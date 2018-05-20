@@ -28,6 +28,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.os.RemoteException;
@@ -43,6 +44,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import com.android.settingslib.Utils;
 import com.android.systemui.Dependency;
@@ -96,6 +98,8 @@ public class NavigationBarView extends FrameLayout implements PluginListener<Nav
     private KeyButtonDrawable mImeIcon;
     private KeyButtonDrawable mMenuIcon;
     private KeyButtonDrawable mAccessibilityIcon;
+
+    private Drawable mHaloIcon, mHomeIcon;
 
     private GestureHelper mGestureHelper;
     private DeadZone mDeadZone;
@@ -353,6 +357,12 @@ public class NavigationBarView extends FrameLayout implements PluginListener<Nav
             if (ALTERNATE_CAR_MODE_UI) {
                 updateCarModeIcons(ctx);
             }
+
+            mHaloIcon = getDrawable(ctx,
+                    R.drawable.ic_sysbar_opa_halo, R.drawable.ic_sysbar_opa_halo_dark);
+            mHomeIcon = getDrawable(ctx,
+                    R.drawable.ic_sysbar_home, R.drawable.ic_sysbar_home_dark);
+
         }
     }
 
@@ -424,6 +434,12 @@ public class NavigationBarView extends FrameLayout implements PluginListener<Nav
             getHomeButton().setImageDrawable(mHomeCarModeIcon);
         } else {
             getHomeButton().setImageDrawable(mHomeDefaultIcon);
+        }
+        ImageView mWhite = getHomeButton().getCurrentView().findViewById(R.id.white);
+        ImageView mHalo = getHomeButton().getCurrentView().findViewById(R.id.halo);
+        if (mWhite != null && mHalo != null) {
+            mWhite.setImageDrawable(mHomeIcon);
+            mHalo.setImageDrawable(mHaloIcon);
         }
 
         // The Accessibility button always overrides the appearance of the IME switcher
