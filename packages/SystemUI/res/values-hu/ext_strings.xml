@@ -121,7 +121,11 @@
   <!-- Reader mode QS tile -->
   <string name="quick_settings_reading_mode">Olvasómód</string>
   <!-- Content description of the reader mode tile when on -->
+  <string name="accessibility_quick_settings_reading_mode_on">Olvasómód be.</string>
   <!-- Content description of the reader mode tile when off -->
+  <string name="accessibility_quick_settings_reading_mode_off">Olvasómód ki.</string>
   <!-- Content description of the reader mode tile when turned on -->
+  <string name="accessibility_quick_settings_reading_mode_changed_on">Olvasómód bekapcsolva.</string>
   <!-- Content description of the reader mode tile when turned off -->
+  <string name="accessibility_quick_settings_reading_mode_changed_off">Olvasómód kikapcsolva.</string>
 </resources>

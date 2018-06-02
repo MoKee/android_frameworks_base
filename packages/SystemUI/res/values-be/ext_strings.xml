@@ -119,6 +119,7 @@
   <!-- SysUI Tuner: Button that controls inversion of layout of navigation bar [CHAR LIMIT=60] -->
   <string name="nav_bar_layout_inverse">Інвертаваць размяшчэнне кнопак</string>
   <!-- Reader mode QS tile -->
+  <string name="quick_settings_reading_mode">Рэжым чытання</string>
   <!-- Content description of the reader mode tile when on -->
   <!-- Content description of the reader mode tile when off -->
   <!-- Content description of the reader mode tile when turned on -->
