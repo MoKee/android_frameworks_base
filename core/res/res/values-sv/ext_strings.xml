@@ -53,6 +53,7 @@
   <string name="app_ops_draw_on_top">rita fönster överst</string>
   <string name="app_ops_get_accounts">hämta enhetskonton</string>
   <string name="app_ops_get_usage_stats">få användningsstatistik för app</string>
+  <string name="app_ops_install_packages">installera paket</string>
   <string name="app_ops_keep_device_awake">hålla din enhet vaken</string>
   <string name="app_ops_make_phone_call">ringa</string>
   <string name="app_ops_mock_location">ange skenplats</string>
@@ -62,6 +63,7 @@
   <string name="app_ops_modify_contacts">uppdatera dina kontakter</string>
   <string name="app_ops_modify_settings">uppdatera systeminställningar</string>
   <string name="app_ops_mute_unmute_microphone">slå på/av mikrofonen</string>
+  <string name="app_ops_phone_calls">svara på telefonsamtal</string>
   <string name="app_ops_picture_in_picture">använd bild i bild</string>
   <string name="app_ops_play_audio">spela ljud</string>
   <string name="app_ops_post_notification">skicka en avisering</string>
