@@ -60,7 +60,8 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     org.mokee.platform.internal
 
 LOCAL_JAVA_LIBRARIES := telephony-common \
-    android.car
+    android.car \
+    ims-common
 
 LOCAL_PACKAGE_NAME := SystemUI
 LOCAL_PRIVATE_PLATFORM_APIS := true
