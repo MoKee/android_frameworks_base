@@ -147,7 +147,6 @@ public class TaskViewHeader extends FrameLayout
     ImageView mIconView;
     TextView mTitleView;
     ImageView mMoveTaskButton;
-    ImageView mDismissButton;
     ImageView mLockTaskButton;
     FrameLayout mAppOverlayView;
     ImageView mAppIconView;
@@ -258,7 +257,6 @@ public class TaskViewHeader extends FrameLayout
         mIconView = findViewById(R.id.icon);
         mIconView.setOnLongClickListener(this);
         mTitleView = (TextView) findViewById(R.id.title);
-        mDismissButton = (ImageView) findViewById(R.id.dismiss_task);
         mLockTaskButton = (ImageView) findViewById(R.id.lock_task);
         if (ssp.hasFreeformWorkspaceSupport()) {
             mMoveTaskButton = findViewById(R.id.move_task);
@@ -332,8 +330,8 @@ public class TaskViewHeader extends FrameLayout
         if (headerBarHeight != mHeaderBarHeight || headerButtonPadding != mHeaderButtonPadding) {
             mHeaderBarHeight = headerBarHeight;
             mHeaderButtonPadding = headerButtonPadding;
-            updateLayoutParams(mIconView, mTitleView, mLockTaskButton, mMoveTaskButton,
-                    mDismissButton);
+            updateLayoutParams(mIconView, mTitleView, null, mMoveTaskButton,
+                    mLockTaskButton);
             if (mAppOverlayView != null) {
                 updateLayoutParams(mAppIconView, mAppTitleView, null, null, mAppInfoView);
             }
@@ -358,7 +356,7 @@ public class TaskViewHeader extends FrameLayout
 
         boolean showTitle = true;
         boolean showMoveIcon = true;
-        boolean showDismissIcon = true;
+        boolean showLockTaskIcon = true;
         int rightInset = width - getMeasuredWidth();
 
         if (mTask != null && mTask.isFreeformTask()) {
@@ -366,13 +364,13 @@ public class TaskViewHeader extends FrameLayout
             // icon, and the dismiss icon if there is room
             int appIconWidth = mIconView.getMeasuredWidth();
             int titleWidth = (int) mTitleView.getPaint().measureText(mTask.title);
-            int dismissWidth = mDismissButton.getMeasuredWidth();
+            int lockTaskWidth = mLockTaskButton.getMeasuredWidth();
             int moveTaskWidth = mMoveTaskButton != null
                     ? mMoveTaskButton.getMeasuredWidth()
                     : 0;
-            showTitle = width >= (appIconWidth + dismissWidth + moveTaskWidth + titleWidth);
-            showMoveIcon = width >= (appIconWidth + dismissWidth + moveTaskWidth);
-            showDismissIcon = width >= (appIconWidth + dismissWidth);
+            showTitle = width >= (appIconWidth + lockTaskWidth + moveTaskWidth + titleWidth);
+            showMoveIcon = width >= (appIconWidth + lockTaskWidth + moveTaskWidth);
+            showLockTaskIcon = width >= (appIconWidth + lockTaskWidth);
         }
 
         mTitleView.setVisibility(showTitle ? View.VISIBLE : View.INVISIBLE);
@@ -380,9 +378,8 @@ public class TaskViewHeader extends FrameLayout
             mMoveTaskButton.setVisibility(showMoveIcon ? View.VISIBLE : View.INVISIBLE);
             mMoveTaskButton.setTranslationX(rightInset);
         }
-        mDismissButton.setVisibility(showDismissIcon ? View.VISIBLE : View.INVISIBLE);
-        mDismissButton.setTranslationX(rightInset);
-        mLockTaskButton.setVisibility(showDismissIcon ? View.VISIBLE : View.INVISIBLE);
+        mLockTaskButton.setVisibility(showLockTaskIcon ? View.VISIBLE : View.INVISIBLE);
+        mLockTaskButton.setTranslationX(rightInset);
 
         setLeftTopRightBottom(0, 0, width, getMeasuredHeight());
     }
@@ -511,12 +508,7 @@ public class TaskViewHeader extends FrameLayout
         mTitleView.setContentDescription(t.titleDescription);
         mTitleView.setTextColor(t.useLightOnPrimaryColor ?
                 mTaskBarViewLightTextColor : mTaskBarViewDarkTextColor);
-        mDismissButton.setImageDrawable(t.useLightOnPrimaryColor ?
-                mLightDismissDrawable : mDarkDismissDrawable);
-        mDismissButton.setContentDescription(t.dismissDescription);
-        mDismissButton.setOnClickListener(this);
-        mDismissButton.setClickable(false);
-        ((RippleDrawable) mDismissButton.getBackground()).setForceSoftware(true);
+
         updateLockTaskDrawable();
         mLockTaskButton.setOnClickListener(this);
         mLockTaskButton.setClickable(false);
@@ -582,28 +574,6 @@ public class TaskViewHeader extends FrameLayout
     /** Animates this task bar if the user does not interact with the stack after a certain time. */
     void startNoUserInteractionAnimation() {
         int duration = getResources().getInteger(R.integer.recents_task_enter_from_app_duration);
-        mDismissButton.setVisibility(View.VISIBLE);
-        mDismissButton.setClickable(true);
-        if (mDismissButton.getVisibility() == VISIBLE) {
-            mDismissButton.animate()
-                    .alpha(1f)
-                    .setInterpolator(Interpolators.FAST_OUT_LINEAR_IN)
-                    .setDuration(duration)
-                    .start();
-        } else {
-            mDismissButton.setAlpha(1f);
-        }
-        mLockTaskButton.setVisibility(View.VISIBLE);
-        mLockTaskButton.setClickable(true);
-        if (mLockTaskButton.getVisibility() == VISIBLE) {
-            mLockTaskButton.animate()
-                    .alpha(1f)
-                    .setInterpolator(Interpolators.FAST_OUT_LINEAR_IN)
-                    .setDuration(duration)
-                    .start();
-        } else {
-            mLockTaskButton.setAlpha(1f);
-        }
         if (mMoveTaskButton != null) {
             if (mMoveTaskButton.getVisibility() == VISIBLE) {
                 mMoveTaskButton.setVisibility(View.VISIBLE);
@@ -624,14 +594,6 @@ public class TaskViewHeader extends FrameLayout
      * time.
      */
     public void setNoUserInteractionState() {
-        mDismissButton.setVisibility(View.VISIBLE);
-        mDismissButton.animate().cancel();
-        mDismissButton.setAlpha(1f);
-        mDismissButton.setClickable(true);
-        mLockTaskButton.setVisibility(View.VISIBLE);
-        mLockTaskButton.animate().cancel();
-        mLockTaskButton.setAlpha(1f);
-        mLockTaskButton.setClickable(true);
         if (mMoveTaskButton != null) {
             mMoveTaskButton.setVisibility(View.VISIBLE);
             mMoveTaskButton.animate().cancel();
@@ -645,12 +607,6 @@ public class TaskViewHeader extends FrameLayout
      * time.
      */
     void resetNoUserInteractionState() {
-        mDismissButton.setVisibility(View.INVISIBLE);
-        mDismissButton.setAlpha(0f);
-        mDismissButton.setClickable(false);
-        mLockTaskButton.setVisibility(View.INVISIBLE);
-        mLockTaskButton.setAlpha(0f);
-        mLockTaskButton.setClickable(false);
         if (mMoveTaskButton != null) {
             mMoveTaskButton.setVisibility(View.INVISIBLE);
             mMoveTaskButton.setAlpha(0f);
@@ -671,15 +627,6 @@ public class TaskViewHeader extends FrameLayout
         if (v == mIconView) {
             // In accessibility, a single click on the focused app info button will show it
             EventBus.getDefault().send(new ShowApplicationInfoEvent(mTask));
-        } else if (v == mDismissButton) {
-            TaskView tv = Utilities.findParent(this, TaskView.class);
-            if (!Recents.sLockedTasks.contains(tv.getTask())) {
-                tv.dismissTask();
-
-                // Keep track of deletions by the dismiss button
-                MetricsLogger.histogram(getContext(), "overview_task_dismissed_source",
-                        Constants.Metrics.DismissSourceHeaderButton);
-            }
         } else if (v == mMoveTaskButton) {
             TaskView tv = Utilities.findParent(this, TaskView.class);
             EventBus.getDefault().send(new LaunchTaskEvent(tv, mTask, null,
