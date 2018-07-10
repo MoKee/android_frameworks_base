@@ -1779,14 +1779,14 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 }
                 return;
             }
-            if (prevScroll > SHOW_STACK_ACTION_BUTTON_SCROLL_THRESHOLD &&
-                    curScroll <= SHOW_STACK_ACTION_BUTTON_SCROLL_THRESHOLD &&
-                    mStack.getTaskCount() > 0) {
-                EventBus.getDefault().send(new ShowStackActionButtonEvent(true /* translate */));
-            } else if (prevScroll < HIDE_STACK_ACTION_BUTTON_SCROLL_THRESHOLD &&
-                    curScroll >= HIDE_STACK_ACTION_BUTTON_SCROLL_THRESHOLD) {
-                EventBus.getDefault().send(new HideStackActionButtonEvent());
-            }
+            // if (prevScroll > SHOW_STACK_ACTION_BUTTON_SCROLL_THRESHOLD &&
+            //         curScroll <= SHOW_STACK_ACTION_BUTTON_SCROLL_THRESHOLD &&
+            //         mStack.getTaskCount() > 0) {
+            //     EventBus.getDefault().send(new ShowStackActionButtonEvent(true /* translate */));
+            // } else if (prevScroll < HIDE_STACK_ACTION_BUTTON_SCROLL_THRESHOLD &&
+            //         curScroll >= HIDE_STACK_ACTION_BUTTON_SCROLL_THRESHOLD) {
+            //     EventBus.getDefault().send(new HideStackActionButtonEvent());
+            // }
         }
     }
 
@@ -2424,7 +2424,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
 
         // Always show the button in grid layout.
         if (useGridLayout() ||
-                (mStackScroller.getStackScroll() < SHOW_STACK_ACTION_BUTTON_SCROLL_THRESHOLD &&
+                (/* mStackScroller.getStackScroll() < SHOW_STACK_ACTION_BUTTON_SCROLL_THRESHOLD && */
                         mStack.getTaskCount() > 0)) {
             EventBus.getDefault().send(new ShowStackActionButtonEvent(false /* translate */));
         } else {
