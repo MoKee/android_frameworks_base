@@ -25,6 +25,7 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.app.ActivityOptions.OnAnimationStartedListener;
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Point;
@@ -963,8 +964,14 @@ public class RecentsView extends FrameLayout {
             top = actionButtonRect.top +
                 (actionButtonRect.height() - mStackActionButton.getMeasuredHeight()) / 2;
         }
-        actionButtonRect.set(left, top, left + mStackActionButton.getMeasuredWidth(),
-                top + mStackActionButton.getMeasuredHeight());
+        boolean isLandscape = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
+        if (isLandscape) {
+            actionButtonRect.set(actionButtonRect.right + mStackActionButton.getMeasuredWidth() / 2 + 12, top, left + (mStackActionButton.getMeasuredWidth() + mStackActionButton.getPaddingRight()) * 2 + 12,
+                    top + mStackActionButton.getMeasuredHeight());
+        } else {
+            actionButtonRect.set(left, top, left + mStackActionButton.getMeasuredWidth(),
+                    top + mStackActionButton.getMeasuredHeight());
+        }
         return actionButtonRect;
     }
 
