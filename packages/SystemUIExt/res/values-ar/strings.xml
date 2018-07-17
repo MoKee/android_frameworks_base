@@ -18,7 +18,7 @@
   <!-- su icon switch -->
   <string name="status_bar_su">مدير الروت</string>
   <!-- recent ram info -->
-  <string name="recents_free_ram">                                            الذاكرة المتبقية: %1$d ميغابايت</string>
+  <string name="recents_free_ram">الذاكرة: %1$d</string>
   <!-- Screenshot QS Tile -->
   <string name="quick_settings_screenshot_label">لقطة الشاشة</string>
   <!-- Compass QS Tile -->
