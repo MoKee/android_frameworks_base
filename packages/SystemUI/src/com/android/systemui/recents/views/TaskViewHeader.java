@@ -477,7 +477,7 @@ public class TaskViewHeader extends FrameLayout
     }
 
     private void updateLockTaskDrawable() {
-        if (Recents.sLockedTasks.contains(mTask)) {
+        if (Recents.mLockTaskHelper.isLockedTask(mTask.key.getComponent().getPackageName())) {
             mLockTaskButton.setImageDrawable(mTask.useLightOnPrimaryColor ?
                     mLightLockedDrawable : mDarkLockedDrawable);
             mLockTaskButton.setContentDescription(
@@ -636,10 +636,10 @@ public class TaskViewHeader extends FrameLayout
         } else if (v == mAppIconView) {
             hideAppOverlay(false /* immediate */);
         } else if (v == mLockTaskButton) {
-            if (Recents.sLockedTasks.contains(mTask)) {
-               Recents.sLockedTasks.remove(mTask);
+            if (Recents.mLockTaskHelper.isLockedTask(mTask.key.getComponent().getPackageName())) {
+               Recents.mLockTaskHelper.removeTask(mTask.key.getComponent().getPackageName());
             } else {
-               Recents.sLockedTasks.add(mTask);
+               Recents.mLockTaskHelper.addTask(mTask.key.getComponent().getPackageName());
             }
             updateLockTaskDrawable();
         }

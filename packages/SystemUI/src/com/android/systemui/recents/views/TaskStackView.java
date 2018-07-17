@@ -1928,7 +1928,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
         ArrayList<TaskView> deletedTasks = new ArrayList<>();
         ArrayList<TaskView> taskViews = new ArrayList<>(getTaskViews());
         for (TaskView t : taskViews) {
-            if (Recents.sLockedTasks.contains(t.getTask())) {
+            if (Recents.mLockTaskHelper.isLockedTask(t.getTask().key.getComponent().getPackageName())) {
                 deletedTasks.add(t);
             }
         }
@@ -1946,7 +1946,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 mStack.removeAllTasks(true /* notifyStackChanges */);
                 for (int i = tasks.size() - 1; i >= 0; i--) {
                     Task t = tasks.get(i);
-                    if (Recents.sLockedTasks.contains(t)) continue;
+                    if (Recents.mLockTaskHelper.isLockedTask(t.key.getComponent().getPackageName())) continue;
                     EventBus.getDefault().send(new DeleteTaskDataEvent(t));
                 }
 
