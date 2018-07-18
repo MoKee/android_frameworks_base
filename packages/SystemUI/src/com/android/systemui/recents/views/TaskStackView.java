@@ -82,6 +82,7 @@ import com.android.systemui.recents.events.ui.AllTaskViewsDismissedEvent;
 import com.android.systemui.recents.events.ui.DeleteTaskDataEvent;
 import com.android.systemui.recents.events.ui.DismissAllTaskViewsEvent;
 import com.android.systemui.recents.events.ui.DismissTaskViewEvent;
+import com.android.systemui.recents.events.ui.LockTaskStateChangedEvent;
 import com.android.systemui.recents.events.ui.RecentsGrowingEvent;
 import com.android.systemui.recents.events.ui.TaskViewDismissedEvent;
 import com.android.systemui.recents.events.ui.UpdateFreeformTaskViewVisibilityEvent;
@@ -1790,6 +1791,14 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
         }
     }
 
+    public final void onBusEvent(LockTaskStateChangedEvent event) {
+        if (Recents.sLockedTasks.size() == mStack.getTaskCount()) {
+            EventBus.getDefault().send(new HideStackActionButtonEvent());
+        } else {
+            EventBus.getDefault().send(new ShowStackActionButtonEvent(true /* translate */));
+        }
+    }
+
     /**** EventBus Events ****/
 
     public final void onBusEvent(PackagesChangedEvent event) {
@@ -1928,7 +1937,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
         ArrayList<TaskView> deletedTasks = new ArrayList<>();
         ArrayList<TaskView> taskViews = new ArrayList<>(getTaskViews());
         for (TaskView t : taskViews) {
-            if (Recents.mLockTaskHelper.isLockedTask(t.getTask().key.getComponent().getPackageName())) {
+            if (Recents.getLockTaskHelper().isLockedTask(t.getTask().key.getComponent().getPackageName())) {
                 deletedTasks.add(t);
             }
         }
@@ -1946,7 +1955,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 mStack.removeAllTasks(true /* notifyStackChanges */);
                 for (int i = tasks.size() - 1; i >= 0; i--) {
                     Task t = tasks.get(i);
-                    if (Recents.mLockTaskHelper.isLockedTask(t.key.getComponent().getPackageName())) continue;
+                    if (Recents.getLockTaskHelper().isLockedTask(t.key.getComponent().getPackageName())) continue;
                     EventBus.getDefault().send(new DeleteTaskDataEvent(t));
                 }
 
@@ -1975,6 +1984,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
         // Remove the task from the stack
         mStack.removeTask(event.task, event.animation, false /* fromDockGesture */);
         EventBus.getDefault().send(new DeleteTaskDataEvent(event.task));
+        EventBus.getDefault().send(new LockTaskStateChangedEvent(true));
         if (mStack.getTaskCount() > 0 && Recents.getConfiguration().isLowRamDevice) {
             EventBus.getDefault().send(new ShowStackActionButtonEvent(false /* translate */));
         }
@@ -2425,7 +2435,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
         // Always show the button in grid layout.
         if (useGridLayout() ||
                 (/* mStackScroller.getStackScroll() < SHOW_STACK_ACTION_BUTTON_SCROLL_THRESHOLD && */
-                        mStack.getTaskCount() > 0)) {
+                        mStack.getTaskCount() > 0 && mStack.getTaskCount() != Recents.sLockedTasks.size())) {
             EventBus.getDefault().send(new ShowStackActionButtonEvent(false /* translate */));
         } else {
             EventBus.getDefault().send(new HideStackActionButtonEvent());

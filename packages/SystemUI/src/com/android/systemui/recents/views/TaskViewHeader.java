@@ -54,6 +54,7 @@ import com.android.systemui.recents.Constants;
 import com.android.systemui.recents.Recents;
 import com.android.systemui.recents.events.EventBus;
 import com.android.systemui.recents.events.activity.LaunchTaskEvent;
+import com.android.systemui.recents.events.ui.LockTaskStateChangedEvent;
 import com.android.systemui.recents.events.ui.ShowApplicationInfoEvent;
 import com.android.systemui.recents.misc.SystemServicesProxy;
 import com.android.systemui.recents.misc.Utilities;
@@ -477,7 +478,7 @@ public class TaskViewHeader extends FrameLayout
     }
 
     private void updateLockTaskDrawable() {
-        if (Recents.mLockTaskHelper.isLockedTask(mTask.key.getComponent().getPackageName())) {
+        if (Recents.getLockTaskHelper().isLockedTask(mTask.key.getComponent().getPackageName())) {
             mLockTaskButton.setImageDrawable(mTask.useLightOnPrimaryColor ?
                     mLightLockedDrawable : mDarkLockedDrawable);
             mLockTaskButton.setContentDescription(
@@ -636,12 +637,14 @@ public class TaskViewHeader extends FrameLayout
         } else if (v == mAppIconView) {
             hideAppOverlay(false /* immediate */);
         } else if (v == mLockTaskButton) {
-            if (Recents.mLockTaskHelper.isLockedTask(mTask.key.getComponent().getPackageName())) {
-               Recents.mLockTaskHelper.removeTask(mTask.key.getComponent().getPackageName());
+            String mTaskPackageName = mTask.key.getComponent().getPackageName();
+            if (Recents.getLockTaskHelper().isLockedTask(mTaskPackageName)) {
+                Recents.getLockTaskHelper().removeTask(mTaskPackageName);
             } else {
-               Recents.mLockTaskHelper.addTask(mTask.key.getComponent().getPackageName());
+                Recents.getLockTaskHelper().addTask(mTaskPackageName);
             }
             updateLockTaskDrawable();
+            EventBus.getDefault().send(new LockTaskStateChangedEvent(true));
         }
     }
 

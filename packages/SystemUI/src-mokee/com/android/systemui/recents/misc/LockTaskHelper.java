@@ -18,6 +18,9 @@ package com.android.systemui.recents.misc;
 
 import android.content.Context;
 import android.text.TextUtils;
+
+import com.android.systemui.recents.Recents;
+
 import mokee.providers.MKSettings;
 
 import java.util.ArrayList;
@@ -75,12 +78,14 @@ public class LockTaskHelper {
     }
 
     public void removeTask(String packageName) {
+        Recents.sLockedTasks.remove(packageName);
         if (lockedTaskMap.remove(packageName) != null) {
             saveLockedTaskMap();
         }
     }
 
     public void addTask(String packageName) {
+        Recents.sLockedTasks.add(packageName);
         TaskInfo taskInfo = lockedTaskMap.get(packageName);
         if (taskInfo == null) {
             taskInfo = new TaskInfo(packageName);

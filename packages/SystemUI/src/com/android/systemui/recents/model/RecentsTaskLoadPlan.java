@@ -213,6 +213,11 @@ public class RecentsTaskLoadPlan {
                     t.supportsSplitScreenMultiWindow, t.bounds, t.taskDescription, t.resizeMode, t.topActivity,
                     isLocked);
 
+            String taskPackageName = task.key.getComponent().getPackageName();
+            if (Recents.getLockTaskHelper().isLockedTask(taskPackageName)) {
+                Recents.sLockedTasks.add(taskPackageName);
+            }
+
             allTasks.add(task);
             affiliatedTaskCounts.put(taskKey.id, affiliatedTaskCounts.get(taskKey.id, 0) + 1);
             affiliatedTasks.put(taskKey.id, taskKey);

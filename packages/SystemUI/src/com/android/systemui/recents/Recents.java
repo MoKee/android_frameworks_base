@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2016-2018 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,6 +62,7 @@ import com.android.systemui.recents.events.ui.RecentsDrawnEvent;
 import com.android.systemui.recents.misc.LockTaskHelper;
 import com.android.systemui.recents.misc.SystemServicesProxy;
 import com.android.systemui.recents.model.RecentsTaskLoader;
+import com.android.systemui.recents.model.Task;
 import com.android.systemui.stackdivider.Divider;
 import com.android.systemui.statusbar.CommandQueue;
 
@@ -90,6 +92,9 @@ public class Recents extends SystemUI
         RECENTS_ACTIVITIES.add(RecentsImpl.RECENTS_ACTIVITY);
     }
 
+    public final static Set<String> sLockedTasks = new HashSet<>();
+    private static LockTaskHelper sLockTaskHelper;
+
     // Purely for experimentation
     private final static String RECENTS_OVERRIDE_SYSPROP_KEY = "persist.recents_override_pkg";
     private final static String ACTION_SHOW_RECENTS = "com.android.systemui.recents.ACTION_SHOW";
@@ -104,7 +109,6 @@ public class Recents extends SystemUI
     private static RecentsDebugFlags sDebugFlags;
     private static RecentsTaskLoader sTaskLoader;
     private static RecentsConfiguration sConfiguration;
-    public static LockTaskHelper mLockTaskHelper;
 
     // For experiments only, allows another package to handle recents if it is defined in the system
     // properties.  This is limited to show/toggle/hide, and does not tie into the ActivityManager,
@@ -201,13 +205,17 @@ public class Recents extends SystemUI
         return sDebugFlags;
     }
 
+    public static LockTaskHelper getLockTaskHelper() {
+        return sLockTaskHelper;
+    }
+
     @Override
     public void start() {
         sDebugFlags = new RecentsDebugFlags(mContext);
         sSystemServicesProxy = SystemServicesProxy.getInstance(mContext);
         sConfiguration = new RecentsConfiguration(mContext);
         sTaskLoader = new RecentsTaskLoader(mContext);
-        mLockTaskHelper = LockTaskHelper.init(mContext);
+        sLockTaskHelper = LockTaskHelper.init(mContext);
         mHandler = new Handler();
         mImpl = new RecentsImpl(mContext);
 
