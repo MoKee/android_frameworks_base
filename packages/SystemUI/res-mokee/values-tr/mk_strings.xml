@@ -24,5 +24,5 @@
   <string name="keyguard_indication_dash_charging_time">Hızlı Şarj oluyor (tam dolmasına <xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> kaldı)</string>
   <string name="keyguard_plugged_in_dash_charging">Hızlı şarj oluyor</string>
   <!-- Recents memory view -->
-  <string name="recents_free_ram">Boş RAM: %1$d MB</string>
+  <string name="recents_free_ram">BOŞ RAM: %1$d MB</string>
 </resources>
