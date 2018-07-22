@@ -70,6 +70,7 @@
   <!-- Button to restart the device into download mode, within the Restart Options dialog -->
   <string name="global_action_restart_download">دانلود</string>
   <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
+  <string name="global_action_restart_progress">در حال راه اندازی مجدد /u2026</string>
   <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
   <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
   <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
