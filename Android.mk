@@ -192,7 +192,6 @@ LOCAL_SRC_FILES += \
 	core/java/android/hardware/display/IDisplayManager.aidl \
 	core/java/android/hardware/display/IDisplayManagerCallback.aidl \
 	core/java/android/hardware/display/IVirtualDisplayCallback.aidl \
-	core/java/android/hardware/fingerprint/IFingerprintService.aidl \
 	core/java/android/hardware/fingerprint/IFingerprintServiceLockoutResetCallback.aidl \
 	core/java/android/hardware/fingerprint/IFingerprintClientActiveCallback.aidl \
 	core/java/android/hardware/fingerprint/IFingerprintServiceReceiver.aidl \
@@ -560,6 +559,14 @@ LOCAL_SRC_FILES += \
 	core/java/android/service/quicksettings/IQSTileService.aidl \
 	telephony/java/com/android/internal/telephony/ISmsSecurityService.aidl \
 	telephony/java/com/android/internal/telephony/ISmsSecurityAgent.aidl \
+
+ifeq ($(BOARD_HAVE_NUBIA_GOODIX_FP_LEGACY),true)
+LOCAL_SRC_FILES += \
+	mokee/hook/nubia/goodix_fp_legacy/android/hardware/fingerprint/IFingerprintService.aidl
+else
+LOCAL_SRC_FILES += \
+	core/java/android/hardware/fingerprint/IFingerprintService.aidl
+endif
 
 # The following are native binders that need to go with the native component
 # at system/update_engine/binder_bindings/. Use relative path to refer to them.
