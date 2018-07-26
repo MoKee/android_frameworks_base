@@ -59,6 +59,8 @@
   <string name="accessibility_dpad_right">Markör till höger</string>
   <!-- NavBar Tuner -->
   <string name="search">Sök</string>
+  <!-- Name of the clock status bar icon -->
+  <string name="status_bar_clock">Klocka</string>
   <!-- Path data for portrait battery -->
   <!-- Path data for landscape battery -->
   <!-- Path data for circle battery -->

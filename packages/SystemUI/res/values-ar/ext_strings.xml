@@ -91,6 +91,8 @@
   <!-- NavBar Tuner -->
   <string name="menu_ime_always_show">القائمة / مبدل لوحة المفاتيح (اضهار دائمًا)</string>
   <string name="search">بحث</string>
+  <!-- Name of the clock status bar icon -->
+  <string name="status_bar_clock">الساعة</string>
   <!-- Path data for portrait battery -->
   <!-- Path data for landscape battery -->
   <!-- Path data for circle battery -->

@@ -92,6 +92,8 @@
   <!-- NavBar Tuner -->
   <string name="menu_ime_always_show">Меню или выбор метода ввода (всегда)</string>
   <string name="search">Поиск</string>
+  <!-- Name of the clock status bar icon -->
+  <string name="status_bar_clock">Часы</string>
   <!-- Path data for portrait battery -->
   <!-- Path data for landscape battery -->
   <!-- Path data for circle battery -->

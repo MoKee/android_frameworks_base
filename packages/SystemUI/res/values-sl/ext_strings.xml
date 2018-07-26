@@ -81,7 +81,7 @@
   <string name="shortcut_hint">Potegnite iz ikone za %1$s</string>
   <string name="lockscreen_message">Tapnite ikono na levi ali desni, da ponovno dodelite bližnjico zaklenjenega zaslona.</string>
   <string name="lockscreen_default_target">Privzeto</string>
-  <string name="select_application">Izberite aplikacijo</string>
+  <string name="select_application">Izberite program</string>
   <string name="lockscreen_choose_action_title">Izberite dejanje</string>
   <string name="lockscreen_none_target">Brez</string>
   <!-- Play queue -->
@@ -92,6 +92,8 @@
   <!-- NavBar Tuner -->
   <string name="menu_ime_always_show">Meni/preklopnik tipkovnice (vedno prikaži)</string>
   <string name="search">Išči</string>
+  <!-- Name of the clock status bar icon -->
+  <string name="status_bar_clock">Ura</string>
   <!-- Path data for portrait battery -->
   <!-- Path data for landscape battery -->
   <!-- Path data for circle battery -->
@@ -133,11 +135,11 @@
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
   <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_battery_saving">Poročanje o lokaciji: način varčevanja energije.</string>
+  <string name="accessibility_quick_settings_location_battery_saving">Poročanje lokacije: varčevanja z baterijo.</string>
   <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_gps_only">Poročanje o lokaciji: način \'samo tipala\'.</string>
+  <string name="accessibility_quick_settings_location_gps_only">Poročanje lokacije: samo s senzorji.</string>
   <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_high_accuracy">Poročanje o lokaciji: način visoke natančnosti.</string>
+  <string name="accessibility_quick_settings_location_high_accuracy">Poročanje lokacije: visoka natančnost.</string>
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_battery_saving_label">Varčevanje z energijo</string>
   <string name="quick_settings_location_battery_saving_label_twoline">Varčevanje\nz energijo</string>
@@ -158,7 +160,7 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">Samo v napravi</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-  <string name="quick_settings_location_detail_mode_high_accuracy_description">Uporaba GPS-ja, Bluetootha, Wi\u2011Fi-ja in mobilnih omrežij za določanje lokacije</string>
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">Uporabi GPS, Wi\u2011Fi, Bluetooth ali mobilna omrežja za določanje lokacije </string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
   <string name="quick_settings_location_detail_mode_battery_saving_description">Uporaba Wi\u2011Fi-ja, Bluetootha in mobilnih omrežij za določanje lokacije</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->

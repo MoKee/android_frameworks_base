@@ -92,6 +92,8 @@
   <!-- NavBar Tuner -->
   <string name="menu_ime_always_show">Menu / Keyboard Switcher (laging ipakita)</string>
   <string name="search">Hanapin</string>
+  <!-- Name of the clock status bar icon -->
+  <string name="status_bar_clock">Orasan</string>
   <!-- Path data for portrait battery -->
   <!-- Path data for landscape battery -->
   <!-- Path data for circle battery -->
