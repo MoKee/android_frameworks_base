@@ -55,6 +55,8 @@
   <string name="accessibility_dpad_left">Markör till vänster</string>
   <string name="accessibility_dpad_right">Markör till höger</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
+  <!-- Name of the clock status bar icon -->
+  <string name="status_bar_clock">Klocka</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.

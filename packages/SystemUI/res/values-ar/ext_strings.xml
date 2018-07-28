@@ -61,6 +61,8 @@
   <string name="accessibility_dpad_right">المؤشر الى اليمين</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <string name="screen_pinning_description_no_navbar">هذا يجعلها في العرض حتى تقوم بإلغاء التثبيت. اضغط مطولاً على الصفحة الرئيسية مع زر الطاقة في نفس الوقت لإلغاء التثبيت.</string>
+  <!-- Name of the clock status bar icon -->
+  <string name="status_bar_clock">الساعة</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.
