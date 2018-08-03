@@ -49,6 +49,7 @@
   <!-- Button to restart the device into recovery mode, within the Restart Options dialog -->
   <string name="global_action_restart_recovery">Обновување</string>
   <!-- Button to restart the device into bootloader mode, within the Restart Options dialog -->
+  <string name="global_action_restart_bootloader">Bootloader</string>
   <!-- Button to restart the device into download mode, within the Restart Options dialog -->
   <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
   <string name="global_action_restart_progress">Рестартирање\u2026</string>
