@@ -5,6 +5,7 @@
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
  * Copyright (c) 2017-2018, The LineageOS Project
+ * Copyright (c) 2017-2018, The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -62,13 +63,20 @@
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
   <!-- Label for current user in power menu options dialog -->
+  <string name="global_action_current_user">ಪ್ರಸ್ತುತವಿರುವುದು</string>
   <!-- Label for item that screenshots in power menu options dialog -->
+  <string name="global_action_screenshot">ತೆರೆಸೆರೆ</string>
   <!-- Advanced restart menu -->
   <!-- Button to restart the device, within the Restart Options dialog -->
+  <string name="global_action_restart_system">ವ್ಯವಸ್ಥೆ</string>
   <!-- Button to restart the device into recovery mode, within the Restart Options dialog -->
+  <string name="global_action_restart_recovery">ರಿಕವರಿ</string>
   <!-- Button to restart the device into bootloader mode, within the Restart Options dialog -->
+  <string name="global_action_restart_bootloader">ಬೂಟ್‍ಲೋಡರ್</string>
   <!-- Button to restart the device into download mode, within the Restart Options dialog -->
+  <string name="global_action_restart_download">ಡೌನ್‍ಲೋಡ್</string>
   <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
+  <string name="global_action_restart_progress">ಮರುಪ್ರಾರಂಭಗೊಳ್ಳುತ್ತಿದೆ\u2026</string>
   <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
   <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
   <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
@@ -80,12 +88,17 @@
   <string name="accessibility_quick_settings_location_high_accuracy">ಸ್ಥಳ ವರದಿಸಲ್ಲಿಸುವಿಕೆ: ಗರಿಷ್ಟ ನಿಖರತೆ ಮೋಡ್.</string>
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_battery_saving_label">ಬ್ಯಾಟರಿ ಉಳಿತಾಯ</string>
+  <string name="quick_settings_location_battery_saving_label_twoline">ಬ್ಯಾಟರಿ\nಉಳಿತಾಯ</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_gps_only_label">ಸಾಧನ ಮಾತ್ರ</string>
+  <string name="quick_settings_location_gps_only_label_twoline">ಸಾಧನ\n ಮಾತ್ರ</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">ಗರಿಷ್ಠ ನಿಖರತೆ</string>
+  <string name="quick_settings_location_high_accuracy_label_twoline">ಗರಿಷ್ಠ\n ನಿಖರತೆ</string>
   <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_detail_title">ಸ್ಥಳ</string>
   <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_detail_menu_title">ಮಾದರಿ ಆಯ್ಕೆ:</string>
   <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
   <string name="quick_settings_location_detail_mode_high_accuracy_title">ಗರಿಷ್ಠ ನಿಖರತೆ</string>
   <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->
@@ -93,8 +106,11 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">ಸಾಧನ ಮಾತ್ರ</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">ಸ್ಥಳವನ್ನು ನಿರ್ಧರಿಸಲು GPS, Wi\u2011‍Fi, ಬ್ಲೂಟೂತ್, ಅಥವಾ ಸೆಲ್ಯುಲರ್ ನೆಟ್ವರ್ಕ್ ಗಳನ್ನು ಬಳಸಿ</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
+  <string name="quick_settings_location_detail_mode_battery_saving_description">ಸ್ಥಳವನ್ನು ನಿರ್ಧರಿಸಲುWi\u2011‍Fi, ಬ್ಲೂಟೂತ್, ಅಥವಾ ಸೆಲ್ಯುಲರ್ ನೆಟ್ವರ್ಕ್ ಗಳನ್ನು ಬಳಸಿ</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
+  <string name="quick_settings_location_detail_mode_sensors_only_description">ಸ್ಥಳವನ್ನು ನಿರ್ಧರಿಸಲು GPS ಬಳಸಿ</string>
   <!-- SysUI Tuner: Button that controls inversion of layout of navigation bar [CHAR LIMIT=60] -->
   <!-- Reader mode QS tile -->
   <!-- Content description of the reader mode tile when on -->

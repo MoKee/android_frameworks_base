@@ -5,6 +5,7 @@
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
  * Copyright (c) 2017-2018, The LineageOS Project
+ * Copyright (c) 2017-2018, The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +22,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Content description of the data connection type HSPA+ for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_data_connection_hspap">HSPA+</string>
   <!-- Content description for Accessibility on unlocked tasks in recents -->
   <!-- Content description for Accessibility on locked tasks in recents -->
   <!-- ADB over network QS tile -->
@@ -37,7 +37,6 @@
   <string name="accessibility_quick_settings_caffeine_off">คาเฟอีนปิดอยู่</string>
   <string name="accessibility_quick_settings_caffeine_on">คาเฟอีนเปิดอยู่</string>
   <!-- Heads up QS tile -->
-  <string name="quick_settings_heads_up_label">Heads up</string>
   <string name="accessibility_quick_settings_heads_up_off">Heads up ปิดอยู่</string>
   <string name="accessibility_quick_settings_heads_up_on">Heads up เปิดอยู่</string>
   <string name="accessibility_quick_settings_heads_up_changed_off">Heads up ปิดอยู่</string>
@@ -62,6 +61,7 @@
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
   <!-- Label for current user in power menu options dialog -->
+  <string name="global_action_current_user">ปัจจุบัน</string>
   <!-- Label for item that screenshots in power menu options dialog -->
   <!-- Advanced restart menu -->
   <!-- Button to restart the device, within the Restart Options dialog -->
@@ -85,6 +85,7 @@
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">ความแม่นยำสูง</string>
   <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_detail_title">ตำแหน่งที่ตั้ง</string>
   <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
   <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
   <string name="quick_settings_location_detail_mode_high_accuracy_title">ความแม่นยำสูง</string>

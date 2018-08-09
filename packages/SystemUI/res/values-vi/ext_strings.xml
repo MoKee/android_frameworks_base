@@ -5,6 +5,7 @@
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
  * Copyright (c) 2017-2018, The LineageOS Project
+ * Copyright (c) 2017-2018, The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,17 +30,17 @@
   <!-- ADB over network QS tile -->
   <string name="quick_settings_network_adb_label">ADB qua mạng</string>
   <!-- Ambient display QS tile -->
-  <string name="quick_settings_ambient_display_label">Hiển thị môi trường xung quanh</string>
+  <string name="quick_settings_ambient_display_label">Hiển thị tương tác</string>
   <string name="accessibility_quick_settings_ambient_display_off">Tắt hiển thị môi trường xung quanh.</string>
   <string name="accessibility_quick_settings_ambient_display_on">Hiển thị môi trường xung quanh bật.</string>
-  <string name="accessibility_quick_settings_ambient_display_changed_off">Hiển thị môi trường xung quanh đã tắt.</string>
-  <string name="accessibility_quick_settings_ambient_display_changed_on">Hiển thị môi trường xung quanh đã bật.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_off">Hiển thị tương tác đã tắt.</string>
+  <string name="accessibility_quick_settings_ambient_display_changed_on">Hiển thị tương tác đã bật.</string>
   <!-- Caffeine QS tile -->
   <string name="quick_settings_caffeine_label">Cafein</string>
   <string name="accessibility_quick_settings_caffeine_off">Đã tắt Cafein.</string>
   <string name="accessibility_quick_settings_caffeine_on">Đã bật Cafein.</string>
   <!-- Heads up QS tile -->
-  <string name="quick_settings_heads_up_label">Heads up</string>
+  <string name="quick_settings_heads_up_label">Thông báo nổi</string>
   <string name="accessibility_quick_settings_heads_up_off">Heads up tắt.</string>
   <string name="accessibility_quick_settings_heads_up_on">Heads up bật.</string>
   <string name="accessibility_quick_settings_heads_up_changed_off">Heads up đã tắt.</string>
@@ -73,17 +74,17 @@
   <!-- Button to restart the device, within the Restart Options dialog -->
   <string name="global_action_restart_system">Hệ thống</string>
   <!-- Button to restart the device into recovery mode, within the Restart Options dialog -->
-  <string name="global_action_restart_recovery">Chế độ phục hồi</string>
+  <string name="global_action_restart_recovery">Chế độ recovery</string>
   <!-- Button to restart the device into bootloader mode, within the Restart Options dialog -->
-  <string name="global_action_restart_bootloader">Trình nạp khởi động</string>
+  <string name="global_action_restart_bootloader">Chế độ bootloader</string>
   <!-- Button to restart the device into download mode, within the Restart Options dialog -->
   <string name="global_action_restart_download">Tải xuống</string>
   <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
   <string name="global_action_restart_progress">Đang khởi động lại\u2026</string>
   <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
-  <string name="global_action_restart_recovery_progress">Đang khởi động lại vào chế độ phục hồi\u2026</string>
+  <string name="global_action_restart_recovery_progress">Khởi động lại vào chế độ recovery\u2026</string>
   <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
-  <string name="global_action_restart_bootloader_progress">Đang khởi động lại vào chế độ trình nạp khởi động\u2026</string>
+  <string name="global_action_restart_bootloader_progress">Đang khởi động lại vào chế độ bootloader\u2026</string>
   <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
   <string name="global_action_restart_download_progress">Đang khởi động lại vào chế độ tải về\u2026</string>
   <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->

@@ -5,6 +5,7 @@
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
  * Copyright (c) 2017-2018, The LineageOS Project
+ * Copyright (c) 2017-2018, The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,8 +37,8 @@
   <string name="accessibility_quick_settings_ambient_display_changed_on">环境显示已开启。</string>
   <!-- Caffeine QS tile -->
   <string name="quick_settings_caffeine_label">保持亮屏</string>
-  <string name="accessibility_quick_settings_caffeine_off">保持亮屏关闭。</string>
-  <string name="accessibility_quick_settings_caffeine_on">保持亮屏开启。</string>
+  <string name="accessibility_quick_settings_caffeine_off">持续亮屏已关闭</string>
+  <string name="accessibility_quick_settings_caffeine_on">持续亮屏已开启</string>
   <!-- Heads up QS tile -->
   <string name="quick_settings_heads_up_label">浮动通知</string>
   <string name="accessibility_quick_settings_heads_up_off">浮动通知关。</string>

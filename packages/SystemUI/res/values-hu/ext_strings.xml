@@ -5,6 +5,7 @@
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
  * Copyright (c) 2017-2018, The LineageOS Project
+ * Copyright (c) 2017-2018, The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +24,9 @@
   <!-- Content description of the data connection type HSPA+ for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_data_connection_hspap">HSPA+</string>
   <!-- Content description for Accessibility on unlocked tasks in recents -->
+  <string name="accessibility_lock_task"><xliff:g id="task">%1$s</xliff:g> elvetésének megakadályozása</string>
   <!-- Content description for Accessibility on locked tasks in recents -->
+  <string name="accessibility_unlock_task"><xliff:g id="task">%1$s</xliff:g> elvetésének engedélyezése</string>
   <!-- ADB over network QS tile -->
   <string name="quick_settings_network_adb_label">ADB hálózaton keresztül</string>
   <!-- Ambient display QS tile -->
@@ -33,7 +36,7 @@
   <string name="accessibility_quick_settings_ambient_display_changed_off">Környezeti kijelző kikapcsolva.</string>
   <string name="accessibility_quick_settings_ambient_display_changed_on">Környezeti kijelző bekapcsolva.</string>
   <!-- Caffeine QS tile -->
-  <string name="quick_settings_caffeine_label">Caffeine</string>
+  <string name="quick_settings_caffeine_label">Koffein</string>
   <string name="accessibility_quick_settings_caffeine_off">Caffeine ki.</string>
   <string name="accessibility_quick_settings_caffeine_on">Caffeine be.</string>
   <!-- Heads up QS tile -->
@@ -56,23 +59,34 @@
   <string name="accessibility_dpad_left">Kurzor balra</string>
   <string name="accessibility_dpad_right">Kurzor jobbra</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
+  <string name="screen_pinning_description_no_navbar">Megjelenítve tartja addig, amíg Ön fel nem oldja a rögzítést. A feloldáshoz érintse meg és tartsa lenyomva a Vissza gombot.</string>
   <!-- Name of the clock status bar icon -->
+  <string name="status_bar_clock">Óra</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
   <!-- Label for current user in power menu options dialog -->
+  <string name="global_action_current_user">Aktuális</string>
   <!-- Label for item that screenshots in power menu options dialog -->
+  <string name="global_action_screenshot">Képernyőmentés</string>
   <!-- Advanced restart menu -->
   <!-- Button to restart the device, within the Restart Options dialog -->
   <string name="global_action_restart_system">Rendszer</string>
   <!-- Button to restart the device into recovery mode, within the Restart Options dialog -->
+  <string name="global_action_restart_recovery">Recovery</string>
   <!-- Button to restart the device into bootloader mode, within the Restart Options dialog -->
+  <string name="global_action_restart_bootloader">Bootloader</string>
   <!-- Button to restart the device into download mode, within the Restart Options dialog -->
+  <string name="global_action_restart_download">Letöltés</string>
   <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
+  <string name="global_action_restart_progress">Újraindítás\u2026</string>
   <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
+  <string name="global_action_restart_recovery_progress">Újraindulás recovery módba\u2026</string>
   <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
+  <string name="global_action_restart_bootloader_progress">Újraindulás bootloader módba\u2026</string>
   <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
+  <string name="global_action_restart_download_progress">Újraindítás Download módba\u2026</string>
   <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_quick_settings_location_battery_saving">Helymeghatározás jelentése: energiatakarékos.</string>
   <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
@@ -105,9 +119,15 @@
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_description">GPS használata a tartózkodási hely meghatározásához</string>
   <!-- SysUI Tuner: Button that controls inversion of layout of navigation bar [CHAR LIMIT=60] -->
+  <string name="nav_bar_layout_inverse">Gombelrendezés megfordítása</string>
   <!-- Reader mode QS tile -->
+  <string name="quick_settings_reading_mode">Olvasómód</string>
   <!-- Content description of the reader mode tile when on -->
+  <string name="accessibility_quick_settings_reading_mode_on">Olvasómód be.</string>
   <!-- Content description of the reader mode tile when off -->
+  <string name="accessibility_quick_settings_reading_mode_off">Olvasómód ki.</string>
   <!-- Content description of the reader mode tile when turned on -->
+  <string name="accessibility_quick_settings_reading_mode_changed_on">Olvasómód bekapcsolva.</string>
   <!-- Content description of the reader mode tile when turned off -->
+  <string name="accessibility_quick_settings_reading_mode_changed_off">Olvasómód kikapcsolva.</string>
 </resources>

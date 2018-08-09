@@ -5,6 +5,7 @@
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
  * Copyright (c) 2017-2018, The LineageOS Project
+ * Copyright (c) 2017-2018, The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,6 +56,7 @@
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_detail_title">Lokaasje</string>
   <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
   <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
   <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->

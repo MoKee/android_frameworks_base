@@ -5,6 +5,7 @@
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
  * Copyright (c) 2017-2018, The LineageOS Project
+ * Copyright (c) 2017-2018, The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +30,6 @@
   <!-- ADB over network QS tile -->
   <string name="quick_settings_network_adb_label">Sare gaineko ADB</string>
   <!-- Ambient display QS tile -->
-  <string name="quick_settings_ambient_display_label">Ambient display</string>
   <string name="accessibility_quick_settings_ambient_display_off">Ambient display itzalita.</string>
   <string name="accessibility_quick_settings_ambient_display_on">Ambient display piztuta.</string>
   <string name="accessibility_quick_settings_ambient_display_changed_off">Ambient display itzalita.</string>
@@ -51,7 +51,6 @@
   <string name="accessibility_quick_settings_sync_changed_off">Sinkronizazioa ezgaituta.</string>
   <string name="accessibility_quick_settings_sync_changed_on">Sinkronizazioa gaituta.</string>
   <!-- USB tethering QS tile -->
-  <string name="quick_settings_usb_tether_label">USB tethering</string>
   <!-- Volume panel QS tile -->
   <string name="quick_settings_volume_panel_label">Bolumen panela</string>
   <!-- Navigation bar dpad -->
