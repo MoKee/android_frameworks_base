@@ -45,9 +45,9 @@ import java.util.List;
  */
 public class DataUsageDetailView extends LinearLayout {
 
-    private static final double KB = 1024;
-    private static final double MB = 1024 * KB;
-    private static final double GB = 1024 * MB;
+    private static final double KB = 1000;
+    private static final double MB = 1000 * KB;
+    private static final double GB = 1000 * MB;
 
     private static final String SETTING_USER_PREF_DATA_SUB = "user_preferred_data_sub";
 
