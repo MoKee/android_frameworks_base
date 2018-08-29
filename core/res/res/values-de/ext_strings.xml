@@ -66,7 +66,7 @@
   <string name="app_ops_access_location">den Standort abzurufen</string>
   <string name="app_ops_access_notifications">auf Benachrichtigungen zuzugreifen</string>
   <string name="app_ops_activate_vpn">ein VPN zu aktivieren</string>
-  <string name="app_ops_auto_start">automatisch zu starten</string>
+  <string name="app_ops_auto_start">beim Start ausführen</string>
   <string name="app_ops_delete_call_log">Anrufliste löschen</string>
   <string name="app_ops_delete_contacts">Ihre Kontakte zu löschen</string>
   <string name="app_ops_delete_mms">Ihre MMS-Nachrichten zu löschen</string>
