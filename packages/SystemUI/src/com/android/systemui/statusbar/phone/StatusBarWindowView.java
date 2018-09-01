@@ -66,7 +66,7 @@ import com.android.systemui.statusbar.StatusBarState;
 import com.android.systemui.statusbar.stack.NotificationStackScrollLayout;
 import com.android.systemui.tuner.TunerService;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -76,7 +76,7 @@ public class StatusBarWindowView extends FrameLayout implements TunerService.Tun
     public static final boolean DEBUG = StatusBar.DEBUG;
 
     private static final String DOUBLE_TAP_SLEEP_GESTURE =
-            "lineagesystem:" + LineageSettings.System.DOUBLE_TAP_SLEEP_GESTURE;
+            "mksystem:" + MKSettings.System.DOUBLE_TAP_SLEEP_GESTURE;
 
     private DragDownHelper mDragDownHelper;
     private DoubleTapHelper mDoubleTapHelper;

@@ -39,7 +39,7 @@ import com.android.systemui.settings.CurrentUserTracker;
 import com.android.systemui.statusbar.phone.StatusBarIconController;
 import com.android.systemui.util.leak.LeakDetector;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -126,12 +126,12 @@ public class TunerServiceImpl extends TunerService {
         setValue(TUNER_VERSION, newVersion);
     }
 
-    private boolean isLineageSystem(String key) {
-        return key.startsWith("lineagesystem:");
+    private boolean isMoKeeSystem(String key) {
+        return key.startsWith("mksystem:");
     }
 
-    private boolean isLineageSecure(String key) {
-        return key.startsWith("lineagesecure:");
+    private boolean isMoKeeSecure(String key) {
+        return key.startsWith("mksecure:");
     }
 
     private boolean isSystem(String key) {
@@ -139,16 +139,16 @@ public class TunerServiceImpl extends TunerService {
     }
 
     private String chomp(String key) {
-        return key.replaceFirst("^(lineagesecure|lineagesystem|system):", "");
+        return key.replaceFirst("^(mksecure|mksystem|system):", "");
     }
 
     @Override
     public String getValue(String setting) {
-        if (isLineageSecure(setting)) {
-            return LineageSettings.Secure.getStringForUser(
+        if (isMoKeeSecure(setting)) {
+            return MKSettings.Secure.getStringForUser(
                     mContentResolver, chomp(setting), mCurrentUser);
-        } else if (isLineageSystem(setting)) {
-            return LineageSettings.System.getStringForUser(
+        } else if (isMoKeeSystem(setting)) {
+            return MKSettings.System.getStringForUser(
                     mContentResolver, chomp(setting), mCurrentUser);
         } else if (isSystem(setting)) {
             return Settings.System.getStringForUser(
@@ -160,11 +160,11 @@ public class TunerServiceImpl extends TunerService {
 
     @Override
     public void setValue(String setting, String value) {
-        if (isLineageSecure(setting)) {
-            LineageSettings.Secure.putStringForUser(
+        if (isMoKeeSecure(setting)) {
+            MKSettings.Secure.putStringForUser(
                     mContentResolver, chomp(setting), value, mCurrentUser);
-        } else if (isLineageSystem(setting)) {
-            LineageSettings.System.putStringForUser(
+        } else if (isMoKeeSystem(setting)) {
+            MKSettings.System.putStringForUser(
                     mContentResolver, chomp(setting), value, mCurrentUser);
         } else if (isSystem(setting)) {
             Settings.System.putStringForUser(
@@ -176,11 +176,11 @@ public class TunerServiceImpl extends TunerService {
 
     @Override
     public int getValue(String setting, int def) {
-        if (isLineageSecure(setting)) {
-            return LineageSettings.Secure.getIntForUser(
+        if (isMoKeeSecure(setting)) {
+            return MKSettings.Secure.getIntForUser(
                     mContentResolver, chomp(setting), def, mCurrentUser);
-        } else if (isLineageSystem(setting)) {
-            return LineageSettings.System.getIntForUser(
+        } else if (isMoKeeSystem(setting)) {
+            return MKSettings.System.getIntForUser(
                     mContentResolver, chomp(setting), def, mCurrentUser);
         } else if (isSystem(setting)) {
             return Settings.System.getIntForUser(
@@ -193,11 +193,11 @@ public class TunerServiceImpl extends TunerService {
     @Override
     public String getValue(String setting, String def) {
         String ret;
-        if (isLineageSecure(setting)) {
-            ret = LineageSettings.Secure.getStringForUser(
+        if (isMoKeeSecure(setting)) {
+            ret = MKSettings.Secure.getStringForUser(
                     mContentResolver, chomp(setting), mCurrentUser);
-        } else if (isLineageSystem(setting)) {
-            ret = LineageSettings.System.getStringForUser(
+        } else if (isMoKeeSystem(setting)) {
+            ret = MKSettings.System.getStringForUser(
                     mContentResolver, chomp(setting), mCurrentUser);
         } else if (isSystem(setting)) {
             ret = Settings.System.getStringForUser(
@@ -211,11 +211,11 @@ public class TunerServiceImpl extends TunerService {
 
     @Override
     public void setValue(String setting, int value) {
-        if (isLineageSecure(setting)) {
-            LineageSettings.Secure.putIntForUser(
+        if (isMoKeeSecure(setting)) {
+            MKSettings.Secure.putIntForUser(
                     mContentResolver, chomp(setting), value, mCurrentUser);
-        } else if (isLineageSystem(setting)) {
-            LineageSettings.System.putIntForUser(
+        } else if (isMoKeeSystem(setting)) {
+            MKSettings.System.putIntForUser(
                     mContentResolver, chomp(setting), value, mCurrentUser);
         } else if (isSystem(setting)) {
             Settings.System.putIntForUser(mContentResolver, chomp(setting), value, mCurrentUser);
@@ -241,10 +241,10 @@ public class TunerServiceImpl extends TunerService {
             Dependency.get(LeakDetector.class).trackCollection(mTunables, "TunerService.mTunables");
         }
         final Uri uri;
-        if (isLineageSecure(key)) {
-            uri = LineageSettings.Secure.getUriFor(chomp(key));
-        } else if (isLineageSystem(key)) {
-            uri = LineageSettings.System.getUriFor(chomp(key));
+        if (isMoKeeSecure(key)) {
+            uri = MKSettings.Secure.getUriFor(chomp(key));
+        } else if (isMoKeeSystem(key)) {
+            uri = MKSettings.System.getUriFor(chomp(key));
         } else if (isSystem(key)) {
             uri = Settings.System.getUriFor(chomp(key));
         } else {

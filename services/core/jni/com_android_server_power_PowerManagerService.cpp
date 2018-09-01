@@ -20,7 +20,7 @@
 
 #include <android/hardware/power/1.1/IPower.h>
 #include <nativehelper/JNIHelp.h>
-#include <vendor/lineage/power/1.0/ILineagePower.h>
+#include <vendor/mokee/power/1.0/IMoKeePower.h>
 #include "jni.h"
 
 #include <nativehelper/ScopedUtfChars.h>
@@ -47,8 +47,8 @@ using android::hardware::power::V1_0::Feature;
 using android::String8;
 using IPowerV1_1 = android::hardware::power::V1_1::IPower;
 using IPowerV1_0 = android::hardware::power::V1_0::IPower;
-using ILineagePowerV1_0 = vendor::lineage::power::V1_0::ILineagePower;
-using vendor::lineage::power::V1_0::LineageFeature;
+using IMoKeePowerV1_0 = vendor::mokee::power::V1_0::IMoKeePower;
+using vendor::mokee::power::V1_0::MoKeeFeature;
 
 namespace android {
 
@@ -64,9 +64,9 @@ static jobject gPowerManagerServiceObj;
 // Use getPowerHal* to retrieve a copy
 static sp<IPowerV1_0> gPowerHalV1_0_ = nullptr;
 static sp<IPowerV1_1> gPowerHalV1_1_ = nullptr;
-static sp<ILineagePowerV1_0> gLineagePowerHalV1_0_ = nullptr;
+static sp<IMoKeePowerV1_0> gMoKeePowerHalV1_0_ = nullptr;
 static bool gPowerHalExists = true;
-static bool gLineagePowerHalExists = true;
+static bool gMoKeePowerHalExists = true;
 static std::mutex gPowerHalMutex;
 static nsecs_t gLastEventTime[USER_ACTIVITY_EVENT_LAST + 1];
 
@@ -105,16 +105,16 @@ static void connectPowerHalLocked() {
     }
 }
 
-// Check validity of current handle to the Lineage power HAL service, and call getService() if necessary.
+// Check validity of current handle to the MoKee power HAL service, and call getService() if necessary.
 // The caller must be holding gPowerHalMutex.
-void connectLineagePowerHalLocked() {
-    if (gLineagePowerHalExists && gLineagePowerHalV1_0_ == nullptr) {
-        gLineagePowerHalV1_0_ = ILineagePowerV1_0::getService();
-        if (gLineagePowerHalV1_0_ != nullptr) {
+void connectMoKeePowerHalLocked() {
+    if (gMoKeePowerHalExists && gMoKeePowerHalV1_0_ == nullptr) {
+        gMoKeePowerHalV1_0_ = IMoKeePowerV1_0::getService();
+        if (gMoKeePowerHalV1_0_ != nullptr) {
             ALOGI("Loaded power HAL service");
         } else {
             ALOGI("Couldn't load power HAL service");
-            gLineagePowerHalExists = false;
+            gMoKeePowerHalExists = false;
         }
     }
 }
@@ -133,11 +133,11 @@ sp<IPowerV1_1> getPowerHalV1_1() {
     return gPowerHalV1_1_;
 }
 
-// Retrieve a copy of LineagePowerHAL V1_0
-sp<ILineagePowerV1_0> getLineagePowerHalV1_0() {
+// Retrieve a copy of MoKeePowerHAL V1_0
+sp<IMoKeePowerV1_0> getMoKeePowerHalV1_0() {
     std::lock_guard<std::mutex> lock(gPowerHalMutex);
-    connectLineagePowerHalLocked();
-    return gLineagePowerHalV1_0_;
+    connectMoKeePowerHalLocked();
+    return gMoKeePowerHalV1_0_;
 }
 
 // Check if a call to a power HAL function failed; if so, log the failure and invalidate the
@@ -261,9 +261,9 @@ static void nativeSetFeature(JNIEnv* /* env */, jclass /* clazz */, jint feature
 static jint nativeGetFeature(JNIEnv* /* env */, jclass /* clazz */, jint featureId) {
     int value = -1;
 
-    sp<ILineagePowerV1_0> lineagePowerHalV1_0 = getLineagePowerHalV1_0();
-    if (lineagePowerHalV1_0 != nullptr) {
-        value = lineagePowerHalV1_0->getFeature(static_cast<LineageFeature>(featureId));
+    sp<IMoKeePowerV1_0> mokeePowerHalV1_0 = getMoKeePowerHalV1_0();
+    if (mokeePowerHalV1_0 != nullptr) {
+        value = mokeePowerHalV1_0->getFeature(static_cast<MoKeeFeature>(featureId));
     }
 
     return static_cast<jint>(value);

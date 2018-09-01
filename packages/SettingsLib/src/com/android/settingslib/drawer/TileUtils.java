@@ -94,8 +94,8 @@ public class TileUtils {
     private static final String MANUFACTURER_DEFAULT_CATEGORY =
             "com.android.settings.category.device";
 
-    private static final String LINEAGE_SETTINGS_ACTION =
-            "org.lineageos.lineageparts.action.SETTINGS";
+    private static final String MOKEE_SETTINGS_ACTION =
+            "org.mokee.mkparts.action.SETTINGS";
 
     /**
      * The key used to get the category from metadata of activities of action
@@ -188,7 +188,7 @@ public class TileUtils {
 
     public static final String SETTING_PKG = "com.android.settings";
 
-    public static final String LINEAGE_SETTING_PKG = "org.lineageos.lineageparts";
+    public static final String MOKEE_SETTING_PKG = "org.mokee.mkparts";
 
     /**
      * Build a list of DashboardCategory. Each category must be defined in manifest.
@@ -233,8 +233,8 @@ public class TileUtils {
                 getTilesForAction(context, user, SETTINGS_ACTION, cache, null, tiles, true,
                         settingPkg);
                 if (SETTING_PKG.equals(settingPkg)) {
-                    getTilesForAction(context, user, LINEAGE_SETTINGS_ACTION, cache, null, tiles,
-                        true, LINEAGE_SETTING_PKG);
+                    getTilesForAction(context, user, MOKEE_SETTINGS_ACTION, cache, null, tiles,
+                        true, MOKEE_SETTING_PKG);
                 }
                 getTilesForAction(context, user, OPERATOR_SETTINGS, cache,
                         OPERATOR_DEFAULT_CATEGORY, tiles, false, true, settingPkg);
@@ -305,7 +305,7 @@ public class TileUtils {
             }
             category.title = resolved.activityInfo.loadLabel(pm);
             String pkgName = resolved.activityInfo.applicationInfo.packageName;
-            category.priority = (SETTING_PKG.equals(pkgName) || LINEAGE_SETTING_PKG.equals(pkgName))
+            category.priority = (SETTING_PKG.equals(pkgName) || MOKEE_SETTING_PKG.equals(pkgName))
                     ? resolved.priority
                     : 0;
             if (DEBUG) Log.d(LOG_TAG, "Adding category " + category.title);

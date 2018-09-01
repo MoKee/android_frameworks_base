@@ -63,7 +63,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     SystemUI-tags \
     testables \
     truth-prebuilt \
-    org.lineageos.platform.internal
+    org.mokee.platform.internal
 
 LOCAL_MULTILIB := both
 

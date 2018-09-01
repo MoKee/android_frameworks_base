@@ -762,7 +762,7 @@ public final class SystemServer {
         }
 
         String externalServer = context.getResources().getString(
-                org.lineageos.platform.internal.R.string.config_externalSystemServer);
+                org.mokee.platform.internal.R.string.config_externalSystemServer);
 
         try {
             final String SECONDARY_ZYGOTE_PRELOAD = "SecondaryZygotePreload";

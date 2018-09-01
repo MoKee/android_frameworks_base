@@ -70,8 +70,8 @@ import com.android.server.am.BatteryStatsService;
 import com.android.server.lights.Light;
 import com.android.server.lights.LightsManager;
 
-import org.lineageos.internal.notification.LedValues;
-import org.lineageos.internal.notification.LineageBatteryLights;
+import org.mokee.internal.notification.LedValues;
+import org.mokee.internal.notification.MKBatteryLights;
 
 import java.io.File;
 import java.io.FileDescriptor;
@@ -195,7 +195,7 @@ public final class BatteryService extends SystemService {
 
     private MetricsLogger mMetricsLogger;
 
-    private LineageBatteryLights mLineageBatteryLights;
+    private MKBatteryLights mMKBatteryLights;
 
     public BatteryService(Context context) {
         super(context);
@@ -267,14 +267,14 @@ public final class BatteryService extends SystemService {
                 updateBatteryWarningLevelLocked();
             }
         } else if (phase == PHASE_BOOT_COMPLETED) {
-            mLineageBatteryLights = new LineageBatteryLights(mContext,
-                    new LineageBatteryLights.LedUpdater() {
+            mMKBatteryLights = new MKBatteryLights(mContext,
+                    new MKBatteryLights.LedUpdater() {
                 public void update() {
                     updateLedPulse();
                 }
             });
 
-            // Update light state now that mLineageBatteryLights has been initialized.
+            // Update light state now that mMKBatteryLights has been initialized.
             updateLedPulse();
         }
     }
@@ -1090,21 +1090,21 @@ public final class BatteryService extends SystemService {
                 Slog.w(TAG, "updateLightsLocked: mHealthInfo is null; skipping");
                 return;
             }
-            // mLineageBatteryLights is initialized during PHASE_BOOT_COMPLETED
-            // This means we don't have Lineage battery settings yet so skip.
-            if (mLineageBatteryLights == null) {
+            // mMKBatteryLights is initialized during PHASE_BOOT_COMPLETED
+            // This means we don't have MoKee battery settings yet so skip.
+            if (mMKBatteryLights == null) {
                 if (DEBUG) {
-                    Slog.w(TAG, "updateLightsLocked: mLineageBatteryLights is not yet ready; "
+                    Slog.w(TAG, "updateLightsLocked: mMKBatteryLights is not yet ready; "
                             + "skipping");
                 }
                 return;
             }
-            if (!mLineageBatteryLights.isSupported()) {
+            if (!mMKBatteryLights.isSupported()) {
                 return;
             }
 
             LedValues ledValues = new LedValues(0 /* color */, mBatteryLedOn, mBatteryLedOff);
-            mLineageBatteryLights.calcLights(ledValues, mHealthInfo.batteryLevel,
+            mMKBatteryLights.calcLights(ledValues, mHealthInfo.batteryLevel,
                     mHealthInfo.batteryStatus, mHealthInfo.batteryLevel <= mLowBatteryWarningLevel);
 
             if (!ledValues.isEnabled()) {

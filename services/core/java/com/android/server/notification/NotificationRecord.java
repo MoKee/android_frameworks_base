@@ -227,7 +227,7 @@ public final class NotificationRecord {
     }
 
     private Light calculateLights() {
-        // Lineage lights will set the default color later
+        // MoKee lights will set the default color later
         int defaultLightColor = 0;
         int defaultLightOn = mContext.getResources().getInteger(
                 com.android.internal.R.integer.config_defaultNotificationLedOn);
@@ -249,7 +249,7 @@ public final class NotificationRecord {
                     light = new Light(defaultLightColor, defaultLightOn,
                             defaultLightOff);
                 } else if (light.color == 0) {
-                    // User has requested color 0.  However, lineage-sdk interprets
+                    // User has requested color 0.  However, mokee-sdk interprets
                     // color 0 as "supply a default" therefore adjust alpha to make
                     // the color still black but non-zero.
                     light = new Light(0x01000000, light.onMs, light.offMs);
