@@ -17,9 +17,39 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Titles for window animation scale preference. [CHAR LIMIT=35] -->
+  <string-array name="mk_window_animation_scale_entries">
+    <item>Απενεργοποίηση κινούμενων εφε</item>
+    <item>Animation scale .5x</item>
+    <item>Animation scale .75x</item>
+    <item>Animation scale 1x</item>
+    <item>Animation scale 1.5x</item>
+    <item>Animation scale 2x</item>
+    <item>Animation scale 5x</item>
+    <item>Animation scale 10x</item>
+  </string-array>
   <!-- Values for window animation scale preference. -->
   <!-- Titles for transition animation scale preference. [CHAR LIMIT=35] -->
+  <string-array name="mk_transition_animation_scale_entries">
+    <item>Απενεργοποίηση κινούμενων εφε</item>
+    <item>Animation scale .5x</item>
+    <item>Animation scale .75x</item>
+    <item>Animation scale 1x</item>
+    <item>Animation scale 1.5x</item>
+    <item>Animation scale 2x</item>
+    <item>Animation scale 5x</item>
+    <item>Animation scale 10x</item>
+  </string-array>
   <!-- Values for transition animation scale preference. -->
   <!-- Titles for animator duration scale preference. [CHAR LIMIT=35] -->
+  <string-array name="mk_animator_duration_scale_entries">
+    <item>Απενεργοποίηση κινούμενων εφε</item>
+    <item>Animation scale .5x</item>
+    <item>Animation scale .75x</item>
+    <item>Animation scale 1x</item>
+    <item>Animation scale 1.5x</item>
+    <item>Animation scale 2x</item>
+    <item>Animation scale 5x</item>
+    <item>Animation scale 10x</item>
+  </string-array>
   <!-- Values for animator duration scale preference. -->
 </resources>
