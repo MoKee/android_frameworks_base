@@ -1744,7 +1744,7 @@ public class ActivityManagerService extends IActivityManager.Stub
 
     private static String sTheRealBuildSerial = Build.UNKNOWN;
 
-    // Lineage sdk activity related helper
+    // MoKee sdk activity related helper
     private MKActivityManager mMKActivityManager;
 
     /**
