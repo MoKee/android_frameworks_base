@@ -57,7 +57,9 @@
   <string name="accessibility_dpad_left">เคอร์เซอร์ซ้าย</string>
   <string name="accessibility_dpad_right">เคอร์เซอร์ขวา</string>
   <!-- NavBar Tuner -->
+  <string name="search">ค้นหา</string>
   <!-- Name of the clock status bar icon -->
+  <string name="status_bar_clock">นาฬิกา</string>
   <!-- Path data for portrait battery -->
   <!-- Path data for landscape battery -->
   <!-- Path data for circle battery -->
@@ -68,9 +70,9 @@
   <!-- Weather string format in expanded statusbar header -->
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
-    <item>Call</item>
+    <item>โทรออก</item>
     <!-- STREAM_VOICE_CALL -->
-    <item>System</item>
+    <item>ระบบ</item>
     <!-- STREAM_SYSTEM -->
     <item>Ring</item>
     <!-- STREAM_RING -->
@@ -78,7 +80,7 @@
     <!-- STREAM_MUSIC -->
     <item>Alarm</item>
     <!-- STREAM_ALARM -->
-    <item>Notification</item>
+    <item>การแจ้งเตือน</item>
     <!-- STREAM_NOTIFICATION -->
     <item>Bluetooth</item>
     <!-- STREAM_BLUETOOTH_SCO -->
@@ -116,8 +118,11 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">อุปกรณ์เท่านั้น</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">ใช้ GPS, Wi\u2011Fi, บลูทูธ หรือเครือข่ายเซลลูลาร์เพื่อระบุตำแหน่งที่ตั้ง</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
+  <string name="quick_settings_location_detail_mode_battery_saving_description">ใช้ Wi\u2011Fi, บลูทูธ หรือเครือข่ายเซลลูลาร์เพื่อระบุตำแหน่งที่ตั้ง</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
+  <string name="quick_settings_location_detail_mode_sensors_only_description">ใช้ GPS เพื่อระบุตำแหน่งของคุณ</string>
   <!-- Adb over network QS tile -->
   <string name="quick_settings_network_adb_label">ADB บนเครือข่าย</string>
   <!-- Ambient display QS tile -->
@@ -128,6 +133,8 @@
   <string name="accessibility_quick_settings_ambient_display_changed_on">หน้าจอแวดล้อมเปิดอยู่</string>
   <!-- Caffeine -->
   <string name="quick_settings_caffeine_label">คาเฟอีน</string>
+  <string name="accessibility_quick_settings_caffeine_off">ปิดโหมดคาเฟอีน</string>
+  <string name="accessibility_quick_settings_caffeine_on">เปิดโหมดคาเฟอีน</string>
   <!-- Heads up QS tile -->
   <string name="accessibility_quick_settings_heads_up_off">Heads up ปิดอยู่</string>
   <string name="accessibility_quick_settings_heads_up_on">Heads up เปิดอยู่</string>
@@ -145,4 +152,12 @@
   <string name="quick_settings_sync_label">ซิงค์</string>
   <string name="quick_settings_volume_panel_label">แผงควบคุมระดับเสียง</string>
   <!-- LiveDisplay strings -->
+  <string name="live_display_auto">อัตโนมัติ</string>
+  <string name="live_display_off">ปิด</string>
+  <string name="live_display_off_summary">ปิดการใช้งานทั้งหมด</string>
+  <string name="live_display_day">กลางวัน</string>
+  <string name="live_display_day_summary">ใช้การตั้งค่ากลางวันเท่านั้น</string>
+  <string name="live_display_night">กลางคืน</string>
+  <string name="live_display_night_summary">ใช้การตั้งค่ากลางคืนเท่านั้น</string>
+  <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay ถูกเปลี่ยนเป็นรูปแบบกลางแจ้ง</string>
 </resources>

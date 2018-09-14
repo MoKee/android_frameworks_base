@@ -24,10 +24,10 @@
   <!-- Compass QS Tile -->
   <string name="quick_settings_compass_label">コンパス</string>
   <string name="quick_settings_compass_init">初期化中\u2026</string>
-  <string name="accessibility_quick_settings_compass_off">コンパスOFF。</string>
-  <string name="accessibility_quick_settings_compass_on">コンパスON。</string>
-  <string name="accessibility_quick_settings_compass_changed_off">コンパスはオフになった。</string>
-  <string name="accessibility_quick_settings_compass_changed_on">コンパスがオンになった。</string>
+  <string name="accessibility_quick_settings_compass_off">コンパス オフ</string>
+  <string name="accessibility_quick_settings_compass_on">コンパス オン</string>
+  <string name="accessibility_quick_settings_compass_changed_off">コンパスをオフにしました</string>
+  <string name="accessibility_quick_settings_compass_changed_on">コンパスをオンにしました</string>
   <string name="quick_settings_compass_N">北</string>
   <string name="quick_settings_compass_NE">北東</string>
   <string name="quick_settings_compass_E">東</string>
@@ -40,7 +40,11 @@
   <string name="keyguard_indication_dash_charging_time">充電中（フル充電まで<xliff:g id="Charging_TIME_LEFT">%s</xliff:g>）</string>
   <string name="keyguard_plugged_in_dash_charging">充電中</string>
   <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
+  <string name="key_disabler">ハードウェアキーの無効化</string>
   <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_key_disabler_changed_off">ハードウェアキーは有効です</string>
   <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_key_disabler_changed_on">ハードウェアキーは無効です</string>
   <!-- Text for switch default data sub in expanded CellularTile -->
+  <string name="quick_settings_cellular_detail_use_data">%s データを使用</string>
 </resources>
