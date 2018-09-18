@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2014-2018 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -108,6 +109,7 @@ public class NetworkMonitor extends StateMachine {
     private static final String DEFAULT_HTTPS_URL_CN     = "https://captive.v2ex.co/generate_204";
     private static final String DEFAULT_HTTP_URL_CN      = "http://captive.v2ex.co/generate_204";
     private static final String DEFAULT_FALLBACK_URL  = "http://www.google.com/gen_204";
+    private static final String DEFAULT_FALLBACK_URL_CN  = "http://g.cn/generate_204";
     private static final String DEFAULT_SECOND_FALLBACK_URLS =
             "https://download.mokeedev.com/generate_204";
     private static final String DEFAULT_OTHER_FALLBACK_URLS =
@@ -906,7 +908,8 @@ public class NetworkMonitor extends StateMachine {
         try {
             String separator = ",";
             String firstUrl = mSettings.getSetting(mContext,
-                    Settings.Global.CAPTIVE_PORTAL_FALLBACK_URL, DEFAULT_FALLBACK_URL);
+                    Settings.Global.CAPTIVE_PORTAL_FALLBACK_URL,
+                    MoKeeUtils.isSupportLanguage(true) ? DEFAULT_FALLBACK_URL_CN : DEFAULT_FALLBACK_URL);
             String secondUrl = mSettings.getSetting(mContext,
                     Settings.Global.CAPTIVE_PORTAL_SECOND_FALLBACK_URLS, DEFAULT_SECOND_FALLBACK_URLS);
             String joinedUrls = firstUrl + separator + secondUrl + separator + mSettings.getSetting(mContext,
