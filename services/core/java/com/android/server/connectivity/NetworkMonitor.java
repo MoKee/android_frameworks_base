@@ -105,6 +105,7 @@ public class NetworkMonitor extends StateMachine {
     private static final String DEFAULT_HTTP_URL      =
             "http://connectivitycheck.gstatic.com/generate_204";
     private static final String DEFAULT_FALLBACK_URL  = "http://www.google.com/gen_204";
+    private static final String DEFAULT_FALLBACK_URL_CN  = "http://g.cn/generate_204";
     private static final String DEFAULT_OTHER_FALLBACK_URLS =
             "http://play.googleapis.com/generate_204";
     private static final String DEFAULT_USER_AGENT    = "Mozilla/5.0 (X11; Linux x86_64) "
@@ -899,7 +900,8 @@ public class NetworkMonitor extends StateMachine {
         try {
             String separator = ",";
             String firstUrl = mSettings.getSetting(mContext,
-                    Settings.Global.CAPTIVE_PORTAL_FALLBACK_URL, DEFAULT_FALLBACK_URL);
+                    Settings.Global.CAPTIVE_PORTAL_FALLBACK_URL,
+                        MoKeeUtils.isSupportLanguage(true) ? DEFAULT_FALLBACK_URL_CN : DEFAULT_FALLBACK_URL);
             String joinedUrls = firstUrl + separator + mSettings.getSetting(mContext,
                     Settings.Global.CAPTIVE_PORTAL_OTHER_FALLBACK_URLS,
                     DEFAULT_OTHER_FALLBACK_URLS);
