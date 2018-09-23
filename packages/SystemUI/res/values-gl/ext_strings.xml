@@ -50,6 +50,11 @@
   <string name="accessibility_quick_settings_sync_on">Sincronización acesa.</string>
   <string name="accessibility_quick_settings_sync_changed_off">A sincronización foi apagada.</string>
   <string name="accessibility_quick_settings_sync_changed_on">A sincronización foi acendida.</string>
+  <!-- System Profiles QS tile -->
+  <string name="accessibility_quick_settings_profiles_off">Perfís desactivados.</string>
+  <string name="accessibility_quick_settings_profiles">Perfil: <xliff:g id="profile" example="Predeterminado">%s</xliff:g>.</string>
+  <string name="accessibility_quick_settings_profiles_changed_off">Perfís desactivados.</string>
+  <string name="accessibility_quick_settings_profiles_changed">Perfil cambiado a <xliff:g id="profile" example="Predeterminado">%s</xliff:g>.</string>
   <!-- USB tethering QS tile -->
   <string name="quick_settings_usb_tether_label">Compartir conexión USB</string>
   <!-- Volume panel QS tile -->

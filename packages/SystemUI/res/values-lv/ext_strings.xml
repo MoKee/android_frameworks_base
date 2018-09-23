@@ -28,10 +28,15 @@
   <string name="quick_settings_network_adb_label">ADB pa tīklu</string>
   <!-- Ambient display QS tile -->
   <!-- Caffeine QS tile -->
+  <string name="quick_settings_caffeine_label">Kofeīns</string>
   <!-- Heads up QS tile -->
   <!-- Sync QS tile -->
+  <string name="quick_settings_sync_label">Sinhronizēt</string>
+  <!-- System Profiles QS tile -->
   <!-- USB tethering QS tile -->
+  <string name="quick_settings_usb_tether_label">USB piesiešana</string>
   <!-- Volume panel QS tile -->
+  <string name="quick_settings_volume_panel_label">Skaņas panelis</string>
   <!-- Navigation bar dpad -->
   <string name="accessibility_dpad_left">Kursoru pa kreisi</string>
   <string name="accessibility_dpad_right">Kursoru pa labi</string>
@@ -44,6 +49,7 @@
   <!-- Label for current user in power menu options dialog -->
   <string name="global_action_current_user">Pašreizējā</string>
   <!-- Label for item that screenshots in power menu options dialog -->
+  <string name="global_action_screenshot">Ekrānuzņēmums</string>
   <!-- Advanced restart menu -->
   <!-- Button to restart the device, within the Restart Options dialog -->
   <!-- Button to restart the device into recovery mode, within the Restart Options dialog -->

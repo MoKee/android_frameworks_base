@@ -76,6 +76,7 @@
   <string name="app_ops_read_sms">อ่านข้อความ SMS</string>
   <string name="app_ops_receive_sms">รับข้อความ SMS</string>
   <string name="app_ops_record_audio">บันทึกเสียง</string>
+  <string name="app_ops_run_in_background">ทำงานในเบื้องหลัง</string>
   <string name="app_ops_scan_wifi">ค้นหาเครือข่าย Wi-Fi</string>
   <string name="app_ops_send_mms">ส่งข้อความ MMS</string>
   <string name="app_ops_send_sms">ส่งข้อความ SMS</string>

@@ -32,6 +32,7 @@
   <string name="quick_settings_heads_up_label">Mengetuai</string>
   <!-- Sync QS tile -->
   <string name="quick_settings_sync_label">Penyegerakan</string>
+  <!-- System Profiles QS tile -->
   <!-- USB tethering QS tile -->
   <string name="quick_settings_usb_tether_label">Penambatan USB</string>
   <!-- Volume panel QS tile -->

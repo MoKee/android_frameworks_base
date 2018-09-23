@@ -19,6 +19,7 @@
   <!-- su icon switch -->
   <string name="status_bar_su">スーパーユーザー</string>
   <!-- vpn icon switch -->
+  <string name="status_bar_vpn">VPN</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
   <string name="keyguard_indication_dash_charging_time">充電中（フル充電まで<xliff:g id="Charging_TIME_LEFT">%s</xliff:g>）</string>
   <string name="keyguard_plugged_in_dash_charging">充電中</string>

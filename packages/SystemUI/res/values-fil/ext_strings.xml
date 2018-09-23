@@ -51,6 +51,12 @@
   <string name="accessibility_quick_settings_sync_on">Naka-Sync on.</string>
   <string name="accessibility_quick_settings_sync_changed_off">Sync na naka-turned off.</string>
   <string name="accessibility_quick_settings_sync_changed_on">Sync na naka-turned on.</string>
+  <!-- System Profiles QS tile -->
+  <string name="quick_settings_profiles_label">Mga profile ng sistema</string>
+  <string name="accessibility_quick_settings_profiles_off">I-off ang mga profile.</string>
+  <string name="accessibility_quick_settings_profiles">Profile: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
+  <string name="accessibility_quick_settings_profiles_changed_off">Naka-off ang mga profile.</string>
+  <string name="accessibility_quick_settings_profiles_changed">Pinalitan ang profile ng <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
   <!-- USB tethering QS tile -->
   <string name="quick_settings_usb_tether_label">USB tethering</string>
   <!-- Volume panel QS tile -->

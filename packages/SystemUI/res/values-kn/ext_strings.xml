@@ -49,6 +49,11 @@
   <string name="accessibility_quick_settings_sync_on">ಸಿಂಕ್ ಆನ್.</string>
   <string name="accessibility_quick_settings_sync_changed_off">ಸಿಂಕ್ ಆಫ್ ಆಗಿದೆ.</string>
   <string name="accessibility_quick_settings_sync_changed_on">ಸಿಂಕ್ ಆನ್ ಆಗಿದೆ.</string>
+  <!-- System Profiles QS tile -->
+  <string name="accessibility_quick_settings_profiles_off">ಪ್ರೊಫೈಲ್ಸ್ ಆರಿಸಿ.</string>
+  <string name="accessibility_quick_settings_profiles">ಪ್ರೊಫೈಲ್: <xliff:g id="ಪ್ರೊಫೈಲ್" ಉದಾಹರಣೆ="ಪೂರ್ವನಿಯೋಜಿತ">%s</xliff:g>.</string>
+  <string name="accessibility_quick_settings_profiles_changed_off">ಪ್ರೊಫೈಲ್ಸ್ ಆರಿಸಲಾಗಿದೆ.</string>
+  <string name="accessibility_quick_settings_profiles_changed">ಪ್ರೊಫೈಲ್ <xliff:g id="ಪ್ರೊಫೈಲ್" ಉದಾಹರಣೆ="ಪೂರ್ವನಿಯೋಜಿತ">%s</xliff:g> ಗೆ ಬದಲಾಗಿದೆ.</string>
   <!-- USB tethering QS tile -->
   <string name="quick_settings_usb_tether_label">ಯುಎಸ್‍ಬಿ ಟೆಥರಿಂಗ್</string>
   <!-- Volume panel QS tile -->
