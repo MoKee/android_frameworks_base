@@ -24,6 +24,7 @@ import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Settings;
 import android.provider.Settings.Secure;
@@ -126,6 +127,10 @@ public class TunerServiceImpl extends TunerService {
         setValue(TUNER_VERSION, newVersion);
     }
 
+    private boolean isMoKeeGlobal(String key) {
+        return key.startsWith("mkglobal:");
+    }
+
     private boolean isMoKeeSystem(String key) {
         return key.startsWith("mksystem:");
     }
@@ -139,12 +144,14 @@ public class TunerServiceImpl extends TunerService {
     }
 
     private String chomp(String key) {
-        return key.replaceFirst("^(mksecure|mksystem|system):", "");
+        return key.replaceFirst("^(mkglobal|mksecure|mksystem|system):", "");
     }
 
     @Override
     public String getValue(String setting) {
-        if (isMoKeeSecure(setting)) {
+        if (isMoKeeGlobal(setting)) {
+            return MKSettings.Global.getString(mContentResolver, chomp(setting));
+        } else if (isMoKeeSecure(setting)) {
             return MKSettings.Secure.getStringForUser(
                     mContentResolver, chomp(setting), mCurrentUser);
         } else if (isMoKeeSystem(setting)) {
@@ -160,7 +167,9 @@ public class TunerServiceImpl extends TunerService {
 
     @Override
     public void setValue(String setting, String value) {
-        if (isMoKeeSecure(setting)) {
+        if (isMoKeeGlobal(setting)) {
+            MKSettings.Global.putString(mContentResolver, chomp(setting), value);
+        } else if (isMoKeeSecure(setting)) {
             MKSettings.Secure.putStringForUser(
                     mContentResolver, chomp(setting), value, mCurrentUser);
         } else if (isMoKeeSystem(setting)) {
@@ -176,7 +185,9 @@ public class TunerServiceImpl extends TunerService {
 
     @Override
     public int getValue(String setting, int def) {
-        if (isMoKeeSecure(setting)) {
+        if (isMoKeeGlobal(setting)) {
+            return MKSettings.Global.getInt(mContentResolver, chomp(setting), def);
+        } else if (isMoKeeSecure(setting)) {
             return MKSettings.Secure.getIntForUser(
                     mContentResolver, chomp(setting), def, mCurrentUser);
         } else if (isMoKeeSystem(setting)) {
@@ -193,7 +204,9 @@ public class TunerServiceImpl extends TunerService {
     @Override
     public String getValue(String setting, String def) {
         String ret;
-        if (isMoKeeSecure(setting)) {
+        if (isMoKeeGlobal(setting)) {
+            ret = MKSettings.Global.getString(mContentResolver, chomp(setting));
+        } else if (isMoKeeSecure(setting)) {
             ret = MKSettings.Secure.getStringForUser(
                     mContentResolver, chomp(setting), mCurrentUser);
         } else if (isMoKeeSystem(setting)) {
@@ -211,7 +224,9 @@ public class TunerServiceImpl extends TunerService {
 
     @Override
     public void setValue(String setting, int value) {
-        if (isMoKeeSecure(setting)) {
+        if (isMoKeeGlobal(setting)) {
+            MKSettings.Global.putInt(mContentResolver, chomp(setting), value);
+        } else if (isMoKeeSecure(setting)) {
             MKSettings.Secure.putIntForUser(
                     mContentResolver, chomp(setting), value, mCurrentUser);
         } else if (isMoKeeSystem(setting)) {
@@ -241,7 +256,9 @@ public class TunerServiceImpl extends TunerService {
             Dependency.get(LeakDetector.class).trackCollection(mTunables, "TunerService.mTunables");
         }
         final Uri uri;
-        if (isMoKeeSecure(key)) {
+        if (isMoKeeGlobal(key)) {
+            uri = MKSettings.Global.getUriFor(chomp(key));
+        } else if (isMoKeeSecure(key)) {
             uri = MKSettings.Secure.getUriFor(chomp(key));
         } else if (isMoKeeSystem(key)) {
             uri = MKSettings.System.getUriFor(chomp(key));
@@ -252,7 +269,8 @@ public class TunerServiceImpl extends TunerService {
         }
         if (!mListeningUris.containsKey(uri)) {
             mListeningUris.put(uri, key);
-            mContentResolver.registerContentObserver(uri, false, mObserver, mCurrentUser);
+            mContentResolver.registerContentObserver(uri, false, mObserver,
+                    isMoKeeGlobal(key) ? UserHandle.USER_ALL : mCurrentUser);
         }
         // Send the first state.
         String value = getValue(key);
@@ -275,7 +293,9 @@ public class TunerServiceImpl extends TunerService {
         }
         mContentResolver.unregisterContentObserver(mObserver);
         for (Uri uri : mListeningUris.keySet()) {
-            mContentResolver.registerContentObserver(uri, false, mObserver, mCurrentUser);
+            String key = mListeningUris.get(uri);
+            mContentResolver.registerContentObserver(uri, false, mObserver,
+                    isMoKeeGlobal(key) ? UserHandle.USER_ALL : mCurrentUser);
         }
     }
 
@@ -323,7 +343,8 @@ public class TunerServiceImpl extends TunerService {
 
         @Override
         public void onChange(boolean selfChange, Uri uri, int userId) {
-            if (userId == ActivityManager.getCurrentUser()) {
+            String key = mListeningUris.get(uri);
+            if (userId == ActivityManager.getCurrentUser() || isMoKeeGlobal(key)) {
                 reloadSetting(uri);
             }
         }

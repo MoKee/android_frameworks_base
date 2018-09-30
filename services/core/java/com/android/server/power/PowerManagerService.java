@@ -689,6 +689,8 @@ public final class PowerManagerService extends SystemService
     private SensorEventListener mProximityListener;
     private android.os.PowerManager.WakeLock mProximityWakeLock;
 
+    private boolean mForceNavbar;
+
     public PowerManagerService(Context context) {
         super(context);
         mContext = context;
@@ -896,6 +898,9 @@ public final class PowerManagerService extends SystemService
         resolver.registerContentObserver(MKSettings.Global.getUriFor(
                 MKSettings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED),
                 false, mSettingsObserver, UserHandle.USER_ALL);
+        resolver.registerContentObserver(MKSettings.System.getUriFor(
+                MKSettings.System.FORCE_SHOW_NAVBAR),
+                false, mSettingsObserver, UserHandle.USER_ALL);
 
         IVrManager vrManager = (IVrManager) getBinderService(Context.VR_SERVICE);
         if (vrManager != null) {
@@ -1034,6 +1039,10 @@ public final class PowerManagerService extends SystemService
                 UserHandle.USER_CURRENT);
         mButtonLightOnKeypressOnly = MKSettings.System.getIntForUser(resolver,
                 MKSettings.System.BUTTON_BACKLIGHT_ONLY_WHEN_PRESSED,
+                0, UserHandle.USER_CURRENT) == 1;
+
+        mForceNavbar = MKSettings.System.getIntForUser(resolver,
+                MKSettings.System.FORCE_SHOW_NAVBAR,
                 0, UserHandle.USER_CURRENT) == 1;
 
         mProximityWakeEnabled = MKSettings.System.getInt(resolver,
@@ -1806,6 +1815,8 @@ public final class PowerManagerService extends SystemService
                     if (mIsPowered && !BatteryManager.isPlugWired(oldPlugType)
                             && BatteryManager.isPlugWired(mPlugType)) {
                         mNotifier.onWiredChargingStarted();
+                    } else if (wasPowered && !mIsPowered && !dockedOnWirelessCharger) {
+                        mNotifier.onWiredChargingDisconnected();
                     } else if (dockedOnWirelessCharger) {
                         mNotifier.onWirelessChargingStarted(mBatteryLevel);
                     }
@@ -2066,7 +2077,7 @@ public final class PowerManagerService extends SystemService
                             if (mButtonBrightnessOverrideFromWindowManager >= 0) {
                                 buttonBrightness = mButtonBrightnessOverrideFromWindowManager;
                             } else {
-                                buttonBrightness = mButtonBrightness;
+                                buttonBrightness = !mForceNavbar ? mButtonBrightness : 0;
                             }
 
                             mLastButtonActivityTime = mButtonLightOnKeypressOnly ?

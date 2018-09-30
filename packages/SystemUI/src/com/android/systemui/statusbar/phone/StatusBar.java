@@ -283,6 +283,8 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             "mksystem:" + MKSettings.System.STATUS_BAR_BRIGHTNESS_CONTROL;
     private static final String LOCKSCREEN_MEDIA_METADATA =
             "mksecure:" + MKSettings.Secure.LOCKSCREEN_MEDIA_METADATA;
+    private static final String FORCE_SHOW_NAVBAR =
+            "mksystem:" + MKSettings.System.FORCE_SHOW_NAVBAR;
 
     private static final String BANNER_ACTION_CANCEL =
             "com.android.systemui.statusbar.banner_action_cancel";
@@ -702,6 +704,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         tunerService.addTunable(this, SCREEN_BRIGHTNESS_MODE);
         tunerService.addTunable(this, STATUS_BAR_BRIGHTNESS_CONTROL);
         tunerService.addTunable(this, LOCKSCREEN_MEDIA_METADATA);
+        tunerService.addTunable(this, FORCE_SHOW_NAVBAR);
 
         mDisplayManager = mContext.getSystemService(DisplayManager.class);
 
@@ -1102,6 +1105,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         filter.addAction(Intent.ACTION_SCREEN_ON);
         filter.addAction(DevicePolicyManager.ACTION_SHOW_DEVICE_MONITORING_DIALOG);
+        filter.addAction(mokee.content.Intent.ACTION_SCREEN_CAMERA_GESTURE);
         context.registerReceiverAsUser(mBroadcastReceiver, UserHandle.ALL, filter, null, null);
 
         IntentFilter demoFilter = new IntentFilter();
@@ -3217,6 +3221,18 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             else if (DevicePolicyManager.ACTION_SHOW_DEVICE_MONITORING_DIALOG.equals(action)) {
                 mQSPanel.showDeviceMonitoringDialog();
             }
+            else if (mokee.content.Intent.ACTION_SCREEN_CAMERA_GESTURE.equals(action)) {
+                boolean userSetupComplete = Settings.Secure.getInt(mContext.getContentResolver(),
+                        Settings.Secure.USER_SETUP_COMPLETE, 0) != 0;
+                if (!userSetupComplete) {
+                    if (DEBUG) Log.d(TAG, String.format(
+                            "userSetupComplete = %s, ignoring camera launch gesture.",
+                            userSetupComplete));
+                    return;
+                }
+
+                onCameraLaunchGestureDetected(StatusBarManager.CAMERA_LAUNCH_SOURCE_SCREEN_GESTURE);
+            }
         }
     };
 
@@ -4808,7 +4824,9 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             pm.wakeUp(SystemClock.uptimeMillis(), "com.android.systemui:CAMERA_GESTURE");
             mStatusBarKeyguardViewManager.notifyDeviceWakeUpRequested();
         }
-        vibrateForCameraGesture();
+        if (source != StatusBarManager.CAMERA_LAUNCH_SOURCE_SCREEN_GESTURE) {
+            vibrateForCameraGesture();
+        }
         if (!mStatusBarKeyguardViewManager.isShowing()) {
             startActivityDismissingKeyguard(KeyguardBottomAreaView.INSECURE_CAMERA_INTENT,
                     false /* onlyProvisioned */, true /* dismissShade */,
@@ -5776,6 +5794,15 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             mBrightnessControl = newValue != null && Integer.parseInt(newValue) == 1;
         } else if (LOCKSCREEN_MEDIA_METADATA.equals(key)) {
             mShowMediaMetadata = newValue != null && Integer.parseInt(newValue) == 1;
+        } else if (mWindowManagerService != null && FORCE_SHOW_NAVBAR.equals(key)) {
+            boolean forcedVisibility = newValue != null && Integer.parseInt(newValue) == 1;
+
+            if (forcedVisibility && mNavigationBarView == null) {
+                createNavigationBar();
+            } else if (mNavigationBarView != null) {
+                mWindowManager.removeViewImmediate(mNavigationBarView);
+                mNavigationBarView = null;
+            }
         }
     }
     // End Extra BaseStatusBarMethods.
