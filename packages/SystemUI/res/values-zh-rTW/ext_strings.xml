@@ -54,7 +54,7 @@
   <!-- System Profiles QS tile -->
   <string name="quick_settings_profiles_label">系統設定檔</string>
   <string name="accessibility_quick_settings_profiles_off">設定檔關閉。</string>
-  <string name="accessibility_quick_settings_profiles">設定檔：<xliff:g id="profile" example="Default">%s</xliff:g>.</string>
+  <string name="accessibility_quick_settings_profiles">設定檔：<xliff:g id="profile" example="Default">%s</xliff:g></string>
   <string name="accessibility_quick_settings_profiles_changed_off">設定檔已關閉。</string>
   <string name="accessibility_quick_settings_profiles_changed">設定檔已變更為 <xliff:g id="profile" example="Default">%s</xliff:g>。</string>
   <!-- USB tethering QS tile -->
