@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2010 The Android Open Source Project
+ * Copyright (C) 2018-2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1528,6 +1529,13 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         setAreThereNotifications();
     }
 
+    private boolean isQsSecureExpansionDisabled() {
+        final boolean keyguardOrShadeShowing = mNotificationPanel.mStatusBarState == StatusBarState.KEYGUARD
+                || mNotificationPanel.mStatusBarState == StatusBarState.SHADE_LOCKED;
+        return mLockPatternUtils.isSecure(KeyguardUpdateMonitor.getCurrentUser()) &&
+                keyguardOrShadeShowing;
+    }
+
     /**
      * Disable QS if device not provisioned.
      * If the user switcher is simple then disable QS during setup because
@@ -1535,6 +1543,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
      */
     private void updateQsExpansionEnabled() {
         mNotificationPanel.setQsExpansionEnabled(isDeviceProvisioned()
+                && !isQsSecureExpansionDisabled()
                 && (mUserSetup || mUserSwitcherController == null
                         || !mUserSwitcherController.isSimpleUserSwitcher())
                 && ((mDisabled2 & StatusBarManager.DISABLE2_NOTIFICATION_SHADE) == 0)
