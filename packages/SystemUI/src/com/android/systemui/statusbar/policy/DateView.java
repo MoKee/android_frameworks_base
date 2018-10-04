@@ -23,6 +23,7 @@ import android.content.IntentFilter;
 import android.content.res.TypedArray;
 import android.icu.text.DateFormat;
 import android.icu.text.DisplayContext;
+import android.mokee.utils.MoKeeUtils;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.TextView;
@@ -30,7 +31,10 @@ import android.widget.TextView;
 import com.android.settingslib.Utils;
 import com.android.systemui.Dependency;
 import com.android.systemui.R;
+import com.mokee.cloud.calendar.ChineseCalendar;
+import com.mokee.cloud.calendar.ChineseCalendarInfo;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -111,7 +115,15 @@ public class DateView extends TextView {
 
         mCurrentTime.setTime(System.currentTimeMillis());
 
-        final String text = mDateFormat.format(mCurrentTime);
+        String zhDate = "";
+        if (MoKeeUtils.isSupportLanguage(false)) {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(mCurrentTime);
+            ChineseCalendarInfo chineseCalendarInfo = new ChineseCalendar(cal).getChineseCalendarInfo();
+            zhDate = " " + chineseCalendarInfo.getLunarMonthDay();
+        }
+
+        final String text = mDateFormat.format(mCurrentTime) + zhDate;
         if (!text.equals(mLastText)) {
             setText(text);
             mLastText = text;
