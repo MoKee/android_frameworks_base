@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012-2018 The MoKee Open Source Project
+ * Copyright (C) 2012-2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,31 +50,31 @@ public class MoKeeUtils {
         return false;
     }
 
-    public static boolean isApkInstalledAndEnabled(String packagename, Context context) {
+    public static boolean isApkInstalledAndEnabled(String packageName, Context context) {
         int state;
         try {
-            context.getPackageManager().getPackageInfo(packagename, 0);
-            state = context.getPackageManager().getApplicationEnabledSetting(packagename);
+            context.getPackageManager().getPackageInfo(packageName, 0);
+            state = context.getPackageManager().getApplicationEnabledSetting(packageName);
         } catch (NameNotFoundException e) {
             return false;
         }
         return state != PackageManager.COMPONENT_ENABLED_STATE_DISABLED
-                && state != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER ? true : false;
+                && state != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER;
     }
 
-    public static boolean isApkInstalled(String packagename, Context context) {
+    public static boolean isApkInstalled(String packageName, Context context) {
         try {
-            context.getPackageManager().getPackageInfo(packagename, 0);
+            context.getPackageManager().getPackageInfo(packageName, 0);
         } catch (NameNotFoundException e) {
             return false;
         }
         return true;
     }
 
-    public static boolean isSystemApp(String packagename, Context context) {
+    public static boolean isSystemApp(String packageName, Context context) {
         PackageInfo packageInfo;
         try {
-            packageInfo = context.getPackageManager().getPackageInfo(packagename, 0);
+            packageInfo = context.getPackageManager().getPackageInfo(packageName, 0);
         } catch (NameNotFoundException e) {
             return false;
         }
