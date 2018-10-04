@@ -115,15 +115,26 @@ public class DateView extends TextView {
 
         mCurrentTime.setTime(System.currentTimeMillis());
 
-        String zhDate = "";
+        StringBuilder zhDate = new StringBuilder();
         if (MoKeeUtils.isSupportLanguage(false)) {
             Calendar cal = Calendar.getInstance();
             cal.setTime(mCurrentTime);
             ChineseCalendarInfo chineseCalendarInfo = new ChineseCalendar(cal).getChineseCalendarInfo();
-            zhDate = " " + chineseCalendarInfo.getLunarMonthDay();
+            zhDate.append(" " + chineseCalendarInfo.getLunarMonthDay());
+            String solarTerm = chineseCalendarInfo.getSolarTerm();
+            if (!TextUtils.isEmpty(solarTerm)) {
+                zhDate.append(" " + solarTerm);
+            }
+            String solarFestival = chineseCalendarInfo.getSolarFestival();
+            String lunarFestival = chineseCalendarInfo.getLunarFestival();
+            if (!TextUtils.isEmpty(solarFestival)) {
+                zhDate.append(" " + solarFestival);
+            } else if (!TextUtils.isEmpty(lunarFestival)) {
+                zhDate.append(" " + lunarFestival);
+            }
         }
 
-        final String text = mDateFormat.format(mCurrentTime) + zhDate;
+        final String text = mDateFormat.format(mCurrentTime) + zhDate.toString();
         if (!text.equals(mLastText)) {
             setText(text);
             mLastText = text;
