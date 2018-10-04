@@ -16,8 +16,6 @@
 
 package android.mokee.calendar;
 
-import android.content.res.Resources;
-
 import java.util.Locale;
 
 public class FestivalInfo {
@@ -26,7 +24,7 @@ public class FestivalInfo {
      * Return a Chinese festival info string.
      */
     public static String [] getFestivalInfo() {
-        switch (Resources.getSystem().getConfiguration().locale.getCountry()) {
+        switch (Locale.getDefault().getCountry()) {
             case "CN":
                 return new String [] { "0101 元旦", "0214 情人节", "0308 妇女节", "0312 植树节",
                         "0315 消费日", "0401 愚人节", "0413 泼水节" , "0501 劳动节", "0504 青年节", "0601 儿童节",
@@ -51,7 +49,7 @@ public class FestivalInfo {
      * Return a Chinese specific festival info string.
      */
     public static String [] getSpecificInfo() {
-        switch (Resources.getSystem().getConfiguration().locale.getCountry()) {
+        switch (Locale.getDefault().getCountry()) {
             case "CN":
                 return new String [] { "5 2 0 母亲节", "6 3 0 父亲节", "11 4 4 感恩节" };
             case "HK":
