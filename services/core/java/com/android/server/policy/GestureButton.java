@@ -1,5 +1,6 @@
 /*
  *  Copyright (C) 2018 The OmniROM Project
+ *  Copyright (C) 2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,22 +18,17 @@ package com.android.server.policy;
 
 import android.app.Activity;
 import android.app.ActivityManager;
-import android.content.ContentResolver;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.content.res.Resources;
 import android.hardware.input.InputManager;
-import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
-import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
@@ -42,10 +38,7 @@ import android.view.InputDevice;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
 import android.view.WindowManagerPolicyConstants.PointerEventListener;
 import android.view.inputmethod.InputMethodManagerInternal;
 
@@ -53,6 +46,8 @@ import com.android.internal.R;
 import com.android.server.LocalServices;
 
 import java.util.List;
+
+import mokee.providers.MKSettings;
 
 public class GestureButton implements PointerEventListener {
     private static final String TAG = "GestureButton";
@@ -269,7 +264,7 @@ public class GestureButton implements PointerEventListener {
         }
     }
 
-   private String resolveCurrentLauncherPackageForUser(Context context,
+    private String resolveCurrentLauncherPackageForUser(Context context,
             int userId) {
         final Intent launcherIntent = new Intent(Intent.ACTION_MAIN);
         launcherIntent.addCategory(Intent.CATEGORY_HOME);
@@ -392,12 +387,12 @@ public class GestureButton implements PointerEventListener {
     }
 
     void updateSettings() {
-        mSwipeTriggerTimeout = Settings.System.getIntForUser(mContext.getContentResolver(),
-                Settings.System.OMNI_BOTTOM_GESTURE_TRIGGER_TIMEOUT,
+        mSwipeTriggerTimeout = MKSettings.System.getIntForUser(mContext.getContentResolver(),
+                MKSettings.System.BOTTOM_GESTURE_TRIGGER_TIMEOUT,
                 mContext.getResources().getInteger(R.integer.nav_gesture_swipe_timout),
                 UserHandle.USER_CURRENT);
-        mSwipeMinLength = Settings.System.getIntForUser(mContext.getContentResolver(),
-                Settings.System.OMNI_BOTTOM_GESTURE_SWIPE_LIMIT,
+        mSwipeMinLength = MKSettings.System.getIntForUser(mContext.getContentResolver(),
+                MKSettings.System.BOTTOM_GESTURE_SWIPE_LIMIT,
                 getSwipeLengthInPixel(mContext.getResources().getInteger(R.integer.nav_gesture_swipe_min_length)),
                 UserHandle.USER_CURRENT);
         if (DEBUG) Slog.i(TAG, "updateSettings mSwipeTriggerTimeout = " + mSwipeTriggerTimeout + " mSwipeMinLength = " + mSwipeMinLength);
