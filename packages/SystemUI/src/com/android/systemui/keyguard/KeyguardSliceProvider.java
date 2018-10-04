@@ -28,6 +28,7 @@ import android.content.IntentFilter;
 import android.graphics.drawable.Icon;
 import android.icu.text.DateFormat;
 import android.icu.text.DisplayContext;
+import android.mokee.utils.MoKeeUtils;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.Settings;
@@ -41,6 +42,10 @@ import com.android.systemui.statusbar.policy.NextAlarmControllerImpl;
 import com.android.systemui.statusbar.policy.ZenModeController;
 import com.android.systemui.statusbar.policy.ZenModeControllerImpl;
 
+import com.mokee.cloud.calendar.ChineseCalendar;
+import com.mokee.cloud.calendar.ChineseCalendarInfo;
+
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -269,7 +274,27 @@ public class KeyguardSliceProvider extends SliceProvider implements
             mDateFormat = format;
         }
         mCurrentTime.setTime(System.currentTimeMillis());
-        return mDateFormat.format(mCurrentTime);
+
+        StringBuilder zhDate = new StringBuilder();
+        if (MoKeeUtils.isSupportLanguage(false)) {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(mCurrentTime);
+            ChineseCalendarInfo chineseCalendarInfo = new ChineseCalendar(cal).getChineseCalendarInfo();
+            zhDate.append(" " + chineseCalendarInfo.getLunarMonthDay());
+            String solarTerm = chineseCalendarInfo.getSolarTerm();
+            if (!TextUtils.isEmpty(solarTerm)) {
+                zhDate.append(" " + solarTerm);
+            }
+            String solarFestival = chineseCalendarInfo.getSolarFestival();
+            String lunarFestival = chineseCalendarInfo.getLunarFestival();
+            if (!TextUtils.isEmpty(solarFestival)) {
+                zhDate.append(" " + solarFestival);
+            } else if (!TextUtils.isEmpty(lunarFestival)) {
+                zhDate.append(" " + lunarFestival);
+            }
+        }
+
+        return mDateFormat.format(mCurrentTime) + zhDate.toString();
     }
 
     @VisibleForTesting
