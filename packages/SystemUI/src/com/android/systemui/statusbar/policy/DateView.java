@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008 The Android Open Source Project
+ * Copyright (C) 2018-2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +24,7 @@ import android.content.IntentFilter;
 import android.content.res.TypedArray;
 import android.icu.text.DateFormat;
 import android.icu.text.DisplayContext;
+import android.mokee.utils.MoKeeUtils;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -31,6 +33,7 @@ import android.widget.TextView;
 import com.android.systemui.Dependency;
 import com.android.systemui.R;
 import com.android.systemui.broadcast.BroadcastDispatcher;
+import com.mokee.cloud.calendar.ChineseCalendarUtils;
 
 import java.util.Date;
 import java.util.Locale;
@@ -120,7 +123,14 @@ public class DateView extends TextView {
 
         mCurrentTime.setTime(System.currentTimeMillis());
 
-        final String text = mDateFormat.format(mCurrentTime);
+        String dateText;
+        if (MoKeeUtils.isSupportLanguage(false)) {
+            dateText = mDateFormat.format(mCurrentTime) + " " + ChineseCalendarUtils.getChineseDateStr(mCurrentTime);
+        } else {
+            dateText = mDateFormat.format(mCurrentTime);
+        }
+
+        final String text = dateText;
         if (!text.equals(mLastText)) {
             setText(text);
             mLastText = text;
