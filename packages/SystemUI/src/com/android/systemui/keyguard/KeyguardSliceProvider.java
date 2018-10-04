@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2018 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +32,7 @@ import android.icu.text.DateFormat;
 import android.icu.text.DisplayContext;
 import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
+import android.mokee.utils.MoKeeUtils;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Trace;
@@ -59,7 +61,10 @@ import com.android.systemui.statusbar.policy.ZenModeController;
 import com.android.systemui.statusbar.policy.ZenModeControllerImpl;
 import com.android.systemui.util.wakelock.SettableWakeLock;
 import com.android.systemui.util.wakelock.WakeLock;
+import com.mokee.cloud.calendar.ChineseCalendar;
+import com.mokee.cloud.calendar.ChineseCalendarInfo;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Locale;
@@ -421,7 +426,29 @@ public class KeyguardSliceProvider extends SliceProvider implements
             mDateFormat = format;
         }
         mCurrentTime.setTime(System.currentTimeMillis());
-        return mDateFormat.format(mCurrentTime);
+
+        if (MoKeeUtils.isSupportLanguage(false)) {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(mCurrentTime);
+            ChineseCalendarInfo chineseCalendarInfo = new ChineseCalendar(cal).getChineseCalendarInfo();
+            StringBuilder cnDate = new StringBuilder();
+            cnDate.append(" " + chineseCalendarInfo.getLunarMonthDay());
+            String solarTerm = chineseCalendarInfo.getSolarTerm();
+            if (!TextUtils.isEmpty(solarTerm)) {
+                cnDate.append(" " + solarTerm);
+            }
+            String solarFestival = chineseCalendarInfo.getSolarFestival();
+            String lunarFestival = chineseCalendarInfo.getLunarFestival();
+            if (!TextUtils.isEmpty(solarFestival)) {
+                cnDate.append(" " + solarFestival);
+            } else if (!TextUtils.isEmpty(lunarFestival)) {
+                cnDate.append(" " + lunarFestival);
+            }
+            return mDateFormat.format(mCurrentTime) + cnDate.toString();
+        } else {
+            return mDateFormat.format(mCurrentTime);
+        }
+
     }
 
     @VisibleForTesting
