@@ -44,7 +44,6 @@ public class FestivalInfo {
         return null;
     }
 
-
     /**
      * Return a Chinese specific festival info string.
      */
