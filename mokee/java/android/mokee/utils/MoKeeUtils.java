@@ -21,17 +21,15 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import java.text.DecimalFormat;
 import java.util.Locale;
 
 public class MoKeeUtils {
 
     public static boolean isSupportLanguage(boolean excludeTW) {
-        Locale locale = Resources.getSystem().getConfiguration().locale;
+        Locale locale = Locale.getDefault();
         if (excludeTW) {
             return locale.getLanguage().startsWith(Locale.CHINESE.getLanguage())
                     && !locale.getCountry().equals("TW");
