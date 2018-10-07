@@ -6,9 +6,7 @@
 
 #include "xposed_shared.h"
 #include "libxposed_common.h"
-#if PLATFORM_SDK_VERSION >= 21
 #include "fd_utils-inl.h"
-#endif
 
 #include "thread.h"
 #include "common_throws.h"
@@ -167,7 +165,6 @@ jint XposedBridge_getRuntime(JNIEnv*, jclass) {
     return 2; // RUNTIME_ART
 }
 
-#if PLATFORM_SDK_VERSION >= 21
 static FileDescriptorTable* gClosedFdTable = NULL;
 
 void XposedBridge_closeFilesBeforeForkNative(JNIEnv*, jclass) {
@@ -179,7 +176,6 @@ void XposedBridge_reopenFilesAfterForkNative(JNIEnv*, jclass) {
     delete gClosedFdTable;
     gClosedFdTable = NULL;
 }
-#endif
 
 #if PLATFORM_SDK_VERSION >= 24
 void XposedBridge_invalidateCallersNative(JNIEnv* env, jclass, jobjectArray javaMethods) {
