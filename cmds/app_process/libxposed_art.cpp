@@ -149,7 +149,8 @@ jobject XposedBridge_cloneToSubclassNative(JNIEnv* env, jclass, jobject javaObje
     StackHandleScope<3> hs(soa.Self());
     Handle<mirror::Object> obj(hs.NewHandle(soa.Decode<mirror::Object*>(javaObject)));
     Handle<mirror::Class> clazz(hs.NewHandle(soa.Decode<mirror::Class*>(javaClazz)));
-    Handle<mirror::Object> dest(hs.NewHandle(obj->Clone(soa.Self(), clazz.Get())));
+    Handle<mirror::Object> dest(hs.NewHandle(obj->Clone(soa.Self(), clazz->GetObjectSize())));
+    dest->SetClass(clazz.Get());
     return soa.AddLocalReference<jobject>(dest.Get());
 }
 
