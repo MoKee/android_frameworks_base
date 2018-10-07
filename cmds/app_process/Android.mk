@@ -53,10 +53,6 @@ endif
 
 include $(BUILD_EXECUTABLE)
 
-# Create a symlink from app_process to app_process32 or 64
-# depending on the target configuration.
-include  $(BUILD_SYSTEM)/executable_prefer_symlink.mk
-
 ##########################################################
 # Library for Dalvik-/ART-specific functions
 ##########################################################
