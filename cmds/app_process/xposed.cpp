@@ -291,7 +291,7 @@ bool shouldIgnoreCommand(int argc, const char* const argv[]) {
         if (mightBeSuperuser && strcmp(argv[i], "--user") == 0)
             return true;
 
-        const char* lastComponent = strrchr(argv[i], '.');
+        char* lastComponent = strrchr(argv[i], '.');
         if (!lastComponent)
             continue;
 
