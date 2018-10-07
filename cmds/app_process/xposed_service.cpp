@@ -818,8 +818,8 @@ static void systemService() {
     IPCThreadState::self()->joinThreadPool();
 }
 
-static void appService() {
-    xposed::setProcessName("xposed_service_app");
+static void appService(bool useSingleProcess) {
+    xposed::setProcessName(useSingleProcess ? "xposed_service" : "xposed_service_app");
     if (!xposed::switchToXposedInstallerUidGid()) {
         exit(EXIT_FAILURE);
     }
@@ -834,11 +834,32 @@ static void appService() {
     }
 #endif  // XPOSED_WITH_SELINUX
 
-    // We have to register the app service by using the already running system service as a proxy
     sp<IServiceManager> sm(defaultServiceManager());
-    sp<IBinder> systemBinder = sm->getService(String16(XPOSED_BINDER_SYSTEM_SERVICE_NAME));
-    sp<binder::IXposedService> xposedSystemService = interface_cast<binder::IXposedService>(systemBinder);
-    status_t err = xposedSystemService->addService(String16(XPOSED_BINDER_APP_SERVICE_NAME), new binder::XposedService(false), true);
+    status_t err;
+    if (useSingleProcess) {
+        // Initialize the system service here as this is the only service process
+#if PLATFORM_SDK_VERSION >= 16
+        err = sm->addService(String16(XPOSED_BINDER_SYSTEM_SERVICE_NAME), new binder::XposedService(true), true);
+#else
+        err = sm->addService(String16(XPOSED_BINDER_SYSTEM_SERVICE_NAME), new binder::XposedService(true));
+#endif
+        if (err != NO_ERROR) {
+            ALOGE("Error %d while adding system service %s", err, XPOSED_BINDER_SYSTEM_SERVICE_NAME);
+            exit(EXIT_FAILURE);
+        }
+
+        // The app service can be registered directly
+#if PLATFORM_SDK_VERSION >= 16
+        err = sm->addService(String16(XPOSED_BINDER_APP_SERVICE_NAME), new binder::XposedService(false), true);
+#else
+        err = sm->addService(String16(XPOSED_BINDER_APP_SERVICE_NAME), new binder::XposedService(false));
+#endif
+    } else {
+        // We have to register the app service by using the already running system service as a proxy
+        sp<IBinder> systemBinder = sm->getService(String16(XPOSED_BINDER_SYSTEM_SERVICE_NAME));
+        sp<binder::IXposedService> xposedSystemService = interface_cast<binder::IXposedService>(systemBinder);
+        err = xposedSystemService->addService(String16(XPOSED_BINDER_APP_SERVICE_NAME), new binder::XposedService(false), true);
+    }
 
     // Check result for the app service registration
     if (err != NO_ERROR) {
@@ -876,13 +897,16 @@ bool checkMembasedRunning() {
 }
 
 bool startAll() {
+    bool useSingleProcess = false;
     if (xposed->isSELinuxEnabled && !membased::init()) {
         return false;
     }
 
     // system context service
     pid_t pid;
-    if ((pid = fork()) < 0) {
+    if (useSingleProcess) {
+        ALOGD("Using a single process for Xposed services");
+    } else if ((pid = fork()) < 0) {
         ALOGE("Fork for Xposed service in system context failed: %s", strerror(errno));
         return false;
     } else if (pid == 0) {
@@ -896,7 +920,7 @@ bool startAll() {
         ALOGE("Fork for Xposed service in app context failed: %s", strerror(errno));
         return false;
     } else if (pid == 0) {
-        appService();
+        appService(useSingleProcess);
         // Should never reach this point
         exit(EXIT_FAILURE);
     }
