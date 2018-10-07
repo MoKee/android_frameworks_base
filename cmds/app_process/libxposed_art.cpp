@@ -113,22 +113,23 @@ jobject XposedBridge_invokeOriginalMethodNative(JNIEnv* env, jclass, jobject jav
 
 void XposedBridge_setObjectClassNative(JNIEnv* env, jclass, jobject javaObj, jclass javaClazz) {
     ScopedObjectAccess soa(env);
-    StackHandleScope<3> hs(soa.Self());
-    Handle<mirror::Class> clazz(hs.NewHandle(soa.Decode<mirror::Class*>(javaClazz)));
+    mirror::Class* clazz = soa.Decode<mirror::Class*>(javaClazz);
+    StackHandleScope<1> hs(soa.Self());
+    Handle<mirror::Class> c(hs.NewHandle(clazz));
 #if PLATFORM_SDK_VERSION >= 23
-    if (!Runtime::Current()->GetClassLinker()->EnsureInitialized(soa.Self(), clazz, true, true)) {
+    if (!Runtime::Current()->GetClassLinker()->EnsureInitialized(soa.Self(), c, true, true)) {
 #else
-    if (!Runtime::Current()->GetClassLinker()->EnsureInitialized(clazz, true, true)) {
+    if (!Runtime::Current()->GetClassLinker()->EnsureInitialized(c, true, true)) {
 #endif
-        XLOG(ERROR) << "Could not initialize class " << PrettyClass(clazz.Get());
+        XLOG(ERROR) << "Could not initialize class " << PrettyClass(clazz);
         return;
     }
-    Handle<mirror::Object> obj(hs.NewHandle(soa.Decode<mirror::Object*>(javaObj)));
-    Handle<mirror::Class> currentClass(hs.NewHandle(obj->GetClass()));
+    mirror::Object* obj = soa.Decode<mirror::Object*>(javaObj);
+    mirror::Class* currentClass = obj->GetClass();
     if (clazz->GetObjectSize() != currentClass->GetObjectSize()) {
         std::string msg = StringPrintf("Different object sizes: %s (%d) vs. %s (%d)",
-                PrettyClass(clazz.Get()).c_str(), clazz->GetObjectSize(),
-                PrettyClass(currentClass.Get()).c_str(), currentClass->GetObjectSize());
+                PrettyClass(clazz).c_str(), clazz->GetObjectSize(),
+                PrettyClass(currentClass).c_str(), currentClass->GetObjectSize());
 #if PLATFORM_SDK_VERSION >= 23
         ThrowIllegalArgumentException(msg.c_str());
 #else
@@ -136,7 +137,7 @@ void XposedBridge_setObjectClassNative(JNIEnv* env, jclass, jobject javaObj, jcl
 #endif
         return;
     }
-    obj->SetClass(clazz.Get());
+    obj->SetClass(clazz);
 }
 
 void XposedBridge_dumpObjectNative(JNIEnv*, jclass, jobject) {
@@ -146,18 +147,16 @@ void XposedBridge_dumpObjectNative(JNIEnv*, jclass, jobject) {
 
 jobject XposedBridge_cloneToSubclassNative(JNIEnv* env, jclass, jobject javaObject, jclass javaClazz) {
     ScopedObjectAccess soa(env);
-    StackHandleScope<3> hs(soa.Self());
-    Handle<mirror::Object> obj(hs.NewHandle(soa.Decode<mirror::Object*>(javaObject)));
-    Handle<mirror::Class> clazz(hs.NewHandle(soa.Decode<mirror::Class*>(javaClazz)));
-    Handle<mirror::Object> dest(hs.NewHandle(obj->Clone(soa.Self(), clazz->GetObjectSize())));
-    dest->SetClass(clazz.Get());
-    return soa.AddLocalReference<jobject>(dest.Get());
+    mirror::Object* obj = soa.Decode<mirror::Object*>(javaObject);
+    mirror::Class* clazz = soa.Decode<mirror::Class*>(javaClazz);
+    mirror::Object* dest = obj->Clone(soa.Self(), clazz->GetObjectSize());
+    dest->SetClass(clazz);
+    return soa.AddLocalReference<jobject>(dest);
 }
 
 void XposedBridge_removeFinalFlagNative(JNIEnv* env, jclass, jclass javaClazz) {
     ScopedObjectAccess soa(env);
-    StackHandleScope<1> hs(soa.Self());
-    Handle<mirror::Class> clazz(hs.NewHandle(soa.Decode<mirror::Class*>(javaClazz)));
+    mirror::Class* clazz = soa.Decode<mirror::Class*>(javaClazz);
     uint32_t flags = clazz->GetAccessFlags();
     if ((flags & kAccFinal) != 0) {
         clazz->SetAccessFlags(flags & ~kAccFinal);
