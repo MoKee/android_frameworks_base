@@ -35,8 +35,6 @@ struct XposedShared {
     uint32_t xposedVersionInt;
     bool isSELinuxEnabled;
     bool isSELinuxEnforcing;
-    uid_t installer_uid;
-    gid_t installer_gid;
 
     // Provided by runtime-specific library, used by executable
     void (*onVmCreated)(JNIEnv* env);
