@@ -25,11 +25,8 @@ LOCAL_SRC_FILES += \
 
 LOCAL_C_INCLUDES += \
   art/runtime \
-  external/gtest/include
-
-ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 24)))
-  LOCAL_C_INCLUDES += bionic/libc/private
-endif
+  external/gtest/include \
+  bionic/libc/private
 
 LOCAL_SHARED_LIBRARIES += \
   libart \
