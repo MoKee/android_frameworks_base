@@ -347,13 +347,6 @@ jobject XposedBridge_cloneToSubclassNative(JNIEnv* env, jclass clazz, jobject ob
     return copyIndirect;
 }
 
-void XposedBridge_removeFinalFlagNative(JNIEnv* env, jclass, jclass javaClazz) {
-    ClassObject* clazz = (ClassObject*) dvmDecodeIndirectRef(dvmThreadSelf(), javaClazz);
-    if (dvmIsFinalClass(clazz)) {
-        clazz->accessFlags &= ~ACC_FINAL;
-    }
-}
-
 jint XposedBridge_getRuntime(JNIEnv* env, jclass clazz) {
     return 1; // RUNTIME_DALVIK
 }
