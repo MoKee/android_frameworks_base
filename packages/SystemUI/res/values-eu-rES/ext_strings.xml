@@ -33,13 +33,13 @@
   <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="quick_settings_profiles_off">Profilak ezgaituta.</string>
   <!-- Content description of the system profiles  -->
-  <string name="quick_settings_profiles">Sistema-profilak</string>
+  <string name="quick_settings_profiles">Sistema profilak</string>
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">Argi ezarpenak</string>
   <string name="led_notification_text">LED argia ezarpenetan gaituta</string>
   <!-- Notification which notifies user flashlight is enabled -->
   <string name="quick_settings_tile_flashlight_not_title">Linterna piztuta dago</string>
-  <string name="quick_settings_tile_flashlight_not_summary">Ukitu itzaltzeko</string>
+  <string name="quick_settings_tile_flashlight_not_summary">Sakatu itzaltzeko</string>
   <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
   <string name="cm_power_notification_controls_description">Jakinarazpen ahaltsuen kontrolekin aplikazio baten jakinarazpenei 0 eta 6 bitarteko garrantzi maila ezarri diezaiekezu.
         \n\n<b>6. maila</b>
@@ -87,12 +87,14 @@
   <!-- Play queue -->
   <string name="play_queue_extension">Bistaratu erreprodukzio ilara</string>
   <!-- Weather string format in keyguard -->
+  <string name="keyguard_status_view_weather_format"><xliff:g id="temp">%1$s</xliff:g> <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="accessibility_dpad_left">Kurtsorea ezkerrean</string>
   <string name="accessibility_dpad_right">Kurtsorearen eskuinean</string>
   <!-- NavBar Tuner -->
   <string name="menu_ime_always_show">Menu / Teklatu aldatzailea (erakutsi beti)</string>
   <string name="search">Bilatu</string>
   <!-- Name of the clock status bar icon -->
+  <string name="status_bar_clock">Erlojua</string>
   <!-- Path data for portrait battery -->
   <!-- Path data for landscape battery -->
   <!-- Path data for circle battery -->
@@ -102,6 +104,7 @@
     <item quantity="other">%1$d bezero</item>
   </plurals>
   <!-- Weather string format in expanded statusbar header -->
+  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
     <item>Deia</item>
@@ -187,9 +190,14 @@
   <string name="accessibility_quick_settings_sync_changed_off">Sinkronizazioa ezgaituta.</string>
   <string name="accessibility_quick_settings_sync_changed_on">Sinkronizazioa gaituta.</string>
   <!-- USB tethering QS tile -->
+  <string name="quick_settings_usb_tether_label">USB tethering</string>
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Sinkronizazioa</string>
   <string name="quick_settings_volume_panel_label">Bolumen panela</string>
+  <!-- Content description for Accessibility on unlocked tasks in recents -->
+  <string name="accessibility_lock_task">Eragotzi <xliff:g id="task">%1$s</xliff:g> baztertzea</string>
+  <!-- Content description for Accessibility on locked tasks in recents -->
+  <string name="accessibility_unlock_task">Baimendu <xliff:g id="task">%1$s</xliff:g> baztertzea</string>
   <!-- LiveDisplay strings -->
   <string name="live_display_auto">Automatikoa</string>
   <string name="live_display_auto_summary">Doitu automatikoki pantailaren kolore tenperatura ilunabarra eta egunsentiaren ostean</string>
