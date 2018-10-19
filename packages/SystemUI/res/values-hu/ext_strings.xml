@@ -33,7 +33,7 @@
   <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="quick_settings_profiles_off">Profilok ki.</string>
   <!-- Content description of the system profiles  -->
-  <string name="quick_settings_profiles">Rendszer profilok</string>
+  <string name="quick_settings_profiles">Rendszerprofilok</string>
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">LED beállítások</string>
   <string name="led_notification_text">LED fény engedélyezve</string>
@@ -87,13 +87,13 @@
   <!-- Play queue -->
   <string name="play_queue_extension">Lejátszási lista megjelenítése</string>
   <!-- Weather string format in keyguard -->
-  <string name="keyguard_status_view_weather_format"><xliff:g id="temp">%1$s</xliff:g> <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="accessibility_dpad_left">Kurzor balra</string>
   <string name="accessibility_dpad_right">Kurzor jobbra</string>
   <!-- NavBar Tuner -->
   <string name="menu_ime_always_show">Menü / Billentyűzetváltó (mindig mutat)</string>
   <string name="search">Keresés</string>
   <!-- Name of the clock status bar icon -->
+  <string name="status_bar_clock">Óra</string>
   <!-- Path data for portrait battery -->
   <!-- Path data for landscape battery -->
   <!-- Path data for circle battery -->
@@ -103,7 +103,6 @@
     <item quantity="other">%1$d kliens</item>
   </plurals>
   <!-- Weather string format in expanded statusbar header -->
-  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
     <item>Hívás</item>
@@ -173,7 +172,7 @@
   <string name="accessibility_quick_settings_ambient_display_changed_off">Környezeti kijelző kikapcsolva.</string>
   <string name="accessibility_quick_settings_ambient_display_changed_on">Környezeti kijelző bekapcsolva.</string>
   <!-- Caffeine -->
-  <string name="quick_settings_caffeine_label">Caffeine</string>
+  <string name="quick_settings_caffeine_label">Koffein</string>
   <string name="accessibility_quick_settings_caffeine_off">Caffeine ki</string>
   <string name="accessibility_quick_settings_caffeine_on">Caffeine be</string>
   <!-- Heads up QS tile -->
@@ -193,7 +192,26 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Szinkronizálás</string>
   <string name="quick_settings_volume_panel_label">Hangerőszabályzás</string>
-  <!-- Content description for Accessibility on unlocked tasks in recents -->
-  <!-- Content description for Accessibility on locked tasks in recents -->
   <!-- LiveDisplay strings -->
+  <string name="live_display_auto">Automatikus</string>
+  <string name="live_display_auto_summary">Automatikusan beállítja a képernyő színhőmérsékletét naplemente és napkelte után</string>
+  <string name="live_display_off">Ki</string>
+  <string name="live_display_off_summary">Összes módosítás letiltása</string>
+  <string name="live_display_day">Nap</string>
+  <string name="live_display_day_summary">Csak nappali beállítások használata</string>
+  <string name="live_display_night">Éjszakai</string>
+  <string name="live_display_night_summary">Csak éjszakai beállítások használata</string>
+  <string name="live_display_outdoor">Kültéri (fényes nap)</string>
+  <string name="live_display_outdoor_summary">Csak kültéri beállítások használata</string>
+  <string name="live_display_hint">LiveDisplay segíthet csökkenteni a szem terhelését, és segít éjszaka aludni. Koppints ide a kipróbáláshoz!</string>
+  <string name="accessibility_quick_settings_live_display_off">LiveDisplay ki.</string>
+  <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: auto mód.</string>
+  <string name="accessibility_quick_settings_live_display_day">LiveDisplay: nap mód.</string>
+  <string name="accessibility_quick_settings_live_display_night">LiveDisplay: éjszakai mód.</string>
+  <string name="accessibility_quick_settings_live_display_outdoor">LiveDisplay: kültéri mód.</string>
+  <string name="accessibility_quick_settings_live_display_changed_off">LiveDisplay kikapcsolva.</string>
+  <string name="accessibility_quick_settings_live_display_changed_auto">LiveDisplay auto-módra változtva.</string>
+  <string name="accessibility_quick_settings_live_display_changed_day">LiveDisplay nappali módra változtatva.</string>
+  <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay nappali módra változtatva.</string>
+  <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay kültéri változtva.</string>
 </resources>

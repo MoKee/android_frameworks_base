@@ -81,13 +81,12 @@
   <string name="shortcut_hint">Potegnite iz ikone za %1$s</string>
   <string name="lockscreen_message">Tapnite ikono na levi ali desni, da ponovno dodelite bližnjico zaklenjenega zaslona.</string>
   <string name="lockscreen_default_target">Privzeto</string>
-  <string name="select_application">Izberite aplikacijo</string>
+  <string name="select_application">Izberite program</string>
   <string name="lockscreen_choose_action_title">Izberite dejanje</string>
   <string name="lockscreen_none_target">Brez</string>
   <!-- Play queue -->
   <string name="play_queue_extension">Prikaži čak. vrsto pred.</string>
   <!-- Weather string format in keyguard -->
-  <string name="keyguard_status_view_weather_format"><xliff:g id="temp">%1$s</xliff:g> <xliff:g id="condition">%2$s</xliff:g></string>
   <string name="accessibility_dpad_left">Kazalec levo</string>
   <string name="accessibility_dpad_right">Kazalec desno</string>
   <!-- NavBar Tuner -->
@@ -106,7 +105,6 @@
     <item quantity="other">%1$d odjemalcev</item>
   </plurals>
   <!-- Weather string format in expanded statusbar header -->
-  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
   <string-array name="volume_stream_titles_lineage">
     <item>Klic</item>
@@ -131,20 +129,20 @@
     <!-- STREAM_TTS -->
   </string-array>
   <!-- Content description of the data connection type HSPA+ for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_data_connection_hspap">HSPA+</string>
+  <string name="accessibility_data_connection_hspap">HSPA +</string>
   <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
   <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_battery_saving">Poročanje o lokaciji: način varčevanja z energijo akumulatorja.</string>
+  <string name="accessibility_quick_settings_location_battery_saving">Poročanje lokacije: varčevanja z baterijo.</string>
   <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_gps_only">Poročanje o lokaciji: način \'samo tipala\'.</string>
+  <string name="accessibility_quick_settings_location_gps_only">Poročanje lokacije: samo s senzorji.</string>
   <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_high_accuracy">Poročanje o lokaciji: način visoke natančnosti.</string>
+  <string name="accessibility_quick_settings_location_high_accuracy">Poročanje lokacije: visoka natančnost.</string>
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_battery_saving_label">Varčevanje z energijo akumulatorja</string>
-  <string name="quick_settings_location_battery_saving_label_twoline">Varčevanje\nz energijo akumulatorja</string>
+  <string name="quick_settings_location_battery_saving_label">Varčevanje z energijo</string>
+  <string name="quick_settings_location_battery_saving_label_twoline">Varčevanje\nz energijo</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_gps_only_label">Samo v napravi</string>
   <string name="quick_settings_location_gps_only_label_twoline">Samo v\nnapravi</string>
@@ -162,7 +160,7 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">Samo v napravi</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-  <string name="quick_settings_location_detail_mode_high_accuracy_description">Uporaba GPS-ja, Bluetootha, Wi\u2011Fi-ja in mobilnih omrežij za določanje lokacije</string>
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">Uporabi GPS, Wi\u2011Fi, Bluetooth ali mobilna omrežja za določanje lokacije </string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
   <string name="quick_settings_location_detail_mode_battery_saving_description">Uporaba Wi\u2011Fi-ja, Bluetootha in mobilnih omrežij za določanje lokacije</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
@@ -196,10 +194,6 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">Sinhronizacija</string>
   <string name="quick_settings_volume_panel_label">Plošča za glasnost</string>
-  <!-- Content description for Accessibility on unlocked tasks in recents -->
-  <string name="accessibility_lock_task">Prepreči <xliff:g id="task">%1$s</xliff:g> opuščanje</string>
-  <!-- Content description for Accessibility on locked tasks in recents -->
-  <string name="accessibility_unlock_task">Dovoli <xliff:g id="task">%1$s</xliff:g> opuščanje</string>
   <!-- LiveDisplay strings -->
   <string name="live_display_auto">Samodejno</string>
   <string name="live_display_auto_summary">Samodejno prilagodi barvno temperaturo zaslona po sončnem zahodu in vzhodu</string>

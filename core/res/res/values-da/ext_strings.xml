@@ -24,20 +24,20 @@
   <!-- label for item that restarts the phone in phone options dialog -->
   <string name="global_action_reboot">Genstart</string>
   <!-- label for current user in phone options dialog -->
-  <string name="global_action_current_user">Aktuel</string>
+  <string name="global_action_current_user">Nuværende</string>
   <!-- status message in phone options dialog for screenshot action -->
   <string name="global_actions_screenshot_status">Langt tryk for delvist screenshot</string>
   <!-- Restart menu -->
   <!-- Button to restart the phone, within the Restart Options dialog -->
   <string name="reboot_reboot">Genstart</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
-  <string name="reboot_recovery">Recovery</string>
+  <string name="reboot_recovery">Gendannelse</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
   <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">Download</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
-  <string name="reboot_soft">Blød genstart</string>
+  <string name="reboot_soft">Varm genstart</string>
   <!-- Title of dialog to confirm restarting. -->
   <string name="reboot_title">Genstart</string>
   <!-- Restart Confirmation Dialog.  When the user chooses to restart the device, there will
@@ -51,9 +51,9 @@
   <!-- ADB over USB and network notification -->
   <string name="adb_both_active_notification_title">ADB via USB &amp; netværk aktiveret</string>
   <!-- ADB notification message-->
-  <string name="adb_active_generic_notification_message">Tryk for at deaktivere fejlretning.</string>
+  <string name="adb_active_generic_notification_message">Tryk for at deaktivere fejlfinding.</string>
   <!-- Privacy Guard -->
-  <string name="permlab_changePrivacyGuardState">aktivér eller deaktivér privatlivsvagt</string>
+  <string name="permlab_changePrivacyGuardState">aktiver eller deaktiver Beskyttelse af personlige oplysninger</string>
   <string name="permdesc_changePrivacyGuardState">Tillader app\'en at ændre, om en anden app kører med Privatlivsvagt. Når en app kører med Privatlivsvagt, vil den ikke have adgang til personlige data såsom kontakter, opkaldslister eller beskeder.</string>
   <string name="privacy_guard_notification">Privatlivsvagt aktiv</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> vil ikke kunne tilgå personlige data</string>

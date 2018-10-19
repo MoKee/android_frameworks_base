@@ -18,7 +18,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Long-press back kill application -->
-  <string name="app_killed_message">アプリを終了しました。</string>
+  <string name="app_killed_message">アプリを終了しました</string>
   <!-- label for item that screenshots in phone options dialog -->
   <string name="global_action_screenshot">スクリーンショット</string>
   <!-- label for item that restarts the phone in phone options dialog -->
@@ -33,7 +33,7 @@
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
   <string name="reboot_recovery">リカバリー</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
-  <string name="reboot_bootloader">ブートローダ</string>
+  <string name="reboot_bootloader">ブートローダー</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">ダウンロード</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
@@ -42,8 +42,8 @@
   <string name="reboot_title">再起動</string>
   <!-- Restart Confirmation Dialog.  When the user chooses to restart the device, there will
          be a confirmation dialog.  This is the message. -->
-  <string name="reboot_confirm" product="tablet">端末を再起動します。</string>
-  <string name="reboot_confirm" product="default">端末を再起動します。</string>
+  <string name="reboot_confirm" product="tablet">端末を再起動します</string>
+  <string name="reboot_confirm" product="default">端末を再起動します</string>
   <!-- Restart Progress Dialog. This is shown if the user chooses to restart the phone. -->
   <string name="reboot_progress">再起動中...</string>
   <!-- ADB over network notification -->
@@ -51,14 +51,14 @@
   <!-- ADB over USB and network notification -->
   <string name="adb_both_active_notification_title">USBとネットワーク経由のADBが有効です</string>
   <!-- ADB notification message-->
-  <string name="adb_active_generic_notification_message">タップしてデバッグを無効にします。</string>
+  <string name="adb_active_generic_notification_message">タップしてデバッグを無効にします</string>
   <!-- Privacy Guard -->
   <string name="permlab_changePrivacyGuardState">プライバシーガードを有効/無効にする</string>
   <string name="permdesc_changePrivacyGuardState">他のアプリでプライバシーガードを有効にするかどうかの変更をアプリに許可します。プライバシーガードを有効にしてアプリを実行すると、そのアプリは連絡先、通話履歴、メッセージなどの個人データにアクセスできなくなります。</string>
   <string name="privacy_guard_notification">プライバシーガードが有効です</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g>は個人データにアクセスできません</string>
   <string name="privacy_guard_dialog_title">プライバシーガード</string>
-  <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g>が<xliff:g id="op">%2$s</xliff:g>をしようとしています。</string>
+  <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g>が<xliff:g id="op">%2$s</xliff:g>をしようとしています</string>
   <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
   <string name="permission_remember_choice">選択を保存</string>
   <!-- App ops requests -->
@@ -131,11 +131,11 @@
   <string name="app_ops_su">ルートアクセスの取得</string>
   <!-- Protected Apps Notification -->
   <string name="notify_package_component_protected_title">アクティビティの起動がブロックされました</string>
-  <string name="notify_package_component_protected_text"><xliff:g id="app_name">%1$s</xliff:g>は起動できないように保護されています。タップして認証後にアプリケーションを起動してください。</string>
+  <string name="notify_package_component_protected_text"><xliff:g id="app_name">%1$s</xliff:g>は起動できないように保護されています。タップして認証後にアプリを起動して下さい。</string>
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
-  <string name="lock_to_app_toast_no_navbar">この画面の固定を解除するには、戻るボタンを長押しします。</string>
+  <string name="lock_to_app_toast_no_navbar">この画面の固定を解除するには戻るボタンを長押しします</string>
   <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
-  <string name="lineage_system_error_manufacturer">ベンダーイメージの不一致を検出しました。ベンダーイメージが最新でない可能性があります。ベンダーイメージが<xliff:g id="fingerprint">%1$s</xliff:g>と一致しているか確認してください。</string>
+  <string name="lineage_system_error_manufacturer">ベンダーイメージの不一致を検出しました。ベンダーイメージが最新でない可能性があります。ベンダーイメージが<xliff:g id="fingerprint">%1$s</xliff:g>と一致しているか確認して下さい。</string>
   <!-- Single hand mode -->
   <string name="singlehandmode_click_hint_message">画面の外をタップすると片手モードを終了します</string>
   <!-- Strings for tethered notification -->

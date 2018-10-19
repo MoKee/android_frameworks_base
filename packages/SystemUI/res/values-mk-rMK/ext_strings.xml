@@ -66,6 +66,7 @@
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <!-- String for lockscreen shortcut hints -->
   <string name="shortcut_hint">Повлечете од иконата за %1$s</string>
+  <string name="lockscreen_none_target">Нема</string>
   <!-- Play queue -->
   <!-- Weather string format in keyguard -->
   <!-- NavBar Tuner -->
@@ -136,10 +137,6 @@
   <!-- Sync QS tile -->
   <!-- USB tethering QS tile -->
   <!-- Volume panel QS tile -->
-  <!-- Content description for Accessibility on unlocked tasks in recents -->
-  <string name="accessibility_lock_task">Спречи <xliff:g id="task">%1$s</xliff:g> од отфрлање</string>
-  <!-- Content description for Accessibility on locked tasks in recents -->
-  <string name="accessibility_unlock_task">Дозволи <xliff:g id="task">%1$s</xliff:g> за отфрлање</string>
   <!-- LiveDisplay strings -->
   <string name="live_display_auto">Автоматски</string>
   <string name="live_display_auto_summary">Автоматски прилагоди ја температурата на бојата на екранот по зајдисонце и изгрејсонце</string>

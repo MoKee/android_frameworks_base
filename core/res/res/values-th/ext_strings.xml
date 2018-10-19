@@ -22,11 +22,14 @@
   <!-- label for item that screenshots in phone options dialog -->
   <string name="global_action_screenshot">ถ่ายภาพหน้าจอ</string>
   <!-- label for item that restarts the phone in phone options dialog -->
+  <string name="global_action_reboot">รีสตาร์ท</string>
   <!-- label for current user in phone options dialog -->
   <string name="global_action_current_user">ปัจจุบัน</string>
   <!-- status message in phone options dialog for screenshot action -->
+  <string name="global_actions_screenshot_status">กดค้างเพื่อถ่ายภาพหน้าจอบางส่วน</string>
   <!-- Restart menu -->
   <!-- Button to restart the phone, within the Restart Options dialog -->
+  <string name="reboot_reboot">รีสตาร์ท</string>
   <!-- Button to restart the phone into recovery, within the Restart Options dialog -->
   <string name="reboot_recovery">Recovery</string>
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
@@ -34,9 +37,13 @@
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
   <string name="reboot_download">ดาวน์โหลด</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
+  <string name="reboot_soft">Soft restart</string>
   <!-- Title of dialog to confirm restarting. -->
+  <string name="reboot_title">รีสตาร์ท</string>
   <!-- Restart Confirmation Dialog.  When the user chooses to restart the device, there will
          be a confirmation dialog.  This is the message. -->
+  <string name="reboot_confirm" product="tablet">แท็บเล็ตของคุณจะรีสตาร์ท</string>
+  <string name="reboot_confirm" product="default">โทรศัพท์ของคุณจะรีสตาร์ท</string>
   <!-- Restart Progress Dialog. This is shown if the user chooses to restart the phone. -->
   <!-- ADB over network notification -->
   <string name="adb_net_active_notification_title">ADB บนเครือข่ายถูกเปิดใช้งาน</string>
@@ -118,6 +125,7 @@
   <string name="app_ops_write_external_storage">เขียนที่เก็บข้อมูลภายนอก</string>
   <string name="app_ops_turn_on_screen">เปิดหน้าจอ</string>
   <string name="app_ops_get_accounts">เข้าถึงบัญชีของอุปกรณ์</string>
+  <string name="app_ops_run_in_background">ทำงานในเบื้องหลัง</string>
   <string name="app_ops_wifi_change">เปลี่ยนแปลงสถานะ Wi-Fi</string>
   <string name="app_ops_su">รับสิทธิผู้ดูแลระบบ</string>
   <!-- Protected Apps Notification -->

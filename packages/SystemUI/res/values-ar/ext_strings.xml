@@ -41,11 +41,43 @@
   <string name="quick_settings_tile_flashlight_not_title">ضوء الفلاش مشغل</string>
   <string name="quick_settings_tile_flashlight_not_summary">المس لإيقاف التشغيل</string>
   <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
+  <string name="cm_power_notification_controls_description">مع متحكم الإشعارات، يمكنك ضبط مستوى أهمية الاشعار من 0 - 6 لتطبيق (6 اعلى قيمة اهمية).
+        \n\n<b>المستوى 6</b>
+        \n- الظهور في اعلى قائمة الإشعارات
+        \n- السماح بالتدخل في الشاشة (اضاءة. تنبيه الشاشة)
+        \n- التعليق دومًا في اعلى قائمة الاشعارات
+        \n\n<b>المستوى 5</b>
+        \n- عدم التدخل في الشاشة
+        \n- التعليق دومًا في اعلى قائمة الاشعارات
+        \n\n<b>المستوى 4</b>
+        \n- عدم التدخل في الشاشة (منع اضاءة او تنبيه الشاشة)
+        \n- لايكون في اعلى قائمة الاشعارات
+        \n\n<b>المستوى 3</b>
+        \n- عدم التدخل في الشاشة (منع اضاءة او تنبيه الشاشة)
+        \n- لايكون ابدا في اعلى قائمة الاشعارات
+        \n- ممنوع اصدار صوت أو اهتزاز
+        \n\n<b>المستوى 2</b>
+        \n- عدم التدخل في الشاشة (منع اضاءة او تنبيه الشاشة)
+        \n- لايكون في اعلى قائمة الاشعارات
+        \n- ممنوع اصدار صوت أو اهتزاز
+        \n- الإخفاء من شاشة القفل
+        \n- الظهور في أسفل قائمة الإشعارات
+        \n\n<b>المستوى 1</b>
+        \n- عدم التدخل في الشاشة
+        \n- لايكون في اعلى قائمة الاشعارات
+        \n- ممنوع اصدار صوت أو اهتزاز
+        \n- الإخفاء من شاشة القفل وشريط الحالة
+        \n- الظهور في أسفل قائمة الإشعارات
+        \n\n<b>المستوى 0</b>
+        \n- حظر جميع إشعارات و تنبيهات التطبيق    </string>
   <!-- Notification importance level title-->
+  <string name="importance_level_title">مستوى: الأهمية %1$d</string>
   <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
+  <string name="notification_importance_very_low">تشغيل الشاشة في الوضع الكامل دون انقطاع ، تطفل، صوت،او اهتزاز. إخفاء من قفل الشاشة.</string>
   <!-- Screen pinning dialog description (for devices without navbar) -->
   <string name="screen_pinning_description_no_navbar">ستظل ظاهرة حتى يمكنك إزالتها. المس مع الاستمرار زر العودة لإزالتها.</string>
   <!-- String for lockscreen shortcut hints -->
+  <string name="shortcut_hint">اسحب الأيقونة لكي %1$s</string>
   <string name="lockscreen_message">انقر فوق رمز على اليسار أو اليمين لتخصيص اختصار جديد على شاشة التأمين.</string>
   <string name="lockscreen_default_target">الافتراضي</string>
   <string name="select_application">حدد التطبيق</string>
@@ -57,14 +89,46 @@
   <string name="accessibility_dpad_left">المؤشر إلى اليسار</string>
   <string name="accessibility_dpad_right">المؤشر الى اليمين</string>
   <!-- NavBar Tuner -->
+  <string name="menu_ime_always_show">القائمة / مبدل لوحة المفاتيح (اضهار دائمًا)</string>
+  <string name="search">بحث</string>
   <!-- Name of the clock status bar icon -->
+  <string name="status_bar_clock">الساعة</string>
   <!-- Path data for portrait battery -->
   <!-- Path data for landscape battery -->
   <!-- Path data for circle battery -->
   <!-- Wi-Fi hotspot label when enabled -->
+  <plurals name="wifi_hotspot_connected_clients_label">
+    <item quantity="zero">%1$d العملاء</item>
+    <item quantity="one">%1$d clients</item>
+    <item quantity="two">%1$d العملاء</item>
+    <item quantity="few">%1$d clients</item>
+    <item quantity="many">%1$d العملاء</item>
+    <item quantity="other">%1$d clients</item>
+  </plurals>
   <!-- Weather string format in expanded statusbar header -->
-  <string name="status_bar_expanded_header_weather_format"><xliff:g id="temp">%1$s</xliff:g> - <xliff:g id="condition">%2$s</xliff:g></string>
   <!-- Volume stream titles - should match the string-array in AOSP -->
+  <string-array name="volume_stream_titles_lineage">
+    <item>اتّصل</item>
+    <!-- STREAM_VOICE_CALL -->
+    <item>النظام</item>
+    <!-- STREAM_SYSTEM -->
+    <item>رنين</item>
+    <!-- STREAM_RING -->
+    <item>وسائط</item>
+    <!-- STREAM_MUSIC -->
+    <item>المنبّه</item>
+    <!-- STREAM_ALARM -->
+    <item>الاشعارات</item>
+    <!-- STREAM_NOTIFICATION -->
+    <item>البلوتوث</item>
+    <!-- STREAM_BLUETOOTH_SCO -->
+    <item></item>
+    <!-- STREAM_SYSTEM_ENFORCED -->
+    <item></item>
+    <!-- STREAM_DTMF -->
+    <item></item>
+    <!-- STREAM_TTS -->
+  </string-array>
   <!-- Content description of the data connection type HSPA+ for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_data_connection_hspap">HSPA+</string>
   <!-- Text to use when the number in a notification info is too large
@@ -79,12 +143,17 @@
   <string name="accessibility_quick_settings_location_high_accuracy">تحديد الموقع: وضع الدقة العالية.</string>
   <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_battery_saving_label">توفير البطارية</string>
+  <string name="quick_settings_location_battery_saving_label_twoline">توفير\nالبطارية</string>
   <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_gps_only_label">الجهاز فقط</string>
+  <string name="quick_settings_location_gps_only_label_twoline">الجهاز\nفقط</string>
   <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
   <string name="quick_settings_location_high_accuracy_label">دقة عالية</string>
+  <string name="quick_settings_location_high_accuracy_label_twoline">دقة\nعالية</string>
   <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_detail_title">الموقع الجغرافيّ</string>
   <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
+  <string name="quick_settings_location_detail_menu_title">تحديد الوضع:</string>
   <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
   <string name="quick_settings_location_detail_mode_high_accuracy_title">دقة عالية</string>
   <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->
@@ -92,8 +161,11 @@
   <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
   <string name="quick_settings_location_detail_mode_sensors_only_title">الجهاز فقط</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
+  <string name="quick_settings_location_detail_mode_high_accuracy_description">استخدام نظام تحديد المواقع العالمي (GPS) وشبكات WiFi والبلوتوث أو شبكات الجوّال لتحديد الموقع</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
+  <string name="quick_settings_location_detail_mode_battery_saving_description">استخدام شبكات Wi\u2011Fi والبلوتوث أو شبكات الجوّال لتحديد الموقع</string>
   <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
+  <string name="quick_settings_location_detail_mode_sensors_only_description">استخدام نظام تحديد المواقع العالمي (GPS) في تحديد موقعك</string>
   <!-- Adb over network QS tile -->
   <string name="quick_settings_network_adb_label">ADB عبر الشبكة</string>
   <!-- Ambient display QS tile -->
@@ -104,6 +176,8 @@
   <string name="accessibility_quick_settings_ambient_display_changed_on">تم تشغيل العرض المحيط.</string>
   <!-- Caffeine -->
   <string name="quick_settings_caffeine_label">وضع الكافيين</string>
+  <string name="accessibility_quick_settings_caffeine_off">كافيين معطل</string>
+  <string name="accessibility_quick_settings_caffeine_on">كافيين مفعل</string>
   <!-- Heads up QS tile -->
   <string name="quick_settings_heads_up_label">إنذار مسبق</string>
   <string name="accessibility_quick_settings_heads_up_off">تعطيل الإنذار المسبق.</string>
@@ -122,7 +196,26 @@
   <!-- Volume panel QS tile -->
   <string name="quick_settings_sync_label">المزامنة</string>
   <string name="quick_settings_volume_panel_label">لوحة مستوى الصوت</string>
-  <!-- Content description for Accessibility on unlocked tasks in recents -->
-  <!-- Content description for Accessibility on locked tasks in recents -->
   <!-- LiveDisplay strings -->
+  <string name="live_display_auto">تلقائي</string>
+  <string name="live_display_auto_summary">ضبط درجة حرارة اللون للشاشة تلقائياً بعد غروب الشمس وشروقها</string>
+  <string name="live_display_off">إيقاف</string>
+  <string name="live_display_off_summary">تعطيل جميع التعديلات</string>
+  <string name="live_display_day">النهار</string>
+  <string name="live_display_day_summary">استخدام إعدادات اليوم فقط</string>
+  <string name="live_display_night">ليلي            </string>
+  <string name="live_display_night_summary">استخدام إعدادات الليل فقط</string>
+  <string name="live_display_outdoor">خارج المنزل ( شمس ساطعة)</string>
+  <string name="live_display_outdoor_summary">استخدم إعدادات خارج المنزل فقط</string>
+  <string name="live_display_hint">يمكن أن تساعد ميزة العرض الحي في تقليل إجهاد العين ومساعدتك على النوم في الليل. انقر هنا لتجربتها!</string>
+  <string name="accessibility_quick_settings_live_display_off">إيقاف تشغيل العرض الحي.</string>
+  <string name="accessibility_quick_settings_live_display_auto">العرض الحي: الوضع التلقائي.</string>
+  <string name="accessibility_quick_settings_live_display_day">العرض الحي: الوضع النهاري.</string>
+  <string name="accessibility_quick_settings_live_display_night">العرض الحي: الوضع الليلي.</string>
+  <string name="accessibility_quick_settings_live_display_outdoor">العرض الحي: وضع الأماكن المفتوحة.</string>
+  <string name="accessibility_quick_settings_live_display_changed_off">تم إيقاف تشغيل العرض الحي.</string>
+  <string name="accessibility_quick_settings_live_display_changed_auto">تم تغيير العرض الحي إلى الوضع التلقائي.</string>
+  <string name="accessibility_quick_settings_live_display_changed_day">تم تغيير العرض الحي إلى الوضع النهاري.</string>
+  <string name="accessibility_quick_settings_live_display_changed_night">تم تغيير العرض الحي إلى الوضع الليلي.</string>
+  <string name="accessibility_quick_settings_live_display_changed_outdoor">تم تغيير العرض الحي إلى وضع الأماكن المفتوحة.</string>
 </resources>

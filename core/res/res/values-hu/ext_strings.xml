@@ -35,7 +35,7 @@
   <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
   <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to restart the phone into download, within the Restart Options dialog -->
-  <string name="reboot_download">Download</string>
+  <string name="reboot_download">Letöltés</string>
   <!-- Button to soft restart the device, within the Restart Options dialog -->
   <string name="reboot_soft">Lágy újraindítás</string>
   <!-- Title of dialog to confirm restarting. -->
@@ -71,7 +71,7 @@
   <string name="app_ops_delete_contacts">névjegyek törlése</string>
   <string name="app_ops_delete_mms">MMS-üzenetek törlése</string>
   <string name="app_ops_delete_sms">SMS-üzenetek törlése</string>
-  <string name="app_ops_draw_on_top">átfedő ablakok rajzolása</string>
+  <string name="app_ops_draw_on_top">többi alkalmazás felett futtatás</string>
   <string name="app_ops_get_usage_stats">hozzáférés alkalmazás használati statisztikákhoz</string>
   <string name="app_ops_keep_device_awake">készülék ébrentartása</string>
   <string name="app_ops_make_phone_call">hívást kezdeményezhet</string>
@@ -130,7 +130,7 @@
   <string name="app_ops_wifi_change">Wi-Fi állapot módosítása</string>
   <string name="app_ops_su">rendszergazdai jogosultság szerzése</string>
   <!-- Protected Apps Notification -->
-  <string name="notify_package_component_protected_title">Tevékenység elindítás blokkolva</string>
+  <string name="notify_package_component_protected_title">Művelet elindítása blokkolva</string>
   <string name="notify_package_component_protected_text"><xliff:g id="app_name">%1$s</xliff:g> védve van az indításra. Kattintson a hitelesítésére és indítsa el az alkalmazást.</string>
   <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
   <string name="lock_to_app_toast_no_navbar">Képernyő rögzítésének feloldásához érintse meg és tartsa nyomva a Vissza gombot.</string>
