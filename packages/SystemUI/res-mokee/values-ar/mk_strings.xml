@@ -24,5 +24,5 @@
   <string name="keyguard_indication_dash_charging_time">الشحن السريع (<xliff:g id="charging_time_left" example=" اربع ساعات و 2 دقيقة">%s</xliff:g> حتى الإمتلاء)</string>
   <string name="keyguard_plugged_in_dash_charging">الشحن السريع</string>
   <!-- Recents memory view -->
-  <string name="recents_free_ram">الذاكرة المتبقية: %1$d                    </string>
+  <string name="recents_free_ram"> </string>
 </resources>
