@@ -436,7 +436,10 @@ interface IWindowManager
      */
     void dontOverrideDisplayInfo(int displayId);
 
+    // MoKee addition
     boolean isGestureButtonEnabled();
 
     boolean isGestureButtonRegion(int i, int i2);
+
+    boolean isKeyguardShowingAndNotOccluded();
 }
