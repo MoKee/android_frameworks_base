@@ -89,13 +89,6 @@ public class GestureButton implements PointerEventListener {
     private static final String LAUNCHER_PACKAGE = "com.android.launcher3";
     private static final String SYSTEMUI_PACKAGE = "com.android.systemui";
 
-    private OnTouchListener mTouchListener = new OnTouchListener() {
-        public boolean onTouch(View v, MotionEvent event) {
-            handleTouch(event);
-            return true;
-        }
-    };
-
     private class GestureButtonHandler extends Handler {
 
         public GestureButtonHandler(Looper looper) {
@@ -154,11 +147,8 @@ public class GestureButton implements PointerEventListener {
         }
     }
 
+    @Override
     public void onPointerEvent(MotionEvent event) {
-        handleTouch(event);
-    }
-
-    private void handleTouch(MotionEvent event) {
         int action = event.getActionMasked();
         mEventDeviceId = event.getDeviceId();
 
@@ -167,7 +157,7 @@ public class GestureButton implements PointerEventListener {
             float rawY = event.getRawY();
             switch (action) {
                 case MotionEvent.ACTION_DOWN:
-                    mIsKeyguardShowing = mPwm.isKeyguardLocked();
+                    mIsKeyguardShowing = mPwm.isKeyguardShowingAndNotOccluded();
                     if (mIsKeyguardShowing) {
                         break;
                     }
