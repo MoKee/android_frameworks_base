@@ -127,8 +127,13 @@
   <!-- SysUI Tuner: Button that controls inversion of layout of navigation bar [CHAR LIMIT=60] -->
   <string name="nav_bar_layout_inverse">Invertir disposición de botón</string>
   <!-- Reader mode QS tile -->
+  <string name="quick_settings_reading_mode">Modo de lectura</string>
   <!-- Content description of the reader mode tile when on -->
+  <string name="accessibility_quick_settings_reading_mode_on">Modo de lectura activado.</string>
   <!-- Content description of the reader mode tile when off -->
+  <string name="accessibility_quick_settings_reading_mode_off">Modo de lectura desactivado.</string>
   <!-- Content description of the reader mode tile when turned on -->
+  <string name="accessibility_quick_settings_reading_mode_changed_on">Modo de lectura encendido.</string>
   <!-- Content description of the reader mode tile when turned off -->
+  <string name="accessibility_quick_settings_reading_mode_changed_off">Modo de lectura apagado.</string>
 </resources>
