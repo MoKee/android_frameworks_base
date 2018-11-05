@@ -2057,7 +2057,4 @@
     <string name="touch_filtered_warning">Because an app is obscuring a permission request, Settings
         can’t verify your response.</string>
 
-    <!-- Text for switch default data sub in expanded CellularTile -->
-    <string name="use_data">Use %s data</string>
-
 </resources>
