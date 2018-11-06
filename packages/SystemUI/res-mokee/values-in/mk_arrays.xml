@@ -15,5 +15,23 @@
      limitations under the License.
 -->
 <resources>
-  <!-- Cardinal directions for the compass tile -->
+    <!-- Cardinal directions for the compass tile -->
+    <string-array name="cardinal_directions">
+        <item>@string/quick_settings_compass_U</item>
+        <!-- North -->
+        <item>@string/quick_settings_compass_TL</item>
+        <!-- North east -->
+        <item>@string/quick_settings_compass_T</item>
+        <!-- East -->
+        <item>@string/quick_settings_compass_TG</item>
+        <!-- South east -->
+        <item>@string/quick_settings_compass_S</item>
+        <!-- South -->
+        <item>@string/quick_settings_compass_BD</item>
+        <!-- South west -->
+        <item>@string/quick_settings_compass_B</item>
+        <!-- West -->
+        <item>@string/quick_settings_compass_BL</item>
+        <!-- North west -->
+    </string-array>
 </resources>

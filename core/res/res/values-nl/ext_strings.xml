@@ -3,6 +3,7 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
+     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +25,6 @@
     <string name="adb_both_active_notification_title">ADB over USB &amp; netwerk ingeschakeld</string>
     <!-- ADB notification message-->
     <string name="adb_active_generic_notification_message">Tik om foutopsporing uit te schakelen.</string>
-    <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
-    <string name="lineage_system_error_manufacturer">Er is een discrepantie geconstateerd in de vendor-image. Over het algemeen betekent dit dat de vendor-image verouderd is. Zorg ervoor dat de vendor-image overeenkomt met <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
     <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
     <string name="lock_to_app_toast_no_navbar">Blijf de Terug-knop aanraken om dit scherm los te maken.</string>
     <!-- Privacy Guard -->
@@ -43,8 +42,10 @@
     <string name="app_ops_access_notifications">meldingen lezen</string>
     <string name="app_ops_activate_vpn">VPN activeren</string>
     <string name="app_ops_add_voicemail">voicemail toevoegen</string>
+    <string name="app_ops_app_start_foreground">Start instant app op de voorgrond</string>
     <string name="app_ops_assist_screenshot">screenshot maken</string>
     <string name="app_ops_assist_structure">structuur voor ondersteuning gebruiken</string>
+    <string name="app_ops_audio_accessibility_volume">toegankelijkheidsvolume</string>
     <string name="app_ops_auto_start">starten tijdens opstarten</string>
     <string name="app_ops_change_wallpaper">achtergrond aanpassen</string>
     <string name="app_ops_delete_call_log">oproepgeschiedenis verwijderen</string>

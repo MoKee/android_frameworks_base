@@ -3,6 +3,7 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
+     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,18 +24,16 @@
     <!-- ADB over USB and network notification -->
     <string name="adb_both_active_notification_title">USBとネットワーク経由のADBが有効です</string>
     <!-- ADB notification message-->
-    <string name="adb_active_generic_notification_message">タップしてデバッグを無効にします。</string>
-    <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
-    <string name="lineage_system_error_manufacturer">ベンダーイメージの不一致を検出しました。ベンダーイメージが最新でない可能性があります。ベンダーイメージが<xliff:g id="fingerprint">%1$s</xliff:g>と一致しているか確認してください。</string>
+    <string name="adb_active_generic_notification_message">タップしてデバッグを無効にします</string>
     <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
-    <string name="lock_to_app_toast_no_navbar">この画面の固定を解除するには、戻るボタンを長押しします。</string>
+    <string name="lock_to_app_toast_no_navbar">この画面の固定を解除するには戻るボタンを長押しします</string>
     <!-- Privacy Guard -->
     <string name="permlab_changePrivacyGuardState">プライバシーガードを有効/無効にする</string>
     <string name="permdesc_changePrivacyGuardState">他のアプリでプライバシーガードを有効にするかどうかの変更をアプリに許可します。プライバシーガードを有効にしてアプリを実行すると、そのアプリは連絡先、通話履歴、メッセージなどの個人データにアクセスできなくなります。</string>
     <string name="privacy_guard_notification">プライバシーガードが有効です</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g>は個人データにアクセスできません</string>
     <string name="privacy_guard_dialog_title">プライバシーガード</string>
-    <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g>が<xliff:g id="op">%2$s</xliff:g>をしようとしています。</string>
+    <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g>が<xliff:g id="op">%2$s</xliff:g>をしようとしています</string>
     <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
     <string name="permission_remember_choice">選択を保存</string>
     <!-- App ops requests -->

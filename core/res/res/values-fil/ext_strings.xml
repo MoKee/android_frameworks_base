@@ -3,6 +3,7 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
+     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,11 +20,88 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- ADB over network notification -->
+    <string name="adb_net_active_notification_title">Pinagana ang ADB sa network</string>
     <!-- ADB over USB and network notification -->
+    <string name="adb_both_active_notification_title">ADB sa USB &amp; ang network ay pinagana</string>
     <!-- ADB notification message-->
-    <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
+    <string name="adb_active_generic_notification_message">Pindutin upang i-disable and debugging.</string>
     <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
+    <string name="lock_to_app_toast_no_navbar">Upang alisin ang screen na ito, pindutin nang matagal ang Back na pindutan.</string>
     <!-- Privacy Guard -->
+    <string name="permlab_changePrivacyGuardState">paganahin o huwag paganahin ang Privacy Guard</string>
+    <string name="permdesc_changePrivacyGuardState">Pinapayagan ang app na baguhin kung tumatakbo ang isa pang app gamit ang Privacy Guard. Kapag ang isang app ay tumatakbo sa Privacy Guard, wala itong access sa personal na data tulad ng mga contact, mga tala ng tawag, o mga mensahe.</string>
+    <string name="privacy_guard_notification">Aktibo ang Privacy Guard</string>
+    <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> hindi ma-access ang personal na data</string>
+    <string name="privacy_guard_dialog_title">Privacy Guard</string>
+    <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> nais na <xliff:g id="op">%2$s</xliff:g>.</string>
     <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+    <string name="permission_remember_choice">Tandaan ang aking pinili</string>
     <!-- App ops requests -->
+    <string name="app_ops_access_camera">i-access ang camera</string>
+    <string name="app_ops_access_location">ma-access ang iyong lokasyon</string>
+    <string name="app_ops_access_notifications">basahin ang iyong mga notification</string>
+    <string name="app_ops_activate_vpn">i-activate and VPN</string>
+    <string name="app_ops_add_voicemail">magdagdag ng isang voicemail</string>
+    <string name="app_ops_assist_screenshot">kumuha ng isang screenshot</string>
+    <string name="app_ops_assist_structure">gamitin ang istrakturang pantulong</string>
+    <string name="app_ops_auto_start">simulan sa power up</string>
+    <string name="app_ops_change_wallpaper">baguhin ang wallpaper</string>
+    <string name="app_ops_delete_call_log">tanggalin ang iyong log ng tawag</string>
+    <string name="app_ops_delete_contacts">tanggalin ang iyong mga contact</string>
+    <string name="app_ops_delete_mms">tanggalin ang iyong mga mensaheng MMS</string>
+    <string name="app_ops_delete_sms">tanggalin ang iyong mga mensaheng SMS</string>
+    <string name="app_ops_draw_on_top">gumuhit ng mga bintana sa itaas</string>
+    <string name="app_ops_get_accounts">kumuha ng mga account ng device</string>
+    <string name="app_ops_get_usage_stats">kumuha ng app usage na istastika</string>
+    <string name="app_ops_keep_device_awake">panatilihing gising ang iyong aparato</string>
+    <string name="app_ops_make_phone_call">gumawa ng isang tawag sa telepono</string>
+    <string name="app_ops_mock_location">--kunwari ang iyong lokasyon</string>
+    <string name="app_ops_modify_calendar">i-update ang iyong kalendaryo</string>
+    <string name="app_ops_modify_call_log">i-update ang log ng tawag</string>
+    <string name="app_ops_modify_clipboard">baguhin ang clipboard</string>
+    <string name="app_ops_modify_contacts">i-update ang iyong mga contact</string>
+    <string name="app_ops_modify_settings">i-update ang mga setting ng system</string>
+    <string name="app_ops_mute_unmute_microphone">mute / i-unmute ang mikropono</string>
+    <string name="app_ops_play_audio">i-play ang audio</string>
+    <string name="app_ops_post_notification">mag-post ng isang notification</string>
+    <string name="app_ops_project_media">proyekto sa media</string>
+    <string name="app_ops_read_calendar">basahin ang iyong kalendaryo</string>
+    <string name="app_ops_read_call_log">basahin ang log ng tawag</string>
+    <string name="app_ops_read_cell_broadcasts">basahin ang mga broadcast ng cell</string>
+    <string name="app_ops_read_clipboard">basahin ang clipboard</string>
+    <string name="app_ops_read_contacts">basahin ang iyong mga contact</string>
+    <string name="app_ops_read_external_storage">basahin ang external storage</string>
+    <string name="app_ops_read_mms">basahin ang iyong mga mensahe sa MMS</string>
+    <string name="app_ops_read_phone_state">mag-access sa estado ng telepono</string>
+    <string name="app_ops_read_sms">basahin ang iyong mga mensaheng SMS</string>
+    <string name="app_ops_receive_sms">makatanggap ng isang mensaheng SMS</string>
+    <string name="app_ops_record_audio">mag-rekord ng audio</string>
+    <string name="app_ops_run_in_background">buksan sa background</string>
+    <string name="app_ops_scan_wifi">mag-scan ng mga Wi-Fi network</string>
+    <string name="app_ops_send_mms">magpadala ng isang mensaheng MMS</string>
+    <string name="app_ops_send_sms">magpadala ng isang mensaheng SMS</string>
+    <string name="app_ops_start_at_bootup">simulan sa power up</string>
+    <string name="app_ops_su">makakuha ng root access</string>
+    <string name="app_ops_toast_window">magpakita ng mga toast messages</string>
+    <string name="app_ops_toggle_bluetooth">toggle Bluetooth</string>
+    <string name="app_ops_toggle_mobile_data">i-toggle ang cellular data</string>
+    <string name="app_ops_toggle_nfc">i-toggle ang NFC</string>
+    <string name="app_ops_toggle_wifi">i-toggle ang Wi-Fi</string>
+    <string name="app_ops_turn_on_screen">buksan ang screen</string>
+    <string name="app_ops_use_alarm_volume">kontrolin ang alarm volume</string>
+    <string name="app_ops_use_audio_focus">kontrolin ang audio focus</string>
+    <string name="app_ops_use_bluetooth_volume">kontrolin ang Bluetooth volume</string>
+    <string name="app_ops_use_body_sensors">gumamit ng mga body sensor</string>
+    <string name="app_ops_use_fingerprint">gamitin ang fingerprint</string>
+    <string name="app_ops_use_master_volume">kontrolin ang master volume</string>
+    <string name="app_ops_use_media_buttons">gamitin ang mga media button</string>
+    <string name="app_ops_use_media_volume">kontrolin ang media volume</string>
+    <string name="app_ops_use_notification_volume">kontrolin ang notification volume</string>
+    <string name="app_ops_use_ring_volume">kontrolin ang ringtone volume</string>
+    <string name="app_ops_use_vibrate">gamitin ang haptic feedback</string>
+    <string name="app_ops_use_voice_volume">kontrolin ang voice call volume</string>
+    <string name="app_ops_wifi_change">baguhin ang katayuan ng Wi-Fi</string>
+    <string name="app_ops_write_external_storage">sulatan ang external storage</string>
+    <string name="app_ops_write_mms">magsulat ng isang mensaheng MMS</string>
+    <string name="app_ops_write_sms">magsulat ng isang mensaheng SMS</string>
 </resources>

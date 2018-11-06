@@ -3,6 +3,7 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
+     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +25,6 @@
     <string name="adb_both_active_notification_title">ADB över USB och nätverk aktiverat</string>
     <!-- ADB notification message-->
     <string name="adb_active_generic_notification_message">Tryck på för att inaktivera felsökning.</string>
-    <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
     <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
     <string name="lock_to_app_toast_no_navbar">För att frigöra denna skärm, tryck och håll nere Bakåt-knappen.</string>
     <!-- Privacy Guard -->
@@ -53,6 +53,7 @@
     <string name="app_ops_draw_on_top">rita fönster överst</string>
     <string name="app_ops_get_accounts">hämta enhetskonton</string>
     <string name="app_ops_get_usage_stats">få användningsstatistik för app</string>
+    <string name="app_ops_install_packages">installera paket</string>
     <string name="app_ops_keep_device_awake">hålla din enhet vaken</string>
     <string name="app_ops_make_phone_call">ringa</string>
     <string name="app_ops_mock_location">ange skenplats</string>
@@ -62,6 +63,8 @@
     <string name="app_ops_modify_contacts">uppdatera dina kontakter</string>
     <string name="app_ops_modify_settings">uppdatera systeminställningar</string>
     <string name="app_ops_mute_unmute_microphone">slå på/av mikrofonen</string>
+    <string name="app_ops_phone_calls">svara på telefonsamtal</string>
+    <string name="app_ops_picture_in_picture">använd bild i bild</string>
     <string name="app_ops_play_audio">spela ljud</string>
     <string name="app_ops_post_notification">skicka en avisering</string>
     <string name="app_ops_project_media">projektmedia</string>

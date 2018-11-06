@@ -3,6 +3,7 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
+     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,11 +20,66 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- ADB over network notification -->
+    <string name="adb_net_active_notification_title">Didayakan melalui rangkaian ADB</string>
     <!-- ADB over USB and network notification -->
+    <string name="adb_both_active_notification_title">Rangkaian ADB melalui USD &amp; Didayakan</string>
     <!-- ADB notification message-->
-    <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
+    <string name="adb_active_generic_notification_message">Sentuh untuk melumpuhkan debugging.</string>
     <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
     <!-- Privacy Guard -->
+    <string name="permlab_changePrivacyGuardState">membolehkan atau melumpuhkan Pengawal Privasi</string>
+    <string name="permdesc_changePrivacyGuardState">Membenarkan aplikasi untuk menukar sama ada aplikasi lain berjalan dengan Guard Peribadi apabila aplikasi sedang berjalan dengan pengawal peribadi, ia tidak akan mempunyai akses kepada data peribadi seperti kenalan, log panggilan, atau mesej.</string>
+    <string name="privacy_guard_notification">Aktif pengawal privasi</string>
+    <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> tidak boleh dapay mengakseskan data peribadi</string>
+    <string name="privacy_guard_dialog_title">Pengawal privasi</string>
+    <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> berminat untuk <xliff:g id="op">%2$s</xliff:g>.</string>
     <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
+    <string name="permission_remember_choice">Ingat pilihan saya</string>
     <!-- App ops requests -->
+    <string name="app_ops_access_camera">mengakses kamera</string>
+    <string name="app_ops_access_location">mengakses lokasi anda</string>
+    <string name="app_ops_access_notifications">baca pemberitahuan anda</string>
+    <string name="app_ops_activate_vpn">mengaktifkan VPN</string>
+    <string name="app_ops_add_voicemail">tambahkan mesej suara</string>
+    <string name="app_ops_auto_start">mulakan pada permulaan</string>
+    <string name="app_ops_delete_call_log">memadamkan log panggilan anda</string>
+    <string name="app_ops_delete_contacts">memadamkan kenalan anda</string>
+    <string name="app_ops_delete_mms">memadamkan mesej MMS anda</string>
+    <string name="app_ops_delete_sms">memadamkan mesej SMS anda</string>
+    <string name="app_ops_draw_on_top">menarik tingkap atas</string>
+    <string name="app_ops_keep_device_awake">pastikan peranti anda berjaga</string>
+    <string name="app_ops_make_phone_call">membuat panggilan telefon</string>
+    <string name="app_ops_modify_calendar">kemas kini kalendar anda</string>
+    <string name="app_ops_modify_call_log">kemaskini log panggilan anda</string>
+    <string name="app_ops_modify_clipboard">mengubahsuai \"clipboard\"</string>
+    <string name="app_ops_modify_contacts">kemaskini kenalan anda</string>
+    <string name="app_ops_modify_settings">kemaskini tetapan sistem</string>
+    <string name="app_ops_mute_unmute_microphone">bisu/menyuarakan mikrofon</string>
+    <string name="app_ops_post_notification">menghantar pemberitahuan</string>
+    <string name="app_ops_read_calendar">bacakan kalendar anda</string>
+    <string name="app_ops_read_call_log">baca log panggilan</string>
+    <string name="app_ops_read_clipboard">baca \"clipboard\"</string>
+    <string name="app_ops_read_contacts">membaca kenalan anda</string>
+    <string name="app_ops_read_mms">membaca mesej MMS anda</string>
+    <string name="app_ops_read_phone_state">akses keadaan telefon</string>
+    <string name="app_ops_read_sms">membaca mesej SMS anda</string>
+    <string name="app_ops_receive_sms">menerima mesej SMS</string>
+    <string name="app_ops_scan_wifi">imbas rangkaian Wifi</string>
+    <string name="app_ops_send_mms">hantar mesej MMS</string>
+    <string name="app_ops_send_sms">hantar mesej SMS</string>
+    <string name="app_ops_start_at_bootup">mulakan pada permulaan</string>
+    <string name="app_ops_toast_window">paparkan mesej \"toast\"</string>
+    <string name="app_ops_toggle_bluetooth">togol Bluetooth</string>
+    <string name="app_ops_use_alarm_volume">kawal kelantangan penggera</string>
+    <string name="app_ops_use_audio_focus">mengawal fokus audio</string>
+    <string name="app_ops_use_bluetooth_volume">mengawal kelantangan Bluetooth</string>
+    <string name="app_ops_use_master_volume">mengawal kelantangan audio utama</string>
+    <string name="app_ops_use_media_buttons">gunakan butang media</string>
+    <string name="app_ops_use_media_volume">kawal kelantangan media</string>
+    <string name="app_ops_use_notification_volume">mengawal kelantangan pemberitahuan</string>
+    <string name="app_ops_use_ring_volume">mengawal kelantangan nada dering</string>
+    <string name="app_ops_use_vibrate">gunakan maklum balas haptik</string>
+    <string name="app_ops_use_voice_volume">mengawal kelantangan suara panggilan</string>
+    <string name="app_ops_write_mms">tulis mesej MMS</string>
+    <string name="app_ops_write_sms">menulis mesej SMS</string>
 </resources>
