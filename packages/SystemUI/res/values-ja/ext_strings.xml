@@ -5,6 +5,7 @@
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
  * Copyright (c) 2017-2018, The LineageOS Project
+ * Copyright (c) 2017-2018, The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,26 +31,26 @@
     <string name="quick_settings_network_adb_label">ネットワーク経由のADB</string>
     <!-- Ambient display QS tile -->
     <string name="quick_settings_ambient_display_label">アンビエント表示</string>
-    <string name="accessibility_quick_settings_ambient_display_off">アンビエント表示は OFF です。</string>
-    <string name="accessibility_quick_settings_ambient_display_on">アンビエント表示は ON です。</string>
-    <string name="accessibility_quick_settings_ambient_display_changed_off">アンビエント表示が OFF になりました。</string>
-    <string name="accessibility_quick_settings_ambient_display_changed_on">アンビエント表示が ON になりました。</string>
+    <string name="accessibility_quick_settings_ambient_display_off">アンビエント表示 オフ</string>
+    <string name="accessibility_quick_settings_ambient_display_on">アンビエント表示 オン</string>
+    <string name="accessibility_quick_settings_ambient_display_changed_off">アンビエント表示をオフにしました</string>
+    <string name="accessibility_quick_settings_ambient_display_changed_on">アンビエント表示をオンにしました</string>
     <!-- Caffeine QS tile -->
     <string name="quick_settings_caffeine_label">カフェイン</string>
-    <string name="accessibility_quick_settings_caffeine_off">カフェインはOFFです。</string>
-    <string name="accessibility_quick_settings_caffeine_on">カフェインはONです。</string>
+    <string name="accessibility_quick_settings_caffeine_off">カフェイン オフ</string>
+    <string name="accessibility_quick_settings_caffeine_on">カフェイン オン</string>
     <!-- Heads up QS tile -->
-    <string name="quick_settings_heads_up_label">ヘッドアップ</string>
-    <string name="accessibility_quick_settings_heads_up_off">ヘッドアップはOFFです。</string>
-    <string name="accessibility_quick_settings_heads_up_on">ヘッドアップはONです。</string>
-    <string name="accessibility_quick_settings_heads_up_changed_off">ヘッドアップがOFFになりました。</string>
-    <string name="accessibility_quick_settings_heads_up_changed_on">ヘッドアップがONになりました。</string>
+    <string name="quick_settings_heads_up_label">Heads Up</string>
+    <string name="accessibility_quick_settings_heads_up_off">Heads Up オフ</string>
+    <string name="accessibility_quick_settings_heads_up_on">Heads Up オン</string>
+    <string name="accessibility_quick_settings_heads_up_changed_off">Heads Upをオフにしました</string>
+    <string name="accessibility_quick_settings_heads_up_changed_on">Heads Upをオンにしました</string>
     <!-- Sync QS tile -->
     <string name="quick_settings_sync_label">同期</string>
-    <string name="accessibility_quick_settings_sync_off">同期はOFFです。</string>
-    <string name="accessibility_quick_settings_sync_on">同期はONです。</string>
-    <string name="accessibility_quick_settings_sync_changed_off">同期がOFFになりました。</string>
-    <string name="accessibility_quick_settings_sync_changed_on">同期がONになりました。</string>
+    <string name="accessibility_quick_settings_sync_off">同期 オフ</string>
+    <string name="accessibility_quick_settings_sync_on">同期 オン</string>
+    <string name="accessibility_quick_settings_sync_changed_off">同期をオフにしました</string>
+    <string name="accessibility_quick_settings_sync_changed_on">同期をオンにしました</string>
     <!-- System Profiles QS tile -->
     <string name="quick_settings_profiles_label">システムプロファイル</string>
     <string name="accessibility_quick_settings_profiles_off">プロファイルはOFFです。</string>
@@ -93,11 +94,11 @@
     <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
     <string name="global_action_restart_download_progress">ダウンロードモードで再起動中\u2026</string>
     <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-    <string name="accessibility_quick_settings_location_battery_saving">位置情報レポート: バッテリー節約モードです。</string>
+    <string name="accessibility_quick_settings_location_battery_saving">位置情報レポート：バッテリー節約モード</string>
     <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-    <string name="accessibility_quick_settings_location_gps_only">位置情報レポート: 端末のみモードです。</string>
+    <string name="accessibility_quick_settings_location_gps_only">位置情報レポート：端末のみモード</string>
     <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-    <string name="accessibility_quick_settings_location_high_accuracy">位置情報レポート: 高精度モードです。</string>
+    <string name="accessibility_quick_settings_location_high_accuracy">位置情報レポート：高精度モード</string>
     <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
     <string name="quick_settings_location_battery_saving_label">バッテリー節約</string>
     <string name="quick_settings_location_battery_saving_label_twoline">バッテリー\n節約</string>
@@ -128,11 +129,11 @@
     <!-- Reader mode QS tile -->
     <string name="quick_settings_reading_mode">読書モード</string>
     <!-- Content description of the reader mode tile when on -->
-    <string name="accessibility_quick_settings_reading_mode_on">読書モードは ON です。</string>
+    <string name="accessibility_quick_settings_reading_mode_on">読書モード オン</string>
     <!-- Content description of the reader mode tile when off -->
-    <string name="accessibility_quick_settings_reading_mode_off">読書モードは OFF です。</string>
+    <string name="accessibility_quick_settings_reading_mode_off">読書モード オフ</string>
     <!-- Content description of the reader mode tile when turned on -->
-    <string name="accessibility_quick_settings_reading_mode_changed_on">読書モードが ON になりました。</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_on">読書モードをオンにしました</string>
     <!-- Content description of the reader mode tile when turned off -->
-    <string name="accessibility_quick_settings_reading_mode_changed_off">読書モードが OFF になりました。</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_off">読書モードをオフにしました</string>
 </resources>

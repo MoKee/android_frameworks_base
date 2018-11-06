@@ -5,6 +5,7 @@
  * Copyright (c) 2009, The Android Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
  * Copyright (c) 2017-2018, The LineageOS Project
+ * Copyright (c) 2017-2018, The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,33 +30,33 @@
     <!-- ADB over network QS tile -->
     <string name="quick_settings_network_adb_label">ADB cez sieť</string>
     <!-- Ambient display QS tile -->
-    <string name="quick_settings_ambient_display_label">Ambientné zobrazenie</string>
-    <string name="accessibility_quick_settings_ambient_display_off">Ambientné zobrazenie povolené.</string>
-    <string name="accessibility_quick_settings_ambient_display_on">Ambientné zobrazenie zakázané.</string>
-    <string name="accessibility_quick_settings_ambient_display_changed_off">Ambientné zobrazenie povolené.</string>
-    <string name="accessibility_quick_settings_ambient_display_changed_on">Ambientné zobrazenie zakázané.</string>
+    <string name="quick_settings_ambient_display_label">Ambientne zobrazenie</string>
+    <string name="accessibility_quick_settings_ambient_display_off">Ambientne zobrazenie vypnuté.</string>
+    <string name="accessibility_quick_settings_ambient_display_on">Ambientne zobrazenie zapnuté.</string>
+    <string name="accessibility_quick_settings_ambient_display_changed_off">Ambientné zobrazenie vypnuté.</string>
+    <string name="accessibility_quick_settings_ambient_display_changed_on">Ambientné zobrazenie zapnuté.</string>
     <!-- Caffeine QS tile -->
-    <string name="quick_settings_caffeine_label">Kofeín</string>
-    <string name="accessibility_quick_settings_caffeine_off">Kofeín vypnutý.</string>
-    <string name="accessibility_quick_settings_caffeine_on">Kofeín zapnutý.</string>
+    <string name="quick_settings_caffeine_label">Čas na kávu</string>
+    <string name="accessibility_quick_settings_caffeine_off">Kofeín vyp.</string>
+    <string name="accessibility_quick_settings_caffeine_on">Kofeín zap.</string>
     <!-- Heads up QS tile -->
-    <string name="quick_settings_heads_up_label">Plávajúce oznámenia</string>
-    <string name="accessibility_quick_settings_heads_up_off">Plávajúce oznámenia zakázané.</string>
-    <string name="accessibility_quick_settings_heads_up_on">Plávajúce oznámenia povolené.</string>
-    <string name="accessibility_quick_settings_heads_up_changed_off">Plávajúce oznámenia zakázané.</string>
-    <string name="accessibility_quick_settings_heads_up_changed_on">Plávajúce oznámenia povolené.</string>
+    <string name="quick_settings_heads_up_label">Plávajúce upozornenia</string>
+    <string name="accessibility_quick_settings_heads_up_off">Plávajúce upozornenia vypnuté.</string>
+    <string name="accessibility_quick_settings_heads_up_on">Plávajúce upozornenia zapnuté.</string>
+    <string name="accessibility_quick_settings_heads_up_changed_off">Plávajúce upozornenia boli vypnuté.</string>
+    <string name="accessibility_quick_settings_heads_up_changed_on">Plávajúce upozornenia boli zapnuté.</string>
     <!-- Sync QS tile -->
-    <string name="quick_settings_sync_label">Synchronizácia</string>
+    <string name="quick_settings_sync_label">Synch.</string>
     <string name="accessibility_quick_settings_sync_off">Synch. vyp.</string>
     <string name="accessibility_quick_settings_sync_on">Synch. zap.</string>
-    <string name="accessibility_quick_settings_sync_changed_off">Synchronizácia vypnutá.</string>
-    <string name="accessibility_quick_settings_sync_changed_on">Synchronizácia zapnutá.</string>
+    <string name="accessibility_quick_settings_sync_changed_off">Synchronizácia bola vypnutá.</string>
+    <string name="accessibility_quick_settings_sync_changed_on">Synchronizácia bola zapnutá.</string>
     <!-- System Profiles QS tile -->
     <string name="quick_settings_profiles_label">Systémové profily</string>
-    <string name="accessibility_quick_settings_profiles_off">Profily vyp.</string>
+    <string name="accessibility_quick_settings_profiles_off">Profily sú vypnuté.</string>
     <string name="accessibility_quick_settings_profiles">Profil: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
-    <string name="accessibility_quick_settings_profiles_changed_off">Profily vypnuté.</string>
-    <string name="accessibility_quick_settings_profiles_changed">Profil sa zmenil na <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
+    <string name="accessibility_quick_settings_profiles_changed_off">Profily sú vypnuté.</string>
+    <string name="accessibility_quick_settings_profiles_changed">Profil bol zmenený na <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <!-- USB tethering QS tile -->
     <string name="quick_settings_usb_tether_label">Zdieľanie cez USB</string>
     <!-- Volume panel QS tile -->
@@ -72,7 +73,7 @@
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
     <!-- Label for current user in power menu options dialog -->
-    <string name="global_action_current_user">Aktuálny</string>
+    <string name="global_action_current_user">Aktuálne</string>
     <!-- Label for item that screenshots in power menu options dialog -->
     <string name="global_action_screenshot">Snímka obrazovky</string>
     <!-- Advanced restart menu -->
@@ -83,21 +84,21 @@
     <!-- Button to restart the device into bootloader mode, within the Restart Options dialog -->
     <string name="global_action_restart_bootloader">Bootloader</string>
     <!-- Button to restart the device into download mode, within the Restart Options dialog -->
-    <string name="global_action_restart_download">Sťahovanie</string>
+    <string name="global_action_restart_download">Stiahnuť</string>
     <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
     <string name="global_action_restart_progress">Reštartovanie\u2026</string>
     <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
-    <string name="global_action_restart_recovery_progress">Reštartovanie do režimu Recovery\u2026</string>
+    <string name="global_action_restart_recovery_progress">Reštartovanie do režimu Recovery</string>
     <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
-    <string name="global_action_restart_bootloader_progress">Reštartovanie do režimu Bootloader\u2026</string>
+    <string name="global_action_restart_bootloader_progress">Reštartovanie do režimu Bootloader</string>
     <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
     <string name="global_action_restart_download_progress">Reštartovanie do režimu sťahovania\u2026</string>
     <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
     <string name="accessibility_quick_settings_location_battery_saving">Hlásenie polohy: režim šetrenia batérie.</string>
     <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-    <string name="accessibility_quick_settings_location_gps_only">Hlásenie polohy: režim iba so snímačmi.</string>
+    <string name="accessibility_quick_settings_location_gps_only">Hlásenie polohy: iba GPS.</string>
     <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-    <string name="accessibility_quick_settings_location_high_accuracy">Hlásenie polohy: režim vysokej presnosti.</string>
+    <string name="accessibility_quick_settings_location_high_accuracy">Hlásenie polohy: vysoká presnosť.</string>
     <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
     <string name="quick_settings_location_battery_saving_label">Šetrenie batérie</string>
     <string name="quick_settings_location_battery_saving_label_twoline">Šetrenie batérie</string>

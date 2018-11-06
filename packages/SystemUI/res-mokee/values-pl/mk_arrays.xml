@@ -16,22 +16,4 @@
 -->
 <resources>
     <!-- Cardinal directions for the compass tile -->
-    <string-array name="cardinal_directions">
-        <item>@string/quick_settings_compass_N</item>
-        <!-- North -->
-        <item>Północny Wschód</item>
-        <!-- North east -->
-        <item>Wschód</item>
-        <!-- East -->
-        <item>Południowy Wschód</item>
-        <!-- South east -->
-        <item>Południe</item>
-        <!-- South -->
-        <item>Południowy Zachód</item>
-        <!-- South west -->
-        <item>Zachód</item>
-        <!-- West -->
-        <item>Północny Zachód</item>
-        <!-- North west -->
-    </string-array>
 </resources>
