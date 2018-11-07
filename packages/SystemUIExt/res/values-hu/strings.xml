@@ -15,36 +15,36 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- su icon switch -->
-  <string name="status_bar_su">Su</string>
-  <!-- recent ram info -->
-  <string name="recents_free_ram">Szabad RAM: %1$d MB</string>
-  <!-- Screenshot QS Tile -->
-  <string name="quick_settings_screenshot_label">Képernyőmentés</string>
-  <!-- Compass QS Tile -->
-  <string name="quick_settings_compass_label">Iránytű</string>
-  <string name="quick_settings_compass_init">Indítás\u2026</string>
-  <string name="accessibility_quick_settings_compass_off">Iránytű kikapcsolás.</string>
-  <string name="accessibility_quick_settings_compass_on">Iránytű bekapcsolás.</string>
-  <string name="accessibility_quick_settings_compass_changed_off">Iránytű kikapcsolva.</string>
-  <string name="accessibility_quick_settings_compass_changed_on">Iránytű bekapcsolva.</string>
-  <string name="quick_settings_compass_N">É</string>
-  <string name="quick_settings_compass_NE">ÉK</string>
-  <string name="quick_settings_compass_E">K</string>
-  <string name="quick_settings_compass_SE">DK</string>
-  <string name="quick_settings_compass_S">D</string>
-  <string name="quick_settings_compass_SW">DNy</string>
-  <string name="quick_settings_compass_W">Ny</string>
-  <string name="quick_settings_compass_NW">ÉNy</string>
-  <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
-  <string name="keyguard_indication_dash_charging_time">Gyorstöltés (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> a teljes feltöltődésig)</string>
-  <string name="keyguard_plugged_in_dash_charging">Gyorstöltés</string>
-  <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
-  <string name="key_disabler">Gombok tiltása</string>
-  <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_key_disabler_changed_off">A gombok engedélyezettek.</string>
-  <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_key_disabler_changed_on">A gombok letiltásra kerültek.</string>
-  <!-- Text for switch default data sub in expanded CellularTile -->
-  <string name="quick_settings_cellular_detail_use_data">%s adat felhasználása</string>
+    <!-- su icon switch -->
+    <string name="status_bar_su">Su</string>
+    <!-- recent ram info -->
+    <string name="recents_free_ram">Szabad RAM: %1$d MB</string>
+    <!-- Screenshot QS Tile -->
+    <string name="quick_settings_screenshot_label">Képernyőmentés</string>
+    <!-- Compass QS Tile -->
+    <string name="quick_settings_compass_label">Iránytű</string>
+    <string name="quick_settings_compass_init">Indítás\u2026</string>
+    <string name="accessibility_quick_settings_compass_off">Iránytű kikapcsolás.</string>
+    <string name="accessibility_quick_settings_compass_on">Iránytű bekapcsolás.</string>
+    <string name="accessibility_quick_settings_compass_changed_off">Iránytű kikapcsolva.</string>
+    <string name="accessibility_quick_settings_compass_changed_on">Iránytű bekapcsolva.</string>
+    <string name="quick_settings_compass_N">É</string>
+    <string name="quick_settings_compass_NE">ÉK</string>
+    <string name="quick_settings_compass_E">K</string>
+    <string name="quick_settings_compass_SE">DK</string>
+    <string name="quick_settings_compass_S">D</string>
+    <string name="quick_settings_compass_SW">DNy</string>
+    <string name="quick_settings_compass_W">Ny</string>
+    <string name="quick_settings_compass_NW">ÉNy</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_dash_charging_time">Gyorstöltés (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> a teljes feltöltődésig)</string>
+    <string name="keyguard_plugged_in_dash_charging">Gyorstöltés</string>
+    <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
+    <string name="key_disabler">Gombok tiltása</string>
+    <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_key_disabler_changed_off">A gombok engedélyezettek.</string>
+    <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_key_disabler_changed_on">A gombok letiltásra kerültek.</string>
+    <!-- Text for switch default data sub in expanded CellularTile -->
+    <string name="quick_settings_cellular_detail_use_data">%s adat felhasználása</string>
 </resources>

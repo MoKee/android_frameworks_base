@@ -15,12 +15,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
-  <string name="edit">Rediger</string>
-  <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permlab_modifyOverlays">tilpas tema overlay</string>
-  <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permdesc_modifyOverlays">Tillader at appen kan tilpasse tema overlays ved hjælp af OverlayManagerService</string>
-  <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
-  <string name="mk_reboot_to_update_title">MoKee systemopdatering</string>
+    <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
+    <string name="edit">Rediger</string>
+    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permlab_modifyOverlays">tilpas tema overlay</string>
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_modifyOverlays">Tillader at appen kan tilpasse tema overlays ved hjælp af OverlayManagerService</string>
+    <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
+    <string name="mk_reboot_to_update_title">MoKee systemopdatering</string>
 </resources>

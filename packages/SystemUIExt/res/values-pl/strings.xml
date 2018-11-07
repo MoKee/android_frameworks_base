@@ -15,36 +15,36 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- su icon switch -->
-  <string name="status_bar_su">Su</string>
-  <!-- recent ram info -->
-  <string name="recents_free_ram">%1$d MB wolnego RAMu</string>
-  <!-- Screenshot QS Tile -->
-  <string name="quick_settings_screenshot_label">Zrzut ekranu</string>
-  <!-- Compass QS Tile -->
-  <string name="quick_settings_compass_label">Kompas</string>
-  <string name="quick_settings_compass_init">Inicjowanie\u2026</string>
-  <string name="accessibility_quick_settings_compass_off">Kompas wyłączony.</string>
-  <string name="accessibility_quick_settings_compass_on">Kompas włączony.</string>
-  <string name="accessibility_quick_settings_compass_changed_off">Kompas wyłączony.</string>
-  <string name="accessibility_quick_settings_compass_changed_on">Kompas włączony.</string>
-  <string name="quick_settings_compass_N">Pn</string>
-  <string name="quick_settings_compass_NE">Pn.-Wsch.</string>
-  <string name="quick_settings_compass_E">Wsch.</string>
-  <string name="quick_settings_compass_SE">Pd.-Wsch.</string>
-  <string name="quick_settings_compass_S">Płd.</string>
-  <string name="quick_settings_compass_SW">Pd.-Zach.</string>
-  <string name="quick_settings_compass_W">Zach.</string>
-  <string name="quick_settings_compass_NW">Pn.-Zach.</string>
-  <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
-  <string name="keyguard_indication_dash_charging_time">Ładuje się (pełne naładowanie za <xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g>)</string>
-  <string name="keyguard_plugged_in_dash_charging">Ładowanie</string>
-  <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
-  <string name="key_disabler">Blokuj klawisze</string>
-  <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_key_disabler_changed_off">Klawisze włączone.</string>
-  <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_key_disabler_changed_on">Klawisze zablokowane.</string>
-  <!-- Text for switch default data sub in expanded CellularTile -->
-  <string name="quick_settings_cellular_detail_use_data">Użyj danych %s</string>
+    <!-- su icon switch -->
+    <string name="status_bar_su">Su</string>
+    <!-- recent ram info -->
+    <string name="recents_free_ram">%1$d MB wolnego RAMu</string>
+    <!-- Screenshot QS Tile -->
+    <string name="quick_settings_screenshot_label">Zrzut ekranu</string>
+    <!-- Compass QS Tile -->
+    <string name="quick_settings_compass_label">Kompas</string>
+    <string name="quick_settings_compass_init">Inicjowanie\u2026</string>
+    <string name="accessibility_quick_settings_compass_off">Kompas wyłączony.</string>
+    <string name="accessibility_quick_settings_compass_on">Kompas włączony.</string>
+    <string name="accessibility_quick_settings_compass_changed_off">Kompas wyłączony.</string>
+    <string name="accessibility_quick_settings_compass_changed_on">Kompas włączony.</string>
+    <string name="quick_settings_compass_N">Pn</string>
+    <string name="quick_settings_compass_NE">Pn.-Wsch.</string>
+    <string name="quick_settings_compass_E">Wsch.</string>
+    <string name="quick_settings_compass_SE">Pd.-Wsch.</string>
+    <string name="quick_settings_compass_S">Płd.</string>
+    <string name="quick_settings_compass_SW">Pd.-Zach.</string>
+    <string name="quick_settings_compass_W">Zach.</string>
+    <string name="quick_settings_compass_NW">Pn.-Zach.</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_dash_charging_time">Ładuje się (pełne naładowanie za <xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g>)</string>
+    <string name="keyguard_plugged_in_dash_charging">Ładowanie</string>
+    <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
+    <string name="key_disabler">Blokuj klawisze</string>
+    <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_key_disabler_changed_off">Klawisze włączone.</string>
+    <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_key_disabler_changed_on">Klawisze zablokowane.</string>
+    <!-- Text for switch default data sub in expanded CellularTile -->
+    <string name="quick_settings_cellular_detail_use_data">Użyj danych %s</string>
 </resources>

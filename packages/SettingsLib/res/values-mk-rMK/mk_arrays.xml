@@ -16,10 +16,10 @@
     limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Titles for window animation scale preference. [CHAR LIMIT=35] -->
-  <!-- Values for window animation scale preference. -->
-  <!-- Titles for transition animation scale preference. [CHAR LIMIT=35] -->
-  <!-- Values for transition animation scale preference. -->
-  <!-- Titles for animator duration scale preference. [CHAR LIMIT=35] -->
-  <!-- Values for animator duration scale preference. -->
+    <!-- Titles for window animation scale preference. [CHAR LIMIT=35] -->
+    <!-- Values for window animation scale preference. -->
+    <!-- Titles for transition animation scale preference. [CHAR LIMIT=35] -->
+    <!-- Values for transition animation scale preference. -->
+    <!-- Titles for animator duration scale preference. [CHAR LIMIT=35] -->
+    <!-- Values for animator duration scale preference. -->
 </resources>

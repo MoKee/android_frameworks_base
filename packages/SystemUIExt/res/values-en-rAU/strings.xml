@@ -15,14 +15,14 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- su icon switch -->
-  <!-- recent ram info -->
-  <!-- Screenshot QS Tile -->
-  <string name="quick_settings_screenshot_label">Screenshot</string>
-  <!-- Compass QS Tile -->
-  <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
-  <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
-  <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <!-- Text for switch default data sub in expanded CellularTile -->
+    <!-- su icon switch -->
+    <!-- recent ram info -->
+    <!-- Screenshot QS Tile -->
+    <string name="quick_settings_screenshot_label">Screenshot</string>
+    <!-- Compass QS Tile -->
+    <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+    <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
+    <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <!-- Text for switch default data sub in expanded CellularTile -->
 </resources>

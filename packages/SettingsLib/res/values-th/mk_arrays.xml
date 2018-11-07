@@ -16,40 +16,40 @@
     limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Titles for window animation scale preference. [CHAR LIMIT=35] -->
-  <string-array name="mk_window_animation_scale_entries">
-    <item>ปิดการเปลี่ยนภาพเคลื่อนไหว</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 0.5 เท่า</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 0.75 เท่า</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 1 เท่า</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 1.5 เท่า</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 2 เท่า</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 5 เท่า</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 10 เท่า</item>
-  </string-array>
-  <!-- Values for window animation scale preference. -->
-  <!-- Titles for transition animation scale preference. [CHAR LIMIT=35] -->
-  <string-array name="mk_transition_animation_scale_entries">
-    <item>ปิดการเปลี่ยนภาพเคลื่อนไหว</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 0.5 เท่า</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 0.75 เท่า</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 1 เท่า</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 1.5 เท่า</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 2 เท่า</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 5 เท่า</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 10 เท่า</item>
-  </string-array>
-  <!-- Values for transition animation scale preference. -->
-  <!-- Titles for animator duration scale preference. [CHAR LIMIT=35] -->
-  <string-array name="mk_animator_duration_scale_entries">
-    <item>ปิดการเปลี่ยนภาพเคลื่อนไหว</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 0.5 เท่า</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 0.75 เท่า</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 1 เท่า</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 1.5 เท่า</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 2 เท่า</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 5 เท่า</item>
-    <item>ความเร็วภาพเคลื่อนไหวขนาด 10 เท่า</item>
-  </string-array>
-  <!-- Values for animator duration scale preference. -->
+    <!-- Titles for window animation scale preference. [CHAR LIMIT=35] -->
+    <string-array name="mk_window_animation_scale_entries">
+        <item>ปิดการเปลี่ยนภาพเคลื่อนไหว</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 0.5 เท่า</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 0.75 เท่า</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 1 เท่า</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 1.5 เท่า</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 2 เท่า</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 5 เท่า</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 10 เท่า</item>
+    </string-array>
+    <!-- Values for window animation scale preference. -->
+    <!-- Titles for transition animation scale preference. [CHAR LIMIT=35] -->
+    <string-array name="mk_transition_animation_scale_entries">
+        <item>ปิดการเปลี่ยนภาพเคลื่อนไหว</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 0.5 เท่า</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 0.75 เท่า</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 1 เท่า</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 1.5 เท่า</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 2 เท่า</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 5 เท่า</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 10 เท่า</item>
+    </string-array>
+    <!-- Values for transition animation scale preference. -->
+    <!-- Titles for animator duration scale preference. [CHAR LIMIT=35] -->
+    <string-array name="mk_animator_duration_scale_entries">
+        <item>ปิดการเปลี่ยนภาพเคลื่อนไหว</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 0.5 เท่า</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 0.75 เท่า</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 1 เท่า</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 1.5 เท่า</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 2 เท่า</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 5 เท่า</item>
+        <item>ความเร็วภาพเคลื่อนไหวขนาด 10 เท่า</item>
+    </string-array>
+    <!-- Values for animator duration scale preference. -->
 </resources>

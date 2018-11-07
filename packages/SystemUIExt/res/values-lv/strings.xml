@@ -15,30 +15,30 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- su icon switch -->
-  <string name="status_bar_su">Sl</string>
-  <!-- recent ram info -->
-  <string name="recents_free_ram">BEZMAKSAS RAM: %1$d MB</string>
-  <!-- Screenshot QS Tile -->
-  <string name="quick_settings_screenshot_label">Ekrānuzņēmums</string>
-  <!-- Compass QS Tile -->
-  <string name="quick_settings_compass_label">Kompass</string>
-  <string name="accessibility_quick_settings_compass_off">Kompass izslēgts.</string>
-  <string name="accessibility_quick_settings_compass_on">Kompass ieslēgts.</string>
-  <string name="accessibility_quick_settings_compass_changed_off">Kompass ir izslēgts.</string>
-  <string name="accessibility_quick_settings_compass_changed_on">Kompass ir ieslēgts.</string>
-  <string name="quick_settings_compass_N">Z</string>
-  <string name="quick_settings_compass_NE">ZA</string>
-  <string name="quick_settings_compass_E">A</string>
-  <string name="quick_settings_compass_SE">DA</string>
-  <string name="quick_settings_compass_S">D</string>
-  <string name="quick_settings_compass_SW">DR</string>
-  <string name="quick_settings_compass_W">R</string>
-  <string name="quick_settings_compass_NW">ZR</string>
-  <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
-  <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
-  <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <!-- Text for switch default data sub in expanded CellularTile -->
-  <string name="quick_settings_cellular_detail_use_data">Izmantot %s datus</string>
+    <!-- su icon switch -->
+    <string name="status_bar_su">Sl</string>
+    <!-- recent ram info -->
+    <string name="recents_free_ram">BEZMAKSAS RAM: %1$d MB</string>
+    <!-- Screenshot QS Tile -->
+    <string name="quick_settings_screenshot_label">Ekrānuzņēmums</string>
+    <!-- Compass QS Tile -->
+    <string name="quick_settings_compass_label">Kompass</string>
+    <string name="accessibility_quick_settings_compass_off">Kompass izslēgts.</string>
+    <string name="accessibility_quick_settings_compass_on">Kompass ieslēgts.</string>
+    <string name="accessibility_quick_settings_compass_changed_off">Kompass ir izslēgts.</string>
+    <string name="accessibility_quick_settings_compass_changed_on">Kompass ir ieslēgts.</string>
+    <string name="quick_settings_compass_N">Z</string>
+    <string name="quick_settings_compass_NE">ZA</string>
+    <string name="quick_settings_compass_E">A</string>
+    <string name="quick_settings_compass_SE">DA</string>
+    <string name="quick_settings_compass_S">D</string>
+    <string name="quick_settings_compass_SW">DR</string>
+    <string name="quick_settings_compass_W">R</string>
+    <string name="quick_settings_compass_NW">ZR</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+    <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
+    <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <!-- Text for switch default data sub in expanded CellularTile -->
+    <string name="quick_settings_cellular_detail_use_data">Izmantot %s datus</string>
 </resources>

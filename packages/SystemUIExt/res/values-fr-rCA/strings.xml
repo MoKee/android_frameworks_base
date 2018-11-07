@@ -15,36 +15,36 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- su icon switch -->
-  <string name="status_bar_su">Su</string>
-  <!-- recent ram info -->
-  <string name="recents_free_ram">RAM libre : %1$d MB</string>
-  <!-- Screenshot QS Tile -->
-  <string name="quick_settings_screenshot_label">Capture d\'écran</string>
-  <!-- Compass QS Tile -->
-  <string name="quick_settings_compass_label">Boussole</string>
-  <string name="quick_settings_compass_init">Initialisation\u2026</string>
-  <string name="accessibility_quick_settings_compass_off">Boussole désactivée.</string>
-  <string name="accessibility_quick_settings_compass_on">Boussole activée.</string>
-  <string name="accessibility_quick_settings_compass_changed_off">La boussole a été désactivée.</string>
-  <string name="accessibility_quick_settings_compass_changed_on">La boussole a été activée.</string>
-  <string name="quick_settings_compass_N">N</string>
-  <string name="quick_settings_compass_NE">NE</string>
-  <string name="quick_settings_compass_E">E</string>
-  <string name="quick_settings_compass_SE">SE</string>
-  <string name="quick_settings_compass_S">S</string>
-  <string name="quick_settings_compass_SW">SO</string>
-  <string name="quick_settings_compass_W">O</string>
-  <string name="quick_settings_compass_NW">NO</string>
-  <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
-  <string name="keyguard_indication_dash_charging_time">Charge rapide\nCharge complète dans <xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g></string>
-  <string name="keyguard_plugged_in_dash_charging">Charge rapide</string>
-  <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
-  <string name="key_disabler">Désactiver les touches</string>
-  <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_key_disabler_changed_off">Clés activées.</string>
-  <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_key_disabler_changed_on">Clés désactivées.</string>
-  <!-- Text for switch default data sub in expanded CellularTile -->
-  <string name="quick_settings_cellular_detail_use_data">Utilisation %s donnée</string>
+    <!-- su icon switch -->
+    <string name="status_bar_su">Su</string>
+    <!-- recent ram info -->
+    <string name="recents_free_ram">RAM libre : %1$d MB</string>
+    <!-- Screenshot QS Tile -->
+    <string name="quick_settings_screenshot_label">Capture d\'écran</string>
+    <!-- Compass QS Tile -->
+    <string name="quick_settings_compass_label">Boussole</string>
+    <string name="quick_settings_compass_init">Initialisation\u2026</string>
+    <string name="accessibility_quick_settings_compass_off">Boussole désactivée.</string>
+    <string name="accessibility_quick_settings_compass_on">Boussole activée.</string>
+    <string name="accessibility_quick_settings_compass_changed_off">La boussole a été désactivée.</string>
+    <string name="accessibility_quick_settings_compass_changed_on">La boussole a été activée.</string>
+    <string name="quick_settings_compass_N">N</string>
+    <string name="quick_settings_compass_NE">NE</string>
+    <string name="quick_settings_compass_E">E</string>
+    <string name="quick_settings_compass_SE">SE</string>
+    <string name="quick_settings_compass_S">S</string>
+    <string name="quick_settings_compass_SW">SO</string>
+    <string name="quick_settings_compass_W">O</string>
+    <string name="quick_settings_compass_NW">NO</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_dash_charging_time">Charge rapide\nCharge complète dans <xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g></string>
+    <string name="keyguard_plugged_in_dash_charging">Charge rapide</string>
+    <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
+    <string name="key_disabler">Désactiver les touches</string>
+    <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_key_disabler_changed_off">Clés activées.</string>
+    <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_key_disabler_changed_on">Clés désactivées.</string>
+    <!-- Text for switch default data sub in expanded CellularTile -->
+    <string name="quick_settings_cellular_detail_use_data">Utilisation %s donnée</string>
 </resources>

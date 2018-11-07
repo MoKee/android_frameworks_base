@@ -20,28 +20,28 @@
  */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Content description of the light brightness slider (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_notification_brightness">ಬೆಳಕಿನ ಪ್ರಖರತೆ</string>
-  <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_profiles_off">ಪ್ರೊಫೈಲ್ಸ್ ಆರಿಸಿ.</string>
-  <!-- Content description of the profiles tile in quick settings (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_profiles">ಪ್ರೊಫೈಲ್: <xliff:g id="ಪ್ರೊಫೈಲ್" ಉದಾಹರಣೆ="ಪೂರ್ವನಿಯೋಜಿತ">%s</xliff:g>.</string>
-  <!-- Announcement made when the profiles tile changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_profiles_changed_off">ಪ್ರೊಫೈಲ್ಸ್ ಆರಿಸಲಾಗಿದೆ.</string>
-  <!-- Announcement made when the profiles tile changes (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_profiles_changed">ಪ್ರೊಫೈಲ್ <xliff:g id="ಪ್ರೊಫೈಲ್" ಉದಾಹರಣೆ="ಪೂರ್ವನಿಯೋಜಿತ">%s</xliff:g> ಗೆ ಬದಲಾಗಿದೆ.</string>
-  <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_profiles_off">ಪ್ರೊಫೈಲ್ಸ್ ಆರಿಸಲಾಗಿದೆ.</string>
-  <!-- Content description of the system profiles  -->
-  <string name="quick_settings_profiles">ಸಿಸ್ಟಂ ಪ್ರೊಫೈಲ್ಸ್</string>
-  <!-- Lights settings, LED notification -->
-  <string name="led_notification_title">ಬೆಳಕಿನ ಸಂಯೋಜನೆಗಳು</string>
-  <string name="led_notification_text">LED ಬೆಳಕು ಸಕ್ರಿಯಗೊಳ್ಳಲ್ಪಡುವ ಸಂಯೋಜನೆಗಳು</string>
-  <!-- Notification which notifies user flashlight is enabled -->
-  <string name="quick_settings_tile_flashlight_not_title">ಮಿಂಚು ಬೆಳಕು ಆರಂಭವಾಗಿದೆ</string>
-  <string name="quick_settings_tile_flashlight_not_summary">ಆರಿಸಲು ತಟ್ಟಿ</string>
-  <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
-  <string name="cm_power_notification_controls_description">ವಿದ್ಯುತ್ ಅಧಿಸೂಚನೆಗಳ ನಿಯಂತ್ರಕಗಳೀಂದ, ನೀವು ಪ್ರಾಮುಖ್ಯತೆಯ ಮಟ್ಟಗಳನ್ನು 0 ಯಿಂದ 6 ಮಟ್ಟದವರೆಗೆ ಒಂದು ಕಿರುತಂತ್ರಾಂಶಕ್ಕೆ ಸಂಯೋಜಿಸಬಹುದು.
+    <!-- Content description of the light brightness slider (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_notification_brightness">ಬೆಳಕಿನ ಪ್ರಖರತೆ</string>
+    <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_profiles_off">ಪ್ರೊಫೈಲ್ಸ್ ಆರಿಸಿ.</string>
+    <!-- Content description of the profiles tile in quick settings (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_profiles">ಪ್ರೊಫೈಲ್: <xliff:g id="ಪ್ರೊಫೈಲ್" ಉದಾಹರಣೆ="ಪೂರ್ವನಿಯೋಜಿತ">%s</xliff:g>.</string>
+    <!-- Announcement made when the profiles tile changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_profiles_changed_off">ಪ್ರೊಫೈಲ್ಸ್ ಆರಿಸಲಾಗಿದೆ.</string>
+    <!-- Announcement made when the profiles tile changes (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_profiles_changed">ಪ್ರೊಫೈಲ್ <xliff:g id="ಪ್ರೊಫೈಲ್" ಉದಾಹರಣೆ="ಪೂರ್ವನಿಯೋಜಿತ">%s</xliff:g> ಗೆ ಬದಲಾಗಿದೆ.</string>
+    <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="quick_settings_profiles_off">ಪ್ರೊಫೈಲ್ಸ್ ಆರಿಸಲಾಗಿದೆ.</string>
+    <!-- Content description of the system profiles  -->
+    <string name="quick_settings_profiles">ಸಿಸ್ಟಂ ಪ್ರೊಫೈಲ್ಸ್</string>
+    <!-- Lights settings, LED notification -->
+    <string name="led_notification_title">ಬೆಳಕಿನ ಸಂಯೋಜನೆಗಳು</string>
+    <string name="led_notification_text">LED ಬೆಳಕು ಸಕ್ರಿಯಗೊಳ್ಳಲ್ಪಡುವ ಸಂಯೋಜನೆಗಳು</string>
+    <!-- Notification which notifies user flashlight is enabled -->
+    <string name="quick_settings_tile_flashlight_not_title">ಮಿಂಚು ಬೆಳಕು ಆರಂಭವಾಗಿದೆ</string>
+    <string name="quick_settings_tile_flashlight_not_summary">ಆರಿಸಲು ತಟ್ಟಿ</string>
+    <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
+    <string name="cm_power_notification_controls_description">ವಿದ್ಯುತ್ ಅಧಿಸೂಚನೆಗಳ ನಿಯಂತ್ರಕಗಳೀಂದ, ನೀವು ಪ್ರಾಮುಖ್ಯತೆಯ ಮಟ್ಟಗಳನ್ನು 0 ಯಿಂದ 6 ಮಟ್ಟದವರೆಗೆ ಒಂದು ಕಿರುತಂತ್ರಾಂಶಕ್ಕೆ ಸಂಯೋಜಿಸಬಹುದು.
         \n\n<b>6 ನೇ ಮಟ್ಟ</b>
         \n- ಅಧಿಸೂಚನೆಗಳ ಪಟ್ಟಿಯಲ್ಲಿ ಮೇಲೆ ತೋರಿಸಿ
         \n- ಪೂರ್ಣ ಪರದೆ ಅಡಚಣೆ ಅನುಮತಿಸಿ 
@@ -69,148 +69,148 @@
         \n- ಪರದೆ ಕೀಲಿಯಿಂದ ಮತ್ತು ಸ್ಥಿತಿ ಪಟ್ಟಿಯಿಂದ ಅಡಗಿಸಿ 
         \n- ಅಧಿಸೂಚನೆಗಳ ಪಟ್ಟಿಯಲ್ಲಿ ಕೆಳಗೆ ತೋರಿಸಿ
         \n\n<b>0 ಯ ಮಟ್ಟ</b>
-        \n- ಕಿರುತಂತ್ರಾಂಶದಿಂದ ಅಧಿಸೂಚನೆಗಳನ್ನು ತಡೆಯಿರಿ    </string>
-  <!-- Notification importance level title-->
-  <string name="importance_level_title">ಪ್ರಾಮುಖ್ಯತೆ: %1$d ಮಟ್ಟ</string>
-  <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
-  <string name="notification_importance_very_low">ಪೂರ್ಣ ಪರದೆ ಅಡಚಣೆ, ಇಣುಕುನೋಟ, ಶಬ್ದ, ಅಥವಾ ಕಂಪನ ಇಲ್ಲ. ಪರದೆ ಕೀಲಿಯಿಂದ ಅಡಗಿಸಿ.</string>
-  <!-- Screen pinning dialog description (for devices without navbar) -->
-  <string name="screen_pinning_description_no_navbar">ಇದು ನೀವು ಪಿನ್ ತೆಗೆಯುವವರೆಗೂ ವೀಕ್ಷಣೆಯಲ್ಲಿ ಇರುತ್ತದೆ. ಪಿನ್ ತೆಗೆಯಲು ಹಿಂದಿನ ಗುಂಡಿ ಸ್ಪರ್ಶಿಸಿ ಹಿಡಿಯಿರಿ.</string>
-  <!-- String for lockscreen shortcut hints -->
-  <string name="shortcut_hint">%1$s ಗಾಗಿ ಬಲಕ್ಕೆ ಜರುಗಿಸಿ</string>
-  <string name="lockscreen_message">ಪರದೆ ಕೀಲಿ ಕಿರುದಾರಿಯನ್ನು ಮರುನೇಮಿಸಲು ಎಡಗಡೆ ಅಥವಾ ಬಲಗಡೆ ಇರುವ ಚಿಹ್ನೆಯನ್ನು ತಟ್ಟಿ.</string>
-  <string name="lockscreen_default_target">ಪೂರ್ವನಿಯೋಜಿತ</string>
-  <string name="select_application">ಅಪ್ಲಿಕೇಶನ್ ಆಯ್ಕೆಮಾಡಿ</string>
-  <string name="lockscreen_choose_action_title">ಕ್ರಿಯೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
-  <string name="lockscreen_none_target">ಏನೂ ಇಲ್ಲ</string>
-  <!-- Play queue -->
-  <string name="play_queue_extension">ಪ್ಲೇ ಸರದಿಯನ್ನು ತೋರಿಸಿ</string>
-  <!-- Weather string format in keyguard -->
-  <string name="accessibility_dpad_left">ಕರ್ಸರ್ ಎಡ</string>
-  <string name="accessibility_dpad_right">ಕರ್ಸರ್ ಬಲ</string>
-  <!-- NavBar Tuner -->
-  <string name="menu_ime_always_show">ಮೆನು / ಕೀಲಿಮಣೆ ಬದಲಾವಣಿ (ಯಾವಾಗಲೂ ತೋರಿಸಿ)</string>
-  <string name="search">ಹುಡುಕಿ</string>
-  <!-- Name of the clock status bar icon -->
-  <string name="status_bar_clock">ಗಡಿಯಾರ</string>
-  <!-- Path data for portrait battery -->
-  <!-- Path data for landscape battery -->
-  <!-- Path data for circle battery -->
-  <!-- Wi-Fi hotspot label when enabled -->
-  <plurals name="wifi_hotspot_connected_clients_label">
-    <item quantity="one">%1$d ಕ್ಲೈಂಟ್</item>
-    <item quantity="other">%1$d ಕ್ಲೈಂಟ್</item>
-  </plurals>
-  <!-- Weather string format in expanded statusbar header -->
-  <!-- Volume stream titles - should match the string-array in AOSP -->
-  <string-array name="volume_stream_titles_lineage">
-    <item>ಕರೆ</item>
-    <!-- STREAM_VOICE_CALL -->
-    <item>ವ್ಯವಸ್ಥೆ</item>
-    <!-- STREAM_SYSTEM -->
-    <item>ರಿಂಗ್</item>
-    <!-- STREAM_RING -->
-    <item>ಮಾಧ್ಯಮ</item>
-    <!-- STREAM_MUSIC -->
-    <item>ಎಚ್ಚರಿಕೆ ಧ್ಚನಿ</item>
-    <!-- STREAM_ALARM -->
-    <item>ಅಧಿಸೂಚನೆ</item>
-    <!-- STREAM_NOTIFICATION -->
-    <item>ಬ್ಲೂಟೂತ್</item>
-    <!-- STREAM_BLUETOOTH_SCO -->
-    <item></item>
-    <!-- STREAM_SYSTEM_ENFORCED -->
-    <item></item>
-    <!-- STREAM_DTMF -->
-    <item></item>
-    <!-- STREAM_TTS -->
-  </string-array>
-  <!-- Content description of the data connection type HSPA+ for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_data_connection_hspap">HSPA</string>
-  <!-- Text to use when the number in a notification info is too large
+        \n- ಕಿರುತಂತ್ರಾಂಶದಿಂದ ಅಧಿಸೂಚನೆಗಳನ್ನು ತಡೆಯಿರಿ</string>
+    <!-- Notification importance level title-->
+    <string name="importance_level_title">ಪ್ರಾಮುಖ್ಯತೆ: %1$d ಮಟ್ಟ</string>
+    <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
+    <string name="notification_importance_very_low">ಪೂರ್ಣ ಪರದೆ ಅಡಚಣೆ, ಇಣುಕುನೋಟ, ಶಬ್ದ, ಅಥವಾ ಕಂಪನ ಇಲ್ಲ. ಪರದೆ ಕೀಲಿಯಿಂದ ಅಡಗಿಸಿ.</string>
+    <!-- Screen pinning dialog description (for devices without navbar) -->
+    <string name="screen_pinning_description_no_navbar">ಇದು ನೀವು ಪಿನ್ ತೆಗೆಯುವವರೆಗೂ ವೀಕ್ಷಣೆಯಲ್ಲಿ ಇರುತ್ತದೆ. ಪಿನ್ ತೆಗೆಯಲು ಹಿಂದಿನ ಗುಂಡಿ ಸ್ಪರ್ಶಿಸಿ ಹಿಡಿಯಿರಿ.</string>
+    <!-- String for lockscreen shortcut hints -->
+    <string name="shortcut_hint">%1$s ಗಾಗಿ ಬಲಕ್ಕೆ ಜರುಗಿಸಿ</string>
+    <string name="lockscreen_message">ಪರದೆ ಕೀಲಿ ಕಿರುದಾರಿಯನ್ನು ಮರುನೇಮಿಸಲು ಎಡಗಡೆ ಅಥವಾ ಬಲಗಡೆ ಇರುವ ಚಿಹ್ನೆಯನ್ನು ತಟ್ಟಿ.</string>
+    <string name="lockscreen_default_target">ಪೂರ್ವನಿಯೋಜಿತ</string>
+    <string name="select_application">ಅಪ್ಲಿಕೇಶನ್ ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="lockscreen_choose_action_title">ಕ್ರಿಯೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="lockscreen_none_target">ಏನೂ ಇಲ್ಲ</string>
+    <!-- Play queue -->
+    <string name="play_queue_extension">ಪ್ಲೇ ಸರದಿಯನ್ನು ತೋರಿಸಿ</string>
+    <!-- Weather string format in keyguard -->
+    <string name="accessibility_dpad_left">ಕರ್ಸರ್ ಎಡ</string>
+    <string name="accessibility_dpad_right">ಕರ್ಸರ್ ಬಲ</string>
+    <!-- NavBar Tuner -->
+    <string name="menu_ime_always_show">ಮೆನು / ಕೀಲಿಮಣೆ ಬದಲಾವಣಿ (ಯಾವಾಗಲೂ ತೋರಿಸಿ)</string>
+    <string name="search">ಹುಡುಕಿ</string>
+    <!-- Name of the clock status bar icon -->
+    <string name="status_bar_clock">ಗಡಿಯಾರ</string>
+    <!-- Path data for portrait battery -->
+    <!-- Path data for landscape battery -->
+    <!-- Path data for circle battery -->
+    <!-- Wi-Fi hotspot label when enabled -->
+    <plurals name="wifi_hotspot_connected_clients_label">
+        <item quantity="one">%1$d ಕ್ಲೈಂಟ್</item>
+        <item quantity="other">%1$d ಕ್ಲೈಂಟ್</item>
+    </plurals>
+    <!-- Weather string format in expanded statusbar header -->
+    <!-- Volume stream titles - should match the string-array in AOSP -->
+    <string-array name="volume_stream_titles_lineage">
+        <item>ಕರೆ</item>
+        <!-- STREAM_VOICE_CALL -->
+        <item>ವ್ಯವಸ್ಥೆ</item>
+        <!-- STREAM_SYSTEM -->
+        <item>ರಿಂಗ್</item>
+        <!-- STREAM_RING -->
+        <item>ಮಾಧ್ಯಮ</item>
+        <!-- STREAM_MUSIC -->
+        <item>ಎಚ್ಚರಿಕೆ ಧ್ಚನಿ</item>
+        <!-- STREAM_ALARM -->
+        <item>ಅಧಿಸೂಚನೆ</item>
+        <!-- STREAM_NOTIFICATION -->
+        <item>ಬ್ಲೂಟೂತ್</item>
+        <!-- STREAM_BLUETOOTH_SCO -->
+        <item></item>
+        <!-- STREAM_SYSTEM_ENFORCED -->
+        <item></item>
+        <!-- STREAM_DTMF -->
+        <item></item>
+        <!-- STREAM_TTS -->
+    </string-array>
+    <!-- Content description of the data connection type HSPA+ for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_data_connection_hspap">HSPA</string>
+    <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
-  <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_battery_saving">ಸ್ಥಳ ವರದಿಸಲ್ಲಿಸುವಿಕೆ: ಬ್ಯಾಟರಿ ಉಳಿತಾಯ ಮೋಡ್.</string>
-  <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_gps_only">ಸ್ಥಳ ವರದಿ ಸಲ್ಲಿಸುವಿಕೆ: ಸಂವೇದಕಗಳು ಮಾತ್ರ ಮೋಡ್.</string>
-  <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_high_accuracy">ಸ್ಥಳ ವರದಿಸಲ್ಲಿಸುವಿಕೆ: ಗರಿಷ್ಟ ನಿಖರತೆ ಮೋಡ್.</string>
-  <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_battery_saving_label">ಬ್ಯಾಟರಿ ಉಳಿತಾಯ</string>
-  <string name="quick_settings_location_battery_saving_label_twoline">ಬ್ಯಾಟರಿ\nಉಳಿತಾಯ</string>
-  <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_gps_only_label">ಸಾಧನ ಮಾತ್ರ</string>
-  <string name="quick_settings_location_gps_only_label_twoline">ಸಾಧನ\n ಮಾತ್ರ</string>
-  <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_high_accuracy_label">ಗರಿಷ್ಠ ನಿಖರತೆ</string>
-  <string name="quick_settings_location_high_accuracy_label_twoline">ಗರಿಷ್ಠ\n ನಿಖರತೆ</string>
-  <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_detail_title">ಸ್ಥಳ</string>
-  <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_detail_menu_title">ಮಾದರಿ ಆಯ್ಕೆ:</string>
-  <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
-  <string name="quick_settings_location_detail_mode_high_accuracy_title">ಗರಿಷ್ಠ ನಿಖರತೆ</string>
-  <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->
-  <string name="quick_settings_location_detail_mode_battery_saving_title">ಬ್ಯಾಟರಿ ಉಳಿತಾಯ</string>
-  <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
-  <string name="quick_settings_location_detail_mode_sensors_only_title">ಸಾಧನ ಮಾತ್ರ</string>
-  <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-  <string name="quick_settings_location_detail_mode_high_accuracy_description">ಸ್ಥಳವನ್ನು ನಿರ್ಧರಿಸಲು GPS, Wi\u2011‍Fi, ಬ್ಲೂಟೂತ್, ಅಥವಾ ಸೆಲ್ಯುಲರ್ ನೆಟ್ವರ್ಕ್ ಗಳನ್ನು ಬಳಸಿ</string>
-  <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
-  <string name="quick_settings_location_detail_mode_battery_saving_description">ಸ್ಥಳವನ್ನು ನಿರ್ಧರಿಸಲುWi\u2011‍Fi, ಬ್ಲೂಟೂತ್, ಅಥವಾ ಸೆಲ್ಯುಲರ್ ನೆಟ್ವರ್ಕ್ ಗಳನ್ನು ಬಳಸಿ</string>
-  <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
-  <string name="quick_settings_location_detail_mode_sensors_only_description">ಸ್ಥಳವನ್ನು ನಿರ್ಧರಿಸಲು GPS ಬಳಸಿ</string>
-  <!-- Adb over network QS tile -->
-  <string name="quick_settings_network_adb_label">ನೆಟ್‍ವರ್ಕ್ ಮೇಲೆ ಎಡಿಬಿ</string>
-  <!-- Ambient display QS tile -->
-  <string name="quick_settings_ambient_display_label">ಆವರಿಸಿದ ಪರದೆ</string>
-  <string name="accessibility_quick_settings_ambient_display_off">ಆವರಿಸಿದ ಪರದೆ ಆಫ್.</string>
-  <string name="accessibility_quick_settings_ambient_display_on">ಆವರಿಸಿದ ಪರದೆ ಆನ್.</string>
-  <string name="accessibility_quick_settings_ambient_display_changed_off">ಆವರಿಸಿದ ಪರದೆ ಆಫ್ ಆಗಿದೆ.</string>
-  <string name="accessibility_quick_settings_ambient_display_changed_on">ಆವರಿಸಿದ ಪರದೆ ಆನ್ ಆಗಿದೆ.</string>
-  <!-- Caffeine -->
-  <string name="quick_settings_caffeine_label">ಕ್ಯಾಫೀನ್</string>
-  <string name="accessibility_quick_settings_caffeine_off">ಕ್ಯಾಫೀನ್ ಆರಿಸಿ</string>
-  <string name="accessibility_quick_settings_caffeine_on">ಕ್ಯಾಫೀನ್ ಆರಂಭಿಸಿ</string>
-  <!-- Heads up QS tile -->
-  <string name="quick_settings_heads_up_label">ಹೆಡ್ಸ್ ಅಪ್</string>
-  <string name="accessibility_quick_settings_heads_up_off">ಹೆಡ್ಸ್ ಅಪ್ ಆಫ್.</string>
-  <string name="accessibility_quick_settings_heads_up_on">ಹೆಡ್ಸ್ ಅಪ್ ಆನ್.</string>
-  <string name="accessibility_quick_settings_heads_up_changed_off">ಹೆಡ್ಸ್ ಅಪ್ ಆಫ್ ಆಗಿದೆ.</string>
-  <string name="accessibility_quick_settings_heads_up_changed_on">ಹೆಡ್ಸ್ ಅಪ್ ಆನ್ ಆಗಿದೆ.</string>
-  <!-- Sync QS tile -->
-  <string name="quick_settings_sync_label">ಸಿಂಕ್</string>
-  <string name="accessibility_quick_settings_sync_off">ಸಿಂಕ್ ಆಫ್.</string>
-  <string name="accessibility_quick_settings_sync_on">ಸಿಂಕ್ ಆನ್.</string>
-  <string name="accessibility_quick_settings_sync_changed_off">ಸಿಂಕ್ ಆಫ್ ಆಗಿದೆ.</string>
-  <string name="accessibility_quick_settings_sync_changed_on">ಸಿಂಕ್ ಆನ್ ಆಗಿದೆ.</string>
-  <!-- USB tethering QS tile -->
-  <string name="quick_settings_usb_tether_label">ಯುಎಸ್‍ಬಿ ಟೆಥರಿಂಗ್</string>
-  <!-- Volume panel QS tile -->
-  <string name="quick_settings_sync_label">ಸಿಂಕ್</string>
-  <string name="quick_settings_volume_panel_label">ವಾಲ್ಯೂಂ ಪ್ಯಾನೆಲ್</string>
-  <!-- LiveDisplay strings -->
-  <string name="live_display_auto">ಸ್ವಯಂಚಾಲಿತ</string>
-  <string name="live_display_auto_summary">ಸೂರ್ಯೋದಯ ಮತ್ತು ಸೂರ್ಯಾಸ್ತದ ನಂತರ ಪರದೆ‌ ಬಣ್ಣದ ತಾಪವನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಹೊಂದಾಣಿಕೆ ಮಾಡಿ</string>
-  <string name="live_display_off">ಆರಿಸು</string>
-  <string name="live_display_off_summary">ಎಲ್ಲಾ ಹೊಂದಾಣಿಕೆಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ</string>
-  <string name="live_display_day">ದಿನ</string>
-  <string name="live_display_day_summary">ದಿನದ ಸಂಯೋಜನೆಗಳನ್ನು ಮಾತ್ರ ಬಳಸಿ</string>
-  <string name="live_display_night">ರಾತ್ರಿ</string>
-  <string name="live_display_night_summary">ರಾತ್ರಿ ಸಂಯೋಜನೆಗಳನ್ನು ಮಾತ್ರ ಬಳಸಿ</string>
-  <string name="live_display_outdoor">ಹೊರಾಂಗಣ (ಪ್ರಕಾಶಮಾನ ಸೂರ್ಯ)</string>
-  <string name="live_display_outdoor_summary">ಹೊರಾಂಗಣ ಸಂಯೋಜನೆಗಳನ್ನು ಮಾತ್ರ ಬಳಸಿ</string>
-  <string name="live_display_hint">ಕಣ್ಣಿನ ತೊಂದರೆಯನ್ನು ಕಡಿಮೆ ಮಾಡಲು ನೇರಪ್ರದರ್ಶನ ನೆರವಾಗುತ್ತದೆ ಮತ್ತು ರಾತ್ರಿಯಲ್ಲಿ ನಿದ್ರೆಗೂ ಸಹಾಯವಾಗುತ್ತದೆ. ಪ್ರಯತ್ನಿಸಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ!</string>
-  <string name="accessibility_quick_settings_live_display_off">ನೇರಪ್ರದರ್ಶನ ಆರಿಸಿದೆ.</string>
-  <string name="accessibility_quick_settings_live_display_auto">ನೇರಪ್ರದರ್ಶನ: ಸ್ವಯಂಚಾಲಿತ ಮಾದರಿ.</string>
-  <string name="accessibility_quick_settings_live_display_day">ನೇರಪ್ರದರ್ಶನ: ದಿನ ಮಾದರಿ.</string>
-  <string name="accessibility_quick_settings_live_display_night">ನೇರಪ್ರದರ್ಶನ: ರಾತ್ರಿ ಮಾದರಿ.</string>
-  <string name="accessibility_quick_settings_live_display_outdoor">ನೇರಪ್ರದರ್ಶನ: ಹೊರಾಂಗಣ ಮಾದರಿ.</string>
-  <string name="accessibility_quick_settings_live_display_changed_off">ನೇರಪ್ರದರ್ಶನ ಆರಿಸಿದೆ.</string>
-  <string name="accessibility_quick_settings_live_display_changed_auto">ನೇರಪ್ರದರ್ಶನ ಸ್ವಯಂಚಾಲಿತ ಮಾದರಿಗೆ ಬದಲಾಗಿದೆ.</string>
-  <string name="accessibility_quick_settings_live_display_changed_day">ನೇರಪ್ರದರ್ಶನ ದಿನ ಮಾದರಿಗೆ ಬದಲಾಗಿದೆ.</string>
-  <string name="accessibility_quick_settings_live_display_changed_night">ನೇರಪ್ರದರ್ಶನ ರಾತ್ರಿ ಮಾದರಿಗೆ ಬದಲಾಗಿದೆ.</string>
-  <string name="accessibility_quick_settings_live_display_changed_outdoor">ನೇರಪ್ರದರ್ಶನ ಹೊರಾಂಗಣ ಮಾದರಿಗೆ ಬದಲಾಗಿದೆ.</string>
+    <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_location_battery_saving">ಸ್ಥಳ ವರದಿಸಲ್ಲಿಸುವಿಕೆ: ಬ್ಯಾಟರಿ ಉಳಿತಾಯ ಮೋಡ್.</string>
+    <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_location_gps_only">ಸ್ಥಳ ವರದಿ ಸಲ್ಲಿಸುವಿಕೆ: ಸಂವೇದಕಗಳು ಮಾತ್ರ ಮೋಡ್.</string>
+    <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_location_high_accuracy">ಸ್ಥಳ ವರದಿಸಲ್ಲಿಸುವಿಕೆ: ಗರಿಷ್ಟ ನಿಖರತೆ ಮೋಡ್.</string>
+    <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
+    <string name="quick_settings_location_battery_saving_label">ಬ್ಯಾಟರಿ ಉಳಿತಾಯ</string>
+    <string name="quick_settings_location_battery_saving_label_twoline">ಬ್ಯಾಟರಿ\nಉಳಿತಾಯ</string>
+    <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
+    <string name="quick_settings_location_gps_only_label">ಸಾಧನ ಮಾತ್ರ</string>
+    <string name="quick_settings_location_gps_only_label_twoline">ಸಾಧನ\n ಮಾತ್ರ</string>
+    <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
+    <string name="quick_settings_location_high_accuracy_label">ಗರಿಷ್ಠ ನಿಖರತೆ</string>
+    <string name="quick_settings_location_high_accuracy_label_twoline">ಗರಿಷ್ಠ\n ನಿಖರತೆ</string>
+    <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
+    <string name="quick_settings_location_detail_title">ಸ್ಥಳ</string>
+    <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
+    <string name="quick_settings_location_detail_menu_title">ಮಾದರಿ ಆಯ್ಕೆ:</string>
+    <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
+    <string name="quick_settings_location_detail_mode_high_accuracy_title">ಗರಿಷ್ಠ ನಿಖರತೆ</string>
+    <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->
+    <string name="quick_settings_location_detail_mode_battery_saving_title">ಬ್ಯಾಟರಿ ಉಳಿತಾಯ</string>
+    <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
+    <string name="quick_settings_location_detail_mode_sensors_only_title">ಸಾಧನ ಮಾತ್ರ</string>
+    <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">ಸ್ಥಳವನ್ನು ನಿರ್ಧರಿಸಲು GPS, Wi\u2011‍Fi, ಬ್ಲೂಟೂತ್, ಅಥವಾ ಸೆಲ್ಯುಲರ್ ನೆಟ್ವರ್ಕ್ ಗಳನ್ನು ಬಳಸಿ</string>
+    <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
+    <string name="quick_settings_location_detail_mode_battery_saving_description">ಸ್ಥಳವನ್ನು ನಿರ್ಧರಿಸಲುWi\u2011‍Fi, ಬ್ಲೂಟೂತ್, ಅಥವಾ ಸೆಲ್ಯುಲರ್ ನೆಟ್ವರ್ಕ್ ಗಳನ್ನು ಬಳಸಿ</string>
+    <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
+    <string name="quick_settings_location_detail_mode_sensors_only_description">ಸ್ಥಳವನ್ನು ನಿರ್ಧರಿಸಲು GPS ಬಳಸಿ</string>
+    <!-- Adb over network QS tile -->
+    <string name="quick_settings_network_adb_label">ನೆಟ್‍ವರ್ಕ್ ಮೇಲೆ ಎಡಿಬಿ</string>
+    <!-- Ambient display QS tile -->
+    <string name="quick_settings_ambient_display_label">ಆವರಿಸಿದ ಪರದೆ</string>
+    <string name="accessibility_quick_settings_ambient_display_off">ಆವರಿಸಿದ ಪರದೆ ಆಫ್.</string>
+    <string name="accessibility_quick_settings_ambient_display_on">ಆವರಿಸಿದ ಪರದೆ ಆನ್.</string>
+    <string name="accessibility_quick_settings_ambient_display_changed_off">ಆವರಿಸಿದ ಪರದೆ ಆಫ್ ಆಗಿದೆ.</string>
+    <string name="accessibility_quick_settings_ambient_display_changed_on">ಆವರಿಸಿದ ಪರದೆ ಆನ್ ಆಗಿದೆ.</string>
+    <!-- Caffeine -->
+    <string name="quick_settings_caffeine_label">ಕ್ಯಾಫೀನ್</string>
+    <string name="accessibility_quick_settings_caffeine_off">ಕ್ಯಾಫೀನ್ ಆರಿಸಿ</string>
+    <string name="accessibility_quick_settings_caffeine_on">ಕ್ಯಾಫೀನ್ ಆರಂಭಿಸಿ</string>
+    <!-- Heads up QS tile -->
+    <string name="quick_settings_heads_up_label">ಹೆಡ್ಸ್ ಅಪ್</string>
+    <string name="accessibility_quick_settings_heads_up_off">ಹೆಡ್ಸ್ ಅಪ್ ಆಫ್.</string>
+    <string name="accessibility_quick_settings_heads_up_on">ಹೆಡ್ಸ್ ಅಪ್ ಆನ್.</string>
+    <string name="accessibility_quick_settings_heads_up_changed_off">ಹೆಡ್ಸ್ ಅಪ್ ಆಫ್ ಆಗಿದೆ.</string>
+    <string name="accessibility_quick_settings_heads_up_changed_on">ಹೆಡ್ಸ್ ಅಪ್ ಆನ್ ಆಗಿದೆ.</string>
+    <!-- Sync QS tile -->
+    <string name="quick_settings_sync_label">ಸಿಂಕ್</string>
+    <string name="accessibility_quick_settings_sync_off">ಸಿಂಕ್ ಆಫ್.</string>
+    <string name="accessibility_quick_settings_sync_on">ಸಿಂಕ್ ಆನ್.</string>
+    <string name="accessibility_quick_settings_sync_changed_off">ಸಿಂಕ್ ಆಫ್ ಆಗಿದೆ.</string>
+    <string name="accessibility_quick_settings_sync_changed_on">ಸಿಂಕ್ ಆನ್ ಆಗಿದೆ.</string>
+    <!-- USB tethering QS tile -->
+    <string name="quick_settings_usb_tether_label">ಯುಎಸ್‍ಬಿ ಟೆಥರಿಂಗ್</string>
+    <!-- Volume panel QS tile -->
+    <string name="quick_settings_sync_label">ಸಿಂಕ್</string>
+    <string name="quick_settings_volume_panel_label">ವಾಲ್ಯೂಂ ಪ್ಯಾನೆಲ್</string>
+    <!-- LiveDisplay strings -->
+    <string name="live_display_auto">ಸ್ವಯಂಚಾಲಿತ</string>
+    <string name="live_display_auto_summary">ಸೂರ್ಯೋದಯ ಮತ್ತು ಸೂರ್ಯಾಸ್ತದ ನಂತರ ಪರದೆ‌ ಬಣ್ಣದ ತಾಪವನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಹೊಂದಾಣಿಕೆ ಮಾಡಿ</string>
+    <string name="live_display_off">ಆರಿಸು</string>
+    <string name="live_display_off_summary">ಎಲ್ಲಾ ಹೊಂದಾಣಿಕೆಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ</string>
+    <string name="live_display_day">ದಿನ</string>
+    <string name="live_display_day_summary">ದಿನದ ಸಂಯೋಜನೆಗಳನ್ನು ಮಾತ್ರ ಬಳಸಿ</string>
+    <string name="live_display_night">ರಾತ್ರಿ</string>
+    <string name="live_display_night_summary">ರಾತ್ರಿ ಸಂಯೋಜನೆಗಳನ್ನು ಮಾತ್ರ ಬಳಸಿ</string>
+    <string name="live_display_outdoor">ಹೊರಾಂಗಣ (ಪ್ರಕಾಶಮಾನ ಸೂರ್ಯ)</string>
+    <string name="live_display_outdoor_summary">ಹೊರಾಂಗಣ ಸಂಯೋಜನೆಗಳನ್ನು ಮಾತ್ರ ಬಳಸಿ</string>
+    <string name="live_display_hint">ಕಣ್ಣಿನ ತೊಂದರೆಯನ್ನು ಕಡಿಮೆ ಮಾಡಲು ನೇರಪ್ರದರ್ಶನ ನೆರವಾಗುತ್ತದೆ ಮತ್ತು ರಾತ್ರಿಯಲ್ಲಿ ನಿದ್ರೆಗೂ ಸಹಾಯವಾಗುತ್ತದೆ. ಪ್ರಯತ್ನಿಸಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ!</string>
+    <string name="accessibility_quick_settings_live_display_off">ನೇರಪ್ರದರ್ಶನ ಆರಿಸಿದೆ.</string>
+    <string name="accessibility_quick_settings_live_display_auto">ನೇರಪ್ರದರ್ಶನ: ಸ್ವಯಂಚಾಲಿತ ಮಾದರಿ.</string>
+    <string name="accessibility_quick_settings_live_display_day">ನೇರಪ್ರದರ್ಶನ: ದಿನ ಮಾದರಿ.</string>
+    <string name="accessibility_quick_settings_live_display_night">ನೇರಪ್ರದರ್ಶನ: ರಾತ್ರಿ ಮಾದರಿ.</string>
+    <string name="accessibility_quick_settings_live_display_outdoor">ನೇರಪ್ರದರ್ಶನ: ಹೊರಾಂಗಣ ಮಾದರಿ.</string>
+    <string name="accessibility_quick_settings_live_display_changed_off">ನೇರಪ್ರದರ್ಶನ ಆರಿಸಿದೆ.</string>
+    <string name="accessibility_quick_settings_live_display_changed_auto">ನೇರಪ್ರದರ್ಶನ ಸ್ವಯಂಚಾಲಿತ ಮಾದರಿಗೆ ಬದಲಾಗಿದೆ.</string>
+    <string name="accessibility_quick_settings_live_display_changed_day">ನೇರಪ್ರದರ್ಶನ ದಿನ ಮಾದರಿಗೆ ಬದಲಾಗಿದೆ.</string>
+    <string name="accessibility_quick_settings_live_display_changed_night">ನೇರಪ್ರದರ್ಶನ ರಾತ್ರಿ ಮಾದರಿಗೆ ಬದಲಾಗಿದೆ.</string>
+    <string name="accessibility_quick_settings_live_display_changed_outdoor">ನೇರಪ್ರದರ್ಶನ ಹೊರಾಂಗಣ ಮಾದರಿಗೆ ಬದಲಾಗಿದೆ.</string>
 </resources>

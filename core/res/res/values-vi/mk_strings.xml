@@ -15,12 +15,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
-  <string name="edit">Chỉnh sửa</string>
-  <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permlab_modifyOverlays">sửa đổi chủ đề lớp phủ</string>
-  <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-  <string name="permdesc_modifyOverlays">Cho phép ứng dụng chỉnh sửa lớp phủ chủ đề bằng OverlayManagerService</string>
-  <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
-  <string name="mk_reboot_to_update_title">Hệ thống cập nhật MoKee</string>
+    <!-- ActionBar action to edit the current selection [CHAR LIMIT=10] -->
+    <string name="edit">Chỉnh sửa</string>
+    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permlab_modifyOverlays">sửa đổi chủ đề lớp phủ</string>
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_modifyOverlays">Cho phép ứng dụng chỉnh sửa lớp phủ chủ đề bằng OverlayManagerService</string>
+    <!-- Reboot to Recovery Progress Dialog. This is shown before it reboots to recovery. -->
+    <string name="mk_reboot_to_update_title">Hệ thống cập nhật MoKee</string>
 </resources>

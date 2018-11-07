@@ -20,28 +20,28 @@
  */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Content description of the light brightness slider (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_notification_brightness">Яскравасць</string>
-  <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_profiles_off">Профілі выключаны.</string>
-  <!-- Content description of the profiles tile in quick settings (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_profiles">Профіль: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
-  <!-- Announcement made when the profiles tile changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_profiles_changed_off">Профілі выключаны.</string>
-  <!-- Announcement made when the profiles tile changes (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_profiles_changed">Профіль зменены на <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
-  <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_profiles_off">Профілі выключаны.</string>
-  <!-- Content description of the system profiles  -->
-  <string name="quick_settings_profiles">Сістэмныя профілі</string>
-  <!-- Lights settings, LED notification -->
-  <string name="led_notification_title">Індыкатар падзей</string>
-  <string name="led_notification_text">Светадыёд уключаны параметрамі</string>
-  <!-- Notification which notifies user flashlight is enabled -->
-  <string name="quick_settings_tile_flashlight_not_title">Выбліск уключаны</string>
-  <string name="quick_settings_tile_flashlight_not_summary">Націсніце, каб уключыць</string>
-  <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
-  <string name="cm_power_notification_controls_description">З дапамогаю гэтае функцыі, можна рэдагаваць узровень істотнасьці паведамленьня ад 0 да 6 для кожнага дадатку.
+    <!-- Content description of the light brightness slider (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_notification_brightness">Яскравасць</string>
+    <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_profiles_off">Профілі выключаны.</string>
+    <!-- Content description of the profiles tile in quick settings (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_profiles">Профіль: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
+    <!-- Announcement made when the profiles tile changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_profiles_changed_off">Профілі выключаны.</string>
+    <!-- Announcement made when the profiles tile changes (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_profiles_changed">Профіль зменены на <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
+    <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="quick_settings_profiles_off">Профілі выключаны.</string>
+    <!-- Content description of the system profiles  -->
+    <string name="quick_settings_profiles">Сістэмныя профілі</string>
+    <!-- Lights settings, LED notification -->
+    <string name="led_notification_title">Індыкатар падзей</string>
+    <string name="led_notification_text">Светадыёд уключаны параметрамі</string>
+    <!-- Notification which notifies user flashlight is enabled -->
+    <string name="quick_settings_tile_flashlight_not_title">Выбліск уключаны</string>
+    <string name="quick_settings_tile_flashlight_not_summary">Націсніце, каб уключыць</string>
+    <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
+    <string name="cm_power_notification_controls_description">З дапамогаю гэтае функцыі, можна рэдагаваць узровень істотнасьці паведамленьня ад 0 да 6 для кожнага дадатку.
         \n\n<b>Узровень 6</b>
         \n‒ Перасоўвае паведамленьне ў пачатак сьпісу.
         \n‒ Паўнаэкраннае паведамленьне.
@@ -69,151 +69,150 @@
         \n‒ Не паказваць на экране блакаваньня й радку стану.
         \n‒ Перасунуць паведмленьне ў канец сьпісу.
         \n\n<b>Узровень 0</b>
-        \n‒ Блакаваць усе паведамленьні дадаткаў
-    </string>
-  <!-- Notification importance level title-->
-  <string name="importance_level_title">Важнасць: Узровень %1$d</string>
-  <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
-  <string name="notification_importance_very_low">Не перапыняць рэжым поўнага экрану, не дазваляць кароткі паказ, прайграньне гуку або вібрацыю.</string>
-  <!-- Screen pinning dialog description (for devices without navbar) -->
-  <string name="screen_pinning_description_no_navbar">Гэты дадатак застанецца актыўным, пакуль вы не скасуеце блакаванне доўгім націскам кнопкі \"Назад\".</string>
-  <!-- String for lockscreen shortcut hints -->
-  <string name="shortcut_hint">Правядзіце па значку %1$s</string>
-  <string name="lockscreen_message">Націсніце значок злева альбо справа для змянення цэтліка экрана блакавання.</string>
-  <string name="lockscreen_default_target">Па змаўчанні</string>
-  <string name="select_application">Выбар дадатку</string>
-  <string name="lockscreen_choose_action_title">Выбар дзеяння</string>
-  <string name="lockscreen_none_target">Нічога</string>
-  <!-- Play queue -->
-  <string name="play_queue_extension">Паказаць чаргу прайгравання</string>
-  <!-- Weather string format in keyguard -->
-  <string name="accessibility_dpad_left">Курсор налева</string>
-  <string name="accessibility_dpad_right">Курсор направа</string>
-  <!-- NavBar Tuner -->
-  <string name="menu_ime_always_show">Меню ці выбар метаду ўводу (заўсёды)</string>
-  <string name="search">Пошук</string>
-  <!-- Name of the clock status bar icon -->
-  <string name="status_bar_clock">Гадзіннік</string>
-  <!-- Path data for portrait battery -->
-  <!-- Path data for landscape battery -->
-  <!-- Path data for circle battery -->
-  <!-- Wi-Fi hotspot label when enabled -->
-  <plurals name="wifi_hotspot_connected_clients_label">
-    <item quantity="one">%1$d кліент</item>
-    <item quantity="few">%1$d кліента</item>
-    <item quantity="many">%1$d кліентаў</item>
-    <item quantity="other">%1$d кліентаў</item>
-  </plurals>
-  <!-- Weather string format in expanded statusbar header -->
-  <!-- Volume stream titles - should match the string-array in AOSP -->
-  <string-array name="volume_stream_titles_lineage">
-    <item>Выклік</item>
-    <!-- STREAM_VOICE_CALL -->
-    <item>Сістэма</item>
-    <!-- STREAM_SYSTEM -->
-    <item>Званок</item>
-    <!-- STREAM_RING -->
-    <item>Мультымедыя</item>
-    <!-- STREAM_MUSIC -->
-    <item>Будзільнік</item>
-    <!-- STREAM_ALARM -->
-    <item>Апавяшчэнне</item>
-    <!-- STREAM_NOTIFICATION -->
-    <item>Bluetooth</item>
-    <!-- STREAM_BLUETOOTH_SCO -->
-    <item></item>
-    <!-- STREAM_SYSTEM_ENFORCED -->
-    <item></item>
-    <!-- STREAM_DTMF -->
-    <item></item>
-    <!-- STREAM_TTS -->
-  </string-array>
-  <!-- Content description of the data connection type HSPA+ for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_data_connection_hspap">HSPA+</string>
-  <!-- Text to use when the number in a notification info is too large
+        \n‒ Блакаваць усе паведамленьні дадаткаў</string>
+    <!-- Notification importance level title-->
+    <string name="importance_level_title">Важнасць: Узровень %1$d</string>
+    <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
+    <string name="notification_importance_very_low">Не перапыняць рэжым поўнага экрану, не дазваляць кароткі паказ, прайграньне гуку або вібрацыю.</string>
+    <!-- Screen pinning dialog description (for devices without navbar) -->
+    <string name="screen_pinning_description_no_navbar">Гэты дадатак застанецца актыўным, пакуль вы не скасуеце блакаванне доўгім націскам кнопкі \"Назад\".</string>
+    <!-- String for lockscreen shortcut hints -->
+    <string name="shortcut_hint">Правядзіце па значку %1$s</string>
+    <string name="lockscreen_message">Націсніце значок злева альбо справа для змянення цэтліка экрана блакавання.</string>
+    <string name="lockscreen_default_target">Па змаўчанні</string>
+    <string name="select_application">Выбар дадатку</string>
+    <string name="lockscreen_choose_action_title">Выбар дзеяння</string>
+    <string name="lockscreen_none_target">Нічога</string>
+    <!-- Play queue -->
+    <string name="play_queue_extension">Паказаць чаргу прайгравання</string>
+    <!-- Weather string format in keyguard -->
+    <string name="accessibility_dpad_left">Курсор налева</string>
+    <string name="accessibility_dpad_right">Курсор направа</string>
+    <!-- NavBar Tuner -->
+    <string name="menu_ime_always_show">Меню ці выбар метаду ўводу (заўсёды)</string>
+    <string name="search">Пошук</string>
+    <!-- Name of the clock status bar icon -->
+    <string name="status_bar_clock">Гадзіннік</string>
+    <!-- Path data for portrait battery -->
+    <!-- Path data for landscape battery -->
+    <!-- Path data for circle battery -->
+    <!-- Wi-Fi hotspot label when enabled -->
+    <plurals name="wifi_hotspot_connected_clients_label">
+        <item quantity="one">%1$d кліент</item>
+        <item quantity="few">%1$d кліента</item>
+        <item quantity="many">%1$d кліентаў</item>
+        <item quantity="other">%1$d кліентаў</item>
+    </plurals>
+    <!-- Weather string format in expanded statusbar header -->
+    <!-- Volume stream titles - should match the string-array in AOSP -->
+    <string-array name="volume_stream_titles_lineage">
+        <item>Выклік</item>
+        <!-- STREAM_VOICE_CALL -->
+        <item>Сістэма</item>
+        <!-- STREAM_SYSTEM -->
+        <item>Званок</item>
+        <!-- STREAM_RING -->
+        <item>Мультымедыя</item>
+        <!-- STREAM_MUSIC -->
+        <item>Будзільнік</item>
+        <!-- STREAM_ALARM -->
+        <item>Апавяшчэнне</item>
+        <!-- STREAM_NOTIFICATION -->
+        <item>Bluetooth</item>
+        <!-- STREAM_BLUETOOTH_SCO -->
+        <item></item>
+        <!-- STREAM_SYSTEM_ENFORCED -->
+        <item></item>
+        <!-- STREAM_DTMF -->
+        <item></item>
+        <!-- STREAM_TTS -->
+    </string-array>
+    <!-- Content description of the data connection type HSPA+ for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_data_connection_hspap">HSPA+</string>
+    <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
-  <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_battery_saving">Адпраўка месцазнаходжання: рэжым эканоміі батарэі.</string>
-  <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_gps_only">Адпраўка месцазнаходжання: толькі па GPS.</string>
-  <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_location_high_accuracy">Адпраўка месцазнаходжання: рэжым высокай дакладнасці.</string>
-  <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_battery_saving_label">Па каардынатах сеткі</string>
-  <string name="quick_settings_location_battery_saving_label_twoline">Энерга\nзберажэнне</string>
-  <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_gps_only_label">Па спадарожніках GPS</string>
-  <string name="quick_settings_location_gps_only_label_twoline">Толькі GPS</string>
-  <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_high_accuracy_label">Па ўсіх крыніцах</string>
-  <string name="quick_settings_location_high_accuracy_label_twoline">Высокая\nдакладнасць</string>
-  <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_detail_title">Месцазнаходжанне</string>
-  <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
-  <string name="quick_settings_location_detail_menu_title">Выбар рэжыму працы:</string>
-  <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
-  <string name="quick_settings_location_detail_mode_high_accuracy_title">Па ўсіх крыніцах</string>
-  <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->
-  <string name="quick_settings_location_detail_mode_battery_saving_title">Па каардынатах сеткі</string>
-  <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
-  <string name="quick_settings_location_detail_mode_sensors_only_title">Па спадарожніках GPS</string>
-  <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-  <string name="quick_settings_location_detail_mode_high_accuracy_description">Выкарыстанне GPS, Wi\u2011Fi, Bluetooth, або сотавыя сеткі для вызначэння месцазнаходжання </string>
-  <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
-  <string name="quick_settings_location_detail_mode_battery_saving_description">Выкарыстанне Wi\u2011Fi, Bluetooth, або сотавыя сеткі для вызначэння месцазнаходжання</string>
-  <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
-  <string name="quick_settings_location_detail_mode_sensors_only_description">Выкарыстанне GPS для вызначэння вашага месцазнаходжання</string>
-  <!-- Adb over network QS tile -->
-  <string name="quick_settings_network_adb_label">Адладка па сетцы</string>
-  <!-- Ambient display QS tile -->
-  <string name="quick_settings_ambient_display_label">Індыкацыя падзей</string>
-  <string name="accessibility_quick_settings_ambient_display_off">Індыкацыя падзей экранам адключаная.</string>
-  <string name="accessibility_quick_settings_ambient_display_on">Індыкацыя падзей экранам уключана.</string>
-  <string name="accessibility_quick_settings_ambient_display_changed_off">Індыкацыя падзей экранам адключаная.</string>
-  <string name="accessibility_quick_settings_ambient_display_changed_on">Індыкацыя падзей экранам уключана.</string>
-  <!-- Caffeine -->
-  <string name="quick_settings_caffeine_label">Забарона сну</string>
-  <string name="accessibility_quick_settings_caffeine_off">Пераход у спячы рэжым дазволены</string>
-  <string name="accessibility_quick_settings_caffeine_on">Пераход у спячы рэжым забаронены</string>
-  <!-- Heads up QS tile -->
-  <string name="quick_settings_heads_up_label">Усплывальныя паведамленні</string>
-  <string name="accessibility_quick_settings_heads_up_off">Усплывальныя паведамленні адключаны.</string>
-  <string name="accessibility_quick_settings_heads_up_on">Усплывальныя паведамленні ўключаны.</string>
-  <string name="accessibility_quick_settings_heads_up_changed_off">Усплывальныя паведамленні адключаны.</string>
-  <string name="accessibility_quick_settings_heads_up_changed_on">Усплывальныя паведамленні ўключаны.</string>
-  <!-- Sync QS tile -->
-  <string name="quick_settings_sync_label">Сінхранізацыя</string>
-  <string name="accessibility_quick_settings_sync_off">Сінхранізацыя адключаная.</string>
-  <string name="accessibility_quick_settings_sync_on">Сінхранізацыя ўключана.</string>
-  <string name="accessibility_quick_settings_sync_changed_off">Сінхранізацыя адключаная.</string>
-  <string name="accessibility_quick_settings_sync_changed_on">Сінхранізацыя ўключана.</string>
-  <!-- USB tethering QS tile -->
-  <string name="quick_settings_usb_tether_label">USB-мадэм</string>
-  <!-- Volume panel QS tile -->
-  <string name="quick_settings_sync_label">Сінхранізацыя</string>
-  <string name="quick_settings_volume_panel_label">Панэль гучнасці</string>
-  <!-- LiveDisplay strings -->
-  <string name="live_display_auto">Аўтаматычны</string>
-  <string name="live_display_auto_summary">Аўтаматычна рэгуляваць тэмпературу колеру экрана пасля заходу і ўсходу сонца</string>
-  <string name="live_display_off">Выключыць</string>
-  <string name="live_display_off_summary">Адключыць усе налады</string>
-  <string name="live_display_day">Дзень</string>
-  <string name="live_display_day_summary">Выкарыстоўваць толькі дзённыя параметры</string>
-  <string name="live_display_night">Ноч</string>
-  <string name="live_display_night_summary">Выкарыстоўваць толькі начныя параметры</string>
-  <string name="live_display_outdoor">Вуліца (сонца)</string>
-  <string name="live_display_outdoor_summary">Выкарыстоўваць толькі параметры вуліцы</string>
-  <string name="live_display_hint">LiveDisplay дапамагае знізіць напружанне вачэй і паляпшае начны сон. Націсніце тут, каб паспрабаваць!</string>
-  <string name="accessibility_quick_settings_live_display_off">LiveDisplay адкл.</string>
-  <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: аўта.</string>
-  <string name="accessibility_quick_settings_live_display_day">LiveDisplay: дзённы рэжым.</string>
-  <string name="accessibility_quick_settings_live_display_night">LiveDisplay: начны рэжым.</string>
-  <string name="accessibility_quick_settings_live_display_outdoor">LiveDisplay: рэжым вуліцы.</string>
-  <string name="accessibility_quick_settings_live_display_changed_off">LiveDisplay адключаны.</string>
-  <string name="accessibility_quick_settings_live_display_changed_auto">LiveDisplay змяніць на рэжым аўта.</string>
-  <string name="accessibility_quick_settings_live_display_changed_day">LiveDisplay змяніць на дзенны рэжым.</string>
-  <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay змяніць на начны рэжым.</string>
-  <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay змяніць на рэжым вуліцы.</string>
+    <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_location_battery_saving">Адпраўка месцазнаходжання: рэжым эканоміі батарэі.</string>
+    <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_location_gps_only">Адпраўка месцазнаходжання: толькі па GPS.</string>
+    <!-- Content description of the location tile in quick settings when on, high accuracy mode (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_location_high_accuracy">Адпраўка месцазнаходжання: рэжым высокай дакладнасці.</string>
+    <!-- QuickSettings: Location (On, low-power) [CHAR LIMIT=NONE] -->
+    <string name="quick_settings_location_battery_saving_label">Па каардынатах сеткі</string>
+    <string name="quick_settings_location_battery_saving_label_twoline">Энерга\nзберажэнне</string>
+    <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
+    <string name="quick_settings_location_gps_only_label">Па спадарожніках GPS</string>
+    <string name="quick_settings_location_gps_only_label_twoline">Толькі GPS</string>
+    <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
+    <string name="quick_settings_location_high_accuracy_label">Па ўсіх крыніцах</string>
+    <string name="quick_settings_location_high_accuracy_label_twoline">Высокая\nдакладнасць</string>
+    <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
+    <string name="quick_settings_location_detail_title">Месцазнаходжанне</string>
+    <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
+    <string name="quick_settings_location_detail_menu_title">Выбар рэжыму працы:</string>
+    <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
+    <string name="quick_settings_location_detail_mode_high_accuracy_title">Па ўсіх крыніцах</string>
+    <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->
+    <string name="quick_settings_location_detail_mode_battery_saving_title">Па каардынатах сеткі</string>
+    <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
+    <string name="quick_settings_location_detail_mode_sensors_only_title">Па спадарожніках GPS</string>
+    <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">Выкарыстанне GPS, Wi\u2011Fi, Bluetooth, або сотавыя сеткі для вызначэння месцазнаходжання</string>
+    <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
+    <string name="quick_settings_location_detail_mode_battery_saving_description">Выкарыстанне Wi\u2011Fi, Bluetooth, або сотавыя сеткі для вызначэння месцазнаходжання</string>
+    <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
+    <string name="quick_settings_location_detail_mode_sensors_only_description">Выкарыстанне GPS для вызначэння вашага месцазнаходжання</string>
+    <!-- Adb over network QS tile -->
+    <string name="quick_settings_network_adb_label">Адладка па сетцы</string>
+    <!-- Ambient display QS tile -->
+    <string name="quick_settings_ambient_display_label">Індыкацыя падзей</string>
+    <string name="accessibility_quick_settings_ambient_display_off">Індыкацыя падзей экранам адключаная.</string>
+    <string name="accessibility_quick_settings_ambient_display_on">Індыкацыя падзей экранам уключана.</string>
+    <string name="accessibility_quick_settings_ambient_display_changed_off">Індыкацыя падзей экранам адключаная.</string>
+    <string name="accessibility_quick_settings_ambient_display_changed_on">Індыкацыя падзей экранам уключана.</string>
+    <!-- Caffeine -->
+    <string name="quick_settings_caffeine_label">Забарона сну</string>
+    <string name="accessibility_quick_settings_caffeine_off">Пераход у спячы рэжым дазволены</string>
+    <string name="accessibility_quick_settings_caffeine_on">Пераход у спячы рэжым забаронены</string>
+    <!-- Heads up QS tile -->
+    <string name="quick_settings_heads_up_label">Усплывальныя паведамленні</string>
+    <string name="accessibility_quick_settings_heads_up_off">Усплывальныя паведамленні адключаны.</string>
+    <string name="accessibility_quick_settings_heads_up_on">Усплывальныя паведамленні ўключаны.</string>
+    <string name="accessibility_quick_settings_heads_up_changed_off">Усплывальныя паведамленні адключаны.</string>
+    <string name="accessibility_quick_settings_heads_up_changed_on">Усплывальныя паведамленні ўключаны.</string>
+    <!-- Sync QS tile -->
+    <string name="quick_settings_sync_label">Сінхранізацыя</string>
+    <string name="accessibility_quick_settings_sync_off">Сінхранізацыя адключаная.</string>
+    <string name="accessibility_quick_settings_sync_on">Сінхранізацыя ўключана.</string>
+    <string name="accessibility_quick_settings_sync_changed_off">Сінхранізацыя адключаная.</string>
+    <string name="accessibility_quick_settings_sync_changed_on">Сінхранізацыя ўключана.</string>
+    <!-- USB tethering QS tile -->
+    <string name="quick_settings_usb_tether_label">USB-мадэм</string>
+    <!-- Volume panel QS tile -->
+    <string name="quick_settings_sync_label">Сінхранізацыя</string>
+    <string name="quick_settings_volume_panel_label">Панэль гучнасці</string>
+    <!-- LiveDisplay strings -->
+    <string name="live_display_auto">Аўтаматычны</string>
+    <string name="live_display_auto_summary">Аўтаматычна рэгуляваць тэмпературу колеру экрана пасля заходу і ўсходу сонца</string>
+    <string name="live_display_off">Выключыць</string>
+    <string name="live_display_off_summary">Адключыць усе налады</string>
+    <string name="live_display_day">Дзень</string>
+    <string name="live_display_day_summary">Выкарыстоўваць толькі дзённыя параметры</string>
+    <string name="live_display_night">Ноч</string>
+    <string name="live_display_night_summary">Выкарыстоўваць толькі начныя параметры</string>
+    <string name="live_display_outdoor">Вуліца (сонца)</string>
+    <string name="live_display_outdoor_summary">Выкарыстоўваць толькі параметры вуліцы</string>
+    <string name="live_display_hint">LiveDisplay дапамагае знізіць напружанне вачэй і паляпшае начны сон. Націсніце тут, каб паспрабаваць!</string>
+    <string name="accessibility_quick_settings_live_display_off">LiveDisplay адкл.</string>
+    <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: аўта.</string>
+    <string name="accessibility_quick_settings_live_display_day">LiveDisplay: дзённы рэжым.</string>
+    <string name="accessibility_quick_settings_live_display_night">LiveDisplay: начны рэжым.</string>
+    <string name="accessibility_quick_settings_live_display_outdoor">LiveDisplay: рэжым вуліцы.</string>
+    <string name="accessibility_quick_settings_live_display_changed_off">LiveDisplay адключаны.</string>
+    <string name="accessibility_quick_settings_live_display_changed_auto">LiveDisplay змяніць на рэжым аўта.</string>
+    <string name="accessibility_quick_settings_live_display_changed_day">LiveDisplay змяніць на дзенны рэжым.</string>
+    <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay змяніць на начны рэжым.</string>
+    <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay змяніць на рэжым вуліцы.</string>
 </resources>

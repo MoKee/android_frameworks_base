@@ -15,36 +15,36 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- su icon switch -->
-  <string name="status_bar_su">超級使用者</string>
-  <!-- recent ram info -->
-  <string name="recents_free_ram">可用記憶體：%1$d MB</string>
-  <!-- Screenshot QS Tile -->
-  <string name="quick_settings_screenshot_label">螢幕截圖</string>
-  <!-- Compass QS Tile -->
-  <string name="quick_settings_compass_label">指南針</string>
-  <string name="quick_settings_compass_init">初始化中\u2026</string>
-  <string name="accessibility_quick_settings_compass_off">指南針關閉。</string>
-  <string name="accessibility_quick_settings_compass_on">指南針開啟。</string>
-  <string name="accessibility_quick_settings_compass_changed_off">指南針已關閉。</string>
-  <string name="accessibility_quick_settings_compass_changed_on">指南針已開啟。</string>
-  <string name="quick_settings_compass_N">北</string>
-  <string name="quick_settings_compass_NE">東北</string>
-  <string name="quick_settings_compass_E">東</string>
-  <string name="quick_settings_compass_SE">東南</string>
-  <string name="quick_settings_compass_S">南</string>
-  <string name="quick_settings_compass_SW">西南</string>
-  <string name="quick_settings_compass_W">西</string>
-  <string name="quick_settings_compass_NW">西北</string>
-  <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
-  <string name="keyguard_indication_dash_charging_time">Dash 閃充 (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> 後充滿)</string>
-  <string name="keyguard_plugged_in_dash_charging">Dash 閃充</string>
-  <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
-  <string name="key_disabler">停用實體按鍵</string>
-  <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_key_disabler_changed_off">實體按鍵已啟用</string>
-  <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_key_disabler_changed_on">實體按鍵已關閉</string>
-  <!-- Text for switch default data sub in expanded CellularTile -->
-  <string name="quick_settings_cellular_detail_use_data">使用 %s 數據</string>
+    <!-- su icon switch -->
+    <string name="status_bar_su">超級使用者</string>
+    <!-- recent ram info -->
+    <string name="recents_free_ram">可用記憶體：%1$d MB</string>
+    <!-- Screenshot QS Tile -->
+    <string name="quick_settings_screenshot_label">螢幕截圖</string>
+    <!-- Compass QS Tile -->
+    <string name="quick_settings_compass_label">指南針</string>
+    <string name="quick_settings_compass_init">初始化中\u2026</string>
+    <string name="accessibility_quick_settings_compass_off">指南針關閉。</string>
+    <string name="accessibility_quick_settings_compass_on">指南針開啟。</string>
+    <string name="accessibility_quick_settings_compass_changed_off">指南針已關閉。</string>
+    <string name="accessibility_quick_settings_compass_changed_on">指南針已開啟。</string>
+    <string name="quick_settings_compass_N">北</string>
+    <string name="quick_settings_compass_NE">東北</string>
+    <string name="quick_settings_compass_E">東</string>
+    <string name="quick_settings_compass_SE">東南</string>
+    <string name="quick_settings_compass_S">南</string>
+    <string name="quick_settings_compass_SW">西南</string>
+    <string name="quick_settings_compass_W">西</string>
+    <string name="quick_settings_compass_NW">西北</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_dash_charging_time">Dash 閃充 (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> 後充滿)</string>
+    <string name="keyguard_plugged_in_dash_charging">Dash 閃充</string>
+    <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
+    <string name="key_disabler">停用實體按鍵</string>
+    <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_key_disabler_changed_off">實體按鍵已啟用</string>
+    <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_key_disabler_changed_on">實體按鍵已關閉</string>
+    <!-- Text for switch default data sub in expanded CellularTile -->
+    <string name="quick_settings_cellular_detail_use_data">使用 %s 數據</string>
 </resources>

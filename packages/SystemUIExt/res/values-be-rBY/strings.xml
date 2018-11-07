@@ -15,36 +15,36 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- su icon switch -->
-  <string name="status_bar_su">Su</string>
-  <!-- recent ram info -->
-  <string name="recents_free_ram">Вольна АП: %1$d MБ</string>
-  <!-- Screenshot QS Tile -->
-  <string name="quick_settings_screenshot_label">Скрыншот</string>
-  <!-- Compass QS Tile -->
-  <string name="quick_settings_compass_label">Компас</string>
-  <string name="quick_settings_compass_init">Ініцыялізацыя\u2026</string>
-  <string name="accessibility_quick_settings_compass_off">Компас выкл.</string>
-  <string name="accessibility_quick_settings_compass_on">Компас укл.</string>
-  <string name="accessibility_quick_settings_compass_changed_off">Компас выключаны.</string>
-  <string name="accessibility_quick_settings_compass_changed_on">Компас уключаны.</string>
-  <string name="quick_settings_compass_N">Пн</string>
-  <string name="quick_settings_compass_NE">ПнУсх</string>
-  <string name="quick_settings_compass_E">Усх</string>
-  <string name="quick_settings_compass_SE">ПдУсх</string>
-  <string name="quick_settings_compass_S">Пд</string>
-  <string name="quick_settings_compass_SW">ПдЗх</string>
-  <string name="quick_settings_compass_W">Зх</string>
-  <string name="quick_settings_compass_NW">ПнЗх</string>
-  <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
-  <string name="keyguard_indication_dash_charging_time">Хуткая зарадка (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g>)</string>
-  <string name="keyguard_plugged_in_dash_charging">Хуткая зарадка</string>
-  <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
-  <string name="key_disabler">Адключыць кнопкі</string>
-  <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_key_disabler_changed_off">Ключы уключаны.</string>
-  <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
-  <string name="accessibility_quick_settings_key_disabler_changed_on">Ключы адключаны.</string>
-  <!-- Text for switch default data sub in expanded CellularTile -->
-  <string name="quick_settings_cellular_detail_use_data">Выкарыстанне дадзеных %s</string>
+    <!-- su icon switch -->
+    <string name="status_bar_su">Su</string>
+    <!-- recent ram info -->
+    <string name="recents_free_ram">Вольна АП: %1$d MБ</string>
+    <!-- Screenshot QS Tile -->
+    <string name="quick_settings_screenshot_label">Скрыншот</string>
+    <!-- Compass QS Tile -->
+    <string name="quick_settings_compass_label">Компас</string>
+    <string name="quick_settings_compass_init">Ініцыялізацыя\u2026</string>
+    <string name="accessibility_quick_settings_compass_off">Компас выкл.</string>
+    <string name="accessibility_quick_settings_compass_on">Компас укл.</string>
+    <string name="accessibility_quick_settings_compass_changed_off">Компас выключаны.</string>
+    <string name="accessibility_quick_settings_compass_changed_on">Компас уключаны.</string>
+    <string name="quick_settings_compass_N">Пн</string>
+    <string name="quick_settings_compass_NE">ПнУсх</string>
+    <string name="quick_settings_compass_E">Усх</string>
+    <string name="quick_settings_compass_SE">ПдУсх</string>
+    <string name="quick_settings_compass_S">Пд</string>
+    <string name="quick_settings_compass_SW">ПдЗх</string>
+    <string name="quick_settings_compass_W">Зх</string>
+    <string name="quick_settings_compass_NW">ПнЗх</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_dash_charging_time">Хуткая зарадка (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g>)</string>
+    <string name="keyguard_plugged_in_dash_charging">Хуткая зарадка</string>
+    <!-- Label for quick settings tile for key disabler [CHAR LIMIT=30] -->
+    <string name="key_disabler">Адключыць кнопкі</string>
+    <!-- Announcement made when the Key Disabler changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_key_disabler_changed_off">Ключы уключаны.</string>
+    <!-- Announcement made when the Key Disabler changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_key_disabler_changed_on">Ключы адключаны.</string>
+    <!-- Text for switch default data sub in expanded CellularTile -->
+    <string name="quick_settings_cellular_detail_use_data">Выкарыстанне дадзеных %s</string>
 </resources>
