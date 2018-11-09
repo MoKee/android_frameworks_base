@@ -119,7 +119,7 @@
     <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
     <string name="quick_settings_location_detail_mode_sensors_only_title">僅限裝置</string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-    <string name="quick_settings_location_detail_mode_high_accuracy_description">使用 GPS、Wi\u2011Fi、藍牙或行動網路判斷位置</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">使用 GPS、Wi\u2011Fi、藍牙或行動網路判斷位置 </string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
     <string name="quick_settings_location_detail_mode_battery_saving_description">使用 Wi\u2011Fi、藍牙或行動網路判斷位置</string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
