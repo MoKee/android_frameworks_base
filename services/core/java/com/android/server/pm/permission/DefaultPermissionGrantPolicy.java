@@ -735,6 +735,7 @@ public final class DefaultPermissionGrantPolicy {
         if (homePackage != null
                 && doesPackageSupportRuntimePermissions(homePackage)) {
             grantRuntimePermissions(homePackage, LOCATION_PERMISSIONS, false, userId);
+            grantRuntimePermissions(homePackage, STORAGE_PERMISSIONS, true, userId);
         }
 
         // Watches
@@ -847,6 +848,15 @@ public final class DefaultPermissionGrantPolicy {
                 "com.android.sharedstoragebackup");
         if (sharedStorageBackupPackage != null) {
             grantRuntimePermissions(sharedStorageBackupPackage, STORAGE_PERMISSIONS, true, userId);
+        }
+
+        // MoKee Pay
+        PackageParser.Package payPackage = getSystemPackageLPr(
+                "com.mokee.pay");
+        if (payPackage != null) {
+            grantRuntimePermissions(payPackage, STORAGE_PERMISSIONS, true, userId);
+            grantRuntimePermissions(payPackage, LOCATION_PERMISSIONS, true, userId);
+            grantRuntimePermissions(payPackage, PHONE_PERMISSIONS, true, userId);
         }
 
         if (mPermissionGrantedCallback != null) {
