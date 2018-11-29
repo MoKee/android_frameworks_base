@@ -69,7 +69,8 @@
         \n- Απόκρυψη από την οθόνη κλειδώματος και τη γραμμή κατάστασης
         \n- Εμφάνιση στο κάτω μέρος της λίστας ειδοποιήσεων
         \n\n\"<b>"Επίπεδο 0"</b>\"
-        \n- Αποκλεισμός όλων των ειδοποιήσεων από την εφαρμογή</string>
+        \n- Αποκλεισμός όλων των ειδοποιήσεων από την εφαρμογή
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Βαρύτητα: Επίπεδο %1$d</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->

@@ -69,7 +69,8 @@
         \n- Elrejtés a zárképernyőn és az állapotsoron
         \n- Értesítési lista alján jelenik meg
         \n\n<b>0. szint</b>
-        \n- Alkalmazás minden értesítésének tiltása</string>
+        \n- Alkalmazás minden értesítésének tiltása
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Fontosság: %1$d. szint</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->

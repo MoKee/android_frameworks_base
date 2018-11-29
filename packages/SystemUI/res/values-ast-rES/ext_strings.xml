@@ -69,7 +69,8 @@
         \n- Anúbrense de la pantalla de bloquéu y barra d\'estáu
         \n- Amuésense no baxero\'l llistáu d\'avisos
         \n\n<b>Nivel 0</b>
-        \n- Blóquiense tolos avisos d\'esta aplicación</string>
+        \n- Blóquiense tolos avisos d\'esta aplicación
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Importancia: Nivel %1$d</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
@@ -155,7 +156,7 @@
     <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
     <string name="quick_settings_location_detail_mode_sensors_only_title">Namái preséu</string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-    <string name="quick_settings_location_detail_mode_high_accuracy_description">Usa\'l GPS, Wi\u2011Fi, Bluetooth o redes móviles pa determinar l\'allugamientu</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">Usa\'l GPS, Wi\u2011Fi, Bluetooth o redes móviles pa determinar l\'allugamientu </string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
     <string name="quick_settings_location_detail_mode_battery_saving_description">Usa\'l Wi\u2011Fi, Bluetooth o redes móviles pa determinar l\'allugamientu</string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->

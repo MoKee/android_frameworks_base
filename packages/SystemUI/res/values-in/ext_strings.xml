@@ -69,7 +69,8 @@
         \n- Tersembunyi dari layar kunci dan status bar
         \n- Tampilkan di bagian bawah daftar pemberitahuan
         \n\n<b>Tingkat 0</b>
-        \n- Blokir semua pemberitahuan dari aplikasi</string>
+        \n- Blokir semua pemberitahuan dari aplikasi
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Penting: Tingkat %1$d</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->

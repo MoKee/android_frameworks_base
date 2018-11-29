@@ -69,7 +69,8 @@
         \n- Piilota lukitusnäytöltä ja ilmoituspalkista
         \n- Näytä alimpana ilmoituslistassa
         \n\n<b>Taso 0</b>
-        \n- Estä kaikki sovelluksen ilmoitukset</string>
+        \n- Estä kaikki sovelluksen ilmoitukset
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Tärkeys: Taso %1$d</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->

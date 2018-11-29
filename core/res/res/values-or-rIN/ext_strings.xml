@@ -113,7 +113,7 @@
     <string name="app_ops_assist_screenshot">ସ୍କ୍ରିନ୍‍ସଟ୍‍ ନିଅନ୍ତୁ</string>
     <string name="app_ops_use_body_sensors">ବଡି ସେନସର୍ ବ୍ୟବହାର କରନ୍ତୁ</string>
     <string name="app_ops_read_cell_broadcasts">ସେଲ୍ ପ୍ରସାରଣ ପଢ</string>
-    <string name="app_ops_mock_location">ଆପଣଙ୍କ ନକଲି ଅବସ୍ଥାନ</string>
+    <string name="app_ops_mock_location"> ଆପଣଙ୍କ ନକଲି ଅବସ୍ଥାନ</string>
     <string name="app_ops_read_external_storage">ବାହ୍ୟ ଷ୍ଟୋରେଜ୍ ପଢନ୍ତୁ</string>
     <string name="app_ops_write_external_storage">ବାହ୍ୟ ଷ୍ଟୋରେଜ୍ ଲେଖନ୍ତୁ</string>
     <string name="app_ops_turn_on_screen">ସ୍କ୍ରିନ୍‍ ଅନ କରନ୍ତୁ</string>

@@ -69,7 +69,8 @@
         \n- ロック画面とステータスバーから非表示にする
         \n- 通知リストの一番下に表示する
         \n\n<b>レベル0</b>
-        \n- アプリからの全ての通知をブロックする</string>
+        \n- アプリからの全ての通知をブロックする
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">重要度: レベル%1$d</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->

@@ -69,7 +69,8 @@
         \n- Skjul fra skærmlås og statuslinje
         \n- Vis i bunden af underretningslisten
         \n\n<b>Niveau 0</b>
-        \n- Blokér alle underretninger fra appen</string>
+        \n- Blokér alle underretninger fra appen
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Betydning: Niveau %1$d</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
@@ -155,7 +156,7 @@
     <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
     <string name="quick_settings_location_detail_mode_sensors_only_title">Kun enhed</string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-    <string name="quick_settings_location_detail_mode_high_accuracy_description">Brug GPS, Wi\u2011Fi, Bluetooth eller mobildata til at afgøre placeringen</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">Brug GPS, Wi\u2011Fi, Bluetooth eller mobildata til at afgøre placeringen </string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
     <string name="quick_settings_location_detail_mode_battery_saving_description">Brug Wi\u2011Fi, Bluetooth eller mobildata til at afgøre placeringen</string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->

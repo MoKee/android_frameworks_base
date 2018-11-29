@@ -69,7 +69,8 @@
         \n- 從鎖定畫面和狀態列隱藏
         \n- 顯示在通知清單的下方
         \n\n<b>級別 0</b>
-        \n- 封鎖來自應用程式的所有通知</string>
+        \n- 封鎖來自應用程式的所有通知
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">重要性︰%1$d 級</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
@@ -156,7 +157,7 @@
     <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
     <string name="quick_settings_location_detail_mode_sensors_only_title">僅限裝置</string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-    <string name="quick_settings_location_detail_mode_high_accuracy_description">使用 GPS、Wi\u2011Fi、藍牙或流動網絡判斷位置</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">使用 GPS、Wi\u2011Fi、藍牙或流動網絡判斷位置 </string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
     <string name="quick_settings_location_detail_mode_battery_saving_description">使用 Wi\u2011Fi、藍牙或流動網絡判斷位置</string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->

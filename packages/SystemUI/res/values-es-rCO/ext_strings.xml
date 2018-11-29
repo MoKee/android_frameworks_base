@@ -69,7 +69,8 @@
         \n- Ocultar en la pantalla de bloqueo y en la barra de estado
         \n-Mostrar en la parte inferior de la lista de notificaciones
         \n\n <b>Nivel 0</b> 
-        \n- Bloquear todas las notificaciones de la aplicación</string>
+        \n- Bloquear todas las notificaciones de la aplicación
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Prioridad: Nivel %1$d</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->

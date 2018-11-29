@@ -69,7 +69,8 @@
         \n- Ocultar en la pantalla de bloqueo y en la barra de estado
         \n- Mostrar en la parte inferior de la lista de notificaciones
         \n\n<b>Nivel 0</b>
-        \n- Bloquear todas las notificaciones de la aplicación</string>
+        \n- Bloquear todas las notificaciones de la aplicación
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Importancia: Nivel %1$d</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
@@ -157,7 +158,7 @@
     <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
     <string name="quick_settings_location_detail_mode_sensors_only_title">Sólo dispositivo</string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-    <string name="quick_settings_location_detail_mode_high_accuracy_description">Usar GPS, Wi\u2011Fi, Bluetooth o redes móviles para determinar la ubicación</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">Usar GPS, Wi\u2011Fi, Bluetooth o redes móviles para determinar la ubicación </string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
     <string name="quick_settings_location_detail_mode_battery_saving_description">Usar Wi\u2011Fi, Bluetooth o redes móviles para determinar la ubicación</string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->

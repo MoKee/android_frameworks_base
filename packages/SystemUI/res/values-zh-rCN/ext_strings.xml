@@ -69,7 +69,8 @@
         \n- 在锁屏界面和状态栏中隐藏
         \n- 在通知列表底部显示
         \n\n<b>0 级</b>
-        \n- 阻止该应用的所有通知</string>
+        \n- 阻止该应用的所有通知
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">重要性︰%1$d 级</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->

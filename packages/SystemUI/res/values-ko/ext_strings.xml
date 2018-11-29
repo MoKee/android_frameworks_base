@@ -69,7 +69,8 @@
         \n- 잠금 화면 및 상태 표시줄에 표시 안 함
         \n- 알림 목록의 하단에 표시
         \n\n<b>0단계</b>
-        \n- 해당 앱의 모든 알림 차단</string>
+        \n- 해당 앱의 모든 알림 차단
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">중요도: %1$d단계</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->

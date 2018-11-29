@@ -69,7 +69,8 @@
         \n- Cache les notifications de l\'écran de verrouillage et de la barre d\'état
         \n- Affichage tout en bas de la liste
         \n\n<b>Niveau 0</b>
-        \n- Bloque toutes les notifications d\'une application</string>
+        \n- Bloque toutes les notifications d\'une application
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Importance : niveau %1$d</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->

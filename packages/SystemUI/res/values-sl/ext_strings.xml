@@ -69,7 +69,8 @@
         \n- Skrij na zaklenjenem zaslonu in v vrstici stanja
         \n- Prikaži na dnu seznama obvestil
         \n\n<b>Raven 0</b>
-        \n- Blokiraj vsa obvestila aplikacije</string>
+        \n- Blokiraj vsa obvestila aplikacije
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Pomembnost: %1$d. raven</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
@@ -159,7 +160,7 @@
     <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
     <string name="quick_settings_location_detail_mode_sensors_only_title">Samo v napravi</string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-    <string name="quick_settings_location_detail_mode_high_accuracy_description">Uporabi GPS, Wi\u2011Fi, Bluetooth ali mobilna omrežja za določanje lokacije</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">Uporabi GPS, Wi\u2011Fi, Bluetooth ali mobilna omrežja za določanje lokacije </string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
     <string name="quick_settings_location_detail_mode_battery_saving_description">Uporaba Wi\u2011Fi-ja, Bluetootha in mobilnih omrežij za določanje lokacije</string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->

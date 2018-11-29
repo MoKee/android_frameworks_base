@@ -69,7 +69,8 @@
         \n- Sakrij s zaključanog zaslona i statusne trake
         \n- Prikaži na dnu popisa obavijesti
         \n\n<b>Nivo 0</b>
-        \n- Blokiraj sve obavijesti aplikacije</string>
+        \n- Blokiraj sve obavijesti aplikacije
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Važnost: Nivo %1$d</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->

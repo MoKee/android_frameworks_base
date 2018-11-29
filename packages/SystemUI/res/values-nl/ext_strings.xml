@@ -69,7 +69,8 @@
         \n- Verbergen op vergrendelscherm en statusbalk
         \n- Onderaan meldingslijst weergeven
         \n\n<b>Niveau 0</b>
-        \n- Alle meldingen van deze app blokkeren</string>
+        \n- Alle meldingen van deze app blokkeren
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Urgentie: Niveau %1$d</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->

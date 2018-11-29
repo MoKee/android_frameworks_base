@@ -69,7 +69,8 @@
         \n- Не показувати на заблокованому екрані та в рядку стану
         \n- Показувати сповіщення внизу списку
         \n\n<b>Рівень 0</b>
-        \n- Блокувати всі сповіщення з застосунку</string>
+        \n- Блокувати всі сповіщення з застосунку
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Пріоритет: рівень %1$d</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
@@ -153,7 +154,7 @@
     <!-- [CHAR LIMIT=30] Location detail panel, device only location mode -->
     <string name="quick_settings_location_detail_mode_sensors_only_title">По датчиках пристрою</string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for high accuracy mode -->
-    <string name="quick_settings_location_detail_mode_high_accuracy_description">Використовувати GPS, Wi‑Fi, Bluetooth і мобільні мережі, щоб визначати місцезнаходження</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">Використовувати GPS, Wi‑Fi, Bluetooth і мобільні мережі, щоб визначати місцезнаходження </string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for battery saving mode -->
     <string name="quick_settings_location_detail_mode_battery_saving_description">Використовувати Wi‑Fi, Bluetooth і мобільні мережі, щоб визначати місцезнаходження</string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->

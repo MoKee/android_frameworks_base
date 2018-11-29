@@ -69,7 +69,8 @@
         \n- Kilit ekranında ve durum çubuğundan gizlensin
         \n- Bildirim listesinin en altında gösterilsin
         \n\n<b>Level 0</b>
-        \n- Uygulamadan gelen tüm bildirimleri engelle</string>
+        \n- Uygulamadan gelen tüm bildirimleri engelle
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Önem düzeyi: Level %1$d</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->

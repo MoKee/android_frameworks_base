@@ -69,7 +69,8 @@
         \n- Ezkutatu blokeo-pantailatik eta egoera barratik
         \n- Erakutsi jakinarazpen zerrendan azkena
         \n\n<b>0. maila</b>
-        \n- Blokeatu aplikazioaren jakinarazpen guztiak</string>
+        \n- Blokeatu aplikazioaren jakinarazpen guztiak
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Garrantzia: %1$d. maila</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->

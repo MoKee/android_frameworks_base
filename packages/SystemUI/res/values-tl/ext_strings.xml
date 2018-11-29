@@ -69,7 +69,8 @@
         \n- Itago mula sa lock screen at status bar
         \n- Ipakita ang nasa baba ng listahan ng notipikasyon
         \n\n<b>Antas 0</b>
-        \n- Pigilan ang lahat ng mga notipikasyon mula sa app</string>
+        \n- Pigilan ang lahat ng mga notipikasyon mula sa app
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Kahalagahan: Antas %1$d</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->

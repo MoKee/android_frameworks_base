@@ -69,7 +69,7 @@
         \n- Ukrywaj na ekranie blokady i pasku stanu
         \n- Pokazuj na końcu listy powiadomień
 		\n\n<b>Poziom 0</b> 
-		\n– Blokuj wszystkie powiadomienia aplikacji</string>
+		\n– Blokuj wszystkie powiadomienia aplikacji    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Ważność: Poziom %1$d</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->

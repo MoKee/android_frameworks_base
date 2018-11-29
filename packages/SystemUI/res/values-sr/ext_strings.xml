@@ -69,7 +69,8 @@
         \n– Сакриј на закључаном екрану и статусној траци
         \n– Приказују се у дну листе обавештења
         \n\n<b>0. ниво</b>
-        \n– Блокирај сва обавештења из апликације</string>
+        \n– Блокирај сва обавештења из апликације
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Важност: %1$d. ниво</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->

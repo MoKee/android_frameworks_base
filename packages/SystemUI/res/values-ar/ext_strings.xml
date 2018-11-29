@@ -27,7 +27,7 @@
     <!-- Content description of the profiles tile in quick settings (not shown on the screen). [CHAR LIMIT=NONE] -->
     <string name="accessibility_quick_settings_profiles">ملف التعريف: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <!-- Announcement made when the profiles tile changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
-    <string name="accessibility_quick_settings_profiles_changed_off">تعطيل ملفات التعريف.</string>
+    <string name="accessibility_quick_settings_profiles_changed_off">تعطيل ملفات التعريف. </string>
     <!-- Announcement made when the profiles tile changes (not shown on the screen). [CHAR LIMIT=NONE] -->
     <string name="accessibility_quick_settings_profiles_changed">تم تغيير ملف التعريف إلى <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <!-- Content description of the profiles tile in quick settings when off (not shown on the screen). [CHAR LIMIT=NONE] -->
@@ -69,7 +69,7 @@
         \n- الإخفاء من شاشة القفل وشريط الحالة
         \n- الظهور في أسفل قائمة الإشعارات
         \n\n<b>المستوى 0</b>
-        \n- حظر جميع إشعارات و تنبيهات التطبيق</string>
+        \n- حظر جميع إشعارات و تنبيهات التطبيق    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">مستوى: الأهمية %1$d</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
@@ -186,7 +186,7 @@
     <string name="accessibility_quick_settings_heads_up_changed_on">تم تشغيل الإنذار المسبق.</string>
     <!-- Sync QS tile -->
     <string name="quick_settings_sync_label">المزامنة</string>
-    <string name="accessibility_quick_settings_sync_off">تعطيل المزامنة.</string>
+    <string name="accessibility_quick_settings_sync_off">تعطيل المزامنة. </string>
     <string name="accessibility_quick_settings_sync_on">تشغيل المزامنة.</string>
     <string name="accessibility_quick_settings_sync_changed_off">تم تعطيل المزامنة.</string>
     <string name="accessibility_quick_settings_sync_changed_on">تم تشغيل المزامنة.</string>
@@ -202,7 +202,7 @@
     <string name="live_display_off_summary">تعطيل جميع التعديلات</string>
     <string name="live_display_day">النهار</string>
     <string name="live_display_day_summary">استخدام إعدادات اليوم فقط</string>
-    <string name="live_display_night">ليلي</string>
+    <string name="live_display_night">Night</string>
     <string name="live_display_night_summary">استخدام إعدادات الليل فقط</string>
     <string name="live_display_outdoor">خارج المنزل ( شمس ساطعة)</string>
     <string name="live_display_outdoor_summary">استخدم إعدادات خارج المنزل فقط</string>

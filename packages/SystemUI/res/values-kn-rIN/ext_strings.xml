@@ -69,7 +69,7 @@
         \n- ಪರದೆ ಕೀಲಿಯಿಂದ ಮತ್ತು ಸ್ಥಿತಿ ಪಟ್ಟಿಯಿಂದ ಅಡಗಿಸಿ 
         \n- ಅಧಿಸೂಚನೆಗಳ ಪಟ್ಟಿಯಲ್ಲಿ ಕೆಳಗೆ ತೋರಿಸಿ
         \n\n<b>0 ಯ ಮಟ್ಟ</b>
-        \n- ಕಿರುತಂತ್ರಾಂಶದಿಂದ ಅಧಿಸೂಚನೆಗಳನ್ನು ತಡೆಯಿರಿ</string>
+        \n- ಕಿರುತಂತ್ರಾಂಶದಿಂದ ಅಧಿಸೂಚನೆಗಳನ್ನು ತಡೆಯಿರಿ    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">ಪ್ರಾಮುಖ್ಯತೆ: %1$d ಮಟ್ಟ</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->

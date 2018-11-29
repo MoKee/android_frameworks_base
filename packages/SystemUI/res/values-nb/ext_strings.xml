@@ -69,7 +69,8 @@
         \n- Skjules fra låseskjermen og statuslinjen
         \n- Vises nederst på listen over varsler
         \n\n<b>Nivå 0</b>
-        \n- Blokkerer alle varsler fra appen</string>
+        \n- Blokkerer alle varsler fra appen
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Viktighet: Nivå %1$d</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->

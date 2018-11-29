@@ -32,7 +32,7 @@
     <!-- Button to restart the phone into bootloader, within the Restart Options dialog -->
     <string name="reboot_bootloader">బూట్‌లోడర్</string>
     <!-- Button to restart the phone into download, within the Restart Options dialog -->
-    <string name="reboot_download">డౌన్‌లోడ్</string>
+    <string name="reboot_download">డౌన్‌లోడ్ </string>
     <!-- Button to soft restart the device, within the Restart Options dialog -->
     <!-- Title of dialog to confirm restarting. -->
     <!-- Restart Confirmation Dialog.  When the user chooses to restart the device, there will

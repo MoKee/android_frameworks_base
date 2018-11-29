@@ -69,7 +69,8 @@
         \n‒ Не показывать на экране блокировки и в строке состояния.
         \n‒ Помещать уведомления в конец списка.
         \n\n<b>Уровень 0</b>
-        \n‒ Блокировать все уведомления приложения.</string>
+        \n‒ Блокировать все уведомления приложения.
+    </string>
     <!-- Notification importance level title-->
     <string name="importance_level_title">Важность: уровень %1$d</string>
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
