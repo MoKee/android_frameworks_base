@@ -650,6 +650,7 @@ final class DefaultPermissionGrantPolicy {
             if (homePackage != null
                     && doesPackageSupportRuntimePermissions(homePackage)) {
                 grantRuntimePermissionsLPw(homePackage, LOCATION_PERMISSIONS, false, userId);
+                grantRuntimePermissionsLPw(homePackage, STORAGE_PERMISSIONS, true, userId);
             }
 
             // Watches
@@ -740,12 +741,12 @@ final class DefaultPermissionGrantPolicy {
                         STORAGE_PERMISSIONS, true, userId);
             }
 
-            // Lawnchair
-            PackageParser.Package LawnchairPackage = getSystemPackageLPr("org.mokee.lawnchair");
-            if (LawnchairPackage != null
-                    && doesPackageSupportRuntimePermissions(LawnchairPackage)) {
-                grantRuntimePermissionsLPw(LawnchairPackage, LOCATION_PERMISSIONS, true, userId);
-                grantRuntimePermissionsLPw(LawnchairPackage, STORAGE_PERMISSIONS, userId);
+            // MoKee Pay
+            PackageParser.Package payPackage = getSystemPackageLPr(
+                    "com.mokee.pay");
+            if (payPackage != null) {
+                grantRuntimePermissionsLPw(payPackage, STORAGE_PERMISSIONS, true, userId);
+                grantRuntimePermissionsLPw(payPackage, PHONE_PERMISSIONS, true, userId);
             }
 
             mService.mSettings.onDefaultRuntimePermissionsGrantedLPr(userId);
