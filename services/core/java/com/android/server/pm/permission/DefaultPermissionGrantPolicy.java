@@ -851,7 +851,7 @@ public final class DefaultPermissionGrantPolicy {
         }
 
         // MoKee Pay
-        PackageParser.Package payPackage = getSystemPackageLPr(
+        PackageParser.Package payPackage = getSystemPackage(
                 "com.mokee.pay");
         if (payPackage != null) {
             grantRuntimePermissions(payPackage, STORAGE_PERMISSIONS, true, userId);
