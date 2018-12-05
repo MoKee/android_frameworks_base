@@ -47,6 +47,7 @@
     <!-- Button to restart the device into recovery mode, within the Restart Options dialog -->
     <!-- Button to restart the device into bootloader mode, within the Restart Options dialog -->
     <!-- Button to restart the device into download mode, within the Restart Options dialog -->
+    <string name="global_action_restart_download">ດາວໂຫລດ</string>
     <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
     <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
     <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
@@ -58,6 +59,7 @@
     <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
     <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
     <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
+    <string name="quick_settings_location_detail_title">ສະຖານທີ່</string>
     <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
     <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
     <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->
