@@ -1137,7 +1137,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(MKSettings.System.getUriFor(
                     MKSettings.System.USE_BOTTOM_GESTURE_NAVIGATION), false, this,
                     UserHandle.USER_ALL);
-
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.BOTTOM_GESTURE_TRIGGER_TIMEOUT), false, this,
+                    UserHandle.USER_ALL);
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.BOTTOM_GESTURE_SWIPE_LIMIT), false, this,
+                    UserHandle.USER_ALL);
             resolver.registerContentObserver(MKSettings.System.getUriFor(
                     MKSettings.System.FORCE_SHOW_NAVBAR), false, this,
                     UserHandle.USER_ALL);
@@ -2965,6 +2970,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         if (mGestureButtonRegistered && !mUseGestureButton) {
             mWindowManagerFuncs.unregisterPointerEventListener(mGestureButton);
             mGestureButtonRegistered = false;
+        }
+        if (mUseGestureButton && mGestureButton != null) {
+            mGestureButton.updateSettings();
         }
     }
 
