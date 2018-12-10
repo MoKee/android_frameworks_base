@@ -28,13 +28,16 @@ import java.util.Locale;
 
 public class MoKeeUtils {
 
-    public static boolean isSupportLanguage(boolean excludeTW) {
+    public static boolean isSupportLanguage(boolean excludeSAR) {
         Locale locale = Locale.getDefault();
-        if (excludeTW) {
-            return locale.getLanguage().startsWith(Locale.CHINESE.getLanguage())
-                    && !locale.getCountry().equals("TW");
+        if (locale.getLanguage().startsWith(Locale.CHINESE.getLanguage())) {
+            if (excludeSAR) {
+                return locale.getCountry().equals("CN");
+            } else {
+                return true;
+            }
         } else {
-            return locale.getLanguage().startsWith(Locale.CHINESE.getLanguage());
+            return false;
         }
     }
 
