@@ -22,7 +22,7 @@
     <!-- ADB over USB and network notification -->
     <!-- ADB notification message-->
     <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
-    <string name="mk_system_error_manufacturer">Est istada agatada una non currispondèntzia cun s\'immàgine de su frunidore. De sòlitu custu cheret nàrrere chi s\'immàgine de su frunidore est betza. Pro praghere assegura·ti chi s\'immàgine de su frunidore currispondat <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
+    <string name="lineage_system_error_manufacturer">Est istada agatada una non currispondèntzia cun s\'immàgine de su frunidore. De sòlitu custu cheret nàrrere chi s\'immàgine de su frunidore est betza. Pro praghere assegura·ti chi s\'immàgine de su frunidore currispondat <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
     <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
     <!-- Privacy Guard -->
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> no at a pòdere atzèdere a sos datos personales</string>

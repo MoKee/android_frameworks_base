@@ -3,7 +3,6 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
-     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,6 +24,8 @@
     <string name="adb_both_active_notification_title">USB 和网络 ADB 调试已启用</string>
     <!-- ADB notification message-->
     <string name="adb_active_generic_notification_message">触摸以禁用调试。</string>
+    <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
+    <string name="lineage_system_error_manufacturer">检测到供应商映像不匹配。这通常意味着您的供应商映像是过时的。请确保您的供应商映像匹配 <xliff:g id="fingerprint">%1$s</xliff:g>。</string>
     <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
     <string name="lock_to_app_toast_no_navbar">要取消固定此屏幕，触摸并按住返回键。</string>
     <!-- Privacy Guard -->
@@ -45,7 +46,7 @@
     <string name="app_ops_app_start_foreground">在前台启动瞬时应用</string>
     <string name="app_ops_assist_screenshot">屏幕截图</string>
     <string name="app_ops_assist_structure">使用协助结构</string>
-    <string name="app_ops_audio_accessibility_volume">音频辅助功能类音量</string>
+    <string name="app_ops_audio_accessibility_volume">音频辅助功能音量</string>
     <string name="app_ops_auto_start">开机自启动</string>
     <string name="app_ops_change_wallpaper">更改壁纸</string>
     <string name="app_ops_delete_call_log">删除您的所有通话记录</string>
