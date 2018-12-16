@@ -3,7 +3,6 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
-     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,6 +24,7 @@
     <string name="adb_both_active_notification_title">USB &amp; நெட்வொர்க் மீது ADB செயல்படுத்தப்பட்டது</string>
     <!-- ADB notification message-->
     <string name="adb_active_generic_notification_message">பிழைநீக்கலை முடக்க தொடு.</string>
+    <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
     <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
     <string name="lock_to_app_toast_no_navbar">இந்த திரையை அன்பின் செய்ய, பின்செல் பொத்தானைத் தொட்டு பிடித்துக்கொள்.</string>
     <!-- Privacy Guard -->
