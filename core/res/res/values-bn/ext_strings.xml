@@ -3,6 +3,7 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
+     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +25,6 @@
     <string name="adb_both_active_notification_title">এডিবির উপর ইউএসবি &amp; নেটওয়ার্ক সক্রিয়</string>
     <!-- ADB notification message-->
     <string name="adb_active_generic_notification_message">ডিবাগ নিষ্ক্রিয় করতে স্পর্শ করুন।</string>
-    <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
     <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
     <!-- Privacy Guard -->
     <string name="permlab_changePrivacyGuardState">গোপনীয়তা রক্ষাকারী সক্রিয় বা নিস্ক্রিয় করুন</string>
@@ -56,6 +56,7 @@
     <string name="app_ops_read_sms">এমএমএস বার্তায় প্রবেশাধিকার</string>
     <string name="app_ops_receive_sms">একটি এসএমএস বার্তা গ্রহণ</string>
     <string name="app_ops_record_audio">অডিও রেকর্ড</string>
+    <string name="app_ops_run_in_background">নেপথ্যে চালনা করুন</string>
     <string name="app_ops_send_mms">এমএমএস বার্তা প্রেরণ</string>
     <string name="app_ops_send_sms">এসএমএস বার্তা প্রেরণ</string>
     <string name="app_ops_start_at_bootup">শক্তি প্রাপ্তি থেকে আরম্ভ</string>

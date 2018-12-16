@@ -3,6 +3,7 @@
 <!--
      Copyright (C) 2017 The LineageOS Project
      Copyright (C) 2012-2014 The CyanogenMod Project
+     Copyright (C) 2012-2018 The MoKee Open Source Project
      Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +25,6 @@
     <string name="adb_both_active_notification_title">USB ଓ ନେଟ୍‍ୱା‌ର୍କ୍‍ରେ ADB ସଷମ କରାଯାଇଛି</string>
     <!-- ADB notification message-->
     <string name="adb_active_generic_notification_message">ଡିବଗିଙ୍ଗ ଅଷମ କରିବା ପାଇଁ ସ୍ପର୍ଶ ଅକରନ୍ତୁ।</string>
-    <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
     <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
     <string name="lock_to_app_toast_no_navbar">ଏହି ସ୍କ୍ରିନ୍‍ ଅନ୍‍ପିନ୍‍ କରିବା ପାଇଁ, ବ୍ୟାକ୍‍ ବଟନ୍‍ ସ୍ପର୍ଶ କରନ୍ତୁ ଓ ଧରିରଖନ୍ତୁ।</string>
     <!-- Privacy Guard -->
@@ -55,7 +55,7 @@
     <string name="app_ops_get_usage_stats">ଆପ୍ଲିକେସନ୍‍ ବ୍ୟବହାରର ପରିସଂଖ୍ୟାନ ପ୍ରାପ୍ତ କରନ୍ତୁ</string>
     <string name="app_ops_keep_device_awake">ଆପଣଙ୍କ ଡିଭାଇ‌ସ୍‍କୁ ଜାଗ୍ରତ ରଖନ୍ତୁ</string>
     <string name="app_ops_make_phone_call">ଏକ ଫୋନ୍‍ କଲ୍‍ କରନ୍ତୁ</string>
-    <string name="app_ops_mock_location"> ଆପଣଙ୍କ ନକଲି ଅବସ୍ଥାନ</string>
+    <string name="app_ops_mock_location">ଆପଣଙ୍କ ନକଲି ଅବସ୍ଥାନ</string>
     <string name="app_ops_modify_calendar">ଆପଣଙ୍କ କ୍ୟାଲେନ୍ଡର ଅଦ୍ୟତନ କରନ୍ତୁ</string>
     <string name="app_ops_modify_call_log">କଲ୍‍ ସୂଚୀ ଅଦ୍ୟତନ କରନ୍ତୁ</string>
     <string name="app_ops_modify_clipboard">କ୍ଲି‌ପ୍‍ବୋର୍ଡ୍‍ ସମ୍ପାଦନା କରନ୍ତୁ</string>
