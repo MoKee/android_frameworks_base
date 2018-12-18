@@ -1,0 +1,2 @@
+core/res/res/values-*/ext_strings.xml merge=ours
+packages/SystemUI/res/values-*/ext_strings.xml merge=ours
