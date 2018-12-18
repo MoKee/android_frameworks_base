@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006 The Android Open Source Project
+ * Copyright (C) 2016-2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1877,6 +1878,27 @@ public final class CalendarContract {
             SYNC_DATA9,
             SYNC_DATA10,
         };
+    }
+
+    public static final class Alarm implements BaseColumns {
+
+        public static final String AUTHORITY = "com.android.calendar.alarm";
+
+        @NonNull
+        public static final Uri CONTENT_URI =
+                Uri.parse("content://" + AUTHORITY);
+
+        @NonNull
+        public static final Uri CONTENT_FILTER_WORKDAY_URI =
+                Uri.parse("content://" + AUTHORITY + "/workday");
+
+        @NonNull
+        public static final Uri CONTENT_FILTER_HOLIDAY_URI =
+                Uri.parse("content://" + AUTHORITY + "/holiday");
+
+        public static final String DATE = "date";
+
+        public static final String STATE = "state";
     }
 
     /**
