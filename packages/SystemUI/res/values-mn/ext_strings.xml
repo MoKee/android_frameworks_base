@@ -58,6 +58,7 @@
     <!-- QuickSettings: Location (On, gps-only) [CHAR LIMIT=NONE] -->
     <!-- QuickSettings: Location (On, high-accuracy) [CHAR LIMIT=NONE] -->
     <!-- QuickSettings: Location detail panel title [CHAR LIMIT=NONE] -->
+    <string name="quick_settings_location_detail_title">Байршил</string>
     <!-- QuickSettings: Location detail panel menu title [CHAR LIMIT=NONE] -->
     <!-- [CHAR LIMIT=30] Location detail panel, high accuracy location mode -->
     <!-- [CHAR LIMIT=30] Location detail panel, battery saving location mode -->

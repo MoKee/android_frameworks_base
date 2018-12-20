@@ -61,6 +61,7 @@
     <string name="accessibility_dpad_right">Kursori djathtas</string>
     <!-- Screen pinning dialog description (for devices without navbar) -->
     <!-- Name of the clock status bar icon -->
+    <string name="status_bar_clock">Ora</string>
     <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.
@@ -68,6 +69,7 @@
     <!-- Label for current user in power menu options dialog -->
     <string name="global_action_current_user">Aktuali</string>
     <!-- Label for item that screenshots in power menu options dialog -->
+    <string name="global_action_screenshot">Foto e ekranit</string>
     <!-- Advanced restart menu -->
     <!-- Button to restart the device, within the Restart Options dialog -->
     <string name="global_action_restart_system">Sistemi</string>

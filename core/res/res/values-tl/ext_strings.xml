@@ -32,6 +32,7 @@
     <string name="permdesc_changePrivacyGuardState">Pinapayagan ang app na baguhin kung tumatakbo ang isa pang app gamit ang Privacy Guard. Kapag ang isang app ay tumatakbo sa Privacy Guard, wala itong access sa personal na data tulad ng mga contact, mga tala ng tawag, o mga mensahe.</string>
     <string name="privacy_guard_notification">Aktibo ang Privacy Guard</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> hindi ma-access ang personal na data</string>
+    <string name="privacy_guard_dialog_title">Privacy Guard</string>
     <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> nais na <xliff:g id="op">%2$s</xliff:g>.</string>
     <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
     <string name="permission_remember_choice">Tandaan ang aking pinili</string>
