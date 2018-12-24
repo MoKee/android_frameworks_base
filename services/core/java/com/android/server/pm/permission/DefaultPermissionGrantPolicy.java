@@ -850,9 +850,15 @@ public final class DefaultPermissionGrantPolicy {
             grantRuntimePermissions(sharedStorageBackupPackage, STORAGE_PERMISSIONS, true, userId);
         }
 
+        // MoKee Center
+        PackageParser.Package centerPackage = getSystemPackage("com.mokee.center");
+        if (centerPackage != null) {
+            grantRuntimePermissions(centerPackage, STORAGE_PERMISSIONS, true, userId);
+            grantRuntimePermissions(centerPackage, PHONE_PERMISSIONS, true, userId);
+        }
+
         // MoKee Pay
-        PackageParser.Package payPackage = getSystemPackage(
-                "com.mokee.pay");
+        PackageParser.Package payPackage = getSystemPackage("com.mokee.pay");
         if (payPackage != null) {
             grantRuntimePermissions(payPackage, STORAGE_PERMISSIONS, true, userId);
             grantRuntimePermissions(payPackage, PHONE_PERMISSIONS, true, userId);
