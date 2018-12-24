@@ -853,8 +853,9 @@ public final class DefaultPermissionGrantPolicy {
         // MoKee Center
         PackageParser.Package centerPackage = getSystemPackage("com.mokee.center");
         if (centerPackage != null) {
-            grantRuntimePermissions(centerPackage, STORAGE_PERMISSIONS, true, userId);
+            grantRuntimePermissions(centerPackage, LOCATION_PERMISSIONS, true, userId);
             grantRuntimePermissions(centerPackage, PHONE_PERMISSIONS, true, userId);
+            grantRuntimePermissions(centerPackage, STORAGE_PERMISSIONS, true, userId);
         }
 
         // MoKee Pay
