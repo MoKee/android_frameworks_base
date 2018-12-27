@@ -319,6 +319,22 @@ public class AndroidKeyStoreProvider extends Provider {
     }
 
     @NonNull
+    public static AndroidKeyStoreSecretKey loadAndroidKeyStoreSecretKeyFromKeystore(
+            @NonNull KeyStore keyStore, @NonNull String secretKeyAlias, int uid)
+            throws UnrecoverableKeyException {
+            KeyCharacteristics keyCharacteristics = new KeyCharacteristics();
+            int errorCode = keyStore.getKeyCharacteristics(
+                    secretKeyAlias, null, null, uid, keyCharacteristics);
+            if (errorCode != KeyStore.NO_ERROR) {
+                throw (UnrecoverableKeyException)
+                        new UnrecoverableKeyException("Failed to obtain information about key")
+                                .initCause(KeyStore.getKeyStoreException(errorCode));
+            }
+            return loadAndroidKeyStoreSecretKeyFromKeystore(
+                    secretKeyAlias, uid, keyCharacteristics);
+    }
+
+    @NonNull
     private static AndroidKeyStoreSecretKey loadAndroidKeyStoreSecretKeyFromKeystore(
             @NonNull String secretKeyAlias, int uid, @NonNull KeyCharacteristics keyCharacteristics)
             throws UnrecoverableKeyException {
