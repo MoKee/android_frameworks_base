@@ -121,7 +121,7 @@ public class ScrimController implements ViewTreeObserver.OnPreDrawListener, OnCo
 
     protected float mScrimBehindAlpha;
     protected float mScrimBehindAlphaResValue;
-    protected float mScrimBehindAlphaKeyguard = SCRIM_BEHIND_ALPHA_KEYGUARD;
+    protected float mScrimBehindAlphaKeyguard = VISIBILITY_FULLY_TRANSPARENT;
 
     // Assuming the shade is expanded during initialization
     private float mExpansionFraction = 1f;
