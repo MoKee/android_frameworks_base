@@ -266,7 +266,7 @@ public class BatteryMeterView extends LinearLayout implements
         final boolean showing = mBatteryPercentView != null;
         final boolean systemSetting = 0 != Settings.System
                 .getIntForUser(getContext().getContentResolver(),
-                SHOW_BATTERY_PERCENT, 0, mUser);
+                SHOW_BATTERY_PERCENT, 1, mUser);
 
         if ((mShowPercentAvailable && systemSetting) || mForceShowPercent) {
             if (!showing) {
