@@ -55,8 +55,8 @@
     <string name="app_ops_draw_on_top">déplacer au dessus</string>
     <string name="app_ops_get_accounts">obtenir les comptes de l\'appareil</string>
     <string name="app_ops_get_usage_stats">obtenir les statistiques d\'utilisation de l\'application</string>
-    <string name="app_ops_install_packages">installer des paquets</string>
-    <string name="app_ops_keep_device_awake">garder votre appareil allumé</string>
+    <string name="app_ops_install_packages">installer les Paquets</string>
+    <string name="app_ops_keep_device_awake">maintenir votre appareil allumé</string>
     <string name="app_ops_make_phone_call">passer un appel téléphonique</string>
     <string name="app_ops_mock_location">simuler votre position</string>
     <string name="app_ops_modify_calendar">mettre à jour votre agenda</string>
