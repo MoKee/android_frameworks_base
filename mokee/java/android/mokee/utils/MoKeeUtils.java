@@ -34,7 +34,7 @@ public class MoKeeUtils {
             if (excludeSAR) {
                 return locale.getCountry().equals("CN");
             } else {
-                return true;
+                return !locale.getCountry().equals("SG");
             }
         } else {
             return false;
