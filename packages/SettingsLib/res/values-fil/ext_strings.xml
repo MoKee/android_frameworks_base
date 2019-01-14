@@ -4,6 +4,7 @@
 /*
 **
 ** Copyright 2016 The CyanogenMod Project
+** Copyright 2016-2019 The MoKee Open Source Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -20,5 +21,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Description for the screen zoom level that makes interface elements smaller. [CHAR LIMIT=24] -->
+    <string name="screen_zoom_summary_smaller">Napakaliit</string>
     <!-- Description for the screen zoom level that makes interface elements smallest. [CHAR LIMIT=24] -->
+    <string name="screen_zoom_summary_smallest">Sobrang liit</string>
 </resources>
