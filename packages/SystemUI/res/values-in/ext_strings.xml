@@ -88,9 +88,9 @@
     <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
     <string name="global_action_restart_progress">Memulai ulang\u2026</string>
     <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
-    <string name="global_action_restart_recovery_progress">Memulai ulang ke mode recovery</string>
+    <string name="global_action_restart_recovery_progress">Mulai ulang ke mode pemulihan\u2026</string>
     <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
-    <string name="global_action_restart_bootloader_progress">Memulai ulang ke mode bootloader</string>
+    <string name="global_action_restart_bootloader_progress">Mulai ulang ke mode bootloader\u2026</string>
     <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
     <string name="global_action_restart_download_progress">Memulai ulang ke mode download</string>
     <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
@@ -127,7 +127,7 @@
     <!-- SysUI Tuner: Button that controls inversion of layout of navigation bar [CHAR LIMIT=60] -->
     <string name="nav_bar_layout_inverse">Balikkan tata letak tombol</string>
     <!-- Reader mode QS tile -->
-    <string name="quick_settings_reading_mode">Modus membaca</string>
+    <string name="quick_settings_reading_mode">Mode baca</string>
     <!-- Content description of the reader mode tile when on -->
     <string name="accessibility_quick_settings_reading_mode_on">Modus membaca hidup.</string>
     <!-- Content description of the reader mode tile when off -->

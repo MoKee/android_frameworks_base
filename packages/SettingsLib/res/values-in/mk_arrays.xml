@@ -20,9 +20,9 @@
     <string-array name="mk_window_animation_scale_entries">
         <item>Animasi mati</item>
         <item>Skala animasi 0,5x</item>
-        <item>Skala animasi .75x</item>
+        <item>Skala animasi 0,75x</item>
         <item>Skala animasi 1x</item>
-        <item>Skala animasi 1.5x</item>
+        <item>Skala animasi 1,5x</item>
         <item>Skala animasi 2x</item>
         <item>Skala animasi 5x</item>
         <item>Skala animasi 10x</item>
@@ -32,9 +32,9 @@
     <string-array name="mk_transition_animation_scale_entries">
         <item>Animasi mati</item>
         <item>Skala animasi 0,5x</item>
-        <item>Skala animasi .75x</item>
+        <item>Skala animasi 0,75x</item>
         <item>Skala animasi 1x</item>
-        <item>Skala animasi 1.5x</item>
+        <item>Skala animasi 1,5x</item>
         <item>Skala animasi 2x</item>
         <item>Skala animasi 5x</item>
         <item>Skala animasi 10x</item>
