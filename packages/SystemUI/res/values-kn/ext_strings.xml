@@ -32,8 +32,11 @@
     <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
     <string name="global_action_restart_progress">ಮರುಪ್ರಾರಂಭಗೊಳ್ಳುತ್ತಿದೆ\u2026</string>
     <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_recovery_progress">ಮರುಸಂಗ್ರಹಣೆ ಮಾದರಿಯಲ್ಲಿ ಮರುಪ್ರಾರಂಭಿಸಲಾಗುತ್ತಿದೆ\u2026</string>
     <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_bootloader_progress">ಬೂಟ್ ಲೋಡರ್ ಮಾದರಿಯಲ್ಲಿ ಮರುಪ್ರಾರಂಭಿಸಲಾಗುತ್ತಿದೆ\u2026</string>
     <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_download_progress">ಡೌನ್ಲೋಡ್ ಮಾದರಿಯಲ್ಲಿ ಮರುಪ್ರಾರಂಭಿಸಲಾಗುತ್ತಿದೆ\u2026</string>
     <!-- Label for current user in power menu options dialog -->
     <string name="global_action_current_user">ಪ್ರಸ್ತುತವಿರುವುದು</string>
     <!-- Custom QS tiles -->
@@ -56,6 +59,11 @@
     <string name="accessibility_quick_settings_heads_up_changed_off">ಹೆಡ್ಸ್ ಅಪ್ ಆಫ್ ಆಗಿದೆ.</string>
     <string name="accessibility_quick_settings_heads_up_changed_on">ಹೆಡ್ಸ್ ಅಪ್ ಆನ್ ಆಗಿದೆ.</string>
     <!-- Reader mode QS tile -->
+    <string name="quick_settings_reading_mode">ಓದುವ ಮಾದರಿ</string>
+    <string name="accessibility_quick_settings_reading_mode_on">ಓದುವ ಮಾದರಿ ಆರಂಭಿಸು. </string>
+    <string name="accessibility_quick_settings_reading_mode_off">ಓದುವ ಮಾದರಿ ಆರಿಸು.</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_on">ಓದುವ ಮಾದರಿ ಆರಂಭಿಸಿದೆ.</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_off">ಓದುವ ಮಾದರಿ ಆರಿಸಲಾಗಿದೆ.</string>
     <!-- Sync QS tile -->
     <string name="quick_settings_sync_label">ಸಿಂಕ್</string>
     <string name="accessibility_quick_settings_sync_off">ಸಿಂಕ್ ಆಫ್.</string>
@@ -70,6 +78,7 @@
     <string name="accessibility_dpad_left">ಕರ್ಸರ್ ಎಡ</string>
     <string name="accessibility_dpad_right">ಕರ್ಸರ್ ಬಲ</string>
     <!-- Screen pinning dialog description. (for devices without navbar) -->
+    <string name="screen_pinning_description_no_navbar">ಇದನ್ನು ನೀವು ಪಿನ್ ತೆಗೆಯುವವರೆಗೂ ವೀಕ್ಷಣೆಯಲ್ಲಿಡುತ್ತದೆ. ಸ್ಪರ್ಶಿಸಿ &amp; ಪಿನ್ ತೆಗೆಯಲು ಹಿಂದೆ ಒತ್ತಿಹಿಡಿಯಿರಿ.</string>
     <!-- Notify use that they are in Lock-to-app (for devices without navbar)-->
     <!-- Button that controls inversion of layout of navigation bar -->
 </resources>
