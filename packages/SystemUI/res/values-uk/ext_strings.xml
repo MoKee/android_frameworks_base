@@ -57,6 +57,11 @@
     <string name="accessibility_quick_settings_heads_up_changed_off">Спливаючі сповіщення вимкнено.</string>
     <string name="accessibility_quick_settings_heads_up_changed_on">Спливаючі сповіщення увімкнено.</string>
     <!-- Reader mode QS tile -->
+    <string name="quick_settings_reading_mode">Режим читання</string>
+    <string name="accessibility_quick_settings_reading_mode_on">Режим читання увімкнено.</string>
+    <string name="accessibility_quick_settings_reading_mode_off">Режим читання вимкнуто.</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_on">Режим читання активоване.</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_off">Режим читання деактивовано.</string>
     <!-- Sync QS tile -->
     <string name="quick_settings_sync_label">Синхронізація</string>
     <string name="accessibility_quick_settings_sync_off">Синхронізацію вимкнено.</string>
