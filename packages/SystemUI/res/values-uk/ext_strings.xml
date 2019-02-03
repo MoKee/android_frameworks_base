@@ -34,7 +34,9 @@
     <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
     <string name="global_action_restart_recovery_progress">Перехід в режим відновлення\u2026</string>
     <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_bootloader_progress">Перезавантажити в режим завантажувача\u2026</string>
     <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_download_progress">Перехід в режим оновлення ПЗ\u2026</string>
     <!-- Label for current user in power menu options dialog -->
     <string name="global_action_current_user">Поточний</string>
     <!-- Custom QS tiles -->

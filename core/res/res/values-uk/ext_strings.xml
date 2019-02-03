@@ -54,6 +54,7 @@
     <string name="app_ops_modify_contacts">змінювати дані контактів</string>
     <string name="app_ops_modify_settings">змінювати системні налаштування</string>
     <string name="app_ops_mute_unmute_microphone">вимк./увімк. мікрофон</string>
+    <string name="app_ops_phone_calls">відповідати на телефонні виклики</string>
     <string name="app_ops_picture_in_picture">використовувати картинку в картинці</string>
     <string name="app_ops_play_audio">відтворювати аудіо</string>
     <string name="app_ops_post_notification">виводити сповіщення</string>
