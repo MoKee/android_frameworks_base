@@ -4897,7 +4897,7 @@ public class NotificationManagerService extends SystemService {
             return false;
         }
         // Forced on
-        // Used by LineageParts light picker
+        // Used by MKParts light picker
         // eg to allow selecting battery light color when notification led is turned off.
         if (isLedForcedOn(record)) {
             return true;
