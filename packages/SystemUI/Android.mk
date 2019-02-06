@@ -31,6 +31,7 @@ RELATIVE_FINGERPRINT_PATH := ../../core/java/android/hardware/fingerprint
 
 LOCAL_SRC_FILES := \
     $(call all-java-files-under, src) \
+    $(call all-java-files-under, src-mokee) \
     $(call all-Iaidl-files-under, src) \
     $(call all-Iaidl-files-under, $(RELATIVE_FINGERPRINT_PATH))
 
@@ -68,7 +69,7 @@ LOCAL_PRIVILEGED_MODULE := true
 LOCAL_FULL_LIBS_MANIFEST_FILES := $(LOCAL_PATH)/MoKeeManifest.xml
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
-LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res-keyguard $(LOCAL_PATH)/res
+LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res-keyguard $(LOCAL_PATH)/res-mokee $(LOCAL_PATH)/res
 
 ifneq ($(INCREMENTAL_BUILDS),)
     LOCAL_PROGUARD_ENABLED := disabled
