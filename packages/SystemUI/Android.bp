@@ -32,12 +32,15 @@ java_library {
 android_library {
     name: "SystemUI-core",
     srcs: [
+        "src-mokee/**/*.kt",
+        "src-mokee/**/*.java",
         "src/**/*.kt",
         "src/**/*.java",
         "src/**/I*.aidl",
     ],
     resource_dirs: [
         "res-keyguard",
+        "res-mokee",
         "res",
     ],
     static_libs: [
@@ -88,11 +91,14 @@ android_library {
     resource_dirs: [
         "tests/res",
         "res-keyguard",
+        "res-mokee",
         "res",
     ],
     srcs: [
         "tests/src/**/*.kt",
         "tests/src/**/*.java",
+        "src-mokee/**/*.kt",
+        "src-mokee/**/*.java",
         "src/**/*.kt",
         "src/**/*.java",
         "src/**/I*.aidl",

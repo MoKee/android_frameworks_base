@@ -109,7 +109,7 @@
 
     <!-- The default tiles to display in QuickSettings -->
     <string name="quick_settings_tiles_default" translatable="false">
-        wifi,bt,dnd,flashlight,rotation,battery,cell,airplane,cast
+        wifi,bt,dnd,flashlight,rotation,battery,cell,airplane,screenshot
     </string>
 
     <!-- The minimum number of tiles to display in QuickSettings -->
@@ -117,7 +117,7 @@
 
     <!-- Tiles native to System UI. Order should match "quick_settings_tiles_default" -->
     <string name="quick_settings_tiles_stock" translatable="false">
-        wifi,cell,battery,dnd,flashlight,rotation,bt,airplane,nfc,location,hotspot,inversion,saver,dark,work,cast,night,adb_network,ambient_display,caffeine,heads_up,livedisplay,reading_mode,sync,usb_tether,volume_panel
+        wifi,cell,battery,dnd,flashlight,screenshot,rotation,bt,airplane,nfc,location,hotspot,inversion,saver,dark,work,cast,night,adb_network,ambient_display,caffeine,heads_up,livedisplay,reading_mode,sync,usb_tether,volume_panel
     </string>
 
     <!-- The tiles to display in QuickSettings -->
@@ -125,7 +125,7 @@
 
     <!-- The tiles to display in QuickSettings in retail mode -->
     <string name="quick_settings_tiles_retail_mode" translatable="false">
-        cell,battery,dnd,flashlight,rotation,location
+        cell,battery,dnd,flashlight,rotation,screenshot
     </string>
 
     <!-- Whether or not the RSSI tile is capitalized or not. -->
