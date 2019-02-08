@@ -16,5 +16,5 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Screenshot QS Tile -->
-    <string name="quick_settings_screenshot_label">屏幕截图</string>
+    <string name="quick_settings_screenshot_label">Captura de tela</string>
 </resources>
