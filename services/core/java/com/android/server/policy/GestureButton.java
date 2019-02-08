@@ -30,7 +30,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
 import android.os.UserHandle;
-import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.util.Slog;
 import android.view.HapticFeedbackConstants;
@@ -81,7 +80,7 @@ public class GestureButton implements PointerEventListener {
     private int mSwipeTriggerTimeout;
     private Context mContext;
 
-    private static final String LAUNCHER_PACKAGE = "com.android.launcher3";
+    private static final String LAUNCHER_PACKAGE = "ch.deletescape.lawnchair.ci";
     private static final String SYSTEMUI_PACKAGE = "com.android.systemui";
 
     private class GestureButtonHandler extends Handler {
