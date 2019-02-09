@@ -387,11 +387,11 @@ public class GestureButton implements PointerEventListener {
 
     void updateSettings() {
         mSwipeTriggerTimeout = MKSettings.System.getIntForUser(mContext.getContentResolver(),
-                MKSettings.System.BOTTOM_GESTURE_TRIGGER_TIMEOUT,
+                MKSettings.System.BOTTOM_GESTURE_NAVIGATION_TRIGGER_TIMEOUT,
                 mContext.getResources().getInteger(R.integer.nav_gesture_swipe_timout),
                 UserHandle.USER_CURRENT);
         mSwipeMinLength = MKSettings.System.getIntForUser(mContext.getContentResolver(),
-                MKSettings.System.BOTTOM_GESTURE_SWIPE_LIMIT,
+                MKSettings.System.BOTTOM_GESTURE_NAVIGATION_SWIPE_LIMIT,
                 getSwipeLengthInPixel(mContext.getResources().getInteger(R.integer.nav_gesture_swipe_min_length)),
                 UserHandle.USER_CURRENT);
         if (DEBUG) Slog.i(TAG, "updateSettings mSwipeTriggerTimeout = " + mSwipeTriggerTimeout + " mSwipeMinLength = " + mSwipeMinLength);

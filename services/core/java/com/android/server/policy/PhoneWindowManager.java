@@ -1139,10 +1139,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     MKSettings.System.USE_BOTTOM_GESTURE_NAVIGATION), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.BOTTOM_GESTURE_TRIGGER_TIMEOUT), false, this,
+                    MKSettings.System.BOTTOM_GESTURE_NAVIGATION_TRIGGER_TIMEOUT), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.BOTTOM_GESTURE_SWIPE_LIMIT), false, this,
+                    MKSettings.System.BOTTOM_GESTURE_NAVIGATION_SWIPE_LIMIT), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(MKSettings.System.getUriFor(
                     MKSettings.System.FORCE_SHOW_NAVBAR), false, this,
