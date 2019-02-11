@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2007 The Android Open Source Project
+ * Copyright (C) 2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -690,6 +691,7 @@ public final class PowerManagerService extends SystemService
     private android.os.PowerManager.WakeLock mProximityWakeLock;
 
     private boolean mForceNavbar;
+    private boolean mUseGestureButton;
 
     public PowerManagerService(Context context) {
         super(context);
@@ -901,6 +903,9 @@ public final class PowerManagerService extends SystemService
         resolver.registerContentObserver(MKSettings.System.getUriFor(
                 MKSettings.System.FORCE_SHOW_NAVBAR),
                 false, mSettingsObserver, UserHandle.USER_ALL);
+        resolver.registerContentObserver(MKSettings.System.getUriFor(
+                MKSettings.System.USE_BOTTOM_GESTURE_NAVIGATION),
+                false, mSettingsObserver, UserHandle.USER_ALL);
 
         IVrManager vrManager = (IVrManager) getBinderService(Context.VR_SERVICE);
         if (vrManager != null) {
@@ -1043,6 +1048,10 @@ public final class PowerManagerService extends SystemService
 
         mForceNavbar = MKSettings.System.getIntForUser(resolver,
                 MKSettings.System.FORCE_SHOW_NAVBAR,
+                0, UserHandle.USER_CURRENT) == 1;
+
+        mUseGestureButton = MKSettings.System.getIntForUser(resolver,
+                MKSettings.System.USE_BOTTOM_GESTURE_NAVIGATION,
                 0, UserHandle.USER_CURRENT) == 1;
 
         mProximityWakeEnabled = MKSettings.System.getInt(resolver,
@@ -2077,7 +2086,7 @@ public final class PowerManagerService extends SystemService
                             if (mButtonBrightnessOverrideFromWindowManager >= 0) {
                                 buttonBrightness = mButtonBrightnessOverrideFromWindowManager;
                             } else {
-                                buttonBrightness = !mForceNavbar ? mButtonBrightness : 0;
+                                buttonBrightness = !mForceNavbar && !mUseGestureButton ? mButtonBrightness : 0;
                             }
 
                             mLastButtonActivityTime = mButtonLightOnKeypressOnly ?

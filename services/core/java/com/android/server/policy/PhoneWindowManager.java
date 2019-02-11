@@ -945,7 +945,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private int mTorchTimeout;
     private PendingIntent mTorchOffPendingIntent;
 
-    private boolean mUseGestureButton;
+    private int mUseGestureButton = 0;
     private GestureButton mGestureButton;
     private boolean mGestureButtonRegistered;
 
@@ -2895,16 +2895,26 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 updateWakeGestureListenerLp();
             }
 
+
+            int useGestureButton = MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.USE_BOTTOM_GESTURE_NAVIGATION, 0,
+                    UserHandle.USER_CURRENT);
+
             int forceNavbar = MKSettings.System.getIntForUser(resolver,
                     MKSettings.System.FORCE_SHOW_NAVBAR, 0,
                     UserHandle.USER_CURRENT);
-            if (forceNavbar != mForceNavbar) {
-                mForceNavbar = forceNavbar;
+            if (forceNavbar != mForceNavbar || useGestureButton != mUseGestureButton) {
+                mForceNavbar = !isGestureButtonEnabled() ? forceNavbar : 0;
+                mUseGestureButton = useGestureButton;
                 if (mMKHardware.isSupported(MKHardwareManager.FEATURE_KEY_DISABLE)) {
-                    mMKHardware.set(MKHardwareManager.FEATURE_KEY_DISABLE,
-                            mForceNavbar == 1);
+                    if (isGestureButtonEnabled()) {
+                        mMKHardware.set(MKHardwareManager.FEATURE_KEY_DISABLE, true);
+                    } else {
+                        mMKHardware.set(MKHardwareManager.FEATURE_KEY_DISABLE,
+                                mForceNavbar == 1);
+                    }
                 }
-                mHasNavigationBar = mNeedsNavigationBar || mForceNavbar == 1;
+                mHasNavigationBar = mNeedsNavigationBar && !isGestureButtonEnabled() || mForceNavbar == 1;
             }
 
             updateKeyAssignments();
@@ -2952,9 +2962,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             if (mImmersiveModeConfirmation != null) {
                 mImmersiveModeConfirmation.loadSetting(mCurrentUserId);
             }
-            mUseGestureButton = MKSettings.System.getIntForUser(resolver,
-                    MKSettings.System.USE_BOTTOM_GESTURE_NAVIGATION, 0,
-                    UserHandle.USER_CURRENT) != 0;
         }
         synchronized (mWindowManagerFuncs.getWindowManagerLock()) {
             WindowManagerPolicyControl.reloadFromSetting(mContext);
@@ -2963,16 +2970,16 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             updateRotation(true);
         }
 
-        if (mUseGestureButton && !mGestureButtonRegistered) {
+        if (isGestureButtonEnabled() && !mGestureButtonRegistered) {
             mGestureButton = new GestureButton(mContext, this);
             mWindowManagerFuncs.registerPointerEventListener(mGestureButton);
             mGestureButtonRegistered = true;
         }
-        if (mGestureButtonRegistered && !mUseGestureButton) {
+        if (mGestureButtonRegistered && !isGestureButtonEnabled()) {
             mWindowManagerFuncs.unregisterPointerEventListener(mGestureButton);
             mGestureButtonRegistered = false;
         }
-        if (mUseGestureButton && mGestureButton != null) {
+        if (isGestureButtonEnabled() && mGestureButton != null) {
             mGestureButton.updateSettings();
         }
     }
@@ -5299,7 +5306,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 updateSystemUiVisibilityLw();
             }
 
-            if (!mHasNavigationBar && mUseGestureButton && mGestureButton != null) {
+            if (!mHasNavigationBar && isGestureButtonEnabled() && mGestureButton != null) {
                 mGestureButton.navigationBarPosition(displayWidth, displayHeight, displayRotation);
             }
         }
@@ -9913,7 +9920,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     @Override
     public boolean isGestureButtonRegion(int x, int y) {
-        if (!mUseGestureButton || mGestureButton == null) {
+        if (!isGestureButtonEnabled() || mGestureButton == null) {
             return false;
         }
         return mGestureButton.isGestureButtonRegion(x, y);
@@ -9921,6 +9928,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     @Override
     public boolean isGestureButtonEnabled() {
-        return mUseGestureButton;
+        return mUseGestureButton == 1;
     }
 }

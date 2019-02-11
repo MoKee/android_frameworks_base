@@ -289,6 +289,8 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             "mksecure:" + MKSettings.Secure.LOCKSCREEN_MEDIA_METADATA;
     public static final String FORCE_SHOW_NAVBAR =
             "mksystem:" + MKSettings.System.FORCE_SHOW_NAVBAR;
+    public static final String USE_BOTTOM_GESTURE_NAVIGATION =
+            "mksystem:" + MKSettings.System.USE_BOTTOM_GESTURE_NAVIGATION;
     public static final String BERRY_GLOBAL_STYLE =
             "mksystem:" + MKSettings.System.BERRY_GLOBAL_STYLE;
 
@@ -719,6 +721,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         tunerService.addTunable(this, STATUS_BAR_BRIGHTNESS_CONTROL);
         tunerService.addTunable(this, LOCKSCREEN_MEDIA_METADATA);
         tunerService.addTunable(this, FORCE_SHOW_NAVBAR);
+        tunerService.addTunable(this, USE_BOTTOM_GESTURE_NAVIGATION);
         tunerService.addTunable(this, BERRY_GLOBAL_STYLE);
 
         mDisplayManager = mContext.getSystemService(DisplayManager.class);
@@ -974,7 +977,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         }
 
         try {
-            boolean showNav = mWindowManagerService.hasNavigationBar();
+            boolean showNav = mWindowManagerService.hasNavigationBar() && !isGestureButtonEnabled();
             if (DEBUG) Log.v(TAG, "hasNavigationBar=" + showNav);
             if (showNav) {
                 createNavigationBar();
@@ -2227,6 +2230,12 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         return MKSettings.System.getString(mContext.getContentResolver(),
                 MKSettings.System.BERRY_DARK_OVERLAY,
                 StyleInterface.OVERLAY_DARK_DEFAULT);
+    }
+
+    private boolean isGestureButtonEnabled() {
+        return MKSettings.System.getIntForUser(mContext.getContentResolver(),
+                MKSettings.System.USE_BOTTOM_GESTURE_NAVIGATION, 0,
+                UserHandle.USER_CURRENT) == 1;
     }
 
     @Nullable
@@ -5920,7 +5929,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         } else if (mWindowManagerService != null && FORCE_SHOW_NAVBAR.equals(key)) {
             boolean forcedVisibility = newValue != null && Integer.parseInt(newValue) == 1;
 
-            if (forcedVisibility && mNavigationBarView == null) {
+            if (forcedVisibility && mNavigationBarView == null && !isGestureButtonEnabled()) {
                 createNavigationBar();
             } else if (mNavigationBarView != null) {
                 FragmentHostManager fm = FragmentHostManager.get(mNavigationBarView);
@@ -5928,6 +5937,24 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
                 mNavigationBarView = null;
                 fm.getFragmentManager().beginTransaction().remove(mNavigationBar).commit();
                 mNavigationBar = null;
+            }
+        } else if (mWindowManagerService != null && USE_BOTTOM_GESTURE_NAVIGATION.equals(key)) {
+            boolean useGestureButton = newValue != null && Integer.parseInt(newValue) == 1;
+
+            if (useGestureButton && mNavigationBarView != null) {
+                FragmentHostManager fm = FragmentHostManager.get(mNavigationBarView);
+                mWindowManager.removeViewImmediate(mNavigationBarView);
+                mNavigationBarView = null;
+                fm.getFragmentManager().beginTransaction().remove(mNavigationBar).commit();
+                mNavigationBar = null;
+            } else if (!useGestureButton && mNavigationBarView == null) {
+                try {
+                    if (mWindowManagerService.hasNavigationBar()) {
+                        createNavigationBar();
+                    }
+                } catch (RemoteException ex) {
+                    // no window manager? good luck with that
+                }
             }
         } else if (BERRY_GLOBAL_STYLE.equals(key)) {
             updateTheme();
