@@ -90,7 +90,9 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := fonts.xml
 LOCAL_MODULE_CLASS := ETC
 
-ifneq ($(USE_REDUCED_CJK_FONT_WEIGHTS),true)
+ifneq ($(filter true,$(EXCLUDE_SERIF_FONTS) $(SMALLER_FONT_FOOTPRINT)),)
+AOSP_FONTS_FILE := frameworks/base/data/fonts/fonts_no_serif.xml
+else ifneq ($(USE_REDUCED_CJK_FONT_WEIGHTS),true)
 AOSP_FONTS_FILE := frameworks/base/data/fonts/fonts_full_cjk.xml
 else
 AOSP_FONTS_FILE := frameworks/base/data/fonts/fonts.xml
