@@ -5948,12 +5948,8 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
                 fm.getFragmentManager().beginTransaction().remove(mNavigationBar).commit();
                 mNavigationBar = null;
             } else if (!useGestureButton && mNavigationBarView == null) {
-                try {
-                    if (mWindowManagerService.hasNavigationBar()) {
-                        createNavigationBar();
-                    }
-                } catch (RemoteException ex) {
-                    // no window manager? good luck with that
+                if (deviceHasNavigationBarForUser(mContext)) {
+                    createNavigationBar();
                 }
             }
         } else if (BERRY_GLOBAL_STYLE.equals(key)) {
@@ -5996,4 +5992,21 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
                     saveImportance.run();
                 }
             };
+
+    private boolean deviceHasNavigationBarForUser(Context context) {
+        boolean hasNavigationBar = context.getResources().getBoolean(com.android.internal.R.bool.config_showNavigationBar);
+        // Allow a system property to override this. Used by the emulator.
+        // See also hasNavigationBar().
+
+        String navBarOverride = SystemProperties.get("qemu.hw.mainkeys");
+        if ("1".equals(navBarOverride)) {
+            hasNavigationBar = false;
+        } else if ("0".equals(navBarOverride)) {
+            hasNavigationBar = true;
+        }
+
+        int forceNavbar = MKSettings.System.getIntForUser(context.getContentResolver(),
+                MKSettings.System.FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT);
+        return hasNavigationBar |= forceNavbar == 1;
+    }
 }
