@@ -22,15 +22,21 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Advanced restart menu -->
     <!-- Button to restart the device, within the Restart Options dialog -->
+    <string name="global_action_restart_system">प्रणाली</string>
     <!-- Button to restart the device into recovery mode, within the Restart Options dialog -->
     <string name="global_action_restart_recovery">रिकवरी</string>
     <!-- Button to restart the device into bootloader mode, within the Restart Options dialog -->
     <string name="global_action_restart_bootloader">बूटलोडर</string>
     <!-- Button to restart the device into download mode, within the Restart Options dialog -->
+    <string name="global_action_restart_download">डाउनलोड करें</string>
     <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_progress">फिर से शुरू हो रहा है\u2026</string>
     <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_recovery_progress">रिकवरी मोड\u2026 के लिए फोन को पुनः प्रारम्भ कर रहा है</string>
     <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_bootloader_progress">बूटलोडर मोड\u2026 के लिए फोन को पुनः प्रारम्भ कर रहा है</string>
     <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_download_progress">डाउनलोड मोड\u2026 के लिए फोन को पुनः प्रारम्भ कर रहा है</string>
     <!-- Label for current user in power menu options dialog -->
     <string name="global_action_current_user">वर्तमान</string>
     <!-- Custom QS tiles -->
@@ -43,6 +49,9 @@
     <string name="accessibility_quick_settings_ambient_display_changed_off">परिवेशी प्रदर्शन को बंद किया गया है।</string>
     <string name="accessibility_quick_settings_ambient_display_changed_on">परिवेशी प्रदर्शन को चालू किया गया।</string>
     <!-- Caffeine QS tile -->
+    <string name="quick_settings_caffeine_label">कैफीन</string>
+    <string name="accessibility_quick_settings_caffeine_off">कैफीन बंद</string>
+    <string name="accessibility_quick_settings_caffeine_on">कैफीन चालू</string>
     <!-- Heads up QS tile -->
     <string name="quick_settings_heads_up_label">हेड्स अप।</string>
     <string name="accessibility_quick_settings_heads_up_off">हेड्स अप बंद है।</string>
@@ -50,6 +59,11 @@
     <string name="accessibility_quick_settings_heads_up_changed_off">हेड्स अप को बंद किया गया है।</string>
     <string name="accessibility_quick_settings_heads_up_changed_on">हेड्स अप को चालू किया गया।</string>
     <!-- Reader mode QS tile -->
+    <string name="quick_settings_reading_mode">पठन मोड</string>
+    <string name="accessibility_quick_settings_reading_mode_on">पठन मोड चालू।</string>
+    <string name="accessibility_quick_settings_reading_mode_off">पठन मोड बंद।</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_on">पठन मोड चालू है।</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_off">पठन मोड बंद है।</string>
     <!-- Sync QS tile -->
     <string name="quick_settings_sync_label">संकालन</string>
     <string name="accessibility_quick_settings_sync_off">संकालन बंद है।</string>
@@ -59,10 +73,12 @@
     <!-- USB tethering QS tile -->
     <string name="quick_settings_usb_tether_label">यूएसबी टेदरिंग</string>
     <!-- Volume panel QS tile -->
+    <string name="quick_settings_volume_panel_label">ध्वनि पट</string>
     <!-- Navigation bar dpad -->
     <string name="accessibility_dpad_left">कर्सर बायाँ</string>
     <string name="accessibility_dpad_right">कर्सर दायाँ</string>
     <!-- Screen pinning dialog description. (for devices without navbar) -->
+    <string name="screen_pinning_description_no_navbar">यह इसे तब तक दिखाता रहेगा जब तक आप अनपिन नहीं करते। अनपिन करने के लिए बैक बटन को कुछ देर दबाएँ &amp; रखें।</string>
     <!-- Notify use that they are in Lock-to-app (for devices without navbar)-->
     <!-- Button that controls inversion of layout of navigation bar -->
 </resources>
