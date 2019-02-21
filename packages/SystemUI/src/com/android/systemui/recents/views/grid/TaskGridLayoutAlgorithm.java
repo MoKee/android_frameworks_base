@@ -220,8 +220,6 @@ public class TaskGridLayoutAlgorithm  {
         // We always set the alpha of the view outline to 1, to make sure the shadow is visible.
         float viewOutlineAlpha = 1f;
 
-        // We also need to invert the index in order to display the most recent tasks first.
-
         // Fill out the transform
         transformOut.scale = 1f;
         transformOut.alpha = isTaskViewVisible ? 1f : 0f;
