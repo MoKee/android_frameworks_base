@@ -36,6 +36,7 @@
     <string name="app_ops_assist_structure">Unterstützungsstruktur zu verwenden</string>
     <string name="app_ops_audio_accessibility_volume">Bedienungshilfen-Lautstärke</string>
     <string name="app_ops_auto_start">automatisch zu starten</string>
+    <string name="app_ops_bluetooth_scan">bluetooth-Suche</string>
     <string name="app_ops_change_wallpaper">Hintergrundbild zu ändern</string>
     <string name="app_ops_delete_call_log">Ihre Anrufliste zu löschen</string>
     <string name="app_ops_delete_contacts">Ihre Kontakte zu löschen</string>
@@ -76,6 +77,7 @@
     <string name="app_ops_send_mms">eine MMS zu senden</string>
     <string name="app_ops_send_sms">eine SMS zu senden</string>
     <string name="app_ops_start_at_bootup">beim Einschalten zu starten</string>
+    <string name="app_ops_start_foreground">im Vordergrund starten</string>
     <string name="app_ops_su">Root-Zugriff zu erhalten</string>
     <string name="app_ops_toast_window">Toast-Nachrichten anzuzeigen</string>
     <string name="app_ops_toggle_bluetooth">Bluetooth ein-/auszuschalten</string>
