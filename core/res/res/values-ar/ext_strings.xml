@@ -68,7 +68,7 @@
     <string name="app_ops_phone_calls">الرد على المكالمات الهاتفية</string>
     <string name="app_ops_picture_in_picture">استخدام الصورة في الصورة</string>
     <string name="app_ops_play_audio">تشغيل الصوت</string>
-    <string name="app_ops_post_notification">آخر إشعار</string>
+    <string name="app_ops_post_notification">إرسال إشعار</string>
     <string name="app_ops_project_media">وسائط المشروع</string>
     <string name="app_ops_read_calendar">قراءة التقويم الخاص بك</string>
     <string name="app_ops_read_call_log">قراءة سجل المكالمات</string>
