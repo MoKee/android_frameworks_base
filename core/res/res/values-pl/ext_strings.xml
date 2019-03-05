@@ -19,13 +19,9 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- ADB over network notification -->
     <string name="adb_net_active_notification_title">ADB przez sieć włączone</string>
-    <!-- ADB over USB and network notification -->
     <string name="adb_both_active_notification_title">ADB przez USB &amp; sieć włączone</string>
-    <!-- ADB notification message-->
     <string name="adb_active_generic_notification_message">Dotknij, aby wyłączyć debugowanie.</string>
-    <!-- App ops requests -->
     <string name="app_ops_access_camera">dostęp do kamery</string>
     <string name="app_ops_access_location">dostęp do lokalizacji</string>
     <string name="app_ops_access_notifications">czytanie powiadomień</string>
@@ -107,13 +103,11 @@
     <string name="app_ops_write_external_storage">zapis pamięci zewnętrznej</string>
     <string name="app_ops_write_mms">pisanie MMS-ów</string>
     <string name="app_ops_write_sms">pisanie SMS-ów</string>
-    <!-- Privacy Guard -->
     <string name="permlab_changePrivacyGuardState">włącz/wyłącz Ochronę Prywatności</string>
     <string name="permdesc_changePrivacyGuardState">Pozwala aplikacji decydować, kiedy inna aplikacja zostanie uruchomiona w trybie ochrony prywatności. W trybie tym aplikacje nie mają dostępu do osobistych danych użytkownika, takich jak kontakty, historia połączeń czy wiadomości.</string>
     <string name="privacy_guard_notification">Ochrona prywatności aktywna</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> nie będzie mieć dostępu do osobistych danych</string>
     <string name="privacy_guard_dialog_title">Ochrona prywatności</string>
     <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> czy chciałbyś <xliff:g id="op">%2$s</xliff:g>.</string>
-    <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
     <string name="permission_remember_choice">Zapamiętaj mój wybór</string>
 </resources>

@@ -19,13 +19,9 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- ADB over network notification -->
     <string name="adb_net_active_notification_title">Didayakan melalui rangkaian ADB</string>
-    <!-- ADB over USB and network notification -->
     <string name="adb_both_active_notification_title">Rangkaian ADB melalui USD &amp; Didayakan</string>
-    <!-- ADB notification message-->
     <string name="adb_active_generic_notification_message">Sentuh untuk melumpuhkan debugging.</string>
-    <!-- App ops requests -->
     <string name="app_ops_access_camera">mengakses kamera</string>
     <string name="app_ops_access_location">mengakses lokasi anda</string>
     <string name="app_ops_access_notifications">baca pemberitahuan anda</string>
@@ -72,13 +68,11 @@
     <string name="app_ops_use_voice_volume">mengawal kelantangan suara panggilan</string>
     <string name="app_ops_write_mms">tulis mesej MMS</string>
     <string name="app_ops_write_sms">menulis mesej SMS</string>
-    <!-- Privacy Guard -->
     <string name="permlab_changePrivacyGuardState">membolehkan atau melumpuhkan Pengawal Privasi</string>
     <string name="permdesc_changePrivacyGuardState">Membenarkan aplikasi untuk menukar sama ada aplikasi lain berjalan dengan Guard Peribadi apabila aplikasi sedang berjalan dengan pengawal peribadi, ia tidak akan mempunyai akses kepada data peribadi seperti kenalan, log panggilan, atau mesej.</string>
     <string name="privacy_guard_notification">Aktif pengawal privasi</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> tidak boleh dapay mengakseskan data peribadi</string>
     <string name="privacy_guard_dialog_title">Pengawal privasi</string>
     <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> berminat untuk <xliff:g id="op">%2$s</xliff:g>.</string>
-    <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
     <string name="permission_remember_choice">Ingat pilihan saya</string>
 </resources>

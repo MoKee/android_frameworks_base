@@ -19,13 +19,9 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- ADB over network notification -->
     <string name="adb_net_active_notification_title">ADB sobre red activado</string>
-    <!-- ADB over USB and network notification -->
     <string name="adb_both_active_notification_title">ADB sobre USB y red activado</string>
-    <!-- ADB notification message-->
     <string name="adb_active_generic_notification_message">Pulsa para desactivar la depuración.</string>
-    <!-- App ops requests -->
     <string name="app_ops_access_camera">acceder a la cámara</string>
     <string name="app_ops_access_location">acceder a la ubicación</string>
     <string name="app_ops_access_notifications">leer notificaciones</string>
@@ -36,6 +32,7 @@
     <string name="app_ops_assist_structure">utilizar estructura de asistencia</string>
     <string name="app_ops_audio_accessibility_volume">volumen de accesibilidad del audio</string>
     <string name="app_ops_auto_start">ejecutarse al inicio</string>
+    <string name="app_ops_bluetooth_scan">escaneo bluetooth</string>
     <string name="app_ops_change_wallpaper">cambiar el fondo de pantalla</string>
     <string name="app_ops_delete_call_log">borrar el registro de llamadas</string>
     <string name="app_ops_delete_contacts">borrar contactos</string>
@@ -71,7 +68,9 @@
     <string name="app_ops_read_sms">leer mensajes SMS</string>
     <string name="app_ops_receive_sms">recibir mensaje SMS</string>
     <string name="app_ops_record_audio">grabar audio</string>
+    <string name="app_ops_request_delete_packages">solicitar eliminación de paquetes</string>
     <string name="app_ops_run_in_background">ejecutar en segundo plano</string>
+    <string name="app_ops_run_any_in_background">ejecutar cualquiera en segundo plano</string>
     <string name="app_ops_scan_wifi">buscar redes Wi-Fi</string>
     <string name="app_ops_send_mms">enviar un mensaje MMS</string>
     <string name="app_ops_send_sms">enviar mensaje SMS</string>
@@ -99,13 +98,11 @@
     <string name="app_ops_write_external_storage">escribir en almacenamiento externo</string>
     <string name="app_ops_write_mms">escribir mensaje MMS</string>
     <string name="app_ops_write_sms">escribir mensaje SMS</string>
-    <!-- Privacy Guard -->
     <string name="permlab_changePrivacyGuardState">activar o desactivar «Guardián de privacidad»</string>
     <string name="permdesc_changePrivacyGuardState">Permite que la aplicación modifique si otra aplicación se ejecuta con «Guardián de privacidad». Al ejecutar una aplicación con «Guardián de privacidad», no tendrá acceso a datos personales como contactos, registros de llamadas o mensajes.</string>
     <string name="privacy_guard_notification">Guardián de privacidad activado</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> no podrá acceder a los datos personales</string>
     <string name="privacy_guard_dialog_title">Guardián de privacidad</string>
     <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> quisiera <xliff:g id="op">%2$s</xliff:g>.</string>
-    <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
     <string name="permission_remember_choice">Recordar mi elección</string>
 </resources>

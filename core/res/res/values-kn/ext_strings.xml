@@ -19,13 +19,9 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- ADB over network notification -->
     <string name="adb_net_active_notification_title">ನೆಟ್‍ವರ್ಕ್‍ನಿಂದ ಎಡಿಬಿ ಸಕ್ರಿಯಗೊಂಡಿದೆ</string>
-    <!-- ADB over USB and network notification -->
     <string name="adb_both_active_notification_title">ಯುಎಸ್‍ಬಿಯಿಂದ ಎಡಿಬಿ &amp; ನೆಟ್‍ವರ್ಕ್ ಸಕ್ರಿಯಗೊಂಡಿದೆ</string>
-    <!-- ADB notification message-->
     <string name="adb_active_generic_notification_message">ಡೀಬಗ್ಗಿಂಗ್ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲು ಸ್ಪರ್ಶಿಸಿ.</string>
-    <!-- App ops requests -->
     <string name="app_ops_access_camera">ಕ್ಯಾಮೆರಾ ಪ್ರವೇಶ</string>
     <string name="app_ops_access_location">ನಿಮ್ಮ  ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸುವಿಕೆ</string>
     <string name="app_ops_access_notifications">ನಿಮ್ಮ ಅಧಿಸೂಚನೆಗಳನ್ನು ಓದು</string>
@@ -99,13 +95,11 @@
     <string name="app_ops_write_external_storage">ಬಾಹ್ಯ ಸಂಗ್ರಹವನ್ನು ಬರೆಯಿರಿ</string>
     <string name="app_ops_write_mms">ಎಂಎಂಎಸ್ ಸಂದೇಶ ಬರೆ</string>
     <string name="app_ops_write_sms">ಎಸ್ಎಂಎಸ್ ಸಂದೇಶ ಬರೆ</string>
-    <!-- Privacy Guard -->
     <string name="permlab_changePrivacyGuardState">ಗೌಪ್ಯತಾ ರಕ್ಷಕವನ್ನು ಸಕ್ರಿಯ ಅಥವ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸುವಿಕೆ</string>
     <string name="permdesc_changePrivacyGuardState">ಆಪ್‍ಗೆ ಇತರೆ ಆಪ್ ಗೌಪ್ಯತಾ ರಕ್ಷಕದ ಜೊತೆ  ಚಲಿಸಲು ಅಗುತ್ತದೆಯೆ ಅಥವ ಇಲ್ಲವೇ ಎಂಬುದನ್ನು ಬದಲಾಯಿಸಲು ಅನುಮತಿಸುತ್ತದೆ. ಒಂದು ಆಪ್ Privacy Guard ಜೊತೆ ಚಲಿಸುತ್ತಿದ್ದಲ್ಲಿ, ಅದಕ್ಕೆ ವಯಕ್ತಿಕ ಡೇಟಾವನ್ನು ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಾಗುವಿದಿಲ್ಲ, ಉದಾಹರಣೆಗೆ ಸಂಪರ್ಕಗಳು, ಕರೆ ಲಾಗ್ಸ್, ಅಥವ ಸಂದೇಶಗಳು.</string>
     <string name="privacy_guard_notification">ಗೌಪ್ಯತಾ ರಕ್ಷಕ ಸಕ್ರಿಯ</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g>ಗೆ ಖಾಸಗಿ ಡೇಟಾವನ್ನು ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ</string>
     <string name="privacy_guard_dialog_title">ಗೌಪ್ಯತಾ ರಕ್ಷಕ</string>
     <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> ನೀವು ಹೀಗೆ <xliff:g id="op">%2$s</xliff:g> ಬಯಸುವಿರಾ.</string>
-    <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
     <string name="permission_remember_choice">ನನ್ನ ಆಯ್ಕೆಯನ್ನು ನೆನಪಿಡು</string>
 </resources>
