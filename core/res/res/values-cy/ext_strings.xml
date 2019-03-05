@@ -19,24 +19,17 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- ADB over network notification -->
     <string name="adb_net_active_notification_title">ADB dros rwydwaith wedi ei alluogi</string>
-    <!-- ADB over USB and network notification -->
     <string name="adb_both_active_notification_title">Galluogwyd ADB dros USB a rhwydwaith</string>
-    <!-- ADB notification message-->
     <string name="adb_active_generic_notification_message">Cyffyrdda i analluogi dadfygio.</string>
-    <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
     <string name="lock_to_app_toast_no_navbar">I ddadbinio\'r sgrin, cyffyrdda a dal y botwm Nôl.</string>
-    <!-- Privacy Guard -->
     <string name="permlab_changePrivacyGuardState">galluogi neu analluogi Gwarchodydd Preifatrwydd</string>
     <string name="permdesc_changePrivacyGuardState">Mae\'n caniatáu i\'r ap newid a yw ap arall yn rhedeg gyda Gwarchodydd Preifatrwydd. Pan fydd ap yn rhedeg gyda Gwarchodydd Preifatrwydd, ni fydd ganddo fynediad at ddata personol megis cysylltiadau, cofnodion galwadau, na negeseuon.</string>
     <string name="privacy_guard_notification">Gwarchodydd Preifatrwydd yn weithredol</string>
     <string name="privacy_guard_notification_detail">Ni fydd gan <xliff:g id="app">%1$s</xliff:g> fynediad at ddata personol.</string>
     <string name="privacy_guard_dialog_title">Gwarchodydd Preifatrwydd</string>
     <string name="privacy_guard_dialog_summary">Mae <xliff:g id="app">%1$s</xliff:g> eisiau <xliff:g id="op">%2$s</xliff:g>.</string>
-    <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
     <string name="permission_remember_choice">Cofio fy newis</string>
-    <!-- App ops requests -->
     <string name="app_ops_access_camera">mynediad at dy gamera</string>
     <string name="app_ops_access_location">mynediad at dy leoliad</string>
     <string name="app_ops_access_notifications">darllen dy hysbysiadau</string>

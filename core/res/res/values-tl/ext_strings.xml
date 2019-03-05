@@ -19,24 +19,17 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- ADB over network notification -->
     <string name="adb_net_active_notification_title">Pinagana ang ADB sa network</string>
-    <!-- ADB over USB and network notification -->
     <string name="adb_both_active_notification_title">ADB sa USB &amp; ang network ay pinagana</string>
-    <!-- ADB notification message-->
     <string name="adb_active_generic_notification_message">Pindutin upang i-disable and debugging.</string>
-    <!-- Notify user that they are in Lock-to-app (for devices without navbar) -->
     <string name="lock_to_app_toast_no_navbar">Upang alisin ang screen na ito, pindutin nang matagal ang Back na pindutan.</string>
-    <!-- Privacy Guard -->
     <string name="permlab_changePrivacyGuardState">paganahin o huwag paganahin ang Privacy Guard</string>
     <string name="permdesc_changePrivacyGuardState">Pinapayagan ang app na baguhin kung tumatakbo ang isa pang app gamit ang Privacy Guard. Kapag ang isang app ay tumatakbo sa Privacy Guard, wala itong access sa personal na data tulad ng mga contact, mga tala ng tawag, o mga mensahe.</string>
     <string name="privacy_guard_notification">Aktibo ang Privacy Guard</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> hindi ma-access ang personal na data</string>
     <string name="privacy_guard_dialog_title">Privacy Guard</string>
     <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> nais na <xliff:g id="op">%2$s</xliff:g>.</string>
-    <!-- Text of the checkbox for the permission confirmation dialog to remember the user's choice. [CHAR LIMIT=40] -->
     <string name="permission_remember_choice">Tandaan ang aking pinili</string>
-    <!-- App ops requests -->
     <string name="app_ops_access_camera">i-access ang camera</string>
     <string name="app_ops_access_location">i-access ang iyong lokasyon</string>
     <string name="app_ops_access_notifications">basahin ang iyong mga notipikasyon</string>
