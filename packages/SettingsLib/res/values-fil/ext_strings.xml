@@ -20,6 +20,6 @@
 */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="screen_zoom_summary_smaller">ಚಿಕ್ಕದು</string>
-    <string name="screen_zoom_summary_smallest">ಅತೀ ಚಿಕ್ಕದು</string>
+    <string name="screen_zoom_summary_smaller">Napakaliit</string>
+    <string name="screen_zoom_summary_smallest">Sobrang liit</string>
 </resources>
