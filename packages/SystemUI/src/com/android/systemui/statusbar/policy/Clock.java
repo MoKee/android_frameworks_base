@@ -274,10 +274,13 @@ public class Clock extends TextView implements DemoMode, Tunable, CommandQueue.C
     @Override
     public void onTuningChanged(String key, String newValue) {
         if (CLOCK_SECONDS.equals(key)) {
-            mShowSeconds = newValue != null && Integer.parseInt(newValue) != 0;
+            mShowSeconds = TunerService.parseIntegerSwitch(newValue, false);
             updateShowSeconds();
         } else if (CLOCK_STYLE.equals(key)) {
-            mAmPmStyle = newValue == null ? AM_PM_STYLE_NORMAL : Integer.valueOf(newValue);
+            mAmPmStyle = AM_PM_STYLE_NORMAL;
+            try {
+                mAmPmStyle = Integer.valueOf(newValue);
+            } catch (NumberFormatException ex) {}
             mClockFormatString = ""; // force refresh
             updateClock();
         }
