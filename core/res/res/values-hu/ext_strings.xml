@@ -33,7 +33,7 @@
     <string name="app_ops_audio_accessibility_volume">kisegítő hangerő</string>
     <string name="app_ops_auto_start">bekapcsoláskor elindul</string>
     <string name="app_ops_bind_accessibility_service">kisegítő-szolgáltatáshoz kapcsolás</string>
-    <string name="app_ops_bluetooth_scan">bluetooth keresés</string>
+    <string name="app_ops_bluetooth_scan">bluetooth-keresés</string>
     <string name="app_ops_change_wallpaper">háttérkép módosítása</string>
     <string name="app_ops_delete_call_log">hívásnapló törlése</string>
     <string name="app_ops_delete_contacts">névjegyek törlése</string>
@@ -79,7 +79,7 @@
     <string name="app_ops_send_mms">MMS üzenet küldése</string>
     <string name="app_ops_send_sms">SMS üzenet küldése</string>
     <string name="app_ops_start_at_bootup">bekapcsoláskor elindul</string>
-    <string name="app_ops_start_foreground">előtérben indítás</string>
+    <string name="app_ops_start_foreground">előtérben-indítás</string>
     <string name="app_ops_su">rendszergazdai jogosultság szerzése</string>
     <string name="app_ops_toast_window">buborékszöveg üzenetek megjelenítése</string>
     <string name="app_ops_toggle_bluetooth">Bluetooth kapcsolása</string>

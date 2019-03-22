@@ -58,6 +58,6 @@
     <string name="accessibility_dpad_left">Kurzor balra</string>
     <string name="accessibility_dpad_right">Kurzor jobbra</string>
     <string name="screen_pinning_description_no_navbar">Megjelenítve tartja addig, amíg Ön fel nem oldja a rögzítést. A feloldáshoz érintse meg és tartsa lenyomva a Vissza gombot.</string>
-    <string name="screen_pinning_toast_no_navbar">Képernyő rögzítésének feloldásához érintse meg és tartsa nyomva a Vissza gombot</string>
+    <string name="screen_pinning_toast_no_navbar">A Képernyőrögzítés feloldásához érintse meg és tartsa nyomva a Vissza gombot</string>
     <string name="nav_bar_layout_inverse">Fordított elrendezés</string>
 </resources>
