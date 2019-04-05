@@ -57,7 +57,8 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
 LOCAL_STATIC_JAVA_LIBRARIES := \
     SystemUI-tags \
     SystemUI-proto \
-    org.mokee.platform.internal
+    org.mokee.platform.internal \
+    vendor.mokee.biometrics.fingerprint.inscreen-V1.0-java
 
 LOCAL_JAVA_LIBRARIES := telephony-common \
     android.car \
