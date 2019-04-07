@@ -289,6 +289,7 @@ import com.android.internal.statusbar.IStatusBarService;
 import com.android.internal.util.ArrayUtils;
 import com.android.internal.util.ScreenshotHelper;
 import com.android.internal.util.ScreenShapeHelper;
+import com.android.internal.view.RotationPolicy;
 import com.android.internal.widget.PointerLocationView;
 import com.android.server.GestureLauncherService;
 import com.android.server.LocalServices;
@@ -1135,6 +1136,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.SYSTEM_NAVIGATION_KEYS_ENABLED), false, this,
                     UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.ACCELEROMETER_ROTATION_ANGLES), false, this,
+                    UserHandle.USER_ALL);
             resolver.registerContentObserver(MKSettings.System.getUriFor(
                     MKSettings.System.USE_BOTTOM_GESTURE_NAVIGATION), false, this,
                     UserHandle.USER_ALL);
@@ -1146,9 +1150,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(MKSettings.System.getUriFor(
                     MKSettings.System.FORCE_SHOW_NAVBAR), false, this,
-                    UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.ACCELEROMETER_ROTATION_ANGLES), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(MKSettings.System.getUriFor(
                     MKSettings.System.TORCH_LONG_PRESS_POWER_GESTURE), false, this,
@@ -2937,8 +2938,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 updateOrientationListenerLp();
             }
 
-            mUserRotationAngles = MKSettings.System.getInt(resolver,
-                    MKSettings.System.ACCELEROMETER_ROTATION_ANGLES, -1);
+            mUserRotationAngles = Settings.System.getInt(resolver,
+                    Settings.System.ACCELEROMETER_ROTATION_ANGLES, -1);
 
             if (mSystemReady) {
                 int pointerLocation = Settings.System.getIntForUser(resolver,
@@ -8115,27 +8116,11 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     mAllowAllRotations = mContext.getResources().getBoolean(
                             com.android.internal.R.bool.config_allowAllRotations) ? 1 : 0;
                 }
-                // Rotation setting bitmask (1=0; 2=90; 4=180; 8=270)
                 boolean allowed = true;
-                if (mUserRotationAngles < 0) {
-                    // Not set by user so use these defaults
-                    mUserRotationAngles = mAllowAllRotations == 1 ?
-                            (1 | 2 | 4 | 8) : // All angles
-                                (1 | 2 | 8); // All except 180
-                }
-                switch (sensorRotation) {
-                    case Surface.ROTATION_0:
-                        allowed = (mUserRotationAngles & 1) != 0;
-                        break;
-                    case Surface.ROTATION_90:
-                        allowed = (mUserRotationAngles & 2) != 0;
-                        break;
-                    case Surface.ROTATION_180:
-                        allowed = (mUserRotationAngles & 4) != 0;
-                        break;
-                    case Surface.ROTATION_270:
-                        allowed = (mUserRotationAngles & 8) != 0;
-                        break;
+                if (orientation != ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR
+                        && orientation != ActivityInfo.SCREEN_ORIENTATION_FULL_USER) {
+                    allowed = RotationPolicy.isRotationAllowed(sensorRotation,
+                            mUserRotationAngles, mAllowAllRotations != 0);
                 }
                 if (allowed) {
                     preferredRotation = sensorRotation;
