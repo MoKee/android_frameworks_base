@@ -2754,7 +2754,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         }
 
         mNeedsNavigationBar = mHasNavigationBar;
-        mHasNavigationBar = (mHasNavigationBar |= mForceNavbar == 1) && !isGestureButtonEnabled();
+        mHasNavigationBar |= (mForceNavbar == 1 && !isGestureButtonEnabled());
 
         // For demo purposes, allow the rotation of the HDMI display to be controlled.
         // By default, HDMI locks rotation to landscape.

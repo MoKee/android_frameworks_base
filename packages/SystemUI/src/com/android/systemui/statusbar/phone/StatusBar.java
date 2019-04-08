@@ -988,7 +988,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         }
 
         try {
-            boolean showNav = mWindowManagerService.hasNavigationBar() && !isGestureButtonEnabled();
+            boolean showNav = mWindowManagerService.hasNavigationBar();
             if (DEBUG) Log.v(TAG, "hasNavigationBar=" + showNav);
             if (showNav) {
                 createNavigationBar();
@@ -5938,13 +5938,12 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
                     TunerService.parseIntegerSwitch(newValue, false);
 
             if (forcedVisibility) {
+                if (isGestureButtonEnabled()) {
+                    MKSettings.System.putIntForUser(mContext.getContentResolver(),
+                            MKSettings.System.USE_BOTTOM_GESTURE_NAVIGATION, 0, UserHandle.USER_CURRENT);
+                }
                 if (mNavigationBarView == null) {
-                    if (isGestureButtonEnabled()) {
-                        MKSettings.System.putIntForUser(mContext.getContentResolver(),
-                                MKSettings.System.USE_BOTTOM_GESTURE_NAVIGATION, 0, UserHandle.USER_CURRENT);
-                    } else {
-                        createNavigationBar();
-                    }
+                    createNavigationBar();
                 }
             } else {
                 if (mNavigationBarView != null) {
@@ -5957,21 +5956,25 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             }
         } else if (mWindowManagerService != null && USE_BOTTOM_GESTURE_NAVIGATION.equals(key)) {
             boolean useGestureButton = newValue != null && Integer.parseInt(newValue) == 1;
+            boolean forcedVisibility = mNeedsNavigationBar || isForceShowNavbarEnabled();
 
-            if (useGestureButton && mNavigationBarView != null) {
-                if (forceShowNavbarEnabled()) {
+            if (useGestureButton) {
+                if (isForceShowNavbarEnabled()) {
                     MKSettings.System.putIntForUser(mContext.getContentResolver(),
                             MKSettings.System.FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT);
-                } else {
+                }
+                if (mNavigationBarView != null) {
                     FragmentHostManager fm = FragmentHostManager.get(mNavigationBarView);
                     mWindowManager.removeViewImmediate(mNavigationBarView);
                     mNavigationBarView = null;
                     fm.getFragmentManager().beginTransaction().remove(mNavigationBar).commit();
                     mNavigationBar = null;
                 }
-            } else if (!useGestureButton && mNavigationBarView == null) {
-                if (deviceHasNavigationBarForUser()) {
-                    createNavigationBar();
+            } else {
+                if (forcedVisibility) {
+                    if (mNavigationBarView == null) {
+                        createNavigationBar();
+                    }
                 }
             }
         } else if (BERRY_GLOBAL_STYLE.equals(key)) {
@@ -6021,15 +6024,9 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
                 UserHandle.USER_CURRENT) == 1;
     }
 
-    private boolean forceShowNavbarEnabled() {
+    private boolean isForceShowNavbarEnabled() {
         return MKSettings.System.getIntForUser(mContext.getContentResolver(),
                 MKSettings.System.FORCE_SHOW_NAVBAR, 0,
                 UserHandle.USER_CURRENT) == 1;
-    }
-
-    private boolean deviceHasNavigationBarForUser() {
-        int forceNavbar = MKSettings.System.getIntForUser(mContext.getContentResolver(),
-                MKSettings.System.FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT);
-        return mNeedsNavigationBar |= forceNavbar == 1;
     }
 }
