@@ -19,6 +19,5 @@
  */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="screen_pinning_toast_no_navbar">Til að losa þennan skjá, ýttu á og haltu niðri \'Til baka\' hnappnum</string>
-    <string name="nav_bar_layout_inverse">Umsnúa framsetningu</string>
+    <string name="global_action_restart_system">Sistem</string>
 </resources>
