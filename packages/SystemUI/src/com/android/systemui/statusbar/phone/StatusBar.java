@@ -988,7 +988,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         }
 
         try {
-            boolean showNav = mWindowManagerService.hasNavigationBar();
+            boolean showNav = mWindowManagerService.hasNavigationBar() && !isGestureButtonEnabled();
             if (DEBUG) Log.v(TAG, "hasNavigationBar=" + showNav);
             if (showNav) {
                 createNavigationBar();
