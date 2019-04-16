@@ -32,6 +32,7 @@
     <string name="app_ops_assist_structure">usar estructura de asistencia</string>
     <string name="app_ops_audio_accessibility_volume">volumen de accesibilidad de audio</string>
     <string name="app_ops_auto_start">ejecutar al inicio</string>
+    <string name="app_ops_bind_accessibility_service">enlazar a un servicio de accesibilidad</string>
     <string name="app_ops_bluetooth_scan">escaneo bluetooth</string>
     <string name="app_ops_change_wallpaper">cambiar fondo de pantalla</string>
     <string name="app_ops_delete_call_log">borrar el registro de llamadas</string>
@@ -41,8 +42,10 @@
     <string name="app_ops_draw_on_top">dibujar ventanas encima</string>
     <string name="app_ops_get_accounts">obtener cuentas del dispositivo</string>
     <string name="app_ops_get_usage_stats">obtener estadísticas de uso</string>
+    <string name="app_ops_accept_handover">entrega de una llamada de otra aplicación</string>
     <string name="app_ops_install_packages">instalar paquetes</string>
     <string name="app_ops_keep_device_awake">mantener tu dispositivo encendido</string>
+    <string name="app_ops_manage_ipsec_tunnels">administrar túneles ipsec</string>
     <string name="app_ops_make_phone_call">realizar una llamada</string>
     <string name="app_ops_mock_location">simular ubicación</string>
     <string name="app_ops_modify_calendar">actualizar tu calendario</string>
@@ -67,6 +70,7 @@
     <string name="app_ops_read_phone_state">acceder al estado del teléfono</string>
     <string name="app_ops_read_sms">leer tus mensajes SMS</string>
     <string name="app_ops_receive_sms">recibir un mensaje SMS</string>
+    <string name="app_ops_receive_emergency_broadcast">recibir un mensaje de transmisión de emergencias</string>
     <string name="app_ops_record_audio">grabar sonido</string>
     <string name="app_ops_request_delete_packages">solicitar eliminación de paquetes</string>
     <string name="app_ops_run_in_background">ejecutar en segundo plano</string>
@@ -75,6 +79,7 @@
     <string name="app_ops_send_mms">enviar un mensaje MMS</string>
     <string name="app_ops_send_sms">enviar un mensaje SMS</string>
     <string name="app_ops_start_at_bootup">ejecutar al inicio</string>
+    <string name="app_ops_start_foreground">inicio en primer plano</string>
     <string name="app_ops_su">obtener acceso administrativo</string>
     <string name="app_ops_toast_window">mostrar notificaciones emergentes</string>
     <string name="app_ops_toggle_bluetooth">alternar Bluetooth</string>
