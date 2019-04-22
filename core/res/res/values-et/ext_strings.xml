@@ -35,8 +35,10 @@
     <string name="app_ops_access_notifications">lugeda teateid</string>
     <string name="app_ops_activate_vpn">aktiveeri VPN</string>
     <string name="app_ops_add_voicemail">lisa kõnepost</string>
+    <string name="app_ops_app_start_foreground">installimata avatava rakenduse käivitamine esiplaanil</string>
     <string name="app_ops_assist_screenshot">kuvatõmmise tegemine</string>
     <string name="app_ops_assist_structure">kasuta assisteeritud struktuuri</string>
+    <string name="app_ops_audio_accessibility_volume">abistava heli tugevus</string>
     <string name="app_ops_auto_start">käivitada sisselülitamisel</string>
     <string name="app_ops_change_wallpaper">muuta taustapilti</string>
     <string name="app_ops_delete_call_log">kustutada kõnelogi</string>
@@ -46,6 +48,7 @@
     <string name="app_ops_draw_on_top">joonistada aknaid peale</string>
     <string name="app_ops_get_accounts">lugeda seadme kasutajaid</string>
     <string name="app_ops_get_usage_stats">saada rakenduse kasutamise statistikat</string>
+    <string name="app_ops_install_packages">pakettide installimine</string>
     <string name="app_ops_keep_device_awake">hoida seade ärkvel</string>
     <string name="app_ops_make_phone_call">teha telefoni kõnet</string>
     <string name="app_ops_mock_location">teeskle asukohta</string>
@@ -55,6 +58,8 @@
     <string name="app_ops_modify_contacts">värskendada kontakte</string>
     <string name="app_ops_modify_settings">värskendada süsteemiseadeid</string>
     <string name="app_ops_mute_unmute_microphone">välja/sisse lülitada mikrofoni</string>
+    <string name="app_ops_phone_calls">vasta kõnedele</string>
+    <string name="app_ops_picture_in_picture">pilt-pildis režiimi kasutamine</string>
     <string name="app_ops_play_audio">mängida heli</string>
     <string name="app_ops_post_notification">postitada teateid</string>
     <string name="app_ops_project_media">projekteerida meediat</string>
@@ -65,10 +70,12 @@
     <string name="app_ops_read_contacts">vaadata kontakte</string>
     <string name="app_ops_read_external_storage">lugeda väliselt andmekandjalt</string>
     <string name="app_ops_read_mms">lugeda MMS sõnumeid</string>
+    <string name="app_ops_read_phone_numbers">telefoninumbrite lugemine</string>
     <string name="app_ops_read_phone_state">juurdepääs telefoni olekule</string>
     <string name="app_ops_read_sms">lugeda SMS sõnumeid</string>
     <string name="app_ops_receive_sms">võtta vastu SMS sõnum</string>
     <string name="app_ops_record_audio">salvestada heli</string>
+    <string name="app_ops_run_in_background">taustal käitamine</string>
     <string name="app_ops_scan_wifi">otsida Wi-Fi võrke</string>
     <string name="app_ops_send_mms">saata MMS sõnum</string>
     <string name="app_ops_send_sms">saata SMS sõnum</string>
