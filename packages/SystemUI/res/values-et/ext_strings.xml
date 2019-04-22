@@ -20,6 +20,7 @@
  */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="global_action_restart_system">Süsteem</string>
     <string name="global_action_restart_recovery">Taastus</string>
     <string name="global_action_restart_bootloader">Käivituslaadur</string>
     <string name="global_action_restart_download">Allalaadimine</string>
@@ -56,6 +57,7 @@
     <string name="quick_settings_volume_panel_label">Helipaneel</string>
     <string name="accessibility_dpad_left">Kursor vasakule</string>
     <string name="accessibility_dpad_right">Kursor paremale</string>
+    <string name="screen_pinning_description_no_navbar">See hoiab niikaua vaates, kuni teie vabastate selle. Puudutage &amp; vabastamiseks hoidke Tagasi nuppu all.</string>
     <string name="screen_pinning_toast_no_navbar">Selle ekraani vabastamiseks puudutage ja hoidke all tagasinuppu</string>
     <string name="nav_bar_layout_inverse">Pööra paigutus</string>
 </resources>

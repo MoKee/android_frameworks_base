@@ -30,6 +30,7 @@
     <string name="app_ops_app_start_foreground">installimata avatava rakenduse käivitamine esiplaanil</string>
     <string name="app_ops_assist_screenshot">kuvatõmmise tegemine</string>
     <string name="app_ops_assist_structure">kasuta assisteeritud struktuuri</string>
+    <string name="app_ops_audio_accessibility_volume">abistava heli tugevus</string>
     <string name="app_ops_auto_start">käivitada sisselülitamisel</string>
     <string name="app_ops_bind_accessibility_service">juurdepääsetavusteenuse ühendamine</string>
     <string name="app_ops_bluetooth_scan">Bluetoothi skannimine</string>
@@ -71,6 +72,7 @@
     <string name="app_ops_receive_sms">võtta vastu SMS sõnum</string>
     <string name="app_ops_receive_emergency_broadcast">hädaolukorra teatiste vastuvõtmine</string>
     <string name="app_ops_record_audio">salvestada heli</string>
+    <string name="app_ops_run_in_background">taustal käitamine</string>
     <string name="app_ops_run_any_in_background">mistahes taustal käitamine</string>
     <string name="app_ops_scan_wifi">otsida Wi-Fi võrke</string>
     <string name="app_ops_send_mms">saata MMS sõnum</string>
