@@ -60,4 +60,5 @@
     <string name="screen_pinning_description_no_navbar">Bu işlem, siz sabitlemeyi kaldırana kadar ekranı görünür durumda tutar. Sabitlemeyi kaldırmak için Geri\'ye dokunun ve basılı tutun.</string>
     <string name="screen_pinning_toast_no_navbar">Bu ekran görünümünü kaldırmak için, Geri tuşuna dokunun ve basılı tutun</string>
     <string name="nav_bar_layout_inverse">Düzeni tersine çevir</string>
+    <string name="custom_swipe_hint"><xliff:g name="target">%s</xliff:g> için simgeden kaydır</string>
 </resources>

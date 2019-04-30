@@ -60,4 +60,5 @@
     <string name="screen_pinning_description_no_navbar">Приложение останется активным, пока вы не отмените блокировку долгим нажатием кнопки «Назад».</string>
     <string name="screen_pinning_toast_no_navbar">Чтобы открепить экран, нажмите &amp; и удерживайте кнопку Назад</string>
     <string name="nav_bar_layout_inverse">Инвертировать порядок кнопок</string>
+    <string name="custom_swipe_hint">Проведите от значка для <xliff:g name="target">%s</xliff:g></string>
 </resources>

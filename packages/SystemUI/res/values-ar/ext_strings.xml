@@ -60,4 +60,5 @@
     <string name="screen_pinning_description_no_navbar">يؤدي هذا إلى استمرار العرض إلى أن يتم إزالة التثبيت. ويمكنك لمس مع الاستمرار لإزالة التثبيت.</string>
     <string name="screen_pinning_toast_no_navbar">لإلغاء تثبيت هذه الشاشة, استمر بالضغط على زر الرجوع</string>
     <string name="nav_bar_layout_inverse">عكس التخطيط</string>
+    <string name="custom_swipe_hint">اسحب من الأيقونة ل <xliff:g name="target">%s</xliff:g></string>
 </resources>
