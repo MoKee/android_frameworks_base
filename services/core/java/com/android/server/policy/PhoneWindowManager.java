@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006 The Android Open Source Project
+ * Copyright (C) 2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -662,6 +663,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     private int mCurrentUserId;
 
+    private boolean mThreeFingerGestureEnabled = false;
+    private SwipeToScreenshotListener mSwipeToScreenshot;
+
     // Maps global key codes to the components that will handle them.
     private GlobalKeyManager mGlobalKeyManager;
 
@@ -928,6 +932,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(MKSettings.System.getUriFor(
                     MKSettings.System.VOLUME_ANSWER_CALL), false, this,
+                    UserHandle.USER_ALL);
+            resolver.registerContentObserver(MKSettings.System.getUriFor(
+                    MKSettings.System.SWIPE_TO_SCREENSHOT), false, this,
                     UserHandle.USER_ALL);
 
             updateSettings();
@@ -2027,6 +2034,14 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     context, minHorizontal, maxHorizontal, minVertical, maxVertical, maxRadius);
         }
 
+        mSwipeToScreenshot = new SwipeToScreenshotListener(
+                context, new SwipeToScreenshotListener.Callbacks() {
+            @Override
+            public void onSwipeThreeFinger() {
+                mHandler.post(mScreenshotRunnable);
+            }
+        });
+
         mHandler = new PolicyHandler();
         mWakeGestureListener = new MyWakeGestureListener(mContext, mHandler);
         mSettingsObserver = new SettingsObserver(mHandler);
@@ -2335,6 +2350,17 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         }
     }
 
+     private void enableSwipeThreeFingerGesture(boolean enable) {
+        if (enable != mThreeFingerGestureEnabled) {
+            mThreeFingerGestureEnabled = enable;
+            if (enable) {
+                mWindowManagerFuncs.registerPointerEventListener(mSwipeToScreenshot, DEFAULT_DISPLAY);
+            } else {
+                mWindowManagerFuncs.unregisterPointerEventListener(mSwipeToScreenshot, DEFAULT_DISPLAY);
+            }
+        }
+    }
+
     public void updateSettings() {
         ContentResolver resolver = mContext.getContentResolver();
         boolean updateRotation = false;
@@ -2420,6 +2446,11 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             }
 
             updateKeyAssignments();
+
+            // Three Finger Gesture
+            boolean threeFingerGesture = MKSettings.System.getIntForUser(resolver,
+                    MKSettings.System.SWIPE_TO_SCREENSHOT, 0, UserHandle.USER_CURRENT) == 1;
+            enableSwipeThreeFingerGesture(threeFingerGesture);
 
             // use screen off timeout setting as the timeout for the lockscreen
             mLockScreenTimeout = Settings.System.getIntForUser(resolver,
