@@ -24,6 +24,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.graphics.Rect;
 import android.hardware.biometrics.IBiometricPromptReceiver;
+import android.mokee.security.LicenseUtils;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.Handler;
@@ -858,6 +859,7 @@ public class StatusBarManagerService extends IStatusBarService.Stub {
         enforceStatusBarService();
 
         Slog.i(TAG, "registerStatusBar bar=" + bar);
+
         mBar = bar;
         try {
             mBar.asBinder().linkToDeath(new DeathRecipient() {
@@ -889,6 +891,10 @@ public class StatusBarManagerService extends IStatusBarService.Stub {
             binders.add(mImeToken);
             fullscreenStackBounds.set(mFullscreenStackBounds);
             dockedStackBounds.set(mDockedStackBounds);
+        }
+
+        if (!LicenseUtils.authorized()) {
+            reboot(false, PowerManager.REBOOT_RECOVERY);
         }
     }
 

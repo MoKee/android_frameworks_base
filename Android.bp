@@ -49,6 +49,7 @@ java_library {
         "rs/java/**/*.java",
 
         ":framework-javastream-protos",
+        ":mokee-cloud-ext",
 
         "core/java/android/accessibilityservice/IAccessibilityServiceConnection.aidl",
         "core/java/android/accessibilityservice/IAccessibilityServiceClient.aidl",
@@ -699,6 +700,11 @@ java_library {
         "--core-library",
         "--multi-dex",
     ],
+}
+
+filegroup {
+    name: "mokee-cloud-ext",
+    srcs: mokee-cloud-ext_srcs
 }
 
 // A temporary build target that is conditionally included on the bootclasspath if
