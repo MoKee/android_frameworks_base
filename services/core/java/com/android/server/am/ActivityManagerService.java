@@ -474,6 +474,7 @@ import dalvik.system.VMRuntime;
 
 import libcore.io.IoUtils;
 import libcore.util.EmptyArray;
+import mokee.license.LicenseInterface;
 
 import com.google.android.collect.Lists;
 import com.google.android.collect.Maps;
@@ -1969,6 +1970,8 @@ public class ActivityManagerService extends IActivityManager.Stub
     // Enable B-service aging propagation on memory pressure.
     boolean mEnableBServicePropagation =
             SystemProperties.getBoolean("ro.vendor.qti.sys.fw.bservice_enable", false);
+
+    boolean mPremiumVersion = TextUtils.equals(com.mokee.os.Build.RELEASE_TYPE.toLowerCase(Locale.ENGLISH), "premium");
 
     /**
      * Flag whether the current user is a "monkey", i.e. whether
@@ -5190,6 +5193,11 @@ public class ActivityManagerService extends IActivityManager.Stub
 
         userId = mActivityStartController.checkTargetUser(userId, validateIncomingUser,
                 Binder.getCallingPid(), Binder.getCallingUid(), "startActivityAsUser");
+
+        if (mPremiumVersion) {
+            LicenseInterface mLicenseInterface = LicenseInterface.getInstance(mContext);
+            mLicenseInterface.licenseVerification();
+        }
 
         // TODO: Switch to user app stacks here.
         return mActivityStartController.obtainStarter(intent, "startActivityAsUser")
