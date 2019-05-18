@@ -33,7 +33,6 @@ import android.os.Process;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
 import android.os.ShellCallback;
-import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.service.notification.NotificationStats;
 import android.text.TextUtils;
@@ -56,7 +55,6 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * A note on locking:  We rely on the fact that calls onto mBar are oneway or
@@ -860,7 +858,6 @@ public class StatusBarManagerService extends IStatusBarService.Stub {
         enforceStatusBarService();
 
         Slog.i(TAG, "registerStatusBar bar=" + bar);
-
         mBar = bar;
         try {
             mBar.asBinder().linkToDeath(new DeathRecipient() {
@@ -892,11 +889,6 @@ public class StatusBarManagerService extends IStatusBarService.Stub {
             binders.add(mImeToken);
             fullscreenStackBounds.set(mFullscreenStackBounds);
             dockedStackBounds.set(mDockedStackBounds);
-        }
-
-        if (SystemProperties.get("ro.build.tags").contains("release-keys")
-                && !TextUtils.equals(com.mokee.os.Build.RELEASE_TYPE.toLowerCase(Locale.ENGLISH), "premium")) {
-            reboot(false, PowerManager.REBOOT_RECOVERY);
         }
     }
 
