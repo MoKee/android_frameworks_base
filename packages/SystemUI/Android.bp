@@ -32,6 +32,8 @@ java_library {
 android_library {
     name: "SystemUI-core",
     srcs: [
+        "src-mokee/**/*.kt",
+        "src-mokee/**/*.java",
         "src/**/*.kt",
         "src/**/*.java",
         "src/**/I*.aidl",
@@ -39,6 +41,7 @@ android_library {
     resource_dirs: [
         "res-product",
         "res-keyguard",
+        "res-mokee",
         "res",
     ],
     static_libs: [
@@ -70,6 +73,7 @@ android_library {
         "SystemUI-proto",
         "dagger2-2.19",
         "jsr330",
+        "airbnb-lottie",
         "org.mokee.platform.internal",
         "vendor.mokee.biometrics.fingerprint.inscreen-V1.0-java",
         "vendor.mokee.powershare-V1.0-java",
@@ -103,11 +107,14 @@ android_library {
         "tests/res",
         "res-product",
         "res-keyguard",
+        "res-mokee",
         "res",
     ],
     srcs: [
         "tests/src/**/*.kt",
         "tests/src/**/*.java",
+        "src-mokee/**/*.kt",
+        "src-mokee/**/*.java",
         "src/**/*.kt",
         "src/**/*.java",
         "src/**/I*.aidl",
@@ -145,6 +152,7 @@ android_library {
         "truth-prebuilt",
         "dagger2-2.19",
         "jsr330",
+        "airbnb-lottie",
         "org.mokee.platform.internal",
         "vendor.mokee.biometrics.fingerprint.inscreen-V1.0-java",
         "vendor.mokee.powershare-V1.0-java",
