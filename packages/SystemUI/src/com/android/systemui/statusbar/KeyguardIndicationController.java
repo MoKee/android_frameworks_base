@@ -80,6 +80,7 @@ public class KeyguardIndicationController {
     private KeyguardIndicationTextView mTextView;
     private KeyguardIndicationTextView mDisclosure;
     private LottieAnimationView mChargingIndicationView;
+    private boolean mChargingIndication = true;
     private final UserManager mUserManager;
     private final IBatteryStats mBatteryInfo;
     private final SettableWakeLock mWakeLock;
@@ -317,7 +318,7 @@ public class KeyguardIndicationController {
                             .format(mBatteryLevel / 100f);
                     mTextView.switchIndication(percentage);
                 }
-                mChargingIndicationView.setVisibility(View.GONE);
+                updateChargingIndication();
                 return;
             }
 
@@ -359,8 +360,12 @@ public class KeyguardIndicationController {
         }
     }
 
+    public void updateChargingIndication(boolean visible) {
+        mChargingIndication = visible;
+    }
+
     private void updateChargingIndication() {
-        if (!mDozing && mPowerPluggedIn) {
+        if (mChargingIndication && !mDozing && mPowerPluggedIn) {
             mChargingIndicationView.setVisibility(View.VISIBLE);
             mChargingIndicationView.playAnimation();
         } else {

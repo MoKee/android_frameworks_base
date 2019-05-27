@@ -286,6 +286,8 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             "system:" + Settings.System.SCREEN_BRIGHTNESS_MODE;
     public static final String STATUS_BAR_BRIGHTNESS_CONTROL =
             "mksystem:" + MKSettings.System.STATUS_BAR_BRIGHTNESS_CONTROL;
+    private static final String LOCKSCREEN_CHARGING_ANIMATION =
+            "mksystem:" + MKSettings.System.LOCKSCREEN_CHARGING_ANIMATION;
     private static final String LOCKSCREEN_MEDIA_METADATA =
             "mksecure:" + MKSettings.Secure.LOCKSCREEN_MEDIA_METADATA;
     public static final String FORCE_SHOW_NAVBAR =
@@ -723,6 +725,8 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         final TunerService tunerService = Dependency.get(TunerService.class);
         tunerService.addTunable(this, SCREEN_BRIGHTNESS_MODE);
         tunerService.addTunable(this, STATUS_BAR_BRIGHTNESS_CONTROL);
+
+        tunerService.addTunable(this, LOCKSCREEN_CHARGING_ANIMATION);
         tunerService.addTunable(this, LOCKSCREEN_MEDIA_METADATA);
         tunerService.addTunable(this, FORCE_SHOW_NAVBAR);
         tunerService.addTunable(this, USE_BOTTOM_GESTURE_NAVIGATION);
@@ -3095,6 +3099,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
 
         if (mKeyguardIndicationController != null) {
             mKeyguardIndicationController.dump(fd, pw, args);
+            mKeyguardIndicationController.updateChargingIndication(showChargingAnimation);
         }
 
         if (mScrimController != null) {
@@ -5955,6 +5960,8 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             } catch (NumberFormatException ex) {}
         } else if (STATUS_BAR_BRIGHTNESS_CONTROL.equals(key)) {
             mBrightnessControl = TunerService.parseIntegerSwitch(newValue, false);
+        } else if (LOCKSCREEN_CHARGING_ANIMATION.equals(key)) {
+            mshowChargingAnimation = TunerService.parseIntegerSwitch(newValue, true);
         } else if (LOCKSCREEN_MEDIA_METADATA.equals(key)) {
             mShowMediaMetadata = TunerService.parseIntegerSwitch(newValue, true);
         } else if (mWindowManagerService != null && FORCE_SHOW_NAVBAR.equals(key)) {
