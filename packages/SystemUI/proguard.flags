@@ -42,3 +42,5 @@
     public protected *;
 }
 -keep class android.support.v4.app.CoreComponentFactory
+
+-dontwarn okio.**
