@@ -4205,7 +4205,9 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
                 try {
                     mOverlayManager.setEnabled(getDarkOverlay(),
                             useDarkTheme, mLockscreenUserManager.getCurrentUserId());
-                } catch (RemoteException e) {
+                    mOverlayManager.setEnabled("org.mokee.facelock.dark",
+                            useDarkTheme, mLockscreenUserManager.getCurrentUserId());
+                } catch (RemoteExc
                     Log.w(TAG, "Can't change theme", e);
                 }
 
