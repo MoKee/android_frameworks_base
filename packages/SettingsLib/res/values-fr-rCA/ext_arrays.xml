@@ -23,12 +23,12 @@
         <item>Utiliser la sélection du système (par défaut)</item>
         <item>Monochrome</item>
         <item>Stéréo</item>
-        <item>Dual Channel</item>
+        <item>Double canal</item>
     </string-array>
     <string-array name="mokee_bluetooth_a2dp_codec_channel_mode_titles">
         <item>Utiliser la sélection du système (par défaut)</item>
         <item>Monochrome</item>
         <item>Stéréo</item>
-        <item>Dual Channel</item>
+        <item>Double canal</item>
     </string-array>
 </resources>

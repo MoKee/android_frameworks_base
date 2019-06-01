@@ -60,4 +60,5 @@
     <string name="screen_pinning_description_no_navbar">Cet écran est épinglé jusqu\'à l\'annulation de l\'opération. Pour annuler l\'épinglage, appuyez &amp; de manière prolongée sur \"Retour\".</string>
     <string name="screen_pinning_toast_no_navbar">Pour annuler l\'épinglage de l\'écran, appuyez et maintenez le bouton Retour</string>
     <string name="nav_bar_layout_inverse">Inverser le schéma</string>
+    <string name="custom_swipe_hint">Faites glisser depuis l\'icône pour <xliff:g name="target">%s</xliff:g></string>
 </resources>
