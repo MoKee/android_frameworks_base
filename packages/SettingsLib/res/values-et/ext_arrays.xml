@@ -20,15 +20,15 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string-array name="mokee_bluetooth_a2dp_codec_channel_mode_summaries">
-        <item>Sistem seçimini kullan (Varsayılan)</item>
+        <item>Kasuta süsteemi valikut (vaikimisi)</item>
         <item>Mono</item>
         <item>Stereo</item>
-        <item>Çift kanal</item>
+        <item>Kahekordne kanal</item>
     </string-array>
     <string-array name="mokee_bluetooth_a2dp_codec_channel_mode_titles">
-        <item>Sistem seçimini kullan (Varsayılan)</item>
+        <item>Kasuta süsteemi valikut (vaikimisi)</item>
         <item>Mono</item>
         <item>Stereo</item>
-        <item>Çift kanal</item>
+        <item>Kahekordne kanal</item>
     </string-array>
 </resources>

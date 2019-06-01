@@ -60,4 +60,5 @@
     <string name="screen_pinning_description_no_navbar">See hoiab niikaua vaates, kuni teie vabastate selle. Puudutage &amp; vabastamiseks hoidke Tagasi nuppu all.</string>
     <string name="screen_pinning_toast_no_navbar">Selle ekraani vabastamiseks puudutage ja hoidke all tagasinuppu</string>
     <string name="nav_bar_layout_inverse">Pööra paigutus</string>
+    <string name="custom_swipe_hint">Lohista ikoonilt <xliff:g name="target">%s</xliff:g></string>
 </resources>

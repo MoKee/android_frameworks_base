@@ -20,15 +20,15 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string-array name="mokee_bluetooth_a2dp_codec_channel_mode_summaries">
-        <item>Use System Selection (Default)</item>
+        <item>Использовать выбор системы (по умолчанию)</item>
         <item>Ч/Б</item>
-        <item>Stereo</item>
-        <item>Dual Channel</item>
+        <item>Стерео</item>
+        <item>Двухканальный звук</item>
     </string-array>
     <string-array name="mokee_bluetooth_a2dp_codec_channel_mode_titles">
-        <item>Use System Selection (Default)</item>
+        <item>Использовать выбор системы (по умолчанию)</item>
         <item>Ч/Б</item>
-        <item>Stereo</item>
-        <item>Dual Channel</item>
+        <item>Стерео</item>
+        <item>Двухканальный звук</item>
     </string-array>
 </resources>
