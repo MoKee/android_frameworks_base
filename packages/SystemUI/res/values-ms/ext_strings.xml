@@ -30,4 +30,5 @@
     <string name="quick_settings_sync_label">Penyegerakan</string>
     <string name="quick_settings_usb_tether_label">Penambatan USB</string>
     <string name="quick_settings_volume_panel_label">Panel kelantangan</string>
+    <string name="quick_settings_location_detail_title">Lokasi</string>
 </resources>

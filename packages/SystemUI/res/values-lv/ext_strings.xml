@@ -30,4 +30,5 @@
     <string name="quick_settings_volume_panel_label">Skaņas panelis</string>
     <string name="accessibility_dpad_left">Kursoru pa kreisi</string>
     <string name="accessibility_dpad_right">Kursoru pa labi</string>
+    <string name="quick_settings_location_detail_title">Atraš. vieta</string>
 </resources>

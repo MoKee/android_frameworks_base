@@ -48,9 +48,28 @@
     <string name="accessibility_quick_settings_sync_on">Naka-Sync on.</string>
     <string name="accessibility_quick_settings_sync_changed_off">Sync na naka-turned off.</string>
     <string name="accessibility_quick_settings_sync_changed_on">Sync na naka-turned on.</string>
+    <string name="quick_settings_profiles_label">Mga profile ng sistema</string>
+    <string name="accessibility_quick_settings_profiles_off">I-off ang mga profile.</string>
+    <string name="accessibility_quick_settings_profiles">Ang profile: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
+    <string name="accessibility_quick_settings_profiles_changed_off">Naka-off ang mga profile.</string>
+    <string name="accessibility_quick_settings_profiles_changed">Pinalitan ang profile ng <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <string name="quick_settings_usb_tether_label">USB tethering</string>
     <string name="quick_settings_volume_panel_label">Ang volume panel</string>
     <string name="accessibility_dpad_left">Cursor sa kaliwa</string>
     <string name="accessibility_dpad_right">Cursor sa kanan</string>
     <string name="screen_pinning_description_no_navbar">Pinapanatili nito sa paningin hanggang ito ay iyong i-unpin. Hawakan ang &amp; hawakan ang Back para i-unpin.</string>
+    <string name="accessibility_quick_settings_location_battery_saving">Pag-uulat ng lokasyon: battery saving mode.</string>
+    <string name="accessibility_quick_settings_location_gps_only">Pag-uulat ng lokasyon: sensors only mode.</string>
+    <string name="accessibility_quick_settings_location_high_accuracy">Pag-uulat ng lokasyon: mataas na accuracy mode.</string>
+    <string name="quick_settings_location_battery_saving_label">Pagtitipid ng baterya</string>
+    <string name="quick_settings_location_battery_saving_label_twoline">Baterya\nnagsi-save</string>
+    <string name="quick_settings_location_high_accuracy_label">Mataas na katumpakan</string>
+    <string name="quick_settings_location_high_accuracy_label_twoline">Mataas\nkatumpakan</string>
+    <string name="quick_settings_location_detail_title">Lokasyon</string>
+    <string name="quick_settings_location_detail_menu_title">Pumili ng mode:</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_title">Mataas na katumpakan</string>
+    <string name="quick_settings_location_detail_mode_battery_saving_title">Pagtitipid ng baterya</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_title">Device lamang</string>
+    <string name="quick_settings_location_detail_mode_battery_saving_description">Gamitin ang Wi\u2011Fi, Bluetooth, o cellular na mga network para matukoy ang lokasyon</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_description">Gamitin ang GPS para matukoy ang iyong lokasyon</string>
 </resources>

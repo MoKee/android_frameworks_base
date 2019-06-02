@@ -23,7 +23,7 @@
     <string name="global_action_restart_system">Sistema</string>
     <string name="global_action_restart_recovery">Recuperação</string>
     <string name="global_action_restart_bootloader">Bootloader</string>
-    <string name="global_action_restart_download">Transferência</string>
+    <string name="global_action_restart_download">Transferir</string>
     <string name="global_action_restart_progress">A reiniciar\u2026</string>
     <string name="global_action_restart_recovery_progress">A reiniciar para o modo de recuperação\u2026</string>
     <string name="global_action_restart_bootloader_progress">A reiniciar para o modo de bootloader\u2026</string>
@@ -53,9 +53,28 @@
     <string name="accessibility_quick_settings_sync_on">Sincronização ativada.</string>
     <string name="accessibility_quick_settings_sync_changed_off">A sincronização foi desativada.</string>
     <string name="accessibility_quick_settings_sync_changed_on">A sincronização foi ativada.</string>
+    <string name="quick_settings_profiles_label">Perfis de sistema</string>
+    <string name="accessibility_quick_settings_profiles_off">Perfis desligados.</string>
+    <string name="accessibility_quick_settings_profiles">Perfil: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
+    <string name="accessibility_quick_settings_profiles_changed_off">Perfis foram desligados.</string>
+    <string name="accessibility_quick_settings_profiles_changed">Perfil alterado para <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <string name="quick_settings_usb_tether_label">Partilha de internet por USB</string>
     <string name="quick_settings_volume_panel_label">Painel de volume</string>
     <string name="accessibility_dpad_left">Cursor à esquerda</string>
     <string name="accessibility_dpad_right">Cursor à direita</string>
     <string name="screen_pinning_description_no_navbar">Irá ficar visível até que o solte. Toque e segure o botão Anterior para soltar.</string>
+    <string name="accessibility_quick_settings_location_battery_saving">Localização: poupança de bateria.</string>
+    <string name="accessibility_quick_settings_location_gps_only">Localização: apenas no dispositivo.</string>
+    <string name="accessibility_quick_settings_location_high_accuracy">Localização: alta precisão.</string>
+    <string name="quick_settings_location_battery_saving_label">Poupança de bateria</string>
+    <string name="quick_settings_location_battery_saving_label_twoline">Poupança\nde bateria</string>
+    <string name="quick_settings_location_high_accuracy_label">Alta precisão</string>
+    <string name="quick_settings_location_high_accuracy_label_twoline">Alta\nprecisão</string>
+    <string name="quick_settings_location_detail_title">Localização</string>
+    <string name="quick_settings_location_detail_menu_title">Selecione o modo:</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_title">Alta precisão</string>
+    <string name="quick_settings_location_detail_mode_battery_saving_title">Poupança de bateria</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_title">Apenas no dispositivo</string>
+    <string name="quick_settings_location_detail_mode_battery_saving_description">Utilizar Wi\u2011Fi, bluetooth ou redes móveis para determinar a localização</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_description">Utilizar o GPS para determinar a sua localização</string>
 </resources>

@@ -21,4 +21,5 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="global_action_current_user">მიმდინარე</string>
+    <string name="quick_settings_location_detail_title">მდებარეობა</string>
 </resources>

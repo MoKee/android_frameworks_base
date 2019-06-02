@@ -21,4 +21,5 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="global_action_current_user">បច្ចុប្បន្ន</string>
+    <string name="quick_settings_location_detail_title">ទីកន្លែង</string>
 </resources>

@@ -53,6 +53,11 @@
     <string name="accessibility_quick_settings_sync_on">Синхронизация включена.</string>
     <string name="accessibility_quick_settings_sync_changed_off">Синхронизация отключена.</string>
     <string name="accessibility_quick_settings_sync_changed_on">Синхронизация включена.</string>
+    <string name="quick_settings_profiles_label">Профили системы</string>
+    <string name="accessibility_quick_settings_profiles_off">Профили выключены.</string>
+    <string name="accessibility_quick_settings_profiles">Профиль: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
+    <string name="accessibility_quick_settings_profiles_changed_off">Профили выключены.</string>
+    <string name="accessibility_quick_settings_profiles_changed">Профиль изменён на <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <string name="quick_settings_usb_tether_label">USB-модем</string>
     <string name="quick_settings_volume_panel_label">Панель громкости</string>
     <string name="accessibility_dpad_left">Курсор влево</string>
@@ -61,4 +66,18 @@
     <string name="screen_pinning_toast_no_navbar">Чтобы открепить экран, нажмите &amp; и удерживайте кнопку Назад</string>
     <string name="nav_bar_layout_inverse">Инвертировать порядок кнопок</string>
     <string name="custom_swipe_hint">Проведите от значка для <xliff:g name="target">%s</xliff:g></string>
+    <string name="accessibility_quick_settings_location_battery_saving">Отправка местоположения: режим экономии батареи.</string>
+    <string name="accessibility_quick_settings_location_gps_only">Отправка местоположения: только по GPS.</string>
+    <string name="accessibility_quick_settings_location_high_accuracy">Отправка местоположения: режим высокой точности.</string>
+    <string name="quick_settings_location_battery_saving_label">Энергосебережение</string>
+    <string name="quick_settings_location_battery_saving_label_twoline">По коорди-\nнатам сети</string>
+    <string name="quick_settings_location_high_accuracy_label">По всем источникам</string>
+    <string name="quick_settings_location_high_accuracy_label_twoline">По всем\nисточникам</string>
+    <string name="quick_settings_location_detail_title">Место</string>
+    <string name="quick_settings_location_detail_menu_title">Выберите режим:</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_title">По всем источникам</string>
+    <string name="quick_settings_location_detail_mode_battery_saving_title">Энергосебережение</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_title">По спутникам GPS</string>
+    <string name="quick_settings_location_detail_mode_battery_saving_description">Использовать Wi‑Fi, Bluetooth и мобильные сети для определения местоположения</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_description">Использовать GPS для определения местоположения</string>
 </resources>

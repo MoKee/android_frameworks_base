@@ -53,9 +53,25 @@
     <string name="accessibility_quick_settings_sync_on">संकालन चालू है।</string>
     <string name="accessibility_quick_settings_sync_changed_off">संकालन को बंद किया गया है।</string>
     <string name="accessibility_quick_settings_sync_changed_on">संकालन को चालू किया गया है।</string>
+    <string name="accessibility_quick_settings_profiles_off">प्रोफ़ाइलें बंद है।</string>
+    <string name="accessibility_quick_settings_profiles">प्रोफ़ाइल: <xliff:g id="profile" example="Default">%s</xliff:g>।</string>
+    <string name="accessibility_quick_settings_profiles_changed_off">प्रोफाइलों को बंद किया गया है।</string>
+    <string name="accessibility_quick_settings_profiles_changed">प्रोफ़ाइल को <xliff:g id="profile" example="Default">%s</xliff:g> में बदला गया।</string>
     <string name="quick_settings_usb_tether_label">यूएसबी टेदरिंग</string>
     <string name="quick_settings_volume_panel_label">ध्वनि पट</string>
     <string name="accessibility_dpad_left">कर्सर बायाँ</string>
     <string name="accessibility_dpad_right">कर्सर दायाँ</string>
     <string name="screen_pinning_description_no_navbar">यह इसे तब तक दिखाता रहेगा जब तक आप अनपिन नहीं करते। अनपिन करने के लिए बैक बटन को कुछ देर दबाएँ &amp; रखें।</string>
+    <string name="accessibility_quick_settings_location_battery_saving">स्थान रिपोर्टिंग: बैटरी बचानेवाला मोड।</string>
+    <string name="accessibility_quick_settings_location_gps_only">स्थान रिपोर्टिंग: केवल सेंसर मोड।</string>
+    <string name="accessibility_quick_settings_location_high_accuracy">स्थान रिपोर्टिंग: उच्च सटीकता मोड।</string>
+    <string name="quick_settings_location_battery_saving_label_twoline">बैटरी\nसेविंग</string>
+    <string name="quick_settings_location_high_accuracy_label">उच्च सटीकता</string>
+    <string name="quick_settings_location_high_accuracy_label_twoline">उच्च\nसटीकता</string>
+    <string name="quick_settings_location_detail_title">स्थान</string>
+    <string name="quick_settings_location_detail_menu_title">मोड का चयन करें:</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_title">उच्च सटीकता</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_title">केवल उपकरण</string>
+    <string name="quick_settings_location_detail_mode_battery_saving_description">स्थान निर्धारित करने के लिए Wi\u2011Fi, ब्लूटूथ, या सेलुलर नेटवर्क का उपयोग करें</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_description">आपने स्थान का निर्धारण करने के लिए जीपीएस का उपयोग करे</string>
 </resources>

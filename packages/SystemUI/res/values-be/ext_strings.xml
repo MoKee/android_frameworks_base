@@ -53,9 +53,28 @@
     <string name="accessibility_quick_settings_sync_on">Сінхранізацыя ўключана.</string>
     <string name="accessibility_quick_settings_sync_changed_off">Сінхранізацыя адключаная.</string>
     <string name="accessibility_quick_settings_sync_changed_on">Сінхранізацыя ўключана.</string>
+    <string name="quick_settings_profiles_label">Профілі сістэмы</string>
+    <string name="accessibility_quick_settings_profiles_off">Профілі выключаны.</string>
+    <string name="accessibility_quick_settings_profiles">Профіль: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
+    <string name="accessibility_quick_settings_profiles_changed_off">Профілі выключаны.</string>
+    <string name="accessibility_quick_settings_profiles_changed">Профіль зменены на <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <string name="quick_settings_usb_tether_label">USB-мадэм</string>
     <string name="quick_settings_volume_panel_label">Панэль гучнасці</string>
     <string name="accessibility_dpad_left">Курсор налева</string>
     <string name="accessibility_dpad_right">Курсор направа</string>
     <string name="screen_pinning_description_no_navbar">Праграма застанецца актыўнай, пакуль вы не скасуеце блакаванне, націснуўшы і ўтрымліваючы кнопку \"Назад\".</string>
+    <string name="accessibility_quick_settings_location_battery_saving">Адпраўка месцазнаходжання: рэжым эканоміі батарэі.</string>
+    <string name="accessibility_quick_settings_location_gps_only">Адпраўка месцазнаходжання: толькі па GPS.</string>
+    <string name="accessibility_quick_settings_location_high_accuracy">Адпраўка месцазнаходжання: рэжым высокай дакладнасці.</string>
+    <string name="quick_settings_location_battery_saving_label">Энергазахаваньне</string>
+    <string name="quick_settings_location_battery_saving_label_twoline">Энерга\nзберажэнне</string>
+    <string name="quick_settings_location_high_accuracy_label">Па ўсіх крыніцах</string>
+    <string name="quick_settings_location_high_accuracy_label_twoline">Высокая\nдакладнасць</string>
+    <string name="quick_settings_location_detail_title">Месцазнаходжанне</string>
+    <string name="quick_settings_location_detail_menu_title">Выбар рэжыму працы:</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_title">Па ўсіх крыніцах</string>
+    <string name="quick_settings_location_detail_mode_battery_saving_title">Энергазахаваньне</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_title">Па спадарожніках GPS</string>
+    <string name="quick_settings_location_detail_mode_battery_saving_description">Выкарыстанне Wi\u2011Fi, Bluetooth, або сотавыя сеткі для вызначэння месцазнаходжання</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_description">Выкарыстанне GPS для вызначэння вашага месцазнаходжання</string>
 </resources>

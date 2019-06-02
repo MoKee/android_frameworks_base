@@ -53,6 +53,11 @@
     <string name="accessibility_quick_settings_sync_on">Synch. zap.</string>
     <string name="accessibility_quick_settings_sync_changed_off">Synchronizace vypnuta.</string>
     <string name="accessibility_quick_settings_sync_changed_on">Synchronizace zapnuta.</string>
+    <string name="quick_settings_profiles_label">Systémové profily</string>
+    <string name="accessibility_quick_settings_profiles_off">Profily jsou zakázány.</string>
+    <string name="accessibility_quick_settings_profiles">Profil: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
+    <string name="accessibility_quick_settings_profiles_changed_off">Profily jsou zakázány.</string>
+    <string name="accessibility_quick_settings_profiles_changed">Profil změněn na <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <string name="quick_settings_usb_tether_label">USB tethering</string>
     <string name="quick_settings_volume_panel_label">Panel hlasitosti</string>
     <string name="accessibility_dpad_left">Kurzor doleva</string>
@@ -61,4 +66,18 @@
     <string name="screen_pinning_toast_no_navbar">Chcete-li tuto obrazovku uvolnit, dotkněte se &amp; podržte tlačítko Zpět</string>
     <string name="nav_bar_layout_inverse">Obrátit rozložení</string>
     <string name="custom_swipe_hint">Přejetí od ikony pro <xliff:g name="target">%s</xliff:g></string>
+    <string name="accessibility_quick_settings_location_battery_saving">Hlášení polohy: úspora baterie.</string>
+    <string name="accessibility_quick_settings_location_gps_only">Hlášení polohy: pouze GPS.</string>
+    <string name="accessibility_quick_settings_location_high_accuracy">Hlášení polohy: vysoká přesnost.</string>
+    <string name="quick_settings_location_battery_saving_label">Úspora baterie</string>
+    <string name="quick_settings_location_battery_saving_label_twoline">Úspora baterie</string>
+    <string name="quick_settings_location_high_accuracy_label">Vysoká přesnost</string>
+    <string name="quick_settings_location_high_accuracy_label_twoline">Vysoká přesnost</string>
+    <string name="quick_settings_location_detail_title">Poloha</string>
+    <string name="quick_settings_location_detail_menu_title">Zvolte režim:</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_title">Vysoká přesnost</string>
+    <string name="quick_settings_location_detail_mode_battery_saving_title">Úspora baterie</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_title">Pouze GPS</string>
+    <string name="quick_settings_location_detail_mode_battery_saving_description">K určování polohy používat Wi-Fi, Bluetooth nebo mobilní sítě</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_description">K určování polohy používat GPS</string>
 </resources>
