@@ -71,6 +71,8 @@
     <string name="accessibility_quick_settings_location_high_accuracy">Helymeghatározás jelentése: nagyon pontos.</string>
     <string name="quick_settings_location_battery_saving_label">Energiatakarékos</string>
     <string name="quick_settings_location_battery_saving_label_twoline">Energia-\ntakarékos</string>
+    <string name="quick_settings_location_gps_only_label">Csak GPS</string>
+    <string name="quick_settings_location_gps_only_label_twoline">Csak GPS</string>
     <string name="quick_settings_location_high_accuracy_label">Nagy pontosságú</string>
     <string name="quick_settings_location_high_accuracy_label_twoline">Nagy\npontosságú</string>
     <string name="quick_settings_location_detail_title">Hely</string>
@@ -78,6 +80,7 @@
     <string name="quick_settings_location_detail_mode_high_accuracy_title">Nagy pontosságú</string>
     <string name="quick_settings_location_detail_mode_battery_saving_title">Energiatakarékos</string>
     <string name="quick_settings_location_detail_mode_sensors_only_title">Csak készüléken</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">GPS, Wi‑Fi, Bluetooth és mobilhálózatok használata a tartózkodási hely megállapításához </string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">Wi\u2011Fi, Bluetooth vagy mobilhálózat használata a tartózkodási hely megállapításához</string>
     <string name="quick_settings_location_detail_mode_sensors_only_description">Csak GPS használata a tartózkodási hely meghatározásához</string>
 </resources>

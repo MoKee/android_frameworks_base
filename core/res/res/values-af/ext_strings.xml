@@ -27,8 +27,10 @@
     <string name="app_ops_access_notifications">lees jou kennisgewing boodskappe</string>
     <string name="app_ops_activate_vpn">Aktiveer \'n VPN</string>
     <string name="app_ops_add_voicemail">voeg \'n stem boodskap by</string>
+    <string name="app_ops_app_start_foreground">qalisa isicelo sesikhathi sangempela ngaphambili</string>
     <string name="app_ops_assist_screenshot">neem \'n skermfoto</string>
     <string name="app_ops_assist_structure">gebruik assistent struktuur</string>
+    <string name="app_ops_audio_accessibility_volume">umsindo wokufikeleleka komsindo</string>
     <string name="app_ops_auto_start">begin by aanskakeling</string>
     <string name="app_ops_change_wallpaper">verander die agtergrond</string>
     <string name="app_ops_delete_call_log">verwyder jou oproep rekord data</string>
@@ -38,6 +40,7 @@
     <string name="app_ops_draw_on_top">teken bo</string>
     <string name="app_ops_get_accounts">kry toestel rekeninge</string>
     <string name="app_ops_get_usage_stats">kry program gebruik stats</string>
+    <string name="app_ops_install_packages">Ukufakwa kwephakheji</string>
     <string name="app_ops_keep_device_awake">hou jou toestel geaktiveerd</string>
     <string name="app_ops_make_phone_call">maak \'n oproep</string>
     <string name="app_ops_mock_location">simuleer jou plek</string>
@@ -47,6 +50,8 @@
     <string name="app_ops_modify_contacts">opdateer jou kontakte</string>
     <string name="app_ops_modify_settings">opdateer stelsel instellings</string>
     <string name="app_ops_mute_unmute_microphone">demp / ontdemp die mikrofoon</string>
+    <string name="app_ops_phone_calls">Phendula ifowuni</string>
+    <string name="app_ops_picture_in_picture">Sebenzisa umfanekiso kumfanekiso</string>
     <string name="app_ops_play_audio">speel oudio</string>
     <string name="app_ops_post_notification">plaas \'n kennisgewing</string>
     <string name="app_ops_project_media">projek media</string>
@@ -57,6 +62,7 @@
     <string name="app_ops_read_contacts">lees jou kantakte</string>
     <string name="app_ops_read_external_storage">lees eksterne spasie</string>
     <string name="app_ops_read_mms">lees jou MMS boodskappe</string>
+    <string name="app_ops_read_phone_numbers">Funda inombolo yefowuni</string>
     <string name="app_ops_read_phone_state">kry toegang na foon toestand</string>
     <string name="app_ops_read_sms">lees jou SMS boodskappe</string>
     <string name="app_ops_receive_sms">ontvang \'n SMS boodskap</string>
