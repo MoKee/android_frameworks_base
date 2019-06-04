@@ -71,6 +71,8 @@
     <string name="accessibility_quick_settings_location_high_accuracy">Hlášení polohy: vysoká přesnost.</string>
     <string name="quick_settings_location_battery_saving_label">Úspora baterie</string>
     <string name="quick_settings_location_battery_saving_label_twoline">Úspora baterie</string>
+    <string name="quick_settings_location_gps_only_label">Pouze GPS</string>
+    <string name="quick_settings_location_gps_only_label_twoline">Pouze GPS</string>
     <string name="quick_settings_location_high_accuracy_label">Vysoká přesnost</string>
     <string name="quick_settings_location_high_accuracy_label_twoline">Vysoká přesnost</string>
     <string name="quick_settings_location_detail_title">Poloha</string>
@@ -78,6 +80,7 @@
     <string name="quick_settings_location_detail_mode_high_accuracy_title">Vysoká přesnost</string>
     <string name="quick_settings_location_detail_mode_battery_saving_title">Úspora baterie</string>
     <string name="quick_settings_location_detail_mode_sensors_only_title">Pouze GPS</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">K určování polohy používat GPS, Wi-Fi, Bluetooth nebo mobilní sítě </string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">K určování polohy používat Wi-Fi, Bluetooth nebo mobilní sítě</string>
     <string name="quick_settings_location_detail_mode_sensors_only_description">K určování polohy používat GPS</string>
 </resources>

@@ -63,12 +63,16 @@
     <string name="accessibility_dpad_left">Cursor izquierdo</string>
     <string name="accessibility_dpad_right">Cursor derecho</string>
     <string name="screen_pinning_description_no_navbar">Esto lo mantiene a la vista hasta que lo libere. Mantenga pulsado «Atrás» para liberar.</string>
+    <string name="screen_pinning_toast_no_navbar">Para dejar de fijar esta pantalla, toca &amp; mantén botón atrás</string>
     <string name="nav_bar_layout_inverse">Invertir barra de navegación</string>
+    <string name="custom_swipe_hint">Deslizar desde el icono para <xliff:g name="target">%s</xliff:g></string>
     <string name="accessibility_quick_settings_location_battery_saving">Informes de ubicación: modo de ahorro de batería.</string>
     <string name="accessibility_quick_settings_location_gps_only">Informes de ubicación: modo de solo sensores.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">Informes de ubicación: modo de alta precisión.</string>
     <string name="quick_settings_location_battery_saving_label">Ahorro de batería</string>
     <string name="quick_settings_location_battery_saving_label_twoline">Ahorro\nde batería</string>
+    <string name="quick_settings_location_gps_only_label">Sólo GPS</string>
+    <string name="quick_settings_location_gps_only_label_twoline">Sólo GPS</string>
     <string name="quick_settings_location_high_accuracy_label">Alta precisión</string>
     <string name="quick_settings_location_high_accuracy_label_twoline">Alta\nprecisión</string>
     <string name="quick_settings_location_detail_title">Ubicación</string>
@@ -76,6 +80,7 @@
     <string name="quick_settings_location_detail_mode_high_accuracy_title">Alta precisión</string>
     <string name="quick_settings_location_detail_mode_battery_saving_title">Ahorro de batería</string>
     <string name="quick_settings_location_detail_mode_sensors_only_title">Solo en dispositivo</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">Usar GPS, Wi\u2011FI, Bluetooth, o datos móviles para determinar la ubicación </string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">Usa Wi\u2011Fi, Bluetooth o redes móviles para determinar la ubicación</string>
     <string name="quick_settings_location_detail_mode_sensors_only_description">Usa GPS para determinar la ubicación</string>
 </resources>
