@@ -73,7 +73,8 @@ public class TunerServiceImpl extends TunerService {
             StatusBar.BERRY_GLOBAL_STYLE,
             StatusBar.FORCE_SHOW_NAVBAR,
             StatusBar.SCREEN_BRIGHTNESS_MODE,
-            StatusBar.STATUS_BAR_BRIGHTNESS_CONTROL
+            StatusBar.STATUS_BAR_BRIGHTNESS_CONTROL,
+            StatusBar.USE_BOTTOM_GESTURE_NAVIGATION
     };
 
     private final Observer mObserver = new Observer();
