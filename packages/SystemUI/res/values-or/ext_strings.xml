@@ -52,6 +52,7 @@
     <string name="accessibility_quick_settings_location_battery_saving">ଅବସ୍ଥାନ ରିପୋର୍ଟିଂ: ବ୍ୟାଟେରୀ ସଂରକ୍ଷଣ ମୋଡ୍‍</string>
     <string name="accessibility_quick_settings_location_gps_only">ଅବସ୍ଥାନ ରିପୋର୍ଟିଂ: କେବଳ ସେନ୍‍ସର୍‍ ମୋଡ୍‍</string>
     <string name="accessibility_quick_settings_location_high_accuracy">ଅବସ୍ଥାନ ରିପୋର୍ଟିଂ: ଅଧିକ ସଠିକତା ମୋଡ୍‍</string>
+    <string name="quick_settings_location_gps_only_label">କେବଳ ଡିଭାଇସ୍</string>
     <string name="quick_settings_location_high_accuracy_label">ଅଧିକ ସଠିକତା</string>
     <string name="quick_settings_location_detail_title">ଅବସ୍ଥାନ</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_title">ଅଧିକ ସଠିକତା</string>

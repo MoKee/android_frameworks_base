@@ -71,6 +71,8 @@
     <string name="accessibility_quick_settings_location_high_accuracy">定位報告：高精度模式。</string>
     <string name="quick_settings_location_battery_saving_label">省電模式</string>
     <string name="quick_settings_location_battery_saving_label_twoline">節省\n電量</string>
+    <string name="quick_settings_location_gps_only_label">僅限裝置</string>
+    <string name="quick_settings_location_gps_only_label_twoline">僅限 GPS</string>
     <string name="quick_settings_location_high_accuracy_label">高精度</string>
     <string name="quick_settings_location_high_accuracy_label_twoline">高\n精確度</string>
     <string name="quick_settings_location_detail_title">位置</string>
@@ -78,6 +80,8 @@
     <string name="quick_settings_location_detail_mode_high_accuracy_title">高精度</string>
     <string name="quick_settings_location_detail_mode_battery_saving_title">省電模式</string>
     <string name="quick_settings_location_detail_mode_sensors_only_title">僅限裝置</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">使用 GPS、Wi\u2011Fi、藍牙或行動網路判斷位置 </string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">使用 Wi\u2011Fi、藍牙或流動網絡判斷位置</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_description">使用 GPS 判斷位置</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_description">使用 GPS 判斷您的所在位置</string>
+    <string name="status_bar_battery">電量</string>
 </resources>

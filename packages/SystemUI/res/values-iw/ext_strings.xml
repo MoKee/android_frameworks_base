@@ -68,6 +68,8 @@
     <string name="accessibility_quick_settings_location_high_accuracy">דיווח מיקום: מצב רמת דיוק גבוהה.</string>
     <string name="quick_settings_location_battery_saving_label">חיסכון בסוללה</string>
     <string name="quick_settings_location_battery_saving_label_twoline">חיסכון\nבסוללה</string>
+    <string name="quick_settings_location_gps_only_label">מכשיר בלבד</string>
+    <string name="quick_settings_location_gps_only_label_twoline">מכשיר\nבלבד</string>
     <string name="quick_settings_location_high_accuracy_label">דיוק מרבי</string>
     <string name="quick_settings_location_high_accuracy_label_twoline">דיוק\nמרבי</string>
     <string name="quick_settings_location_detail_title">מיקום</string>
@@ -75,6 +77,6 @@
     <string name="quick_settings_location_detail_mode_high_accuracy_title">דיוק מרבי</string>
     <string name="quick_settings_location_detail_mode_battery_saving_title">חיסכון בסוללה</string>
     <string name="quick_settings_location_detail_mode_sensors_only_title">מכשיר בלבד</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">‏השתמש ב-GPS‏, Wi\u2011Fi‏, Bluetooth או רשתות סלולריות כדי לקבוע מיקום</string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">‏השתמש ב-Wi\u2011Fi‏, Bluetooth או רשתות סלולריות כדי לקבוע מיקום</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_description">‏השתמש בלוויני GPS לקביעת המיקום</string>
 </resources>

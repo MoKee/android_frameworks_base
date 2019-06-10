@@ -53,6 +53,7 @@
     <string name="accessibility_quick_settings_location_battery_saving">ئورۇن دوكلاتى: توك تېجەش ھالىتى.</string>
     <string name="accessibility_quick_settings_location_gps_only">ئورۇن دوكلاتى: سەزگۈچ ھالىتىلا.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">ئورۇن دوكلاتى: يۇقىرى ئېنىقلىق ھالىتى.</string>
+    <string name="quick_settings_location_gps_only_label">ئۈسكۈنىلا</string>
     <string name="quick_settings_location_high_accuracy_label">دەللىكى يۇقىرى</string>
     <string name="quick_settings_location_detail_title">ئورنى</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_title">دەللىكى يۇقىرى</string>

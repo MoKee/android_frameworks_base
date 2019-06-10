@@ -63,6 +63,8 @@
     <string name="accessibility_quick_settings_location_high_accuracy">Локација извештај: режим високе тачности.</string>
     <string name="quick_settings_location_battery_saving_label">Уштеда батерије</string>
     <string name="quick_settings_location_battery_saving_label_twoline">Уштеда\nбатерије</string>
+    <string name="quick_settings_location_gps_only_label">Само уређај</string>
+    <string name="quick_settings_location_gps_only_label_twoline">Само\nуређај</string>
     <string name="quick_settings_location_high_accuracy_label">Велика прецизност</string>
     <string name="quick_settings_location_high_accuracy_label_twoline">Велика\nпрецизност</string>
     <string name="quick_settings_location_detail_title">Локација</string>
@@ -70,6 +72,6 @@
     <string name="quick_settings_location_detail_mode_high_accuracy_title">Велика прецизност</string>
     <string name="quick_settings_location_detail_mode_battery_saving_title">Уштеда батерије</string>
     <string name="quick_settings_location_detail_mode_sensors_only_title">Само уређај</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">Користите GPS, Wi-Fi, Bluetooth или мобилне мреже за одређивање локације.</string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">Користите Wi-Fi, Bluetooth или мобилне мреже за одређивање локације.</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_description">Користите GPS за одређивање локације.</string>
 </resources>

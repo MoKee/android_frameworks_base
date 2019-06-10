@@ -63,5 +63,6 @@
     <string name="accessibility_quick_settings_location_battery_saving">Location reporting: Battery-saving mode.</string>
     <string name="accessibility_quick_settings_location_gps_only">Location reporting: Sensors-only mode.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">Location reporting: High-accuracy mode.</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">Use GPS, Wi\u2011Fi, Bluetooth, or mobile networks to determine location </string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">Use Wi\u2011Fi, Bluetooth, or mobile networks to determine location</string>
 </resources>

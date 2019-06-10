@@ -70,6 +70,8 @@
     <string name="accessibility_quick_settings_location_high_accuracy">Standortdienste: Hohe Genauigkeit.</string>
     <string name="quick_settings_location_battery_saving_label">Akku-Sparmodus</string>
     <string name="quick_settings_location_battery_saving_label_twoline">Energie\nsparen</string>
+    <string name="quick_settings_location_gps_only_label">Nur Gerät</string>
+    <string name="quick_settings_location_gps_only_label_twoline">Nur\nGPS</string>
     <string name="quick_settings_location_high_accuracy_label">Hohe Genauigkeit</string>
     <string name="quick_settings_location_high_accuracy_label_twoline">Hohe\nGenauigkeit</string>
     <string name="quick_settings_location_detail_title">Ort</string>
@@ -77,6 +79,6 @@
     <string name="quick_settings_location_detail_mode_high_accuracy_title">Hohe Genauigkeit</string>
     <string name="quick_settings_location_detail_mode_battery_saving_title">Akku-Sparmodus</string>
     <string name="quick_settings_location_detail_mode_sensors_only_title">Nur Gerät</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">GPS, WLAN, Bluetooth oder Mobilfunknetze zur Standortbestimmung nutzen </string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">WLAN, Bluetooth oder Mobilfunknetze zur Standortbestimmung nutzen</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_description">GPS zur Standortbestimmung nutzen</string>
 </resources>

@@ -52,6 +52,7 @@
     <string name="accessibility_quick_settings_location_battery_saving">گزارش مکان: حالت صرفه‌جویی در باتری.</string>
     <string name="accessibility_quick_settings_location_gps_only">گزارش مکان: حالت فقط حسگرها.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">گزارش مکان: حالت دقت بالا.</string>
+    <string name="quick_settings_location_gps_only_label">فقط دستگاه</string>
     <string name="quick_settings_location_high_accuracy_label">دقت بالا</string>
     <string name="quick_settings_location_detail_title">موقعیت مکانی</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_title">دقت بالا</string>

@@ -54,6 +54,7 @@
     <string name="accessibility_quick_settings_location_battery_saving">இருப்பிடம் அறிவித்தல்: மின்கல சேமிப்பு பயன்முறை.</string>
     <string name="accessibility_quick_settings_location_gps_only">இருப்பிடம் அறிவித்தல்: உணர்கருவிகள் மட்டும் பயன்முறை.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">இருப்பிடம் அறிவித்தல்: உயர் துல்லிய பயன்முறை.</string>
+    <string name="quick_settings_location_gps_only_label">சாதனம் மட்டும்</string>
     <string name="quick_settings_location_high_accuracy_label">அதிக துல்லியத்தன்மை</string>
     <string name="quick_settings_location_detail_title">இருப்பிடம்</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_title">அதிக துல்லியத்தன்மை</string>

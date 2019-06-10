@@ -54,6 +54,7 @@
     <string name="accessibility_quick_settings_location_battery_saving">സ്ഥാനം റിപ്പോർട്ടിംഗ്: ബാറ്ററി ലാഭിക്കല്‍ മോഡ്.</string>
     <string name="accessibility_quick_settings_location_gps_only">സ്ഥാനം റിപ്പോർട്ടിംഗ്: സെൻസറുകൾ മാത്രമുള്ള മോഡ്.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">സ്ഥാനം റിപ്പോർട്ടിംഗ്: ഉയർന്ന കൃത്യതാ മോഡ്.</string>
+    <string name="quick_settings_location_gps_only_label">ഉപകരണം മാത്രം</string>
     <string name="quick_settings_location_high_accuracy_label">ഉയർന്ന കൃത്യത</string>
     <string name="quick_settings_location_detail_title">ലൊക്കേഷൻ</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_title">ഉയർന്ന കൃത്യത</string>

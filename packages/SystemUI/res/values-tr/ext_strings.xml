@@ -71,6 +71,8 @@
     <string name="accessibility_quick_settings_location_high_accuracy">Konum bildirimi: yüksek doğruluk modu.</string>
     <string name="quick_settings_location_battery_saving_label">Pil tasarrufu</string>
     <string name="quick_settings_location_battery_saving_label_twoline">Pil\ntasarrufu</string>
+    <string name="quick_settings_location_gps_only_label">Yalnızca cihaz</string>
+    <string name="quick_settings_location_gps_only_label_twoline">Yalnızca\ncihaz</string>
     <string name="quick_settings_location_high_accuracy_label">Yüksek doğruluk</string>
     <string name="quick_settings_location_high_accuracy_label_twoline">Yüksek\ndoğruluk</string>
     <string name="quick_settings_location_detail_title">Konum</string>
@@ -78,6 +80,6 @@
     <string name="quick_settings_location_detail_mode_high_accuracy_title">Yüksek doğruluk</string>
     <string name="quick_settings_location_detail_mode_battery_saving_title">Pil tasarrufu</string>
     <string name="quick_settings_location_detail_mode_sensors_only_title">Yalnızca cihaz</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">Konumu belirlemek için GPS, Wi\u2011Fi, Bluetooth veya hücresel ağları kullanır</string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">Konumu belirlemek için Wifi, Bluetooth veya hücresel ağlar kullanılır</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_description">Konumu belirlemek için GPS kullanılır</string>
 </resources>

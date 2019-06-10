@@ -70,6 +70,8 @@
     <string name="accessibility_quick_settings_location_high_accuracy">Αναφορά τοποθεσίας: λειτουργία υψηλής ακρίβειας.</string>
     <string name="quick_settings_location_battery_saving_label">Εξοικονόμηση μπαταρίας</string>
     <string name="quick_settings_location_battery_saving_label_twoline">Εξοικονόμηση\nμπαταρίας</string>
+    <string name="quick_settings_location_gps_only_label">Μόνο συσκευή</string>
+    <string name="quick_settings_location_gps_only_label_twoline">Μόνο\nσυσκευή</string>
     <string name="quick_settings_location_high_accuracy_label">Υψηλή ακρίβεια</string>
     <string name="quick_settings_location_high_accuracy_label_twoline">Υψηλή\nακρίβεια</string>
     <string name="quick_settings_location_detail_title">Τοποθεσία</string>
@@ -77,6 +79,6 @@
     <string name="quick_settings_location_detail_mode_high_accuracy_title">Υψηλή ακρίβεια</string>
     <string name="quick_settings_location_detail_mode_battery_saving_title">Εξοικονόμηση μπαταρίας</string>
     <string name="quick_settings_location_detail_mode_sensors_only_title">Μόνο συσκευή</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">Χρήση GPS, Wi\u2011Fi, Bluetooth ή δικτύων κινητής τηλεφωνίας για τον καθορισμό της τοποθεσίας</string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">Χρήση Wi\u2011Fi, Bluetooth ή δικτύων κινητής τηλεφωνίας για καθορισμό τοποθεσίας</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_description">Χρήση του GPS για τον προσδιορισμό της τοποθεσίας σας</string>
 </resources>

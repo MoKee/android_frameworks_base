@@ -68,6 +68,8 @@
     <string name="accessibility_quick_settings_location_high_accuracy">Informes d\'ubicació: Mode d\'alta precisió.</string>
     <string name="quick_settings_location_battery_saving_label">Estalvi de bateria</string>
     <string name="quick_settings_location_battery_saving_label_twoline">Estalvi\nde bateria</string>
+    <string name="quick_settings_location_gps_only_label">Només dispositiu</string>
+    <string name="quick_settings_location_gps_only_label_twoline">Només\ndispositiu</string>
     <string name="quick_settings_location_high_accuracy_label">Alta precisió</string>
     <string name="quick_settings_location_high_accuracy_label_twoline">Alta\nprecisió</string>
     <string name="quick_settings_location_detail_title">Ubicació</string>
@@ -75,6 +77,6 @@
     <string name="quick_settings_location_detail_mode_high_accuracy_title">Alta precisió</string>
     <string name="quick_settings_location_detail_mode_battery_saving_title">Estalvi de bateria</string>
     <string name="quick_settings_location_detail_mode_sensors_only_title">Només dispositiu</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">Utilitza el GPS, la Wi\u2011Fi, el Bluetooth, o les xarxes mòbils per determinar la ubicació</string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">Utilitza la Wi\u2011Fi, el Bluetooth o les xarxes mòbils per determinar la ubicació</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_description">Utilitza el GPS per determinar la ubicació</string>
 </resources>

@@ -64,6 +64,7 @@
     <string name="accessibility_quick_settings_location_battery_saving">Aithriseadh an ionaid: modh chaomhnadh a’ bhataraidh.</string>
     <string name="accessibility_quick_settings_location_gps_only">Aithriseadh an ionaid: am modh mothachaidh a-mhàin.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">Aithriseadh an ionaid: modh na pongalachd àrd.</string>
+    <string name="quick_settings_location_gps_only_label">An t-uidheam a-mhàin</string>
     <string name="quick_settings_location_high_accuracy_label">Pongalachd àrd</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_title">Pongalachd àrd</string>
     <string name="quick_settings_location_detail_mode_sensors_only_title">An t-uidheam a-mhàin</string>

@@ -71,8 +71,8 @@
     <string name="accessibility_quick_settings_location_high_accuracy">Asukoha teatamine: kõrge täpsusega režiim.</string>
     <string name="quick_settings_location_battery_saving_label">Akut säästev</string>
     <string name="quick_settings_location_battery_saving_label_twoline">Akut\nsäästev</string>
-    <string name="quick_settings_location_gps_only_label">Ainult GPS</string>
-    <string name="quick_settings_location_gps_only_label_twoline">Ainult GPS</string>
+    <string name="quick_settings_location_gps_only_label">Ainult seade</string>
+    <string name="quick_settings_location_gps_only_label_twoline">Ainult\nseade</string>
     <string name="quick_settings_location_high_accuracy_label">Kõrge täpsusega</string>
     <string name="quick_settings_location_high_accuracy_label_twoline">Kõrge\ntäpsusega</string>
     <string name="quick_settings_location_detail_title">Asukoht</string>
@@ -82,5 +82,5 @@
     <string name="quick_settings_location_detail_mode_sensors_only_title">Ainult seade</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_description">Kasutage asukoha määramiseks GPS, Wi\u2011Fi, Bluetooth või mobiilsidevõrke</string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">Kasutage asukoha määramiseks Wi\u2011Fi, Bluetooth või mobiilsidevõrke</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_description">Kasutada GPS teie asukoha määramiseks</string>
+    <string name="status_bar_battery">Aku</string>
 </resources>

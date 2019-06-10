@@ -53,6 +53,7 @@
     <string name="accessibility_quick_settings_location_battery_saving">સ્થાન રિપોર્ટિંગ: બૅટરી બચત મોડ.</string>
     <string name="accessibility_quick_settings_location_gps_only">સ્થાન રિપોર્ટિંગ: ફક્ત સેન્સર્સ મોડ.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">સ્થાન રિપોર્ટિંગ: ઉચ્ચ સચોટતા મોડ.</string>
+    <string name="quick_settings_location_gps_only_label">ફક્ત ઉપકરણ</string>
     <string name="quick_settings_location_high_accuracy_label">ઉચ્ચ સચોટતા</string>
     <string name="quick_settings_location_detail_title">સ્થાન</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_title">ઉચ્ચ સચોટતા</string>

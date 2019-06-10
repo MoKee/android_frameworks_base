@@ -68,6 +68,8 @@
     <string name="accessibility_quick_settings_location_high_accuracy">Localização: alta precisão.</string>
     <string name="quick_settings_location_battery_saving_label">Poupança de bateria</string>
     <string name="quick_settings_location_battery_saving_label_twoline">Poupança\nde bateria</string>
+    <string name="quick_settings_location_gps_only_label">Apenas no dispositivo</string>
+    <string name="quick_settings_location_gps_only_label_twoline">Apenas no\ndispositivo</string>
     <string name="quick_settings_location_high_accuracy_label">Alta precisão</string>
     <string name="quick_settings_location_high_accuracy_label_twoline">Alta\nprecisão</string>
     <string name="quick_settings_location_detail_title">Localização</string>
@@ -75,6 +77,6 @@
     <string name="quick_settings_location_detail_mode_high_accuracy_title">Alta precisão</string>
     <string name="quick_settings_location_detail_mode_battery_saving_title">Poupança de bateria</string>
     <string name="quick_settings_location_detail_mode_sensors_only_title">Apenas no dispositivo</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">Utilizar GPS, Wi\u2011Fi, bluetooth ou redes móveis para determinar a localização </string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">Utilizar Wi\u2011Fi, bluetooth ou redes móveis para determinar a localização</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_description">Utilizar o GPS para determinar a sua localização</string>
 </resources>

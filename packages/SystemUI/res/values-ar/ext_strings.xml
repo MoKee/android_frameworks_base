@@ -71,6 +71,8 @@
     <string name="accessibility_quick_settings_location_high_accuracy">تحديد الموقع: وضع الدقة العالية.</string>
     <string name="quick_settings_location_battery_saving_label">توفير البطارية</string>
     <string name="quick_settings_location_battery_saving_label_twoline">توفير\nالبطارية</string>
+    <string name="quick_settings_location_gps_only_label">الجهاز فقط</string>
+    <string name="quick_settings_location_gps_only_label_twoline">الجهاز\nفقط</string>
     <string name="quick_settings_location_high_accuracy_label">دقة عالية</string>
     <string name="quick_settings_location_high_accuracy_label_twoline">دقة\nعالية</string>
     <string name="quick_settings_location_detail_title">الموقع</string>
@@ -78,6 +80,7 @@
     <string name="quick_settings_location_detail_mode_high_accuracy_title">دقة عالية</string>
     <string name="quick_settings_location_detail_mode_battery_saving_title">توفير البطارية</string>
     <string name="quick_settings_location_detail_mode_sensors_only_title">الجهاز فقط</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">استخدام نظام تحديد المواقع العالمي (GPS) وشبكات WiFi والبلوتوث أو شبكات الجوّال لتحديد الموقع</string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">استخدام شبكات Wi\u2011Fi والبلوتوث أو شبكات الجوّال لتحديد الموقع</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_description">استخدام نظام تحديد المواقع العالمي (GPS) في تحديد موقعك</string>
+    <string name="status_bar_battery">البطارية</string>
 </resources>

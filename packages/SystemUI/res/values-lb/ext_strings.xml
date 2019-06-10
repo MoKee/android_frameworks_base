@@ -52,6 +52,7 @@
     <string name="accessibility_quick_settings_location_battery_saving">Standuertbericht: Akku spueren.</string>
     <string name="accessibility_quick_settings_location_gps_only">Standuertbericht: Just Sensoren.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">Standuertbericht: Héich Genauegkeet.</string>
+    <string name="quick_settings_location_gps_only_label">Just Apparat</string>
     <string name="quick_settings_location_high_accuracy_label">Héich Genauegkeet</string>
     <string name="quick_settings_location_detail_title">Standuert</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_title">Héich Genauegkeet</string>

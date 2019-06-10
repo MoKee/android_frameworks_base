@@ -52,6 +52,7 @@
     <string name="accessibility_quick_settings_location_battery_saving">অৱস্থান ৰিপোৰ্টিং: বেটাৰি ছেভিং মোড।</string>
     <string name="accessibility_quick_settings_location_gps_only">অৱস্থান ৰিপোৰ্টিং: কেৱল চেনচৰ মোড।</string>
     <string name="accessibility_quick_settings_location_high_accuracy">অৱস্থান ৰিপোৰ্টিং: উচ্চ নিৰ্ভুলতা মোড।</string>
+    <string name="quick_settings_location_gps_only_label">কেৱল ডিভাইচ</string>
     <string name="quick_settings_location_high_accuracy_label">উচ্চ সঠিকতা</string>
     <string name="quick_settings_location_detail_title">স্থান</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_title">উচ্চ সঠিকতা</string>

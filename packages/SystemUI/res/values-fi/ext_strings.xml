@@ -68,6 +68,8 @@
     <string name="accessibility_quick_settings_location_high_accuracy">Sijainnin raportointi: korkea tarkkuus.</string>
     <string name="quick_settings_location_battery_saving_label">Virransäästö</string>
     <string name="quick_settings_location_battery_saving_label_twoline">Virran-\nsäästö</string>
+    <string name="quick_settings_location_gps_only_label">Vain laite</string>
+    <string name="quick_settings_location_gps_only_label_twoline">Vain\nlaite</string>
     <string name="quick_settings_location_high_accuracy_label">Korkea tarkkuus</string>
     <string name="quick_settings_location_high_accuracy_label_twoline">Suuri\ntarkkuus</string>
     <string name="quick_settings_location_detail_title">Sijainti</string>
@@ -75,6 +77,6 @@
     <string name="quick_settings_location_detail_mode_high_accuracy_title">Korkea tarkkuus</string>
     <string name="quick_settings_location_detail_mode_battery_saving_title">Virransäästö</string>
     <string name="quick_settings_location_detail_mode_sensors_only_title">Vain laite</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">Paikanna GPS:n ja Wi\u2011Fi-, Bluetooth- ja mobiiliverkkojen avulla</string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">Paikanna WiF\u2011i-, Bluetooth- ja mobiiliverkkojen avulla</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_description">Paikanna sijaintisi GPS:n avulla</string>
 </resources>

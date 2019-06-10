@@ -57,6 +57,7 @@
     <string name="accessibility_quick_settings_location_high_accuracy">Platsrapportering: högt precisionsläge.</string>
     <string name="quick_settings_location_battery_saving_label">Batterisparläge</string>
     <string name="quick_settings_location_battery_saving_label_twoline">Batteri-\nsparläge</string>
+    <string name="quick_settings_location_gps_only_label">Endast enhet</string>
     <string name="quick_settings_location_high_accuracy_label">Hög noggrannhet</string>
     <string name="quick_settings_location_high_accuracy_label_twoline">Hög\nnoggrannhet</string>
     <string name="quick_settings_location_detail_title">Plats</string>

@@ -68,6 +68,8 @@
     <string name="accessibility_quick_settings_location_high_accuracy">Lokasjonsmodus: høy nøyaktighet.</string>
     <string name="quick_settings_location_battery_saving_label">Batterisparing</string>
     <string name="quick_settings_location_battery_saving_label_twoline">Batteri\nsparing</string>
+    <string name="quick_settings_location_gps_only_label">Kun enhet</string>
+    <string name="quick_settings_location_gps_only_label_twoline">Kun\nenhet</string>
     <string name="quick_settings_location_high_accuracy_label">Høy nøyaktighet</string>
     <string name="quick_settings_location_high_accuracy_label_twoline">Høy\nnøyaktighet</string>
     <string name="quick_settings_location_detail_title">Posisjon</string>
@@ -75,6 +77,6 @@
     <string name="quick_settings_location_detail_mode_high_accuracy_title">Høy nøyaktighet</string>
     <string name="quick_settings_location_detail_mode_battery_saving_title">Batterisparing</string>
     <string name="quick_settings_location_detail_mode_sensors_only_title">Kun enhet</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">Bruk GPS, Wi\u2011Fi, Bluetooth eller mobilnettverk for å bestemme plassering</string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">Bruk Wi\u2011Fi, Bluetooth, eller mobilnettverk for å bestemme plassering</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_description">Bruk GPS til å bestemme din posisjon</string>
 </resources>
