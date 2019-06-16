@@ -81,4 +81,6 @@
     <string name="quick_settings_location_detail_mode_sensors_only_title">Solo dispositivo</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_description">Utilizza GPS, Wi\u2011Fi, Bluetooth o reti dati per stabilire la posizione</string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">Utilizza Wi\u2011Fi, Bluetooth o reti dati per stabilire la posizione</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_description">Utilizza il GPS per stabilire la posizione</string>
+    <string name="status_bar_battery">Batteria</string>
 </resources>

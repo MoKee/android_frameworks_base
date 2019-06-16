@@ -82,4 +82,6 @@
     <string name="quick_settings_location_detail_mode_sensors_only_title">僅限裝置</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_description">使用 GPS、Wi\u2011Fi、藍牙或行動網路判斷位置 </string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">使用 Wi\u2011Fi、藍牙或行動網路判斷位置</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_description">使用 GPS 判斷您的位置</string>
+    <string name="status_bar_battery">電池</string>
 </resources>

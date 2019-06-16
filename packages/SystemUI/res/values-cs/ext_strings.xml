@@ -82,5 +82,6 @@
     <string name="quick_settings_location_detail_mode_sensors_only_title">Pouze GPS</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_description">K určování polohy používat GPS, Wi-Fi, Bluetooth nebo mobilní sítě </string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">K určování polohy používat Wi-Fi, Bluetooth nebo mobilní sítě</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_description">K určování polohy používat GPS</string>
     <string name="status_bar_battery">Baterie</string>
 </resources>
