@@ -82,5 +82,6 @@
     <string name="quick_settings_location_detail_mode_sensors_only_title">الجهاز فقط</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_description">استخدام نظام تحديد المواقع العالمي (GPS) وشبكات WiFi والبلوتوث أو شبكات الجوّال لتحديد الموقع</string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">استخدام شبكات Wi\u2011Fi والبلوتوث أو شبكات الجوّال لتحديد الموقع</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_description">‏استخدام نظام تحديد المواقع (GPS) في تحديد الموقع</string>
     <string name="status_bar_battery">البطارية</string>
 </resources>

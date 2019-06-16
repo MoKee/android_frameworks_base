@@ -82,5 +82,6 @@
     <string name="quick_settings_location_detail_mode_sensors_only_title">Csak készüléken</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_description">GPS, Wi\u2011Fi, Bluetooth vagy mobilhálózat használata a tartózkodási hely megállapításához</string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">Wi\u2011Fi, Bluetooth vagy mobilhálózat használata a tartózkodási hely megállapításához</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_description">Tartózkodási hely meghatározása GPS használattal</string>
     <string name="status_bar_battery">Akkumulátor</string>
 </resources>
