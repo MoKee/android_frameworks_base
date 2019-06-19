@@ -4,7 +4,7 @@
 /**
  * Copyright (c) 2015-2019, The MoKee Open Source Project
  * Copyright (c) 2015, The CyanogenMod Project
- * Copyright (c) 2017-2018, The LineageOS Project
+ * Copyright (c) 2017-2019, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -82,5 +82,6 @@
     <string name="quick_settings_location_detail_mode_sensors_only_title">Ainult seade</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_description">Kasutage asukoha määramiseks GPS, Wi\u2011Fi, Bluetooth või mobiilsidevõrke</string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">Kasutage asukoha määramiseks Wi\u2011Fi, Bluetooth või mobiilsidevõrke</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_description">Asukoha määramiseks kasutage GPS-i</string>
     <string name="status_bar_battery">Aku</string>
 </resources>
