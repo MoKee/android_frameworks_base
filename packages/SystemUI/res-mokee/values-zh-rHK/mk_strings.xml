@@ -15,9 +15,9 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="status_bar_su">Do</string>
+    <string name="status_bar_su">超級使用者</string>
     <string name="status_bar_vpn">VPN</string>
-    <string name="quick_settings_roaming_title">Indicador de itinerancia</string>
+    <string name="quick_settings_roaming_title">漫遊指示器</string>
     <!-- Screenshot QS Tile -->
-    <string name="quick_settings_screenshot_label">Captura de pantalla</string>
+    <string name="quick_settings_screenshot_label">擷取螢幕畫面</string>
 </resources>
