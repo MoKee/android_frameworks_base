@@ -18,6 +18,5 @@
     <string name="status_bar_su">スーパーユーザー</string>
     <string name="status_bar_vpn">VPN</string>
     <string name="quick_settings_roaming_title">ローミング表示</string>
-    <!-- Screenshot QS Tile -->
     <string name="quick_settings_screenshot_label">スクリーンショット</string>
 </resources>

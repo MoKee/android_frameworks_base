@@ -30,6 +30,7 @@
     <string name="global_action_restart_download_progress">Restartování do režimu stahování\u2026</string>
     <string name="global_action_current_user">Aktuální</string>
     <string name="quick_settings_network_adb_label">ADB přes síť</string>
+    <string name="quick_settings_network_adb_no_network">žádná síť</string>
     <string name="quick_settings_ambient_display_label">Ambientní zobrazení</string>
     <string name="accessibility_quick_settings_ambient_display_off">Ambientní zobrazení vypnuto.</string>
     <string name="accessibility_quick_settings_ambient_display_on">Ambientní zobrazení zapnuto.</string>

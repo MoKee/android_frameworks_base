@@ -18,6 +18,5 @@
     <string name="status_bar_su">مدير الروت</string>
     <string name="status_bar_vpn">VPN</string>
     <string name="quick_settings_roaming_title">مؤشر التجوال</string>
-    <!-- Screenshot QS Tile -->
     <string name="quick_settings_screenshot_label">لقطة للشاشة</string>
 </resources>
