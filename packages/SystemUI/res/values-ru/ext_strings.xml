@@ -30,6 +30,7 @@
     <string name="global_action_restart_download_progress">Переход в режим обновления ПО\u2026</string>
     <string name="global_action_current_user">Текущий</string>
     <string name="quick_settings_network_adb_label">ADB по сети</string>
+    <string name="quick_settings_network_adb_no_network">нет сети</string>
     <string name="quick_settings_ambient_display_label">Индикация событий</string>
     <string name="accessibility_quick_settings_ambient_display_off">Индикация событий экраном отключена.</string>
     <string name="accessibility_quick_settings_ambient_display_on">Индикация событий экраном включена.</string>

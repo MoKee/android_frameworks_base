@@ -30,6 +30,7 @@
     <string name="global_action_restart_download_progress">Taaskäivitamine allalaadimisrežiimi\u2026</string>
     <string name="global_action_current_user">Praegune</string>
     <string name="quick_settings_network_adb_label">ADB üle võrgu</string>
+    <string name="quick_settings_network_adb_no_network">võrk puudub</string>
     <string name="quick_settings_ambient_display_label">Säästlik ekraan</string>
     <string name="accessibility_quick_settings_ambient_display_off">Säästlik ekraan väljas.</string>
     <string name="accessibility_quick_settings_ambient_display_on">Säästlik ekraan sees.</string>

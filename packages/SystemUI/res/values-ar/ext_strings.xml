@@ -30,6 +30,7 @@
     <string name="global_action_restart_download_progress">إعادة التشغيل الى وضع التنزيل</string>
     <string name="global_action_current_user">الحالي</string>
     <string name="quick_settings_network_adb_label">ADB عبر الشبكة</string>
+    <string name="quick_settings_network_adb_no_network">لا توجد شبكة</string>
     <string name="quick_settings_ambient_display_label">العرض المحيط</string>
     <string name="accessibility_quick_settings_ambient_display_off">تعطيل العرض المحيط.</string>
     <string name="accessibility_quick_settings_ambient_display_on">تشغيل العرض المحيط.</string>
