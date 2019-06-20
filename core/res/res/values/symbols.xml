@@ -3422,4 +3422,6 @@
   <java-symbol type="integer" name="db_wal_truncate_size" />
 
   <java-symbol type="string" name="config_defaultAssistantComponentName" />
+
+  <java-symbol type="drawable" name="fingerprint_underscreen" />
 </resources>

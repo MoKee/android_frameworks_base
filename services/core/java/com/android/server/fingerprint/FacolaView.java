@@ -32,6 +32,8 @@ import android.view.Gravity;
 import android.os.Handler;
 import android.os.Looper;
 
+import android.content.res.Resources;
+
 import java.io.PrintWriter;
 
 import vendor.xiaomi.hardware.fingerprintextension.V1_0.IXiaomiFingerprint;
@@ -79,6 +81,9 @@ public class FacolaView extends ImageView implements OnTouchListener {
         mPaintShow.setColor(Color.argb(0x18, 0x00, 0xff, 0x00));
         setOnTouchListener(this);
         mWM = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+
+        this.setBackground(context.getDrawable(com.android.internal.R.drawable.fingerprint_underscreen));
+
         Slog.d("PHH-Enroll", "Created facola...");
         try {
             if(mW != -1)
