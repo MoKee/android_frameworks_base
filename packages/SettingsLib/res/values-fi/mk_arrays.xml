@@ -16,9 +16,6 @@
     limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Titles for window animation scale preference. [CHAR LIMIT=35] -->
-    <!-- Values for window animation scale preference. -->
-    <!-- Titles for transition animation scale preference. [CHAR LIMIT=35] -->
     <string-array name="mk_transition_animation_scale_entries">
         <item>Animation off</item>
         <item>Animaatioasteikko 0,5-kertainen</item>
@@ -29,8 +26,6 @@
         <item>Animaatioasteikko 5-kertainen</item>
         <item>Animaatioasteikko 10-kertainen</item>
     </string-array>
-    <!-- Values for transition animation scale preference. -->
-    <!-- Titles for animator duration scale preference. [CHAR LIMIT=35] -->
     <string-array name="mk_animator_duration_scale_entries">
         <item>Animaatio pois käytöstä</item>
         <item>Animaatioasteikko 0,5-kertainen</item>
@@ -41,5 +36,4 @@
         <item>Animaatioasteikko 5-kertainen</item>
         <item>Animaatioasteikko 10-kertainen</item>
     </string-array>
-    <!-- Values for animator duration scale preference. -->
 </resources>

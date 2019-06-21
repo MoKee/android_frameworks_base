@@ -16,6 +16,5 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
     <string name="mk_system_error_manufacturer">Ekoizlearen irudia bat ez datorrela antzeman da. Normalean irudia zaharkituta dagoela esan nahi du. Ziurtatu ekoizlearen irudia <xliff:g id="fingerprint">%1$s</xliff:g> honekin bat datorrela.</string>
 </resources>

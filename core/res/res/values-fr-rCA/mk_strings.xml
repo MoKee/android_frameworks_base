@@ -16,6 +16,5 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
     <string name="mk_system_error_manufacturer">Une incompatibilité du fichier vendor.img a été détectée. En règle générale, cela signifie que celui-ci n\'est pas à jour. Assurez-vous que le fichier vendor.img correspond à <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
 </resources>

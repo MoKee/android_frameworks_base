@@ -16,10 +16,34 @@
     limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Titles for window animation scale preference. [CHAR LIMIT=35] -->
-    <!-- Values for window animation scale preference. -->
-    <!-- Titles for transition animation scale preference. [CHAR LIMIT=35] -->
-    <!-- Values for transition animation scale preference. -->
-    <!-- Titles for animator duration scale preference. [CHAR LIMIT=35] -->
-    <!-- Values for animator duration scale preference. -->
+    <string-array name="mk_window_animation_scale_entries">
+        <item>Animatsioon väljas</item>
+        <item>0,5-kordne animatsiooni skaala</item>
+        <item>0,75-kordne animatsiooni skaala</item>
+        <item>1-kordne animatsiooni skaala</item>
+        <item>1,5-kordne animatsiooni skaala</item>
+        <item>2-kordne animatsiooni skaala</item>
+        <item>5-kordne animatsiooni skaala</item>
+        <item>10-kordne animatsiooni skaala</item>
+    </string-array>
+    <string-array name="mk_transition_animation_scale_entries">
+        <item>Animatsioon väljas</item>
+        <item>0,5-kordne animatsiooni skaala</item>
+        <item>0,75-kordne animatsiooni skaala</item>
+        <item>1-kordne animatsiooni skaala</item>
+        <item>1,5-kordne animatsiooni skaala</item>
+        <item>2-kordne animatsiooni skaala</item>
+        <item>5-kordne animatsiooni skaala</item>
+        <item>10-kordne animatsiooni skaala</item>
+    </string-array>
+    <string-array name="mk_animator_duration_scale_entries">
+        <item>Animatsioon väljas</item>
+        <item>0,5-kordne animatsiooni skaala</item>
+        <item>0,75-kordne animatsiooni skaala</item>
+        <item>1-kordne animatsiooni skaala</item>
+        <item>1,5-kordne animatsiooni skaala</item>
+        <item>2-kordne animatsiooni skaala</item>
+        <item>5-kordne animatsiooni skaala</item>
+        <item>10-kordne animatsiooni skaala</item>
+    </string-array>
 </resources>

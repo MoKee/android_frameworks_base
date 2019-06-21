@@ -16,6 +16,5 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
     <string name="mk_system_error_manufacturer">\'n Teenstrydigheid in die verskaffer beeld is opgespoor. Gewoonlik beteken dat jou verskaffer beeld verouderd is. Maak asseblief seker jou verskaffer beeld stem met <xliff:g id="fingerprint">%1$s </xliff:g> ooreen.</string>
 </resources>

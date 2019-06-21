@@ -16,6 +16,5 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
     <string name="mk_system_error_manufacturer">Một hình ảnh nhà cung cấp không phù hợp đã được phát hiện. Thông thường, điều này có nghĩa là hình ảnh nhà cung cấp của bạn hết hạn. Vui lòng đảm bảo rằng hình ảnh nhà cung cấp của bạn phù hợp <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
 </resources>

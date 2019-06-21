@@ -16,13 +16,9 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- su icon switch -->
     <string name="status_bar_su">Superuser</string>
-    <!-- vpn icon switch -->
     <string name="status_bar_vpn">VPN (Virtuelles privates Netzwerk)</string>
-    <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
     <string name="keyguard_indication_dash_charging_time">Dash Charging (voll in <xliff:g id="verbleibende_Aufladezeit" example="4 Stunden und 2 Minuten">%s</xliff:g>)</string>
     <string name="keyguard_plugged_in_dash_charging">Dash Charging</string>
-    <!-- Recents memory view -->
     <string name="recents_free_ram">Freier RAM: %1$d MB</string>
 </resources>

@@ -16,6 +16,5 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
     <string name="mk_system_error_manufacturer">Bir üretici dosyası uyuşmazlığı tespit edildi. Bu üretici dosyanızın eski olduğunu gösterir. Lütfen üretici dosyanızın <xliff:g id="fingerprint">%1$s</xliff:g> ile eşleştiğine emin olun.</string>
 </resources>

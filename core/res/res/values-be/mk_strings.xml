@@ -16,6 +16,5 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
     <string name="mk_system_error_manufacturer">Несумяшчальны вобраз ПЗ вытворцы прылады. Як правіла, гэта азначае, што неабходна ўсталяваць абноўленую прашыўку раздзела vendor. Пераканайцеся, што яе версія будзе адпавядаць <xliff:g id="fingerprint">%1$s</xliff:g>.</string>
 </resources>

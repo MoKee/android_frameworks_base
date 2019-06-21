@@ -16,6 +16,5 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
     <string name="mk_system_error_manufacturer">ವ್ಯಾಪಾರಿ ಚಿತ್ರವು ಹೊಂದಾಣಿಕೆಯಾಗದಿರುವುದು ಕಂಡುಬಂದಿದೆ. ಸಾಧಾರಣವಾಗಿ ಇದು ನಿಮ್ಮ ವ್ಯಾಪಾರಿಯ ಚಿತ್ರದ ಅವಧಿ ಮುಗಿದು ಹೋಗಿದೆ ಎಂದರ್ಥ. ದಯವಿಟ್ಟು ನಿಮ್ಮ ವ್ಯಾಪಾರಿಯ ಚಿತ್ರವು ಹೊಂದಾಣಿಕೆಯಾಗುತ್ತಿದೆ ಎಂದು ಖಚಿತಪಡಿಸಿ <xliff:g id="ಬೆರಳಚ್ಚು">%1$s</xliff:g>.</string>
 </resources>
