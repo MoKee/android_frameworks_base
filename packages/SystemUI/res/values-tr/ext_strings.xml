@@ -30,6 +30,7 @@
     <string name="global_action_restart_download_progress">İndirme modunda başlatılıyor\u2026</string>
     <string name="global_action_current_user">Mevcut</string>
     <string name="quick_settings_network_adb_label">Ağ üzerinden ADB</string>
+    <string name="quick_settings_network_adb_no_network">ağ yok</string>
     <string name="quick_settings_ambient_display_label">Bildirim ekranı</string>
     <string name="accessibility_quick_settings_ambient_display_off">Bildirim ekranı kapalı.</string>
     <string name="accessibility_quick_settings_ambient_display_on">Bildirim ekranı açık.</string>
