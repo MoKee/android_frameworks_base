@@ -20,8 +20,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.content.Context;
+import android.hardware.display.DisplayManager;
 import android.view.View.OnTouchListener;
 import android.view.View;
+import android.provider.Settings;
 import android.widget.ImageView;
 import android.view.MotionEvent;
 import android.util.Slog;
@@ -31,6 +33,7 @@ import android.graphics.PixelFormat;
 import android.view.Gravity;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.UserHandle;
 
 import android.content.res.Resources;
 
@@ -48,16 +51,25 @@ public class FacolaView extends ImageView implements OnTouchListener {
     private boolean mInsideCircle = false;
     private final WindowManager.LayoutParams mParams = new WindowManager.LayoutParams();
 
-    private final static float UNTOUCHED_DIM = .1f;
-    private final static float TOUCHED_DIM = .9f;
-
     private final Handler mMainHandler;
     private boolean visible = false;
 
+    // Settings that should be changed when toggling animations
+    private static final String[] TOGGLE_ANIMATION_TARGETS = {
+        Settings.Global.WINDOW_ANIMATION_SCALE, Settings.Global.TRANSITION_ANIMATION_SCALE,
+        Settings.Global.ANIMATOR_DURATION_SCALE
+    };
+    private static final String ANIMATION_ON_VALUE = "1";
+    private static final String ANIMATION_OFF_VALUE = "0";
+
     private final WindowManager mWM;
+    private final DisplayManager mDisplayManager;
+    private final Context mContext;
+
     FacolaView(Context context) {
         super(context);
 
+        mContext = context;
         mMainHandler = new Handler(Looper.getMainLooper());
 
         String[] location = android.os.SystemProperties.get("persist.vendor.sys.fp.fod.location.X_Y", "").split(",");
@@ -84,43 +96,43 @@ public class FacolaView extends ImageView implements OnTouchListener {
 
         this.setBackground(context.getDrawable(com.android.internal.R.drawable.fingerprint_underscreen));
 
-        Slog.d("PHH-Enroll", "Created facola...");
+        Slog.d("Mi9-FP", "Created facola...");
         try {
             if(mW != -1)
                 mXiaomiFingerprint = IXiaomiFingerprint.getService();
         } catch(Exception e) {
-            Slog.d("PHH-Enroll", "Failed getting xiaomi fingerprint service", e);
+            Slog.d("Mi9-FP", "Failed getting xiaomi fingerprint service", e);
         }
+
+        mDisplayManager = context.getSystemService(DisplayManager.class);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Slog.d("PHH-Enroll", "Drawing at " + mX + ", " + mY + ", " + mW + ", " + mH);
+        Slog.d("Mi9-FP", "Drawing at " + mX + ", " + mY + ", " + mW + ", " + mH);
         //TODO w!=h?
         if(mInsideCircle) {
+            canvas.drawCircle(mW/2, mH/2, (float) (mW/2.0f), this.mPaintFingerprint);
             try {
                 int nitValue = 3;
+                setDim(true);
                 if(mXiaomiFingerprint != null) {
-                    mMainHandler.postDelayed(() -> {
-                        try {
-                            mXiaomiFingerprint.extCmd(0xa, nitValue);
-                        } catch(Exception e) {}
-                    }, 60);
-                 }
+                    try {
+                        mXiaomiFingerprint.extCmd(0xa, nitValue);
+                    } catch(Exception e) {}
+                }
             } catch(Exception e) {
-                Slog.d("PHH-Enroll", "Failed calling xiaomi fp extcmd");
+                Slog.d("Mi9-FP", "Failed calling xiaomi fp extcmd");
             }
-
-            canvas.drawCircle(mW/2, mH/2, (float) (mW/2.0f), this.mPaintFingerprint);
         } else {
+            canvas.drawCircle(mW/2, mH/2, (float) (mW/2.0f), this.mPaintShow);
             try {
                 if(mXiaomiFingerprint != null)
                     mXiaomiFingerprint.extCmd(0xa, 0);
             } catch(Exception e) {
-                Slog.d("PHH-Enroll", "Failed calling xiaomi fp extcmd");
+                Slog.d("Mi9-FP", "Failed calling xiaomi fp extcmd");
             }
-            canvas.drawCircle(mW/2, mH/2, (float) (mW/2.0f), this.mPaintShow);
         }
     }
 
@@ -130,33 +142,19 @@ public class FacolaView extends ImageView implements OnTouchListener {
         float y = event.getAxisValue(MotionEvent.AXIS_Y);
 
         boolean newInside = (x > 0 && x < mW) && (y > 0 && y < mW);
-        if(event.getAction() == MotionEvent.ACTION_UP)
+        if(event.getAction() == MotionEvent.ACTION_UP) {
             newInside = false;
+            setDim(false);
+        }
 
-        Slog.d("PHH-Enroll", "Got action " + event.getAction() + ", x = " + x + ", y = " + y + ", inside = " + mInsideCircle + "/" + newInside);
+        Slog.d("Mi9-FP", "Got action " + event.getAction() + ", x = " + x + ", y = " + y + ", inside = " + mInsideCircle + "/" + newInside);
         if(newInside == mInsideCircle) return mInsideCircle;
         mInsideCircle = newInside;
 
         invalidate();
 
-        if(!mInsideCircle) {
-            mParams.dimAmount = UNTOUCHED_DIM;
-            //Changing Dim is instant, changing brightness isn't.
-            //Have a little pity of users' eyes and wait a bit
-            mMainHandler.postDelayed(() -> {
-                if(visible) {
-                    mParams.screenBrightness = .0f;
-                    mWM.updateViewLayout(this, mParams);
-                }
-            }, 100);
-            mWM.updateViewLayout(this, mParams);
+        if(!mInsideCircle)
             return false;
-        }
-
-        mParams.dimAmount = TOUCHED_DIM;
-        mParams.screenBrightness = 1.0f;
-        mWM.updateViewLayout(this, mParams);
-
 
         return true;
     }
@@ -164,12 +162,16 @@ public class FacolaView extends ImageView implements OnTouchListener {
     public void show() {
         if(mX == -1 || mY == -1 || mW == -1 || mH == -1) return;
 
+        for (String animationPreference : TOGGLE_ANIMATION_TARGETS) {
+            Settings.Global.putString(mContext.getContentResolver(), animationPreference, ANIMATION_OFF_VALUE);
+        }
+
         try {
             PrintWriter writer = new PrintWriter("/sys/devices/virtual/touch/tp_dev/fod_status", "UTF-8");
             writer.println("1");
             writer.close();
         } catch(Exception e) {
-            Slog.d("PHH-Enroll", "Failed setting fod status for touchscreen");
+            Slog.d("Mi9-FP", "Failed setting fod status for touchscreen");
         }
 
         mParams.x = mX;
@@ -185,7 +187,7 @@ public class FacolaView extends ImageView implements OnTouchListener {
             WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH |
             WindowManager.LayoutParams.FLAG_DIM_BEHIND |
             WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
-        mParams.dimAmount = UNTOUCHED_DIM;
+        mParams.dimAmount = .1f;
 
         mParams.packageName = "android";
 
@@ -198,22 +200,50 @@ public class FacolaView extends ImageView implements OnTouchListener {
     public void hide() {
         if(mX == -1 || mY == -1 || mW == -1 || mH == -1) return;
 
+        for (String animationPreference : TOGGLE_ANIMATION_TARGETS) {
+            Settings.Global.putString(mContext.getContentResolver(), animationPreference, ANIMATION_ON_VALUE);
+        }
+
         try {
             if(mXiaomiFingerprint != null)
                 mXiaomiFingerprint.extCmd(0xa, 0);
         } catch(Exception e) {
-            Slog.d("PHH-Enroll", "Failed calling xiaomi fp extcmd");
+            Slog.d("Mi9-FP", "Failed calling xiaomi fp extcmd");
         }
         try {
             PrintWriter writer = new PrintWriter("/sys/devices/virtual/touch/tp_dev/fod_status", "UTF-8");
             writer.println("0");
             writer.close();
         } catch(Exception e) {
-            Slog.d("PHH-Enroll", "Failed setting fod status for touchscreen");
+            Slog.d("Mi9-FP", "Failed setting fod status for touchscreen");
         }
 
-        Slog.d("PHH-Enroll", "Removed facola");
+        Slog.d("Mi9-FP", "Removed facola");
         mWM.removeView(this);
         visible = false;
+        setDim(false);
+    }
+
+    private void setDim(boolean dim) {
+        int curBrightness = Settings.System.getInt(getContext().getContentResolver(),
+                        Settings.System.SCREEN_BRIGHTNESS, 100);
+        float dimAmount = (float) curBrightness / 255.0f;
+        dimAmount = 0.80f - dimAmount;
+
+        if (dimAmount < 0) {
+            dimAmount = 0f;
+        }
+
+        if (dim) {
+            mParams.dimAmount = dimAmount;
+            mWM.updateViewLayout(this, mParams);
+            mDisplayManager.setTemporaryBrightness(255);
+        } else {
+            mParams.dimAmount = .0f;
+            mWM.updateViewLayout(this, mParams);
+            mDisplayManager.setTemporaryBrightness(curBrightness);
+            Settings.System.putIntForUser(mContext.getContentResolver(),
+                    Settings.System.SCREEN_BRIGHTNESS, curBrightness, UserHandle.USER_CURRENT);
+        }
     }
 }
