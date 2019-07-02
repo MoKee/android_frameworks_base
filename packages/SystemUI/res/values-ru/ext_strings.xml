@@ -61,9 +61,9 @@
     <string name="global_action_restart_bootloader">Загрузчик</string>
     <string name="global_action_restart_download">Загрузить</string>
     <string name="global_action_restart_progress">Перезапуск устройства...</string>
-    <string name="global_action_restart_recovery_progress">Перезапуск в рекавери...</string>
-    <string name="global_action_restart_bootloader_progress">Перезапуск в режим загрузчика...</string>
-    <string name="global_action_restart_download_progress">Перезапуск в режим загрузки...</string>
+    <string name="global_action_restart_recovery_progress">В режим рекавери\u2026</string>
+    <string name="global_action_restart_bootloader_progress">В режим загрузчика\u2026</string>
+    <string name="global_action_restart_download_progress">В режим обновления ПО\u2026</string>
     <string name="accessibility_quick_settings_location_battery_saving">Отправка местоположения: режим экономии батареи.</string>
     <string name="accessibility_quick_settings_location_gps_only">Отправка местоположения: только по GPS.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">Отправка местоположения: режим высокой точности.</string>
