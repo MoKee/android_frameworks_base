@@ -30,6 +30,7 @@
     <string name="global_action_restart_download_progress">重新启动到下载模式\u2026</string>
     <string name="global_action_current_user">当前</string>
     <string name="quick_settings_network_adb_label">网络 ADB 调试</string>
+    <string name="quick_settings_network_adb_no_network">没有网络</string>
     <string name="quick_settings_ambient_display_label">环境显示</string>
     <string name="accessibility_quick_settings_ambient_display_off">关闭环境显示。</string>
     <string name="accessibility_quick_settings_ambient_display_on">开启环境显示。</string>
