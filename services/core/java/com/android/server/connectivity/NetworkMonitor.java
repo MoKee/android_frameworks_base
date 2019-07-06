@@ -106,12 +106,12 @@ public class NetworkMonitor extends StateMachine {
     private static final String DEFAULT_HTTPS_URL     = "https://www.google.com/generate_204";
     private static final String DEFAULT_HTTP_URL      =
             "http://connectivitycheck.gstatic.com/generate_204";
-    private static final String DEFAULT_HTTPS_URL_CN     = "https://captive.v2ex.co/generate_204";
-    private static final String DEFAULT_HTTP_URL_CN      = "http://captive.v2ex.co/generate_204";
+    private static final String DEFAULT_HTTPS_URL_CN     = "https://connect.rom.miui.com/generate_204";
+    private static final String DEFAULT_HTTP_URL_CN      = "http://connect.rom.miui.com/generate_204";
     private static final String DEFAULT_FALLBACK_URL  = "http://www.google.com/gen_204";
     private static final String DEFAULT_FALLBACK_URL_CN  = "http://g.cn/generate_204";
     private static final String DEFAULT_SECOND_FALLBACK_URLS =
-            "https://download.mokeedev.com/generate_204";
+            "https://api.mokeedev.com/generate_204";
     private static final String DEFAULT_OTHER_FALLBACK_URLS =
             "http://play.googleapis.com/generate_204";
     private static final String DEFAULT_USER_AGENT    = "Mozilla/5.0 (X11; Linux x86_64) "
