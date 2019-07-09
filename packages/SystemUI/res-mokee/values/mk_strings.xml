@@ -18,7 +18,7 @@
 
     <string name="status_bar_su">Su</string>
     <string name="status_bar_vpn">VPN</string>
-    <string name="quick_settings_roaming_title">Roaming indicator</string>
+    <string name="status_bar_roaming">Roaming indicator</string>
 
     <!-- Screenshot QS Tile -->
     <string name="quick_settings_screenshot_label">Screenshot</string>
