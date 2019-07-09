@@ -703,6 +703,8 @@ public class SignalClusterView extends LinearLayout implements NetworkController
                     DarkIconDispatcher.getTint(tintArea, mMobileActivityIn, tint));
             setTint(mMobileActivityOut,
                     DarkIconDispatcher.getTint(tintArea, mMobileActivityOut, tint));
+            setTint(mvolte,
+                    DarkIconDispatcher.getTint(tintArea, mvolte, tint));
         }
     }
 }
