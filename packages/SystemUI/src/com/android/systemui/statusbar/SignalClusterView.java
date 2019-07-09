@@ -70,6 +70,7 @@ public class SignalClusterView extends LinearLayout implements NetworkController
     private static final String SLOT_ETHERNET = "ethernet";
     private static final String SLOT_VPN = "vpn";
     private static final String SLOT_ROAMING = "roaming";
+    private static final String SLOT_VOLTE = "volte";
 
     private final NetworkController mNetworkController;
     private final SecurityController mSecurityController;
@@ -119,6 +120,7 @@ public class SignalClusterView extends LinearLayout implements NetworkController
     private boolean mForceBlockWifi;
     private boolean mBlockVpn;
     private boolean mBlockRoaming;
+    private boolean mBlockVoLTE;
 
     private final IconLogger mIconLogger = Dependency.get(IconLogger.class);
 
@@ -175,15 +177,17 @@ public class SignalClusterView extends LinearLayout implements NetworkController
         boolean blockEthernet = blockList.contains(SLOT_ETHERNET);
         boolean blockVpn = blockList.contains(SLOT_VPN);
         boolean blockRoaming = blockList.contains(SLOT_ROAMING);
+        boolean blockVoLTE = blockList.contains(SLOT_VOLTE);
 
         if (blockAirplane != mBlockAirplane || blockMobile != mBlockMobile
                 || blockEthernet != mBlockEthernet || blockWifi != mBlockWifi
-                || blockRoaming != mBlockRoaming) {
+                || blockRoaming != mBlockRoaming || blockVoLTE != mBlockVoLTE) {
             mBlockAirplane = blockAirplane;
             mBlockMobile = blockMobile;
             mBlockEthernet = blockEthernet;
             mBlockWifi = blockWifi || mForceBlockWifi;
             mBlockRoaming = blockRoaming;
+            mBlockVoLTE = blockVoLTE;
             // Re-register to get new callbacks.
             mNetworkController.removeCallback(this);
             mNetworkController.addCallback(this);
@@ -316,7 +320,7 @@ public class SignalClusterView extends LinearLayout implements NetworkController
         state.mRoaming = roaming && !mBlockRoaming;
         state.mActivityIn = activityIn && mActivityEnabled;
         state.mActivityOut = activityOut && mActivityEnabled;
-        state.mvolteId = volteId;
+        state.mVoLTE = volteId > 0 && !mBlockVoLTE;
 
         apply();
     }
@@ -629,8 +633,9 @@ public class SignalClusterView extends LinearLayout implements NetworkController
         public boolean mActivityIn;
         public boolean mActivityOut;
         private SignalDrawable mMobileSignalDrawable;
-        private int mvolteId = 0;
-        private ImageView mvolte;
+        private ImageView mMobileVoLTE;
+        private boolean mVoLTE;
+
         public PhoneState(int subId, Context context) {
             ViewGroup root = (ViewGroup) LayoutInflater.from(context)
                     .inflate(R.layout.mobile_signal_group, null);
@@ -648,7 +653,7 @@ public class SignalClusterView extends LinearLayout implements NetworkController
             mMobileActivityOut = root.findViewById(R.id.mobile_out);
             mMobileSignalDrawable = new SignalDrawable(mMobile.getContext());
             mMobile.setImageDrawable(mMobileSignalDrawable);
-            mvolte = (ImageView) root.findViewById(R.id.mobile_volte);
+            mMobileVoLTE = root.findViewById(R.id.mobile_volte);
         }
 
         public boolean apply(boolean isSecondaryIcon) {
@@ -683,6 +688,7 @@ public class SignalClusterView extends LinearLayout implements NetworkController
             mMobileRoamingSpace.setVisibility(mRoaming ? View.VISIBLE : View.GONE);
             mMobileActivityIn.setVisibility(mActivityIn ? View.VISIBLE : View.GONE);
             mMobileActivityOut.setVisibility(mActivityOut ? View.VISIBLE : View.GONE);
+            mMobileVoLTE.setVisibility(mVoLTE ? View.VISIBLE : View.GONE);
 
             return mMobileVisible;
         }
