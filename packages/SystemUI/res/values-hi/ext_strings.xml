@@ -21,7 +21,7 @@
  */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="accessibility_data_connection_hspap">HSPA +</string>
+    <string name="accessibility_data_connection_hspap">HSPA+ / 3जी इंटरनेट</string>
     <string name="accessibility_lock_task"><xliff:g id="task">%1$s</xliff:g> को निरस्त होने से बचाएं</string>
     <string name="accessibility_unlock_task"><xliff:g id="task">%1$s</xliff:g> को निरस्त होने दें</string>
     <string name="quick_settings_network_adb_label">नेटवर्क पर एडीबी</string>
