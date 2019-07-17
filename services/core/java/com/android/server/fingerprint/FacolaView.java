@@ -29,8 +29,6 @@ import android.util.Slog;
 import android.view.WindowManager;
 import android.graphics.PixelFormat;
 import android.view.Gravity;
-import android.os.Handler;
-import android.os.Looper;
 
 import java.io.PrintWriter;
 
@@ -49,14 +47,9 @@ public class FacolaView extends ImageView implements OnTouchListener {
     private final static float UNTOUCHED_DIM = .1f;
     private final static float TOUCHED_DIM = .9f;
 
-    private final Handler mMainHandler;
-    private boolean visible = false;
-
     private final WindowManager mWM;
     FacolaView(Context context) {
         super(context);
-
-        mMainHandler = new Handler(Looper.getMainLooper());
 
         String[] location = android.os.SystemProperties.get("persist.vendor.sys.fp.fod.location.X_Y", "").split(",");
         String[] size = android.os.SystemProperties.get("persist.vendor.sys.fp.fod.size.width_height", "").split(",");
@@ -96,13 +89,8 @@ public class FacolaView extends ImageView implements OnTouchListener {
         if(mInsideCircle) {
             try {
                 int nitValue = 3;
-                if(mXiaomiFingerprint != null) {
-                    mMainHandler.postDelayed(() -> {
-                        try {
-                            mXiaomiFingerprint.extCmd(0xa, nitValue);
-                        } catch(Exception e) {}
-                    }, 60);
-                 }
+                if(mXiaomiFingerprint != null)
+                    mXiaomiFingerprint.extCmd(0xa, nitValue);
             } catch(Exception e) {
                 Slog.d("PHH-Enroll", "Failed calling xiaomi fp extcmd");
             }
@@ -135,15 +123,8 @@ public class FacolaView extends ImageView implements OnTouchListener {
         invalidate();
 
         if(!mInsideCircle) {
+            mParams.screenBrightness = .0f;
             mParams.dimAmount = UNTOUCHED_DIM;
-            //Changing Dim is instant, changing brightness isn't.
-            //Have a little pity of users' eyes and wait a bit
-            mMainHandler.postDelayed(() -> {
-                if(visible) {
-                    mParams.screenBrightness = .0f;
-                    mWM.updateViewLayout(this, mParams);
-                }
-            }, 100);
             mWM.updateViewLayout(this, mParams);
             return false;
         }
@@ -151,7 +132,6 @@ public class FacolaView extends ImageView implements OnTouchListener {
         mParams.dimAmount = TOUCHED_DIM;
         mParams.screenBrightness = 1.0f;
         mWM.updateViewLayout(this, mParams);
-
 
         return true;
     }
@@ -186,7 +166,6 @@ public class FacolaView extends ImageView implements OnTouchListener {
 
         mParams.gravity = Gravity.TOP | Gravity.LEFT;
         mWM.addView(this, mParams);
-        visible = true;
 
     }
 
@@ -209,6 +188,5 @@ public class FacolaView extends ImageView implements OnTouchListener {
 
         Slog.d("PHH-Enroll", "Removed facola");
         mWM.removeView(this);
-        visible = false;
     }
 }
