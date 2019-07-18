@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006-2008 The Android Open Source Project
+ * Copyright (C) 2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -199,6 +200,7 @@ import android.content.IIntentReceiver;
 import android.content.IIntentSender;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ActivityPresentationInfo;
 import android.content.pm.ApplicationInfo;
@@ -363,6 +365,7 @@ import com.android.server.wm.ActivityTaskManagerInternal;
 import com.android.server.wm.ActivityTaskManagerService;
 import com.android.server.wm.WindowManagerService;
 import com.android.server.wm.WindowProcessController;
+import com.mokee.aegis.IAegisInterface;
 
 import dalvik.system.VMRuntime;
 
@@ -994,6 +997,11 @@ public class ActivityManagerService extends IActivityManager.Stub
         protected boolean isPackageForFilter(String packageName, BroadcastFilter filter) {
             return packageName.equals(filter.packageName);
         }
+
+        @Override
+        protected IAegisInterface getIAegisInterface() {
+            return mIAegisInterface;
+        }
     };
 
     /**
@@ -1572,6 +1580,25 @@ public class ActivityManagerService extends IActivityManager.Stub
     private ParcelFileDescriptor[] mLifeMonitorFds;
 
     static final HostingRecord sNullHostingRecord = new HostingRecord(null);
+
+    IAegisInterface mIAegisInterface;
+
+    final List<String> mRunningPackages = new ArrayList<>();
+
+    final List<String> mInstallerPackages = Arrays.asList("com.google.android.packageinstaller", "com.android.packageinstaller");
+
+    private void updateRunningPackages(ActivityRecord r) {
+        if (mRunningPackages.contains(r.packageName)
+            || mInstallerPackages.contains(r.packageName)
+            || r.isActivityTypeHome()) return;
+        if (mRunningPackages.size() < 2) {
+            mRunningPackages.add(r.packageName);
+        } else {
+            mRunningPackages.remove(0);
+            mRunningPackages.add(r.packageName);
+        }
+    }
+
     /**
      * Used to notify activity lifecycle events.
      */
@@ -4636,6 +4663,9 @@ public class ActivityManagerService extends IActivityManager.Stub
             if (packageName != null) {
                 Slog.i(TAG, "Force stopping " + packageName + " appid=" + appId
                         + " user=" + userId + ": " + reason);
+                if (mRunningPackages.contains(packageName)) {
+                    mRunningPackages.remove(packageName);
+                }
             } else {
                 Slog.i(TAG, "Force stopping u" + userId + ": " + reason);
             }
@@ -19044,4 +19074,24 @@ public class ActivityManagerService extends IActivityManager.Stub
             }
         }
     }
+
+    public void initAegisInterface() {
+        Intent intent = new Intent();
+        intent.setPackage("com.mokee.aegis");
+        intent.setAction("mokee.intent.action.AEGIS_INTERFACE");
+        mContext.bindService(intent, mAegisInterfaceConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    private ServiceConnection mAegisInterfaceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            mIAegisInterface = IAegisInterface.Stub.asInterface(service);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            mIAegisInterface = null;
+        }
+    };
+
 }

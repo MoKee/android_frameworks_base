@@ -2145,6 +2145,16 @@ public final class SystemServer {
                 }
                 traceEnd();
             }
+
+            traceBeginAndSlog("StartAegis");
+            try {
+                startAegis(context);
+                mActivityManagerService.initAegisInterface();
+            } catch (Throwable e) {
+                reportWtf("starting Aegis", e);
+            }
+            traceEnd();
+
             traceBeginAndSlog("MakeNetworkManagementServiceReady");
             try {
                 if (networkManagementF != null) {
@@ -2373,6 +2383,13 @@ public final class SystemServer {
         //Slog.d(TAG, "Starting service: " + intent);
         context.startServiceAsUser(intent, UserHandle.SYSTEM);
         windowManager.onSystemUiStarted();
+    }
+
+    static final void startAegis(Context context) {
+        Intent intent = new Intent();
+        intent.setComponent(new ComponentName("com.mokee.aegis",
+                "com.mokee.aegis.AegisService"));
+        context.startServiceAsUser(intent, UserHandle.SYSTEM);
     }
 
     private static void traceBeginAndSlog(@NonNull String name) {
