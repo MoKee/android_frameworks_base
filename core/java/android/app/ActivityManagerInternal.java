@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -205,6 +206,17 @@ public abstract class ActivityManagerInternal {
      */
     public abstract void updateBatteryStats(
             ComponentName activity, int uid, int userId, boolean resumed);
+
+    /**
+     * Update running packages on activity usage.
+     * @param packageName
+     * @param isHome
+     * @param finishing
+     * @param frontOfTask
+     * @param started
+     */
+    public abstract void updateRunningPackages(
+            String packageName, boolean isHome, boolean finishing, boolean frontOfTask, boolean resumed);
 
     /**
      * Update UsageStats of the activity.

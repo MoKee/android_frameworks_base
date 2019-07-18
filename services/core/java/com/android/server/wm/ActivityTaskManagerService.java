@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2018 The Android Open Source Project
+ * Copyright (C) 2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -5643,6 +5644,12 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
         final Message m = PooledLambda.obtainMessage(ActivityManagerInternal::updateBatteryStats,
                 mAmInternal, component.mActivityComponent, component.app.mUid, component.mUserId,
                 resumed);
+        mH.sendMessage(m);
+    }
+
+    void updateRunningPackages(ActivityRecord component, boolean resumed) {
+        final Message m = PooledLambda.obtainMessage(ActivityManagerInternal::updateRunningPackages,
+            mAmInternal, component.packageName, component.isActivityTypeHome(), component.finishing, component.frontOfTask, resumed);
         mH.sendMessage(m);
     }
 

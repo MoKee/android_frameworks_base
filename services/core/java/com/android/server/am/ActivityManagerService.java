@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006-2008 The Android Open Source Project
+ * Copyright (C) 2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -223,6 +224,7 @@ import android.content.pm.UserInfo;
 import android.content.res.CompatibilityInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.content.ServiceConnection;
 import android.database.ContentObserver;
 import android.graphics.Rect;
 import android.hardware.display.DisplayManagerInternal;
@@ -363,6 +365,7 @@ import com.android.server.wm.ActivityTaskManagerInternal;
 import com.android.server.wm.ActivityTaskManagerService;
 import com.android.server.wm.WindowManagerService;
 import com.android.server.wm.WindowProcessController;
+import com.mokee.aegis.IAegisInterface;
 
 import dalvik.system.VMRuntime;
 
@@ -994,6 +997,11 @@ public class ActivityManagerService extends IActivityManager.Stub
         protected boolean isPackageForFilter(String packageName, BroadcastFilter filter) {
             return packageName.equals(filter.packageName);
         }
+
+        @Override
+        protected IAegisInterface getIAegisInterface() {
+            return mIAegisInterface;
+        }
     };
 
     /**
@@ -1572,6 +1580,24 @@ public class ActivityManagerService extends IActivityManager.Stub
     private ParcelFileDescriptor[] mLifeMonitorFds;
 
     static final HostingRecord sNullHostingRecord = new HostingRecord(null);
+
+    IAegisInterface mIAegisInterface;
+
+    final List<String> mRunningPackages = new ArrayList<>();
+
+    final List<String> mInstallerPackages = Arrays.asList("com.google.android.packageinstaller", "com.android.packageinstaller");
+
+    private void updateRunningPackages(String packageName) {
+        if (mRunningPackages.contains(packageName)
+            || mInstallerPackages.contains(packageName)) return;
+        if (mRunningPackages.size() < 2) {
+            mRunningPackages.add(packageName);
+        } else {
+            mRunningPackages.remove(0);
+            mRunningPackages.add(packageName);
+        }
+    }
+
     /**
      * Used to notify activity lifecycle events.
      */
@@ -4636,6 +4662,9 @@ public class ActivityManagerService extends IActivityManager.Stub
             if (packageName != null) {
                 Slog.i(TAG, "Force stopping " + packageName + " appid=" + appId
                         + " user=" + userId + ": " + reason);
+                if (mRunningPackages.contains(packageName)) {
+                    mRunningPackages.remove(packageName);
+                }
             } else {
                 Slog.i(TAG, "Force stopping u" + userId + ": " + reason);
             }
@@ -18083,6 +18112,19 @@ public class ActivityManagerService extends IActivityManager.Stub
         }
 
         @Override
+        public void updateRunningPackages(String packageName, boolean isHome, boolean finishing, boolean frontOfTask, boolean resumed) {
+            synchronized (ActivityManagerService.this) {
+                if (resumed && !isHome) {
+                    ActivityManagerService.this.updateRunningPackages(packageName);
+                } else {
+                    if (ActivityManagerService.this.mRunningPackages.contains(packageName) && finishing && frontOfTask) {
+                        ActivityManagerService.this.mRunningPackages.remove(packageName);
+                    }
+                }
+            }
+        }
+
+        @Override
         public void updateActivityUsageStats(ComponentName activity, int userId, int event,
                 IBinder appToken, ComponentName taskRoot) {
             synchronized (ActivityManagerService.this) {
@@ -19040,4 +19082,24 @@ public class ActivityManagerService extends IActivityManager.Stub
             }
         }
     }
+
+    public void initAegisInterface() {
+        Intent intent = new Intent();
+        intent.setPackage("com.mokee.aegis");
+        intent.setAction("mokee.intent.action.AEGIS_INTERFACE");
+        mContext.bindService(intent, mAegisInterfaceConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    private ServiceConnection mAegisInterfaceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            mIAegisInterface = IAegisInterface.Stub.asInterface(service);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            mIAegisInterface = null;
+        }
+    };
+
 }
