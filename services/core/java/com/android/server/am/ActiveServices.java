@@ -447,6 +447,16 @@ public final class ActiveServices {
 
         // If this is a direct-to-foreground start, make sure it is allowed as per the app op.
         boolean forceSilentAbort = false;
+
+        try {
+            if (mAm.mIAegisInterface != null && mAm.mIAegisInterface.isChainLaunchDisabled(callingPackage, r.packageName)) {
+                forcedStandby = true;
+                fgRequired = false;
+                forceSilentAbort = true;
+            }
+        } catch (RemoteException e) {
+        }
+
         if (fgRequired) {
             final int mode = mAm.mAppOpsService.checkOperation(
                     AppOpsManager.OP_START_FOREGROUND, r.appInfo.uid, r.packageName);

@@ -3,6 +3,7 @@ java_library_static {
 
     aidl: {
         include_dirs: [
+            "frameworks/base/services/core/aidl",
             "frameworks/native/aidl/binder",
             "system/core/storaged/binder",
             "system/netd/server/binder",
@@ -16,6 +17,7 @@ java_library_static {
         ":installd_aidl",
         ":storaged_aidl",
         ":vold_aidl",
+        ":aegis_aidl",
         ":mediaupdateservice_aidl",
         "java/com/android/server/EventLogTags.logtags",
         "java/com/android/server/am/EventLogTags.logtags",
@@ -65,4 +67,9 @@ java_genrule {
 java_library {
     name: "services.core",
     static_libs: ["services.core.priorityboosted"],
+}
+
+filegroup {
+    name: "aegis_aidl",
+    srcs: ["aidl/com/mokee/aegis/IAegisInterface.aidl"],
 }

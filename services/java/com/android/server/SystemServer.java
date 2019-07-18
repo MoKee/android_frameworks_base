@@ -1859,6 +1859,7 @@ public final class SystemServer {
             traceBeginAndSlog("StartAegis");
             try {
                 startAegis(context);
+                mActivityManagerService.initAegisInterface();
             } catch (Throwable e) {
                 reportWtf("starting Aegis", e);
             }
