@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (C) 2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -467,6 +468,20 @@ public final class ActiveServices {
 
         // If this is a direct-to-foreground start, make sure it is allowed as per the app op.
         boolean forceSilentAbort = false;
+
+        try {
+            if (mAm.mIAegisInterface != null) {
+                if (mAm.mIAegisInterface.isChainLaunchDisabled(callingPackage, r.packageName)) {
+                    return new ComponentName("?", "app is chain launch!");
+                } else if (mAm.mIAegisInterface.isAutomaticallyLaunchDisabled(r.packageName)) {
+                    if (!mAm.mRunningPackages.contains(r.packageName)) {
+                        return new ComponentName("?", "app is automatically launch!");
+                    }
+                }
+            }
+        } catch (RemoteException e) {
+        }
+
         if (fgRequired) {
             final int mode = mAm.mAppOpsService.checkOperation(
                     AppOpsManager.OP_START_FOREGROUND, r.appInfo.uid, r.packageName);
@@ -2523,6 +2538,18 @@ public final class ActiveServices {
         if (!whileRestarting && mRestartingServices.contains(r)) {
             // If waiting for a restart, then do nothing.
             return null;
+        }
+
+        try {
+            if (mAm.mIAegisInterface != null) {
+                if (mAm.mIAegisInterface.isAutomaticallyLaunchDisabled(r.packageName)) {
+                    if (!execInFg || !mAm.mRunningPackages.contains(r.packageName)) {
+                        bringDownServiceLocked(r);
+                        return "app is automatically launch!";
+                    }
+                }
+            }
+        } catch (RemoteException e) {
         }
 
         if (DEBUG_SERVICE) {
