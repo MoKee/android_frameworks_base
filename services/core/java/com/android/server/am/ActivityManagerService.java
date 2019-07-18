@@ -283,6 +283,7 @@ import android.content.IIntentReceiver;
 import android.content.IIntentSender;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.ApplicationInfo.HiddenApiEnforcementPolicy;
@@ -479,6 +480,7 @@ import mokee.license.LicenseInterface;
 import com.google.android.collect.Lists;
 import com.google.android.collect.Maps;
 
+import com.mokee.aegis.IAegisInterface;
 import org.mokee.internal.applications.MKActivityManager;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -2014,6 +2016,8 @@ public class ActivityManagerService extends IActivityManager.Stub
 
     // mokee sdk activity related helper
     private MKActivityManager mMKActivityManager;
+
+    IAegisInterface mIAegisInterface;
 
     /**
      * Current global configuration information. Contains general settings for the entire system,
@@ -27452,4 +27456,24 @@ public class ActivityManagerService extends IActivityManager.Stub
     public boolean shouldForceLongScreen(String packageName) {
         return mMKActivityManager.shouldForceLongScreen(packageName);
     }
+
+    public void initAegisInterface() {
+        Intent intent = new Intent();
+        intent.setPackage("com.mokee.aegis");
+        intent.setAction("mokee.intent.action.AEGIS_INTERFACE");
+        mContext.bindService(intent, mAegisInterfaceConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    private ServiceConnection mAegisInterfaceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            mIAegisInterface = IAegisInterface.Stub.asInterface(service);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            mIAegisInterface = null;
+        }
+    };
+
 }

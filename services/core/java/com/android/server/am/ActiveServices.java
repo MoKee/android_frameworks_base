@@ -444,6 +444,12 @@ public final class ActiveServices {
             }
             forcedStandby = true;
         }
+        try {
+            if (mAm.mIAegisInterface != null && mAm.mIAegisInterface.isChainLaunchDisabled(callingPackage, r.packageName)) {
+                forcedStandby = true;
+            }
+        } catch (RemoteException e) {
+        }
 
         // If this is a direct-to-foreground start, make sure it is allowed as per the app op.
         boolean forceSilentAbort = false;
