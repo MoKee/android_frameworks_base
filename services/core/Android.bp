@@ -4,6 +4,7 @@ java_library_static {
     aidl: {
         include_dirs: [
             "frameworks/base/cmds/idmap2/idmap2d/aidl",
+            "frameworks/base/services/core/aidl",
             "frameworks/native/aidl/binder",
             "frameworks/native/cmds/dumpstate/binder",
             "system/core/storaged/binder",
@@ -18,6 +19,7 @@ java_library_static {
         ":installd_aidl",
         ":storaged_aidl",
         ":vold_aidl",
+        ":aegis_aidl",
         ":gsiservice_aidl",
         "java/com/android/server/EventLogTags.logtags",
         "java/com/android/server/am/EventLogTags.logtags",
@@ -77,6 +79,10 @@ java_library {
     static_libs: ["services.core.priorityboosted"],
 }
 
+filegroup {
+    name: "aegis_aidl",
+    srcs: ["aidl/com/mokee/aegis/IAegisInterface.aidl"],
+}
 
 prebuilt_etc {
     name: "gps_debug.conf",

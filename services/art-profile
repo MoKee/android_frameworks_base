@@ -2719,6 +2719,7 @@ PLcom/android/server/am/ActivityManagerService$LocalService;->updateDeviceIdleTe
 HSPLcom/android/server/am/ActivityManagerService$LocalService;->updateForegroundTimeIfOnBattery(Ljava/lang/String;IJ)V
 HSPLcom/android/server/am/ActivityManagerService$LocalService;->updateOomAdj()V
 HSPLcom/android/server/am/ActivityManagerService$LocalService;->updateOomLevelsForDisplay(I)V
+HSPLcom/android/server/am/ActivityManagerService$LocalService;->updateRunningPackages(Ljava/lang/String;ZZZZ)V
 HSPLcom/android/server/am/ActivityManagerService$MainHandler$1;->run()V
 HSPLcom/android/server/am/ActivityManagerService$MainHandler;->handleMessage(Landroid/os/Message;)V
 PLcom/android/server/am/ActivityManagerService$MemBinder$1;->dump(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;Z)V
@@ -15452,6 +15453,7 @@ HSPLcom/android/server/wm/ActivityTaskManagerService;->updateLockTaskFeatures(II
 HSPLcom/android/server/wm/ActivityTaskManagerService;->updateLockTaskPackages(I[Ljava/lang/String;)V
 PLcom/android/server/wm/ActivityTaskManagerService;->updateOomAdj()V
 HSPLcom/android/server/wm/ActivityTaskManagerService;->updatePersistentConfiguration(Landroid/content/res/Configuration;I)V
+HSPLcom/android/server/wm/ActivityTaskManagerService;->updateRunningPackages(Lcom/android/server/wm/ActivityRecord;Z)V
 HSPLcom/android/server/wm/ActivityTaskManagerService;->updateShouldShowDialogsLocked(Landroid/content/res/Configuration;)V
 HSPLcom/android/server/wm/ActivityTaskManagerService;->updateSleepIfNeededLocked()V
 PLcom/android/server/wm/ActivityTaskManagerService;->willActivityBeVisible(Landroid/os/IBinder;)Z

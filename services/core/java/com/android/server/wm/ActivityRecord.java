@@ -1878,9 +1878,11 @@ final class ActivityRecord extends ConfigurationContainer {
         }
 
         if (state == RESUMED) {
+            mAtmService.updateRunningPackages(this, true);
             mAtmService.updateBatteryStats(this, true);
             mAtmService.updateActivityUsageStats(this, Event.ACTIVITY_RESUMED);
         } else if (state == PAUSED) {
+            mAtmService.updateRunningPackages(this, false);
             mAtmService.updateBatteryStats(this, false);
             mAtmService.updateActivityUsageStats(this, Event.ACTIVITY_PAUSED);
         } else if (state == STOPPED) {
