@@ -453,8 +453,7 @@ public final class ActiveServices {
             if (mAm.mIAegisInterface != null) {
                 List<ActivityManager.RunningTaskInfo> RunningTaskInfos = mAm.getTasks(1);
                 final String topActivityPackage = RunningTaskInfos.get(0).topActivity.getPackageName();
-                if (mAm.mIAegisInterface.isChainLaunchDisabled(callingPackage, r.packageName)
-                        && !TextUtils.equals(r.packageName, topActivityPackage)) {
+                if (mAm.mIAegisInterface.isChainLaunchDisabled(callingPackage, r.packageName)) {
                     return new ComponentName("?", "app is chain launch!");
                 } else if (mAm.mIAegisInterface.isAutomaticallyLaunchDisabled(r.packageName)
                         && !TextUtils.equals(r.packageName, topActivityPackage)) {
