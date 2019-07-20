@@ -50,6 +50,7 @@ import android.os.RemoteCallback;
 import android.os.SystemProperties;
 import android.os.TransactionTooLargeException;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 
@@ -449,10 +450,16 @@ public final class ActiveServices {
         boolean forceSilentAbort = false;
 
         try {
-            if (mAm.mIAegisInterface != null && mAm.mIAegisInterface.isChainLaunchDisabled(callingPackage, r.packageName)
-                    && !mAm.isAppForeground(r.appInfo.uid)) {
-                mAm.forceStopPackage(r.packageName, userId);
-                return new ComponentName("?", "app is chain launch!");
+            if (mAm.mIAegisInterface != null) {
+                List<ActivityManager.RunningTaskInfo> RunningTaskInfos = mAm.getTasks(1);
+                final String topActivityPackage = RunningTaskInfos.get(0).topActivity.getPackageName();
+                if (mAm.mIAegisInterface.isChainLaunchDisabled(callingPackage, r.packageName)
+                        && !TextUtils.equals(r.packageName, topActivityPackage)) {
+                    return new ComponentName("?", "app is chain launch!");
+                } else if (mAm.mIAegisInterface.isAutomaticallyLaunchDisabled(r.packageName)
+                        && !TextUtils.equals(r.packageName, topActivityPackage)) {
+                    return new ComponentName("?", "app is automatically launch!");
+                }
             }
         } catch (RemoteException e) {
         }
