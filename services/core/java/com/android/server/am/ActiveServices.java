@@ -449,10 +449,14 @@ public final class ActiveServices {
         boolean forceSilentAbort = false;
 
         try {
-            if (mAm.mIAegisInterface != null && mAm.mIAegisInterface.isChainLaunchDisabled(callingPackage, r.packageName)
-                    && !mAm.isAppForeground(r.appInfo.uid)) {
-                mAm.forceStopPackage(r.packageName, userId);
-                return new ComponentName("?", "app is chain launch!");
+            if (mAm.mIAegisInterface != null) {
+                if (mAm.mIAegisInterface.isChainLaunchDisabled(callingPackage, r.packageName)
+                        && !mAm.isAppForeground(r.appInfo.uid)) {
+                    return new ComponentName("?", "app is chain launch!");
+                } else if (mAm.mIAegisInterface.isAutomaticallyLaunchDisabled(r.packageName)
+                        && !mAm.isAppForeground(r.appInfo.uid)) {
+                    return new ComponentName("?", "app is automatically launch!");
+                }
             }
         } catch (RemoteException e) {
         }
