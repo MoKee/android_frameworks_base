@@ -18,4 +18,7 @@
     <!-- The width/height of the charging indicator view on keyguard. -->
     <dimen name="keyguard_charging_indication_height">48dp</dimen>
     <dimen name="keyguard_charging_indication_width">24dp</dimen>
+
+    <!-- Bottom margin size when fingerprint in display is active -->
+    <dimen name="keyguard_indication_margin_bottom_fingerprint_in_display">@dimen/keyguard_indication_margin_bottom</dimen>
 </resources>
