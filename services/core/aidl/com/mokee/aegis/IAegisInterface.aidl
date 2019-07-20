@@ -19,4 +19,5 @@ package com.mokee.aegis;
 
 interface IAegisInterface {
     boolean isChainLaunchDisabled (String callingPackage, String targetPackage);
+    boolean isAutomaticallyLaunchDisabled (String targetPackage);
 }
