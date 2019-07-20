@@ -450,8 +450,8 @@ public final class ActiveServices {
         boolean forceSilentAbort = false;
 
         try {
-            if (mAm.mIAegisInterface != null) {
-                List<ActivityManager.RunningTaskInfo> RunningTaskInfos = mAm.getTasks(1);
+            final List<ActivityManager.RunningTaskInfo> RunningTaskInfos = mAm.getTasks(1);
+            if (mAm.mIAegisInterface != null && RunningTaskInfos.size() != 0) {
                 final String topActivityPackage = RunningTaskInfos.get(0).topActivity.getPackageName();
                 if (mAm.mIAegisInterface.isChainLaunchDisabled(callingPackage, r.packageName)) {
                     return new ComponentName("?", "app is chain launch!");
