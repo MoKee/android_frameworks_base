@@ -50,7 +50,6 @@ import android.os.RemoteCallback;
 import android.os.SystemProperties;
 import android.os.TransactionTooLargeException;
 import android.provider.Settings;
-import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 
@@ -450,13 +449,13 @@ public final class ActiveServices {
         boolean forceSilentAbort = false;
 
         try {
-            final List<ActivityManager.RunningTaskInfo> RunningTaskInfos = mAm.getTasks(1);
-            if (mAm.mIAegisInterface != null && RunningTaskInfos.size() != 0) {
-                final String topActivityPackage = RunningTaskInfos.get(0).topActivity.getPackageName();
+            final List<ActivityManager.RunningTaskInfo> runningTasks = mAm.getTasks(3);
+            if (mAm.mIAegisInterface != null && runningTasks.size() != 0) {
+                final List<String> runningPackages = getRunningPackages(runningTasks);
                 if (mAm.mIAegisInterface.isChainLaunchDisabled(callingPackage, r.packageName)) {
                     return new ComponentName("?", "app is chain launch!");
                 } else if (mAm.mIAegisInterface.isAutomaticallyLaunchDisabled(r.packageName)
-                        && !TextUtils.equals(r.packageName, topActivityPackage)) {
+                        && !runningPackages.contains(r.packageName)) {
                     return new ComponentName("?", "app is automatically launch!");
                 }
             }
@@ -4262,6 +4261,14 @@ public final class ActiveServices {
             dumpService("", fd, pw, services.get(i), args, dumpAll);
         }
         return true;
+    }
+
+    private List<String> getRunningPackages(List<ActivityManager.RunningTaskInfo> runningTasks) {
+        List<String> runningPackages = new ArrayList<>();
+        for (ActivityManager.RunningTaskInfo runningTask : runningTasks) {
+            runningPackages.add(runningTask.topActivity.getPackageName());
+        }
+        return runningPackages;
     }
 
     /**
