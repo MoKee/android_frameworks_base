@@ -449,14 +449,15 @@ public final class ActiveServices {
         boolean forceSilentAbort = false;
 
         try {
-            final List<ActivityManager.RunningTaskInfo> runningTasks = mAm.getTasks(3);
-            if (mAm.mIAegisInterface != null && runningTasks.size() != 0) {
-                final List<String> runningPackages = getRunningPackages(runningTasks);
+            if (mAm.mIAegisInterface != null) {
                 if (mAm.mIAegisInterface.isChainLaunchDisabled(callingPackage, r.packageName)) {
                     return new ComponentName("?", "app is chain launch!");
-                } else if (mAm.mIAegisInterface.isAutomaticallyLaunchDisabled(r.packageName)
-                        && !runningPackages.contains(r.packageName)) {
-                    return new ComponentName("?", "app is automatically launch!");
+                } else if (mAm.mIAegisInterface.isAutomaticallyLaunchDisabled(r.packageName)) {
+                    final List<ActivityManager.RunningTaskInfo> runningTasks = mAm.getTasks(2);
+                    final List<String> runningPackages = getRunningPackages(runningTasks);
+                    if (!runningPackages.contains(r.packageName)) {
+                        return new ComponentName("?", "app is automatically launch!");
+                    }
                 }
             }
         } catch (RemoteException e) {
@@ -4265,8 +4266,10 @@ public final class ActiveServices {
 
     private List<String> getRunningPackages(List<ActivityManager.RunningTaskInfo> runningTasks) {
         List<String> runningPackages = new ArrayList<>();
-        for (ActivityManager.RunningTaskInfo runningTask : runningTasks) {
-            runningPackages.add(runningTask.topActivity.getPackageName());
+        if (runningTasks.size() > 0) {
+            for (ActivityManager.RunningTaskInfo runningTask : runningTasks) {
+                runningPackages.add(runningTask.topActivity.getPackageName());
+            }
         }
         return runningPackages;
     }
