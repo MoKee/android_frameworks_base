@@ -449,7 +449,7 @@ public final class ActiveServices {
         boolean forceSilentAbort = false;
 
         try {
-            final List<ActivityManager.RunningTaskInfo> runningTasks = mAm.getTasks(3);
+            final List<ActivityManager.RunningTaskInfo> runningTasks = mAm.getTasks(2);
             if (mAm.mIAegisInterface != null && runningTasks.size() != 0) {
                 final List<String> runningPackages = getRunningPackages(runningTasks);
                 if (mAm.mIAegisInterface.isChainLaunchDisabled(callingPackage, r.packageName)) {
