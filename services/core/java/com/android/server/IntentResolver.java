@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Set;
 
 import android.net.Uri;
+import android.os.RemoteException;
 import android.util.FastImmutableArraySet;
 import android.util.ArrayMap;
 import android.util.ArraySet;
@@ -41,6 +42,7 @@ import android.content.IntentFilter;
 import android.util.proto.ProtoOutputStream;
 
 import com.android.internal.util.FastPrintWriter;
+import com.mokee.aegis.IAegisInterface;
 
 /**
  * {@hide}
@@ -497,6 +499,10 @@ public abstract class IntentResolver<F extends IntentFilter, R extends Object> {
         return finalList;
     }
 
+    protected IAegisInterface getIAegisInterface() {
+        return null;
+    }
+
     /**
      * Control whether the given filter is allowed to go into the result
      * list.  Mainly intended to prevent adding multiple filters for the
@@ -727,7 +733,15 @@ public abstract class IntentResolver<F extends IntentFilter, R extends Object> {
         final Uri data = intent.getData();
         final String packageName = intent.getPackage();
 
-        final boolean excludingStopped = intent.isExcludingStopped();
+        boolean automaticallyLauncherDisabled = false;
+        if (getIAegisInterface() != null) {
+            try {
+                automaticallyLauncherDisabled = getIAegisInterface().isAutomaticallyLaunchDisabled(packageName);
+            } catch (RemoteException e) {
+            }
+        }
+
+        final boolean excludingStopped = automaticallyLauncherDisabled || intent.isExcludingStopped();
 
         final Printer logPrinter;
         final PrintWriter logPrintWriter;

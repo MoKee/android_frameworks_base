@@ -1133,6 +1133,11 @@ public class ActivityManagerService extends IActivityManager.Stub
         protected boolean isPackageForFilter(String packageName, BroadcastFilter filter) {
             return packageName.equals(filter.packageName);
         }
+
+        @Override
+        protected IAegisInterface getIAegisInterface() {
+            return mIAegisInterface;
+        }
     };
 
     /**
