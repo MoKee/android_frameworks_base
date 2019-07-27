@@ -26,7 +26,7 @@
         <item>雙聲道</item>
     </string-array>
     <string-array name="mokee_bluetooth_a2dp_codec_channel_mode_titles">
-        <item>使用系統選擇（預設）</item>
+        <item>使用系統選擇 (預設)</item>
         <item>單色</item>
         <item>立體聲</item>
         <item>雙聲道</item>
