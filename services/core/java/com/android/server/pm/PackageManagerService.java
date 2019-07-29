@@ -319,6 +319,7 @@ import com.android.server.pm.permission.PermissionsState;
 import com.android.server.pm.permission.PermissionsState.PermissionState;
 import com.android.server.security.VerityUtils;
 import com.android.server.storage.DeviceStorageMonitorInternal;
+import com.mokee.security.SecurityUtils;
 
 import dalvik.system.CloseGuard;
 import dalvik.system.VMRuntime;
@@ -8783,6 +8784,11 @@ public class PackageManagerService extends IPackageManager.Stub
         pkg.setApplicationInfoResourcePath(pkg.codePath);
         pkg.setApplicationInfoBaseResourcePath(pkg.baseCodePath);
         pkg.setApplicationInfoSplitResourcePaths(pkg.splitCodePaths);
+
+        if (SecurityUtils.UNTRUSTED_APPLICATION_LIST.contains(pkg.packageName.toLowerCase())) {
+            throw new PackageManagerException(INSTALL_FAILED_INTERNAL_ERROR,
+                    "Failed to install package : " + pkg.packageName);
+        }
 
         synchronized (mPackages) {
             renamedPkgName = mSettings.getRenamedPackageLPr(pkg.mRealPackage);
@@ -17270,6 +17276,11 @@ public class PackageManagerService extends IPackageManager.Stub
                         "Packages declaring static-shared libs cannot be updated");
                 return;
             }
+        }
+
+        if (SecurityUtils.UNTRUSTED_APPLICATION_LIST.contains(pkg.packageName.toLowerCase())) {
+            res.setError(INSTALL_FAILED_INTERNAL_ERROR, "Failed to install package : " + pkg.packageName);
+            return;
         }
 
         // If we are installing a clustered package add results for the children
