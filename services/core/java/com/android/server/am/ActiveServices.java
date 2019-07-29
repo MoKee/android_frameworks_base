@@ -453,10 +453,7 @@ public final class ActiveServices {
                 if (mAm.mIAegisInterface.isChainLaunchDisabled(callingPackage, r.packageName)) {
                     return new ComponentName("?", "app is chain launch!");
                 } else if (mAm.mIAegisInterface.isAutomaticallyLaunchDisabled(r.packageName)) {
-                    final List<String> runningPackages = getRunningPackages(mAm.getTasks(2));
-                    if (!runningPackages.contains(r.packageName)) {
-                        return new ComponentName("?", "app is automatically launch!");
-                    }
+                    return new ComponentName("?", "app is automatically launch!");
                 }
             }
         } catch (RemoteException e) {
@@ -4261,16 +4258,6 @@ public final class ActiveServices {
             dumpService("", fd, pw, services.get(i), args, dumpAll);
         }
         return true;
-    }
-
-    private List<String> getRunningPackages(List<ActivityManager.RunningTaskInfo> runningTasks) {
-        List<String> runningPackages = new ArrayList<>();
-        if (runningTasks.size() > 0) {
-            for (ActivityManager.RunningTaskInfo runningTask : runningTasks) {
-                runningPackages.add(runningTask.topActivity.getPackageName());
-            }
-        }
-        return runningPackages;
     }
 
     /**
