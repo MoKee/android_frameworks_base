@@ -443,4 +443,11 @@ interface IWindowManager
     boolean isGestureButtonRegion(int i, int i2);
 
     boolean isKeyguardShowingAndNotOccluded();
+
+    /**
+     * Long screenshot
+     * @hide
+     */
+    void takeOPScreenshot(int type, int reason);
+    void stopLongshotConnection();
 }
