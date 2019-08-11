@@ -765,7 +765,11 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
             mHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    mScreenshotHelper.takeScreenshot(1, true, true, mHandler);
+                    try {
+                        WindowManagerGlobal.getWindowManagerService().mokeeTakeScreenshot(1);
+                    } catch (RemoteException e) {
+                        Log.e(TAG, "Error while trying to take screenshot.", e);
+                    }
                     MetricsLogger.action(mContext,
                             MetricsEvent.ACTION_SCREENSHOT_POWER_MENU);
                 }
