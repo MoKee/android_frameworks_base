@@ -392,6 +392,8 @@ public class DisplayPolicy {
 
     private RefreshRatePolicy mRefreshRatePolicy;
 
+    private int mDisplayRotation;
+
     // -------- PolicyHandler --------
     private static final int MSG_UPDATE_DREAMING_SLEEP_TOKEN = 1;
     private static final int MSG_REQUEST_TRANSIENT_BARS = 2;
@@ -1463,6 +1465,7 @@ public class DisplayPolicy {
      */
     public void beginLayoutLw(DisplayFrames displayFrames, int uiMode) {
         displayFrames.onBeginLayout();
+        mDisplayRotation = displayFrames.mRotation;
         mSystemGestures.screenWidth = displayFrames.mUnrestricted.width();
         mSystemGestures.screenHeight = displayFrames.mUnrestricted.height();
 
@@ -3649,12 +3652,35 @@ public class DisplayPolicy {
      * @param screenshotType The type of screenshot, for example either
      *                       {@link WindowManager#TAKE_SCREENSHOT_FULLSCREEN} or
      *                       {@link WindowManager#TAKE_SCREENSHOT_SELECTED_REGION}
+     * @param dockMinimized Whether the Dock is minimized
      */
-    public void takeScreenshot(int screenshotType) {
+    public void takeScreenshot(int screenshotType, boolean dockMinimized) {
         if (mScreenshotHelper != null) {
+            boolean longshot;
+            boolean inMultiWindow = mFocusedWindow != null
+                    ? mFocusedWindow.isInMultiWindowMode()
+                    : false;
+            if (screenshotType == WindowManager.TAKE_SCREENSHOT_SELECTED_REGION
+                    || keyguardOn() || !isUserSetupComplete() || !isDeviceProvisioned()
+                    || ((inMultiWindow && !dockMinimized) || mDisplayRotation != 0)) {
+                longshot = false;
+            } else {
+                longshot = true;
+            }
+            Bundle screenshotBundle = new Bundle();
+            screenshotBundle.putBoolean("longshot", longshot);
+            if (mFocusedWindow != null) {
+                screenshotBundle.putString("focusWindow", mFocusedWindow.getAttrs().packageName);
+            }
+            if (mFocusedWindow != null
+                    && (mFocusedWindow.getAttrs().flags & WindowManager.LayoutParams.FLAG_SECURE) != 0) {
+                mScreenshotHelper.notifyScreenshotCaptureError();
+                return;
+            }
             mScreenshotHelper.takeScreenshot(screenshotType,
                     mStatusBar != null && mStatusBar.isVisibleLw(),
-                    mNavigationBar != null && mNavigationBar.isVisibleLw(), mHandler);
+                    mNavigationBar != null && mNavigationBar.isVisibleLw(), mHandler,
+                    longshot, screenshotBundle);
         }
     }
 
