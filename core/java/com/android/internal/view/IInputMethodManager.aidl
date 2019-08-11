@@ -93,4 +93,7 @@ interface IInputMethodManager {
     void reportFullscreenMode(in IBinder token, boolean fullscreen);
 
     oneway void notifyUserAction(int sequenceNumber);
+
+    // Long screenshot
+    boolean hideSoftInputForLongshot(int flags, in ResultReceiver resultReceiver);
 }
