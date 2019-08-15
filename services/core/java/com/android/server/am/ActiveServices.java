@@ -2382,6 +2382,15 @@ public final class ActiveServices {
             return null;
         }
 
+        try {
+            if (mAm.mIAegisInterface != null && !execInFg) {
+                if (mAm.mIAegisInterface.isAutomaticallyLaunchDisabled(r.packageName)) {
+                    return "app is automatically launch!";
+                }
+            }
+        } catch (RemoteException e) {
+        }
+
         if (DEBUG_SERVICE) {
             Slog.v(TAG_SERVICE, "Bringing up " + r + " " + r.intent + " fg=" + r.fgRequired);
         }
