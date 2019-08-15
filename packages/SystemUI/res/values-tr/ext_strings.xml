@@ -85,4 +85,5 @@
     <string name="quick_settings_location_detail_mode_battery_saving_description">Konumu belirlemek için Wifi, Bluetooth veya hücresel ağlar kullanılır</string>
     <string name="quick_settings_location_detail_mode_sensors_only_description">Konum belirlemek için GPS kullan</string>
     <string name="status_bar_battery">Pil</string>
+    <string name="use_data">Veri için %s kullan</string>
 </resources>
