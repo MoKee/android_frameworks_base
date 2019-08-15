@@ -2382,6 +2382,18 @@ public final class ActiveServices {
             return null;
         }
 
+        try {
+            if (mAm.mIAegisInterface != null) {
+                if (mAm.mIAegisInterface.isAutomaticallyLaunchDisabled(r.packageName)) {
+                    final List<String> runningPackages = getRunningPackages(mAm.getTasks(3));
+                    if (!execInFg || !runningPackages.contains(r.packageName)) {
+                        return "app is automatically launch!";
+                    }
+                }
+            }
+        } catch (RemoteException e) {
+        }
+
         if (DEBUG_SERVICE) {
             Slog.v(TAG_SERVICE, "Bringing up " + r + " " + r.intent + " fg=" + r.fgRequired);
         }
