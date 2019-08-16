@@ -2387,6 +2387,7 @@ public final class ActiveServices {
                 if (mAm.mIAegisInterface.isAutomaticallyLaunchDisabled(r.packageName)) {
                     final List<String> runningPackages = getRunningPackages(mAm.getTasks(3));
                     if (!execInFg || !runningPackages.contains(r.packageName)) {
+                        bringDownServiceLocked(r);
                         return "app is automatically launch!";
                     }
                 }
