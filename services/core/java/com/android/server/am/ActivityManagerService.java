@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006-2008 The Android Open Source Project
+ * Copyright (C) 2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2023,6 +2024,22 @@ public class ActivityManagerService extends IActivityManager.Stub
     private MKActivityManager mMKActivityManager;
 
     IAegisInterface mIAegisInterface;
+
+    final List<String> mRunningPackages = new ArrayList<>();
+
+    final List<String> mInstallerPackages = Arrays.asList("com.google.android.packageinstaller", "com.android.packageinstaller");
+
+    private void updateRunningPackages(ActivityRecord r) {
+        if (mRunningPackages.contains(r.packageName)
+            || mInstallerPackages.contains(r.packageName)
+            || r.isActivityTypeHome()) return;
+        if (mRunningPackages.size() < 2) {
+            mRunningPackages.add(r.packageName);
+        } else {
+            mRunningPackages.remove(0);
+            mRunningPackages.add(r.packageName);
+        }
+    }
 
     /**
      * Current global configuration information. Contains general settings for the entire system,
@@ -4734,7 +4751,7 @@ public class ActivityManagerService extends IActivityManager.Stub
             if (mUsageStatsService != null) {
                 mUsageStatsService.reportEvent(component.realActivity, component.userId,
                         UsageEvents.Event.MOVE_TO_FOREGROUND);
-
+                updateRunningPackages(component);
             }
             synchronized (stats) {
                 stats.noteActivityResumedLocked(component.app.uid);
@@ -4743,6 +4760,10 @@ public class ActivityManagerService extends IActivityManager.Stub
             if (mUsageStatsService != null) {
                 mUsageStatsService.reportEvent(component.realActivity, component.userId,
                         UsageEvents.Event.MOVE_TO_BACKGROUND);
+                if (mRunningPackages.contains(component.packageName)
+                        && component.finishing && component.frontOfTask) {
+                    mRunningPackages.remove(component.packageName);
+                }
             }
             synchronized (stats) {
                 stats.noteActivityPausedLocked(component.app.uid);
