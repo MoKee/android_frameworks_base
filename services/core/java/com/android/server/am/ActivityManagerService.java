@@ -7402,6 +7402,9 @@ public class ActivityManagerService extends IActivityManager.Stub
             if (packageName != null) {
                 Slog.i(TAG, "Force stopping " + packageName + " appid=" + appId
                         + " user=" + userId + ": " + reason);
+                if (mRunningPackages.contains(packageName)) {
+                    mRunningPackages.remove(packageName);
+                }
             } else {
                 Slog.i(TAG, "Force stopping u" + userId + ": " + reason);
             }
