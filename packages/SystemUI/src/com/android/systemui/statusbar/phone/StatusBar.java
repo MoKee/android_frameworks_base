@@ -442,6 +442,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
     private View mReportRejectedTouch;
 
     private int mMaxAllowedKeyguardNotifications;
+    private int mMaxAllowedKeyguardNotificationsAmbientPlay;
 
     private boolean mExpandedVisible;
 
@@ -3516,6 +3517,9 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         mMaxAllowedKeyguardNotifications = res.getInteger(
                 R.integer.keyguard_max_notification_count);
 
+        mMaxAllowedKeyguardNotificationsAmbientPlay = res.getInteger(
+            R.integer.keyguard_max_notification_count_ambient_play);
+
         mQuickQsTotalHeight = res.getDimensionPixelSize(
                 com.android.internal.R.dimen.quick_qs_total_height);
 
@@ -4138,6 +4142,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             if (mStatusBarView != null) mStatusBarView.removePendingHideExpandedRunnables();
             if (mAmbientIndicationContainer != null) {
                 mAmbientIndicationContainer.setVisibility(View.VISIBLE);
+                mViewHierarchyManager.updateRowStates();
             }
         } else {
             mKeyguardIndicationController.setVisible(false);
@@ -4149,6 +4154,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             }
             if (mAmbientIndicationContainer != null) {
                 mAmbientIndicationContainer.setVisibility(View.INVISIBLE);
+                mViewHierarchyManager.updateRowStates();
             }
         }
         mNotificationPanel.setBarState(mState, mKeyguardFadingAway, goingToFullShade);
@@ -4478,9 +4484,14 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
     @Override
     public int getMaxNotificationsWhileLocked(boolean recompute) {
         if (recompute) {
+            int maxAllowedKeyguardNotifications = mMaxAllowedKeyguardNotifications;
+            if (mAmbientIndicationContainer != null &&
+                mAmbientIndicationContainer.getVisibility() == View.VISIBLE){
+                maxAllowedKeyguardNotifications = mMaxAllowedKeyguardNotificationsAmbientPlay;
+            }
             mMaxKeyguardNotifications = Math.max(1,
                     mNotificationPanel.computeMaxKeyguardNotifications(
-                            mMaxAllowedKeyguardNotifications));
+                            maxAllowedKeyguardNotifications));
             return mMaxKeyguardNotifications;
         }
         return mMaxKeyguardNotifications;

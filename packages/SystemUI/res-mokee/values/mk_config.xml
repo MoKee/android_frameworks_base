@@ -17,4 +17,8 @@
 <resources>
     <!-- Whether to show VoLTE icon in the status bar -->
     <bool name="config_display_volte">false</bool>
+    <!-- The maximum count of notifications on Keyguard (only when ambient play indication is showing on keyguard).
+         The rest will be collapsed in an overflow card.
+     -->
+    <integer name="keyguard_max_notification_count_ambient_play">@integer/keyguard_max_notification_count</integer>
 </resources>
