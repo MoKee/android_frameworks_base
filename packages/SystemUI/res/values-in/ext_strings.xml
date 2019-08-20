@@ -25,11 +25,11 @@
     <string name="accessibility_lock_task">Mencegah <xliff:g id="task">%1$s</xliff:g> dihentikan</string>
     <string name="accessibility_unlock_task">Memungkinkan <xliff:g id="task">%1$s</xliff:g> dihentikan</string>
     <string name="quick_settings_network_adb_label">ADB melalui jaringan</string>
-    <string name="quick_settings_ambient_display_label">Tampilan ambien</string>
-    <string name="accessibility_quick_settings_ambient_display_off">Tampilan ambien mati.</string>
-    <string name="accessibility_quick_settings_ambient_display_on">Tampilan ambien hidup.</string>
-    <string name="accessibility_quick_settings_ambient_display_changed_off">Tampilan ambien dimatikan.</string>
-    <string name="accessibility_quick_settings_ambient_display_changed_on">Tampilan ambien dihidupkan.</string>
+    <string name="quick_settings_ambient_display_label">Tampilan suhu</string>
+    <string name="accessibility_quick_settings_ambient_display_off">Tampilan suhu mati.</string>
+    <string name="accessibility_quick_settings_ambient_display_on">Tampilan suhu hidup.</string>
+    <string name="accessibility_quick_settings_ambient_display_changed_off">Tampilan suhu dimatikan.</string>
+    <string name="accessibility_quick_settings_ambient_display_changed_on">Tampilan suhu dihidupkan.</string>
     <string name="quick_settings_caffeine_label">Kafein</string>
     <string name="accessibility_quick_settings_caffeine_off">Kafein mati.</string>
     <string name="accessibility_quick_settings_caffeine_on">Kafein hidup.</string>
@@ -52,14 +52,14 @@
     <string name="quick_settings_volume_panel_label">Panel volume</string>
     <string name="accessibility_dpad_left">Kursor kiri</string>
     <string name="accessibility_dpad_right">Kursor kanan</string>
-    <string name="screen_pinning_description_no_navbar">Hal ini membuatnya tetap dalam pandangan sampai Anda melepas sematan. Sentuh &amp; tahan tombol Kembali untuk melepas sematan.</string>
+    <string name="screen_pinning_description_no_navbar">Ini membuatnya tetap terlihat sampai Anda melepaskan pin. Sentuh &amp; tahan tombol Kembali untuk melepaskan pin.</string>
     <string name="status_bar_clock">Jam</string>
-    <string name="global_action_current_user">Saat ini</string>
+    <string name="global_action_current_user">Sekarang</string>
     <string name="global_action_screenshot">Tangkap layar</string>
     <string name="global_action_restart_system">Sistem</string>
     <string name="global_action_restart_recovery">Recovery</string>
     <string name="global_action_restart_bootloader">Bootloader</string>
-    <string name="global_action_restart_download">Unduh</string>
+    <string name="global_action_restart_download">Unduhan</string>
     <string name="global_action_restart_progress">Memulai ulang\u2026</string>
     <string name="global_action_restart_recovery_progress">Mulai ulang ke mode pemulihan\u2026</string>
     <string name="global_action_restart_bootloader_progress">Mulai ulang ke mode bootloader\u2026</string>
@@ -81,7 +81,7 @@
     <string name="quick_settings_location_detail_mode_high_accuracy_description">Menggunakan GPS, Wi\u2011Fi, Bluetooth atau jaringan seluler untuk menentukan lokasi</string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">Menggunakan Wi\u2011Fi, Bluetooth atau jaringan seluler untuk menentukan lokasi</string>
     <string name="quick_settings_location_detail_mode_sensors_only_description">Menggunakan GPS untuk menentukan lokasi Anda</string>
-    <string name="nav_bar_layout_inverse">Balikkan tata letak tombol</string>
+    <string name="nav_bar_layout_inverse">Kembalikan tata letak tombol</string>
     <string name="quick_settings_reading_mode">Mode baca</string>
     <string name="accessibility_quick_settings_reading_mode_on">Modus membaca hidup.</string>
     <string name="accessibility_quick_settings_reading_mode_off">Modus membaca mati.</string>

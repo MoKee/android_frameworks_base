@@ -20,5 +20,5 @@
     <string name="status_bar_vpn">VPN</string>
     <string name="keyguard_indication_dash_charging_time">Pengisian Cepat (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> Sampai Penuh)</string>
     <string name="keyguard_plugged_in_dash_charging">Pengisian Cepat</string>
-    <string name="recents_free_ram">BEBAS: %1$d MB</string>
+    <string name="recents_free_ram">RAM BEBAS: %1$d MB</string>
 </resources>
