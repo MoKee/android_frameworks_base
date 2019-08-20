@@ -26,9 +26,9 @@
         <item>Двухканальный звук</item>
     </string-array>
     <string-array name="mokee_bluetooth_a2dp_codec_channel_mode_titles">
-        <item>Использовать выбор системы (по умолчанию)</item>
+        <item>Use System Selection (Default)</item>
         <item>Ч/Б</item>
-        <item>Стерео</item>
-        <item>Двухканальный звук</item>
+        <item>Stereo</item>
+        <item>Dual Channel</item>
     </string-array>
 </resources>
