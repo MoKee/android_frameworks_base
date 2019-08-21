@@ -24,8 +24,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
-import android.os.Handler;
-import android.os.Looper;
 import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.provider.Settings;
@@ -45,7 +43,6 @@ import com.android.systemui.R;
 import java.util.NoSuchElementException;
 
 import vendor.mokee.biometrics.fingerprint.inscreen.V1_0.IFingerprintInscreen;
-import vendor.mokee.biometrics.fingerprint.inscreen.V1_0.IFingerprintInscreenCallback;
 
 public class FODCircleView extends ImageView implements OnTouchListener {
     private final int mX, mY, mW, mH;
@@ -67,33 +64,6 @@ public class FODCircleView extends ImageView implements OnTouchListener {
     public boolean viewAdded;
     private boolean mIsEnrolling;
     private boolean mShouldBoostBrightness;
-
-    IFingerprintInscreenCallback mFingerprintInscreenCallback =
-            new IFingerprintInscreenCallback.Stub() {
-        @Override
-        public void onFingerDown() {
-            mInsideCircle = true;
-
-            new Handler(Looper.getMainLooper()).post(() -> {
-                setDim(true);
-                setImageDrawable(null);
-
-                invalidate();
-            });
-        }
-
-        @Override
-        public void onFingerUp() {
-            mInsideCircle = false;
-
-            new Handler(Looper.getMainLooper()).post(() -> {
-                setDim(false);
-                setImageResource(R.drawable.fod_icon_default);
-
-                invalidate();
-            });
-        }
-    };
 
     KeyguardUpdateMonitor mUpdateMonitor;
 
@@ -198,8 +168,6 @@ public class FODCircleView extends ImageView implements OnTouchListener {
 
         try {
             mFpDaemon = IFingerprintInscreen.getService();
-            mFpDaemon.setCallback(mFingerprintInscreenCallback);
-
             mShouldBoostBrightness = mFpDaemon.shouldBoostBrightness();
         } catch (NoSuchElementException | RemoteException e) {
             // do nothing
@@ -394,10 +362,6 @@ public class FODCircleView extends ImageView implements OnTouchListener {
             mParams.dimAmount = 0.0f;
         }
 
-        try {
-            mWindowManager.updateViewLayout(this, mParams);
-        } catch (IllegalArgumentException e) {
-            // do nothing
-        }
+        mWindowManager.updateViewLayout(this, mParams);
     }
 }
