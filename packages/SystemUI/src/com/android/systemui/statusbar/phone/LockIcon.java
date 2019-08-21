@@ -57,7 +57,6 @@ public class LockIcon extends KeyguardAffordanceView implements OnUserInfoChange
     private boolean mHasFingerPrintIcon;
     private boolean mHasFaceUnlockIcon;
     private int mDensity;
-    private boolean mDisplayFODView;
 
     private final Runnable mDrawOffTimeout = () -> update(true /* forceUpdate */);
 
@@ -66,8 +65,6 @@ public class LockIcon extends KeyguardAffordanceView implements OnUserInfoChange
         mTrustDrawable = new TrustDrawable(context);
         setBackground(mTrustDrawable);
         mUnlockMethodCache = UnlockMethodCache.getInstance(context);
-        mDisplayFODView = context.getResources().getBoolean(
-                com.android.internal.R.bool.config_needCustomFODView);
     }
 
     @Override
@@ -311,13 +308,13 @@ public class LockIcon extends KeyguardAffordanceView implements OnUserInfoChange
         boolean fingerprintRunning = updateMonitor.isFingerprintDetectionRunning();
         boolean unlockingAllowed = updateMonitor.isUnlockingWithFingerprintAllowed();
         if (mTransientFpError) {
-            return mDisplayFODView ? STATE_LOCKED : STATE_FINGERPRINT_ERROR;
+            return STATE_FINGERPRINT_ERROR;
         } else if (mUnlockMethodCache.canSkipBouncer()) {
             return STATE_LOCK_OPEN;
         } else if (mUnlockMethodCache.isFaceUnlockRunning()) {
             return STATE_FACE_UNLOCK;
         } else if (fingerprintRunning && unlockingAllowed) {
-            return mDisplayFODView ? STATE_LOCKED : STATE_FINGERPRINT;
+            return STATE_FINGERPRINT;
         } else {
             return STATE_LOCKED;
         }
