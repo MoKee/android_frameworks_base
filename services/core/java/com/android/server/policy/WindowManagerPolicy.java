@@ -1801,11 +1801,4 @@ public interface WindowManagerPolicy extends WindowManagerPolicyConstants {
      * @return true if enable; false otherwise.
      */
     boolean isGestureButtonRegion(int i, int i2);
-
-    /**
-     * Long screenshot
-     * @hide
-     */
-    public void takeOPScreenshot(int type, int reason);
-    public void stopLongshotConnection();
 }
