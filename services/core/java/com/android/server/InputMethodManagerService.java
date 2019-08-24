@@ -2748,7 +2748,6 @@ public class InputMethodManagerService extends IInputMethodManager.Stub
         if (!calledFromValidUser()) {
             return false;
         }
-        int uid = Binder.getCallingUid();
         long ident = Binder.clearCallingIdentity();
         try {
             synchronized (mMethodMap) {
