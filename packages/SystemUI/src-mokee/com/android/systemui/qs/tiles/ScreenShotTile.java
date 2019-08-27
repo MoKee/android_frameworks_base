@@ -16,24 +16,16 @@
 
 package com.android.systemui.qs.tiles;
 
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.Handler;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
 import android.os.RemoteException;
-import android.os.UserHandle;
 import android.text.format.DateUtils;
 import android.view.WindowManager;
+import android.view.WindowManagerGlobal;
 
 import com.android.systemui.R;
 import com.android.systemui.plugins.qs.QSTile.BooleanState;
 import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
-import com.android.systemui.screenshot.TakeScreenshotService;
 
 import org.mokee.internal.logging.MKMetricsLogger;
 
@@ -83,67 +75,15 @@ public class ScreenShotTile extends QSTileImpl<BooleanState> {
         state.label = mContext.getString(R.string.quick_settings_screenshot_label);
     }
 
-    final Object mScreenshotLock = new Object();
-    ServiceConnection mScreenshotConnection = null;
-
-    final Runnable mScreenshotTimeout = () -> {
-        synchronized (mScreenshotLock) {
-            if (mScreenshotConnection != null) {
-                mContext.unbindService(mScreenshotConnection);
-                mScreenshotConnection = null;
-            }
-        }
-    };
-
     private void takeScreenshot(final boolean partial) {
-        synchronized (mScreenshotLock) {
-            if (mScreenshotConnection != null) {
-                return;
-            }
-            Intent intent = new Intent(mContext, TakeScreenshotService.class);
-            ServiceConnection conn = new ServiceConnection() {
-                @Override
-                public void onServiceConnected(ComponentName name, IBinder service) {
-                    synchronized (mScreenshotLock) {
-                        if (mScreenshotConnection != this) {
-                            return;
-                        }
-                        Messenger messenger = new Messenger(service);
-                        Message msg = Message.obtain(null, 1);
-                        msg.what = partial ? WindowManager.TAKE_SCREENSHOT_SELECTED_REGION
-                                : WindowManager.TAKE_SCREENSHOT_FULLSCREEN;
-                        final ServiceConnection myConn = this;
-                        Handler h = new Handler(mHandler.getLooper()) {
-                            @Override
-                            public void handleMessage(Message msg) {
-                                synchronized (mScreenshotLock) {
-                                    if (mScreenshotConnection == myConn) {
-                                        mContext.unbindService(mScreenshotConnection);
-                                        mScreenshotConnection = null;
-                                        mHandler.removeCallbacks(mScreenshotTimeout);
-                                    }
-                                }
-                            }
-                        };
-                        msg.replyTo = new Messenger(h);
-                        msg.arg1 = msg.arg2 = 0;
+        final int type = partial
+                ? WindowManager.TAKE_SCREENSHOT_SELECTED_REGION
+                : WindowManager.TAKE_SCREENSHOT_FULLSCREEN;
 
-                        // Take the screenshot
-                        try {
-                            messenger.send(msg);
-                        } catch (RemoteException e) {
-                            // Do nothing
-                        }
-                    }
-                }
-                @Override
-                public void onServiceDisconnected(ComponentName name) {}
-            };
-            if (mContext.bindServiceAsUser(
-                    intent, conn, Context.BIND_AUTO_CREATE, UserHandle.CURRENT)) {
-                mScreenshotConnection = conn;
-                mHandler.postDelayed(mScreenshotTimeout, 10000);
-            }
+        try {
+            WindowManagerGlobal.getWindowManagerService().mokeeTakeScreenshot(type);
+        } catch (RemoteException e) {
+            // Do nothing
         }
     }
 
