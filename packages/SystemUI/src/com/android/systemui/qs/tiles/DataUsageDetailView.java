@@ -135,10 +135,11 @@ public class DataUsageDetailView extends LinearLayout {
     private void addDataSubSwitcher() {
         final SubscriptionManager sm = mContext.getSystemService(SubscriptionManager.class);
         final List<SubscriptionInfo> subs = sm.getActiveSubscriptionInfoList();
+        final int subSize = subs.size();
         final RadioGroup simCardsGroup = (RadioGroup) findViewById(R.id.sim_cards);
 
         simCardsGroup.removeAllViews();
-        if (subs.size() <= 1) {
+        if (subSize <= 1) {
             simCardsGroup.setVisibility(View.GONE);
             return;
         }
@@ -164,13 +165,14 @@ public class DataUsageDetailView extends LinearLayout {
         final int defaultDataSubId = SubscriptionManager.getDefaultDataSubscriptionId();
         final int defaultDataSlotIndex = SubscriptionManager.getSlotIndex(defaultDataSubId);
         if (defaultDataSlotIndex >= 0) {
-            RadioButton radioButton = (RadioButton) simCardsGroup.getChildAt(defaultDataSlotIndex);
+            RadioButton radioButton = (RadioButton) simCardsGroup.getChildAt(subSize - 1 -
+                    defaultDataSlotIndex);
             radioButton.setChecked(true);
         }
 
         // Set checkListener
         simCardsGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            for (int slotId = 0; slotId < subs.size(); slotId++) {
+            for (int slotId = 0; slotId < subSize; slotId++) {
                 if ((simCardsGroup.getChildAt(slotId).getId() == checkedId)) {
                     final int subId = subs.get(slotId).getSubscriptionId();
                     sm.setDefaultDataSubId(subId);
