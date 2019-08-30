@@ -138,6 +138,7 @@ public class DataUsageDetailView extends LinearLayout {
         final RadioGroup simCardsGroup = (RadioGroup) findViewById(R.id.sim_cards);
 
         simCardsGroup.removeAllViews();
+        simCardsGroup.setOnCheckedChangeListener(null);
         if (subs.size() <= 1) {
             simCardsGroup.setVisibility(View.GONE);
             return;
