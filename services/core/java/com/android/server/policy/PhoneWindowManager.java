@@ -2076,7 +2076,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 return;
             }
 
-            if (ActionUtils.killForegroundApp(mContext, mCurrentUserId)) {
+            if (ActionUtils.killForegroundApp(mContext)) {
                 performHapticFeedbackLw(null, HapticFeedbackConstants.LONG_PRESS, false);
                 Toast.makeText(mContext,
                         org.mokee.platform.internal.R.string.app_killed_message,
