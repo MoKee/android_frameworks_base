@@ -32,6 +32,8 @@
     <string name="app_ops_assist_structure">коришћење структуре помоћи</string>
     <string name="app_ops_audio_accessibility_volume">јачина звука за приступачност</string>
     <string name="app_ops_auto_start">покретање са системом</string>
+    <string name="app_ops_bind_accessibility_service">везати услугу приступачности</string>
+    <string name="app_ops_bluetooth_scan">bluetooth скенирање</string>
     <string name="app_ops_change_wallpaper">мењање позадине</string>
     <string name="app_ops_delete_call_log">брисање евиденције позива</string>
     <string name="app_ops_delete_contacts">брисање контаката</string>
@@ -40,8 +42,10 @@
     <string name="app_ops_draw_on_top">повлачење прозора на врх</string>
     <string name="app_ops_get_accounts">приступ налозима на уређају</string>
     <string name="app_ops_get_usage_stats">преузимање статистике о коришћењу апликација</string>
+    <string name="app_ops_accept_handover">дозволи позив из друге апликације</string>
     <string name="app_ops_install_packages">инсталирај пакете</string>
     <string name="app_ops_keep_device_awake">задржавање ван стања спавања</string>
+    <string name="app_ops_manage_ipsec_tunnels">прилагоди ipsec tunnels</string>
     <string name="app_ops_make_phone_call">позивање телефона</string>
     <string name="app_ops_mock_location">лажирање локације</string>
     <string name="app_ops_modify_calendar">мењање календара</string>
@@ -66,6 +70,7 @@
     <string name="app_ops_read_phone_state">приступ стању телефона</string>
     <string name="app_ops_read_sms">читање SMS порука</string>
     <string name="app_ops_receive_sms">пријем SMS порука</string>
+    <string name="app_ops_receive_emergency_broadcast">прими хитне поруке</string>
     <string name="app_ops_record_audio">снимање аудио-записа</string>
     <string name="app_ops_run_in_background">рад у позадини</string>
     <string name="app_ops_scan_wifi">скенирање Wi-Fi мрежа</string>

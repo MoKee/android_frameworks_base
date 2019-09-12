@@ -43,6 +43,11 @@
     <string name="accessibility_quick_settings_heads_up_on">Искачуће поруке укључене.</string>
     <string name="accessibility_quick_settings_heads_up_changed_off">Искачуће поруке ће бити искључене.</string>
     <string name="accessibility_quick_settings_heads_up_changed_on">Искачуће поруке ће бити укључене.</string>
+    <string name="quick_settings_reading_mode">Мод читања</string>
+    <string name="accessibility_quick_settings_reading_mode_on">Мод читања је укључен.</string>
+    <string name="accessibility_quick_settings_reading_mode_off">Мод читања је искључен.</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_on">Мод читања је укључен.</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_off">Мод читања је искључен.</string>
     <string name="quick_settings_sync_label">Синхрон</string>
     <string name="accessibility_quick_settings_sync_off">Синхрон. искључено.</string>
     <string name="accessibility_quick_settings_sync_on">Синхрон. укључено.</string>
