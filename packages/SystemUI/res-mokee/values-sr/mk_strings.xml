@@ -16,5 +16,9 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="recents_free_ram">Слободни РАМ: %1$d MB</string>
+    <string name="status_bar_su">Su</string>
+    <string name="status_bar_vpn">VPN</string>
+    <string name="keyguard_indication_dash_charging_time">Брзо пуњење (<xliff:g id="charging_time_left" example="4 сата и 2 минуте">%s</xliff:g> до краја)</string>
+    <string name="keyguard_plugged_in_dash_charging">Dash брзо пуњење</string>
+    <string name="recents_free_ram">Slobodna memorija: %1$d MB</string>
 </resources>
