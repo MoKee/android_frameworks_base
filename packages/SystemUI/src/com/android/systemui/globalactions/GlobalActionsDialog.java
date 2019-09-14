@@ -23,7 +23,7 @@ import static com.android.internal.widget.LockPatternUtils.StrongAuthTracker.SOM
 import static com.android.internal.widget.LockPatternUtils.StrongAuthTracker.STRONG_AUTH_NOT_REQUIRED;
 import static com.android.internal.widget.LockPatternUtils.StrongAuthTracker.STRONG_AUTH_REQUIRED_AFTER_USER_LOCKDOWN;
 
-import static org.lineageos.internal.util.PowerMenuConstants.*;
+import static org.mokee.internal.util.PowerMenuConstants.*;
 
 import android.app.ActivityManager;
 import android.app.Dialog;
@@ -116,8 +116,8 @@ import com.android.systemui.util.EmergencyDialerConstants;
 import com.android.systemui.util.leak.RotationUtils;
 import com.android.systemui.volume.SystemUIInterpolators.LogAccelerateInterpolator;
 
-import lineageos.providers.LineageSettings;
-import org.lineageos.internal.util.PowerMenuUtils;
+import mokee.providers.MKSettings;
+import org.mokee.internal.util.PowerMenuUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -194,7 +194,7 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
-        filter.addAction(lineageos.content.Intent.ACTION_UPDATE_POWER_MENU);
+        filter.addAction(mokee.content.Intent.ACTION_UPDATE_POWER_MENU);
         filter.addAction(TelephonyIntents.ACTION_EMERGENCY_CALLBACK_MODE_CHANGED);
         context.registerReceiver(mBroadcastReceiver, filter);
 
@@ -234,7 +234,7 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
         mDefaultMenuActions = mContext.getResources().getStringArray(
                 com.android.internal.R.array.config_globalActionsList);
         mRestartMenuActions = mContext.getResources().getStringArray(
-                org.lineageos.platform.internal.R.array.config_restartActionsList);
+                org.mokee.platform.internal.R.array.config_restartActionsList);
 
         updatePowerMenuActions();
     }
@@ -305,7 +305,7 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
         List<Action> items = new ArrayList<Action>();
 
         String[] restartMenuActions = mContext.getResources().getStringArray(
-                    org.lineageos.platform.internal.R.array.config_restartActionsList);
+                    org.mokee.platform.internal.R.array.config_restartActionsList);
         for (int i = 0; i < restartMenuActions.length; i++) {
             String actionKey = restartMenuActions[i];
             if (GLOBAL_ACTION_KEY_RESTART_RECOVERY.equals(actionKey)) {
@@ -1579,7 +1579,7 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
                     mIsWaitingForEcmExit = false;
                     changeAirplaneModeSystemSetting(true);
                 }
-            } else if (lineageos.content.Intent.ACTION_UPDATE_POWER_MENU.equals(action)) {
+            } else if (mokee.content.Intent.ACTION_UPDATE_POWER_MENU.equals(action)) {
                 updatePowerMenuActions();
             }
         }
@@ -1598,8 +1598,8 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
 
     protected void updatePowerMenuActions() {
         ContentResolver resolver = mContext.getContentResolver();
-        final String powerMenuActions = LineageSettings.Secure.getStringForUser(resolver,
-                LineageSettings.Secure.POWER_MENU_ACTIONS, UserHandle.USER_CURRENT);
+        final String powerMenuActions = MKSettings.Secure.getStringForUser(resolver,
+                MKSettings.Secure.POWER_MENU_ACTIONS, UserHandle.USER_CURRENT);
 
         if (powerMenuActions != null) {
             mRootMenuActions = powerMenuActions.split("\\|");

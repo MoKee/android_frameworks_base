@@ -268,7 +268,7 @@ import com.android.server.policy.PermissionPolicyInternal;
 import com.android.server.uri.UriGrantsManagerInternal;
 import com.android.server.vr.VrManagerInternal;
 
-import org.lineageos.internal.applications.LineageActivityManager;
+import org.mokee.internal.applications.MKActivityManager;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -649,8 +649,8 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
 
     private int mDeviceOwnerUid = Process.INVALID_UID;
 
-    // Lineage sdk activity related helper
-    private LineageActivityManager mLineageActivityManager;
+    // MoKee sdk activity related helper
+    private MKActivityManager mMKActivityManager;
 
     private final class FontScaleSettingObserver extends ContentObserver {
         private final Uri mFontScaleUri = Settings.System.getUriFor(FONT_SCALE);
@@ -722,9 +722,9 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
     public void installSystemProviders() {
         mFontScaleSettingObserver = new FontScaleSettingObserver();
 
-        // LineageActivityManager depends on settings so we can initialize only
+        // MKActivityManager depends on settings so we can initialize only
         // after providers are available.
-        mLineageActivityManager = new LineageActivityManager(mContext);
+        mMKActivityManager = new MKActivityManager(mContext);
     }
 
     public void retrieveSettings(ContentResolver resolver) {
@@ -7458,6 +7458,6 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
     }
 
     public boolean shouldForceLongScreen(String packageName) {
-        return mLineageActivityManager.shouldForceLongScreen(packageName);
+        return mMKActivityManager.shouldForceLongScreen(packageName);
     }
 }

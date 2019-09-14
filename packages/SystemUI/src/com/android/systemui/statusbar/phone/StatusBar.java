@@ -237,7 +237,7 @@ import com.android.systemui.tuner.TunerService;
 import com.android.systemui.util.InjectionInflationController;
 import com.android.systemui.volume.VolumeComponent;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -275,7 +275,7 @@ public class StatusBar extends SystemUI implements DemoMode,
     public static final String SCREEN_BRIGHTNESS_MODE =
             "system:" + Settings.System.SCREEN_BRIGHTNESS_MODE;
     public static final String STATUS_BAR_BRIGHTNESS_CONTROL =
-            "lineagesystem:" + LineageSettings.System.STATUS_BAR_BRIGHTNESS_CONTROL;
+            "mksystem:" + MKSettings.System.STATUS_BAR_BRIGHTNESS_CONTROL;
 
     private static final String BANNER_ACTION_CANCEL =
             "com.android.systemui.statusbar.banner_action_cancel";

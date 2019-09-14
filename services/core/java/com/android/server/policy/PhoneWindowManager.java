@@ -226,9 +226,9 @@ import com.android.server.wm.DisplayRotation;
 import com.android.server.wm.WindowManagerInternal;
 import com.android.server.wm.WindowManagerInternal.AppTransitionListener;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
-import org.lineageos.internal.util.ActionUtils;
+import org.mokee.internal.util.ActionUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -796,8 +796,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(Settings.Global.getUriFor(
                     Settings.Global.POWER_BUTTON_SUPPRESSION_DELAY_AFTER_GESTURE_WAKE), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(LineageSettings.Secure.getUriFor(
-                    LineageSettings.Secure.KILL_APP_LONGPRESS_BACK), false, this,
+            resolver.registerContentObserver(MKSettings.Secure.getUriFor(
+                    MKSettings.Secure.KILL_APP_LONGPRESS_BACK), false, this,
                     UserHandle.USER_ALL);
             updateSettings();
         }
@@ -1467,7 +1467,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, false,
                         "Back - Long Press");
                 Toast.makeText(mContext,
-                        org.lineageos.platform.internal.R.string.app_killed_message,
+                        org.mokee.platform.internal.R.string.app_killed_message,
                         Toast.LENGTH_SHORT).show();
             }
         }
@@ -1907,7 +1907,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 com.android.internal.R.bool.config_perDisplayFocusEnabled);
 
         mBackKillTimeout = mContext.getResources().getInteger(
-                org.lineageos.platform.internal.R.integer.config_backKillTimeout);
+                org.mokee.platform.internal.R.integer.config_backKillTimeout);
 
         readConfigurationDependentBehaviors();
 
@@ -2080,8 +2080,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     mContext.getResources().getInteger(
                             com.android.internal.R.integer.config_veryLongPressOnPowerBehavior));
 
-            mKillAppLongpressBack = LineageSettings.Secure.getInt(resolver,
-                    LineageSettings.Secure.KILL_APP_LONGPRESS_BACK, 0) == 1;
+            mKillAppLongpressBack = MKSettings.Secure.getInt(resolver,
+                    MKSettings.Secure.KILL_APP_LONGPRESS_BACK, 0) == 1;
         }
         if (updateRotation) {
             updateRotation(true);

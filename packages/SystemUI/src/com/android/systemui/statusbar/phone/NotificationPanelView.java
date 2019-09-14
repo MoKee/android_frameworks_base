@@ -100,7 +100,7 @@ import com.android.systemui.statusbar.policy.ZenModeController;
 import com.android.systemui.tuner.TunerService;
 import com.android.systemui.util.InjectionInflationController;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -148,9 +148,9 @@ public class NotificationPanelView extends PanelView implements
     private static final String COUNTER_PANEL_OPEN_PEEK = "panel_open_peek";
 
     public static final String STATUS_BAR_QUICK_QS_PULLDOWN =
-            "lineagesystem:" + LineageSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN;
+            "mksystem:" + MKSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN;
     public static final String DOUBLE_TAP_SLEEP_GESTURE =
-            "lineagesystem:" + LineageSettings.System.DOUBLE_TAP_SLEEP_GESTURE;
+            "mksystem:" + MKSettings.System.DOUBLE_TAP_SLEEP_GESTURE;
 
     private static final Rect mDummyDirtyRect = new Rect(0, 0, 1, 1);
     private static final Rect mEmptyRect = new Rect();

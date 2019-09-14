@@ -170,7 +170,7 @@ import java.util.Timer;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Future;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 public final class SystemServer {
 
@@ -380,8 +380,8 @@ public final class SystemServer {
 
         @Override
         public void onChange(boolean selfChange) {
-            int adbPort = LineageSettings.Secure.getInt(mContentResolver,
-                    LineageSettings.Secure.ADB_PORT, 0);
+            int adbPort = MKSettings.Secure.getInt(mContentResolver,
+                    MKSettings.Secure.ADB_PORT, 0);
             // Setting this will control whether ADB runs on TCP/IP or USB
             SystemProperties.set("adb.network.port", Integer.toString(adbPort));
         }
@@ -941,7 +941,7 @@ public final class SystemServer {
         }
 
         String externalServer = context.getResources().getString(
-                org.lineageos.platform.internal.R.string.config_externalSystemServer);
+                org.mokee.platform.internal.R.string.config_externalSystemServer);
 
         try {
             final String SECONDARY_ZYGOTE_PRELOAD = "SecondaryZygotePreload";
@@ -1908,12 +1908,12 @@ public final class SystemServer {
         traceEnd();
 
         // Make sure the ADB_ENABLED setting value matches the secure property value
-        LineageSettings.Secure.putInt(mContentResolver, LineageSettings.Secure.ADB_PORT,
+        MKSettings.Secure.putInt(mContentResolver, MKSettings.Secure.ADB_PORT,
                 SystemProperties.getInt("service.adb.tcp.port", -1));
 
         // Register observer to listen for settings changes
         mContentResolver.registerContentObserver(
-                LineageSettings.Secure.getUriFor(LineageSettings.Secure.ADB_PORT),
+                MKSettings.Secure.getUriFor(MKSettings.Secure.ADB_PORT),
                 false, new AdbPortObserver());
 
         if (safeMode) {
