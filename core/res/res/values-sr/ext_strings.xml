@@ -32,7 +32,7 @@
     <string name="app_ops_assist_structure">коришћење структуре помоћи</string>
     <string name="app_ops_audio_accessibility_volume">јачина звука за приступачност</string>
     <string name="app_ops_auto_start">покретање са системом</string>
-    <string name="app_ops_bind_accessibility_service">везати услугу приступачности</string>
+    <string name="app_ops_bind_accessibility_service">користити услугу приступачности</string>
     <string name="app_ops_bluetooth_scan">bluetooth скенирање</string>
     <string name="app_ops_change_wallpaper">мењање позадине</string>
     <string name="app_ops_delete_call_log">брисање евиденције позива</string>
@@ -72,11 +72,14 @@
     <string name="app_ops_receive_sms">пријем SMS порука</string>
     <string name="app_ops_receive_emergency_broadcast">прими хитне поруке</string>
     <string name="app_ops_record_audio">снимање аудио-записа</string>
+    <string name="app_ops_request_delete_packages">захтев за брисања пакета</string>
     <string name="app_ops_run_in_background">рад у позадини</string>
+    <string name="app_ops_run_any_in_background">извршавање у позадини</string>
     <string name="app_ops_scan_wifi">скенирање Wi-Fi мрежа</string>
     <string name="app_ops_send_mms">слање MMS порука</string>
     <string name="app_ops_send_sms">слање SMS порука</string>
     <string name="app_ops_start_at_bootup">покретање са системом</string>
+    <string name="app_ops_start_foreground">покретање у првом плану</string>
     <string name="app_ops_su">приступ правима суперкорисника</string>
     <string name="app_ops_toast_window">приказивање искачућих порука</string>
     <string name="app_ops_toggle_bluetooth">укључивање/искључивање Bluetooth-а</string>
