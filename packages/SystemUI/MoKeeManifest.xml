@@ -19,6 +19,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         package="com.android.systemui">
 
+    <!-- QS Tiles -->
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="mokee.permission.HARDWARE_ABSTRACTION_ACCESS" />
+    <uses-permission android:name="mokee.permission.MANAGE_LIVEDISPLAY" />
+    <uses-permission android:name="mokee.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="mokee.permission.WRITE_SECURE_SETTINGS" />
+
     <!-- SystemUI Tuner -->
     <application>
         <activity-alias
