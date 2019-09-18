@@ -2480,6 +2480,8 @@ android.media.session.PlaybackState
 android.media.soundtrigger.SoundTriggerManager
 android.media.tv.TvInputManager
 android.metrics.LogMaker
+android.mokee.location.PhoneNumberOfflineGeocoder
+android.mokee.utils.MoKeeUtils
 android.mtp.MtpDatabase
 android.mtp.MtpDevice
 android.mtp.MtpDeviceInfo
@@ -5566,6 +5568,7 @@ com.google.android.gles_jni.EGLImpl
 com.google.android.gles_jni.EGLSurfaceImpl
 com.google.android.gles_jni.GLImpl
 com.google.android.mms.MmsException
+com.mokee.security.SecurityUtils
 com.sun.security.cert.internal.x509.X509V1CertImpl
 dalvik.annotation.optimization.CriticalNative
 dalvik.annotation.optimization.FastNative
