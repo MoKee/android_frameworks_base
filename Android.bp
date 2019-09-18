@@ -39,6 +39,7 @@ java_defaults {
         "media/mca/effect/java/**/*.java",
         "media/mca/filterfw/java/**/*.java",
         "media/mca/filterpacks/java/**/*.java",
+        "mokee/java/**/*.java",
         "drm/java/**/*.java",
         "opengl/java/**/*.java",
         "sax/java/**/*.java",
@@ -707,6 +708,7 @@ java_defaults {
             "media/mca/effect/java",
             "media/mca/filterfw/java",
             "media/mca/filterpacks/java",
+            "mokee/java",
             "drm/java",
             "opengl/java",
             "sax/java",
@@ -778,6 +780,7 @@ java_defaults {
         "android.hardware.vibrator-V1.3-java",
         "android.hardware.wifi-V1.0-java-constants",
         "devicepolicyprotosnano",
+        "mokee-cloud",
     ],
 
     required: [
