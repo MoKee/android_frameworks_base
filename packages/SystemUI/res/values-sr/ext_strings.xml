@@ -35,12 +35,12 @@
     <string name="accessibility_quick_settings_caffeine_on">Кофеин је укључен.</string>
     <string name="quick_settings_heads_up_label">Искачуће поруке</string>
     <string name="accessibility_quick_settings_heads_up_off">Искачуће поруке искључене.</string>
-    <string name="accessibility_quick_settings_heads_up_on">Искачуће поруке укључене.</string>
+    <string name="accessibility_quick_settings_heads_up_on">Искачућа обавештења укљ.</string>
     <string name="accessibility_quick_settings_heads_up_changed_off">Искачуће поруке ће бити искључене.</string>
     <string name="accessibility_quick_settings_heads_up_changed_on">Искачуће поруке ће бити укључене.</string>
     <string name="quick_settings_sync_label">Синхрон</string>
-    <string name="accessibility_quick_settings_sync_off">Синхрон. искључено.</string>
-    <string name="accessibility_quick_settings_sync_on">Синхрон. укључено.</string>
+    <string name="accessibility_quick_settings_sync_off">Синхрон. искљ.</string>
+    <string name="accessibility_quick_settings_sync_on">Синхрон. укљ.</string>
     <string name="accessibility_quick_settings_sync_changed_off">Синхронизација је искључена.</string>
     <string name="accessibility_quick_settings_sync_changed_on">Синхронизација је укључена.</string>
     <string name="quick_settings_profiles_label">Профили система</string>

@@ -47,7 +47,7 @@
     <string name="app_ops_delete_sms">брисање SMS порука</string>
     <string name="app_ops_draw_on_top">повлачење прозора на врх</string>
     <string name="app_ops_get_accounts">приступ налозима на уређају</string>
-    <string name="app_ops_get_usage_stats">преузимање статистике о коришћењу апликација</string>
+    <string name="app_ops_get_usage_stats">узми статистику о коришћењу апликације</string>
     <string name="app_ops_install_packages">инсталирај пакете</string>
     <string name="app_ops_keep_device_awake">задржавање ван стања спавања</string>
     <string name="app_ops_make_phone_call">позивање телефона</string>
@@ -65,7 +65,7 @@
     <string name="app_ops_project_media">медије за пројекат</string>
     <string name="app_ops_read_calendar">читање календара</string>
     <string name="app_ops_read_call_log">читање евиденције позива</string>
-    <string name="app_ops_read_cell_broadcasts">читање порука за мобилне уређаје на локалитету</string>
+    <string name="app_ops_read_cell_broadcasts">читај локалне мобилне поруке</string>
     <string name="app_ops_read_clipboard">читање меморије</string>
     <string name="app_ops_read_contacts">читање контаката</string>
     <string name="app_ops_read_external_storage">читање екстерног меморијског простора</string>
@@ -82,10 +82,10 @@
     <string name="app_ops_start_at_bootup">покретање са системом</string>
     <string name="app_ops_su">приступ правима суперкорисника</string>
     <string name="app_ops_toast_window">приказивање искачућих порука</string>
-    <string name="app_ops_toggle_bluetooth">укључивање/искључивање Bluetooth-а</string>
+    <string name="app_ops_toggle_bluetooth">пребацуј Bluetooth-а</string>
     <string name="app_ops_toggle_mobile_data">укључивање/искључивање мобилних података</string>
-    <string name="app_ops_toggle_nfc">укључивање/искључивање NFC-а</string>
-    <string name="app_ops_toggle_wifi">укључивање/искључивање Wi-Fi-а</string>
+    <string name="app_ops_toggle_nfc"> NFC прекидач</string>
+    <string name="app_ops_toggle_wifi">wi-Fi прекидач</string>
     <string name="app_ops_turn_on_screen">укључивање екрана</string>
     <string name="app_ops_use_alarm_volume">управљање јачином звука аларма</string>
     <string name="app_ops_use_audio_focus">управљање аудио-фокусом</string>
