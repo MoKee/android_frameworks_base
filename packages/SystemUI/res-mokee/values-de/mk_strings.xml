@@ -17,5 +17,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="status_bar_su">Superuser</string>
     <string name="status_bar_vpn">VPN (Virtuelles privates Netzwerk)</string>
+    <string name="status_bar_roaming">Roaminganzeige</string>
     <string name="quick_settings_screenshot_label">Bildschirmfoto</string>
 </resources>
