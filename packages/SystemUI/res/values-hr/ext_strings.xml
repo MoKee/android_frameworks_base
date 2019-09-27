@@ -52,6 +52,7 @@
     <string name="accessibility_dpad_left">Kursor lijevo</string>
     <string name="accessibility_dpad_right">Kursor desno</string>
     <string name="screen_pinning_description_no_navbar">Ovo drži zaslon u pogledu dok ga ne otkvačite. Dodirnite &amp; držite gumb za povratak natrag da biste ga otkvačili.</string>
+    <string name="status_bar_clock">Sat</string>
     <string name="global_action_current_user">Trenutni</string>
     <string name="global_action_screenshot">Snimka zaslona</string>
     <string name="global_action_restart_system">Sustav</string>
