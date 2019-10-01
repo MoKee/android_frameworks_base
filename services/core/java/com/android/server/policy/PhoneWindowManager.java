@@ -720,7 +720,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private int mTorchTimeout;
     private PendingIntent mTorchOffPendingIntent;
 
-    private LineageHardwareManager mLineageHardware;
+    private MKHardwareManager mMKHardware;
 
     private class PolicyHandler extends Handler {
         @Override
@@ -2412,8 +2412,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     UserHandle.USER_CURRENT);
             if (forceNavbar != mForceNavbar) {
                 mForceNavbar = forceNavbar;
-                if (mLineageHardware.isSupported(LineageHardwareManager.FEATURE_KEY_DISABLE)) {
-                    mLineageHardware.set(LineageHardwareManager.FEATURE_KEY_DISABLE,
+                if (mMKHardware.isSupported(MKHardwareManager.FEATURE_KEY_DISABLE)) {
+                    mMKHardware.set(MKHardwareManager.FEATURE_KEY_DISABLE,
                             mForceNavbar == 1);
                 }
             }
@@ -5440,9 +5440,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mVrManagerInternal.addPersistentVrModeStateListener(mPersistentVrModeListener);
         }
 
-        mLineageHardware = LineageHardwareManager.getInstance(mContext);
+        mMKHardware = MKHardwareManager.getInstance(mContext);
         // Ensure observe happens in systemReady() since we need
-        // LineageHardwareService to be up and running
+        // MKHardwareService to be up and running
         mSettingsObserver.observe();
 
         readCameraLensCoverState();
