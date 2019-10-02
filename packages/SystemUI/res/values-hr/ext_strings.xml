@@ -43,6 +43,11 @@
     <string name="accessibility_quick_settings_heads_up_on">Plutajuće obavijesti uključene.</string>
     <string name="accessibility_quick_settings_heads_up_changed_off">Plutajuće su obavijesti isključene.</string>
     <string name="accessibility_quick_settings_heads_up_changed_on">Plutajuće su obavijesti uključene.</string>
+    <string name="quick_settings_reading_mode">Način za čitanje</string>
+    <string name="accessibility_quick_settings_reading_mode_on">Način za čitanje uključen.</string>
+    <string name="accessibility_quick_settings_reading_mode_off">Način za čitanje isključen.</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_on">Način za čitanje je uključen.</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_off">Način za čitanje je isključen.</string>
     <string name="quick_settings_sync_label">Sinkronizacija</string>
     <string name="accessibility_quick_settings_sync_off">Sinkronizacija isključena.</string>
     <string name="accessibility_quick_settings_sync_on">Sinkronizacija uključena.</string>

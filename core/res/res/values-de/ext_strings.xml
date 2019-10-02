@@ -32,6 +32,7 @@
     <string name="app_ops_assist_structure">Unterstützungsstruktur zu verwenden</string>
     <string name="app_ops_audio_accessibility_volume">Bedienungshilfen-Lautstärke</string>
     <string name="app_ops_auto_start">automatisch zu starten</string>
+    <string name="app_ops_bind_accessibility_service">Bedienungshilfen</string>
     <string name="app_ops_bluetooth_scan">bluetooth-Suche</string>
     <string name="app_ops_change_wallpaper">Hintergrundbild zu ändern</string>
     <string name="app_ops_delete_call_log">Ihre Anrufliste zu löschen</string>
@@ -41,8 +42,10 @@
     <string name="app_ops_draw_on_top">sich im Vordergrund einzublenden</string>
     <string name="app_ops_get_accounts">Geräte-Konten abzurufen</string>
     <string name="app_ops_get_usage_stats">Nutzungsstatistiken von Apps abrufen</string>
+    <string name="app_ops_accept_handover">Übergabe eines Anrufs aus einer anderen App</string>
     <string name="app_ops_install_packages">Pakete zu installieren</string>
     <string name="app_ops_keep_device_awake">den Ruhezustand zu deaktivieren</string>
+    <string name="app_ops_manage_ipsec_tunnels">IPSec-Tunnel verwalten</string>
     <string name="app_ops_make_phone_call">Anrufe zu tätigen</string>
     <string name="app_ops_mock_location">Ihren Standort zu simulieren</string>
     <string name="app_ops_modify_calendar">Ihren Kalender zu aktualisieren</string>
