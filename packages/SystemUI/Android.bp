@@ -126,6 +126,7 @@ android_library {
         "dagger2-2.19",
         "jsr330",
         "org.mokee.platform.internal",
+        "vendor.mokee.biometrics.fingerprint.inscreen-V1.0-java",
     ],
     libs: [
         "android.test.runner",
