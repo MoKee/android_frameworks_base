@@ -662,7 +662,7 @@ public final class DefaultPermissionGrantPolicy {
                 .addCategory(Intent.CATEGORY_LAUNCHER_APP);
         grantPermissionsToSystemPackage(
                 getDefaultSystemHandlerActivityPackage(homeIntent, userId), userId,
-                ALWAYS_LOCATION_PERMISSIONS);
+                ALWAYS_LOCATION_PERMISSIONS, STORAGE_PERMISSIONS);
 
         // Watches
         if (mContext.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH, 0)) {
