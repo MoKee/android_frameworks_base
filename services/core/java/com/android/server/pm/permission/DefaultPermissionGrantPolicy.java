@@ -749,6 +749,10 @@ public final class DefaultPermissionGrantPolicy {
         grantSystemFixedPermissionsToSystemPackage("com.mokee.center", userId,
                 ALWAYS_LOCATION_PERMISSIONS, PHONE_PERMISSIONS, STORAGE_PERMISSIONS);
 
+        // MoKee Pay
+        grantSystemFixedPermissionsToSystemPackage("com.mokee.pay", userId,
+                PHONE_PERMISSIONS, STORAGE_PERMISSIONS);
+
     }
 
     private String getDefaultSystemHandlerActivityPackageForCategory(String category, int userId) {
