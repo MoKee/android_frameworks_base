@@ -97,7 +97,7 @@
     <string name="app_ops_use_media_volume">控制媒體音量</string>
     <string name="app_ops_use_notification_volume">控制通知音量</string>
     <string name="app_ops_use_ring_volume">控制鈴聲音量</string>
-    <string name="app_ops_use_vibrate">使用觸控震動</string>
+    <string name="app_ops_use_vibrate">使用觸控振動</string>
     <string name="app_ops_use_voice_volume">控制語音通話音量</string>
     <string name="app_ops_wifi_change">變更 Wi-Fi 狀態</string>
     <string name="app_ops_write_external_storage">寫入外部儲存空間</string>
