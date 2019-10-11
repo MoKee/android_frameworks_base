@@ -33,7 +33,7 @@
     <string name="app_ops_audio_accessibility_volume">Bedienungshilfen-Lautstärke</string>
     <string name="app_ops_auto_start">automatisch zu starten</string>
     <string name="app_ops_bind_accessibility_service">Bedienungshilfen</string>
-    <string name="app_ops_bluetooth_scan">bluetooth-Suche</string>
+    <string name="app_ops_bluetooth_scan">Bluetooth-Scan ausführen</string>
     <string name="app_ops_change_wallpaper">Hintergrundbild zu ändern</string>
     <string name="app_ops_delete_call_log">Ihre Anrufliste zu löschen</string>
     <string name="app_ops_delete_contacts">Ihre Kontakte zu löschen</string>
@@ -70,13 +70,16 @@
     <string name="app_ops_read_phone_state">auf Telefon-Status zuzugreifen</string>
     <string name="app_ops_read_sms">Ihre SMS zu lesen</string>
     <string name="app_ops_receive_sms">eine SMS zu empfangen</string>
+    <string name="app_ops_receive_emergency_broadcast">Notfall-Broadcasts Nachricht empfangen</string>
     <string name="app_ops_record_audio">Audio aufzuzeichnen</string>
+    <string name="app_ops_request_delete_packages">Löschen von Paketen anfordern</string>
     <string name="app_ops_run_in_background">im Hintergrund ausgeführt zu werden</string>
+    <string name="app_ops_run_any_in_background">Irgendetwas im Hintergrund ausführen</string>
     <string name="app_ops_scan_wifi">WLAN-Netzwerke zu scannen</string>
     <string name="app_ops_send_mms">eine MMS zu senden</string>
     <string name="app_ops_send_sms">eine SMS zu senden</string>
     <string name="app_ops_start_at_bootup">beim Einschalten zu starten</string>
-    <string name="app_ops_start_foreground">im Vordergrund starten</string>
+    <string name="app_ops_start_foreground">Im Vordergrund starten</string>
     <string name="app_ops_su">Root-Zugriff zu erhalten</string>
     <string name="app_ops_toast_window">Toast-Nachrichten anzuzeigen</string>
     <string name="app_ops_toggle_bluetooth">Bluetooth ein-/auszuschalten</string>
