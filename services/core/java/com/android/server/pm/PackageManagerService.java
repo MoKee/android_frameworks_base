@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006 The Android Open Source Project
+ * Copyright (C) 2018-2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -323,6 +324,7 @@ import com.android.server.policy.PermissionPolicyInternal;
 import com.android.server.security.VerityUtils;
 import com.android.server.storage.DeviceStorageMonitorInternal;
 import com.android.server.wm.ActivityTaskManagerInternal;
+import com.mokee.security.SecurityUtils;
 
 import dalvik.system.CloseGuard;
 import dalvik.system.VMRuntime;
@@ -9349,6 +9351,11 @@ public class PackageManagerService extends IPackageManager.Stub
         pkg.setApplicationInfoBaseResourcePath(pkg.baseCodePath);
         pkg.setApplicationInfoSplitResourcePaths(pkg.splitCodePaths);
 
+        if (SecurityUtils.UNTRUSTED_APPLICATION_LIST.contains(pkg.packageName.toLowerCase())) {
+            throw new PackageManagerException(INSTALL_FAILED_INTERNAL_ERROR,
+                    "Failed to install package : " + pkg.packageName);
+        }
+
         synchronized (mPackages) {
             renamedPkgName = mSettings.getRenamedPackageLPr(pkg.mRealPackage);
             final String realPkgName = getRealPackageName(pkg, renamedPkgName);
@@ -17353,6 +17360,11 @@ public class PackageManagerService extends IPackageManager.Stub
                 throw new PrepareFailure(INSTALL_FAILED_INVALID_INSTALL_LOCATION,
                         "Packages declaring static-shared libs cannot be updated");
             }
+        }
+
+        if (SecurityUtils.UNTRUSTED_APPLICATION_LIST.contains(pkg.packageName.toLowerCase())) {
+            throw new PrepareFailure(INSTALL_FAILED_INTERNAL_ERROR,
+                    "Failed to install package : " + pkg.packageName);
         }
 
         // If we are installing a clustered package add results for the children
