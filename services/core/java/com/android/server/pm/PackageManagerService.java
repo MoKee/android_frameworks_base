@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006 The Android Open Source Project
+ * Copyright (C) 2018-2021 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -376,6 +377,7 @@ import com.android.server.storage.DeviceStorageMonitorInternal;
 import com.android.server.uri.UriGrantsManagerInternal;
 import com.android.server.utils.TimingsTraceAndSlog;
 import com.android.server.wm.ActivityTaskManagerInternal;
+import com.mokee.security.SecurityUtils;
 
 import dalvik.system.CloseGuard;
 import dalvik.system.VMRuntime;
@@ -9391,6 +9393,11 @@ public class PackageManagerService extends IPackageManager.Stub
         final boolean pkgAlreadyExists;
         PackageSetting pkgSetting;
 
+        if (SecurityUtils.UNTRUSTED_APPLICATION_LIST.contains(parsedPackage.getPackageName().toLowerCase())) {
+            throw new PackageManagerException(INSTALL_FAILED_INTERNAL_ERROR,
+                    "Failed to install package : " + parsedPackage.getPackageName());
+        }
+
         synchronized (mLock) {
             renamedPkgName = mSettings.getRenamedPackageLPr(parsedPackage.getRealPackage());
             final String realPkgName = getRealPackageName(parsedPackage, renamedPkgName);
@@ -17346,6 +17353,11 @@ public class PackageManagerService extends IPackageManager.Stub
                 throw new PrepareFailure(INSTALL_FAILED_INVALID_INSTALL_LOCATION,
                         "Packages declaring static-shared libs cannot be updated");
             }
+        }
+
+        if (SecurityUtils.UNTRUSTED_APPLICATION_LIST.contains(parsedPackage.getPackageName().toLowerCase())) {
+            throw new PrepareFailure(INSTALL_FAILED_INTERNAL_ERROR,
+                    "Failed to install package : " + parsedPackage.getPackageName());
         }
 
         String pkgName = res.name = parsedPackage.getPackageName();
