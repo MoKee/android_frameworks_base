@@ -275,26 +275,28 @@ public class KeyguardSliceProvider extends SliceProvider implements
         }
         mCurrentTime.setTime(System.currentTimeMillis());
 
-        StringBuilder zhDate = new StringBuilder();
         if (MoKeeUtils.isSupportLanguage(false)) {
             Calendar cal = Calendar.getInstance();
             cal.setTime(mCurrentTime);
             ChineseCalendarInfo chineseCalendarInfo = new ChineseCalendar(cal).getChineseCalendarInfo();
-            zhDate.append(" " + chineseCalendarInfo.getLunarMonthDay());
+            StringBuilder cnDate = new StringBuilder();
+            cnDate.append(" " + chineseCalendarInfo.getLunarMonthDay());
             String solarTerm = chineseCalendarInfo.getSolarTerm();
             if (!TextUtils.isEmpty(solarTerm)) {
-                zhDate.append(" " + solarTerm);
+                cnDate.append(" " + solarTerm);
             }
             String solarFestival = chineseCalendarInfo.getSolarFestival();
             String lunarFestival = chineseCalendarInfo.getLunarFestival();
             if (!TextUtils.isEmpty(solarFestival)) {
-                zhDate.append(" " + solarFestival);
+                cnDate.append(" " + solarFestival);
             } else if (!TextUtils.isEmpty(lunarFestival)) {
-                zhDate.append(" " + lunarFestival);
+                cnDate.append(" " + lunarFestival);
             }
+            return mDateFormat.format(mCurrentTime) + cnDate.toString();
+        } else {
+            return mDateFormat.format(mCurrentTime);
         }
 
-        return mDateFormat.format(mCurrentTime) + zhDate.toString();
     }
 
     @VisibleForTesting
