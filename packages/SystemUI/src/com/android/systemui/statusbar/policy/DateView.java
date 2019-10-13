@@ -31,10 +31,8 @@ import android.widget.TextView;
 import com.android.settingslib.Utils;
 import com.android.systemui.Dependency;
 import com.android.systemui.R;
-import com.mokee.cloud.calendar.ChineseCalendar;
-import com.mokee.cloud.calendar.ChineseCalendarInfo;
+import com.mokee.cloud.calendar.ChineseCalendarUtils;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -115,26 +113,14 @@ public class DateView extends TextView {
 
         mCurrentTime.setTime(System.currentTimeMillis());
 
-        StringBuilder zhDate = new StringBuilder();
+        String dateText;
         if (MoKeeUtils.isSupportLanguage(false)) {
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(mCurrentTime);
-            ChineseCalendarInfo chineseCalendarInfo = new ChineseCalendar(cal).getChineseCalendarInfo();
-            zhDate.append(" " + chineseCalendarInfo.getLunarMonthDay());
-            String solarTerm = chineseCalendarInfo.getSolarTerm();
-            if (!TextUtils.isEmpty(solarTerm)) {
-                zhDate.append(" " + solarTerm);
-            }
-            String solarFestival = chineseCalendarInfo.getSolarFestival();
-            String lunarFestival = chineseCalendarInfo.getLunarFestival();
-            if (!TextUtils.isEmpty(solarFestival)) {
-                zhDate.append(" " + solarFestival);
-            } else if (!TextUtils.isEmpty(lunarFestival)) {
-                zhDate.append(" " + lunarFestival);
-            }
+            dateText = mDateFormat.format(mCurrentTime) + ChineseCalendarUtils.getChineseDateStr(mCurrentTime);
+        } else {
+            dateText = mDateFormat.format(mCurrentTime);
         }
 
-        final String text = mDateFormat.format(mCurrentTime) + zhDate.toString();
+        final String text = dateText;
         if (!text.equals(mLastText)) {
             setText(text);
             mLastText = text;
