@@ -291,7 +291,7 @@ public class Clock extends TextView implements DemoMode, Tunable, CommandQueue.C
             mShowSeconds = TunerService.parseIntegerSwitch(newValue, false);
             updateShowSeconds();
         } else if (CLOCK_STYLE.equals(key)) {
-            mAmPmStyle = newValue == null ? AM_PM_STYLE_GONE : Integer.valueOf(newValue);
+            mAmPmStyle = newValue == null ? AM_PM_STYLE_NORMAL : Integer.valueOf(newValue);
             mClockFormatString = ""; // force refresh
             updateClock();
         }
