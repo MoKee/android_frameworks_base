@@ -64,7 +64,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
-import com.android.internal.util.custom.FodUtils;
+import com.android.internal.util.ext.FodUtils;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.keyguard.KeyguardUpdateMonitor;
 import com.android.keyguard.KeyguardUpdateMonitorCallback;
@@ -89,7 +89,7 @@ import com.android.systemui.statusbar.policy.PreviewInflater;
 import com.android.systemui.tuner.LockscreenFragment.LockButtonFactory;
 import com.android.systemui.tuner.TunerService;
 
-import com.android.internal.util.custom.FodUtils;
+import com.android.internal.util.ext.FodUtils;
 
 /**
  * Implementation for the bottom area of the Keyguard, including camera/phone affordance and status
