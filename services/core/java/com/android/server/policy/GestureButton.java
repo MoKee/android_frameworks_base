@@ -80,7 +80,7 @@ public class GestureButton implements PointerEventListener {
     private int mSwipeTriggerTimeout;
     private Context mContext;
 
-    private static final String LAUNCHER_PACKAGE = "ch.deletescape.lawnchair.ci";
+    private static final String LAUNCHER_PACKAGE = "ch.deletescape.lawnchair.mokee";
     private static final String SYSTEMUI_PACKAGE = "com.android.systemui";
 
     private class GestureButtonHandler extends Handler {
