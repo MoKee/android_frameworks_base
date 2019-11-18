@@ -10932,7 +10932,7 @@ public class DevicePolicyManager {
         return false;
     }
 
-    /*
+    /**
      * MoKee: check if secure keyguard is required
      * @hide
      */
