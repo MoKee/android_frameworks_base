@@ -370,6 +370,7 @@ import com.mokee.aegis.IAegisInterface;
 import dalvik.system.VMRuntime;
 
 import libcore.util.EmptyArray;
+import mokee.license.LicenseInterface;
 
 import java.io.File;
 import java.io.FileDescriptor;
@@ -1550,6 +1551,9 @@ public class ActivityManagerService extends IActivityManager.Stub
 
     long mLastMemUsageReportTime = 0;
 
+    LicenseInterface mLicenseInterface;
+    final boolean mPremiumVersion = LicenseInterface.isPremiumVersion();
+
     /**
      * Flag whether the current user is a "monkey", i.e. whether
      * the UI is driven by a UI automation tool.
@@ -2606,7 +2610,6 @@ public class ActivityManagerService extends IActivityManager.Stub
         } catch (Exception e) {
             Slog.w(TAG, "Setting background thread cpuset failed");
         }
-
     }
 
     public void setSystemServiceManager(SystemServiceManager mgr) {
@@ -3526,6 +3529,10 @@ public class ActivityManagerService extends IActivityManager.Stub
     public final int startActivityAsUser(IApplicationThread caller, String callingPackage,
             Intent intent, String resolvedType, IBinder resultTo, String resultWho, int requestCode,
             int startFlags, ProfilerInfo profilerInfo, Bundle bOptions, int userId) {
+
+            if (mPremiumVersion) {
+                mLicenseInterface.licenseVerification();
+            }
 
             return mActivityTaskManager.startActivityAsUser(caller, callingPackage, intent,
                     resolvedType, resultTo, resultWho, requestCode, startFlags, profilerInfo,
@@ -9154,6 +9161,8 @@ public class ActivityManagerService extends IActivityManager.Stub
                             }
                         }
                     }, mHandler);
+
+            mLicenseInterface = LicenseInterface.getInstance(mContext);
 
             traceLog.traceEnd(); // ActivityManagerStartApps
             traceLog.traceEnd(); // PhaseActivityManagerReady
