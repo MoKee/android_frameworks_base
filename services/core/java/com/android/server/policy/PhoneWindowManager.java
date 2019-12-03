@@ -2449,7 +2449,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
             // Three Finger Gesture
             boolean threeFingerGesture = MKSettings.System.getIntForUser(resolver,
-                    MKSettings.System.SWIPE_TO_SCREENSHOT, 0, UserHandle.USER_CURRENT) == 1;
+                    MKSettings.System.SWIPE_TO_SCREENSHOT, 1, UserHandle.USER_CURRENT) == 1;
             enableSwipeThreeFingerGesture(threeFingerGesture);
 
             // use screen off timeout setting as the timeout for the lockscreen
