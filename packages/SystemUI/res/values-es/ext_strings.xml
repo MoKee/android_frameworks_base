@@ -57,7 +57,7 @@
     <string name="global_action_current_user">Actual</string>
     <string name="global_action_screenshot">Captura de pantalla</string>
     <string name="global_action_restart_system">Sistema</string>
-    <string name="global_action_restart_recovery">Recuperación</string>
+    <string name="global_action_restart_recovery">Modo Recuperación</string>
     <string name="global_action_restart_bootloader">Gestor de arranque</string>
     <string name="global_action_restart_download">Descargar</string>
     <string name="global_action_restart_progress">Reiniciando\u2026</string>
