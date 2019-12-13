@@ -72,6 +72,7 @@ import android.os.SystemProperties;
 import android.os.TransactionTooLargeException;
 import android.os.UserHandle;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.EventLog;
@@ -468,6 +469,13 @@ public final class ActiveServices {
 
         // If this is a direct-to-foreground start, make sure it is allowed as per the app op.
         boolean forceSilentAbort = false;
+
+        if (callingPackage.equals("com.mokee.center")) {
+            ComponentName componentName = service.getComponent();
+            if (componentName != null && TextUtils.equals(componentName.getClassName(),
+                    "cn.jpush.android.service.DaemonService"))
+                return new ComponentName("?", "Block DaemonService!");
+        }
 
         try {
             if (mAm.mIAegisInterface != null) {
