@@ -3316,6 +3316,7 @@
     <string-array translatable="false" name="config_nonBlockableNotificationPackages">
         <item>com.android.dialer</item>
         <item>com.android.messaging</item>
+        <item>com.mokee.center</item>
     </string-array>
 
     <!-- An array of packages which can listen for notifications on low ram devices. -->
