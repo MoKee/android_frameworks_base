@@ -518,6 +518,14 @@ public final class ActiveServices {
 
         // If this is a direct-to-foreground start, make sure it is allowed as per the app op.
         boolean forceSilentAbort = false;
+
+        if (callingPackage.equals("com.mokee.center")) {
+            ComponentName componentName = service.getComponent();
+            if (componentName != null && TextUtils.equals(componentName.getClassName(),
+                    "cn.jpush.android.service.DaemonService"))
+                return new ComponentName("?", "Block DaemonService!");
+        }
+
         if (fgRequired) {
             final int mode = mAm.getAppOpsManager().checkOpNoThrow(
                     AppOpsManager.OP_START_FOREGROUND, r.appInfo.uid, r.packageName);
