@@ -4477,6 +4477,7 @@ public final class Settings {
 
         /**
          * Call log delete limit
+         * @hide
          */
         public static final String CALL_LOG_LIMIT = "call_log_delete_limit";
 

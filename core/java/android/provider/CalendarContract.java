@@ -1881,6 +1881,9 @@ public final class CalendarContract {
         };
     }
 
+    /**
+     * @hide
+     */
     public static final class Alarm implements BaseColumns {
 
         public static final String AUTHORITY = "com.android.calendar.alarm";
