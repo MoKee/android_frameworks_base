@@ -23,6 +23,9 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.text.TextUtils;
+
+import com.mokee.os.Build;
 
 import java.util.Locale;
 
@@ -44,10 +47,7 @@ public class MoKeeUtils {
     public static boolean isOnline(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = connectivityManager.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnected()) {
-            return true;
-        }
-        return false;
+        return netInfo != null && netInfo.isConnected();
     }
 
     public static boolean isApkInstalledAndEnabled(String packageName, Context context) {
@@ -79,6 +79,10 @@ public class MoKeeUtils {
             return false;
         }
         return ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
+    }
+
+    public static boolean isPremiumVersion() {
+        return TextUtils.equals(Build.RELEASE_TYPE.toLowerCase(Locale.ENGLISH), "premium");
     }
 
 }
