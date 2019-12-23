@@ -230,6 +230,7 @@ import android.graphics.Rect;
 import android.hardware.display.DisplayManagerInternal;
 import android.location.LocationManager;
 import android.media.audiofx.AudioEffect;
+import android.mokee.utils.MoKeeUtils;
 import android.net.Proxy;
 import android.net.Uri;
 import android.os.AppZygote;
@@ -1552,7 +1553,7 @@ public class ActivityManagerService extends IActivityManager.Stub
     long mLastMemUsageReportTime = 0;
 
     LicenseInterface mLicenseInterface;
-    final boolean mPremiumVersion = LicenseInterface.isPremiumVersion();
+    final boolean mPremiumVersion = MoKeeUtils.isPremiumVersion();
 
     /**
      * Flag whether the current user is a "monkey", i.e. whether
