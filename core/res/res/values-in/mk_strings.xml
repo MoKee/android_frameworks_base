@@ -16,5 +16,5 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="mk_system_error_manufacturer">Ketidakcocokan gambar vendor telah terdeteksi. Biasanya ini berarti gambar vendor Anda sudah kadaluarsa. Pastikan gambar vendor Anda cocok dengan <xliff:g id="fingerprint">%1$s </xliff:g>.</string>
+    <string name="mk_system_error_manufacturer">Ketidakcocokan image vendor telah terdeteksi. Biasanya ini berarti image vendor anda sudah kadaluarsa. Pastikan image vendor anda cocok dengan <xliff:g id="fingerprint">%1$s </xliff:g>.</string>
 </resources>
