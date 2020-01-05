@@ -27,7 +27,7 @@ import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.R;
 
-import org.lineageos.internal.logging.LineageMetricsLogger;
+import org.mokee.internal.logging.MKMetricsLogger;
 
 import javax.inject.Inject;
 
@@ -85,7 +85,7 @@ public class SyncTile extends QSTileImpl<BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return LineageMetricsLogger.TILE_SYNC;
+        return MKMetricsLogger.TILE_SYNC;
     }
 
     @Override

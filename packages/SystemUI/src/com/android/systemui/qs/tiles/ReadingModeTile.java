@@ -24,10 +24,10 @@ import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.R;
 
-import org.lineageos.internal.logging.LineageMetricsLogger;
+import org.mokee.internal.logging.MKMetricsLogger;
 
-import lineageos.hardware.LineageHardwareManager;
-import lineageos.providers.LineageSettings;
+import mokee.hardware.MKHardwareManager;
+import mokee.providers.MKSettings;
 
 import javax.inject.Inject;
 
@@ -36,14 +36,14 @@ public class ReadingModeTile extends QSTileImpl<BooleanState> {
     private final Icon mIcon = ResourceIcon.get(R.drawable.ic_qs_reader);
 
     private static final Intent LIVEDISPLAY_SETTINGS =
-            new Intent("org.lineageos.lineageparts.LIVEDISPLAY_SETTINGS");
+            new Intent("org.mokee.mkparts.LIVEDISPLAY_SETTINGS");
 
-    private LineageHardwareManager mHardware;
+    private MKHardwareManager mHardware;
 
     @Inject
     public ReadingModeTile(QSHost host) {
         super(host);
-        mHardware = LineageHardwareManager.getInstance(mContext);
+        mHardware = MKHardwareManager.getInstance(mContext);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class ReadingModeTile extends QSTileImpl<BooleanState> {
     @Override
     protected void handleClick() {
         boolean newStatus = !isReadingModeEnabled();
-        mHardware.set(LineageHardwareManager.FEATURE_READING_ENHANCEMENT, newStatus);
+        mHardware.set(MKHardwareManager.FEATURE_READING_ENHANCEMENT, newStatus);
         refreshState();
     }
 
@@ -65,7 +65,7 @@ public class ReadingModeTile extends QSTileImpl<BooleanState> {
 
     @Override
     public boolean isAvailable() {
-        return mHardware.isSupported(LineageHardwareManager.FEATURE_READING_ENHANCEMENT);
+        return mHardware.isSupported(MKHardwareManager.FEATURE_READING_ENHANCEMENT);
     }
 
     @Override
@@ -102,7 +102,7 @@ public class ReadingModeTile extends QSTileImpl<BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return LineageMetricsLogger.TILE_READING_MODE;
+        return MKMetricsLogger.TILE_READING_MODE;
     }
 
     @Override
@@ -110,6 +110,6 @@ public class ReadingModeTile extends QSTileImpl<BooleanState> {
     }
 
     private boolean isReadingModeEnabled() {
-        return mHardware.get(LineageHardwareManager.FEATURE_READING_ENHANCEMENT);
+        return mHardware.get(MKHardwareManager.FEATURE_READING_ENHANCEMENT);
     }
 }

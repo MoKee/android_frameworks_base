@@ -118,7 +118,7 @@ import com.android.server.connectivity.tethering.TetheringInterfaceUtils;
 import com.android.server.connectivity.tethering.UpstreamNetworkMonitor;
 import com.android.server.net.BaseNetworkObserver;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -316,8 +316,8 @@ public class Tethering extends BaseNetworkObserver {
                 mTetherMasterSM.sendMessage(TetherMasterSM.CMD_UPSTREAM_CHANGED);
             }
         };
-        mContext.getContentResolver().registerContentObserver(LineageSettings.Secure.getUriFor(
-                LineageSettings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS), false, vpnSettingObserver,
+        mContext.getContentResolver().registerContentObserver(MKSettings.Secure.getUriFor(
+                MKSettings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS), false, vpnSettingObserver,
                 UserHandle.USER_ALL);
     }
 

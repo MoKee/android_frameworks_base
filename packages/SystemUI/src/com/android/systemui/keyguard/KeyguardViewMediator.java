@@ -94,8 +94,8 @@ import com.android.systemui.statusbar.phone.StatusBarKeyguardViewManager;
 import com.android.systemui.statusbar.phone.StatusBarWindowController;
 import com.android.systemui.util.InjectionInflationController;
 
-import lineageos.app.Profile;
-import lineageos.app.ProfileManager;
+import mokee.app.Profile;
+import mokee.app.ProfileManager;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;

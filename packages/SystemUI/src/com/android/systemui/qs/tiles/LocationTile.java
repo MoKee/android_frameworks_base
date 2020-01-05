@@ -43,7 +43,7 @@ import com.android.systemui.statusbar.policy.LocationController;
 import com.android.systemui.statusbar.policy.LocationController.LocationChangeCallback;
 import com.android.systemui.volume.SegmentedButtons;
 
-import org.lineageos.internal.logging.LineageMetricsLogger;
+import org.mokee.internal.logging.MKMetricsLogger;
 
 import javax.inject.Inject;
 
@@ -232,7 +232,7 @@ public class LocationTile extends QSTileImpl<BooleanState> {
 
         @Override
         public int getMetricsCategory() {
-            return LineageMetricsLogger.TILE_LOCATION_DETAIL;
+            return MKMetricsLogger.TILE_LOCATION_DETAIL;
         }
 
         @Override

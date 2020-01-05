@@ -66,7 +66,7 @@ public class Clock extends TextView implements DemoMode, Tunable, CommandQueue.C
         DarkReceiver, ConfigurationListener {
 
     public static final String CLOCK_SECONDS = "clock_seconds";
-    public static final String CLOCK_STYLE = "lineagesystem:status_bar_am_pm";
+    public static final String CLOCK_STYLE = "mksystem:status_bar_am_pm";
 
     private static final String CLOCK_SUPER_PARCELABLE = "clock_super_parcelable";
     private static final String CURRENT_USER_ID = "current_user_id";

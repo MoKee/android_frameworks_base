@@ -100,7 +100,7 @@ import com.android.systemui.statusbar.policy.ConfigurationController;
 import com.android.systemui.statusbar.policy.DeviceProvisionedController;
 import com.android.systemui.tuner.TunerService;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -121,7 +121,7 @@ public class VolumeDialogImpl implements VolumeDialog,
     private static final int UPDATE_ANIMATION_DURATION = 80;
 
     public static final String SETTING_VOLUME_PANEL_ON_LEFT =
-            "lineagesecure:" + LineageSettings.Secure.VOLUME_PANEL_ON_LEFT;
+            "mksecure:" + MKSettings.Secure.VOLUME_PANEL_ON_LEFT;
 
     static final int DIALOG_TIMEOUT_MILLIS = 3000;
     static final int DIALOG_SAFETYWARNING_TIMEOUT_MILLIS = 5000;

@@ -49,7 +49,7 @@ import com.android.server.policy.WindowManagerPolicy;
 import com.android.server.policy.WindowOrientationListener;
 import com.android.server.statusbar.StatusBarManagerInternal;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import java.io.PrintWriter;
 import java.lang.annotation.Retention;

@@ -122,7 +122,7 @@ import com.android.server.locksettings.SyntheticPasswordManager.AuthenticationTo
 import com.android.server.locksettings.recoverablekeystore.RecoverableKeyStoreManager;
 import com.android.server.wm.WindowManagerInternal;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import libcore.util.HexEncoding;
 
@@ -2397,7 +2397,7 @@ public class LockSettingsService extends ILockSettings.Stub {
             Secure.LOCK_BIOMETRIC_WEAK_FLAGS,
             Secure.LOCK_PATTERN_VISIBLE,
             Secure.LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED,
-            LineageSettings.Secure.LOCK_PASS_TO_SECURITY_VIEW,
+            MKSettings.Secure.LOCK_PASS_TO_SECURITY_VIEW,
             Secure.LOCK_PATTERN_SIZE,
             Secure.LOCK_DOTS_VISIBLE,
             Secure.LOCK_SHOW_ERROR_PATH

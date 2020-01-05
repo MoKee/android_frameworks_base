@@ -104,7 +104,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.Set;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 /**
  * UsbDeviceManager manages USB state in device mode.
@@ -361,10 +361,10 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
         };
 
         mContentResolver.registerContentObserver(
-                LineageSettings.Secure.getUriFor(LineageSettings.Secure.ADB_NOTIFY),
+                MKSettings.Secure.getUriFor(MKSettings.Secure.ADB_NOTIFY),
                 false, adbNotificationObserver);
         mContentResolver.registerContentObserver(
-                LineageSettings.Secure.getUriFor(LineageSettings.Secure.ADB_PORT),
+                MKSettings.Secure.getUriFor(MKSettings.Secure.ADB_PORT),
                 false, adbNotificationObserver);
 
         // Watch for USB configuration changes
@@ -1193,11 +1193,11 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
             final int titleRes;
             boolean usbAdbActive = isAdbEnabled() && mConnected;
             boolean netAdbActive = isAdbEnabled() &&
-                    LineageSettings.Secure.getInt(mContentResolver,
-                            LineageSettings.Secure.ADB_PORT, -1) > 0;
+                    MKSettings.Secure.getInt(mContentResolver,
+                            MKSettings.Secure.ADB_PORT, -1) > 0;
             boolean hideNotification = SystemProperties.getInt("persist.adb.notify", -1) == 0
-                    || LineageSettings.Secure.getInt(mContext.getContentResolver(),
-                            LineageSettings.Secure.ADB_NOTIFY, 1) == 0;
+                    || MKSettings.Secure.getInt(mContext.getContentResolver(),
+                            MKSettings.Secure.ADB_NOTIFY, 1) == 0;
 
             if (hideNotification) {
                 titleRes = 0;

@@ -31,7 +31,7 @@ import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.qs.SecureSetting;
 import com.android.systemui.R;
 
-import org.lineageos.internal.logging.LineageMetricsLogger;
+import org.mokee.internal.logging.MKMetricsLogger;
 
 import javax.inject.Inject;
 
@@ -112,7 +112,7 @@ public class AmbientDisplayTile extends QSTileImpl<BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return LineageMetricsLogger.TILE_AMBIENT_DISPLAY;
+        return MKMetricsLogger.TILE_AMBIENT_DISPLAY;
     }
 
     @Override

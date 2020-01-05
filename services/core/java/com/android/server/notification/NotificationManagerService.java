@@ -246,8 +246,8 @@ import com.android.server.statusbar.StatusBarManagerInternal;
 import com.android.server.uri.UriGrantsManagerInternal;
 import com.android.server.wm.WindowManagerInternal;
 
-import org.lineageos.internal.notification.LedValues;
-import org.lineageos.internal.notification.LineageNotificationLights;
+import org.mokee.internal.notification.LedValues;
+import org.mokee.internal.notification.MKNotificationLights;
 
 import libcore.io.IoUtils;
 
@@ -477,7 +477,7 @@ public class NotificationManagerService extends SystemService {
 
     private final SavePolicyFileRunnable mSavePolicyFile = new SavePolicyFileRunnable();
 
-    private LineageNotificationLights mLineageNotificationLights;
+    private MKNotificationLights mMKNotificationLights;
 
     private static class Archive {
         final int mBufferSize;
@@ -1137,7 +1137,7 @@ public class NotificationManagerService extends SystemService {
     private void clearLightsLocked() {
         // light
         // clear only if lockscreen is not active
-        if (!mLineageNotificationLights.isKeyguardLocked()) {
+        if (!mMKNotificationLights.isKeyguardLocked()) {
             mLights.clear();
             updateLightsLocked();
         }
@@ -1346,7 +1346,7 @@ public class NotificationManagerService extends SystemService {
             } else if (action.equals(Intent.ACTION_USER_PRESENT)) {
                 // turn off LED when user passes through lock screen
                 // if lights with screen on is disabled.
-                if (!mLineageNotificationLights.showLightsScreenOn()) {
+                if (!mMKNotificationLights.showLightsScreenOn()) {
                     mNotificationLight.turnOff();
                 }
             } else if (action.equals(Intent.ACTION_USER_SWITCHED)) {
@@ -1705,7 +1705,7 @@ public class NotificationManagerService extends SystemService {
                         new Intent(NotificationManager.ACTION_INTERRUPTION_FILTER_CHANGED_INTERNAL)
                                 .addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY_BEFORE_BOOT),
                         UserHandle.ALL, android.Manifest.permission.MANAGE_NOTIFICATIONS);
-                mLineageNotificationLights.setZenMode(mZenModeHelper.getZenMode());
+                mMKNotificationLights.setZenMode(mZenModeHelper.getZenMode());
                 synchronized (mNotificationLock) {
                     updateInterruptionFilterLocked();
                 }
@@ -1885,8 +1885,8 @@ public class NotificationManagerService extends SystemService {
         IntentFilter localeChangedFilter = new IntentFilter(Intent.ACTION_LOCALE_CHANGED);
         getContext().registerReceiver(mLocaleChangeReceiver, localeChangedFilter);
 
-        mLineageNotificationLights = new LineageNotificationLights(getContext(),
-                 new LineageNotificationLights.LedUpdater() {
+        mMKNotificationLights = new MKNotificationLights(getContext(),
+                 new MKNotificationLights.LedUpdater() {
             public void update() {
                 updateNotificationPulse();
             }
@@ -6024,7 +6024,7 @@ public class NotificationManagerService extends SystemService {
             return false;
         }
         // Forced on
-        // Used by LineageParts light picker
+        // Used by MKParts light picker
         // eg to allow selecting battery light color when notification led is turned off.
         if (isLedForcedOn(record)) {
             return true;
@@ -7149,13 +7149,13 @@ public class NotificationManagerService extends SystemService {
 
         NotificationRecord.Light light = ledNotification != null ?
                 ledNotification.getLight() : null;
-        if (ledNotification == null || mLineageNotificationLights == null || light == null) {
+        if (ledNotification == null || mMKNotificationLights == null || light == null) {
             mNotificationLight.turnOff();
             return;
         }
 
         LedValues ledValues = new LedValues(light.color, light.onMs, light.offMs);
-        mLineageNotificationLights.calcLights(ledValues, ledNotification.sbn.getPackageName(),
+        mMKNotificationLights.calcLights(ledValues, ledNotification.sbn.getPackageName(),
                 ledNotification.sbn.getNotification(), mScreenOn || isInCall(),
                 ledNotification.getSuppressedVisualEffects());
 
@@ -7176,7 +7176,7 @@ public class NotificationManagerService extends SystemService {
 
     private boolean isLedForcedOn(NotificationRecord nr) {
         return nr != null ?
-                mLineageNotificationLights.isForcedOn(nr.sbn.getNotification()) : false;
+                mMKNotificationLights.isForcedOn(nr.sbn.getNotification()) : false;
     }
 
     @GuardedBy("mNotificationLock")

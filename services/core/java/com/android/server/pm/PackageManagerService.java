@@ -2426,7 +2426,7 @@ public class PackageManagerService extends IPackageManager.Stub
         mContext = context;
 
         mVendorPlatformSignatures = createSignatures(context.getResources().getStringArray(
-                    org.lineageos.platform.internal.R.array.config_vendorPlatformSignatures));
+                    org.mokee.platform.internal.R.array.config_vendorPlatformSignatures));
 
         mFactoryTest = factoryTest;
         mOnlyCore = onlyCore;

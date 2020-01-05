@@ -32,7 +32,7 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Settings;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -118,7 +118,7 @@ final public class SettingsService extends Binder {
         String mTag = null;
         int mResetMode = -1;
         boolean mMakeDefault;
-        boolean mUseLineageSettingsProvider = false;
+        boolean mUseMKSettingsProvider = false;
 
         MyShellCommand(SettingsProvider provider, boolean dumping) {
             mProvider = provider;
@@ -147,8 +147,8 @@ final public class SettingsService extends Binder {
                         perr.println("Invalid user: all");
                         return -1;
                     }
-                } else if ("--lineage".equals(arg)) {
-                    mUseLineageSettingsProvider = true;
+                } else if ("--mokee".equals(arg)) {
+                    mUseMKSettingsProvider = true;
                 } else if (mVerb == CommandVerb.UNSPECIFIED) {
                     if ("get".equalsIgnoreCase(arg)) {
                         mVerb = CommandVerb.GET;
@@ -278,8 +278,8 @@ final public class SettingsService extends Binder {
             final ContentProviderHolder holder;
             try {
                 holder = ActivityManager.getService()
-                        .getContentProviderExternal(mUseLineageSettingsProvider ?
-                                LineageSettings.AUTHORITY : Settings.AUTHORITY,
+                        .getContentProviderExternal(mUseMKSettingsProvider ?
+                                MKSettings.AUTHORITY : Settings.AUTHORITY,
                                 UserHandle.USER_SYSTEM, token, null);
                 if (holder == null) {
                     throw new IllegalStateException("Could not find settings provider");
@@ -317,8 +317,8 @@ final public class SettingsService extends Binder {
             try {
                 if (provider != null) {
                     ActivityManager.getService()
-                            .removeContentProviderExternal(mUseLineageSettingsProvider ?
-                                    LineageSettings.AUTHORITY : Settings.AUTHORITY, token);
+                            .removeContentProviderExternal(mUseMKSettingsProvider ?
+                                    MKSettings.AUTHORITY : Settings.AUTHORITY, token);
                 }
             } catch (RemoteException e) {
                 throw new RuntimeException("Error while accessing settings provider", e);
@@ -329,12 +329,12 @@ final public class SettingsService extends Binder {
 
         List<String> listForUser(IContentProvider provider, int userHandle, String table) {
             final String callListCommand;
-            final String systemListCommand = mUseLineageSettingsProvider ?
-                    LineageSettings.CALL_METHOD_LIST_SYSTEM : Settings.CALL_METHOD_LIST_SYSTEM;
-            final String secureListCommand = mUseLineageSettingsProvider ?
-                    LineageSettings.CALL_METHOD_LIST_SECURE : Settings.CALL_METHOD_LIST_SECURE;
-            final String globalListCommand = mUseLineageSettingsProvider ?
-                    LineageSettings.CALL_METHOD_LIST_GLOBAL : Settings.CALL_METHOD_LIST_GLOBAL;
+            final String systemListCommand = mUseMKSettingsProvider ?
+                    MKSettings.CALL_METHOD_LIST_SYSTEM : Settings.CALL_METHOD_LIST_SYSTEM;
+            final String secureListCommand = mUseMKSettingsProvider ?
+                    MKSettings.CALL_METHOD_LIST_SECURE : Settings.CALL_METHOD_LIST_SECURE;
+            final String globalListCommand = mUseMKSettingsProvider ?
+                    MKSettings.CALL_METHOD_LIST_GLOBAL : Settings.CALL_METHOD_LIST_GLOBAL;
 
             if ("system".equals(table)) callListCommand = systemListCommand;
             else if ("secure".equals(table)) callListCommand = secureListCommand;
@@ -347,8 +347,8 @@ final public class SettingsService extends Binder {
             try {
                 Bundle arg = new Bundle();
                 arg.putInt(Settings.CALL_METHOD_USER_KEY, userHandle);
-                Bundle result = provider.call(resolveCallingPackage(), mUseLineageSettingsProvider ?
-                        LineageSettings.AUTHORITY : Settings.AUTHORITY, callListCommand, null, arg);
+                Bundle result = provider.call(resolveCallingPackage(), mUseMKSettingsProvider ?
+                        MKSettings.AUTHORITY : Settings.AUTHORITY, callListCommand, null, arg);
                 lines.addAll(result.getStringArrayList(SettingsProvider.RESULT_SETTINGS_LIST));
                 Collections.sort(lines);
             } catch (RemoteException e) {
@@ -359,12 +359,12 @@ final public class SettingsService extends Binder {
 
         String getForUser(IContentProvider provider, int userHandle,
                 final String table, final String key) {
-            final String systemGetCommand = mUseLineageSettingsProvider ?
-                    LineageSettings.CALL_METHOD_GET_SYSTEM : Settings.CALL_METHOD_GET_SYSTEM;
-            final String secureGetCommand = mUseLineageSettingsProvider ?
-                    LineageSettings.CALL_METHOD_GET_SECURE : Settings.CALL_METHOD_GET_SECURE;
-            final String globalGetCommand = mUseLineageSettingsProvider ?
-                    LineageSettings.CALL_METHOD_GET_GLOBAL : Settings.CALL_METHOD_GET_GLOBAL;
+            final String systemGetCommand = mUseMKSettingsProvider ?
+                    MKSettings.CALL_METHOD_GET_SYSTEM : Settings.CALL_METHOD_GET_SYSTEM;
+            final String secureGetCommand = mUseMKSettingsProvider ?
+                    MKSettings.CALL_METHOD_GET_SECURE : Settings.CALL_METHOD_GET_SECURE;
+            final String globalGetCommand = mUseMKSettingsProvider ?
+                    MKSettings.CALL_METHOD_GET_GLOBAL : Settings.CALL_METHOD_GET_GLOBAL;
             final String callGetCommand;
             if ("system".equals(table)) callGetCommand = systemGetCommand;
             else if ("secure".equals(table)) callGetCommand = secureGetCommand;
@@ -377,11 +377,11 @@ final public class SettingsService extends Binder {
             String result = null;
             try {
                 Bundle arg = new Bundle();
-                arg.putInt(mUseLineageSettingsProvider ?
-                        LineageSettings.CALL_METHOD_USER_KEY : Settings.CALL_METHOD_USER_KEY,
+                arg.putInt(mUseMKSettingsProvider ?
+                        MKSettings.CALL_METHOD_USER_KEY : Settings.CALL_METHOD_USER_KEY,
                         userHandle);
-                Bundle b = provider.call(resolveCallingPackage(), mUseLineageSettingsProvider ?
-                        LineageSettings.AUTHORITY : Settings.AUTHORITY, callGetCommand, key, arg);
+                Bundle b = provider.call(resolveCallingPackage(), mUseMKSettingsProvider ?
+                        MKSettings.AUTHORITY : Settings.AUTHORITY, callGetCommand, key, arg);
                 if (b != null) {
                     result = b.getPairValue();
                 }
@@ -393,12 +393,12 @@ final public class SettingsService extends Binder {
 
         void putForUser(IContentProvider provider, int userHandle, final String table,
                 final String key, final String value, String tag, boolean makeDefault) {
-            final String systemPutCommand = mUseLineageSettingsProvider ?
-                    LineageSettings.CALL_METHOD_PUT_SYSTEM : Settings.CALL_METHOD_PUT_SYSTEM;
-            final String securePutCommand = mUseLineageSettingsProvider ?
-                    LineageSettings.CALL_METHOD_PUT_SECURE : Settings.CALL_METHOD_PUT_SECURE;
-            final String globalPutCommand = mUseLineageSettingsProvider ?
-                    LineageSettings.CALL_METHOD_PUT_GLOBAL : Settings.CALL_METHOD_PUT_GLOBAL;
+            final String systemPutCommand = mUseMKSettingsProvider ?
+                    MKSettings.CALL_METHOD_PUT_SYSTEM : Settings.CALL_METHOD_PUT_SYSTEM;
+            final String securePutCommand = mUseMKSettingsProvider ?
+                    MKSettings.CALL_METHOD_PUT_SECURE : Settings.CALL_METHOD_PUT_SECURE;
+            final String globalPutCommand = mUseMKSettingsProvider ?
+                    MKSettings.CALL_METHOD_PUT_GLOBAL : Settings.CALL_METHOD_PUT_GLOBAL;
             final String callPutCommand;
             if ("system".equals(table)) {
                 callPutCommand = systemPutCommand;
@@ -417,8 +417,8 @@ final public class SettingsService extends Binder {
             try {
                 Bundle arg = new Bundle();
                 arg.putString(Settings.NameValueTable.VALUE, value);
-                arg.putInt(mUseLineageSettingsProvider ?
-                        LineageSettings.CALL_METHOD_USER_KEY : Settings.CALL_METHOD_USER_KEY,
+                arg.putInt(mUseMKSettingsProvider ?
+                        MKSettings.CALL_METHOD_USER_KEY : Settings.CALL_METHOD_USER_KEY,
                         userHandle);
                 if (tag != null) {
                     arg.putString(Settings.CALL_METHOD_TAG_KEY, tag);
@@ -426,8 +426,8 @@ final public class SettingsService extends Binder {
                 if (makeDefault) {
                     arg.putBoolean(Settings.CALL_METHOD_MAKE_DEFAULT_KEY, true);
                 }
-                provider.call(resolveCallingPackage(), mUseLineageSettingsProvider ?
-                        LineageSettings.AUTHORITY : Settings.AUTHORITY, callPutCommand, key, arg);
+                provider.call(resolveCallingPackage(), mUseMKSettingsProvider ?
+                        MKSettings.AUTHORITY : Settings.AUTHORITY, callPutCommand, key, arg);
             } catch (RemoteException e) {
                 throw new RuntimeException("Failed in IPC", e);
             }
@@ -436,12 +436,12 @@ final public class SettingsService extends Binder {
         int deleteForUser(IContentProvider provider, int userHandle,
                 final String table, final String key) {
             final String callDeleteCommand;
-            final String systemDeleteCommand = mUseLineageSettingsProvider ?
-                    LineageSettings.CALL_METHOD_DELETE_SYSTEM : Settings.CALL_METHOD_DELETE_SYSTEM;
-            final String secureDeleteCommand = mUseLineageSettingsProvider ?
-                    LineageSettings.CALL_METHOD_DELETE_SECURE : Settings.CALL_METHOD_DELETE_SECURE;
-            final String globalDeleteCommand = mUseLineageSettingsProvider ?
-                    LineageSettings.CALL_METHOD_DELETE_GLOBAL : Settings.CALL_METHOD_DELETE_GLOBAL;
+            final String systemDeleteCommand = mUseMKSettingsProvider ?
+                    MKSettings.CALL_METHOD_DELETE_SYSTEM : Settings.CALL_METHOD_DELETE_SYSTEM;
+            final String secureDeleteCommand = mUseMKSettingsProvider ?
+                    MKSettings.CALL_METHOD_DELETE_SECURE : Settings.CALL_METHOD_DELETE_SECURE;
+            final String globalDeleteCommand = mUseMKSettingsProvider ?
+                    MKSettings.CALL_METHOD_DELETE_GLOBAL : Settings.CALL_METHOD_DELETE_GLOBAL;
             if ("system".equals(table)) {
                 callDeleteCommand = systemDeleteCommand;
             } else if ("secure".equals(table)) {
@@ -456,8 +456,8 @@ final public class SettingsService extends Binder {
             try {
                 Bundle arg = new Bundle();
                 arg.putInt(Settings.CALL_METHOD_USER_KEY, userHandle);
-                Bundle result = provider.call(resolveCallingPackage(), mUseLineageSettingsProvider
-                        ? LineageSettings.AUTHORITY : Settings.AUTHORITY, callDeleteCommand, key,
+                Bundle result = provider.call(resolveCallingPackage(), mUseMKSettingsProvider
+                        ? MKSettings.AUTHORITY : Settings.AUTHORITY, callDeleteCommand, key,
                         arg);
                 return result.getInt(SettingsProvider.RESULT_ROWS_DELETED);
             } catch (RemoteException e) {
@@ -484,7 +484,7 @@ final public class SettingsService extends Binder {
                 }
                 String packageName = mPackageName != null ? mPackageName : resolveCallingPackage();
                 arg.putInt(Settings.CALL_METHOD_USER_KEY, userHandle);
-                provider.call(packageName, mUseLineageSettingsProvider ? LineageSettings.AUTHORITY
+                provider.call(packageName, mUseMKSettingsProvider ? MKSettings.AUTHORITY
                         : Settings.AUTHORITY, callResetCommand, null, arg);
             } catch (RemoteException e) {
                 throw new RuntimeException("Failed in IPC", e);
@@ -523,18 +523,18 @@ final public class SettingsService extends Binder {
                 pw.println("Settings provider (settings) commands:");
                 pw.println("  help");
                 pw.println("      Print this help text.");
-                pw.println("  get [--user <USER_ID> | current] [--lineage] NAMESPACE KEY");
+                pw.println("  get [--user <USER_ID> | current] [--mokee] NAMESPACE KEY");
                 pw.println("      Retrieve the current value of KEY.");
-                pw.println("  put [--user <USER_ID> | current] [--lineage] NAMESPACE KEY VALUE [TAG] [default]");
+                pw.println("  put [--user <USER_ID> | current] [--mokee] NAMESPACE KEY VALUE [TAG] [default]");
                 pw.println("      Change the contents of KEY to VALUE.");
                 pw.println("      TAG to associate with the setting.");
                 pw.println("      {default} to set as the default, case-insensitive only for global/secure namespace");
-                pw.println("  delete [--user <USER_ID> | current] [--lineage] NAMESPACE KEY");
+                pw.println("  delete [--user <USER_ID> | current] [--mokee] NAMESPACE KEY");
                 pw.println("      Delete the entry for KEY.");
                 pw.println("  reset [--user <USER_ID> | current] NAMESPACE {PACKAGE_NAME | RESET_MODE}");
                 pw.println("      Reset the global/secure table for a package with mode.");
                 pw.println("      RESET_MODE is one of {untrusted_defaults, untrusted_clear, trusted_defaults}, case-insensitive");
-                pw.println("  list [--user <USER_ID> | current] [--lineage] NAMESPACE");
+                pw.println("  list [--user <USER_ID> | current] [--mokee] NAMESPACE");
                 pw.println("      Print all defined keys.");
                 pw.println("      NAMESPACE is one of {system, secure, global}, case-insensitive");
             }

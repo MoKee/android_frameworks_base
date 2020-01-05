@@ -29,7 +29,7 @@ java_library_static {
         "android.hardware.light-V2.0-java",
         "android.hardware.power-V1.0-java",
         "android.hardware.tv.cec-V1.0-java",
-        "org.lineageos.platform.internal",
+        "org.mokee.platform.internal",
     ],
 
     required: [
@@ -55,7 +55,7 @@ java_library_static {
         "dnsresolver_aidl_interface-V2-java",
         "netd_aidl_interface-V2-java",
         "netd_event_listener_interface-java",
-        "vendor.lineage.biometrics.fingerprint.inscreen-V1.0-java",
+        "vendor.mokee.biometrics.fingerprint.inscreen-V1.0-java",
     ],
 }
 
