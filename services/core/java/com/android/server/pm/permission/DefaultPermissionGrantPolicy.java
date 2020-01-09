@@ -745,14 +745,17 @@ public final class DefaultPermissionGrantPolicy {
                     MICROPHONE_PERMISSIONS);
         }
 
-        // MoKee Center
+        // MoKeeCenter
         grantSystemFixedPermissionsToSystemPackage("com.mokee.center", userId,
                 ALWAYS_LOCATION_PERMISSIONS, PHONE_PERMISSIONS, STORAGE_PERMISSIONS);
 
-        // MoKee Pay
+        // MoKeePay
         grantSystemFixedPermissionsToSystemPackage("com.mokee.pay", userId,
                 PHONE_PERMISSIONS, STORAGE_PERMISSIONS);
 
+        // WarpShare
+        grantSystemFixedPermissionsToSystemPackage("org.mokee.warpshare", userId,
+                STORAGE_PERMISSIONS);
     }
 
     private String getDefaultSystemHandlerActivityPackageForCategory(String category, int userId) {
