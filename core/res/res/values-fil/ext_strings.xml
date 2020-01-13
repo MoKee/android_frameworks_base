@@ -27,6 +27,7 @@
     <string name="app_ops_access_notifications">basahin ang iyong mga notification</string>
     <string name="app_ops_activate_vpn">i-activate and VPN</string>
     <string name="app_ops_add_voicemail">magdagdag ng isang voicemail</string>
+    <string name="app_ops_app_start_foreground">paganahin instant app Sa foreground</string>
     <string name="app_ops_assist_screenshot">kumuha ng isang screenshot</string>
     <string name="app_ops_assist_structure">gamitin ang istrakturang pantulong</string>
     <string name="app_ops_auto_start">simulan sa power up</string>
