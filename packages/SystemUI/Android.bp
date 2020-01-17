@@ -169,6 +169,11 @@ android_app {
 
     kotlincflags: ["-Xjvm-default=enable"],
 
+    aaptflags: [
+        // Allow overlay to add resource
+        "--auto-add-overlay",
+    ],
+
     dxflags: ["--multi-dex"],
     required: ["privapp_whitelist_com.android.systemui"],
 
