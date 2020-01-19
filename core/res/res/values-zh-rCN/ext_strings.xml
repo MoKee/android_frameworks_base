@@ -30,7 +30,7 @@
     <string name="app_ops_app_start_foreground">在前台启动瞬时应用</string>
     <string name="app_ops_assist_screenshot">屏幕截图</string>
     <string name="app_ops_assist_structure">使用协助结构</string>
-    <string name="app_ops_audio_accessibility_volume">音频辅助功能音量</string>
+    <string name="app_ops_audio_accessibility_volume">音频辅助功能类音量</string>
     <string name="app_ops_auto_start">开机自启动</string>
     <string name="app_ops_bind_accessibility_service">绑定至辅助服务</string>
     <string name="app_ops_bluetooth_scan">蓝牙扫描</string>
@@ -82,10 +82,10 @@
     <string name="app_ops_start_foreground">前台启动</string>
     <string name="app_ops_su">获取 Root 权限</string>
     <string name="app_ops_toast_window">显示提示信息</string>
-    <string name="app_ops_toggle_bluetooth">切换蓝牙</string>
+    <string name="app_ops_toggle_bluetooth">开启蓝牙</string>
     <string name="app_ops_toggle_mobile_data">切换移动数据</string>
     <string name="app_ops_toggle_nfc">切换 NFC</string>
-    <string name="app_ops_toggle_wifi">开关 Wi-Fi</string>
+    <string name="app_ops_toggle_wifi">切换 Wi-Fi</string>
     <string name="app_ops_turn_on_screen">打开屏幕</string>
     <string name="app_ops_use_alarm_volume">控制闹铃音量</string>
     <string name="app_ops_use_audio_focus">控制音频焦点</string>

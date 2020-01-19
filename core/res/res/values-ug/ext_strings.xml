@@ -64,13 +64,13 @@
     <string name="app_ops_scan_wifi">Wi-Fi تورىنى سىكاننېرلاش</string>
     <string name="app_ops_send_mms">بىر MMS ئۇچۇرى يوللايدۇ</string>
     <string name="app_ops_send_sms">بىر قىسقا ئۇچۇر يوللايدۇ</string>
-    <string name="app_ops_start_at_bootup">قوزغالغاندا باشلايدۇ</string>
+    <string name="app_ops_start_at_bootup">قوزغالغاندا باشلا</string>
     <string name="app_ops_su">root ھوقۇقىغا ئېرىشىدۇ</string>
     <string name="app_ops_toast_window">قاڭقىش ئۇچۇرىنى كۆرسىتىدۇ</string>
     <string name="app_ops_toggle_bluetooth">كۆكچىشنى ئاچ تاقا</string>
     <string name="app_ops_toggle_mobile_data">كۆچمە تورغا ئالماشتۇرۇش</string>
     <string name="app_ops_toggle_nfc">NFC ئاچ تاقا</string>
-    <string name="app_ops_toggle_wifi">WiFi نى ئېچىش تاقاش</string>
+    <string name="app_ops_toggle_wifi">wiFi نى ئېچىش تاقاش</string>
     <string name="app_ops_turn_on_screen">ئېكراننى ئېچىش</string>
     <string name="app_ops_use_alarm_volume">قوڭغۇراق ئاۋازىنى تىزگىنلەيدۇ</string>
     <string name="app_ops_use_audio_focus">ئاۋاز فوكۇسىنى تىزگىنلەيدۇ</string>
@@ -92,7 +92,6 @@
     <string name="permdesc_changePrivacyGuardState">ئەپنىڭ باشقا ئەپنى شەخسىيەت قوغداش ھالىتىدە ئىجرا قىلىشىغا يول قويىدۇ. ئەپ شەخسىيەت قوغداش ھالىتىدە ئىجرا قىلىنسا، ئۇ ئالاقەداشلار، چاقىرىش خاتىرىسى ياكى ئۇچۇرلارغا ئوخشاش شەخسىي سانلىق مەلۇماتلارنى زىيارەت قىلىش ھوقۇقى بولمايدۇ.</string>
     <string name="privacy_guard_notification">شەخسىيەت قوغداش ئاكتىپ</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> شەخسىي سانلىق مەلۇماتلارنى زىيارەت قىلالمايدۇ</string>
-    <string name="privacy_guard_dialog_title">شەخسىيەت قوغداش</string>
     <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> نىڭ قىلماقچى بولغىنى <xliff:g id="op">%2$s</xliff:g>.</string>
     <string name="permission_remember_choice">تاللىشىمنى ئەستە تۇت</string>
 </resources>

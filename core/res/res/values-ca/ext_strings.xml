@@ -77,7 +77,7 @@
     <string name="app_ops_toggle_bluetooth">canviar el Bluetooth</string>
     <string name="app_ops_toggle_mobile_data">commuta les dades mòbils</string>
     <string name="app_ops_toggle_nfc">canviar NFC</string>
-    <string name="app_ops_toggle_wifi">canviar Wi-Fi</string>
+    <string name="app_ops_toggle_wifi">canviar el Wi-Fi</string>
     <string name="app_ops_turn_on_screen">encendre la pantalla</string>
     <string name="app_ops_use_alarm_volume">controlar el volum de l\'alarma</string>
     <string name="app_ops_use_audio_focus">controlar el focus del so</string>

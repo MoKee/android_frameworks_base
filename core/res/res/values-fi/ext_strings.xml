@@ -77,7 +77,7 @@
     <string name="app_ops_toggle_bluetooth">ottaa Bluetoothin käyttöön</string>
     <string name="app_ops_toggle_mobile_data">ota mobiilidata käyttöön</string>
     <string name="app_ops_toggle_nfc">ota NFC käyttöön</string>
-    <string name="app_ops_toggle_wifi">vaihtaa Wi-Fi-verkkoja</string>
+    <string name="app_ops_toggle_wifi">ota Wi-Fi:n käyttöön</string>
     <string name="app_ops_turn_on_screen">kytkeä näytön päälle</string>
     <string name="app_ops_use_alarm_volume">säätää hälytyksen äänenvoimakkuutta</string>
     <string name="app_ops_use_audio_focus">säätää äänen kohdistusta</string>

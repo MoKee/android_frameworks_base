@@ -48,8 +48,6 @@
     <string name="quick_settings_volume_panel_label">Panel uchder sain</string>
     <string name="accessibility_dpad_left">Pwyntydd chwith</string>
     <string name="accessibility_dpad_right">Pwyntydd de</string>
-    <string name="screen_pinning_description_no_navbar">Mae hyn yn ei chadw mewn golwg nes dy fod yn ei dadbinio. Cyffyrdda a dal Nôl i\'w dadbinio.</string>
-    <string name="screen_pinning_toast_no_navbar">I ddadbinio\'r sgrin, cyffyrdda a dal y botwm Nôl</string>
     <string name="quick_settings_location_battery_saving_label_twoline">Arbed\nbatri</string>
     <string name="quick_settings_location_gps_only_label_twoline">Dyfais\nyn unig</string>
     <string name="quick_settings_location_detail_menu_title">Dewisa modd:</string>

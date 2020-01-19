@@ -78,7 +78,7 @@
     <string name="app_ops_scan_wifi">Wi-Fiネットワークのスキャン</string>
     <string name="app_ops_send_mms">MMSメッセージの送信</string>
     <string name="app_ops_send_sms">SMSメッセージの送信</string>
-    <string name="app_ops_start_at_bootup">起動時の実行</string>
+    <string name="app_ops_start_at_bootup">電源投入時の実行</string>
     <string name="app_ops_start_foreground">フォアグラウンドで起動する</string>
     <string name="app_ops_su">ルートアクセスの取得</string>
     <string name="app_ops_toast_window">トーストメッセージの表示</string>
@@ -108,6 +108,6 @@
     <string name="privacy_guard_notification">プライバシーガードが有効です</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g>は個人データにアクセスできません</string>
     <string name="privacy_guard_dialog_title">プライバシーガード</string>
-    <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g>が<xliff:g id="op">%2$s</xliff:g>をしようとしています。</string>
+    <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g>が<xliff:g id="op">%2$s</xliff:g>をしようとしています</string>
     <string name="permission_remember_choice">選択を保存</string>
 </resources>

@@ -72,13 +72,13 @@
     <string name="app_ops_receive_sms">ricevere un messaggio SMS</string>
     <string name="app_ops_receive_emergency_broadcast">ricevere un messaggio broadcast di emergenza</string>
     <string name="app_ops_record_audio">registrare audio</string>
-    <string name="app_ops_request_delete_packages">richiedere eliminazione pacchetti</string>
+    <string name="app_ops_request_delete_packages">richiesta eliminazione pacchetti</string>
     <string name="app_ops_run_in_background">esegui in background</string>
-    <string name="app_ops_run_any_in_background">eseguirsi in background</string>
+    <string name="app_ops_run_any_in_background">esecuzione in background</string>
     <string name="app_ops_scan_wifi">scansiona reti Wi-Fi</string>
     <string name="app_ops_send_mms">inviare un messaggio MMS</string>
     <string name="app_ops_send_sms">inviare un messaggio SMS</string>
-    <string name="app_ops_start_at_bootup">avviarsi all\'accensione</string>
+    <string name="app_ops_start_at_bootup">avvia all\'accensione</string>
     <string name="app_ops_start_foreground">avviarsi in primo piano</string>
     <string name="app_ops_su">Ottieni accesso root</string>
     <string name="app_ops_toast_window">mostra messaggi di nofifica</string>

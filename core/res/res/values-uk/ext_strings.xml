@@ -54,7 +54,7 @@
     <string name="app_ops_picture_in_picture">використовувати картинку в картинці</string>
     <string name="app_ops_play_audio">відтворювати аудіо</string>
     <string name="app_ops_post_notification">виводити сповіщення</string>
-    <string name="app_ops_project_media">project media</string>
+    <string name="app_ops_project_media">проект медіа</string>
     <string name="app_ops_read_calendar">читати дані календаря</string>
     <string name="app_ops_read_call_log">читати журнал дзвінків</string>
     <string name="app_ops_read_cell_broadcasts">Широкомовні повідомлення</string>
@@ -75,9 +75,9 @@
     <string name="app_ops_su">отримати root-доступ</string>
     <string name="app_ops_toast_window">показувати спливаючі сповіщення</string>
     <string name="app_ops_toggle_bluetooth">увімк. або вимк. Bluetooth</string>
-    <string name="app_ops_toggle_mobile_data">Мобільні дані</string>
+    <string name="app_ops_toggle_mobile_data">перемикати стільникові дані</string>
     <string name="app_ops_toggle_nfc">увімк. вимк. NFC</string>
-    <string name="app_ops_toggle_wifi">Переключити Wi-Fi</string>
+    <string name="app_ops_toggle_wifi">переключити Wi-Fi</string>
     <string name="app_ops_turn_on_screen">Увімкнути екран</string>
     <string name="app_ops_use_alarm_volume">керування гучністю будильника</string>
     <string name="app_ops_use_audio_focus">керування аудіо-фокусом</string>
@@ -99,7 +99,7 @@
     <string name="permdesc_changePrivacyGuardState">Програма може вибрати, чи буде друга програма працювати в захищеному режимі. Коли програму запущено в захищеному режимі, вона не отримає доступ до персональних даних, таких як контакти, повідомлення чи журнал дзвінків.</string>
     <string name="privacy_guard_notification">Сторож Приватності активний</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> буде заборонено доступ до персональних даних</string>
-    <string name="privacy_guard_dialog_title">Сторож Приватності</string>
+    <string name="privacy_guard_dialog_title">Вартовий Приватності</string>
     <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> намагається <xliff:g id="op">%2$s</xliff:g>.</string>
     <string name="permission_remember_choice">Запам\'ятати мій вибір</string>
 </resources>

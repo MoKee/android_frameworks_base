@@ -83,7 +83,7 @@
     <string name="app_ops_su">obtener acceso administrativo</string>
     <string name="app_ops_toast_window">mostrar notificaciones emergentes</string>
     <string name="app_ops_toggle_bluetooth">alternar Bluetooth</string>
-    <string name="app_ops_toggle_mobile_data">conmutar datos móviles</string>
+    <string name="app_ops_toggle_mobile_data">conmutar los datos móviles</string>
     <string name="app_ops_toggle_nfc">conmutar NFC</string>
     <string name="app_ops_toggle_wifi">conmutar Wi-Fi</string>
     <string name="app_ops_turn_on_screen">encender la pantalla</string>

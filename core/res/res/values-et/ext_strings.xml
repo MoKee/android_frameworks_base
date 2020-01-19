@@ -43,7 +43,7 @@
     <string name="app_ops_get_accounts">lugeda seadme kasutajaid</string>
     <string name="app_ops_get_usage_stats">saada rakenduse kasutamise statistikat</string>
     <string name="app_ops_accept_handover">teiselt rakenduselt kõne ülevõtmine</string>
-    <string name="app_ops_install_packages">pakettide paigaldamine</string>
+    <string name="app_ops_install_packages">pakettide installimine</string>
     <string name="app_ops_keep_device_awake">hoida seade ärkvel</string>
     <string name="app_ops_manage_ipsec_tunnels">IPsec tunnelite haldamine</string>
     <string name="app_ops_make_phone_call">teha telefoni kõnet</string>
@@ -54,7 +54,7 @@
     <string name="app_ops_modify_contacts">värskendada kontakte</string>
     <string name="app_ops_modify_settings">värskendada süsteemiseadeid</string>
     <string name="app_ops_mute_unmute_microphone">välja/sisse lülitada mikrofoni</string>
-    <string name="app_ops_phone_calls">telefonikõnedele vastamine</string>
+    <string name="app_ops_phone_calls">vasta kõnedele</string>
     <string name="app_ops_picture_in_picture">pilt-pildis režiimi kasutamine</string>
     <string name="app_ops_play_audio">mängida heli</string>
     <string name="app_ops_post_notification">postitada teateid</string>
@@ -85,7 +85,7 @@
     <string name="app_ops_toggle_bluetooth">lülitada Bluetooth\'i</string>
     <string name="app_ops_toggle_mobile_data">lülita mobiilne andmeside sisse-välja</string>
     <string name="app_ops_toggle_nfc">lülitada NFC</string>
-    <string name="app_ops_toggle_wifi">lülita Wi-Fi sisse-välja</string>
+    <string name="app_ops_toggle_wifi">Wi-Fi sisse-välja lülitamine</string>
     <string name="app_ops_turn_on_screen">lülitada ekraan sisse</string>
     <string name="app_ops_use_alarm_volume">muuta alarmi helitugevust</string>
     <string name="app_ops_use_audio_focus">muuta audio fookust</string>

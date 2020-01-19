@@ -63,7 +63,6 @@
     <string name="accessibility_dpad_left">カーソルを左へ</string>
     <string name="accessibility_dpad_right">カーソルを右へ</string>
     <string name="screen_pinning_description_no_navbar">固定を解除するまで画面が常に表示されるようになります。固定を解除するには戻るボタンを押し続けます。</string>
-    <string name="screen_pinning_toast_no_navbar">画面の固定を解除するには戻るボタンを長押しします</string>
     <string name="nav_bar_layout_inverse">レイアウトを反転</string>
     <string name="accessibility_quick_settings_location_battery_saving">位置情報レポート：バッテリー節約モード</string>
     <string name="accessibility_quick_settings_location_gps_only">位置情報レポート：端末のみモード</string>

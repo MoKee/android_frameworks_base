@@ -71,7 +71,7 @@
     <string name="app_ops_toggle_bluetooth">สลับบลูทูธ</string>
     <string name="app_ops_toggle_mobile_data">สลับข้อมูลโทรศัพท์มือถือ</string>
     <string name="app_ops_toggle_nfc">สลับ NFC</string>
-    <string name="app_ops_toggle_wifi">สลับ WiFi</string>
+    <string name="app_ops_toggle_wifi">สลับ Wi-Fi</string>
     <string name="app_ops_turn_on_screen">เปิดหน้าจอ</string>
     <string name="app_ops_use_alarm_volume">ควบคุมระดับเสียงนาฬิกาปลุก</string>
     <string name="app_ops_use_audio_focus">ควบคุมการโฟกัสเสียง</string>
@@ -93,7 +93,6 @@
     <string name="permdesc_changePrivacyGuardState">อนุญาตให้แอปเปลี่ยนแปลงไม่ว่าแอปอื่นทำงานโดยใช้การป้องกันความเป็นส่วนตัวหรือไม่ก็ตาม เมื่อแอปกำลังทำงานโดยใช้การป้องกันความเป็นส่วนตัว แอปจะไม่สามารถเข้าถึงข้อมูลส่วนบุคคล เช่น รายชื่อติดต่อ ประวัติการโทร หรือข้อความได้</string>
     <string name="privacy_guard_notification">การป้องกันความเป็นส่วนตัวทำงาน</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> จะไม่สามารถเข้าถึงข้อมูลส่วนตัวได้</string>
-    <string name="privacy_guard_dialog_title">รักษาความเป็นส่วนตัว</string>
     <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> ต้องการ <xliff:g id="op">%2$s</xliff:g></string>
     <string name="permission_remember_choice">จำตัวเลือกของฉัน</string>
 </resources>

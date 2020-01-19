@@ -75,9 +75,9 @@
     <string name="app_ops_su">obter acesso root</string>
     <string name="app_ops_toast_window">mostrar avisos no ecrã</string>
     <string name="app_ops_toggle_bluetooth">ligar/desligar o bluetooth</string>
-    <string name="app_ops_toggle_mobile_data">ligar/desligar os dados móveis</string>
+    <string name="app_ops_toggle_mobile_data">alternar o estado dos dados móveis</string>
     <string name="app_ops_toggle_nfc">ligar/desligar o NFC</string>
-    <string name="app_ops_toggle_wifi">ligar/desligar o Wi-Fi</string>
+    <string name="app_ops_toggle_wifi">alternar o estado do Wi-Fi</string>
     <string name="app_ops_turn_on_screen">ligar o ecrã</string>
     <string name="app_ops_use_alarm_volume">controlar volume do alarme</string>
     <string name="app_ops_use_audio_focus">controlar o foco de áudio</string>

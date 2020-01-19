@@ -63,7 +63,6 @@
     <string name="accessibility_dpad_left">Κέρσορας αριστερά</string>
     <string name="accessibility_dpad_right">Κέρσορας δεξιά</string>
     <string name="screen_pinning_description_no_navbar">Με αυτόν τον τρόπο παραμένει σε προβολή μέχρι να το ξεκαρφιτσώσετε. Αγγίξτε παρατεταμένα το στοιχείο \"Επιστροφή\" για ξεκαρφίτσωμα.</string>
-    <string name="screen_pinning_toast_no_navbar">Για να ξεκαρφιτσώσετε αυτήν την οθόνη, αγγίξτε &amp; κρατήστε πατημένο το πλήκτρο Πίσω</string>
     <string name="nav_bar_layout_inverse">Αντιστροφή διάταξης</string>
     <string name="accessibility_quick_settings_location_battery_saving">Αναφορά τοποθεσίας: λειτουργία εξοικονόμησης μπαταρίας.</string>
     <string name="accessibility_quick_settings_location_gps_only">Αναφορά τοποθεσίας: λειτουργία μόνο αισθητήρων.</string>

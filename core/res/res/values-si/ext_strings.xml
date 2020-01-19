@@ -44,7 +44,6 @@
     <string name="app_ops_record_audio">ශ්‍රව්‍ය රෙකෝඩනය</string>
     <string name="app_ops_send_mms">MMS පනිවිඩයක් යැවීම</string>
     <string name="app_ops_send_sms">කෙටි පනිවිඩයක් යැවීම</string>
-    <string name="app_ops_start_at_bootup">පණගැන්වීමේදී ධාවනය</string>
     <string name="app_ops_toggle_bluetooth">බ්ලූටූත් ටොගලනය</string>
     <string name="app_ops_toggle_nfc">NFC ටොගලනය</string>
     <string name="app_ops_use_alarm_volume">ඇඟවීම් හඬ පරිමා පාලනය</string>
@@ -63,6 +62,5 @@
     <string name="permdesc_changePrivacyGuardState">තවත් යෙදුමක් පෞද්ගලිකත්වයේ මුරකරු සමග ධාවනය විය යුතුද නැද්ද යන්න වෙනස් කිරීම සඳහා යෙදුමට අවසර දෙන්න. යෙදුමක් පෞද්ගලිකත්වයේ මුරකරු සමග ධාවනය වන විට, එයට සම්බන්ධතා, ඇමතුම් ලොග හෝ පණිවිඩ පරිශීලනය කල නොහැක.</string>
     <string name="privacy_guard_notification">පෞද්ගලිකත්වයේ මුරකරු සක්‍රීයයි</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g>ට පුද්ගලික දත්ත පරිශීලනය කල නොහැක</string>
-    <string name="privacy_guard_dialog_title">පෞද්ගලිකත්වයේ මුරකරු</string>
     <string name="privacy_guard_dialog_summary"><xliff:g id="op">%2$s</xliff:g> සඳහා <xliff:g id="app">%1$s</xliff:g>ට අවශ්‍යව ඇත.</string>
 </resources>

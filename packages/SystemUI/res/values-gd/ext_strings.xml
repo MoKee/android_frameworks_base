@@ -60,7 +60,6 @@
     <string name="quick_settings_volume_panel_label">Panail àirde na fuaime</string>
     <string name="accessibility_dpad_left">Cùrsair clì</string>
     <string name="accessibility_dpad_right">Cùrsair deas</string>
-    <string name="screen_pinning_description_no_navbar">Cumaidh seo san t-sealladh e gus an dì-phrìnich thu e. Bean ri “Air ais” ⁊ cum e gus a dhì-phrìneachadh.</string>
     <string name="accessibility_quick_settings_location_battery_saving">Aithriseadh an ionaid: modh chaomhnadh a’ bhataraidh.</string>
     <string name="accessibility_quick_settings_location_gps_only">Aithriseadh an ionaid: am modh mothachaidh a-mhàin.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">Aithriseadh an ionaid: modh na pongalachd àrd.</string>

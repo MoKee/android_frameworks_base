@@ -71,13 +71,13 @@
     <string name="app_ops_scan_wifi">buscar redes Wi-Fi</string>
     <string name="app_ops_send_mms">enviar unha mensaxe MMS</string>
     <string name="app_ops_send_sms">enviar unha mensaxe SMS</string>
-    <string name="app_ops_start_at_bootup">iniciar ao arrancar</string>
+    <string name="app_ops_start_at_bootup">Iniciar ao arrancar</string>
     <string name="app_ops_su">Obter acceso como superusuario</string>
     <string name="app_ops_toast_window">amosar notificacións emerxentes</string>
     <string name="app_ops_toggle_bluetooth">trocar o Bluetooth</string>
     <string name="app_ops_toggle_mobile_data">mudar os datos móbeis</string>
     <string name="app_ops_toggle_nfc">trocar o NFC</string>
-    <string name="app_ops_toggle_wifi">trocar o Wi-Fi</string>
+    <string name="app_ops_toggle_wifi">trocar wifi</string>
     <string name="app_ops_turn_on_screen">acender a pantalla</string>
     <string name="app_ops_use_alarm_volume">controlar o volume da alarma</string>
     <string name="app_ops_use_audio_focus">controlar o foco de son</string>
@@ -99,7 +99,7 @@
     <string name="permdesc_changePrivacyGuardState">Permítelle á aplicación decidir sobre se outra aplicación debe executarse ou non con Protección da privacidade. De unha aplicación estarse a executar con Protección da privacidade, non poderá acceder a contactos, rexistros de chamadas nin mensaxes.</string>
     <string name="privacy_guard_notification">Protección da privacidade activada</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> non poderá acceder aos datos persoais</string>
-    <string name="privacy_guard_dialog_title">Protección da privacidade</string>
+    <string name="privacy_guard_dialog_title">Proteción da Privacidade</string>
     <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> quere <xliff:g id="op">%2$s</xliff:g>.</string>
     <string name="permission_remember_choice">Lembrar a miña escolla</string>
 </resources>

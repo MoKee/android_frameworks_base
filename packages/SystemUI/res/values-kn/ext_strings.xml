@@ -55,18 +55,16 @@
     <string name="accessibility_quick_settings_sync_changed_off">ಸಿಂಕ್ ಆಫ್ ಆಗಿದೆ.</string>
     <string name="accessibility_quick_settings_sync_changed_on">ಸಿಂಕ್ ಆನ್ ಆಗಿದೆ.</string>
     <string name="quick_settings_profiles_label">ಸಿಸ್ಟಂ ಪ್ರೊಫೈಲ್ಸ್</string>
-    <string name="accessibility_quick_settings_profiles_off">ಪ್ರೊಫೈಲ್ಸ್ ಆರಿಸಿ.</string>
+    <string name="accessibility_quick_settings_profiles_off">ಪ್ರೊಫೈಲ್ಸ್ ಆಫ್.</string>
     <string name="accessibility_quick_settings_profiles">ಪ್ರೊಫೈಲ್: <xliff:g id="ಪ್ರೊಫೈಲ್" ಉದಾಹರಣೆ="ಪೂರ್ವನಿಯೋಜಿತ">%s</xliff:g>.</string>
-    <string name="accessibility_quick_settings_profiles_changed_off">ಪ್ರೊಫೈಲ್ಸ್ ಆರಿಸಲಾಗಿದೆ.</string>
+    <string name="accessibility_quick_settings_profiles_changed_off">ಪ್ರೊಫೈಲ್ಸ್ ಆಫ್ ಆಗಿದೆ.</string>
     <string name="accessibility_quick_settings_profiles_changed">ಪ್ರೊಫೈಲ್ <xliff:g id="profile" example="Default">%s</xliff:g>ಗೆ ಬದಲಾಗಿದೆ.</string>
     <string name="quick_settings_usb_tether_label">ಯುಎಸ್‍ಬಿ ಟೆಥರಿಂಗ್</string>
     <string name="quick_settings_volume_panel_label">ವಾಲ್ಯೂಂ ಪ್ಯಾನೆಲ್</string>
     <string name="accessibility_dpad_left">ಕರ್ಸರ್ ಎಡ</string>
     <string name="accessibility_dpad_right">ಕರ್ಸರ್ ಬಲ</string>
     <string name="screen_pinning_description_no_navbar">ಇದನ್ನು ನೀವು ಪಿನ್ ತೆಗೆಯುವವರೆಗೂ ವೀಕ್ಷಣೆಯಲ್ಲಿಡುತ್ತದೆ. ಸ್ಪರ್ಶಿಸಿ &amp; ಪಿನ್ ತೆಗೆಯಲು ಹಿಂದೆ ಒತ್ತಿಹಿಡಿಯಿರಿ.</string>
-    <string name="screen_pinning_toast_no_navbar">ಈ ಪರದೆಯ ಪಿನ್‌ ತೆಗೆಯಲು ಸ್ಪರ್ಶಿಸಿ &amp; ಹಿಂದಿರುಗಿ ಗುಂಡಿ ಒತ್ತಿಹಿಡಿಯಿರಿ</string>
     <string name="nav_bar_layout_inverse">ವಿಲೋಮ ವಿನ್ಯಾಸ</string>
-    <string name="custom_swipe_hint"><xliff:g name="ಗುರಿ">%s</xliff:g> ಗೋಸ್ಕರ ಚಿಹ್ನೆಯಿಂದ ಜರುಗಿಸಿ</string>
     <string name="accessibility_quick_settings_location_battery_saving">ಸ್ಥಳ ವರದಿಸಲ್ಲಿಸುವಿಕೆ: ಬ್ಯಾಟರಿ ಉಳಿತಾಯ ಮೋಡ್.</string>
     <string name="accessibility_quick_settings_location_gps_only">ಸ್ಥಳ ವರದಿ ಸಲ್ಲಿಸುವಿಕೆ: ಸಂವೇದಕಗಳು ಮಾತ್ರ ಮೋಡ್.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">ಸ್ಥಳ ವರದಿಸಲ್ಲಿಸುವಿಕೆ: ಗರಿಷ್ಟ ನಿಖರತೆ ಮೋಡ್.</string>
@@ -85,5 +83,4 @@
     <string name="quick_settings_location_detail_mode_battery_saving_description">ಸ್ಥಳವನ್ನು ನಿರ್ಧರಿಸಲುWi\u2011‍Fi, ಬ್ಲೂಟೂತ್, ಅಥವಾ ಸೆಲ್ಯುಲರ್ ನೆಟ್ವರ್ಕ್ ಗಳನ್ನು ಬಳಸಿ</string>
     <string name="quick_settings_location_detail_mode_sensors_only_description">ಸ್ಥಳವನ್ನು ನಿರ್ಧರಿಸಲು GPS ಬಳಸಿ</string>
     <string name="status_bar_battery">ಬ್ಯಾಟರಿ</string>
-    <string name="use_data">%s ಡೇಟಾ ಬಳಸಿ</string>
 </resources>

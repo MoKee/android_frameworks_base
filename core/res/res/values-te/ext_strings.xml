@@ -92,7 +92,6 @@
     <string name="permdesc_changePrivacyGuardState">ఇంకొక అనువర్తనం గోప్యతా సంరక్షణతో పనిచేస్తుందా అనే దానిని మార్చడానికి అనువర్తనానికి అనుమతినిస్తుంది. అనువర్తనం గోప్యతా సంరక్షణతో పనిచేస్తున్నప్పుడు, పరిచయాలు, కాల్ లాగులు, లేదా మెసేజులు వంటి వ్యక్తిగత డేటాకు అది ప్రాప్యతను కలిగి ఉండదు.</string>
     <string name="privacy_guard_notification">గోప్యతా సంరక్షణ క్రియాశీలం</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> వ్యక్తిగత డేటాకు ప్రాప్యతను కలిగి ఉండదు</string>
-    <string name="privacy_guard_dialog_title">గోప్యత రక్షణ</string>
     <string name="privacy_guard_dialog_summary"><xliff:g id="app">%2$s</xliff:g> ను చేయడానికి <xliff:g id="op">%1$s</xliff:g> ఇష్టపడుతుంది.</string>
     <string name="permission_remember_choice">నా ఎంపికను గుర్తుంచుకో</string>
 </resources>

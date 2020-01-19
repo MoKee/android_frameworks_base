@@ -54,7 +54,7 @@
     <string name="app_ops_record_audio">تۆمارکردنی دەنگ</string>
     <string name="app_ops_send_mms">ناردنی نامەی MMS</string>
     <string name="app_ops_send_sms">ناردنی نامەی SMS</string>
-    <string name="app_ops_start_at_bootup">دەستپێکردنی چالاککردنی هێز</string>
+    <string name="app_ops_start_at_bootup">کردنەوەی لەکاتی هەڵبوونی ئامێردا</string>
     <string name="app_ops_su">بەدەستهێنانی ڕێگەپێدانی ڕۆت</string>
     <string name="app_ops_toast_window">پیشاندانی تێبینی تازە</string>
     <string name="app_ops_toggle_bluetooth">گۆڕینی بلوتوس</string>
@@ -75,7 +75,6 @@
     <string name="permdesc_changePrivacyGuardState">ڕێگە دان بە بەرنامەکە بۆ گۆڕینی کەشوهەوای بەرنامەیەکی تر لە تایبەتی. کاتێک بەرنامەکە ئەکەوێتە کار لەگەڵ تایبەتی .هیچ ڕێگەیەکی نیە بۆ ئەوەی زانیاری تایبیەتیت بەکاربهێنێت وەکو ،ناوەکان،تەلەفۆن لۆگ یان نامە.</string>
     <string name="privacy_guard_notification">پاسەوانی تایبەتی چالاکراوە</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="بەرنامە">%1$s</xliff:g> ناتوانێت زانیاری تایبەتی بەکاربهێنێت</string>
-    <string name="privacy_guard_dialog_title">پاسەوانی تایبەتی</string>
     <string name="privacy_guard_dialog_summary"><xliff:g id="بەرنامە">%1$s</xliff:g> حەز ئەکەی بۆ <xliff:g id="op">%2$s</xliff:g>.</string>
     <string name="permission_remember_choice">بیرخستنەوەی هەڵبژاردنەکەم</string>
 </resources>

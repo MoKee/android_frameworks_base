@@ -74,7 +74,6 @@
     <string name="permdesc_changePrivacyGuardState">Ļauj lietotnei mainīties pat ja cita lietotne lieto Privātuma Sargu. Kad lietotne darbojas ar privātuma sargu, tai nebūs pieejas personīgajiem datiem, kā kontakti, zvanu saraksts, vai īsziņas.</string>
     <string name="privacy_guard_notification">Privātuma Sargs ir aktīvs</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> nevarēs piekļūt personīgajiem datiem</string>
-    <string name="privacy_guard_dialog_title">Privātuma sargs</string>
     <string name="privacy_guard_dialog_summary"><xliff:g id="app"> %1$s </xliff:g> vēlētos <xliff:g id="op"> %2$s </xliff:g>.</string>
     <string name="permission_remember_choice">Atcerēties manu izvēli</string>
 </resources>

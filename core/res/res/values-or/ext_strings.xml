@@ -40,7 +40,7 @@
     <string name="app_ops_get_usage_stats">ଆପ୍ଲିକେସନ୍‍ ବ୍ୟବହାରର ପରିସଂଖ୍ୟାନ ପ୍ରାପ୍ତ କରନ୍ତୁ</string>
     <string name="app_ops_keep_device_awake">ଆପଣଙ୍କ ଡିଭାଇ‌ସ୍‍କୁ ଜାଗ୍ରତ ରଖନ୍ତୁ</string>
     <string name="app_ops_make_phone_call">ଏକ ଫୋନ୍‍ କଲ୍‍ କରନ୍ତୁ</string>
-    <string name="app_ops_mock_location"> ଆପଣଙ୍କ ନକଲି ଅବସ୍ଥାନ</string>
+    <string name="app_ops_mock_location">ଆପଣଙ୍କ ନକଲି ଅବସ୍ଥାନ</string>
     <string name="app_ops_modify_calendar">ଆପଣଙ୍କ କ୍ୟାଲେନ୍ଡର ଅଦ୍ୟତନ କରନ୍ତୁ</string>
     <string name="app_ops_modify_call_log">କଲ୍‍ ସୂଚୀ ଅଦ୍ୟତନ କରନ୍ତୁ</string>
     <string name="app_ops_modify_clipboard">କ୍ଲି‌ପ୍‍ବୋର୍ଡ୍‍ ସମ୍ପାଦନା କରନ୍ତୁ</string>
@@ -68,9 +68,9 @@
     <string name="app_ops_su">ରୁଟ୍‍ ପ୍ରବେଶ ପ୍ରାପ୍ତ କରନ୍ତୁ</string>
     <string name="app_ops_toast_window">ଟୋଷ୍ଟ ସନ୍ଦେଶ ପ୍ରଦର୍ଶନ କରନ୍ତୁ</string>
     <string name="app_ops_toggle_bluetooth">ବ୍ଲୁଟୁଥ୍‍ ଟୋଗଲ୍‍ କରନ୍ତୁ</string>
-    <string name="app_ops_toggle_mobile_data">ଡାଟା ଟୋଗଲ୍‍ କରନ୍ତୁ</string>
+    <string name="app_ops_toggle_mobile_data">ମୋବାଇଲ୍‍ ଡାଟା ଟୋଗଲ୍‍ କରନ୍ତୁ</string>
     <string name="app_ops_toggle_nfc">NFC ଟୋଗଲ୍‍ କରନ୍ତୁ</string>
-    <string name="app_ops_toggle_wifi">WiFi ଟୋଗଲ୍‍ କରନ୍ତୁ</string>
+    <string name="app_ops_toggle_wifi">Wi-Fi ଟୋଗଲ୍‍ କରନ୍ତୁ</string>
     <string name="app_ops_turn_on_screen">ସ୍କ୍ରିନ୍‍ ଅନ କରନ୍ତୁ</string>
     <string name="app_ops_use_alarm_volume">ଆଲାର୍ମ୍‍ ଭୋଲ୍ୟୁମ୍‍ ନିୟନ୍ତ୍ରଣ କରନ୍ତୁ</string>
     <string name="app_ops_use_audio_focus">ଅଡିଓ ଫୋକସ୍‍‍ ନିୟନ୍ତ୍ରଣ କରନ୍ତୁ</string>
@@ -92,7 +92,6 @@
     <string name="permdesc_changePrivacyGuardState">ପ୍ରାଇଭେସି ଗାର୍ଡ ସହିତ ଅନ୍ୟ ଏକ ଆପ୍ଲିକେସ‌‌ନ୍‍ ର‌ନ୍‍ କରିପାରିବ କି ନାହିଁ ତାହା ପରିବର୍ତ୍ତନ କରିବା ପାଇଁ ଏକ ଆପ୍ଲିକେସ‌କୁ ଅନୁମତି ଦିଏ। ଯେତେବେଳେ ପ୍ରାଇଭେସି ଗାର୍ଡ ସହିତ ଏକ ଆପ୍ଲିକେସନ୍‍ ଚାଳନା କରାଯାଉଥାଏ, ଏହା ବ୍ୟକ୍ତିଗତ ତଥ୍ୟ ଯଥା ସମ୍ପର୍କ, କଲ୍‍ ସୂୀ, ବା ସନ୍ଦେଶଗୁ୍ଡିକ ଆକ୍‍ସେସ୍‍ କରିପାରିବ ନାହିଁ।</string>
     <string name="privacy_guard_notification">ପ୍ରାଇଭେସି ଗାର୍ଡ ଆକ୍ଟିଭ୍‍</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> ବ୍ୟକ୍ତିଗତ ତଥ୍ୟ ଆକ୍‍ସେସ୍‍ କରିବା ପାଇଁ ସଷମ ହେବ ନାହିଁ</string>
-    <string name="privacy_guard_dialog_title">ପ୍ରାଇଭେସି ଗାର୍ଡ</string>
     <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$Sଚାହିଁବ</xliff:g> ଚାହିଁବ <xliff:g id="op">%2$s</xliff:g>।</string>
     <string name="permission_remember_choice">ମୋ ପସନ୍ଦ ମନେରଖନ୍ତୁ</string>
 </resources>

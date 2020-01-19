@@ -41,7 +41,7 @@
     <string name="app_ops_delete_sms">刪除您的簡訊</string>
     <string name="app_ops_draw_on_top">在頂層繪製視窗</string>
     <string name="app_ops_get_accounts">取得裝置帳號</string>
-    <string name="app_ops_get_usage_stats">取得應用程式的使用狀況統計</string>
+    <string name="app_ops_get_usage_stats">取得使用統計</string>
     <string name="app_ops_accept_handover">從其他應用切換呼叫</string>
     <string name="app_ops_install_packages">安裝套件</string>
     <string name="app_ops_keep_device_awake">讓您的裝置保持清醒</string>
@@ -51,14 +51,14 @@
     <string name="app_ops_modify_calendar">更新您的日曆</string>
     <string name="app_ops_modify_call_log">更新通話紀錄</string>
     <string name="app_ops_modify_clipboard">修改剪貼簿</string>
-    <string name="app_ops_modify_contacts">更新您的連絡人資料</string>
+    <string name="app_ops_modify_contacts">更新您的聯絡人資料</string>
     <string name="app_ops_modify_settings">更新系統設定</string>
     <string name="app_ops_mute_unmute_microphone">麥克風靜音/解除靜音</string>
     <string name="app_ops_phone_calls">接聽電話</string>
     <string name="app_ops_picture_in_picture">使用畫中畫</string>
     <string name="app_ops_play_audio">播放音訊</string>
     <string name="app_ops_post_notification">發佈通知</string>
-    <string name="app_ops_project_media">放映媒體</string>
+    <string name="app_ops_project_media">媒體投放</string>
     <string name="app_ops_read_calendar">讀取您的日曆</string>
     <string name="app_ops_read_call_log">讀取通話紀錄</string>
     <string name="app_ops_read_cell_broadcasts">讀取區域廣播</string>
@@ -71,7 +71,7 @@
     <string name="app_ops_read_sms">讀取您的簡訊訊息</string>
     <string name="app_ops_receive_sms">接收簡訊訊息</string>
     <string name="app_ops_receive_emergency_broadcast">接收緊急廣播</string>
-    <string name="app_ops_record_audio">錄製音訊</string>
+    <string name="app_ops_record_audio">錄音</string>
     <string name="app_ops_request_delete_packages">要求刪除套件</string>
     <string name="app_ops_run_in_background">在背景執行</string>
     <string name="app_ops_run_any_in_background">在背景運行</string>
@@ -80,7 +80,7 @@
     <string name="app_ops_send_sms">傳送簡訊訊息</string>
     <string name="app_ops_start_at_bootup">開機時啟動</string>
     <string name="app_ops_start_foreground">開始前景執行</string>
-    <string name="app_ops_su">取得 Root 權限</string>
+    <string name="app_ops_su">取得超級使用者權限</string>
     <string name="app_ops_toast_window">顯示提示訊息</string>
     <string name="app_ops_toggle_bluetooth">切換至藍牙</string>
     <string name="app_ops_toggle_mobile_data">切換至行動數據</string>
@@ -109,5 +109,5 @@
     <string name="privacy_guard_notification_detail">「<xliff:g id="app">%1$s</xliff:g>」將無法存取個人資料</string>
     <string name="privacy_guard_dialog_title">隱私守衛</string>
     <string name="privacy_guard_dialog_summary">「<xliff:g id="app">%1$s</xliff:g>」想要<xliff:g id="op">%2$s</xliff:g>。</string>
-    <string name="permission_remember_choice">記住我的選擇</string>
+    <string name="permission_remember_choice">記住</string>
 </resources>

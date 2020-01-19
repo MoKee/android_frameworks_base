@@ -64,9 +64,7 @@
     <string name="accessibility_dpad_left">Cursore a sinistra</string>
     <string name="accessibility_dpad_right">Cursore a destra</string>
     <string name="screen_pinning_description_no_navbar">La schermata rimane in primo piano finché non la sblocchi. Tocca e tieni premuto il tasto Indietro per sbloccarla.</string>
-    <string name="screen_pinning_toast_no_navbar">Per sbloccare questo schermo, tocca e tieni premuto il tasto Indietro</string>
     <string name="nav_bar_layout_inverse">Inverti disposizione</string>
-    <string name="custom_swipe_hint">Scorri dall\'icona per <xliff:g name="target">%s</xliff:g></string>
     <string name="accessibility_quick_settings_location_battery_saving">Geolocalizzazione: modalità risparmio batteria.</string>
     <string name="accessibility_quick_settings_location_gps_only">Geolocalizzazione: modalità solo sensori.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">Geolocalizzazione: modalità alta precisione.</string>
@@ -85,5 +83,4 @@
     <string name="quick_settings_location_detail_mode_battery_saving_description">Utilizza Wi\u2011Fi, Bluetooth o reti dati per stabilire la posizione</string>
     <string name="quick_settings_location_detail_mode_sensors_only_description">Utilizza il GPS per stabilire la posizione</string>
     <string name="status_bar_battery">Batteria</string>
-    <string name="use_data">Usa %s per i dati</string>
 </resources>

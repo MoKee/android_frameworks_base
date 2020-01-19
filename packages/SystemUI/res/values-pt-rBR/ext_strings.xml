@@ -63,10 +63,8 @@
     <string name="quick_settings_volume_panel_label">Painel de volume</string>
     <string name="accessibility_dpad_left">Cursor à esquerda</string>
     <string name="accessibility_dpad_right">Cursor à direita</string>
-    <string name="screen_pinning_description_no_navbar">Ela é mantida à vista até que seja liberada. Mantenha o botão Voltar pressionado para liberar.</string>
-    <string name="screen_pinning_toast_no_navbar">Para desafixar esta tela, toque &amp; no botão Voltar</string>
+    <string name="screen_pinning_description_no_navbar">Ela é mantida à vista até que seja liberada. Toque &amp; em \"Voltar\" e mantenha essa opção pressionada para liberar.</string>
     <string name="nav_bar_layout_inverse">Inverter layout</string>
-    <string name="custom_swipe_hint">Deslize de um ícone para <xliff:g name="target">%s</xliff:g></string>
     <string name="accessibility_quick_settings_location_battery_saving">Relatório de localização: modo economia de bateria.</string>
     <string name="accessibility_quick_settings_location_gps_only">Relatório de localização: modo somente sensores.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">Relatório de localização: modo de alta precisão.</string>
@@ -85,5 +83,4 @@
     <string name="quick_settings_location_detail_mode_battery_saving_description">Usar Wi\u2011Fi, Bluetooth ou redes celulares para determinar a localização</string>
     <string name="quick_settings_location_detail_mode_sensors_only_description">Use o GPS para determinar a localização</string>
     <string name="status_bar_battery">Bateria</string>
-    <string name="use_data">Usar %s para dados</string>
 </resources>

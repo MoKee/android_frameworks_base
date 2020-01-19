@@ -68,7 +68,7 @@
     <string name="app_ops_su">ৰুট প্ৰৱেশাধিকাৰ প্ৰাপ্ত কৰা</string>
     <string name="app_ops_toast_window">টোষ্ট বাৰ্তা প্ৰদৰ্শন কৰা</string>
     <string name="app_ops_toggle_bluetooth">Bluetooth টগল কৰা</string>
-    <string name="app_ops_toggle_mobile_data">ম\'বাইল ডাটা টগল কৰক</string>
+    <string name="app_ops_toggle_mobile_data">ম\'বাইল ডাটা টগল কৰা</string>
     <string name="app_ops_toggle_nfc">NFC টগল কৰা</string>
     <string name="app_ops_toggle_wifi">Wi-Fi টগল কৰক</string>
     <string name="app_ops_turn_on_screen">স্ক্ৰীণ অন কৰক</string>
@@ -92,7 +92,6 @@
     <string name="permdesc_changePrivacyGuardState">আন এটা এপ্পে গোপনীয়তা ৰক্ষকৰ সৈতে চলিব নে সেইটো পৰিবৰ্তন কৰিবলৈ অনুমতি দিয়ে। যেতিয়া এটা এপ্প্‌ গোপনীয়তা ৰক্ষকৰ সৈতে চলি থাকে, তেতিয়া ই যোগাযোগ, কল লগ বা বাৰ্তাৰ দৰে ব্যক্তিগত ডাটাবোৰত প্ৰৱেশ কৰিব নোৱাৰে।</string>
     <string name="privacy_guard_notification">গোপনীয়তা ৰক্ষক সক্ৰিয় কৰা</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> এ ব্যক্তিগত ডাটাত প্ৰৱেশ কৰিব নোৱাৰে</string>
-    <string name="privacy_guard_dialog_title">গোপনীয়তা ৰক্ষক</string>
     <string name="privacy_guard_dialog_summary"><xliff:g id="op">%2$s</xliff:g> এ <xliff:g id="app">%1$s</xliff:g> কৰিবলৈ বিচাৰে।</string>
     <string name="permission_remember_choice">মোৰ পচন্দ মনত ৰাখক</string>
 </resources>

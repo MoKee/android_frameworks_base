@@ -64,9 +64,9 @@
     <string name="app_ops_start_at_bootup">niset kur ndizet telefoni</string>
     <string name="app_ops_su">marrë akses Root</string>
     <string name="app_ops_toggle_bluetooth">aktivizojë/çaktivizojë Bluetoothin</string>
-    <string name="app_ops_toggle_mobile_data">aktivizojë/çaktivizojë internetin e celularit</string>
+    <string name="app_ops_toggle_mobile_data">aktivizo/çaktivizo internetin e celularit</string>
     <string name="app_ops_toggle_nfc">aktivizojë/çaktivizojë NFC</string>
-    <string name="app_ops_toggle_wifi">aktivizojë/çaktivizojë Wi-Fi</string>
+    <string name="app_ops_toggle_wifi">aktivizo/çaktivizo Wi-Fi</string>
     <string name="app_ops_turn_on_screen">ndezi ekranin</string>
     <string name="app_ops_use_alarm_volume">kontrollojë volumin e alarmit</string>
     <string name="app_ops_use_audio_focus">kontrollojë fokusin e audios</string>

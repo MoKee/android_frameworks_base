@@ -17,6 +17,5 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="status_bar_su">مدير الروت</string>
     <string name="status_bar_vpn">VPN</string>
-    <string name="status_bar_roaming">مؤشر التجوال</string>
     <string name="quick_settings_screenshot_label">لقطة للشاشة</string>
 </resources>

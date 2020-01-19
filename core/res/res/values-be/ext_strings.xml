@@ -77,7 +77,7 @@
     <string name="app_ops_toggle_bluetooth">пераключыць стан Bluetooth</string>
     <string name="app_ops_toggle_mobile_data">пераключыць стан сотавай сеткі</string>
     <string name="app_ops_toggle_nfc">пераключыць стан модуля NFC</string>
-    <string name="app_ops_toggle_wifi">пераключыць стан Wi-Fi</string>
+    <string name="app_ops_toggle_wifi">пераключыць Wi-Fi</string>
     <string name="app_ops_turn_on_screen">улучэнне экрану</string>
     <string name="app_ops_use_alarm_volume">атрымаць кіраванне гучнасцю будзільніка</string>
     <string name="app_ops_use_audio_focus">атрымаць кіраванне аўдыя фокусам</string>
@@ -99,7 +99,7 @@
     <string name="permdesc_changePrivacyGuardState">Дазваляе праграме выбіраць, ці будзе іншая праграма працаваць у рэжыме абароны прыватнасці. Калі праграма запушчана ў рэжыме абароны прыватнасці, яна не будзе мець доступу да асабістых дадзеных, такіх як кантакты, паведамленні ці гісторыя тэлефанаванняў.</string>
     <string name="privacy_guard_notification">Рэжым абароны прыватнасці актыўны</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> не будзе мець доступу да асабістых дадзеных</string>
-    <string name="privacy_guard_dialog_title">Рэжым абароны</string>
+    <string name="privacy_guard_dialog_title">Ахова</string>
     <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> жадае <xliff:g id="op">%2$s</xliff:g>.</string>
     <string name="permission_remember_choice">Запамятаць вырашэнне</string>
 </resources>
