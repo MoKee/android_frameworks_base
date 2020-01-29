@@ -22,7 +22,7 @@
     <string name="adb_net_active_notification_title">网络 ADB 调试已启用</string>
     <string name="adb_both_active_notification_title">USB 和网络 ADB 调试已启用</string>
     <string name="adb_active_generic_notification_message">触摸以禁用调试。</string>
-    <string name="app_ops_access_camera">存取相机</string>
+    <string name="app_ops_access_camera">使用摄像头</string>
     <string name="app_ops_access_location">访问您的位置信息</string>
     <string name="app_ops_access_notifications">读取通知</string>
     <string name="app_ops_activate_vpn">激活一个 VPN</string>
