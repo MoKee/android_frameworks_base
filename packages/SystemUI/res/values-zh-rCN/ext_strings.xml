@@ -66,6 +66,7 @@
     <string name="screen_pinning_description_no_navbar">这将会固定显示此屏幕，直到您取消固定为止。触摸并按住“返回”即可取消固定屏幕。</string>
     <string name="screen_pinning_toast_no_navbar">要取消固定此屏幕，请触摸 &amp; 并按住“返回”按钮。</string>
     <string name="nav_bar_layout_inverse">布局反转</string>
+    <string name="custom_swipe_hint">从图标滑动 <xliff:g name="target">%s</xliff:g></string>
     <string name="accessibility_quick_settings_location_battery_saving">位置报告：节电模式。</string>
     <string name="accessibility_quick_settings_location_gps_only">位置报告：仅传感器模式。</string>
     <string name="accessibility_quick_settings_location_high_accuracy">位置报告：高准确度模式。</string>
