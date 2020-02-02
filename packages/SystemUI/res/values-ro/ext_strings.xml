@@ -57,6 +57,11 @@
     <string name="accessibility_quick_settings_sync_on">Sincronizare pornită.</string>
     <string name="accessibility_quick_settings_sync_changed_off">Sincronizare oprită.</string>
     <string name="accessibility_quick_settings_sync_changed_on">Sincronizare pornită.</string>
+    <string name="quick_settings_profiles_label">Profile de sistem</string>
+    <string name="accessibility_quick_settings_profiles_off">Profiluri oprit.</string>
+    <string name="accessibility_quick_settings_profiles">Profil: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
+    <string name="accessibility_quick_settings_profiles_changed_off">Profiluri este activat.</string>
+    <string name="accessibility_quick_settings_profiles_changed">Profil schimbat în <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <string name="quick_settings_usb_tether_label">Tethering USB</string>
     <string name="quick_settings_volume_panel_label">Panou volum</string>
     <string name="quick_settings_vpn_label">VPN</string>

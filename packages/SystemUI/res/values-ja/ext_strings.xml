@@ -55,8 +55,16 @@
     <string name="accessibility_quick_settings_sync_on">同期はONです。</string>
     <string name="accessibility_quick_settings_sync_changed_off">同期がOFFになりました。</string>
     <string name="accessibility_quick_settings_sync_changed_on">同期がONになりました。</string>
+    <string name="quick_settings_profiles_label">システムプロファイル</string>
+    <string name="accessibility_quick_settings_profiles_off">プロファイルはOFFです。</string>
+    <string name="accessibility_quick_settings_profiles">プロファイル: <xliff:g id="profile" example="Default">%s</xliff:g>です。</string>
+    <string name="accessibility_quick_settings_profiles_changed_off">プロファイルがOFFになりました。</string>
+    <string name="accessibility_quick_settings_profiles_changed">プロファイルが<xliff:g id="profile" example="Default">%s</xliff:g>に変更されました。</string>
     <string name="quick_settings_usb_tether_label">USBテザリング</string>
     <string name="quick_settings_volume_panel_label">音量パネル</string>
+    <string name="quick_settings_vpn_label">VPN</string>
+    <string name="vpn_credentials_username">ユーザー名</string>
+    <string name="vpn_credentials_password">パスワード</string>
     <string name="accessibility_quick_settings_location_battery_saving">位置情報レポート: バッテリー節約モードです。</string>
     <string name="accessibility_quick_settings_location_gps_only">位置情報レポート: 端末のみモードです。</string>
     <string name="accessibility_quick_settings_location_high_accuracy">位置情報レポート: 高精度モードです。</string>

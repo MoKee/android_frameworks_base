@@ -57,8 +57,16 @@
     <string name="accessibility_quick_settings_sync_on">Включена синхронизация.</string>
     <string name="accessibility_quick_settings_sync_changed_off">Синхронизацията е изключена.</string>
     <string name="accessibility_quick_settings_sync_changed_on">Синхронизацията е включена.</string>
+    <string name="quick_settings_profiles_label">Системни профили</string>
+    <string name="accessibility_quick_settings_profiles_off">Изключени профили.</string>
+    <string name="accessibility_quick_settings_profiles">Профил: <xliff:g id="profile" example="Default">%s </xliff:g>.</string>
+    <string name="accessibility_quick_settings_profiles_changed_off">Профилите са изключени.</string>
+    <string name="accessibility_quick_settings_profiles_changed">Профила е сменен с <xliff:g id="profile" example="Default">%s </xliff:g>.</string>
     <string name="quick_settings_usb_tether_label">Тетъринг през USB</string>
     <string name="quick_settings_volume_panel_label">Звуков панел</string>
+    <string name="quick_settings_vpn_label">Виртуална Частна Мрежа</string>
+    <string name="vpn_credentials_username">Юзернейм</string>
+    <string name="vpn_credentials_password">Парола</string>
     <string name="accessibility_quick_settings_location_battery_saving">Настройка на местоположение: икономичен режим на батерията.</string>
     <string name="accessibility_quick_settings_location_gps_only">Доклад на местоположение: само по GPS.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">Доклад на местоположение: режим на висока точност.</string>

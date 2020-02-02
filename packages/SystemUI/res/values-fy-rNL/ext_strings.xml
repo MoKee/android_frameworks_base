@@ -54,6 +54,10 @@
     <string name="accessibility_quick_settings_sync_on">Syngr. oan.</string>
     <string name="accessibility_quick_settings_sync_changed_off">Syngr. útskeakele.</string>
     <string name="accessibility_quick_settings_sync_changed_on">Syngr. ynskeakele.</string>
+    <string name="accessibility_quick_settings_profiles_off">Profiilid väljas.</string>
+    <string name="accessibility_quick_settings_profiles">Profiil: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
+    <string name="accessibility_quick_settings_profiles_changed_off">Profiilid välja lülitatud.</string>
+    <string name="accessibility_quick_settings_profiles_changed">Profiil muudetud: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <string name="quick_settings_usb_tether_label">USB-tethering</string>
     <string name="quick_settings_volume_panel_label">Folumepaniel</string>
     <string name="accessibility_quick_settings_location_battery_saving">Lokaasjemelding: batterijbesparring.</string>

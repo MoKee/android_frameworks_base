@@ -57,6 +57,11 @@
     <string name="accessibility_quick_settings_sync_on">Synchronizacja włączona.</string>
     <string name="accessibility_quick_settings_sync_changed_off">Synchronizacja została wyłączona.</string>
     <string name="accessibility_quick_settings_sync_changed_on">Synchronizacja została włączona.</string>
+    <string name="quick_settings_profiles_label">Profile systemu</string>
+    <string name="accessibility_quick_settings_profiles_off">Profile wyłączone.</string>
+    <string name="accessibility_quick_settings_profiles">Profil: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
+    <string name="accessibility_quick_settings_profiles_changed_off">Profile zostały wyłączone.</string>
+    <string name="accessibility_quick_settings_profiles_changed">Profil zmieniony na <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <string name="quick_settings_usb_tether_label">Tethering USB</string>
     <string name="quick_settings_volume_panel_label">Panel głośności</string>
     <string name="quick_settings_vpn_label">VPN</string>

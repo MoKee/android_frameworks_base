@@ -55,8 +55,15 @@
     <string name="accessibility_quick_settings_sync_on">Synkronointi päällä.</string>
     <string name="accessibility_quick_settings_sync_changed_off">Synkronointi pois päältä.</string>
     <string name="accessibility_quick_settings_sync_changed_on">Synkronointi päällä.</string>
+    <string name="quick_settings_profiles_label">Järjestelmäprofiilit</string>
+    <string name="accessibility_quick_settings_profiles_off">Profiilit pois.</string>
+    <string name="accessibility_quick_settings_profiles">Profiili: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
+    <string name="accessibility_quick_settings_profiles_changed_off">Profiilit pois päältä.</string>
+    <string name="accessibility_quick_settings_profiles_changed">Profiili <xliff:g id="profile" example="Default">%s</xliff:g> otettiin käyttöön.</string>
     <string name="quick_settings_usb_tether_label">USB-jakaminen</string>
     <string name="quick_settings_volume_panel_label">Äänenvoimakkuuspaneeli</string>
+    <string name="vpn_credentials_username">Käyttäjänimi</string>
+    <string name="vpn_credentials_password">Salasana</string>
     <string name="accessibility_quick_settings_location_battery_saving">Sijainnin raportointi: virransäästötila.</string>
     <string name="accessibility_quick_settings_location_gps_only">Sijainti: Vain laite.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">Sijainnin raportointi: korkea tarkkuus.</string>

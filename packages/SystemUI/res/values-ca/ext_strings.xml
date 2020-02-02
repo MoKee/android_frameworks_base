@@ -57,6 +57,11 @@
     <string name="accessibility_quick_settings_sync_on">Sinc activada.</string>
     <string name="accessibility_quick_settings_sync_changed_off">S\'ha desactivat la sincronització.</string>
     <string name="accessibility_quick_settings_sync_changed_on">S\'ha activat la sincronització.</string>
+    <string name="quick_settings_profiles_label">Perfils del sistema</string>
+    <string name="accessibility_quick_settings_profiles_off">Perfils desactivats.</string>
+    <string name="accessibility_quick_settings_profiles">Perfils: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
+    <string name="accessibility_quick_settings_profiles_changed_off">S\'han desactivat els perfils.</string>
+    <string name="accessibility_quick_settings_profiles_changed">Perfil canviat a <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <string name="quick_settings_usb_tether_label">Ancoratge USB</string>
     <string name="quick_settings_volume_panel_label">Panell de volum</string>
     <string name="quick_settings_vpn_label">VPN</string>
