@@ -18,7 +18,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="adb_net_active_notification_title">ADB via netværk aktiveret</string>
-    <string name="adb_both_active_notification_title">ADB via USB &amp; netværk aktiveret</string>
-    <string name="adb_active_generic_notification_message">Tryk for at deaktivere fejlretning.</string>
+    <string name="adb_net_active_notification_title">ADB over netværk aktiveret</string>
+    <string name="adb_both_active_notification_title">ADB over USB &amp; netværk aktiveret</string>
+    <string name="adb_active_generic_notification_message">Rør, for at deaktivere fejlfinding.</string>
 </resources>

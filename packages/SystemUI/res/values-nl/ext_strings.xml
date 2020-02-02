@@ -31,6 +31,7 @@
     <string name="accessibility_dpad_left">Cursor links</string>
     <string name="accessibility_dpad_right">Cursor rechts</string>
     <string name="quick_settings_network_adb_label">ADB over netwerk</string>
+    <string name="quick_settings_network_adb_no_network">geen netwerk</string>
     <string name="quick_settings_ambient_display_label">Omgevingsdisplay</string>
     <string name="accessibility_quick_settings_ambient_display_off">Omgevingsdisplay uit.</string>
     <string name="accessibility_quick_settings_ambient_display_on">Omgevingsdisplay aan.</string>
@@ -54,15 +55,8 @@
     <string name="accessibility_quick_settings_sync_on">Synchr. aan.</string>
     <string name="accessibility_quick_settings_sync_changed_off">Synchr. uitgeschakeld.</string>
     <string name="accessibility_quick_settings_sync_changed_on">Synchr. ingeschakeld.</string>
-    <string name="quick_settings_profiles_label">Systeemprofielen</string>
-    <string name="accessibility_quick_settings_profiles_off">Profielen uit.</string>
-    <string name="accessibility_quick_settings_profiles">Profiel: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
-    <string name="accessibility_quick_settings_profiles_changed_off">Profielen uitgeschakeld.</string>
-    <string name="accessibility_quick_settings_profiles_changed">Profiel gewijzigd naar <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <string name="quick_settings_usb_tether_label">USB-tethering</string>
     <string name="quick_settings_volume_panel_label">Volumepaneel</string>
-    <string name="vpn_credentials_username">Gebruikersnaam</string>
-    <string name="vpn_credentials_password">Wachtwoord</string>
     <string name="accessibility_quick_settings_location_battery_saving">Locatiemelding: accubesparing.</string>
     <string name="accessibility_quick_settings_location_gps_only">Locatiemelding: alleen apparaat.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">Locatiemelding: grote nauwkeurigheid.</string>
@@ -79,4 +73,6 @@
     <string name="quick_settings_location_detail_mode_sensors_only_title">Alleen apparaat</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_description">GPS, wifi, Bluetooth of mobiele netwerken gebruiken om locatie te bepalen</string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">Wifi, Bluetooth of mobiele netwerken gebruiken om locatie te bepalen</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_description">GPS gebruiken om locatie te bepalen</string>
+    <string name="status_bar_battery">Accu</string>
 </resources>

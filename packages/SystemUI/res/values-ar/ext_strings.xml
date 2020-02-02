@@ -21,10 +21,10 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="global_action_restart_system">النظام</string>
     <string name="global_action_restart_recovery">الإسترداد</string>
-    <string name="global_action_restart_bootloader">محمل التمهيد</string>
-    <string name="global_action_restart_download">تنزيل</string>
+    <string name="global_action_restart_bootloader">محمل الاقلاع</string>
+    <string name="global_action_restart_download">التنزيل</string>
     <string name="global_action_restart_progress">جارٍ إعادة التشغيل</string>
-    <string name="global_action_restart_recovery_progress">إعادة التشغيل إلى وضع الاسترداد</string>
+    <string name="global_action_restart_recovery_progress">إعادة التشغيل إلى وضع الإسترداد</string>
     <string name="global_action_restart_bootloader_progress">إعادة التشغيل إلى وضع البوتلودر</string>
     <string name="global_action_restart_download_progress">إعادة التشغيل الى وضع التنزيل</string>
     <string name="global_action_current_user">الحالي</string>
@@ -55,17 +55,8 @@
     <string name="accessibility_quick_settings_sync_on">تشغيل المزامنة.</string>
     <string name="accessibility_quick_settings_sync_changed_off">تم تعطيل المزامنة.</string>
     <string name="accessibility_quick_settings_sync_changed_on">تم تشغيل المزامنة.</string>
-    <string name="quick_settings_profiles_label">ملفات تعريف النظام</string>
-    <string name="accessibility_quick_settings_profiles_off">إيقاف ملفات التعريف.</string>
-    <string name="accessibility_quick_settings_profiles">ملف التعريف: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
-    <string name="accessibility_quick_settings_profiles_changed_off">تعطيل ملفات التعريف. </string>
-    <string name="accessibility_quick_settings_profiles_changed">تم تغيير ملف التعريف إلى <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <string name="quick_settings_usb_tether_label">الربط عبر USB</string>
     <string name="quick_settings_volume_panel_label">لوحة مستوى الصوت</string>
-    <string name="quick_settings_vpn_label">VPN</string>
-    <string name="vpn_credentials_username">اسم المستخدم</string>
-    <string name="vpn_credentials_password">كلمة المرور</string>
-    <string name="vpn_credentials_dialog_connect">اتصال</string>
     <string name="accessibility_quick_settings_location_battery_saving">تحديد الموقع: وضع توفير البطارية.</string>
     <string name="accessibility_quick_settings_location_gps_only">تحديد الموقع: وضع المستشعرات فقط.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">تحديد الموقع: وضع الدقة العالية.</string>
@@ -80,8 +71,8 @@
     <string name="quick_settings_location_detail_mode_high_accuracy_title">دقة عالية</string>
     <string name="quick_settings_location_detail_mode_battery_saving_title">توفير البطارية</string>
     <string name="quick_settings_location_detail_mode_sensors_only_title">الجهاز فقط</string>
-    <string name="quick_settings_location_detail_mode_high_accuracy_description">استخدام نظام تحديد المواقع العالمي (GPS) وشبكات WiFi والبلوتوث أو شبكات الجوّال لتحديد الموقع</string>
-    <string name="quick_settings_location_detail_mode_battery_saving_description">استخدام شبكات Wi\u2011Fi والبلوتوث أو شبكات الجوّال لتحديد الموقع</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_description">‏استخدام نظام تحديد المواقع (GPS) في تحديد الموقع</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">‏استخدام نظام تحديد المواقع العالمي (GPS) وشبكات WiFi والبلوتوث أو شبكات الجوّال لتحديد الموقع</string>
+    <string name="quick_settings_location_detail_mode_battery_saving_description">‏استخدام شبكات WiFi والبلوتوث وشبكات الجوّال لتحديد الموقع</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_description">‏استخدام نظام تحديد المواقع (GPS) لتحديد موقعك</string>
     <string name="status_bar_battery">البطارية</string>
 </resources>

@@ -19,8 +19,6 @@
  */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="global_action_restart_recovery">Recuperatioun</string>
-    <string name="global_action_current_user">Aktuell</string>
     <string name="accessibility_dpad_left">Cursor lénks</string>
     <string name="accessibility_dpad_right">Cursor riets</string>
     <string name="quick_settings_network_adb_label">ADB iwwer Netzwierk</string>
@@ -42,19 +40,15 @@
     <string name="accessibility_quick_settings_sync_on">Synchronisatioun un.</string>
     <string name="accessibility_quick_settings_sync_changed_off">Synchronisatioun ausgeschalt.</string>
     <string name="accessibility_quick_settings_sync_changed_on">Synchronisatioun ugeschalt.</string>
-    <string name="accessibility_quick_settings_profiles_off">Profiller aus.</string>
-    <string name="accessibility_quick_settings_profiles">Profil: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
-    <string name="accessibility_quick_settings_profiles_changed_off">Profiller ausgeschalt.</string>
-    <string name="accessibility_quick_settings_profiles_changed">Profil op <xliff:g id="profile" example="Default">%s</xliff:g> geännert.</string>
     <string name="quick_settings_usb_tether_label">USB-Tethering</string>
     <string name="quick_settings_volume_panel_label">Lautstäerktpanneau</string>
-    <string name="vpn_credentials_password">Passwuert</string>
     <string name="accessibility_quick_settings_location_battery_saving">Standuertbericht: Akku spueren.</string>
     <string name="accessibility_quick_settings_location_gps_only">Standuertbericht: Just Sensoren.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">Standuertbericht: Héich Genauegkeet.</string>
+    <string name="quick_settings_location_battery_saving_label">Akku spueren</string>
     <string name="quick_settings_location_gps_only_label">Just Apparat</string>
     <string name="quick_settings_location_high_accuracy_label">Héich Genauegkeet</string>
-    <string name="quick_settings_location_detail_title">Standuert</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_title">Héich Genauegkeet</string>
+    <string name="quick_settings_location_detail_mode_battery_saving_title">Akku spueren</string>
     <string name="quick_settings_location_detail_mode_sensors_only_title">Just Apparat</string>
 </resources>
