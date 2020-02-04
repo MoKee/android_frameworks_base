@@ -62,7 +62,7 @@
     <string name="accessibility_quick_settings_profiles"><xliff:g id="profile" example="Default">%s</xliff:g>-profil.</string>
     <string name="accessibility_quick_settings_profiles_changed_off">Profilok kikapcsolva.</string>
     <string name="accessibility_quick_settings_profiles_changed"><xliff:g id="profile" example="Default">%s</xliff:g>-profil megváltoztatva.</string>
-    <string name="quick_settings_usb_tether_label">USB megosztás</string>
+    <string name="quick_settings_usb_tether_label">USB-megosztás</string>
     <string name="quick_settings_volume_panel_label">Hangerőszabályzás</string>
     <string name="quick_settings_vpn_label">VPN</string>
     <string name="quick_settings_vpn_connect_dialog_title">Csatlakozás a következőhöz\u2026</string>
@@ -75,15 +75,15 @@
     <string name="accessibility_quick_settings_location_high_accuracy">Helymeghatározás jelentése: nagyon pontos.</string>
     <string name="quick_settings_location_battery_saving_label">Energiatakarékos</string>
     <string name="quick_settings_location_battery_saving_label_twoline">Energia\ntakarékos</string>
-    <string name="quick_settings_location_gps_only_label">Csak készülék</string>
+    <string name="quick_settings_location_gps_only_label">Csak készüléken</string>
     <string name="quick_settings_location_gps_only_label_twoline">Csak\nkészülék</string>
-    <string name="quick_settings_location_high_accuracy_label">Nagy pontosság</string>
+    <string name="quick_settings_location_high_accuracy_label">Nagy pontosságú</string>
     <string name="quick_settings_location_high_accuracy_label_twoline">Nagy\npontosság</string>
     <string name="quick_settings_location_detail_title">Helymeghatározás</string>
     <string name="quick_settings_location_detail_menu_title">Válasszon módot:</string>
-    <string name="quick_settings_location_detail_mode_high_accuracy_title">Nagy pontosság</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_title">Nagy pontosságú</string>
     <string name="quick_settings_location_detail_mode_battery_saving_title">Energiatakarékos</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_title">Csak készülék</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_title">Csak készüléken</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_description">GPS, Wi\u2011Fi, Bluetooth vagy mobilhálózatok használata a tartózkodási hely megállapításához</string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">Wi\u2011Fi, Bluetooth vagy mobilhálózatok használata a tartózkodási hely megállapításához</string>
     <string name="quick_settings_location_detail_mode_sensors_only_description">Tartózkodási hely meghatározása GPS használattal</string>
