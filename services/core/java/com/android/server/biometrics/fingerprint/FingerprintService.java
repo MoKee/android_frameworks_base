@@ -77,7 +77,7 @@ import org.json.JSONObject;
 
 import mokee.app.MKContextConstants;
 
-import vendor.mokee.biometrics.fingerprint.inscreen.V1_0.IFingerprintInscreen;
+import vendor.mokee.biometrics.fingerprint.inscreen.V1_1.IFingerprintInscreen;
 
 import java.io.File;
 import java.io.FileDescriptor;
