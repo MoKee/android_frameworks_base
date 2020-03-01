@@ -19,6 +19,7 @@ package com.android.systemui.biometrics;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.database.ContentObserver;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -56,6 +57,7 @@ public class FODCircleView extends ImageView {
     private final boolean mShouldBoostBrightness;
     private final Paint mPaintFingerprint = new Paint();
     private final WindowManager.LayoutParams mParams = new WindowManager.LayoutParams();
+    private final WindowManager.LayoutParams mOverlayParams = new WindowManager.LayoutParams();
     private final WindowManager mWindowManager;
 
     private IFingerprintInscreen mFingerprintInscreenDaemon;
@@ -68,14 +70,18 @@ public class FODCircleView extends ImageView {
 
     private boolean mIsBouncer;
     private boolean mIsDreaming;
+    private boolean mIsScreenOn = false;
     private boolean mIsShowing;
     private boolean mIsCircleShowing;
+    private boolean mIsHBMOn;
 
     private float mCurrentDimAmount = 0.0f;
 
     private Handler mHandler;
 
     private Timer mBurnInProtectionTimer;
+
+    private ImageView mOverlayImageView;
 
     private IFingerprintInscreenCallback mFingerprintInscreenCallback =
             new IFingerprintInscreenCallback.Stub() {
@@ -111,15 +117,17 @@ public class FODCircleView extends ImageView {
             mIsBouncer = isBouncer;
 
             if (isBouncer) {
-                hide();
+                setAlpha(0.0f);
             } else if (mUpdateMonitor.isFingerprintDetectionRunning()) {
-                show();
+                setAlpha(1.0f);
             }
         }
 
         @Override
         public void onScreenTurnedOff() {
+            mIsScreenOn = false;
             hide();
+            mOverlayImageView.setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -127,6 +135,7 @@ public class FODCircleView extends ImageView {
             if (mUpdateMonitor.isFingerprintDetectionRunning()) {
                 show();
             }
+            mIsScreenOn = true;
         }
     };
 
@@ -165,6 +174,21 @@ public class FODCircleView extends ImageView {
 
         mHandler = new Handler(Looper.getMainLooper());
 
+        mOverlayImageView = new ImageView(context);
+
+        mOverlayParams.height = mSize;
+        mOverlayParams.width = mSize;
+        mOverlayParams.format = PixelFormat.TRANSLUCENT;
+        mOverlayParams.setTitle("Dim Layer for FoD");
+        mOverlayParams.packageName = "android";
+        mOverlayParams.type = WindowManager.LayoutParams.TYPE_DISPLAY_OVERLAY;
+        mOverlayParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
+                WindowManager.LayoutParams.FLAG_DIM_BEHIND |
+                WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+        mOverlayParams.gravity = Gravity.TOP | Gravity.LEFT;
+        //mOverlayParams.alpha = 0.0f;
+        mWindowManager.addView(mOverlayImageView, mOverlayParams);
+
         mParams.height = mSize;
         mParams.width = mSize;
         mParams.format = PixelFormat.TRANSLUCENT;
@@ -176,24 +200,12 @@ public class FODCircleView extends ImageView {
                 WindowManager.LayoutParams.FLAG_DIM_BEHIND |
                 WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
         mParams.gravity = Gravity.TOP | Gravity.LEFT;
-
         mWindowManager.addView(this, mParams);
-
         updatePosition();
         hide();
 
         mUpdateMonitor = KeyguardUpdateMonitor.getInstance(context);
         mUpdateMonitor.registerCallback(mMonitorCallback);
-
-        getViewTreeObserver().addOnGlobalLayoutListener(() -> {
-            float drawingDimAmount = mParams.dimAmount;
-            if (mCurrentDimAmount == 0.0f && drawingDimAmount > 0.0f) {
-                dispatchPress();
-                mCurrentDimAmount = drawingDimAmount;
-            } else if (mCurrentDimAmount > 0.0f && drawingDimAmount == 0.0f) {
-                mCurrentDimAmount = drawingDimAmount;
-            }
-        });
     }
 
     @Override
@@ -280,17 +292,33 @@ public class FODCircleView extends ImageView {
         }
     }
 
+    public void dispatchEnterHBM(boolean enable) {
+        IFingerprintInscreen daemon = getFingerprintInScreenDaemon();
+        try {
+            daemon.setScreenHBMModeEnable(enable);
+            mIsHBMOn = enable;
+        } catch (RemoteException e) {
+            // do nothing
+        }
+    }
+
     public void showCircle() {
         mIsCircleShowing = true;
 
         setKeepScreenOn(true);
 
-        setDim(true);
         updateAlpha();
-
+        if (mIsScreenOn) {
+            updateDimAmount();
+        }
         mPaintFingerprint.setColor(mColor);
         setImageResource(R.drawable.fod_icon_pressed);
         invalidate();
+        if (mIsScreenOn && !mIsHBMOn) {
+            dispatchEnterHBM(true);
+            getContext().getContentResolver().registerContentObserver(Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS), true, mBrightnessObserver);
+        }
+        dispatchPress();
     }
 
     public void hideCircle() {
@@ -301,8 +329,6 @@ public class FODCircleView extends ImageView {
         invalidate();
 
         dispatchRelease();
-
-        setDim(false);
         updateAlpha();
 
         setKeepScreenOn(false);
@@ -318,24 +344,43 @@ public class FODCircleView extends ImageView {
             // Ignore show calls when Keyguard pin screen is being shown
             return;
         }
-
         mIsShowing = true;
 
         dispatchShow();
         setVisibility(View.VISIBLE);
+        if (!mIsScreenOn) {
+            getContext().getContentResolver().registerContentObserver(Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS), true, mBrightnessObserver);
+            setAlpha(0.0f);
+            mOverlayParams.dimAmount = 1.0f;
+            mWindowManager.updateViewLayout(mOverlayImageView, mOverlayParams);
+            dispatchEnterHBM(true);
+            setDim(true);
+            mHandler.postDelayed(() -> hideOverlay(),200);
+        }
+        mHandler.postDelayed(() -> updateAlpha(),200);
     }
 
     public void hide() {
         mIsShowing = false;
 
-        setVisibility(View.GONE);
         hideCircle();
         dispatchHide();
+        dispatchEnterHBM(false);
+        getContext().getContentResolver().unregisterContentObserver(mBrightnessObserver);
+        setAlpha(0.0f);
+        setDim(false);
+        setVisibility(View.GONE);
+    }
+
+    public void hideOverlay() {
+        mOverlayImageView.setVisibility(View.GONE);
     }
 
     private void updateAlpha() {
         if (mIsCircleShowing) {
             setAlpha(1.0f);
+        } else if (!mIsShowing){
+            setAlpha(0.0f);
         } else {
             setAlpha(mIsDreaming ? 0.5f : 1.0f);
         }
@@ -402,6 +447,28 @@ public class FODCircleView extends ImageView {
 
         mWindowManager.updateViewLayout(this, mParams);
     }
+
+    private void updateDimAmount(){
+        int curBrightness = Settings.System.getInt(getContext().getContentResolver(),
+              Settings.System.SCREEN_BRIGHTNESS, 100);
+        int dimAmount = 0;
+
+        IFingerprintInscreen daemon = getFingerprintInScreenDaemon();
+            try {
+                dimAmount = daemon.getDimAmount(curBrightness);
+            } catch (RemoteException e) {
+                // do nothing
+            }
+        mParams.dimAmount = dimAmount / 255.0f;
+        mWindowManager.updateViewLayout(this, mParams);
+    }
+
+    private ContentObserver mBrightnessObserver = new ContentObserver(new Handler()) {
+        @Override
+        public void onChange(boolean selfChange) {
+            updateDimAmount();
+        }
+    };
 
     private class BurnInProtectionTask extends TimerTask {
         @Override
