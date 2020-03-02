@@ -19,8 +19,8 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="global_action_restart_system">Système</string>
-    <string name="global_action_restart_recovery">Recovery</string>
-    <string name="global_action_restart_bootloader">Bootloader</string>
+    <string name="global_action_restart_recovery">Récupération</string>
+    <string name="global_action_restart_bootloader">Amorçage</string>
     <string name="global_action_restart_download">Download</string>
     <string name="global_action_restart_fastboot">Fastboot</string>
     <string name="global_action_restart_progress">Redémarrage\u2026</string>
