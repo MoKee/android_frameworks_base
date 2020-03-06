@@ -104,7 +104,7 @@ jboolean DoCreateRelroFile(JNIEnv* env, const char* lib, const char* relro,
   if (handle == NULL) {
     ALOGE("Failed to load library %s: %s", lib, dlerror());
     unlink(relro_tmp);
-    return JNI_FALSE;
+    return JNI_TRUE;
   }
   if (close_result != 0 ||
       chmod(relro_tmp, S_IRUSR | S_IRGRP | S_IROTH) != 0 ||
@@ -121,8 +121,7 @@ jint DoLoadWithRelroFile(JNIEnv* env, const char* lib, const char* relro,
                          jobject clazzLoader) {
   int relro_fd = TEMP_FAILURE_RETRY(open(relro, O_RDONLY));
   if (relro_fd == -1) {
-    ALOGE("Failed to open relro file %s: %s", relro, strerror(errno));
-    return LIBLOAD_FAILED_TO_OPEN_RELRO_FILE;
+    ALOGE("Failed to open relro file %s: %s, continuing", relro, strerror(errno));
   }
   android_namespace_t* ns =
       android::FindNamespaceByClassLoader(env, clazzLoader);
@@ -130,16 +129,21 @@ jint DoLoadWithRelroFile(JNIEnv* env, const char* lib, const char* relro,
     ALOGE("Failed to find classloader namespace");
     return LIBLOAD_FAILED_TO_FIND_NAMESPACE;
   }
-  android_dlextinfo extinfo;
-  extinfo.flags = ANDROID_DLEXT_RESERVED_ADDRESS | ANDROID_DLEXT_USE_RELRO |
+  android_dlextinfo extinfo = { };
+  extinfo.flags = ANDROID_DLEXT_RESERVED_ADDRESS |
                   ANDROID_DLEXT_USE_NAMESPACE |
                   ANDROID_DLEXT_RESERVED_ADDRESS_RECURSIVE;
+  if(relro_fd >= 0) {
+    extinfo.flags |= ANDROID_DLEXT_USE_RELRO;
+    extinfo.relro_fd = relro_fd;
+  }
   extinfo.reserved_addr = gReservedAddress;
   extinfo.reserved_size = gReservedSize;
-  extinfo.relro_fd = relro_fd;
   extinfo.library_namespace = ns;
   void* handle = android_dlopen_ext(lib, RTLD_NOW, &extinfo);
-  close(relro_fd);
+  if(relro_fd >= 0) {
+    close(relro_fd);
+  }
   if (handle == NULL) {
     ALOGE("Failed to load library %s: %s", lib, dlerror());
     return LIBLOAD_FAILED_TO_LOAD_LIBRARY;

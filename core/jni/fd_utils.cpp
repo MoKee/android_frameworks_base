@@ -33,6 +33,7 @@
 
 // Static whitelist of open paths that the zygote is allowed to keep open.
 static const char* kPathWhitelist[] = {
+  "/apfs/nand",
   "/apex/com.android.conscrypt/javalib/conscrypt.jar",
   "/apex/com.android.media/javalib/updatable-media.jar",
   "/dev/null",
