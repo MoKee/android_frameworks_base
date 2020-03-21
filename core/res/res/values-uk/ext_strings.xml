@@ -31,6 +31,8 @@
     <string name="app_ops_assist_structure">Використовувати допоміжну структуру</string>
     <string name="app_ops_audio_accessibility_volume">доступ до налаштувань гучності</string>
     <string name="app_ops_auto_start">запуск при включені пристрою</string>
+    <string name="app_ops_bind_accessibility_service">підключатися до служби спеціальних можливостей</string>
+    <string name="app_ops_bluetooth_scan">сканувати bluetooth</string>
     <string name="app_ops_change_wallpaper">зміна шпалер</string>
     <string name="app_ops_delete_call_log">видалити журнал викликів</string>
     <string name="app_ops_delete_contacts">видалити контакти</string>
@@ -39,8 +41,10 @@
     <string name="app_ops_draw_on_top">показувати вікна поверх</string>
     <string name="app_ops_get_accounts">Отримати інформацію про акаунти</string>
     <string name="app_ops_get_usage_stats">отримувати статистику використання програм</string>
+    <string name="app_ops_accept_handover">передача виклику з іншого додатку</string>
     <string name="app_ops_install_packages">установка пакетів</string>
     <string name="app_ops_keep_device_awake">заборонити пристрою переходити в сплячий режим</string>
+    <string name="app_ops_manage_ipsec_tunnels">керувати тунелями ipsec</string>
     <string name="app_ops_make_phone_call">робити телефонні дзвінки</string>
     <string name="app_ops_mock_location">Фіктивне місцезнаходження</string>
     <string name="app_ops_modify_calendar">змінювати дані календаря</string>
@@ -65,12 +69,16 @@
     <string name="app_ops_read_phone_state">Доступ до стану телефону</string>
     <string name="app_ops_read_sms">читати ваші SMS-повідомлення</string>
     <string name="app_ops_receive_sms">отримувати SMS-повідомлення</string>
+    <string name="app_ops_receive_emergency_broadcast">отримувати екстрене аварійне повідомлення</string>
     <string name="app_ops_record_audio">запис аудіо</string>
+    <string name="app_ops_request_delete_packages">запит на видалення пакетів</string>
     <string name="app_ops_run_in_background">працювати у фоновому режимі</string>
+    <string name="app_ops_run_any_in_background">Працювати у фоновому режимі</string>
     <string name="app_ops_scan_wifi">Сканувати Wi-Fi мережі</string>
     <string name="app_ops_send_mms">надсилати MMS-повідомлення</string>
     <string name="app_ops_send_sms">надсилати SMS-повідомлення</string>
     <string name="app_ops_start_at_bootup">запуск при включені пристрою</string>
+    <string name="app_ops_start_foreground">запускати на передньому плані</string>
     <string name="app_ops_su">отримати root-доступ</string>
     <string name="app_ops_toast_window">показувати спливаючі сповіщення</string>
     <string name="app_ops_toggle_bluetooth">увімк. або вимк. Bluetooth</string>
