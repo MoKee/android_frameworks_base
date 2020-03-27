@@ -14,8 +14,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="status_bar_su">SU</string>
+    <string name="status_bar_su">Su</string>
     <string name="status_bar_vpn">VPN</string>
-    <string name="status_bar_roaming">Chỉ báo chuyển vùng</string>
-    <string name="quick_settings_screenshot_label">Chụp ảnh màn hình</string>
+    <string name="status_bar_roaming">Ռոումինգի ցուցիչը միացված է</string>
+    <string name="quick_settings_screenshot_label">Սքրինշոթ</string>
 </resources>
