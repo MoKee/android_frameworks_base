@@ -40,6 +40,7 @@ import com.android.systemui.DemoMode;
 import com.android.systemui.qs.QSPanel;
 import com.android.systemui.qs.QSTileHost;
 import com.android.systemui.settings.CurrentUserTracker;
+import com.android.systemui.statusbar.notification.stack.NotificationStackScrollLayout;
 import com.android.systemui.statusbar.phone.ClockController;
 import com.android.systemui.statusbar.phone.EdgeBackGestureHandler;
 import com.android.systemui.statusbar.phone.NavigationBarView;
@@ -80,6 +81,7 @@ public class TunerServiceImpl extends TunerService {
             NavigationBarView.NAVIGATION_BAR_MENU_ARROW_KEYS,
             NotificationPanelView.DOUBLE_TAP_SLEEP_GESTURE,
             NotificationPanelView.STATUS_BAR_QUICK_QS_PULLDOWN,
+            NotificationStackScrollLayout.LOCKSCREEN_TRANSLUCENT_NOTIFICATIONS_BG_ENABLED,
             QSPanel.STATUS_BAR_QS_TILE_COLUMNS,
             QSTileHost.TILES_SETTING,
             Settings.Secure.DOZE_ALWAYS_ON,
