@@ -2,7 +2,7 @@
 <!--
 /**
  * Copyright (c) 2015, The CyanogenMod Project
- * Copyright (c) 2017-2019, The LineageOS Project
+ * Copyright (c) 2017-2020, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -62,20 +62,6 @@
     <string name="quick_settings_volume_panel_label">Панэль гучнасці</string>
     <string name="quick_settings_vpn_label">VPN</string>
     <string name="vpn_credentials_password">Пароль</string>
-    <string name="accessibility_quick_settings_location_battery_saving">Адпраўка месцазнаходжання: рэжым эканоміі батарэі.</string>
-    <string name="accessibility_quick_settings_location_gps_only">Адпраўка месцазнаходжання: толькі па GPS.</string>
-    <string name="accessibility_quick_settings_location_high_accuracy">Адпраўка месцазнаходжання: рэжым высокай дакладнасці.</string>
-    <string name="quick_settings_location_battery_saving_label">Па каардынатах сеткі</string>
-    <string name="quick_settings_location_battery_saving_label_twoline">Энерга\nзберажэнне</string>
-    <string name="quick_settings_location_gps_only_label">Па спадарожніках GPS</string>
-    <string name="quick_settings_location_gps_only_label_twoline">Толькі GPS</string>
-    <string name="quick_settings_location_high_accuracy_label">Па ўсіх крыніцах</string>
-    <string name="quick_settings_location_high_accuracy_label_twoline">Высокая\nдакладнасць</string>
-    <string name="quick_settings_location_detail_title">Месцазнаходжанне</string>
-    <string name="quick_settings_location_detail_menu_title">Выбар рэжыму працы:</string>
-    <string name="quick_settings_location_detail_mode_high_accuracy_title">Па ўсіх крыніцах</string>
-    <string name="quick_settings_location_detail_mode_battery_saving_title">Па каардынатах сеткі</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_title">Па спадарожніках GPS</string>
-    <string name="quick_settings_location_detail_mode_high_accuracy_description">Выкарыстанне GPS, Wi\u2011Fi, Bluetooth, або сотавыя сеткі для вызначэння месцазнаходжання </string>
-    <string name="quick_settings_location_detail_mode_battery_saving_description">Выкарыстанне Wi\u2011Fi, Bluetooth, або сотавыя сеткі для вызначэння месцазнаходжання</string>
+    <string name="status_bar_camera">Камера</string>
+    <string name="status_bar_location">Месцазнаходжанне</string>
 </resources>

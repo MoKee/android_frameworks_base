@@ -2,7 +2,7 @@
 <!--
 /**
  * Copyright (c) 2015, The CyanogenMod Project
- * Copyright (c) 2017-2019, The LineageOS Project
+ * Copyright (c) 2017-2020, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,5 +25,6 @@
     <string name="accessibility_dpad_right">දකුණු කර්සරය</string>
     <string name="quick_settings_network_adb_label">ජාලය හරහා ADB</string>
     <string name="vpn_credentials_password">මුරපදය</string>
-    <string name="quick_settings_location_detail_title">ස්ථානය</string>
+    <string name="status_bar_camera">කැමරාව</string>
+    <string name="status_bar_location">ස්ථානය</string>
 </resources>

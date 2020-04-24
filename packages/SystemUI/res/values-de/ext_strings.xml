@@ -2,7 +2,7 @@
 <!--
 /**
  * Copyright (c) 2015, The CyanogenMod Project
- * Copyright (c) 2017-2019, The LineageOS Project
+ * Copyright (c) 2017-2020, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,22 +69,7 @@
     <string name="vpn_credentials_username">Benutzername</string>
     <string name="vpn_credentials_password">Passwort</string>
     <string name="vpn_credentials_dialog_connect">Verbinden</string>
-    <string name="accessibility_quick_settings_location_battery_saving">Standortdienste: Energiesparmodus.</string>
-    <string name="accessibility_quick_settings_location_gps_only">Standortdienste: Nur Gerät.</string>
-    <string name="accessibility_quick_settings_location_high_accuracy">Standortdienste: Hohe Genauigkeit.</string>
-    <string name="quick_settings_location_battery_saving_label">Akku-Sparmodus</string>
-    <string name="quick_settings_location_battery_saving_label_twoline">Energie\nsparen</string>
-    <string name="quick_settings_location_gps_only_label">Nur Gerät</string>
-    <string name="quick_settings_location_gps_only_label_twoline">Nur\nGPS</string>
-    <string name="quick_settings_location_high_accuracy_label">Hohe Genauigkeit</string>
-    <string name="quick_settings_location_high_accuracy_label_twoline">Hohe\nGenauigkeit</string>
-    <string name="quick_settings_location_detail_title">Standort</string>
-    <string name="quick_settings_location_detail_menu_title">Modus auswählen:</string>
-    <string name="quick_settings_location_detail_mode_high_accuracy_title">Hohe Genauigkeit</string>
-    <string name="quick_settings_location_detail_mode_battery_saving_title">Akku-Sparmodus</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_title">Nur Gerät</string>
-    <string name="quick_settings_location_detail_mode_high_accuracy_description">GPS, WLAN, Bluetooth oder Mobilfunknetze zur Standortbestimmung nutzen</string>
-    <string name="quick_settings_location_detail_mode_battery_saving_description">WLAN, Bluetooth oder Mobilfunknetze zur Standortbestimmung nutzen</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_description">GPS zur Standortbestimmung nutzen</string>
     <string name="status_bar_battery">Akku</string>
+    <string name="status_bar_camera">Kamera</string>
+    <string name="status_bar_location">Ort</string>
 </resources>

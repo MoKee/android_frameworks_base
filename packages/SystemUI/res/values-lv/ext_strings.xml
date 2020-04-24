@@ -2,7 +2,7 @@
 <!--
 /**
  * Copyright (c) 2015, The CyanogenMod Project
- * Copyright (c) 2017-2019, The LineageOS Project
+ * Copyright (c) 2017-2020, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,5 +29,6 @@
     <string name="quick_settings_usb_tether_label">USB piesiešana</string>
     <string name="quick_settings_volume_panel_label">Skaņas panelis</string>
     <string name="vpn_credentials_password">Parole</string>
-    <string name="quick_settings_location_detail_title">Atraš. vieta</string>
+    <string name="status_bar_camera">Kamera</string>
+    <string name="status_bar_location">Atraš. vieta</string>
 </resources>

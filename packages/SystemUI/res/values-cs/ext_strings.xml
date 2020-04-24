@@ -2,7 +2,7 @@
 <!--
 /**
  * Copyright (c) 2015, The CyanogenMod Project
- * Copyright (c) 2017-2019, The LineageOS Project
+ * Copyright (c) 2017-2020, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,22 +69,7 @@
     <string name="vpn_credentials_username">Uživ. jméno</string>
     <string name="vpn_credentials_password">Heslo</string>
     <string name="vpn_credentials_dialog_connect">Připojit</string>
-    <string name="accessibility_quick_settings_location_battery_saving">Hlášení polohy: úspora baterie.</string>
-    <string name="accessibility_quick_settings_location_gps_only">Hlášení polohy: pouze GPS.</string>
-    <string name="accessibility_quick_settings_location_high_accuracy">Hlášení polohy: vysoká přesnost.</string>
-    <string name="quick_settings_location_battery_saving_label">Úspora baterie</string>
-    <string name="quick_settings_location_battery_saving_label_twoline">Úspora\nbaterie</string>
-    <string name="quick_settings_location_gps_only_label">Pouze GPS</string>
-    <string name="quick_settings_location_gps_only_label_twoline">Pouze\nGPS</string>
-    <string name="quick_settings_location_high_accuracy_label">Vysoká přesnost</string>
-    <string name="quick_settings_location_high_accuracy_label_twoline">Vysoká\npřesnost</string>
-    <string name="quick_settings_location_detail_title">Poloha</string>
-    <string name="quick_settings_location_detail_menu_title">Zvolte režim:</string>
-    <string name="quick_settings_location_detail_mode_high_accuracy_title">Vysoká přesnost</string>
-    <string name="quick_settings_location_detail_mode_battery_saving_title">Úspora baterie</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_title">Pouze GPS</string>
-    <string name="quick_settings_location_detail_mode_high_accuracy_description">K určování polohy používat GPS, Wi\u2011Fi, Bluetooth nebo mobilní sítě</string>
-    <string name="quick_settings_location_detail_mode_battery_saving_description">K určování polohy používat Wi\u2011Fi, Bluetooth nebo mobilní sítě</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_description">K určování polohy používat GPS</string>
     <string name="status_bar_battery">Baterie</string>
+    <string name="status_bar_camera">Fotoaparát</string>
+    <string name="status_bar_location">Poloha</string>
 </resources>

@@ -2,7 +2,7 @@
 <!--
 /**
  * Copyright (c) 2015, The CyanogenMod Project
- * Copyright (c) 2017-2019, The LineageOS Project
+ * Copyright (c) 2017-2020, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,22 +69,7 @@
     <string name="vpn_credentials_username">Kasutajanimi</string>
     <string name="vpn_credentials_password">Parool</string>
     <string name="vpn_credentials_dialog_connect">Ühenda</string>
-    <string name="accessibility_quick_settings_location_battery_saving">Asukoha teatamine: aku säästmise režiim.</string>
-    <string name="accessibility_quick_settings_location_gps_only">Asukoha teatamine: ainult andurite režiim.</string>
-    <string name="accessibility_quick_settings_location_high_accuracy">Asukoha teatamine: kõrge täpsusega režiim.</string>
-    <string name="quick_settings_location_battery_saving_label">Akut säästev</string>
-    <string name="quick_settings_location_battery_saving_label_twoline">Akut\nsäästev</string>
-    <string name="quick_settings_location_gps_only_label">Ainult seade</string>
-    <string name="quick_settings_location_gps_only_label_twoline">Ainult\nseade</string>
-    <string name="quick_settings_location_high_accuracy_label">Kõrge täpsusega</string>
-    <string name="quick_settings_location_high_accuracy_label_twoline">Kõrge\ntäpsusega</string>
-    <string name="quick_settings_location_detail_title">Asukoht</string>
-    <string name="quick_settings_location_detail_menu_title">Vali režiim</string>
-    <string name="quick_settings_location_detail_mode_high_accuracy_title">Kõrge täpsusega</string>
-    <string name="quick_settings_location_detail_mode_battery_saving_title">Akut säästev</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_title">Ainult seade</string>
-    <string name="quick_settings_location_detail_mode_high_accuracy_description">Kasutage asukoha määramiseks GPS, Wi\u2011Fi, Bluetooth või mobiilsidevõrke</string>
-    <string name="quick_settings_location_detail_mode_battery_saving_description">Kasutage asukoha määramiseks Wi\u2011Fi, Bluetooth või mobiilsidevõrke</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_description">Kasutage asukoha määramiseks GPS-i</string>
     <string name="status_bar_battery">Aku</string>
+    <string name="status_bar_camera">Kaamera</string>
+    <string name="status_bar_location">Asukoht</string>
 </resources>

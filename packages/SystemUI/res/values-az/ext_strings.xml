@@ -2,7 +2,7 @@
 <!--
 /**
  * Copyright (c) 2015, The CyanogenMod Project
- * Copyright (c) 2017-2019, The LineageOS Project
+ * Copyright (c) 2017-2020, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,22 +61,7 @@
     <string name="quick_settings_usb_tether_label">USB internet paylaşımı</string>
     <string name="quick_settings_volume_panel_label">Səs paneli</string>
     <string name="vpn_credentials_password">Şifrə</string>
-    <string name="accessibility_quick_settings_location_battery_saving">Yer hesabatı: batereyaya qənaət rejimi.</string>
-    <string name="accessibility_quick_settings_location_gps_only">Yer hesabatı: yalnız sensorlar rejimi.</string>
-    <string name="accessibility_quick_settings_location_high_accuracy">Yer hesabatı: yüksək həssaslıq rejimi.</string>
-    <string name="quick_settings_location_battery_saving_label">Batereyaya qənaət</string>
-    <string name="quick_settings_location_battery_saving_label_twoline">Batareyaya\nqənaət</string>
-    <string name="quick_settings_location_gps_only_label">Yalnız cihaz</string>
-    <string name="quick_settings_location_gps_only_label_twoline">Yalnız\ncihaz</string>
-    <string name="quick_settings_location_high_accuracy_label">Yüksək həssaslıq</string>
-    <string name="quick_settings_location_high_accuracy_label_twoline">Yüksək\ndəqiqlik</string>
-    <string name="quick_settings_location_detail_title">Yer</string>
-    <string name="quick_settings_location_detail_menu_title">Rejimi seç:</string>
-    <string name="quick_settings_location_detail_mode_high_accuracy_title">Yüksək həssaslıq</string>
-    <string name="quick_settings_location_detail_mode_battery_saving_title">Batereyaya qənaət</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_title">Yalnız cihaz</string>
-    <string name="quick_settings_location_detail_mode_high_accuracy_description">Yeri müəyyənləşdirmək üçün GPS, Wi\u2011Fi, Bluetooth və ya hüceyrəvi şəbəkələri istifadə edin</string>
-    <string name="quick_settings_location_detail_mode_battery_saving_description">Yeri müəyyənləşdirmək üçün Wi\u2011Fi, Bluetooth və ya hüceyrəvi şəbəkələri istifadə edin</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_description">Yeri müəyyənləşdirmək üçün GPS istifadə et</string>
     <string name="status_bar_battery">Batereya</string>
+    <string name="status_bar_camera">Kamera</string>
+    <string name="status_bar_location">Məkan</string>
 </resources>

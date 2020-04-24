@@ -2,7 +2,7 @@
 <!--
 /**
  * Copyright (c) 2015, The CyanogenMod Project
- * Copyright (c) 2017-2019, The LineageOS Project
+ * Copyright (c) 2017-2020, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,14 +49,6 @@
     <string name="quick_settings_usb_tether_label">USB टेदरिंग</string>
     <string name="quick_settings_volume_panel_label">ध्वनी पॅनेल</string>
     <string name="vpn_credentials_password">संकेतशब्द</string>
-    <string name="accessibility_quick_settings_location_battery_saving">स्थान अहवाल देणे: बॅटरी बचत मोड.</string>
-    <string name="accessibility_quick_settings_location_gps_only">स्थान अहवाल देणे: केवळ सेन्सर्स मोड.</string>
-    <string name="accessibility_quick_settings_location_high_accuracy">स्थान अहवाल देणे: उच्च अचूकता मोड.</string>
-    <string name="quick_settings_location_battery_saving_label">बॅटरी बचत</string>
-    <string name="quick_settings_location_gps_only_label">केवळ डिव्हाइस</string>
-    <string name="quick_settings_location_high_accuracy_label">उच्च अचूकता</string>
-    <string name="quick_settings_location_detail_title">स्थान</string>
-    <string name="quick_settings_location_detail_mode_high_accuracy_title">उच्च अचूकता</string>
-    <string name="quick_settings_location_detail_mode_battery_saving_title">बॅटरी बचत</string>
-    <string name="quick_settings_location_detail_mode_sensors_only_title">केवळ डिव्हाइस</string>
+    <string name="status_bar_camera">कॅमेरा</string>
+    <string name="status_bar_location">स्थान</string>
 </resources>
