@@ -68,4 +68,5 @@
     <string name="status_bar_battery">البطارية</string>
     <string name="status_bar_camera">الكاميرا</string>
     <string name="status_bar_location">الموقع</string>
+    <string name="use_data">إستخدم %s للبيانات الخلوية</string>
 </resources>

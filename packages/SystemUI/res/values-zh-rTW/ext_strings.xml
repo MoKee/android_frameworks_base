@@ -69,7 +69,11 @@
     <string name="vpn_credentials_username">帳號</string>
     <string name="vpn_credentials_password">密碼</string>
     <string name="vpn_credentials_dialog_connect">連線</string>
+    <string name="quick_settings_aod_label">AOD</string>
+    <string name="quick_settings_aod_off_powersave_label">AOD 關閉\n省電模式</string>
     <string name="status_bar_battery">電量</string>
     <string name="status_bar_camera">相機</string>
     <string name="status_bar_location">地點</string>
+    <string name="status_bar_microphone">麥克風</string>
+    <string name="use_data">將 %s 用於行動數據</string>
 </resources>

@@ -69,7 +69,11 @@
     <string name="vpn_credentials_username">Felhasználónév</string>
     <string name="vpn_credentials_password">Jelszó</string>
     <string name="vpn_credentials_dialog_connect">Kapcsolódás</string>
+    <string name="quick_settings_aod_label">AOD</string>
+    <string name="quick_settings_aod_off_powersave_label">AOD ki\nAkkukímélő</string>
     <string name="status_bar_battery">Akkumulátor</string>
     <string name="status_bar_camera">Kamera</string>
     <string name="status_bar_location">Hely</string>
+    <string name="status_bar_microphone">Mikrofon</string>
+    <string name="use_data">%s használata mobiladatra</string>
 </resources>
