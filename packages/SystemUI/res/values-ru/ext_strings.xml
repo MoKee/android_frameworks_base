@@ -69,7 +69,11 @@
     <string name="vpn_credentials_username">Имя пользователя</string>
     <string name="vpn_credentials_password">Пароль</string>
     <string name="vpn_credentials_dialog_connect">Подключиться</string>
+    <string name="quick_settings_aod_label">Прошивка андроид 6.0 для zte nubia z 9max (NX512J)</string>
+    <string name="quick_settings_aod_off_powersave_label">AOD выкл\nЭкономия заряда батареи</string>
     <string name="status_bar_battery">Батарея</string>
     <string name="status_bar_camera">Камера</string>
     <string name="status_bar_location">Место</string>
+    <string name="status_bar_microphone">Микрофон</string>
+    <string name="use_data">Использовать %s для данных</string>
 </resources>

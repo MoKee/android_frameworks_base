@@ -72,4 +72,5 @@
     <string name="status_bar_battery">Bateria</string>
     <string name="status_bar_camera">Câmera</string>
     <string name="status_bar_location">Localização</string>
+    <string name="use_data">Usar %s para dados</string>
 </resources>

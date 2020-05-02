@@ -69,7 +69,11 @@
     <string name="vpn_credentials_username">Tên người dùng</string>
     <string name="vpn_credentials_password">Mật khẩu</string>
     <string name="vpn_credentials_dialog_connect">Kết nối</string>
+    <string name="quick_settings_aod_label">Màn hình luôn bật</string>
+    <string name="quick_settings_aod_off_powersave_label">Màn hình luôn bật tắt\nTiết kiệm pin</string>
     <string name="status_bar_battery">Pin</string>
     <string name="status_bar_camera">Máy ảnh</string>
     <string name="status_bar_location">Vị trí</string>
+    <string name="status_bar_microphone">Micrô</string>
+    <string name="use_data">Sử dụng %s cho dữ liệu</string>
 </resources>

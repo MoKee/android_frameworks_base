@@ -72,4 +72,5 @@
     <string name="status_bar_battery">Batteria</string>
     <string name="status_bar_camera">Fotocamera</string>
     <string name="status_bar_location">Posizione</string>
+    <string name="use_data">Usa %s per i dati mobili</string>
 </resources>

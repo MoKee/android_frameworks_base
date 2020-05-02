@@ -72,4 +72,5 @@
     <string name="status_bar_battery">Bateria</string>
     <string name="status_bar_camera">Aparat</string>
     <string name="status_bar_location">Lokalizacja</string>
+    <string name="use_data">Użyj %s dla danych</string>
 </resources>
