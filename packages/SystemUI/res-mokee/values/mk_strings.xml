@@ -19,4 +19,7 @@
     <!-- Screenshot QS Tile -->
     <string name="quick_settings_screenshot_label">Screenshot</string>
 
+    <!-- Text for switch default data sub in expanded CellularTile -->
+    <string name="use_data">Use %s for data</string>
+
 </resources>
