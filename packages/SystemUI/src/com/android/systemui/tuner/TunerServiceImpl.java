@@ -73,22 +73,11 @@ public class TunerServiceImpl extends TunerService {
 
     // Things that use the tunable infrastructure but are now real user settings and
     // shouldn't be reset with tuner settings.
+    // Do not add MoKee specific keys here as they are blacklisted automatically
     private static final String[] RESET_BLACKLIST = new String[] {
-            BatteryMeterView.STATUS_BAR_BATTERY_STYLE,
-            Clock.CLOCK_STYLE,
-            ClockController.CLOCK_POSITION,
-            EdgeBackGestureHandler.KEY_EDGE_LONG_SWIPE_ACTION,
-            NavigationBarView.NAVIGATION_BAR_MENU_ARROW_KEYS,
-            NotificationPanelView.DOUBLE_TAP_SLEEP_GESTURE,
-            NotificationPanelView.STATUS_BAR_QUICK_QS_PULLDOWN,
-            NotificationStackScrollLayout.LOCKSCREEN_TRANSLUCENT_NOTIFICATIONS_BG_ENABLED,
-            QSPanel.STATUS_BAR_QS_TILE_COLUMNS,
             QSTileHost.TILES_SETTING,
             Settings.Secure.DOZE_ALWAYS_ON,
-            StatusBar.FORCE_SHOW_NAVBAR,
             StatusBar.SCREEN_BRIGHTNESS_MODE,
-            StatusBar.STATUS_BAR_BRIGHTNESS_CONTROL,
-            VolumeDialogImpl.SETTING_VOLUME_PANEL_ON_LEFT,
     };
 
     private final Observer mObserver = new Observer();
@@ -166,15 +155,19 @@ public class TunerServiceImpl extends TunerService {
         setValue(TUNER_VERSION, newVersion);
     }
 
-    private boolean isMKGlobal(String key) {
+    private boolean isMoKeeSetting(String key) {
+        return isMoKeeGlobal(key) || isMoKeeSystem(key) || isMoKeeSecure(key);
+    }
+
+    private boolean isMoKeeGlobal(String key) {
         return key.startsWith("mkglobal:");
     }
 
-    private boolean isMKSystem(String key) {
+    private boolean isMoKeeSystem(String key) {
         return key.startsWith("mksystem:");
     }
 
-    private boolean isMKSecure(String key) {
+    private boolean isMoKeeSecure(String key) {
         return key.startsWith("mksecure:");
     }
 
@@ -188,12 +181,12 @@ public class TunerServiceImpl extends TunerService {
 
     @Override
     public String getValue(String setting) {
-        if (isMKGlobal(setting)) {
+        if (isMoKeeGlobal(setting)) {
             return MKSettings.Global.getString(mContentResolver, chomp(setting));
-        } else if (isMKSecure(setting)) {
+        } else if (isMoKeeSecure(setting)) {
             return MKSettings.Secure.getStringForUser(
                     mContentResolver, chomp(setting), mCurrentUser);
-        } else if (isMKSystem(setting)) {
+        } else if (isMoKeeSystem(setting)) {
             return MKSettings.System.getStringForUser(
                     mContentResolver, chomp(setting), mCurrentUser);
         } else if (isSystem(setting)) {
@@ -206,12 +199,12 @@ public class TunerServiceImpl extends TunerService {
 
     @Override
     public void setValue(String setting, String value) {
-        if (isMKGlobal(setting)) {
+        if (isMoKeeGlobal(setting)) {
             MKSettings.Global.putString(mContentResolver, chomp(setting), value);
-        } else if (isMKSecure(setting)) {
+        } else if (isMoKeeSecure(setting)) {
             MKSettings.Secure.putStringForUser(
                     mContentResolver, chomp(setting), value, mCurrentUser);
-        } else if (isMKSystem(setting)) {
+        } else if (isMoKeeSystem(setting)) {
             MKSettings.System.putStringForUser(
                     mContentResolver, chomp(setting), value, mCurrentUser);
         } else if (isSystem(setting)) {
@@ -224,12 +217,12 @@ public class TunerServiceImpl extends TunerService {
 
     @Override
     public int getValue(String setting, int def) {
-        if (isMKGlobal(setting)) {
+        if (isMoKeeGlobal(setting)) {
             return MKSettings.Global.getInt(mContentResolver, chomp(setting), def);
-        } else if (isMKSecure(setting)) {
+        } else if (isMoKeeSecure(setting)) {
             return MKSettings.Secure.getIntForUser(
                     mContentResolver, chomp(setting), def, mCurrentUser);
-        } else if (isMKSystem(setting)) {
+        } else if (isMoKeeSystem(setting)) {
             return MKSettings.System.getIntForUser(
                     mContentResolver, chomp(setting), def, mCurrentUser);
         } else if (isSystem(setting)) {
@@ -243,12 +236,12 @@ public class TunerServiceImpl extends TunerService {
     @Override
     public String getValue(String setting, String def) {
         String ret;
-        if (isMKGlobal(setting)) {
+        if (isMoKeeGlobal(setting)) {
             ret = MKSettings.Global.getString(mContentResolver, chomp(setting));
-        } else if (isMKSecure(setting)) {
+        } else if (isMoKeeSecure(setting)) {
             ret = MKSettings.Secure.getStringForUser(
                     mContentResolver, chomp(setting), mCurrentUser);
-        } else if (isMKSystem(setting)) {
+        } else if (isMoKeeSystem(setting)) {
             ret = MKSettings.System.getStringForUser(
                     mContentResolver, chomp(setting), mCurrentUser);
         } else if (isSystem(setting)) {
@@ -263,12 +256,12 @@ public class TunerServiceImpl extends TunerService {
 
     @Override
     public void setValue(String setting, int value) {
-        if (isMKGlobal(setting)) {
+        if (isMoKeeGlobal(setting)) {
             MKSettings.Global.putInt(mContentResolver, chomp(setting), value);
-        } else if (isMKSecure(setting)) {
+        } else if (isMoKeeSecure(setting)) {
             MKSettings.Secure.putIntForUser(
                     mContentResolver, chomp(setting), value, mCurrentUser);
-        } else if (isMKSystem(setting)) {
+        } else if (isMoKeeSystem(setting)) {
             MKSettings.System.putIntForUser(
                     mContentResolver, chomp(setting), value, mCurrentUser);
         } else if (isSystem(setting)) {
@@ -295,11 +288,11 @@ public class TunerServiceImpl extends TunerService {
             mLeakDetector.trackCollection(mTunables, "TunerService.mTunables");
         }
         final Uri uri;
-        if (isMKGlobal(key)) {
+        if (isMoKeeGlobal(key)) {
             uri = MKSettings.Global.getUriFor(chomp(key));
-        } else if (isMKSecure(key)) {
+        } else if (isMoKeeSecure(key)) {
             uri = MKSettings.Secure.getUriFor(chomp(key));
-        } else if (isMKSystem(key)) {
+        } else if (isMoKeeSystem(key)) {
             uri = MKSettings.System.getUriFor(chomp(key));
         } else if (isSystem(key)) {
             uri = Settings.System.getUriFor(chomp(key));
@@ -309,7 +302,7 @@ public class TunerServiceImpl extends TunerService {
         if (!mListeningUris.containsKey(uri)) {
             mListeningUris.put(uri, key);
             mContentResolver.registerContentObserver(uri, false, mObserver,
-                    isMKGlobal(key) ? UserHandle.USER_ALL : mCurrentUser);
+                    isMoKeeGlobal(key) ? UserHandle.USER_ALL : mCurrentUser);
         }
         // Send the first state.
         String value = getValue(key);
@@ -334,7 +327,7 @@ public class TunerServiceImpl extends TunerService {
         for (Uri uri : mListeningUris.keySet()) {
             String key = mListeningUris.get(uri);
             mContentResolver.registerContentObserver(uri, false, mObserver,
-                    isMKGlobal(key) ? UserHandle.USER_ALL : mCurrentUser);
+                    isMoKeeGlobal(key) ? UserHandle.USER_ALL : mCurrentUser);
         }
     }
 
@@ -372,7 +365,7 @@ public class TunerServiceImpl extends TunerService {
         mContext.sendBroadcast(intent);
 
         for (String key : mTunableLookup.keySet()) {
-            if (ArrayUtils.contains(RESET_BLACKLIST, key)) {
+            if (ArrayUtils.contains(RESET_BLACKLIST, key) || isMoKeeSetting(key)) {
                 continue;
             }
             setValue(key, null);
@@ -387,7 +380,7 @@ public class TunerServiceImpl extends TunerService {
         @Override
         public void onChange(boolean selfChange, Uri uri, int userId) {
             String key = mListeningUris.get(uri);
-            if (userId == ActivityManager.getCurrentUser() || isMKGlobal(key)) {
+            if (userId == ActivityManager.getCurrentUser() || isMoKeeGlobal(key)) {
                 reloadSetting(uri);
             }
         }
