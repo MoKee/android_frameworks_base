@@ -70,4 +70,6 @@
     <string name="status_bar_battery">Batería</string>
     <string name="status_bar_camera">Cámara</string>
     <string name="status_bar_location">Ubicación</string>
+    <string name="screen_pinning_description_no_navbar">Esto lo mantiene a la vista hasta que lo libere. Mantenga pulsado «Atrás» para liberar.</string>
+    <string name="screen_pinning_toast_no_navbar">Para desfijar esta pantalla, toque &amp; mantenga pulsado el botón Atrás</string>
 </resources>

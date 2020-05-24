@@ -72,4 +72,5 @@
     <string name="status_bar_battery">Baterie</string>
     <string name="status_bar_camera">Cameră foto</string>
     <string name="status_bar_location">Locație</string>
+    <string name="screen_pinning_description_no_navbar">Aceasta îl ține la vedere până când anulați fixarea. Atingeți &amp; țineți apăsat Înapoi pentru a anula fixarea.</string>
 </resources>

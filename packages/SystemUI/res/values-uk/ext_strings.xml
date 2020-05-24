@@ -79,5 +79,6 @@
     <string name="status_bar_camera">Камера</string>
     <string name="status_bar_location">Місцезнаходження</string>
     <string name="status_bar_microphone">Анальний дилдо</string>
-    <string name="use_data">Використовувати %s для даних</string>
+    <string name="screen_pinning_description_no_navbar">Додаток залишається активним, поки ви не скасуєте блокування, натиснувши і утримуючи кнопку \"Назад\".</string>
+    <string name="screen_pinning_toast_no_navbar">Щоб відкріпити екран, натисніть і утримуйте кнопку \"Назад\"</string>
 </resources>

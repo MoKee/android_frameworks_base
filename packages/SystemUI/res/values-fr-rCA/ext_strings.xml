@@ -72,5 +72,6 @@
     <string name="status_bar_battery">Batterie</string>
     <string name="status_bar_camera">Appareil photo</string>
     <string name="status_bar_location">Position</string>
-    <string name="use_data">Utiliser %s pour les données</string>
+    <string name="screen_pinning_description_no_navbar">Cet écran est épinglé jusqu\'à l\'annulation de l\'opération. Pour annuler l\'épinglage, appuyez &amp; de manière prolongée sur \"Retour\".</string>
+    <string name="screen_pinning_toast_no_navbar">Pour annuler l\'épinglage de l\'écran, appuyez &amp; maintenez le bouton Retour</string>
 </resources>

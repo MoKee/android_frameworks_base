@@ -58,4 +58,5 @@
     <string name="vpn_credentials_password">Password</string>
     <string name="status_bar_camera">Kamera</string>
     <string name="status_bar_location">Lokasyon</string>
+    <string name="screen_pinning_description_no_navbar">Mananatili itong makikita hanggang di sinasara. Hawakan &amp; pindutin ng mahaba ang Back para -i-unpin.</string>
 </resources>

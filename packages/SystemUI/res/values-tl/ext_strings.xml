@@ -57,4 +57,5 @@
     <string name="quick_settings_volume_panel_label">Ang volume panel</string>
     <string name="status_bar_camera">Ang kamera</string>
     <string name="status_bar_location">Lokasyon</string>
+    <string name="screen_pinning_description_no_navbar">Pinapanatili nito sa paningin hanggang ito ay iyong i-unpin. Hawakan ang &amp; hawakan ang Back para i-unpin.</string>
 </resources>

@@ -15,4 +15,5 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="quick_settings_screenshot_label">Cattura schermo</string>
+    <string name="use_data">Usa %s per i dati mobili</string>
 </resources>

@@ -67,4 +67,5 @@
     <string name="status_bar_battery">バッテリー</string>
     <string name="status_bar_camera">カメラ</string>
     <string name="status_bar_location">場所</string>
+    <string name="screen_pinning_description_no_navbar">固定を解除するまで画面が常に表示されるようになります。固定を解除するには戻るボタンを押し続けます。</string>
 </resources>

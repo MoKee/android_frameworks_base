@@ -65,4 +65,5 @@
     <string name="status_bar_battery">Batería</string>
     <string name="status_bar_camera">Cámara</string>
     <string name="status_bar_location">Localización</string>
+    <string name="screen_pinning_description_no_navbar">Amosarase mentres esté fixado. Para deixar de fixalo, mantén tocado o botón Atrás.</string>
 </resources>

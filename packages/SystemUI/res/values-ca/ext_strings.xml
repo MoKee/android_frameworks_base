@@ -72,4 +72,5 @@
     <string name="status_bar_battery">Bateria</string>
     <string name="status_bar_camera">Càmera</string>
     <string name="status_bar_location">Ubicació</string>
+    <string name="screen_pinning_description_no_navbar">Aquest element es continuarà mostrant fins que deixis de fixar-lo. Per des-fixar-lo, toca i mantén premut el botó Enrera.</string>
 </resources>

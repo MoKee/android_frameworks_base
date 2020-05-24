@@ -63,4 +63,5 @@
     <string name="vpn_credentials_password">Passord</string>
     <string name="status_bar_camera">Kamera</string>
     <string name="status_bar_location">Posisjon</string>
+    <string name="screen_pinning_description_no_navbar">Dette holder den i syne inntil du løsner den. Trykk &amp; hold tilbake-knappen for å løsne.</string>
 </resources>

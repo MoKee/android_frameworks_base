@@ -15,4 +15,5 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="quick_settings_screenshot_label">屏幕截图</string>
+    <string name="use_data">使用 %s 数据</string>
 </resources>

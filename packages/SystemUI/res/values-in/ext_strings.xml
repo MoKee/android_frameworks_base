@@ -72,5 +72,7 @@
     <string name="status_bar_battery">Baterai</string>
     <string name="status_bar_camera">Kamera</string>
     <string name="status_bar_location">Lokasi</string>
-    <string name="use_data">Gunakan %s untuk data</string>
+    <string name="status_bar_microphone">Mikrofon</string>
+    <string name="screen_pinning_description_no_navbar">Ini membuatnya tetap terlihat sampai Anda melepaskan pin. Sentuh &amp; tahan tombol Kembali untuk melepaskan pin.</string>
+    <string name="screen_pinning_toast_no_navbar">Untuk melepaskan sematan layar ini, sentuh &amp; tahan tombol Kembali</string>
 </resources>

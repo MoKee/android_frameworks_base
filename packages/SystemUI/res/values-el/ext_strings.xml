@@ -72,4 +72,5 @@
     <string name="status_bar_battery">Μπαταρία</string>
     <string name="status_bar_camera">Φωτογραφική μηχανή</string>
     <string name="status_bar_location">Τοποθεσία</string>
+    <string name="screen_pinning_description_no_navbar">Με αυτόν τον τρόπο παραμένει σε προβολή μέχρι να το ξεκαρφιτσώσετε. Αγγίξτε παρατεταμένα το στοιχείο \"Επιστροφή\" για ξεκαρφίτσωμα.</string>
 </resources>

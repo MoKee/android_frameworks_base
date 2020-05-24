@@ -62,4 +62,5 @@
     <string name="vpn_credentials_password">पासवर्ड</string>
     <string name="status_bar_camera">कैमरा</string>
     <string name="status_bar_location">स्थान</string>
+    <string name="screen_pinning_description_no_navbar">यह इसे तब तक दिखाता रहेगा जब तक आप अनपिन नहीं करते। अनपिन करने के लिए बैक बटन को कुछ देर दबाएँ &amp; रखें।</string>
 </resources>

@@ -66,4 +66,5 @@
     <string name="status_bar_battery">Akku</string>
     <string name="status_bar_camera">Kamera</string>
     <string name="status_bar_location">Sijainti</string>
+    <string name="screen_pinning_description_no_navbar">Tämä pitää sen näkyvissä, kunnes peruutat kiinnityksen. Peruuta kiinnitys koskettamalla Edellinen-kohtaa pitkään.</string>
 </resources>

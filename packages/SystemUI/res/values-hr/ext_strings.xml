@@ -65,4 +65,5 @@
     <string name="vpn_credentials_password">Lozinka</string>
     <string name="status_bar_camera">Fotoaparat</string>
     <string name="status_bar_location">Lokacija</string>
+    <string name="screen_pinning_description_no_navbar">Ovo drži zaslon u pogledu dok ga ne otkvačite. Dodirnite &amp; držite gumb za povratak natrag da biste ga otkvačili.</string>
 </resources>

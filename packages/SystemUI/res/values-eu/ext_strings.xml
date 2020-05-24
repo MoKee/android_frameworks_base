@@ -67,4 +67,5 @@
     <string name="status_bar_battery">Bateria</string>
     <string name="status_bar_camera">Kamera</string>
     <string name="status_bar_location">Kokalekua</string>
+    <string name="screen_pinning_description_no_navbar">Honek bistan mantenduko du desiltzatzen duzun arte. Sakatu eta mantendu atzera botoia desiltzatzeko.</string>
 </resources>

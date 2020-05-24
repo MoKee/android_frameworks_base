@@ -66,4 +66,5 @@
     <string name="status_bar_battery">Accu</string>
     <string name="status_bar_camera">Camera</string>
     <string name="status_bar_location">Locatie</string>
+    <string name="screen_pinning_description_no_navbar">Het scherm blijft zichtbaar totdat je het losmaakt. Tik op &amp; en houd vast om het scherm los te maken.</string>
 </resources>

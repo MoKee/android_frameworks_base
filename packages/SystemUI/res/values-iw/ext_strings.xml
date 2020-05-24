@@ -64,4 +64,5 @@
     <string name="vpn_credentials_password">סיסמא</string>
     <string name="status_bar_camera">מצלמה</string>
     <string name="status_bar_location">מיקום</string>
+    <string name="screen_pinning_description_no_navbar">שומר בתצוגה עד לביטול ההצמדה. גע והחזק בו זמנית בלחצן \'הקודם\' כדי לבטל הצמדה.</string>
 </resources>
