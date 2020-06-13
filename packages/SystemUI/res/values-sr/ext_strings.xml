@@ -68,4 +68,5 @@
     <string name="status_bar_camera">Камера</string>
     <string name="status_bar_location">Локација</string>
     <string name="screen_pinning_description_no_navbar">Ово се стално приказује док га не уклониш. Додирни &amp; и задржи Назад да би га уклонио.</string>
+    <string name="screen_pinning_toast_no_navbar">Да бисте откључали овај екран, додирните и задржите дугме за повратак</string>
 </resources>

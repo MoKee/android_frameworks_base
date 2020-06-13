@@ -15,4 +15,5 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="quick_settings_screenshot_label">Снимак екрана</string>
+    <string name="use_data">Користите %s података</string>
 </resources>
