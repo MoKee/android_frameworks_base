@@ -171,7 +171,7 @@ android_app {
     kotlincflags: ["-Xjvm-default=enable"],
 
     dxflags: ["--multi-dex"],
-    required: ["privapp_whitelist_com.android.systemui"],
+    required: ["privapp_whitelist_com.android.systemui", "privapp_whitelist_com.android.systemui-ext"],
 
 }
 
@@ -209,4 +209,12 @@ android_app {
     ],
 
     manifest: "legacy/recents/AndroidManifest.xml",
+}
+
+prebuilt_etc {
+    name: "privapp_whitelist_com.android.systemui-ext",
+    product_specific: true,
+    sub_dir: "permissions",
+    src: "privapp_whitelist_com.android.systemui-ext.xml",
+    filename_from_src: true,
 }
