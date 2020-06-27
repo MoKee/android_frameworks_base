@@ -69,7 +69,7 @@ public class BtHelper {
     private @Nullable BluetoothHearingAid mHearingAid;
 
     // Reference to BluetoothA2dp to query for AbsoluteVolume.
-    private @Nullable BluetoothA2dp mA2dp;
+    static private @Nullable BluetoothA2dp mA2dp;
 
     // If absolute volume is supported in AVRCP device
     private boolean mAvrcpAbsVolSupported = false;
@@ -168,6 +168,26 @@ public class BtHelper {
         return deviceName;
     }
 
+    /*packages*/ @NonNull static boolean isTwsPlusSwitch(@NonNull BluetoothDevice device,
+                                                                 String address) {
+        BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+        BluetoothDevice connDevice = adapter.getRemoteDevice(address);
+        if (device == null || connDevice == null ||
+            device.getTwsPlusPeerAddress() == null) {
+            return false;
+        }
+        if (device.isTwsPlusDevice() &&
+            connDevice.isTwsPlusDevice() &&
+            device.getTwsPlusPeerAddress().equals(address)) {
+            if(mA2dp.getConnectionState(connDevice) != BluetoothProfile.STATE_CONNECTED) {
+                Log.w(TAG,"Active earbud is already disconnected");
+                return false;
+            }
+            Log.i(TAG,"isTwsPlusSwitch true");
+            return true;
+         }
+         return false;
+    }
     //----------------------------------------------------------------------
     // Interface for AudioDeviceBroker
 
@@ -1005,6 +1025,12 @@ public class BtHelper {
                 return AudioSystem.AUDIO_FORMAT_APTX_HD;
             case BluetoothCodecConfig.SOURCE_CODEC_TYPE_LDAC:
                 return AudioSystem.AUDIO_FORMAT_LDAC;
+            case BluetoothCodecConfig.SOURCE_CODEC_TYPE_CELT:
+                return AudioSystem.AUDIO_FORMAT_CELT;
+            case BluetoothCodecConfig.SOURCE_CODEC_TYPE_APTX_ADAPTIVE:
+                return AudioSystem.AUDIO_FORMAT_APTX_ADAPTIVE;
+            case BluetoothCodecConfig.SOURCE_CODEC_TYPE_APTX_TWSP:
+                return AudioSystem.AUDIO_FORMAT_APTX_TWSP;
             default:
                 return AudioSystem.AUDIO_FORMAT_DEFAULT;
         }

@@ -129,7 +129,7 @@ public class A2dpProfileTest {
     private static String KNOWN_CODEC_LABEL = "Use high quality audio: %1$s";
     private static String UNKNOWN_CODEC_LABEL = "Use high quality audio";
     private static String[] CODEC_NAMES =
-            new String[]{"Default", "SBC", "AAC", "aptX", "aptX HD", "LDAC"};
+            new String[]{"Default", "SBC", "AAC", "aptX", "aptX HD", "LDAC", "aptX Adaptive", "aptX TWS+"};
 
     /**
      * Helper for setting up several tests of getHighQualityAudioOptionLabel
@@ -146,7 +146,7 @@ public class A2dpProfileTest {
 
         final Resources res = mock(Resources.class);
         when(mContext.getResources()).thenReturn(res);
-        when(res.getStringArray(eq(R.array.bluetooth_a2dp_codec_titles)))
+        when(res.getStringArray(eq(R.array.bluetooth_a2dp_codec_titles_cm)))
                 .thenReturn(CODEC_NAMES);
 
         // Most tests want to simulate optional codecs being supported by the device, so do that

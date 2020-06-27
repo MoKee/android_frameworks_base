@@ -18,5 +18,5 @@
  */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="global_action_current_user">Núverandi</string>
+    <string name="screen_pinning_toast_no_navbar">Til að losa þennan skjá, ýttu á og haltu niðri \'Til baka\' hnappnum</string>
 </resources>
