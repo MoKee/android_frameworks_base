@@ -16,5 +16,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="status_bar_su">Su</string>
     <string name="status_bar_vpn">VPN</string>
+    <string name="status_bar_roaming">Indicador de Roaming</string>
     <string name="quick_settings_screenshot_label">Capturar ecrã</string>
 </resources>

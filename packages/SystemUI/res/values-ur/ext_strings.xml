@@ -20,4 +20,5 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="global_action_current_user">موجودہ</string>
+    <string name="quick_settings_caffeine_label">جگائو</string>
 </resources>

@@ -14,5 +14,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="status_bar_vpn">VPN</string>
     <string name="quick_settings_screenshot_label">திரைப்பிடிப்பு</string>
 </resources>

@@ -63,7 +63,9 @@
     <string name="accessibility_dpad_left">Cursor izquierda</string>
     <string name="accessibility_dpad_right">Cursor derecha</string>
     <string name="screen_pinning_description_no_navbar">Esto lo mantiene a la vista hasta que lo liberes. Toca &amp; manten pulsado atras para liberar.</string>
+    <string name="screen_pinning_toast_no_navbar">Para desfijar esta pantalla, toque &amp; mantenga pulsado el botón Atrás</string>
     <string name="nav_bar_layout_inverse">Invertir barra de navegación</string>
+    <string name="custom_swipe_hint">Desliza desde el icono para <xliff:g name="target">%s</xliff:g></string>
     <string name="accessibility_quick_settings_location_battery_saving">Informes de ubicación: modo de ahorro de batería.</string>
     <string name="accessibility_quick_settings_location_gps_only">Informes de ubicación: modo sólo dispositivo.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">Informes de ubicación: modo de alta precisión.</string>
@@ -82,4 +84,5 @@
     <string name="quick_settings_location_detail_mode_battery_saving_description">Usa el Wi\u2011Fi, Bluetooth o redes móviles para determinar la ubicación</string>
     <string name="quick_settings_location_detail_mode_sensors_only_description">Usar GPS para determinar la ubicación</string>
     <string name="status_bar_battery">Batería</string>
+    <string name="use_data">Usar %s para datos</string>
 </resources>

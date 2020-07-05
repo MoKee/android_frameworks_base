@@ -63,7 +63,9 @@
     <string name="accessibility_dpad_left">Курсор лево</string>
     <string name="accessibility_dpad_right">Курсор десно</string>
     <string name="screen_pinning_description_no_navbar">Ово се стално приказује док га не уклониш. Додирни &amp; и задржи Назад да би га уклонио.</string>
+    <string name="screen_pinning_toast_no_navbar">Да бисте откључали овај екран, додирните и задржите дугме за повратак</string>
     <string name="nav_bar_layout_inverse">Обрни распоред</string>
+    <string name="custom_swipe_hint">Превучи прстом преко иконе <xliff:g name="target">%s</xliff:g></string>
     <string name="accessibility_quick_settings_location_battery_saving">Локација извештај: режим чувања батерије.</string>
     <string name="accessibility_quick_settings_location_gps_only">Локација извештај: режим само сензори.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">Локација извештај: режим високе тачности.</string>
@@ -82,4 +84,5 @@
     <string name="quick_settings_location_detail_mode_battery_saving_description">Користите Wi-Fi, Bluetooth или мобилне мреже за одређивање локације.</string>
     <string name="quick_settings_location_detail_mode_sensors_only_description">Користите GPS за одређивање локације</string>
     <string name="status_bar_battery">Батерија</string>
+    <string name="use_data">Користите %s података</string>
 </resources>

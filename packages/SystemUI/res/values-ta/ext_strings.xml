@@ -19,11 +19,13 @@
  */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="global_action_restart_system">முறைமை</string>
     <string name="global_action_restart_recovery">மீட்டல்</string>
     <string name="global_action_restart_bootloader">பூட்லோடர்</string>
     <string name="global_action_restart_download">பதிவிறக்கம்</string>
     <string name="global_action_current_user">நடப்பு</string>
     <string name="quick_settings_network_adb_label">பிணையத்தின் மீது ADB</string>
+    <string name="quick_settings_network_adb_no_network">பிணையமில்லை</string>
     <string name="quick_settings_ambient_display_label">சூழல்சார் திரை</string>
     <string name="accessibility_quick_settings_ambient_display_off">சூழல் காட்சி ஆஃப்.</string>
     <string name="accessibility_quick_settings_ambient_display_on">சூழல் காட்சி ஆன்.</string>
@@ -37,11 +39,13 @@
     <string name="accessibility_quick_settings_heads_up_on">ஹெட்ஸ் அப் ஆன்.</string>
     <string name="accessibility_quick_settings_heads_up_changed_off">ஹெட்ஸ் அப் ஆஃப் செய்யப்பட்டது.</string>
     <string name="accessibility_quick_settings_heads_up_changed_on">ஹெட்ஸ் அப் ஆன் செய்யப்பட்டது.</string>
+    <string name="quick_settings_reading_mode">வாசித்தல் பயன்முறை</string>
     <string name="quick_settings_sync_label">ஒத்திசை</string>
     <string name="accessibility_quick_settings_sync_off">ஒத்திசைவு ஆஃப்</string>
     <string name="accessibility_quick_settings_sync_on">ஒத்திசைவு ஆன்</string>
     <string name="accessibility_quick_settings_sync_changed_off">ஒத்திசைவு அணைக்கப்பட்டது</string>
     <string name="accessibility_quick_settings_sync_changed_on">ஒத்திசைவு துவக்கப்பட்டது</string>
+    <string name="quick_settings_profiles_label">முறைமை சுயவிவரங்கள்</string>
     <string name="accessibility_quick_settings_profiles_off">சுயவிவரங்கள் ஆஃப்.</string>
     <string name="accessibility_quick_settings_profiles">சுயவிவரம்: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <string name="accessibility_quick_settings_profiles_changed_off">சுயவிவரங்கள் ஆஃப் செய்யப்பட்டன.</string>
@@ -50,12 +54,24 @@
     <string name="quick_settings_volume_panel_label">வால்யூம் பேனல்</string>
     <string name="accessibility_dpad_left">இடஞ்சுட்டி இடது</string>
     <string name="accessibility_dpad_right">இடஞ்சுட்டி வலது</string>
+    <string name="nav_bar_layout_inverse">தளவமைப்பைச் சுழற்று</string>
     <string name="accessibility_quick_settings_location_battery_saving">இருப்பிடம் அறிவித்தல்: மின்கல சேமிப்பு பயன்முறை.</string>
     <string name="accessibility_quick_settings_location_gps_only">இருப்பிடம் அறிவித்தல்: உணர்கருவிகள் மட்டும் பயன்முறை.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">இருப்பிடம் அறிவித்தல்: உயர் துல்லிய பயன்முறை.</string>
+    <string name="quick_settings_location_battery_saving_label">பேட்டரி சேமிப்பு</string>
+    <string name="quick_settings_location_battery_saving_label_twoline">பேட்டரி\nசேமிப்பு</string>
     <string name="quick_settings_location_gps_only_label">சாதனம் மட்டும்</string>
+    <string name="quick_settings_location_gps_only_label_twoline">சாதனம்\nமட்டும்</string>
     <string name="quick_settings_location_high_accuracy_label">அதிக துல்லியத்தன்மை</string>
+    <string name="quick_settings_location_high_accuracy_label_twoline">அதிக\nதுல்லியம்</string>
     <string name="quick_settings_location_detail_title">இருப்பிடம்</string>
+    <string name="quick_settings_location_detail_menu_title">பயன்முறையைத் தேர்ந்தெடு:</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_title">அதிக துல்லியத்தன்மை</string>
+    <string name="quick_settings_location_detail_mode_battery_saving_title">பேட்டரி சேமிப்பு</string>
     <string name="quick_settings_location_detail_mode_sensors_only_title">சாதனம் மட்டும்</string>
+    <string name="quick_settings_location_detail_mode_high_accuracy_description">இருப்பிடத்தைத் தீர்மானிக்க GPS, Wi\u2011Fi, Bluetooth அல்லது மொபைல் பிணையங்களைப் பயன்படுத்துக </string>
+    <string name="quick_settings_location_detail_mode_battery_saving_description">இருப்பிடத்தைத் தீர்மானிக்க Wi\u2011Fi, Bluetooth அல்லது மொபைல் பிணையங்களைப் பயன்படுத்துக</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_description">இருப்பிடத்தைக் கண்டறிய, GPSஐப் பயன்படுத்தவும்</string>
+    <string name="status_bar_battery">பேட்டரி</string>
+    <string name="use_data">தரவுக்காக %s பயன்படுத்து</string>
 </resources>
