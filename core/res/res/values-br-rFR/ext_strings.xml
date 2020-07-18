@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2012-2019 The MoKee Open Source Project
+     Copyright (C) 2017 The LineageOS Project
+     Copyright (C) 2012-2014 The CyanogenMod Project
+     Copyright (c) 2013, The Linux Foundation. All rights reserved.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+           http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_ops_assist_screenshot">kemer un dapadenn-skramm</string>
+    <string name="app_ops_modify_calendar">hizivaat ho teiziataer</string>
+    <string name="app_ops_modify_settings">hizivaat arventennoù ar reizhiad</string>
+    <string name="app_ops_mute_unmute_microphone">gweredekaat/diweredekaat ar mikrofon</string>
+    <string name="app_ops_send_mms">kas ur gemennadenn MMS</string>
+    <string name="app_ops_send_sms">kas ur gemennadenn SMS</string>
+    <string name="app_ops_toggle_bluetooth">gweredekaat/diweredekaat Bluetooth</string>
+    <string name="app_ops_toggle_nfc">gweredekaat/diweredekaat NFC</string>
+    <string name="app_ops_toggle_wifi">gweredekaat/diweredekaat Wi-Fi</string>
+    <string name="app_ops_turn_on_screen">enaouiñ ar skramm</string>
+    <string name="app_ops_use_alarm_volume">merañ ampled son an alarm</string>
+    <string name="app_ops_use_audio_focus">merañ ar son sturiet</string>
+    <string name="app_ops_use_bluetooth_volume">merañ ampled son ar Bluetooth</string>
+    <string name="app_ops_use_body_sensors">implij kaptorioù korf</string>
+    <string name="app_ops_use_fingerprint">implij ar roud-biz</string>
+    <string name="app_ops_use_voice_volume">merañ ampled son ar bellgomzadenn</string>
+    <string name="app_ops_wifi_change">cheñch stad ar Wi-Fi</string>
+    <string name="app_ops_write_external_storage">skrivañ war ar stokadur diavaez</string>
+    <string name="app_ops_write_mms">skrivañ ur gemennadenn MMS</string>
+    <string name="app_ops_write_sms">skrivañ ur gemennadenn SMS</string>
+</resources>
