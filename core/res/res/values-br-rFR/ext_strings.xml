@@ -19,11 +19,27 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_ops_assist_screenshot">kemer un dapadenn-skramm</string>
+    <string name="app_ops_auto_start">lañsañ d\'al loc\'hañ</string>
+    <string name="app_ops_change_wallpaper">cheñch an drekleur</string>
+    <string name="app_ops_delete_call_log">diverkañ ho roll-isor pellgomzadennoù</string>
+    <string name="app_ops_delete_contacts">diverkañ ho darempredoù</string>
+    <string name="app_ops_delete_mms">diverkañ ho kemennadoù MMS</string>
+    <string name="app_ops_delete_sms">diverkañ ho kemennadoù SMS</string>
+    <string name="app_ops_draw_on_top">plasañ prenestroù a-us</string>
+    <string name="app_ops_get_accounts">kaout kontoù ar benveg</string>
+    <string name="app_ops_get_usage_stats">kaout stadegoù implij an arload</string>
+    <string name="app_ops_install_packages">staliañ pakadoù</string>
+    <string name="app_ops_keep_device_awake">derc\'hel ho benveg dihun</string>
+    <string name="app_ops_make_phone_call">kas ur bellgomzadenn</string>
     <string name="app_ops_modify_calendar">hizivaat ho teiziataer</string>
     <string name="app_ops_modify_settings">hizivaat arventennoù ar reizhiad</string>
     <string name="app_ops_mute_unmute_microphone">gweredekaat/diweredekaat ar mikrofon</string>
+    <string name="app_ops_read_mms">lenn ho kemennadoù MMS</string>
+    <string name="app_ops_read_sms">lenn ho kemennadoù SMS</string>
+    <string name="app_ops_record_audio">enrollañ son</string>
     <string name="app_ops_send_mms">kas ur gemennadenn MMS</string>
     <string name="app_ops_send_sms">kas ur gemennadenn SMS</string>
+    <string name="app_ops_start_at_bootup">lañsañ d\'al loc\'hañ</string>
     <string name="app_ops_toggle_bluetooth">gweredekaat/diweredekaat Bluetooth</string>
     <string name="app_ops_toggle_nfc">gweredekaat/diweredekaat NFC</string>
     <string name="app_ops_toggle_wifi">gweredekaat/diweredekaat Wi-Fi</string>
@@ -38,4 +54,9 @@
     <string name="app_ops_write_external_storage">skrivañ war ar stokadur diavaez</string>
     <string name="app_ops_write_mms">skrivañ ur gemennadenn MMS</string>
     <string name="app_ops_write_sms">skrivañ ur gemennadenn SMS</string>
+    <string name="permlab_changePrivacyGuardState"> gweredekaat pe diweredekaat gwareziñ ar roadennoù</string>
+    <string name="permdesc_changePrivacyGuardState">Aotre an arload da cheñch ar fed ma c\'hell un arload all implij gwareziñ ar roadennoù. Pa vez un arload oc\'h implij gwareziñ ar roadennoù, n\'en deux ket ar gwir tizout ar roadennoù personel.</string>
+    <string name="privacy_guard_notification">Gwareziñ ar roadennoù oberiant</string>
+    <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> ne c\'hello ket tizout ar roadennoù personel</string>
+    <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> en defe c\'hoant da <xliff:g id="op">%2$s</xliff:g></string>
 </resources>
