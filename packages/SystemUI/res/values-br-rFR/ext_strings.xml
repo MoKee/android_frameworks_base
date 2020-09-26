@@ -19,15 +19,32 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="global_action_restart_system">Reizhiad</string>
+    <string name="global_action_restart_recovery">Adtapout</string>
+    <string name="global_action_restart_bootloader">Karger loc\'hadur</string>
     <string name="global_action_restart_download">Pellgargañ</string>
+    <string name="global_action_restart_progress">Oc\'h Adlañsañ\u2026</string>
+    <string name="global_action_current_user">A-vremañ</string>
+    <string name="accessibility_dpad_left">Reti kleiz</string>
+    <string name="accessibility_dpad_right">Reti dehoù</string>
     <string name="quick_settings_network_adb_label">ADB dre rouedad</string>
     <string name="accessibility_quick_settings_caffeine_off">Kafein lazhet.</string>
     <string name="accessibility_quick_settings_caffeine_on">Kafein enaouet.</string>
+    <string name="quick_settings_sync_label">Goubred</string>
+    <string name="accessibility_quick_settings_sync_off">Goubred diweredekaet.</string>
+    <string name="accessibility_quick_settings_sync_on">Goubred gweredekaet.</string>
+    <string name="accessibility_quick_settings_sync_changed_off">Goubred bet diweredekaet.</string>
+    <string name="accessibility_quick_settings_sync_changed_on">Goubred bet gweredekaet.</string>
     <string name="quick_settings_profiles_label">Profiloù reizhiad</string>
+    <string name="accessibility_quick_settings_profiles_off">Profiloù disoberiaet.</string>
+    <string name="accessibility_quick_settings_profiles">Profil : <xliff:g id="profile" example="Default">%s</xliff:g></string>
+    <string name="accessibility_quick_settings_profiles_changed_off">Profiloù diweredekaet.</string>
+    <string name="accessibility_quick_settings_profiles_changed">Profil cheñchet e <xliff:g id="profile" example="Default">%s</xliff:g></string>
+    <string name="quick_settings_volume_panel_label">Panell an ampled son</string>
     <string name="quick_settings_vpn_label">VPN</string>
     <string name="vpn_credentials_password">Ger-tremen</string>
     <string name="status_bar_battery">Bateri</string>
     <string name="status_bar_camera">Kamera</string>
     <string name="status_bar_location">Lec\'hiadur</string>
     <string name="status_bar_microphone">Mikrofon</string>
+    <string name="screen_pinning_description_no_navbar">Evit derc\'hel war wel betek ma distagfec\'h. Touchañ &amp; derc\'hel Distreiñ evit distagañ.</string>
 </resources>
