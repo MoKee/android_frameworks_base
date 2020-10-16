@@ -20,4 +20,5 @@
     <string name="adb_net_active_notification_title">ADB üle võrgu aktiveeritud</string>
     <string name="adb_both_active_notification_title">ADB üle USB &amp; võrgu aktiveeritud</string>
     <string name="adb_active_generic_notification_message">Puuduta silumise lõpetamiseks.</string>
+    <string name="bluetooth_airplane_mode_toast">Bluetooth jääb lennurežiimi ajal sisselülitatuks</string>
 </resources>
