@@ -29,6 +29,7 @@
     <string name="global_action_restart_download_progress">Ponovno pokretanje u način preuzimanja\u2026</string>
     <string name="global_action_current_user">Trenutni</string>
     <string name="quick_settings_network_adb_label">ADB preko mreže</string>
+    <string name="quick_settings_network_adb_no_network">nema mreže</string>
     <string name="quick_settings_ambient_display_label">Ambijentalni zaslon</string>
     <string name="accessibility_quick_settings_ambient_display_off">Ambijentalni zaslon isključen.</string>
     <string name="accessibility_quick_settings_ambient_display_on">Ambijentalni zaslon uključen.</string>
@@ -62,6 +63,9 @@
     <string name="accessibility_dpad_left">Kursor lijevo</string>
     <string name="accessibility_dpad_right">Kursor desno</string>
     <string name="screen_pinning_description_no_navbar">Ovo drži zaslon u pogledu dok ga ne otkvačite. Dodirnite &amp; držite gumb za povratak natrag da biste ga otkvačili.</string>
+    <string name="screen_pinning_toast_no_navbar">Da biste otkvačili ovaj zaslon, dodirnite &amp; i držite tipku za natrag</string>
+    <string name="nav_bar_layout_inverse">Obrni izgled</string>
+    <string name="custom_swipe_hint">Kliznite od ikone za <xliff:g name="target">%s</xliff:g></string>
     <string name="accessibility_quick_settings_location_battery_saving">Izvještavanje o lokaciji: način štednje baterije.</string>
     <string name="accessibility_quick_settings_location_gps_only">Izvještavanje o lokaciji: način samo sa senzorima.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">Izvještavanje o lokaciji: način visoke preciznosti.</string>
@@ -78,4 +82,7 @@
     <string name="quick_settings_location_detail_mode_sensors_only_title">Samo uređaj</string>
     <string name="quick_settings_location_detail_mode_high_accuracy_description">Koristite GPS, Wi\u2011Fi, Bluetooth ili mobilne mreže za određivanje lokacije</string>
     <string name="quick_settings_location_detail_mode_battery_saving_description">Koristite Wi\u2011Fi, Bluetooth ili mobilne mreže za određivanje lokacije</string>
+    <string name="quick_settings_location_detail_mode_sensors_only_description">Koristi GPS za određivanje lokacije</string>
+    <string name="status_bar_battery">Baterija</string>
+    <string name="use_data">Koristi %s za podatke</string>
 </resources>

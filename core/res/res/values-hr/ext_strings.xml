@@ -31,6 +31,8 @@
     <string name="app_ops_assist_structure">upotrebljavati pomoćne strukture</string>
     <string name="app_ops_audio_accessibility_volume">dostupnost glasnoći zvuka</string>
     <string name="app_ops_auto_start">pokretati se pri uključivanju uređaja</string>
+    <string name="app_ops_bind_accessibility_service">povezivanje na servis za pristupačnost</string>
+    <string name="app_ops_bluetooth_scan">skenirati Bluetoothom</string>
     <string name="app_ops_change_wallpaper">mijenjati pozadinsku sliku</string>
     <string name="app_ops_delete_call_log">brisati zapise poziva</string>
     <string name="app_ops_delete_contacts">brisati vaše kontakte</string>
@@ -39,8 +41,10 @@
     <string name="app_ops_draw_on_top">iscrtavati prozore na vrhu</string>
     <string name="app_ops_get_accounts">dobiti račune uređaja</string>
     <string name="app_ops_get_usage_stats">skupljati statistiku o uporabi aplikacije</string>
+    <string name="app_ops_accept_handover">primiti poziv od druge aplikacije</string>
     <string name="app_ops_install_packages">instalirati pakete</string>
     <string name="app_ops_keep_device_awake">održavati uređaj budnim</string>
+    <string name="app_ops_manage_ipsec_tunnels">upravljati ipsec tunelima</string>
     <string name="app_ops_make_phone_call">uspostaviti poziv</string>
     <string name="app_ops_mock_location">lažirati vašu lokaciju</string>
     <string name="app_ops_modify_calendar">ažurirati kalendar</string>
@@ -65,12 +69,16 @@
     <string name="app_ops_read_phone_state">pristupati stanju telefona</string>
     <string name="app_ops_read_sms">čitati vaše SMS poruke</string>
     <string name="app_ops_receive_sms">primiti SMS poruku</string>
+    <string name="app_ops_receive_emergency_broadcast">prijem emitiranja hitnih informacija</string>
     <string name="app_ops_record_audio">snimati zvuk</string>
+    <string name="app_ops_request_delete_packages">zahtijevaj brisanje paketa</string>
     <string name="app_ops_run_in_background">pokreni u pozadini</string>
+    <string name="app_ops_run_any_in_background">pokretanje u pozadini</string>
     <string name="app_ops_scan_wifi">skenirati Wi-Fi mreže</string>
     <string name="app_ops_send_mms">poslati MMS poruku</string>
     <string name="app_ops_send_sms">poslati SMS poruku</string>
     <string name="app_ops_start_at_bootup">pokretati se pri uključivanju uređaja</string>
+    <string name="app_ops_start_foreground">pokrenuti u prvom planu</string>
     <string name="app_ops_su">dobiti root pristup</string>
     <string name="app_ops_toast_window">prikazivati tost poruke</string>
     <string name="app_ops_toggle_bluetooth">upravljati Bluetoothom</string>
