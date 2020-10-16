@@ -95,7 +95,7 @@ import com.android.server.LocalServices;
 import com.android.server.Watchdog;
 import com.android.server.policy.WindowManagerPolicy;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import libcore.io.IoUtils;
 import libcore.io.Streams;
@@ -1724,8 +1724,8 @@ public class InputManagerService extends IInputManager.Stub
 
     public void registerVolumeKeysRotationSettingObserver() {
         mContext.getContentResolver().registerContentObserver(
-                LineageSettings.System.getUriFor(
-                        LineageSettings.System.SWAP_VOLUME_KEYS_ON_ROTATION), false,
+                MKSettings.System.getUriFor(
+                        MKSettings.System.SWAP_VOLUME_KEYS_ON_ROTATION), false,
                 new ContentObserver(mHandler) {
                     @Override
                     public void onChange(boolean selfChange) {
@@ -1737,9 +1737,9 @@ public class InputManagerService extends IInputManager.Stub
     private int getVolumeKeysRotationSetting(int defaultValue) {
         int result = defaultValue;
         try {
-            result = LineageSettings.System.getIntForUser(mContext.getContentResolver(),
-                    LineageSettings.System.SWAP_VOLUME_KEYS_ON_ROTATION, UserHandle.USER_CURRENT);
-        } catch (LineageSettings.LineageSettingNotFoundException snfe) {
+            result = MKSettings.System.getIntForUser(mContext.getContentResolver(),
+                    MKSettings.System.SWAP_VOLUME_KEYS_ON_ROTATION, UserHandle.USER_CURRENT);
+        } catch (MKSettings.MKSettingNotFoundException snfe) {
         }
         return result;
     }

@@ -664,9 +664,9 @@ public abstract class BiometricServiceBase extends SystemService
         mUserManager = UserManager.get(mContext);
         mMetricsLogger = new MetricsLogger();
         mCleanupUnusedFingerprints = mContext.getResources().getBoolean(
-                org.lineageos.platform.internal.R.bool.config_cleanupUnusedFingerprints);
+                org.mokee.platform.internal.R.bool.config_cleanupUnusedFingerprints);
         mPostResetRunnableForAllClients = mContext.getResources().getBoolean(
-                org.lineageos.platform.internal.R.bool
+                org.mokee.platform.internal.R.bool
                         .config_fingerprintPostResetRunnableForAllClients);
     }
 

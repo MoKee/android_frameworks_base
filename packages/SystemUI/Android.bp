@@ -70,11 +70,11 @@ android_library {
         "SystemUI-proto",
         "dagger2-2.19",
         "jsr330",
-        "org.lineageos.platform.internal",
-        "vendor.lineage.powershare-V1.0-java",
+        "org.mokee.platform.internal",
+        "vendor.mokee.powershare-V1.0-java",
     ],
     manifest: "AndroidManifest.xml",
-    additional_manifests: ["LineageManifest.xml"],
+    additional_manifests: ["MoKeeManifest.xml"],
 
     kotlincflags: ["-Xjvm-default=enable"],
 
@@ -144,8 +144,8 @@ android_library {
         "truth-prebuilt",
         "dagger2-2.19",
         "jsr330",
-        "org.lineageos.platform.internal",
-        "vendor.lineage.powershare-V1.0-java",
+        "org.mokee.platform.internal",
+        "vendor.mokee.powershare-V1.0-java",
     ],
     libs: [
         "android.test.runner",

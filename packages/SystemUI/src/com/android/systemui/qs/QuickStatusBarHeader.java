@@ -80,7 +80,7 @@ import com.android.systemui.statusbar.policy.ZenModeController;
 import com.android.systemui.util.RingerModeTracker;
 import com.android.systemui.tuner.TunerService;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,9 +108,9 @@ public class QuickStatusBarHeader extends RelativeLayout implements
     public static final int MAX_TOOLTIP_SHOWN_COUNT = 2;
 
     private static final String QS_SHOW_AUTO_BRIGHTNESS =
-            "lineagesecure:" + LineageSettings.Secure.QS_SHOW_AUTO_BRIGHTNESS;
+            "mksecure:" + MKSettings.Secure.QS_SHOW_AUTO_BRIGHTNESS;
     private static final String QS_SHOW_BRIGHTNESS_SLIDER =
-            "lineagesecure:" + LineageSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER;
+            "mksecure:" + MKSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER;
 
     private final Handler mHandler = new Handler();
     private final NextAlarmController mAlarmController;

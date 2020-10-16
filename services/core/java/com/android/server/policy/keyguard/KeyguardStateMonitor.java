@@ -26,8 +26,8 @@ import com.android.internal.policy.IKeyguardService;
 import com.android.internal.policy.IKeyguardStateCallback;
 import com.android.internal.widget.LockPatternUtils;
 
-import lineageos.providers.LineageSettings;
-import vendor.lineage.trust.V1_0.IUsbRestrict;
+import mokee.providers.MKSettings;
+import vendor.mokee.trust.V1_0.IUsbRestrict;
 
 import java.io.PrintWriter;
 import java.util.NoSuchElementException;
@@ -110,8 +110,8 @@ public class KeyguardStateMonitor extends IKeyguardStateCallback.Stub {
             }
         }
 
-        boolean shouldRestrictUsb = LineageSettings.Secure.getInt(mContentResolver,
-                LineageSettings.Secure.TRUST_RESTRICT_USB_KEYGUARD, 0) == 1;
+        boolean shouldRestrictUsb = MKSettings.Secure.getInt(mContentResolver,
+                MKSettings.Secure.TRUST_RESTRICT_USB_KEYGUARD, 0) == 1;
         if (shouldRestrictUsb) {
             try {
                 mUsbRestrictor.setEnabled(showing);

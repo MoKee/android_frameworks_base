@@ -113,7 +113,7 @@ import com.android.server.power.batterysaver.BatterySaverPolicy;
 import com.android.server.power.batterysaver.BatterySaverStateMachine;
 import com.android.server.power.batterysaver.BatterySavingStats;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MKSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -1027,7 +1027,7 @@ public final class PowerManagerService extends SystemService
         }
 
         mScreenBrightnessDefaultButton = mContext.getResources().getFloat(
-                org.lineageos.platform.internal.R.dimen.config_buttonBrightnessSettingDefaultFloat);
+                org.mokee.platform.internal.R.dimen.config_buttonBrightnessSettingDefaultFloat);
 
         synchronized (mLock) {
             mWakeLockSuspendBlocker =
@@ -1195,23 +1195,23 @@ public final class PowerManagerService extends SystemService
         resolver.registerContentObserver(Settings.Global.getUriFor(
                 Settings.Global.DEVICE_DEMO_MODE),
                 false, mSettingsObserver, UserHandle.USER_SYSTEM);
-        resolver.registerContentObserver(LineageSettings.Secure.getUriFor(
-                LineageSettings.Secure.BUTTON_BRIGHTNESS),
+        resolver.registerContentObserver(MKSettings.Secure.getUriFor(
+                MKSettings.Secure.BUTTON_BRIGHTNESS),
                 false, mSettingsObserver, UserHandle.USER_ALL);
-        resolver.registerContentObserver(LineageSettings.Secure.getUriFor(
-                LineageSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT),
+        resolver.registerContentObserver(MKSettings.Secure.getUriFor(
+                MKSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT),
                 false, mSettingsObserver, UserHandle.USER_ALL);
-        resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                LineageSettings.System.BUTTON_BACKLIGHT_ONLY_WHEN_PRESSED),
+        resolver.registerContentObserver(MKSettings.System.getUriFor(
+                MKSettings.System.BUTTON_BACKLIGHT_ONLY_WHEN_PRESSED),
                 false, mSettingsObserver, UserHandle.USER_ALL);
-        resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                LineageSettings.System.PROXIMITY_ON_WAKE),
+        resolver.registerContentObserver(MKSettings.System.getUriFor(
+                MKSettings.System.PROXIMITY_ON_WAKE),
                 false, mSettingsObserver, UserHandle.USER_ALL);
-        resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                LineageSettings.System.FORCE_SHOW_NAVBAR),
+        resolver.registerContentObserver(MKSettings.System.getUriFor(
+                MKSettings.System.FORCE_SHOW_NAVBAR),
                 false, mSettingsObserver, UserHandle.USER_ALL);
-        resolver.registerContentObserver(LineageSettings.Global.getUriFor(
-                LineageSettings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED),
+        resolver.registerContentObserver(MKSettings.Global.getUriFor(
+                MKSettings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED),
                 false, mSettingsObserver, UserHandle.USER_ALL);
 
         IVrManager vrManager = IVrManager.Stub.asInterface(getBinderService(Context.VR_SERVICE));
@@ -1288,11 +1288,11 @@ public final class PowerManagerService extends SystemService
         mSupportsDoubleTapWakeConfig = resources.getBoolean(
                 com.android.internal.R.bool.config_supportDoubleTapWake);
         mProximityWakeSupported = resources.getBoolean(
-                org.lineageos.platform.internal.R.bool.config_proximityCheckOnWake);
+                org.mokee.platform.internal.R.bool.config_proximityCheckOnWake);
         mProximityWakeEnabledByDefaultConfig = resources.getBoolean(
-                org.lineageos.platform.internal.R.bool.config_proximityCheckOnWakeEnabledByDefault);
+                org.mokee.platform.internal.R.bool.config_proximityCheckOnWakeEnabledByDefault);
         mProximityTimeOut = resources.getInteger(
-                org.lineageos.platform.internal.R.integer.config_proximityCheckTimeout);
+                org.mokee.platform.internal.R.integer.config_proximityCheckTimeout);
         if (mProximityWakeSupported) {
             mProximityWakeLock = mContext.getSystemService(PowerManager.class)
                     .newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "ProximityWakeLock");
@@ -1327,8 +1327,8 @@ public final class PowerManagerService extends SystemService
                 Settings.Global.STAY_ON_WHILE_PLUGGED_IN, BatteryManager.BATTERY_PLUGGED_AC);
         mTheaterModeEnabled = Settings.Global.getInt(mContext.getContentResolver(),
                 Settings.Global.THEATER_MODE_ON, 0) == 1;
-        mWakeUpWhenPluggedOrUnpluggedSetting = LineageSettings.Global.getInt(resolver,
-                LineageSettings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
+        mWakeUpWhenPluggedOrUnpluggedSetting = MKSettings.Global.getInt(resolver,
+                MKSettings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
                 (mWakeUpWhenPluggedOrUnpluggedConfig ? 1 : 0)) == 1;
         mAlwaysOnEnabled = mAmbientDisplayConfiguration.alwaysOnEnabled(UserHandle.USER_CURRENT);
 
@@ -1353,22 +1353,22 @@ public final class PowerManagerService extends SystemService
                 Settings.System.SCREEN_BRIGHTNESS_MODE,
                 Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL, UserHandle.USER_CURRENT);
 
-        mButtonTimeout = LineageSettings.Secure.getIntForUser(resolver,
-                LineageSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT,
+        mButtonTimeout = MKSettings.Secure.getIntForUser(resolver,
+                MKSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT,
                 DEFAULT_BUTTON_ON_DURATION, UserHandle.USER_CURRENT);
-        mButtonBrightness = LineageSettings.Secure.getFloatForUser(resolver,
-                LineageSettings.Secure.BUTTON_BRIGHTNESS, mButtonBrightnessSettingDefault,
+        mButtonBrightness = MKSettings.Secure.getFloatForUser(resolver,
+                MKSettings.Secure.BUTTON_BRIGHTNESS, mButtonBrightnessSettingDefault,
                 UserHandle.USER_CURRENT);
-        mButtonLightOnKeypressOnly = LineageSettings.System.getIntForUser(resolver,
-                LineageSettings.System.BUTTON_BACKLIGHT_ONLY_WHEN_PRESSED,
+        mButtonLightOnKeypressOnly = MKSettings.System.getIntForUser(resolver,
+                MKSettings.System.BUTTON_BACKLIGHT_ONLY_WHEN_PRESSED,
                 0, UserHandle.USER_CURRENT) == 1;
 
-        mProximityWakeEnabled = LineageSettings.System.getInt(resolver,
-                LineageSettings.System.PROXIMITY_ON_WAKE,
+        mProximityWakeEnabled = MKSettings.System.getInt(resolver,
+                MKSettings.System.PROXIMITY_ON_WAKE,
                 mProximityWakeEnabledByDefaultConfig ? 1 : 0) == 1;
 
-        mForceNavbar = LineageSettings.System.getIntForUser(resolver,
-                LineageSettings.System.FORCE_SHOW_NAVBAR,
+        mForceNavbar = MKSettings.System.getIntForUser(resolver,
+                MKSettings.System.FORCE_SHOW_NAVBAR,
                 0, UserHandle.USER_CURRENT) == 1;
 
         mDirty |= DIRTY_SETTINGS;

@@ -17,12 +17,12 @@
 
 package com.android.systemui.qs.tiles;
 
-import static lineageos.hardware.LiveDisplayManager.FEATURE_MANAGED_OUTDOOR_MODE;
-import static lineageos.hardware.LiveDisplayManager.MODE_AUTO;
-import static lineageos.hardware.LiveDisplayManager.MODE_DAY;
-import static lineageos.hardware.LiveDisplayManager.MODE_NIGHT;
-import static lineageos.hardware.LiveDisplayManager.MODE_OFF;
-import static lineageos.hardware.LiveDisplayManager.MODE_OUTDOOR;
+import static mokee.hardware.LiveDisplayManager.FEATURE_MANAGED_OUTDOOR_MODE;
+import static mokee.hardware.LiveDisplayManager.MODE_AUTO;
+import static mokee.hardware.LiveDisplayManager.MODE_DAY;
+import static mokee.hardware.LiveDisplayManager.MODE_NIGHT;
+import static mokee.hardware.LiveDisplayManager.MODE_OFF;
+import static mokee.hardware.LiveDisplayManager.MODE_OUTDOOR;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -41,11 +41,11 @@ import com.android.systemui.plugins.qs.QSTile.LiveDisplayState;
 import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 
-import org.lineageos.internal.logging.LineageMetricsLogger;
-import org.lineageos.platform.internal.R;
+import org.mokee.internal.logging.MKMetricsLogger;
+import org.mokee.platform.internal.R;
 
-import lineageos.hardware.LiveDisplayManager;
-import lineageos.providers.LineageSettings;
+import mokee.hardware.LiveDisplayManager;
+import mokee.providers.MKSettings;
 
 import javax.inject.Inject;
 
@@ -53,7 +53,7 @@ import javax.inject.Inject;
 public class LiveDisplayTile extends QSTileImpl<LiveDisplayState> {
 
     private static final Intent LIVEDISPLAY_SETTINGS =
-            new Intent("org.lineageos.lineageparts.LIVEDISPLAY_SETTINGS");
+            new Intent("org.mokee.mokeeparts.LIVEDISPLAY_SETTINGS");
 
     private final LiveDisplayObserver mObserver;
     private String mTitle;
@@ -92,7 +92,7 @@ public class LiveDisplayTile extends QSTileImpl<LiveDisplayState> {
         mLiveDisplay = LiveDisplayManager.getInstance(mContext);
         if (!updateConfig()) {
             mContext.registerReceiver(mReceiver, new IntentFilter(
-                    lineageos.content.Intent.ACTION_INITIALIZE_LIVEDISPLAY));
+                    mokee.content.Intent.ACTION_INITIALIZE_LIVEDISPLAY));
             mReceiverRegistered = true;
         }
 
@@ -175,7 +175,7 @@ public class LiveDisplayTile extends QSTileImpl<LiveDisplayState> {
 
     @Override
     public int getMetricsCategory() {
-        return LineageMetricsLogger.TILE_LIVE_DISPLAY;
+        return MKMetricsLogger.TILE_LIVE_DISPLAY;
     }
 
     @Override
@@ -246,10 +246,10 @@ public class LiveDisplayTile extends QSTileImpl<LiveDisplayState> {
 
         public void startObserving() {
             mContext.getContentResolver().registerContentObserver(
-                    LineageSettings.System.getUriFor(LineageSettings.System.DISPLAY_TEMPERATURE_MODE),
+                    MKSettings.System.getUriFor(MKSettings.System.DISPLAY_TEMPERATURE_MODE),
                     false, this, UserHandle.USER_ALL);
             mContext.getContentResolver().registerContentObserver(
-                    LineageSettings.System.getUriFor(LineageSettings.System.DISPLAY_TEMPERATURE_DAY),
+                    MKSettings.System.getUriFor(MKSettings.System.DISPLAY_TEMPERATURE_DAY),
                     false, this, UserHandle.USER_ALL);
         }
 
