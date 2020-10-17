@@ -133,6 +133,7 @@ java_library_static {
         "org.mokee.platform.internal",
         "overlayable_policy_aidl-java",
         "SurfaceFlingerProperties",
+        "vendor.mokee.biometrics.fingerprint.inscreen-V1.0-java",
     ],
 }
 
