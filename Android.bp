@@ -150,6 +150,14 @@ filegroup {
 }
 
 filegroup {
+    name: "framework-mokee-sources",
+    srcs: [
+        "mokee/java/**/*.java",
+    ],
+    path: "mokee/java",
+}
+
+filegroup {
     name: "framework-opengl-sources",
     srcs: [
         "opengl/java/**/*.java",
@@ -234,6 +242,7 @@ filegroup {
         ":framework-mca-filterpacks-sources",
         ":framework-media-sources",
         ":framework-mms-sources",
+        ":framework-mokee-sources",
         ":framework-opengl-sources",
         ":framework-rs-sources",
         ":framework-sax-sources",
@@ -334,6 +343,7 @@ java_defaults {
             "media/mca/filterfw/java",
             "media/mca/filterpacks/java",
             "mms/java",
+            "mokee/java",
             "opengl/java",
             "rs/java",
             "sax/java",
@@ -390,6 +400,8 @@ java_library {
         "com.android.sysprop.apex",
         "com.android.sysprop.init",
         "PlatformProperties",
+
+        "mokee-cloud",
     ],
     sdk_version: "core_platform",
     installable: false,
