@@ -4083,6 +4083,8 @@ android.metrics.LogMaker
 android.metrics.MetricsReader$Event
 android.metrics.MetricsReader$LogReader
 android.metrics.MetricsReader
+android.mokee.location.PhoneNumberOfflineGeocoder
+android.mokee.utils.MoKeeUtils
 android.mtp.MtpDatabase$1
 android.mtp.MtpDatabase$2
 android.mtp.MtpDatabase
@@ -9972,6 +9974,7 @@ com.google.android.gles_jni.GLImpl
 com.google.android.mms.MmsException
 com.google.android.rappor.Encoder
 com.google.android.rappor.HmacDrbg
+com.mokee.security.SecurityUtils
 com.sun.security.cert.internal.x509.X509V1CertImpl
 dalvik.annotation.optimization.CriticalNative
 dalvik.annotation.optimization.FastNative
