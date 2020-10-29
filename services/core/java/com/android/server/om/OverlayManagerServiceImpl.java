@@ -704,7 +704,8 @@ final class OverlayManagerServiceImpl {
         // layers.
         boolean modified = false;
         if (targetPackage != null && overlayPackage != null
-                && !("android".equals(targetPackageName)
+                && !(("android".equals(targetPackageName) ||
+                        "mokee.platform".equals(targetPackageName))
                     && !isPackageConfiguredMutable(overlayPackageName))) {
             modified |= mIdmapManager.createIdmap(targetPackage, overlayPackage, userId);
         }

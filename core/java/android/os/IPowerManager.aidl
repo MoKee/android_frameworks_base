@@ -99,5 +99,6 @@ interface IPowerManager
     boolean forceSuspend();
 
     // MoKee custom API
+    void setKeyboardVisibility(boolean visible);
     void wakeUpWithProximityCheck(long time, int reason, String details, String opPackageName);
 }
