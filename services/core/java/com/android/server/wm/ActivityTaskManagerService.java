@@ -274,7 +274,7 @@ import com.android.server.uri.NeededUriGrants;
 import com.android.server.uri.UriGrantsManagerInternal;
 import com.android.server.vr.VrManagerInternal;
 
-import org.mokee.internal.applications.MKActivityManager;
+import org.mokee.internal.applications.MoKeeActivityManager;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -681,7 +681,7 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
     private int mDeviceOwnerUid = Process.INVALID_UID;
 
     // MoKee sdk activity related helper
-    private MKActivityManager mMKActivityManager;
+    private MoKeeActivityManager mMoKeeActivityManager;
 
     private final class FontScaleSettingObserver extends ContentObserver {
         private final Uri mFontScaleUri = Settings.System.getUriFor(FONT_SCALE);
@@ -766,9 +766,9 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
     public void installSystemProviders() {
         mFontScaleSettingObserver = new FontScaleSettingObserver();
 
-        // MKActivityManager depends on settings so we can initialize only
+        // MoKeeActivityManager depends on settings so we can initialize only
         // after providers are available.
-        mMKActivityManager = new MKActivityManager(mContext);
+        mMoKeeActivityManager = new MoKeeActivityManager(mContext);
     }
 
     public void retrieveSettings(ContentResolver resolver) {
@@ -7487,6 +7487,6 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
     }
 
     public boolean shouldForceLongScreen(String packageName) {
-        return mMKActivityManager.shouldForceLongScreen(packageName);
+        return mMoKeeActivityManager.shouldForceLongScreen(packageName);
     }
 }

@@ -113,7 +113,7 @@ import com.android.server.power.batterysaver.BatterySaverPolicy;
 import com.android.server.power.batterysaver.BatterySaverStateMachine;
 import com.android.server.power.batterysaver.BatterySavingStats;
 
-import mokee.providers.MKSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -1195,23 +1195,23 @@ public final class PowerManagerService extends SystemService
         resolver.registerContentObserver(Settings.Global.getUriFor(
                 Settings.Global.DEVICE_DEMO_MODE),
                 false, mSettingsObserver, UserHandle.USER_SYSTEM);
-        resolver.registerContentObserver(MKSettings.Secure.getUriFor(
-                MKSettings.Secure.BUTTON_BRIGHTNESS),
+        resolver.registerContentObserver(MoKeeSettings.Secure.getUriFor(
+                MoKeeSettings.Secure.BUTTON_BRIGHTNESS),
                 false, mSettingsObserver, UserHandle.USER_ALL);
-        resolver.registerContentObserver(MKSettings.Secure.getUriFor(
-                MKSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT),
+        resolver.registerContentObserver(MoKeeSettings.Secure.getUriFor(
+                MoKeeSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT),
                 false, mSettingsObserver, UserHandle.USER_ALL);
-        resolver.registerContentObserver(MKSettings.System.getUriFor(
-                MKSettings.System.BUTTON_BACKLIGHT_ONLY_WHEN_PRESSED),
+        resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                MoKeeSettings.System.BUTTON_BACKLIGHT_ONLY_WHEN_PRESSED),
                 false, mSettingsObserver, UserHandle.USER_ALL);
-        resolver.registerContentObserver(MKSettings.System.getUriFor(
-                MKSettings.System.PROXIMITY_ON_WAKE),
+        resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                MoKeeSettings.System.PROXIMITY_ON_WAKE),
                 false, mSettingsObserver, UserHandle.USER_ALL);
-        resolver.registerContentObserver(MKSettings.System.getUriFor(
-                MKSettings.System.FORCE_SHOW_NAVBAR),
+        resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                MoKeeSettings.System.FORCE_SHOW_NAVBAR),
                 false, mSettingsObserver, UserHandle.USER_ALL);
-        resolver.registerContentObserver(MKSettings.Global.getUriFor(
-                MKSettings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED),
+        resolver.registerContentObserver(MoKeeSettings.Global.getUriFor(
+                MoKeeSettings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED),
                 false, mSettingsObserver, UserHandle.USER_ALL);
 
         IVrManager vrManager = IVrManager.Stub.asInterface(getBinderService(Context.VR_SERVICE));
@@ -1327,8 +1327,8 @@ public final class PowerManagerService extends SystemService
                 Settings.Global.STAY_ON_WHILE_PLUGGED_IN, BatteryManager.BATTERY_PLUGGED_AC);
         mTheaterModeEnabled = Settings.Global.getInt(mContext.getContentResolver(),
                 Settings.Global.THEATER_MODE_ON, 0) == 1;
-        mWakeUpWhenPluggedOrUnpluggedSetting = MKSettings.Global.getInt(resolver,
-                MKSettings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
+        mWakeUpWhenPluggedOrUnpluggedSetting = MoKeeSettings.Global.getInt(resolver,
+                MoKeeSettings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
                 (mWakeUpWhenPluggedOrUnpluggedConfig ? 1 : 0)) == 1;
         mAlwaysOnEnabled = mAmbientDisplayConfiguration.alwaysOnEnabled(UserHandle.USER_CURRENT);
 
@@ -1353,22 +1353,22 @@ public final class PowerManagerService extends SystemService
                 Settings.System.SCREEN_BRIGHTNESS_MODE,
                 Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL, UserHandle.USER_CURRENT);
 
-        mButtonTimeout = MKSettings.Secure.getIntForUser(resolver,
-                MKSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT,
+        mButtonTimeout = MoKeeSettings.Secure.getIntForUser(resolver,
+                MoKeeSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT,
                 DEFAULT_BUTTON_ON_DURATION, UserHandle.USER_CURRENT);
-        mButtonBrightness = MKSettings.Secure.getFloatForUser(resolver,
-                MKSettings.Secure.BUTTON_BRIGHTNESS, mButtonBrightnessSettingDefault,
+        mButtonBrightness = MoKeeSettings.Secure.getFloatForUser(resolver,
+                MoKeeSettings.Secure.BUTTON_BRIGHTNESS, mButtonBrightnessSettingDefault,
                 UserHandle.USER_CURRENT);
-        mButtonLightOnKeypressOnly = MKSettings.System.getIntForUser(resolver,
-                MKSettings.System.BUTTON_BACKLIGHT_ONLY_WHEN_PRESSED,
+        mButtonLightOnKeypressOnly = MoKeeSettings.System.getIntForUser(resolver,
+                MoKeeSettings.System.BUTTON_BACKLIGHT_ONLY_WHEN_PRESSED,
                 0, UserHandle.USER_CURRENT) == 1;
 
-        mProximityWakeEnabled = MKSettings.System.getInt(resolver,
-                MKSettings.System.PROXIMITY_ON_WAKE,
+        mProximityWakeEnabled = MoKeeSettings.System.getInt(resolver,
+                MoKeeSettings.System.PROXIMITY_ON_WAKE,
                 mProximityWakeEnabledByDefaultConfig ? 1 : 0) == 1;
 
-        mForceNavbar = MKSettings.System.getIntForUser(resolver,
-                MKSettings.System.FORCE_SHOW_NAVBAR,
+        mForceNavbar = MoKeeSettings.System.getIntForUser(resolver,
+                MoKeeSettings.System.FORCE_SHOW_NAVBAR,
                 0, UserHandle.USER_CURRENT) == 1;
 
         mDirty |= DIRTY_SETTINGS;

@@ -28,7 +28,7 @@ import com.android.settingslib.animation.DisappearAnimationUtils;
 import com.android.systemui.Dependency;
 import com.android.systemui.R;
 
-import mokee.providers.MKSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -131,8 +131,8 @@ public class KeyguardPINView extends KeyguardPinBasedInputView {
             });
         }
 
-        boolean scramblePin = (MKSettings.System.getInt(getContext().getContentResolver(),
-                MKSettings.System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT, 0) == 1);
+        boolean scramblePin = (MoKeeSettings.System.getInt(getContext().getContentResolver(),
+                MoKeeSettings.System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT, 0) == 1);
         if (scramblePin) {
             Collections.shuffle(sNumbers);
             // get all children who are NumPadKey's

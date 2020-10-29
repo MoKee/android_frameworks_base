@@ -84,7 +84,7 @@ import com.android.systemui.statusbar.policy.DeadZone;
 import com.android.systemui.statusbar.policy.KeyButtonDrawable;
 import com.android.systemui.tuner.TunerService;
 
-import mokee.providers.MKSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -96,7 +96,7 @@ public class NavigationBarView extends FrameLayout implements
     final static String TAG = "StatusBar/NavBarView";
 
     private static final String NAVIGATION_BAR_MENU_ARROW_KEYS =
-            "mksystem:" + MKSettings.System.NAVIGATION_BAR_MENU_ARROW_KEYS;
+            "mokeesystem:" + MoKeeSettings.System.NAVIGATION_BAR_MENU_ARROW_KEYS;
 
     // slippery nav bar when everything is disabled, e.g. during setup
     final static boolean SLIPPERY_WHEN_DISABLED = true;

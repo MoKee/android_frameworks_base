@@ -34,7 +34,7 @@ import com.android.internal.graphics.palette.Palette;
 import com.android.systemui.Dependency;
 import com.android.systemui.tuner.TunerService;
 
-import mokee.providers.MKSettings;
+import mokee.providers.MoKeeSettings;
 
 public class VisualizerView extends View
         implements Palette.PaletteAsyncListener, TunerService.Tunable {
@@ -43,7 +43,7 @@ public class VisualizerView extends View
     private static final boolean DEBUG = false;
 
     private static final String LOCKSCREEN_VISUALIZER_ENABLED =
-            "mksecure:" + MKSettings.Secure.LOCKSCREEN_VISUALIZER_ENABLED;
+            "mokeesecure:" + MoKeeSettings.Secure.LOCKSCREEN_VISUALIZER_ENABLED;
 
     private Paint mPaint;
     private Visualizer mVisualizer;

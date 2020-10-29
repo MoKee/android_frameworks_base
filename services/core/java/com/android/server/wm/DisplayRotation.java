@@ -67,7 +67,7 @@ import com.android.server.policy.WindowOrientationListener;
 import com.android.server.protolog.common.ProtoLog;
 import com.android.server.statusbar.StatusBarManagerInternal;
 
-import mokee.providers.MKSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.io.PrintWriter;
 import java.lang.annotation.Retention;

@@ -226,7 +226,7 @@ import com.android.systemui.statusbar.policy.UserSwitcherController;
 import com.android.systemui.tuner.TunerService;
 import com.android.systemui.volume.VolumeComponent;
 
-import mokee.providers.MKSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -260,11 +260,11 @@ public class StatusBar extends SystemUI implements DemoMode,
     static public final String SYSTEM_DIALOG_REASON_SCREENSHOT = "screenshot";
 
     private static final String FORCE_SHOW_NAVBAR =
-            "mksystem:" + MKSettings.System.FORCE_SHOW_NAVBAR;
+            "mokeesystem:" + MoKeeSettings.System.FORCE_SHOW_NAVBAR;
     public static final String SCREEN_BRIGHTNESS_MODE =
             "system:" + Settings.System.SCREEN_BRIGHTNESS_MODE;
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL =
-            "mksystem:" + MKSettings.System.STATUS_BAR_BRIGHTNESS_CONTROL;
+            "mokeesystem:" + MoKeeSettings.System.STATUS_BAR_BRIGHTNESS_CONTROL;
 
     private static final String BANNER_ACTION_CANCEL =
             "com.android.systemui.statusbar.banner_action_cancel";

@@ -58,7 +58,7 @@ import com.android.systemui.statusbar.policy.ConfigurationController.Configurati
 
 import com.google.android.collect.Lists;
 
-import mokee.providers.MKSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -176,8 +176,8 @@ public class NotificationShadeWindowController implements Callback, Dumpable,
                 Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.ACCELEROMETER_ROTATION, 0) != 0;
         boolean enableLockScreenRotation =
-                MKSettings.System.getInt(mContext.getContentResolver(),
-                MKSettings.System.LOCKSCREEN_ROTATION, 0) != 0;
+                MoKeeSettings.System.getInt(mContext.getContentResolver(),
+                MoKeeSettings.System.LOCKSCREEN_ROTATION, 0) != 0;
         return SystemProperties.getBoolean("lockscreen.rot_override", false)
                 || (res.getBoolean(R.bool.config_enableLockScreenRotation)
                 && (enableLockScreenRotation && enableAccelerometerRotation));
@@ -762,7 +762,7 @@ public class NotificationShadeWindowController implements Callback, Dumpable,
                     Settings.System.getUriFor(Settings.System.ACCELEROMETER_ROTATION),
                     false, this);
             context.getContentResolver().registerContentObserver(
-                    MKSettings.System.getUriFor(MKSettings.System.LOCKSCREEN_ROTATION),
+                    MoKeeSettings.System.getUriFor(MoKeeSettings.System.LOCKSCREEN_ROTATION),
                     false, this);
         }
 

@@ -41,11 +41,11 @@ import com.android.systemui.plugins.qs.QSTile.LiveDisplayState;
 import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 
-import org.mokee.internal.logging.MKMetricsLogger;
+import org.mokee.internal.logging.MoKeeMetricsLogger;
 import org.mokee.platform.internal.R;
 
 import mokee.hardware.LiveDisplayManager;
-import mokee.providers.MKSettings;
+import mokee.providers.MoKeeSettings;
 
 import javax.inject.Inject;
 
@@ -175,7 +175,7 @@ public class LiveDisplayTile extends QSTileImpl<LiveDisplayState> {
 
     @Override
     public int getMetricsCategory() {
-        return MKMetricsLogger.TILE_LIVE_DISPLAY;
+        return MoKeeMetricsLogger.TILE_LIVE_DISPLAY;
     }
 
     @Override
@@ -246,10 +246,10 @@ public class LiveDisplayTile extends QSTileImpl<LiveDisplayState> {
 
         public void startObserving() {
             mContext.getContentResolver().registerContentObserver(
-                    MKSettings.System.getUriFor(MKSettings.System.DISPLAY_TEMPERATURE_MODE),
+                    MoKeeSettings.System.getUriFor(MoKeeSettings.System.DISPLAY_TEMPERATURE_MODE),
                     false, this, UserHandle.USER_ALL);
             mContext.getContentResolver().registerContentObserver(
-                    MKSettings.System.getUriFor(MKSettings.System.DISPLAY_TEMPERATURE_DAY),
+                    MoKeeSettings.System.getUriFor(MoKeeSettings.System.DISPLAY_TEMPERATURE_DAY),
                     false, this, UserHandle.USER_ALL);
         }
 

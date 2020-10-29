@@ -227,10 +227,10 @@ import com.android.server.wm.WindowManagerInternal.AppTransitionListener;
 
 import dalvik.system.PathClassLoader;
 
-import mokee.hardware.MKHardwareManager;
-import mokee.providers.MKSettings;
+import mokee.hardware.MoKeeHardwareManager;
+import mokee.providers.MoKeeSettings;
 
-import org.mokee.internal.buttons.MKButtons;
+import org.mokee.internal.buttons.MoKeeButtons;
 import org.mokee.internal.util.ActionUtils;
 
 import java.io.File;
@@ -590,7 +590,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     DisplayPolicy mDefaultDisplayPolicy;
 
     // Behavior of HOME button during an incoming call.
-    // (See MKSettings.Secure.RING_HOME_BUTTON_BEHAVIOR.)
+    // (See MoKeeSettings.Secure.RING_HOME_BUTTON_BEHAVIOR.)
     int mRingHomeBehavior;
 
     // Allowed theater mode wake actions
@@ -672,7 +672,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     private final List<DeviceKeyHandler> mDeviceKeyHandlers = new ArrayList<>();
 
-    private MKButtons mMKButtons;
+    private MoKeeButtons mMoKeeButtons;
 
     private static final int MSG_DISPATCH_MEDIA_KEY_WITH_WAKE_LOCK = 3;
     private static final int MSG_DISPATCH_MEDIA_KEY_REPEAT_WITH_WAKE_LOCK = 4;
@@ -709,7 +709,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private int mTorchTimeout;
     private PendingIntent mTorchOffPendingIntent;
 
-    private MKHardwareManager mMKHardware;
+    private MoKeeHardwareManager mMKHardware;
 
     private class PolicyHandler extends Handler {
         @Override
@@ -827,17 +827,17 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.INCALL_BACK_BUTTON_BEHAVIOR), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.CAMERA_WAKE_SCREEN), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.CAMERA_WAKE_SCREEN), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.CAMERA_SLEEP_ON_RELEASE), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.CAMERA_SLEEP_ON_RELEASE), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.CAMERA_LAUNCH), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.CAMERA_LAUNCH), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.Secure.getUriFor(
-                    MKSettings.Secure.RING_HOME_BUTTON_BEHAVIOR), false, this,
+            resolver.registerContentObserver(MoKeeSettings.Secure.getUriFor(
+                    MoKeeSettings.Secure.RING_HOME_BUTTON_BEHAVIOR), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.WAKE_GESTURE_ENABLED), false, this,
@@ -863,59 +863,59 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(Settings.Global.getUriFor(
                     Settings.Global.POWER_BUTTON_SUPPRESSION_DELAY_AFTER_GESTURE_WAKE), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.TORCH_LONG_PRESS_POWER_GESTURE), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.TORCH_LONG_PRESS_POWER_GESTURE), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.TORCH_LONG_PRESS_POWER_TIMEOUT), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.TORCH_LONG_PRESS_POWER_TIMEOUT), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.KEY_HOME_LONG_PRESS_ACTION), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.KEY_HOME_LONG_PRESS_ACTION), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.KEY_HOME_DOUBLE_TAP_ACTION), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.KEY_HOME_DOUBLE_TAP_ACTION), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.FORCE_SHOW_NAVBAR), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.FORCE_SHOW_NAVBAR), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.KEY_MENU_ACTION), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.KEY_MENU_ACTION), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.KEY_MENU_LONG_PRESS_ACTION), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.KEY_MENU_LONG_PRESS_ACTION), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.KEY_ASSIST_ACTION), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.KEY_ASSIST_ACTION), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.KEY_ASSIST_LONG_PRESS_ACTION), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.KEY_ASSIST_LONG_PRESS_ACTION), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.KEY_APP_SWITCH_ACTION), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.KEY_APP_SWITCH_ACTION), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.HOME_WAKE_SCREEN), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.HOME_WAKE_SCREEN), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.BACK_WAKE_SCREEN), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.BACK_WAKE_SCREEN), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.MENU_WAKE_SCREEN), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.MENU_WAKE_SCREEN), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.ASSIST_WAKE_SCREEN), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.ASSIST_WAKE_SCREEN), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.APP_SWITCH_WAKE_SCREEN), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.APP_SWITCH_WAKE_SCREEN), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.VOLUME_WAKE_SCREEN), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.VOLUME_WAKE_SCREEN), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.VOLUME_ANSWER_CALL), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.VOLUME_ANSWER_CALL), false, this,
                     UserHandle.USER_ALL);
 
             updateSettings();
@@ -1858,7 +1858,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 }
 
                 if ((mRingHomeBehavior
-                        & MKSettings.Secure.RING_HOME_BUTTON_BEHAVIOR_ANSWER) != 0) {
+                        & MoKeeSettings.Secure.RING_HOME_BUTTON_BEHAVIOR_ANSWER) != 0) {
                     final TelecomManager telecomManager = getTelecommService();
                     if (telecomManager != null && telecomManager.isRinging()) {
                         telecomManager.acceptRingingCall();
@@ -2283,35 +2283,35 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         }
 
         mHomeLongPressAction = Action.fromSettings(resolver,
-                MKSettings.System.KEY_HOME_LONG_PRESS_ACTION,
+                MoKeeSettings.System.KEY_HOME_LONG_PRESS_ACTION,
                 mHomeLongPressAction);
         mHomeDoubleTapAction = Action.fromSettings(resolver,
-                MKSettings.System.KEY_HOME_DOUBLE_TAP_ACTION,
+                MoKeeSettings.System.KEY_HOME_DOUBLE_TAP_ACTION,
                 mHomeDoubleTapAction);
 
         if (hasMenu) {
             mMenuPressAction = Action.fromSettings(resolver,
-                    MKSettings.System.KEY_MENU_ACTION,
+                    MoKeeSettings.System.KEY_MENU_ACTION,
                     mMenuPressAction);
             mMenuLongPressAction = Action.fromSettings(resolver,
-                    MKSettings.System.KEY_MENU_LONG_PRESS_ACTION,
+                    MoKeeSettings.System.KEY_MENU_LONG_PRESS_ACTION,
                     mMenuLongPressAction);
         }
         if (hasAssist) {
             mAssistPressAction = Action.fromSettings(resolver,
-                    MKSettings.System.KEY_ASSIST_ACTION,
+                    MoKeeSettings.System.KEY_ASSIST_ACTION,
                     mAssistPressAction);
             mAssistLongPressAction = Action.fromSettings(resolver,
-                    MKSettings.System.KEY_ASSIST_LONG_PRESS_ACTION,
+                    MoKeeSettings.System.KEY_ASSIST_LONG_PRESS_ACTION,
                     mAssistLongPressAction);
         }
         if (hasAppSwitch) {
             mAppSwitchPressAction = Action.fromSettings(resolver,
-                    MKSettings.System.KEY_APP_SWITCH_ACTION,
+                    MoKeeSettings.System.KEY_APP_SWITCH_ACTION,
                     mAppSwitchPressAction);
         }
         mAppSwitchLongPressAction = Action.fromSettings(resolver,
-                MKSettings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION,
+                MoKeeSettings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION,
                 mAppSwitchLongPressAction);
 
         mShortPressOnWindowBehavior = SHORT_PRESS_WINDOW_NOTHING;
@@ -2338,9 +2338,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     Settings.Secure.INCALL_BACK_BUTTON_BEHAVIOR,
                     Settings.Secure.INCALL_BACK_BUTTON_BEHAVIOR_DEFAULT,
                     UserHandle.USER_CURRENT);
-            mRingHomeBehavior = MKSettings.Secure.getIntForUser(resolver,
-                    MKSettings.Secure.RING_HOME_BUTTON_BEHAVIOR,
-                    MKSettings.Secure.RING_HOME_BUTTON_BEHAVIOR_DEFAULT,
+            mRingHomeBehavior = MoKeeSettings.Secure.getIntForUser(resolver,
+                    MoKeeSettings.Secure.RING_HOME_BUTTON_BEHAVIOR,
+                    MoKeeSettings.Secure.RING_HOME_BUTTON_BEHAVIOR_DEFAULT,
                     UserHandle.USER_CURRENT);
             mSystemNavigationKeysEnabled = Settings.Secure.getIntForUser(resolver,
                     Settings.Secure.SYSTEM_NAVIGATION_KEYS_ENABLED,
@@ -2356,42 +2356,42 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 mRingerToggleChord = Settings.Secure.VOLUME_HUSH_OFF;
             }
 
-            mTorchLongPressPowerEnabled = MKSettings.System.getIntForUser(
-                    resolver, MKSettings.System.TORCH_LONG_PRESS_POWER_GESTURE, 0,
+            mTorchLongPressPowerEnabled = MoKeeSettings.System.getIntForUser(
+                    resolver, MoKeeSettings.System.TORCH_LONG_PRESS_POWER_GESTURE, 0,
                     UserHandle.USER_CURRENT) == 1;
-            mTorchTimeout = MKSettings.System.getIntForUser(
-                    resolver, MKSettings.System.TORCH_LONG_PRESS_POWER_TIMEOUT, 0,
+            mTorchTimeout = MoKeeSettings.System.getIntForUser(
+                    resolver, MoKeeSettings.System.TORCH_LONG_PRESS_POWER_TIMEOUT, 0,
                     UserHandle.USER_CURRENT);
-            mWakeOnHomeKeyPress = (MKSettings.System.getIntForUser(resolver,
-                    MKSettings.System.HOME_WAKE_SCREEN, 1, UserHandle.USER_CURRENT) == 1)
+            mWakeOnHomeKeyPress = (MoKeeSettings.System.getIntForUser(resolver,
+                    MoKeeSettings.System.HOME_WAKE_SCREEN, 1, UserHandle.USER_CURRENT) == 1)
                     && ((mDeviceHardwareWakeKeys & KEY_MASK_HOME) != 0);
-            mWakeOnBackKeyPress = (MKSettings.System.getIntForUser(resolver,
-                    MKSettings.System.BACK_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1)
+            mWakeOnBackKeyPress = (MoKeeSettings.System.getIntForUser(resolver,
+                    MoKeeSettings.System.BACK_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1)
                     && ((mDeviceHardwareWakeKeys & KEY_MASK_BACK) != 0);
-            mWakeOnMenuKeyPress = (MKSettings.System.getIntForUser(resolver,
-                    MKSettings.System.MENU_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1)
+            mWakeOnMenuKeyPress = (MoKeeSettings.System.getIntForUser(resolver,
+                    MoKeeSettings.System.MENU_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1)
                     && ((mDeviceHardwareWakeKeys & KEY_MASK_MENU) != 0);
-            mWakeOnAssistKeyPress = (MKSettings.System.getIntForUser(resolver,
-                    MKSettings.System.ASSIST_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1)
+            mWakeOnAssistKeyPress = (MoKeeSettings.System.getIntForUser(resolver,
+                    MoKeeSettings.System.ASSIST_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1)
                     && ((mDeviceHardwareWakeKeys & KEY_MASK_ASSIST) != 0);
-            mWakeOnAppSwitchKeyPress = (MKSettings.System.getIntForUser(resolver,
-                    MKSettings.System.APP_SWITCH_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1)
+            mWakeOnAppSwitchKeyPress = (MoKeeSettings.System.getIntForUser(resolver,
+                    MoKeeSettings.System.APP_SWITCH_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1)
                     && ((mDeviceHardwareWakeKeys & KEY_MASK_APP_SWITCH) != 0);
-            mWakeOnVolumeKeyPress = (MKSettings.System.getIntForUser(resolver,
-                    MKSettings.System.VOLUME_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1)
+            mWakeOnVolumeKeyPress = (MoKeeSettings.System.getIntForUser(resolver,
+                    MoKeeSettings.System.VOLUME_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1)
                     && ((mDeviceHardwareWakeKeys & KEY_MASK_VOLUME) != 0);
-            mVolumeAnswerCall = (MKSettings.System.getIntForUser(resolver,
-                    MKSettings.System.VOLUME_ANSWER_CALL, 0, UserHandle.USER_CURRENT) == 1)
+            mVolumeAnswerCall = (MoKeeSettings.System.getIntForUser(resolver,
+                    MoKeeSettings.System.VOLUME_ANSWER_CALL, 0, UserHandle.USER_CURRENT) == 1)
                     && ((mDeviceHardwareWakeKeys & KEY_MASK_VOLUME) != 0);
-            mWakeOnCameraKeyPress = (MKSettings.System.getIntForUser(resolver,
-                    MKSettings.System.CAMERA_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1)
+            mWakeOnCameraKeyPress = (MoKeeSettings.System.getIntForUser(resolver,
+                    MoKeeSettings.System.CAMERA_WAKE_SCREEN, 0, UserHandle.USER_CURRENT) == 1)
                     && ((mDeviceHardwareWakeKeys & KEY_MASK_CAMERA) != 0);
             mCameraSleepOnRelease = mWakeOnCameraKeyPress &&
-                    MKSettings.System.getIntForUser(resolver,
-                            MKSettings.System.CAMERA_SLEEP_ON_RELEASE, 0,
+                    MoKeeSettings.System.getIntForUser(resolver,
+                            MoKeeSettings.System.CAMERA_SLEEP_ON_RELEASE, 0,
                             UserHandle.USER_CURRENT) == 1;
-            mCameraLaunch = MKSettings.System.getIntForUser(resolver,
-                    MKSettings.System.CAMERA_LAUNCH, 0,
+            mCameraLaunch = MoKeeSettings.System.getIntForUser(resolver,
+                    MoKeeSettings.System.CAMERA_LAUNCH, 0,
                     UserHandle.USER_CURRENT) == 1;
 
             // Configure wake gesture.
@@ -2403,13 +2403,13 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 updateWakeGestureListenerLp();
             }
 
-            int forceNavbar = MKSettings.System.getIntForUser(resolver,
-                    MKSettings.System.FORCE_SHOW_NAVBAR, 0,
+            int forceNavbar = MoKeeSettings.System.getIntForUser(resolver,
+                    MoKeeSettings.System.FORCE_SHOW_NAVBAR, 0,
                     UserHandle.USER_CURRENT);
             if (forceNavbar != mForceNavbar) {
                 mForceNavbar = forceNavbar;
-                if (mMKHardware.isSupported(MKHardwareManager.FEATURE_KEY_DISABLE)) {
-                    mMKHardware.set(MKHardwareManager.FEATURE_KEY_DISABLE,
+                if (mMKHardware.isSupported(MoKeeHardwareManager.FEATURE_KEY_DISABLE)) {
+                    mMKHardware.set(MoKeeHardwareManager.FEATURE_KEY_DISABLE,
                             mForceNavbar == 1);
                 }
             }
@@ -4305,7 +4305,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     // {@link interceptKeyBeforeDispatching()}.
                     result |= ACTION_PASS_TO_USER;
                 } else if ((result & ACTION_PASS_TO_USER) == 0 && !mWakeOnVolumeKeyPress) {
-                    if (mMKButtons.handleVolumeKey(event, interactive)) {
+                    if (mMoKeeButtons.handleVolumeKey(event, interactive)) {
                         break;
                     }
 
@@ -5434,9 +5434,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mVrManagerInternal.addPersistentVrModeStateListener(mPersistentVrModeListener);
         }
 
-        mMKHardware = MKHardwareManager.getInstance(mContext);
+        mMKHardware = MoKeeHardwareManager.getInstance(mContext);
         // Ensure observe happens in systemReady() since we need
-        // MKHardwareService to be up and running
+        // MoKeeHardwareService to be up and running
         mSettingsObserver.observe();
 
         readCameraLensCoverState();
@@ -5457,7 +5457,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             }
         }
 
-        mMKButtons = new MKButtons(mContext);
+        mMoKeeButtons = new MoKeeButtons(mContext);
 
         mAutofillManagerInternal = LocalServices.getService(AutofillManagerInternal.class);
     }

@@ -109,7 +109,7 @@
             android:clipChildren="false"
             android:gravity="center_horizontal|center_vertical"/>
 
-        <com.android.systemui.statusbar.MKStatusBarItemHolder
+        <com.android.systemui.statusbar.MoKeeStatusBarItemHolder
             android:id="@+id/network_traffic_holder"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -123,7 +123,7 @@
                 android:maxLines="2"
                 android:gravity="center_vertical|start" />
 
-        </com.android.systemui.statusbar.MKStatusBarItemHolder>
+        </com.android.systemui.statusbar.MoKeeStatusBarItemHolder>
 
         <com.android.keyguard.AlphaOptimizedLinearLayout android:id="@+id/system_icon_area"
             android:layout_width="0dp"

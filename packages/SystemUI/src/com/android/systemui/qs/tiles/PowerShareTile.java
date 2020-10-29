@@ -30,7 +30,7 @@ import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.statusbar.policy.BatteryController;
 
-import org.mokee.internal.logging.MKMetricsLogger;
+import org.mokee.internal.logging.MoKeeMetricsLogger;
 
 import vendor.mokee.powershare.V1_0.IPowerShare;
 
@@ -186,7 +186,7 @@ public class PowerShareTile extends QSTileImpl<BooleanState>
 
     @Override
     public int getMetricsCategory() {
-        return MKMetricsLogger.TILE_POWERSHARE;
+        return MoKeeMetricsLogger.TILE_POWERSHARE;
     }
 
     @Override

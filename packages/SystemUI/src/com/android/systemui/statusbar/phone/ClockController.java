@@ -26,14 +26,14 @@ import com.android.systemui.statusbar.phone.StatusBarIconController;
 import com.android.systemui.statusbar.policy.Clock;
 import com.android.systemui.tuner.TunerService;
 
-import mokee.providers.MKSettings;
+import mokee.providers.MoKeeSettings;
 
 public class ClockController implements TunerService.Tunable {
 
     private static final String TAG = "ClockController";
 
     private static final String CLOCK_POSITION =
-            "mksystem:" + MKSettings.System.STATUS_BAR_CLOCK;
+            "mokeesystem:" + MoKeeSettings.System.STATUS_BAR_CLOCK;
 
     private static final int CLOCK_POSITION_RIGHT = 0;
     private static final int CLOCK_POSITION_CENTER = 1;

@@ -41,7 +41,7 @@ import com.android.systemui.tuner.TunerService;
 
 import com.google.android.collect.Sets;
 
-import mokee.providers.MKSettings;
+import mokee.providers.MoKeeSettings;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -83,7 +83,7 @@ public class ThemeOverlayController extends SystemUI {
     }
 
     static final String KEY_BERRY_BLACK_THEME =
-            "mksystem:" + MKSettings.System.BERRY_BLACK_THEME;
+            "mokeesystem:" + MoKeeSettings.System.BERRY_BLACK_THEME;
     static final String OVERLAY_BERRY_BLACK_THEME =
             "org.mokee.overlay.customization.blacktheme";
     private final TunerService.Tunable mTunable =

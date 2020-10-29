@@ -201,7 +201,7 @@ import com.android.server.statusbar.StatusBarManagerInternal;
 import com.android.server.wallpaper.WallpaperManagerInternal;
 import com.android.server.wm.utils.InsetUtils;
 
-import mokee.providers.MKSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.io.PrintWriter;
 import java.util.function.Consumer;
@@ -467,8 +467,8 @@ public class DisplayPolicy {
             super(handler);
 
             ContentResolver resolver = mContext.getContentResolver();
-            resolver.registerContentObserver(MKSettings.System.getUriFor(
-                    MKSettings.System.FORCE_SHOW_NAVBAR), false, this,
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.FORCE_SHOW_NAVBAR), false, this,
                     UserHandle.USER_ALL);
 
             updateSettings();
@@ -682,8 +682,8 @@ public class DisplayPolicy {
     public void updateSettings() {
         ContentResolver resolver = mContext.getContentResolver();
 
-        mForceNavbar = MKSettings.System.getIntForUser(resolver,
-                MKSettings.System.FORCE_SHOW_NAVBAR, 0,
+        mForceNavbar = MoKeeSettings.System.getIntForUser(resolver,
+                MoKeeSettings.System.FORCE_SHOW_NAVBAR, 0,
                 UserHandle.USER_CURRENT);
     }
 

@@ -28,18 +28,18 @@ import com.android.systemui.plugins.DarkIconDispatcher;
 import com.android.systemui.plugins.DarkIconDispatcher.DarkReceiver;
 import com.android.systemui.R;
 
-import org.mokee.internal.statusbar.MKStatusBarItem;
+import org.mokee.internal.statusbar.MoKeeStatusBarItem;
 
 import java.util.ArrayList;
 
-public class MKStatusBarItemHolder extends RelativeLayout
-        implements MKStatusBarItem.Manager {
-    private static final String TAG = "MKStatusBarItemHolder";
+public class MoKeeStatusBarItemHolder extends RelativeLayout
+        implements MoKeeStatusBarItem.Manager {
+    private static final String TAG = "MoKeeStatusBarItemHolder";
 
-    private ArrayList<MKStatusBarItem.DarkReceiver> mDarkReceivers =
-            new ArrayList<MKStatusBarItem.DarkReceiver>();
-    private ArrayList<MKStatusBarItem.VisibilityReceiver> mVisibilityReceivers =
-            new ArrayList<MKStatusBarItem.VisibilityReceiver>();
+    private ArrayList<MoKeeStatusBarItem.DarkReceiver> mDarkReceivers =
+            new ArrayList<MoKeeStatusBarItem.DarkReceiver>();
+    private ArrayList<MoKeeStatusBarItem.VisibilityReceiver> mVisibilityReceivers =
+            new ArrayList<MoKeeStatusBarItem.VisibilityReceiver>();
 
     private Rect mLastArea;
     private float mLastDarkIntensity;
@@ -49,15 +49,15 @@ public class MKStatusBarItemHolder extends RelativeLayout
 
     private Context mContext;
 
-    public MKStatusBarItemHolder(Context context) {
+    public MoKeeStatusBarItemHolder(Context context) {
         this(context, null);
     }
 
-    public MKStatusBarItemHolder(Context context, AttributeSet attrs) {
+    public MoKeeStatusBarItemHolder(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public MKStatusBarItemHolder(Context context, AttributeSet attrs, int defStyle) {
+    public MoKeeStatusBarItemHolder(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         mContext = context;
         mItemHolderIsVisible = false;
@@ -88,7 +88,7 @@ public class MKStatusBarItemHolder extends RelativeLayout
             mLastArea = area;
             mLastDarkIntensity = darkIntensity;
             mLastTint = tint;
-            for (MKStatusBarItem.DarkReceiver r : mDarkReceivers) {
+            for (MoKeeStatusBarItem.DarkReceiver r : mDarkReceivers) {
                 r.onDarkChanged(area, darkIntensity, tint);
             }
         }
@@ -127,14 +127,14 @@ public class MKStatusBarItemHolder extends RelativeLayout
             return;
         }
         mItemHolderIsVisible = isVisible;
-        for (MKStatusBarItem.VisibilityReceiver r : mVisibilityReceivers) {
+        for (MoKeeStatusBarItem.VisibilityReceiver r : mVisibilityReceivers) {
             r.onVisibilityChanged(mItemHolderIsVisible);
         }
     }
 
-    // MKStatusBarItem.Manager methods
+    // MoKeeStatusBarItem.Manager methods
 
-    public void addDarkReceiver(MKStatusBarItem.DarkReceiver darkReceiver) {
+    public void addDarkReceiver(MoKeeStatusBarItem.DarkReceiver darkReceiver) {
         darkReceiver.setFillColors(
                 mContext.getColor(R.color.dark_mode_icon_color_dual_tone_fill),
                 mContext.getColor(R.color.light_mode_icon_color_dual_tone_fill));
@@ -142,7 +142,7 @@ public class MKStatusBarItemHolder extends RelativeLayout
         darkReceiver.onDarkChanged(mLastArea, mLastDarkIntensity, mLastTint);
     }
 
-    public void addVisibilityReceiver(MKStatusBarItem.VisibilityReceiver visibilityReceiver) {
+    public void addVisibilityReceiver(MoKeeStatusBarItem.VisibilityReceiver visibilityReceiver) {
         mVisibilityReceivers.add(visibilityReceiver);
         visibilityReceiver.onVisibilityChanged(mItemHolderIsVisible);
     }

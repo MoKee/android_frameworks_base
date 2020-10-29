@@ -31,7 +31,7 @@ import com.android.systemui.qs.TouchAnimator.Listener;
 import com.android.systemui.tuner.TunerService;
 import com.android.systemui.tuner.TunerService.Tunable;
 
-import mokee.providers.MKSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -47,7 +47,7 @@ public class QSAnimator implements Callback, PageListener, Listener, OnLayoutCha
     public static final float EXPANDED_TILE_DELAY = .86f;
 
     private static final String QS_SHOW_BRIGHTNESS_SLIDER =
-            "mksecure:" + MKSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER;
+            "mokeesecure:" + MoKeeSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER;
 
     private final ArrayList<View> mAllViews = new ArrayList<>();
     /**

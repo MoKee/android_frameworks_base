@@ -77,7 +77,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import mokee.app.MKContextConstants;
+import mokee.app.MoKeeContextConstants;
 
 import vendor.mokee.biometrics.fingerprint.inscreen.V1_0.IFingerprintInscreen;
 
@@ -812,7 +812,7 @@ public class FingerprintService extends BiometricServiceBase {
                 getLockoutBroadcastPermission(), null /* handler */);
 
         PackageManager packageManager = context.getPackageManager();
-        mHasFod = packageManager.hasSystemFeature(MKContextConstants.Features.FOD);
+        mHasFod = packageManager.hasSystemFeature(MoKeeContextConstants.Features.FOD);
     }
 
     @Override

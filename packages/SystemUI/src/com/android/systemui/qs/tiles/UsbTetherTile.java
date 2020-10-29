@@ -32,7 +32,7 @@ import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.R;
 
-import org.mokee.internal.logging.MKMetricsLogger;
+import org.mokee.internal.logging.MoKeeMetricsLogger;
 
 import javax.inject.Inject;
 
@@ -119,6 +119,6 @@ public class UsbTetherTile extends QSTileImpl<BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return MKMetricsLogger.TILE_USB_TETHER;
+        return MoKeeMetricsLogger.TILE_USB_TETHER;
     }
 }

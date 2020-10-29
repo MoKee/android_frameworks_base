@@ -64,7 +64,7 @@ import com.android.systemui.tuner.TunerService;
 import com.android.systemui.tuner.TunerService.Tunable;
 import com.android.systemui.util.animation.DisappearParameters;
 
-import mokee.providers.MKSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -81,9 +81,9 @@ public class QSPanel extends LinearLayout implements Tunable, Callback, Brightne
         Dumpable {
 
     private static final String QS_SHOW_AUTO_BRIGHTNESS =
-            "mksecure:" + MKSettings.Secure.QS_SHOW_AUTO_BRIGHTNESS;
+            "mokeesecure:" + MoKeeSettings.Secure.QS_SHOW_AUTO_BRIGHTNESS;
     public static final String QS_SHOW_BRIGHTNESS_SLIDER =
-            "mksecure:" + MKSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER;
+            "mokeesecure:" + MoKeeSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER;
     public static final String QS_SHOW_HEADER = "qs_show_header";
 
     private static final String TAG = "QSPanel";

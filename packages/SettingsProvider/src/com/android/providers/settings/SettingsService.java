@@ -32,7 +32,7 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Settings;
 
-import mokee.providers.MKSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -119,7 +119,7 @@ final public class SettingsService extends Binder {
         String mTag = null;
         int mResetMode = -1;
         boolean mMakeDefault;
-        boolean mUseMKSettingsProvider;
+        boolean mUseMoKeeSettingsProvider;
 
         MyShellCommand(SettingsProvider provider, boolean dumping) {
             mProvider = provider;
@@ -127,14 +127,14 @@ final public class SettingsService extends Binder {
         }
 
         private String getSettingsAuthority() {
-            return mUseMKSettingsProvider ? MKSettings.AUTHORITY : Settings.AUTHORITY;
+            return mUseMoKeeSettingsProvider ? MoKeeSettings.AUTHORITY : Settings.AUTHORITY;
         }
 
         private String getCallMethod(String callMethod) {
             final PrintWriter perr = getErrPrintWriter();
 
             try {
-                Class clazz = mUseMKSettingsProvider ? MKSettings.class : Settings.class;
+                Class clazz = mUseMoKeeSettingsProvider ? MoKeeSettings.class : Settings.class;
                 Field field = clazz.getField(callMethod);
                 if (field.getType() == String.class) {
                     return (String) field.get(null);
@@ -171,7 +171,7 @@ final public class SettingsService extends Binder {
                         return -1;
                     }
                 } else if ("--mokee".equals(arg)) {
-                    mUseMKSettingsProvider = true;
+                    mUseMoKeeSettingsProvider = true;
                 } else if (mVerb == CommandVerb.UNSPECIFIED) {
                     if ("get".equalsIgnoreCase(arg)) {
                         mVerb = CommandVerb.GET;

@@ -24,11 +24,11 @@ import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.R;
 
-import org.mokee.internal.logging.MKMetricsLogger;
+import org.mokee.internal.logging.MoKeeMetricsLogger;
 import org.mokee.internal.util.PackageManagerUtils;
 
-import mokee.hardware.MKHardwareManager;
-import mokee.providers.MKSettings;
+import mokee.hardware.MoKeeHardwareManager;
+import mokee.providers.MoKeeSettings;
 
 import javax.inject.Inject;
 
@@ -39,12 +39,12 @@ public class ReadingModeTile extends QSTileImpl<BooleanState> {
     private static final Intent LIVEDISPLAY_SETTINGS =
             new Intent("org.mokee.mokeeparts.LIVEDISPLAY_SETTINGS");
 
-    private MKHardwareManager mHardware;
+    private MoKeeHardwareManager mHardware;
 
     @Inject
     public ReadingModeTile(QSHost host) {
         super(host);
-        mHardware = MKHardwareManager.getInstance(mContext);
+        mHardware = MoKeeHardwareManager.getInstance(mContext);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class ReadingModeTile extends QSTileImpl<BooleanState> {
     @Override
     protected void handleClick() {
         boolean newStatus = !isReadingModeEnabled();
-        mHardware.set(MKHardwareManager.FEATURE_READING_ENHANCEMENT, newStatus);
+        mHardware.set(MoKeeHardwareManager.FEATURE_READING_ENHANCEMENT, newStatus);
         refreshState();
     }
 
@@ -67,7 +67,7 @@ public class ReadingModeTile extends QSTileImpl<BooleanState> {
     @Override
     public boolean isAvailable() {
         return !isWellbeingEnabled() &&
-                mHardware.isSupported(MKHardwareManager.FEATURE_READING_ENHANCEMENT);
+                mHardware.isSupported(MoKeeHardwareManager.FEATURE_READING_ENHANCEMENT);
     }
 
     @Override
@@ -104,7 +104,7 @@ public class ReadingModeTile extends QSTileImpl<BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return MKMetricsLogger.TILE_READING_MODE;
+        return MoKeeMetricsLogger.TILE_READING_MODE;
     }
 
     @Override
@@ -112,7 +112,7 @@ public class ReadingModeTile extends QSTileImpl<BooleanState> {
     }
 
     private boolean isReadingModeEnabled() {
-        return mHardware.get(MKHardwareManager.FEATURE_READING_ENHANCEMENT);
+        return mHardware.get(MoKeeHardwareManager.FEATURE_READING_ENHANCEMENT);
     }
 
     private boolean isWellbeingEnabled() {

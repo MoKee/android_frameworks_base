@@ -73,7 +73,7 @@ import com.android.server.lights.LightsManager;
 import com.android.server.lights.LogicalLight;
 
 import org.mokee.internal.notification.LedValues;
-import org.mokee.internal.notification.MKBatteryLights;
+import org.mokee.internal.notification.MoKeeBatteryLights;
 
 import java.io.File;
 import java.io.FileDescriptor;
@@ -199,7 +199,7 @@ public final class BatteryService extends SystemService {
 
     private MetricsLogger mMetricsLogger;
 
-    private MKBatteryLights mMKBatteryLights;
+    private MoKeeBatteryLights mMoKeeBatteryLights;
 
     public BatteryService(Context context) {
         super(context);
@@ -271,14 +271,14 @@ public final class BatteryService extends SystemService {
                 updateBatteryWarningLevelLocked();
             }
         } else if (phase == PHASE_BOOT_COMPLETED) {
-            mMKBatteryLights = new MKBatteryLights(mContext,
-                    new MKBatteryLights.LedUpdater() {
+            mMoKeeBatteryLights = new MoKeeBatteryLights(mContext,
+                    new MoKeeBatteryLights.LedUpdater() {
                 public void update() {
                     updateLedPulse();
                 }
             });
 
-            // Update light state now that mMKBatteryLights has been initialized.
+            // Update light state now that mMoKeeBatteryLights has been initialized.
             updateLedPulse();
         }
     }
@@ -1128,21 +1128,21 @@ public final class BatteryService extends SystemService {
                 Slog.w(TAG, "updateLightsLocked: mHealthInfo is null; skipping");
                 return;
             }
-            // mMKBatteryLights is initialized during PHASE_BOOT_COMPLETED
+            // mMoKeeBatteryLights is initialized during PHASE_BOOT_COMPLETED
             // This means we don't have MoKee battery settings yet so skip.
-            if (mMKBatteryLights == null) {
+            if (mMoKeeBatteryLights == null) {
                 if (DEBUG) {
-                    Slog.w(TAG, "updateLightsLocked: mMKBatteryLights is not yet ready; "
+                    Slog.w(TAG, "updateLightsLocked: mMoKeeBatteryLights is not yet ready; "
                             + "skipping");
                 }
                 return;
             }
-            if (!mMKBatteryLights.isSupported()) {
+            if (!mMoKeeBatteryLights.isSupported()) {
                 return;
             }
 
             LedValues ledValues = new LedValues(0 /* color */, mBatteryLedOn, mBatteryLedOff);
-            mMKBatteryLights.calcLights(ledValues, mHealthInfo.batteryLevel,
+            mMoKeeBatteryLights.calcLights(ledValues, mHealthInfo.batteryLevel,
                     mHealthInfo.batteryStatus, mHealthInfo.batteryLevel <= mLowBatteryWarningLevel);
 
             if (!ledValues.isEnabled()) {

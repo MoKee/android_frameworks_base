@@ -31,7 +31,7 @@ import com.android.systemui.plugins.qs.QSTile.BooleanState;
 import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 
-import org.mokee.internal.logging.MKMetricsLogger;
+import org.mokee.internal.logging.MoKeeMetricsLogger;
 
 import javax.inject.Inject;
 
@@ -145,7 +145,7 @@ public class CaffeineTile extends QSTileImpl<BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return MKMetricsLogger.TILE_CAFFEINE;
+        return MoKeeMetricsLogger.TILE_CAFFEINE;
     }
 
     private void startCountDown(long duration) {

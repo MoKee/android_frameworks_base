@@ -44,9 +44,9 @@ import com.android.systemui.statusbar.policy.KeyguardStateController;
 
 import mokee.app.Profile;
 import mokee.app.ProfileManager;
-import mokee.providers.MKSettings;
+import mokee.providers.MoKeeSettings;
 
-import org.mokee.internal.logging.MKMetricsLogger;
+import org.mokee.internal.logging.MoKeeMetricsLogger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -156,18 +156,18 @@ public class ProfilesTile extends QSTileImpl<State> {
     }
 
     private void setProfilesEnabled(Boolean enabled) {
-        MKSettings.System.putInt(mContext.getContentResolver(),
-                MKSettings.System.SYSTEM_PROFILES_ENABLED, enabled ? 1 : 0);
+        MoKeeSettings.System.putInt(mContext.getContentResolver(),
+                MoKeeSettings.System.SYSTEM_PROFILES_ENABLED, enabled ? 1 : 0);
     }
 
     private boolean profilesEnabled() {
-        return MKSettings.System.getInt(mContext.getContentResolver(),
-                MKSettings.System.SYSTEM_PROFILES_ENABLED, 1) == 1;
+        return MoKeeSettings.System.getInt(mContext.getContentResolver(),
+                MoKeeSettings.System.SYSTEM_PROFILES_ENABLED, 1) == 1;
     }
 
     @Override
     public int getMetricsCategory() {
-        return MKMetricsLogger.TILE_PROFILES;
+        return MoKeeMetricsLogger.TILE_PROFILES;
     }
 
     @Override
@@ -251,7 +251,7 @@ public class ProfilesTile extends QSTileImpl<State> {
 
         @Override
         public int getMetricsCategory() {
-            return MKMetricsLogger.TILE_PROFILES_DETAIL;
+            return MoKeeMetricsLogger.TILE_PROFILES_DETAIL;
         }
 
         @Override
@@ -317,8 +317,8 @@ public class ProfilesTile extends QSTileImpl<State> {
 
         public void startObserving() {
             mContext.getContentResolver().registerContentObserver(
-                    MKSettings.System.getUriFor(
-                            MKSettings.System.SYSTEM_PROFILES_ENABLED), false, this);
+                    MoKeeSettings.System.getUriFor(
+                            MoKeeSettings.System.SYSTEM_PROFILES_ENABLED), false, this);
         }
 
         public void endObserving() {
