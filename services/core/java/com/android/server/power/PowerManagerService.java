@@ -262,10 +262,14 @@ public final class PowerManagerService extends SystemService
     private DreamManagerInternal mDreamManager;
     private Light mAttentionLight;
     private Light mButtonsLight;
+    private Light mKeyboardLight;
 
     private int mButtonTimeout;
     private int mButtonBrightness;
     private int mButtonBrightnessSettingDefault;
+    private boolean mKeyboardVisible;
+    private int mKeyboardBrightness;
+    private int mKeyboardBrightnessSettingDefault;
 
     private boolean mButtonPressed;
     private boolean mButtonOn;
@@ -882,6 +886,7 @@ public final class PowerManagerService extends SystemService
 
             PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
             mButtonBrightnessSettingDefault = pm.getDefaultButtonBrightness();
+            mButtonBrightnessSettingDefault = pm.getDefaultKeyboardBrightness();
             mScreenBrightnessSettingMinimum = pm.getMinimumScreenBrightnessSetting();
             mScreenBrightnessSettingMaximum = pm.getMaximumScreenBrightnessSetting();
             mScreenBrightnessSettingDefault = pm.getDefaultScreenBrightnessSetting();
@@ -904,6 +909,7 @@ public final class PowerManagerService extends SystemService
             mLightsManager = getLocalService(LightsManager.class);
             mAttentionLight = mLightsManager.getLight(LightsManager.LIGHT_ID_ATTENTION);
             mButtonsLight = mLightsManager.getLight(LightsManager.LIGHT_ID_BUTTONS);
+            mKeyboardLight = mLightsManager.getLight(LightsManager.LIGHT_ID_KEYBOARD);
 
             // Initialize display power management.
             mDisplayManagerInternal.initPowerManagement(
@@ -978,6 +984,9 @@ public final class PowerManagerService extends SystemService
                 false, mSettingsObserver, UserHandle.USER_ALL);
         resolver.registerContentObserver(MKSettings.System.getUriFor(
                 MKSettings.System.BUTTON_BACKLIGHT_ONLY_WHEN_PRESSED),
+                false, mSettingsObserver, UserHandle.USER_ALL);
+        resolver.registerContentObserver(MKSettings.Secure.getUriFor(
+                MKSettings.Secure.KEYBOARD_BRIGHTNESS),
                 false, mSettingsObserver, UserHandle.USER_ALL);
         resolver.registerContentObserver(MKSettings.System.getUriFor(
                 MKSettings.System.PROXIMITY_ON_WAKE),
@@ -1131,6 +1140,9 @@ public final class PowerManagerService extends SystemService
         mButtonLightOnKeypressOnly = MKSettings.System.getIntForUser(resolver,
                 MKSettings.System.BUTTON_BACKLIGHT_ONLY_WHEN_PRESSED,
                 0, UserHandle.USER_CURRENT) == 1;
+        mKeyboardBrightness = MKSettings.Secure.getIntForUser(resolver,
+                MKSettings.Secure.KEYBOARD_BRIGHTNESS, mKeyboardBrightnessSettingDefault,
+                UserHandle.USER_CURRENT);
 
         mProximityWakeEnabled = MKSettings.System.getInt(resolver,
                 MKSettings.System.PROXIMITY_ON_WAKE,
@@ -2193,6 +2205,15 @@ public final class PowerManagerService extends SystemService
                                     nextTimeout = mLastButtonActivityTime + mButtonTimeout;
                                 }
                             }
+
+                            int keyboardBrightness;
+                            if (mButtonBrightnessOverrideFromWindowManager >= 0) {
+                                keyboardBrightness = mButtonBrightnessOverrideFromWindowManager;
+                            } else {
+                                keyboardBrightness = mKeyboardBrightness;
+                            }
+                            mKeyboardLight.setBrightness(mKeyboardVisible ?
+                                    keyboardBrightness : 0);
                         }
                     } else {
                         nextTimeout = mLastUserActivityTime + screenOffTimeout;
@@ -2201,6 +2222,8 @@ public final class PowerManagerService extends SystemService
                             if (mWakefulness == WAKEFULNESS_AWAKE) {
                                 mButtonsLight.setBrightness(0);
                                 mButtonOn = false;
+
+                                mKeyboardLight.setBrightness(0);
                             }
                         }
                     }
@@ -4965,6 +4988,22 @@ public final class PowerManagerService extends SystemService
                 setAttentionLightInternal(on, color);
             } finally {
                 Binder.restoreCallingIdentity(ident);
+            }
+        }
+
+        @Override // Binder call
+        public void setKeyboardVisibility(boolean visible) {
+            synchronized (mLock) {
+                if (DEBUG_SPEW) {
+                    Slog.d(TAG, "setKeyboardVisibility: " + visible);
+                }
+                if (mKeyboardVisible != visible) {
+                    mKeyboardVisible = visible;
+                    synchronized (mLock) {
+                        mDirty |= DIRTY_USER_ACTIVITY;
+                        updatePowerStateLocked();
+                    }
+                }
             }
         }
 
