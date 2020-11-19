@@ -333,6 +333,15 @@
     <dimen name="screenshot_dismissal_height_delta">80dp</dimen>
 
 
+    <!-- The width of the partial screenshot border resize handles -->
+    <dimen name="global_screenshot_selector_border_width">4dp</dimen>
+
+    <!-- The width of the partial screenshot corner resize handles -->
+    <dimen name="global_screenshot_selector_corner_width">8dp</dimen>
+
+    <!-- The size of the area around a resize handle used for touch detection -->
+    <dimen name="global_screenshot_selector_touch_width">30dp</dimen>
+
     <!-- The width of the view containing navigation buttons -->
     <dimen name="navigation_key_width">70dp</dimen>
 
@@ -1059,9 +1068,9 @@
     <dimen name="global_actions_wallet_top_margin">40dp</dimen>
 
     <!-- Shutdown and restart actions are larger in power options dialog -->
-    <dimen name="global_actions_power_dialog_item_height">190dp</dimen>
-    <dimen name="global_actions_power_dialog_item_width">255dp</dimen>
-    <dimen name="global_actions_power_dialog_item_bottom_margin">45dp</dimen>
+    <dimen name="global_actions_power_dialog_item_height">128dp</dimen>
+    <dimen name="global_actions_power_dialog_item_width">128dp</dimen>
+    <dimen name="global_actions_power_dialog_item_bottom_margin">22dp</dimen>
 
     <!-- The maximum offset in either direction that elements are moved horizontally to prevent
          burn-in on AOD. -->
