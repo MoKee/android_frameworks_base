@@ -568,6 +568,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private Action mAssistLongPressAction;
     private Action mAppSwitchPressAction;
     private Action mAppSwitchLongPressAction;
+    private Action mEdgeLongSwipeAction;
 
     // support for activating the lock screen while the screen is on
     private HashSet<Integer> mAllowLockscreenWhenOnDisplays = new HashSet<>();
@@ -712,7 +713,11 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private int mTorchTimeout;
     private PendingIntent mTorchOffPendingIntent;
 
-    private MoKeeHardwareManager mMKHardware;
+    private boolean mLongSwipeDown;
+    private static final int LONG_SWIPE_FLAGS = KeyEvent.FLAG_LONG_PRESS
+            | KeyEvent.FLAG_FROM_SYSTEM | KeyEvent.FLAG_VIRTUAL_HARD_KEY;
+
+    private MoKeeHardwareManager mMoKeeHardware;
 
     private class PolicyHandler extends Handler {
         @Override
@@ -898,6 +903,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
                     MoKeeSettings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION), false, this,
+                    UserHandle.USER_ALL);
+            resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
+                    MoKeeSettings.System.KEY_EDGE_LONG_SWIPE_ACTION), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(MoKeeSettings.System.getUriFor(
                     MoKeeSettings.System.HOME_WAKE_SCREEN), false, this,
@@ -2276,6 +2284,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         mAppSwitchLongPressAction = Action.fromIntSafe(res.getInteger(
                 org.mokee.platform.internal.R.integer.config_longPressOnAppSwitchBehavior));
 
+        mEdgeLongSwipeAction = Action.NOTHING;
+
         mHomeLongPressAction = Action.fromIntSafe(res.getInteger(
                 org.mokee.platform.internal.R.integer.config_longPressOnHomeBehavior));
         if (mHomeLongPressAction.ordinal() > Action.SLEEP.ordinal()) {
@@ -2319,6 +2329,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         mAppSwitchLongPressAction = Action.fromSettings(resolver,
                 MoKeeSettings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION,
                 mAppSwitchLongPressAction);
+
+        mEdgeLongSwipeAction = Action.fromSettings(resolver,
+                MoKeeSettings.System.KEY_EDGE_LONG_SWIPE_ACTION,
+                mEdgeLongSwipeAction);
 
         mShortPressOnWindowBehavior = SHORT_PRESS_WINDOW_NOTHING;
         if (mPackageManager.hasSystemFeature(FEATURE_PICTURE_IN_PICTURE)) {
@@ -2417,8 +2431,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     UserHandle.USER_CURRENT);
             if (forceNavbar != mForceNavbar) {
                 mForceNavbar = forceNavbar;
-                if (mMKHardware.isSupported(MoKeeHardwareManager.FEATURE_KEY_DISABLE)) {
-                    mMKHardware.set(MoKeeHardwareManager.FEATURE_KEY_DISABLE,
+                if (mMoKeeHardware.isSupported(MoKeeHardwareManager.FEATURE_KEY_DISABLE)) {
+                    mMoKeeHardware.set(MoKeeHardwareManager.FEATURE_KEY_DISABLE,
                             mForceNavbar == 1);
                 }
             }
@@ -4194,6 +4208,23 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         // Handle special keys.
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK: {
+                boolean isLongSwipe = (event.getFlags() & LONG_SWIPE_FLAGS) == LONG_SWIPE_FLAGS;
+                if (mLongSwipeDown && isLongSwipe && !down) {
+                    // Trigger long swipe action
+                    performKeyAction(mEdgeLongSwipeAction, event);
+                    // Reset long swipe state
+                    mLongSwipeDown = false;
+                    // Don't pass back press to app
+                    result &= ~ACTION_PASS_TO_USER;
+                    break;
+                }
+                mLongSwipeDown = isLongSwipe && down;
+                if (mLongSwipeDown) {
+                    // Don't pass back press to app
+                    result &= ~ACTION_PASS_TO_USER;
+                    break;
+                }
+
                 if (down) {
                     interceptBackKeyDown();
                 } else {
@@ -5452,7 +5483,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mVrManagerInternal.addPersistentVrModeStateListener(mPersistentVrModeListener);
         }
 
-        mMKHardware = MoKeeHardwareManager.getInstance(mContext);
+        mMoKeeHardware = MoKeeHardwareManager.getInstance(mContext);
         // Ensure observe happens in systemReady() since we need
         // MoKeeHardwareService to be up and running
         mSettingsObserver.observe();
