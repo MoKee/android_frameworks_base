@@ -50,7 +50,7 @@ public class MoKeeUtils {
         return netInfo != null && netInfo.isConnected();
     }
 
-    public static boolean isApkInstalledAndEnabled(String packageName, Context context) {
+    public static boolean isApkInstalledAndEnabled(Context context, String packageName) {
         int state;
         try {
             context.getPackageManager().getPackageInfo(packageName, 0);
@@ -62,7 +62,7 @@ public class MoKeeUtils {
                 && state != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER;
     }
 
-    public static boolean isApkInstalled(String packageName, Context context) {
+    public static boolean isApkInstalled(Context context, String packageName) {
         try {
             context.getPackageManager().getPackageInfo(packageName, 0);
         } catch (NameNotFoundException e) {
@@ -71,7 +71,7 @@ public class MoKeeUtils {
         return true;
     }
 
-    public static boolean isSystemApp(String packageName, Context context) {
+    public static boolean isSystemApp(Context context, String packageName) {
         PackageInfo packageInfo;
         try {
             packageInfo = context.getPackageManager().getPackageInfo(packageName, 0);
