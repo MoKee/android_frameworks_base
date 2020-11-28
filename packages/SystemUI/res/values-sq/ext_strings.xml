@@ -69,4 +69,5 @@
     <string name="status_bar_battery">Bateria</string>
     <string name="status_bar_camera">Kamera</string>
     <string name="status_bar_location">Vendndodhja</string>
+    <string name="screen_pinning_description_no_navbar">Kjo e ruan në pamje deri sa ta heqësh nga gozhdimi. Prek dhe mbaj të shtypur \"Përmbledhje\" për ta hequr nga gozhdimi.</string>
 </resources>
