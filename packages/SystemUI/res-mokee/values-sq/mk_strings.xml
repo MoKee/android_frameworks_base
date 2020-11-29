@@ -14,5 +14,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="status_bar_su">Di</string>
+    <string name="status_bar_vpn">VPN</string>
+    <string name="status_bar_roaming">Treguesi i roaming-ut</string>
     <string name="quick_settings_screenshot_label">Foto e ekranit</string>
 </resources>
