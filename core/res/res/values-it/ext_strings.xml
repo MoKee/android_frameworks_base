@@ -20,5 +20,4 @@
     <string name="adb_net_active_notification_title">ADB attraverso la rete attivato</string>
     <string name="adb_both_active_notification_title">ADB attraverso USB &amp; rete attivato</string>
     <string name="adb_active_generic_notification_message">Tocca per disattivare il debug.</string>
-    <string name="bluetooth_airplane_mode_toast">Il bluetooth rimarrà attivo in modalità aereo</string>
 </resources>
