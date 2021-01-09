@@ -20,7 +20,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="global_action_restart_system">Sistemi</string>
-    <string name="global_action_restart_recovery">Rimëkëmbje</string>
+    <string name="global_action_restart_recovery">Rikuperimi</string>
     <string name="global_action_restart_bootloader">Bootloader</string>
     <string name="global_action_restart_download">Shkarko</string>
     <string name="global_action_restart_progress">Duke u rindezur\u2026</string>

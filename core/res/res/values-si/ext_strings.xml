@@ -42,7 +42,7 @@
     <string name="app_ops_receive_sms">කෙටි පනිවිඩයක් බාර ගැනීම</string>
     <string name="app_ops_record_audio">ශ්‍රව්‍ය රෙකෝඩනය</string>
     <string name="app_ops_send_mms">MMS පනිවිඩයක් යැවීම</string>
-    <string name="app_ops_send_sms">කෙටි පනිවිඩයක් යැවීම</string>
+    <string name="app_ops_send_sms">කෙටි පණිවිඩයක් යවන්න</string>
     <string name="app_ops_toggle_bluetooth">බ්ලූටූත් ටොගලනය</string>
     <string name="app_ops_toggle_nfc">NFC ටොගලනය</string>
     <string name="app_ops_use_alarm_volume">ඇඟවීම් හඬ පරිමා පාලනය</string>

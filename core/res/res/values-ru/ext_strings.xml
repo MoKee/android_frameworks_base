@@ -64,7 +64,7 @@
     <string name="app_ops_read_clipboard">считать содержимое буфера обмена</string>
     <string name="app_ops_read_contacts">считать данные контактов</string>
     <string name="app_ops_read_external_storage">прочитать данные с внешнего накопителя</string>
-    <string name="app_ops_read_mms">считать MMS-сообщения</string>
+    <string name="app_ops_read_mms">читать MMS-сообщения</string>
     <string name="app_ops_read_phone_numbers">чтение телефонных номеров</string>
     <string name="app_ops_read_phone_state">получить данные о состоянии телефона</string>
     <string name="app_ops_read_sms">считать SMS-сообщения</string>
