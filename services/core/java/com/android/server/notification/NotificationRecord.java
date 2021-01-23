@@ -257,7 +257,7 @@ public final class NotificationRecord {
     }
 
     private Light calculateLights() {
-        // Lineage lights will set the default color later
+        // MoKee lights will set the default color later
         int defaultLightColor = 0;
         int defaultLightOn = mContext.getResources().getInteger(
                 com.android.internal.R.integer.config_defaultNotificationLedOn);

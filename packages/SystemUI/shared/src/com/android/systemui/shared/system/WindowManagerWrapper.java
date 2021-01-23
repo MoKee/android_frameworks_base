@@ -38,7 +38,7 @@ import com.android.systemui.shared.recents.view.AppTransitionAnimationSpecsFutur
 import com.android.systemui.shared.recents.view.RecentsTransition;
 import com.android.systemui.shared.system.PinnedStackListenerForwarder.PinnedStackListener;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MoKeeSettings;
 
 public class WindowManagerWrapper {
 
@@ -173,8 +173,8 @@ public class WindowManagerWrapper {
      */
     public boolean hasSoftNavigationBar(Context context, int displayId) {
         if (displayId == Display.DEFAULT_DISPLAY &&
-                LineageSettings.System.getIntForUser(context.getContentResolver(),
-                            LineageSettings.System.FORCE_SHOW_NAVBAR, 0,
+                MoKeeSettings.System.getIntForUser(context.getContentResolver(),
+                            MoKeeSettings.System.FORCE_SHOW_NAVBAR, 0,
                             UserHandle.USER_CURRENT) == 1) {
             return true;
         }

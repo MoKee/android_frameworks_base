@@ -135,7 +135,7 @@ import com.android.internal.util.MessageUtils;
 import com.android.internal.util.State;
 import com.android.internal.util.StateMachine;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -406,8 +406,8 @@ public class Tethering {
                 mTetherMasterSM.sendMessage(TetherMasterSM.CMD_UPSTREAM_CHANGED);
             }
         };
-        mContext.getContentResolver().registerContentObserver(LineageSettings.Secure.getUriFor(
-                LineageSettings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS), false, vpnSettingObserver);
+        mContext.getContentResolver().registerContentObserver(MoKeeSettings.Secure.getUriFor(
+                MoKeeSettings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS), false, vpnSettingObserver);
     }
 
     private class TetheringThreadExecutor implements Executor {

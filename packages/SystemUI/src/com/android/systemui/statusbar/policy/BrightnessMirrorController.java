@@ -33,7 +33,7 @@ import com.android.systemui.statusbar.phone.NotificationPanelViewController;
 import com.android.systemui.statusbar.phone.NotificationShadeWindowView;
 import com.android.systemui.tuner.TunerService;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.util.Objects;
 import java.util.function.Consumer;
@@ -46,7 +46,7 @@ public class BrightnessMirrorController
 
     private final NotificationShadeWindowView mStatusBarWindow;
     private static final String QS_SHOW_AUTO_BRIGHTNESS =
-            "lineagesecure:" + LineageSettings.Secure.QS_SHOW_AUTO_BRIGHTNESS;
+            "mokeesecure:" + MoKeeSettings.Secure.QS_SHOW_AUTO_BRIGHTNESS;
     private final Consumer<Boolean> mVisibilityCallback;
     private final NotificationPanelViewController mNotificationPanel;
     private final NotificationShadeDepthController mDepthController;

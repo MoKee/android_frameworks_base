@@ -45,8 +45,8 @@ import com.android.keyguard.KeyguardUpdateMonitorCallback;
 import com.android.systemui.Dependency;
 import com.android.systemui.R;
 
-import vendor.lineage.biometrics.fingerprint.inscreen.V1_0.IFingerprintInscreen;
-import vendor.lineage.biometrics.fingerprint.inscreen.V1_0.IFingerprintInscreenCallback;
+import vendor.mokee.biometrics.fingerprint.inscreen.V1_0.IFingerprintInscreen;
+import vendor.mokee.biometrics.fingerprint.inscreen.V1_0.IFingerprintInscreenCallback;
 
 import java.util.NoSuchElementException;
 import java.util.Timer;

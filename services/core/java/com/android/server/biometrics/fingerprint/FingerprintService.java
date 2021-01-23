@@ -80,9 +80,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import lineageos.app.LineageContextConstants;
+import mokee.app.MoKeeContextConstants;
 
-import vendor.lineage.biometrics.fingerprint.inscreen.V1_0.IFingerprintInscreen;
+import vendor.mokee.biometrics.fingerprint.inscreen.V1_0.IFingerprintInscreen;
 
 import java.io.File;
 import java.io.FileDescriptor;
@@ -895,7 +895,7 @@ public class FingerprintService extends BiometricServiceBase {
         mLockPatternUtils = new LockPatternUtils(context);
 
         PackageManager packageManager = context.getPackageManager();
-        mHasFod = packageManager.hasSystemFeature(LineageContextConstants.Features.FOD);
+        mHasFod = packageManager.hasSystemFeature(MoKeeContextConstants.Features.FOD);
     }
 
     @Override

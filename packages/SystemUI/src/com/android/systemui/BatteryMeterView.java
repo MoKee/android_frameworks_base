@@ -21,7 +21,7 @@ import static android.app.StatusBarManager.DISABLE_NONE;
 import static com.android.systemui.DejankUtils.whitelistIpcs;
 import static com.android.systemui.util.SysuiLifecycle.viewAttachLifecycle;
 
-import static lineageos.providers.LineageSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT;
+import static mokee.providers.MoKeeSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT;
 
 import static java.lang.annotation.RetentionPolicy.SOURCE;
 
@@ -68,7 +68,7 @@ import com.android.systemui.tuner.TunerService;
 import com.android.systemui.tuner.TunerService.Tunable;
 import com.android.systemui.util.Utils.DisableStateTracker;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -79,7 +79,7 @@ public class BatteryMeterView extends LinearLayout implements
         BatteryStateChangeCallback, Tunable, DarkReceiver, ConfigurationListener {
 
     private static final String STATUS_BAR_BATTERY_STYLE =
-            "lineagesystem:" + LineageSettings.System.STATUS_BAR_BATTERY_STYLE;
+            "mokeesystem:" + MoKeeSettings.System.STATUS_BAR_BATTERY_STYLE;
 
     private static final int BATTERY_STYLE_PORTRAIT = 0;
     private static final int BATTERY_STYLE_CIRCLE = 1;
@@ -177,7 +177,7 @@ public class BatteryMeterView extends LinearLayout implements
                 mUser = newUserId;
                 getContext().getContentResolver().unregisterContentObserver(mSettingObserver);
                 getContext().getContentResolver().registerContentObserver(
-                        LineageSettings.System.getUriFor(STATUS_BAR_SHOW_BATTERY_PERCENT),
+                        MoKeeSettings.System.getUriFor(STATUS_BAR_SHOW_BATTERY_PERCENT),
                         false, mSettingObserver, newUserId);
                 updateShowPercent();
             }
@@ -317,7 +317,7 @@ public class BatteryMeterView extends LinearLayout implements
         mBatteryController.addCallback(this);
         mUser = ActivityManager.getCurrentUser();
         getContext().getContentResolver().registerContentObserver(
-                LineageSettings.System.getUriFor(STATUS_BAR_SHOW_BATTERY_PERCENT),
+                MoKeeSettings.System.getUriFor(STATUS_BAR_SHOW_BATTERY_PERCENT),
                 false, mSettingObserver, mUser);
         getContext().getContentResolver().registerContentObserver(
                 Settings.Global.getUriFor(Settings.Global.BATTERY_ESTIMATES_LAST_UPDATE_TIME),
@@ -409,7 +409,7 @@ public class BatteryMeterView extends LinearLayout implements
 
     private void updateShowPercent() {
         final boolean showing = mBatteryPercentView != null;
-        final int showBatteryPercent = LineageSettings.System.getIntForUser(
+        final int showBatteryPercent = MoKeeSettings.System.getIntForUser(
                 getContext().getContentResolver(), STATUS_BAR_SHOW_BATTERY_PERCENT, 0, mUser);
         final boolean drawPercentInside = mShowPercentMode == MODE_DEFAULT &&
                 showBatteryPercent == 1;

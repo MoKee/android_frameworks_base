@@ -56,7 +56,7 @@ import com.android.systemui.statusbar.policy.KeyguardStateController;
 import com.android.systemui.tuner.TunerService;
 import com.android.systemui.util.InjectionInflationController;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -112,7 +112,7 @@ public class NotificationShadeWindowViewController {
     private boolean mIsTrackingBarGesture = false;
 
     private static final String DOUBLE_TAP_SLEEP_GESTURE =
-            "lineagesystem:" + LineageSettings.System.DOUBLE_TAP_SLEEP_GESTURE;
+            "mokeesystem:" + MoKeeSettings.System.DOUBLE_TAP_SLEEP_GESTURE;
     private boolean mDoubleTapToSleepEnabled;
     private int mQuickQsOffsetHeight;
 

@@ -42,11 +42,11 @@ import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.R;
 import com.android.systemui.statusbar.policy.KeyguardStateController;
 
-import lineageos.app.Profile;
-import lineageos.app.ProfileManager;
-import lineageos.providers.LineageSettings;
+import mokee.app.Profile;
+import mokee.app.ProfileManager;
+import mokee.providers.MoKeeSettings;
 
-import org.lineageos.internal.logging.LineageMetricsLogger;
+import org.mokee.internal.logging.MoKeeMetricsLogger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +57,7 @@ import javax.inject.Inject;
 public class ProfilesTile extends QSTileImpl<State> {
 
     private static final Intent PROFILES_SETTINGS =
-            new Intent("org.lineageos.lineageparts.PROFILES_SETTINGS");
+            new Intent("org.mokee.mokeeparts.PROFILES_SETTINGS");
 
     private final Icon mIcon = ResourceIcon.get(R.drawable.ic_qs_profiles);
 
@@ -156,18 +156,18 @@ public class ProfilesTile extends QSTileImpl<State> {
     }
 
     private void setProfilesEnabled(Boolean enabled) {
-        LineageSettings.System.putInt(mContext.getContentResolver(),
-                LineageSettings.System.SYSTEM_PROFILES_ENABLED, enabled ? 1 : 0);
+        MoKeeSettings.System.putInt(mContext.getContentResolver(),
+                MoKeeSettings.System.SYSTEM_PROFILES_ENABLED, enabled ? 1 : 0);
     }
 
     private boolean profilesEnabled() {
-        return LineageSettings.System.getInt(mContext.getContentResolver(),
-                LineageSettings.System.SYSTEM_PROFILES_ENABLED, 1) == 1;
+        return MoKeeSettings.System.getInt(mContext.getContentResolver(),
+                MoKeeSettings.System.SYSTEM_PROFILES_ENABLED, 1) == 1;
     }
 
     @Override
     public int getMetricsCategory() {
-        return LineageMetricsLogger.TILE_PROFILES;
+        return MoKeeMetricsLogger.TILE_PROFILES;
     }
 
     @Override
@@ -251,7 +251,7 @@ public class ProfilesTile extends QSTileImpl<State> {
 
         @Override
         public int getMetricsCategory() {
-            return LineageMetricsLogger.TILE_PROFILES_DETAIL;
+            return MoKeeMetricsLogger.TILE_PROFILES_DETAIL;
         }
 
         @Override
@@ -317,8 +317,8 @@ public class ProfilesTile extends QSTileImpl<State> {
 
         public void startObserving() {
             mContext.getContentResolver().registerContentObserver(
-                    LineageSettings.System.getUriFor(
-                            LineageSettings.System.SYSTEM_PROFILES_ENABLED), false, this);
+                    MoKeeSettings.System.getUriFor(
+                            MoKeeSettings.System.SYSTEM_PROFILES_ENABLED), false, this);
         }
 
         public void endObserving() {

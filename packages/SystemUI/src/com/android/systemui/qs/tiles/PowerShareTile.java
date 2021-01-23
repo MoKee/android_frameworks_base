@@ -30,9 +30,9 @@ import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.statusbar.policy.BatteryController;
 
-import org.lineageos.internal.logging.LineageMetricsLogger;
+import org.mokee.internal.logging.MoKeeMetricsLogger;
 
-import vendor.lineage.powershare.V1_0.IPowerShare;
+import vendor.mokee.powershare.V1_0.IPowerShare;
 
 import java.util.NoSuchElementException;
 
@@ -186,7 +186,7 @@ public class PowerShareTile extends QSTileImpl<BooleanState>
 
     @Override
     public int getMetricsCategory() {
-        return LineageMetricsLogger.TILE_POWERSHARE;
+        return MoKeeMetricsLogger.TILE_POWERSHARE;
     }
 
     @Override

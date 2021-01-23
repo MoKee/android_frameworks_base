@@ -46,7 +46,7 @@ import com.android.systemui.statusbar.phone.ReverseLinearLayout.ReverseRelativeL
 import com.android.systemui.statusbar.policy.KeyButtonView;
 import com.android.systemui.tuner.TunerService;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.io.PrintWriter;
 import java.util.Objects;
@@ -89,9 +89,9 @@ public class NavigationBarInflaterView extends FrameLayout
     private static final String ABSOLUTE_VERTICAL_CENTERED_SUFFIX = "C";
 
     private static final String KEY_NAVIGATION_HINT =
-            "lineagesystem:" + LineageSettings.System.NAVIGATION_BAR_HINT;
+            "mokeesystem:" + MoKeeSettings.System.NAVIGATION_BAR_HINT;
     private static final String OVERLAY_NAVIGATION_HIDE_HINT =
-            "org.lineageos.overlay.customization.navbar.nohint";
+            "org.mokee.overlay.customization.navbar.nohint";
 
     protected LayoutInflater mLayoutInflater;
     protected LayoutInflater mLandscapeInflater;

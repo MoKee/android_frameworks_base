@@ -166,7 +166,7 @@ final class OverlayManagerSettings {
         // ignored in OverlayManagerService.
         return selectWhereTarget(targetPackageName, userId)
                 .filter((i) -> i.isMutable() || (!"android".equals(i.getTargetPackageName()) &&
-                        !"lineageos.platform".equals(i.getTargetPackageName())))
+                        !"mokee.platform".equals(i.getTargetPackageName())))
                 .map(SettingsItem::getOverlayInfo)
                 .collect(Collectors.toList());
     }
@@ -176,7 +176,7 @@ final class OverlayManagerSettings {
         // ignored in OverlayManagerService.
         return selectWhereUser(userId)
                 .filter((i) -> i.isMutable() || (!"android".equals(i.getTargetPackageName()) &&
-                        !"lineageos.platform".equals(i.getTargetPackageName())))
+                        !"mokee.platform".equals(i.getTargetPackageName())))
                 .map(SettingsItem::getOverlayInfo)
                 .collect(Collectors.groupingBy(info -> info.targetPackageName, ArrayMap::new,
                         Collectors.toList()));

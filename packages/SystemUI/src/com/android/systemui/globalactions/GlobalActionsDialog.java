@@ -144,8 +144,8 @@ import com.android.systemui.util.EmergencyDialerConstants;
 import com.android.systemui.util.RingerModeTracker;
 import com.android.systemui.util.leak.RotationUtils;
 
-import lineageos.providers.LineageSettings;
-import org.lineageos.internal.util.PowerMenuUtils;
+import mokee.providers.MoKeeSettings;
+import org.mokee.internal.util.PowerMenuUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -194,7 +194,7 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
     static final String GLOBAL_ACTION_KEY_SCREENSHOT = "screenshot";
 
     /* Valid settings for restart actions keys.
-     * see lineage-sdk config.xml config_restartActionsList */
+     * see mokee-sdk config.xml config_restartActionsList */
     private static final String RESTART_ACTION_KEY_RESTART = "restart";
     private static final String RESTART_ACTION_KEY_RESTART_RECOVERY = "restart_recovery";
     private static final String RESTART_ACTION_KEY_RESTART_BOOTLOADER = "restart_bootloader";
@@ -603,7 +603,7 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
     @VisibleForTesting
     protected String[] getRestartActions() {
         return mResources.getStringArray(
-                org.lineageos.platform.internal.R.array.config_restartActionsList);
+                org.mokee.platform.internal.R.array.config_restartActionsList);
     }
 
     private void addIfShouldShowAction(List<Action> actions, Action action) {

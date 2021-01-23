@@ -31,7 +31,7 @@ java_defaults {
         "android.hardware.tetheroffload.config-V1.0-java",
         "android.hardware.tetheroffload.control-V1.0-java",
         "net-utils-framework-common",
-        "org.lineageos.platform.lineagesettings",
+        "org.mokee.platform.mokeesettings",
     ],
     libs: [
         "framework-statsd.stubs.module_lib",

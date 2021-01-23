@@ -54,7 +54,7 @@ import com.android.systemui.tuner.TunerService.Tunable;
 
 import libcore.icu.LocaleData;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -69,7 +69,7 @@ public class Clock extends TextView implements DemoMode, Tunable, CommandQueue.C
 
     public static final String CLOCK_SECONDS = "clock_seconds";
     private static final String CLOCK_STYLE =
-            "lineagesystem:" + LineageSettings.System.STATUS_BAR_AM_PM;
+            "mokeesystem:" + MoKeeSettings.System.STATUS_BAR_AM_PM;
     private static final String CLOCK_SUPER_PARCELABLE = "clock_super_parcelable";
     private static final String CURRENT_USER_ID = "current_user_id";
     private static final String VISIBLE_BY_POLICY = "visible_by_policy";

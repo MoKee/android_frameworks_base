@@ -41,7 +41,7 @@ import com.android.systemui.tuner.TunerService;
 
 import com.google.android.collect.Sets;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MoKeeSettings;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -83,9 +83,9 @@ public class ThemeOverlayController extends SystemUI {
     }
 
     static final String KEY_BERRY_BLACK_THEME =
-            "lineagesystem:" + LineageSettings.System.BERRY_BLACK_THEME;
+            "mokeesystem:" + MoKeeSettings.System.BERRY_BLACK_THEME;
     static final String OVERLAY_BERRY_BLACK_THEME =
-            "org.lineageos.overlay.customization.blacktheme";
+            "org.mokee.overlay.customization.blacktheme";
     private final TunerService.Tunable mTunable =
             new TunerService.Tunable() {
                 @Override

@@ -102,9 +102,9 @@ import com.android.systemui.statusbar.phone.StatusBar;
 import com.android.systemui.util.DeviceConfigProxy;
 import com.android.systemui.util.InjectionInflationController;
 
-import lineageos.app.LineageContextConstants;
-import lineageos.app.Profile;
-import lineageos.app.ProfileManager;
+import mokee.app.MoKeeContextConstants;
+import mokee.app.Profile;
+import mokee.app.ProfileManager;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -758,7 +758,7 @@ public class KeyguardViewMediator extends SystemUI implements Dumpable {
                     mInGestureNavigationMode = QuickStepContract.isGesturalMode(mode);
                 }));
         PackageManager packageManager = context.getPackageManager();
-        mHasFod = packageManager.hasSystemFeature(LineageContextConstants.Features.FOD);
+        mHasFod = packageManager.hasSystemFeature(MoKeeContextConstants.Features.FOD);
     }
 
     public void userActivity() {

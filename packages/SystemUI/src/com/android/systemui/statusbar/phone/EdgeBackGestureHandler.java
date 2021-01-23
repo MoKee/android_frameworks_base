@@ -17,7 +17,7 @@ package com.android.systemui.statusbar.phone;
 
 import static android.view.Display.INVALID_DISPLAY;
 
-import static org.lineageos.internal.util.DeviceKeysConstants.Action;
+import static org.mokee.internal.util.DeviceKeysConstants.Action;
 
 import android.app.ActivityManager;
 import android.content.ComponentName;
@@ -77,7 +77,7 @@ import com.android.systemui.tracing.nano.EdgeBackGestureHandlerProto;
 import com.android.systemui.tracing.nano.SystemUiTraceProto;
 import com.android.systemui.tuner.TunerService;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -96,7 +96,7 @@ public class EdgeBackGestureHandler extends CurrentUserTracker implements Displa
             "gestures.back_timeout", 250);
 
     private static final String KEY_EDGE_LONG_SWIPE_ACTION =
-            "lineagesystem:" + LineageSettings.System.KEY_EDGE_LONG_SWIPE_ACTION;
+            "mokeesystem:" + MoKeeSettings.System.KEY_EDGE_LONG_SWIPE_ACTION;
 
     private ISystemGestureExclusionListener mGestureExclusionListener =
             new ISystemGestureExclusionListener.Stub() {

@@ -233,7 +233,7 @@ import com.android.systemui.statusbar.policy.UserSwitcherController;
 import com.android.systemui.tuner.TunerService;
 import com.android.systemui.volume.VolumeComponent;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -268,11 +268,11 @@ public class StatusBar extends SystemUI implements DemoMode,
     static public final String SYSTEM_DIALOG_REASON_SCREENSHOT = "screenshot";
 
     private static final String FORCE_SHOW_NAVBAR =
-            "lineagesystem:" + LineageSettings.System.FORCE_SHOW_NAVBAR;
+            "mokeesystem:" + MoKeeSettings.System.FORCE_SHOW_NAVBAR;
     public static final String SCREEN_BRIGHTNESS_MODE =
             "system:" + Settings.System.SCREEN_BRIGHTNESS_MODE;
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL =
-            "lineagesystem:" + LineageSettings.System.STATUS_BAR_BRIGHTNESS_CONTROL;
+            "mokeesystem:" + MoKeeSettings.System.STATUS_BAR_BRIGHTNESS_CONTROL;
 
     private static final String BANNER_ACTION_CANCEL =
             "com.android.systemui.statusbar.banner_action_cancel";
@@ -1354,7 +1354,7 @@ public class StatusBar extends SystemUI implements DemoMode,
         filter.addAction(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         filter.addAction(DevicePolicyManager.ACTION_SHOW_DEVICE_MONITORING_DIALOG);
-        filter.addAction(lineageos.content.Intent.ACTION_SCREEN_CAMERA_GESTURE);
+        filter.addAction(mokee.content.Intent.ACTION_SCREEN_CAMERA_GESTURE);
         mBroadcastDispatcher.registerReceiver(mBroadcastReceiver, filter, null, UserHandle.ALL);
     }
 
@@ -2981,7 +2981,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             else if (DevicePolicyManager.ACTION_SHOW_DEVICE_MONITORING_DIALOG.equals(action)) {
                 mQSPanel.showDeviceMonitoringDialog();
             }
-            else if (lineageos.content.Intent.ACTION_SCREEN_CAMERA_GESTURE.equals(action)) {
+            else if (mokee.content.Intent.ACTION_SCREEN_CAMERA_GESTURE.equals(action)) {
                 boolean userSetupComplete = Settings.Secure.getInt(mContext.getContentResolver(),
                         Settings.Secure.USER_SETUP_COMPLETE, 0) != 0;
                 if (!userSetupComplete) {

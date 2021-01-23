@@ -2861,7 +2861,7 @@ public class PackageManagerService extends IPackageManager.Stub
         mInstaller = injector.getInstaller();
 
         mVendorPlatformSignatures = createSignatures(mContext.getResources().getStringArray(
-                org.lineageos.platform.internal.R.array.config_vendorPlatformSignatures));
+                org.mokee.platform.internal.R.array.config_vendorPlatformSignatures));
 
         // Create sub-components that provide services / data. Order here is important.
         t.traceBegin("createSubComponents");

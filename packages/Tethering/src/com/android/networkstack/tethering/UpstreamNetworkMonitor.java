@@ -45,7 +45,7 @@ import android.util.SparseIntArray;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.util.StateMachine;
 
-import lineageos.providers.LineageSettings;
+import mokee.providers.MoKeeSettings;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -311,8 +311,8 @@ public class UpstreamNetworkMonitor {
     public UpstreamNetworkState getCurrentPreferredUpstream() {
         // Use VPN upstreams if hotspot settings allow.
         if (mVpnInternetNetwork != null &&
-                LineageSettings.Secure.getInt(mContext.getContentResolver(),
-                        LineageSettings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS, 0) == 1) {
+                MoKeeSettings.Secure.getInt(mContext.getContentResolver(),
+                        MoKeeSettings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS, 0) == 1) {
             return mNetworkMap.get(mVpnInternetNetwork);
         }
 

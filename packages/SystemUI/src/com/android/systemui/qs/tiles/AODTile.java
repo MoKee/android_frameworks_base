@@ -28,7 +28,7 @@ import com.android.systemui.qs.SecureSetting;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.statusbar.policy.BatteryController;
 
-import org.lineageos.internal.logging.LineageMetricsLogger;
+import org.mokee.internal.logging.MoKeeMetricsLogger;
 
 import javax.inject.Inject;
 
@@ -118,7 +118,7 @@ public class AODTile extends QSTileImpl<BooleanState> implements
 
     @Override
     public int getMetricsCategory() {
-        return LineageMetricsLogger.TILE_AOD;
+        return MoKeeMetricsLogger.TILE_AOD;
     }
 
     @Override
