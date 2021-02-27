@@ -1880,6 +1880,9 @@ public final class CalendarContract {
         };
     }
 
+    /**
+     * @hide
+     */
     public static final class Alarm implements BaseColumns {
 
         private Alarm() {}
