@@ -62,10 +62,10 @@
     <string name="quick_settings_volume_panel_label">Helipaneel</string>
     <string name="accessibility_dpad_left">Kursor vasakule</string>
     <string name="accessibility_dpad_right">Kursor paremale</string>
-    <string name="screen_pinning_description_no_navbar">See hoiab niikaua vaates, kuni teie vabastate selle. Puudutage &amp; vabastamiseks hoidke Tagasi nuppu all.</string>
-    <string name="screen_pinning_toast_no_navbar">Et vabastada see vaade, vajuta &amp; hoia all Tagasi nuppu</string>
+    <string name="screen_pinning_description_no_navbar">Hoiab vaates kuni vabastate selle. Puudutage &amp; vabastamiseks hoidke all Tagasi nuppu.</string>
+    <string name="screen_pinning_toast_no_navbar">Selle vaate vabastamiseks vajutage &amp; hoidke all Tagasi nuppu</string>
     <string name="nav_bar_layout_inverse">Pööra paigutus</string>
-    <string name="custom_swipe_hint">Lohista ikoonilt <xliff:g name="target">%s</xliff:g></string>
+    <string name="custom_swipe_hint">Lohistage ikoonilt <xliff:g name="target">%s</xliff:g></string>
     <string name="accessibility_quick_settings_location_battery_saving">Asukoha teatamine: aku säästmise režiim.</string>
     <string name="accessibility_quick_settings_location_gps_only">Asukoha teatamine: ainult andurite režiim.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">Asukoha teatamine: kõrge täpsusega režiim.</string>
@@ -84,5 +84,5 @@
     <string name="quick_settings_location_detail_mode_battery_saving_description">Kasutage asukoha määramiseks Wi\u2011Fi, Bluetooth või mobiilsidevõrke</string>
     <string name="quick_settings_location_detail_mode_sensors_only_description">Asukoha määramiseks kasutage GPS-i</string>
     <string name="status_bar_battery">Aku</string>
-    <string name="use_data">Kasutage %s andmeid</string>
+    <string name="use_data">Kasutage %s mobiilseks andmesideks</string>
 </resources>

@@ -63,7 +63,9 @@
     <string name="accessibility_dpad_left">Kurzor vľavo</string>
     <string name="accessibility_dpad_right">Kurzor vpravo</string>
     <string name="screen_pinning_description_no_navbar">Obsah bude pripnutý v zobrazení, až kým ho neuvoľníte. Uvoľníte ho stlačením a podržaním tlačidla Späť.</string>
+    <string name="screen_pinning_toast_no_navbar">Na odopnutie tejto obrazovky stlačte &amp; podržte tlačidlo Späť</string>
     <string name="nav_bar_layout_inverse">Invertovať rozloženie</string>
+    <string name="custom_swipe_hint">Potiahnite od ikony pre <xliff:g name="target">%s</xliff:g></string>
     <string name="accessibility_quick_settings_location_battery_saving">Hlásenie polohy: režim šetrenia batérie.</string>
     <string name="accessibility_quick_settings_location_gps_only">Hlásenie polohy: iba GPS.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">Hlásenie polohy: vysoká presnosť.</string>
@@ -82,4 +84,5 @@
     <string name="quick_settings_location_detail_mode_battery_saving_description">Pre zisťovanie polohy používať Wi-Fi, Bluetooth alebo mobilné siete</string>
     <string name="quick_settings_location_detail_mode_sensors_only_description">Pre určovanie polohy používať GPS</string>
     <string name="status_bar_battery">Batéria</string>
+    <string name="use_data">Použiť %s pre dáta</string>
 </resources>

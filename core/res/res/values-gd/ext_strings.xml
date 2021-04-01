@@ -97,6 +97,7 @@
     <string name="permdesc_changePrivacyGuardState">Leigidh seo leis an aplacaid atharrachadh an ruith aplacaid eile le freiceadan na prìobhaideachd no as aonais. Ma ruitheas aplacaid le freiceadan na prìobhaideachd, cha bhi cothrom aige air dàta pearsanta mar an luchd-aithne, logaichean ghairmean no teachdaireachdan.</string>
     <string name="privacy_guard_notification">Tha freiceadan na prìobhaideachd an gnìomh</string>
     <string name="privacy_guard_notification_detail">Cha bhi cothrom aig <xliff:g id="app">%1$s</xliff:g> air dàta pearsanta</string>
+    <string name="privacy_guard_dialog_title">Freiceadan na prìobhaideachd</string>
     <string name="privacy_guard_dialog_summary">Bu toigh le <xliff:g id="app">%1$s</xliff:g> <xliff:g id="op">%2$s</xliff:g>.</string>
     <string name="permission_remember_choice">Cuimhnich mo roghainn</string>
 </resources>
