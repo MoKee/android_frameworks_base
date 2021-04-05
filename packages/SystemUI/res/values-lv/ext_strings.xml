@@ -30,5 +30,5 @@
     <string name="quick_settings_volume_panel_label">Skaņas panelis</string>
     <string name="vpn_credentials_password">Parole</string>
     <string name="status_bar_camera">Kamera</string>
-    <string name="status_bar_location">Atraš. vieta</string>
+    <string name="status_bar_location">Atrašanās vieta</string>
 </resources>

@@ -49,5 +49,5 @@
     <string name="quick_settings_volume_panel_label">ভলিউম পেনেল</string>
     <string name="vpn_credentials_password">পাছৱৰ্ড</string>
     <string name="status_bar_camera">কেমেৰা</string>
-    <string name="status_bar_location">স্থান</string>
+    <string name="status_bar_location">অৱস্থান</string>
 </resources>

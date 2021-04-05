@@ -18,6 +18,7 @@
  */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="global_action_restart_system">පද්ධතිය</string>
     <string name="global_action_restart_recovery">ප්‍රතිසාධන ප්‍රකාරයට</string>
     <string name="global_action_restart_bootloader">ඇරඹුම් ප්‍රවේශකයට</string>
     <string name="global_action_current_user">වර්තමාන</string>

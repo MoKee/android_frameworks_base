@@ -15,5 +15,5 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="quick_settings_screenshot_label">Ekraanipilt</string>
-    <string name="use_data">Kasutage %s andmeid</string>
+    <string name="use_data">Kasutage %s mobiilseks andmesideks</string>
 </resources>

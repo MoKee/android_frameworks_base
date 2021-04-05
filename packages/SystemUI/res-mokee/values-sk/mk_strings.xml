@@ -15,4 +15,5 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="quick_settings_screenshot_label">Snímka obrazovky</string>
+    <string name="use_data">Použiť %s pre dáta</string>
 </resources>

@@ -63,5 +63,5 @@
     <string name="vpn_credentials_password">รหัสผ่าน</string>
     <string name="status_bar_battery">แบตเตอรี่</string>
     <string name="status_bar_camera">กล้องถ่ายรูป</string>
-    <string name="status_bar_location">ตำแหน่ง</string>
+    <string name="status_bar_location">ตำแหน่งที่ตั้ง</string>
 </resources>

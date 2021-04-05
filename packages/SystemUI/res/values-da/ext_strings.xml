@@ -55,5 +55,5 @@
     <string name="vpn_credentials_password">Adgangskode</string>
     <string name="status_bar_battery">Batteri</string>
     <string name="status_bar_camera">Kamera</string>
-    <string name="status_bar_location">Placering</string>
+    <string name="status_bar_location">Sted</string>
 </resources>

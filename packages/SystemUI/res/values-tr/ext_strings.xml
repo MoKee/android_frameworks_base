@@ -79,6 +79,6 @@
     <string name="status_bar_camera">Kamera</string>
     <string name="status_bar_location">Konum</string>
     <string name="status_bar_microphone">Mikrofon</string>
-    <string name="screen_pinning_description_no_navbar">Bu işlem, siz sabitlemeyi kaldırana kadar ekranı görünür durumda tutar. Sabitlemeyi kaldırmak için Geri\'ye dokunun ve basılı tutun.</string>
+    <string name="screen_pinning_description_no_navbar">Bu işlem, siz sabitlemeyi kaldırana kadar ekranı görünür durumda tutar. Sabitlemeyi kaldırmak için Geri\'ye dokunun &amp; ve basılı tutun.</string>
     <string name="screen_pinning_toast_no_navbar">Bu ekrandaki sabitlemeyi kaldırmak için, &amp; dokunun ve Geri tuşuna basılı tutun</string>
 </resources>

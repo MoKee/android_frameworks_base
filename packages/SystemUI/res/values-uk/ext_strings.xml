@@ -71,7 +71,7 @@
     <string name="vpn_credentials_dialog_connect">Підключитися</string>
     <string name="status_bar_battery">Батарея</string>
     <string name="status_bar_camera">Камера</string>
-    <string name="status_bar_location">Місцезнаходження</string>
-    <string name="screen_pinning_description_no_navbar">Додаток залишається активним, поки ви не скасуєте блокування, натиснувши і утримуючи кнопку \"Назад\".</string>
+    <string name="status_bar_location">Розташування</string>
+    <string name="screen_pinning_description_no_navbar">Ви постійно бачитимете екран, доки не відкріпите його. Щоб відкріпити екран, натисніть і утримуйте кнопку \"Назад\".</string>
     <string name="screen_pinning_toast_no_navbar">Щоб відкріпити екран, натисніть і утримуйте кнопку \"Назад\"</string>
 </resources>

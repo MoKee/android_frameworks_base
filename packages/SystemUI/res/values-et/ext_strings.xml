@@ -79,6 +79,6 @@
     <string name="status_bar_camera">Kaamera</string>
     <string name="status_bar_location">Asukoht</string>
     <string name="status_bar_microphone">Mikrofon</string>
-    <string name="screen_pinning_description_no_navbar">See hoiab niikaua vaates, kuni teie vabastate selle. Puudutage &amp; vabastamiseks hoidke Tagasi nuppu all.</string>
-    <string name="screen_pinning_toast_no_navbar">Et vabastada see vaade, vajuta &amp; hoia all Tagasi nuppu</string>
+    <string name="screen_pinning_description_no_navbar">Hoiab vaates kuni vabastate selle. Puudutage &amp; vabastamiseks hoidke all Tagasi nuppu.</string>
+    <string name="screen_pinning_toast_no_navbar">Selle vaate vabastamiseks vajutage &amp; hoidke all Tagasi nuppu</string>
 </resources>

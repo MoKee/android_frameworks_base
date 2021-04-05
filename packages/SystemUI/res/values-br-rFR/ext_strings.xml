@@ -27,6 +27,7 @@
     <string name="accessibility_dpad_left">Reti kleiz</string>
     <string name="accessibility_dpad_right">Reti dehoù</string>
     <string name="quick_settings_network_adb_label">ADB dre rouedad</string>
+    <string name="quick_settings_caffeine_label">Kafein</string>
     <string name="accessibility_quick_settings_caffeine_off">Kafein lazhet.</string>
     <string name="accessibility_quick_settings_caffeine_on">Kafein enaouet.</string>
     <string name="quick_settings_sync_label">Goubred</string>

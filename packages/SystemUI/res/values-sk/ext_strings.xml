@@ -22,10 +22,12 @@
     <string name="global_action_restart_recovery">Recovery</string>
     <string name="global_action_restart_bootloader">Bootloader</string>
     <string name="global_action_restart_download">Sťahovanie</string>
+    <string name="global_action_restart_fastboot">Fastboot</string>
     <string name="global_action_restart_progress">Reštartovanie\u2026</string>
     <string name="global_action_restart_recovery_progress">Reštartovanie do režimu Recovery\u2026</string>
     <string name="global_action_restart_bootloader_progress">Reštartovanie do režimu Bootloader\u2026</string>
     <string name="global_action_restart_download_progress">Reštartovanie do režimu sťahovania\u2026</string>
+    <string name="global_action_restart_fastboot_progress">Reštartovanie do režimu fastboot\u2026</string>
     <string name="global_action_current_user">Aktuálny</string>
     <string name="accessibility_dpad_left">Kurzor vľavo</string>
     <string name="accessibility_dpad_right">Kurzor vpravo</string>
@@ -62,10 +64,21 @@
     <string name="quick_settings_usb_tether_label">Zdieľanie cez USB</string>
     <string name="quick_settings_volume_panel_label">Panel hlasitosti</string>
     <string name="quick_settings_vpn_label">VPN</string>
+    <string name="quick_settings_vpn_connect_dialog_title">Pripojiť k\u2026</string>
+    <string name="vpn_credentials_hint">Pre ppripojenie k <xliff:g id="name">%s</xliff:g> zadajte svoje prihlasovacie údaje</string>
     <string name="vpn_credentials_username">Používateľské meno</string>
     <string name="vpn_credentials_password">Heslo</string>
+    <string name="vpn_credentials_dialog_connect">Pripojiť</string>
+    <string name="quick_settings_aod_label">AOD</string>
+    <string name="quick_settings_aod_off_powersave_label">AOD vyp.\nŠetrenie batérie</string>
+    <string name="quick_settings_powershare_label">Bezdrôtové nabíjanie PowerShare</string>
+    <string name="quick_settings_powershare_off_powersave_label">PowerShare vyp.\nÚspora energie</string>
+    <string name="quick_settings_powershare_off_low_battery_label">PowerShare vyp.\nNízky stav batérie</string>
+    <string name="quick_settings_powershare_enabled_label">Bezdrôtové reverzné nabíjanie PowerShare je zapnuté</string>
     <string name="status_bar_battery">Batéria</string>
     <string name="status_bar_camera">Fotoaparát</string>
-    <string name="status_bar_location">Poloha</string>
+    <string name="status_bar_location">Miesto</string>
+    <string name="status_bar_microphone">Mikrofón</string>
     <string name="screen_pinning_description_no_navbar">Obsah bude pripnutý v zobrazení, až kým ho neuvoľníte. Uvoľníte ho stlačením a podržaním tlačidla Späť.</string>
+    <string name="screen_pinning_toast_no_navbar">Na odopnutie tejto obrazovky stlačte &amp; podržte tlačidlo Späť</string>
 </resources>
