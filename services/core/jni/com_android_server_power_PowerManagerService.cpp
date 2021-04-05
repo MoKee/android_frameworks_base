@@ -26,6 +26,7 @@
 #include <android/system/suspend/ISuspendControlService.h>
 #include <nativehelper/JNIHelp.h>
 #include <vendor/mokee/power/1.0/IMoKeePower.h>
+#include <vendor/mokee/power/IPower.h>
 #include "jni.h"
 
 #include <nativehelper/ScopedUtfChars.h>
@@ -63,7 +64,11 @@ using IPowerV1_1 = android::hardware::power::V1_1::IPower;
 using IPowerV1_0 = android::hardware::power::V1_0::IPower;
 using IPowerAidl = android::hardware::power::IPower;
 using IMoKeePowerV1_0 = vendor::mokee::power::V1_0::IMoKeePower;
-using vendor::mokee::power::V1_0::MoKeeFeature;
+using IMoKeePowerAidl = vendor::mokee::power::IPower;
+using MoKeeBoostAidl = vendor::mokee::power::Boost;
+using MoKeeFeatureV1_0 = vendor::mokee::power::V1_0::MoKeeFeature;
+using MoKeeFeatureAidl = vendor::mokee::power::Feature;
+using MoKeePowerHint1_0 = vendor::mokee::power::V1_0::MoKeePowerHint;
 
 namespace android {
 
@@ -80,7 +85,9 @@ static sp<IPowerV1_0> gPowerHalHidlV1_0_ = nullptr;
 static sp<IPowerV1_1> gPowerHalHidlV1_1_ = nullptr;
 static sp<IPowerAidl> gPowerHalAidl_ = nullptr;
 static sp<IMoKeePowerV1_0> gMoKeePowerHalV1_0_ = nullptr;
+static sp<IMoKeePowerAidl> gMoKeePowerHalAidl_ = nullptr;
 static std::mutex gPowerHalMutex;
+static std::mutex gMoKeePowerHalMutex;
 
 enum class HalVersion {
     NONE,
@@ -148,19 +155,39 @@ static HalVersion connectPowerHalLocked() {
     return HalVersion::NONE;
 }
 
-// Check validity of current handle to the MoKee power HAL service, and call getService() if necessary.
-// The caller must be holding gPowerHalMutex.
-void connectMoKeePowerHalLocked() {
-    static bool gMoKeePowerHalExists = true;
-    if (gMoKeePowerHalExists && gMoKeePowerHalV1_0_ == nullptr) {
-        gMoKeePowerHalV1_0_ = IMoKeePowerV1_0::getService();
-        if (gMoKeePowerHalV1_0_ != nullptr) {
-            ALOGI("Loaded power HAL service");
+// Check validity of current handle to the MoKee power HAL service, and connect to it if necessary.
+// The caller must be holding gMoKeePowerHalMutex.
+static HalVersion connectMoKeePowerHalLocked() {
+    static bool gPowerHalHidlExists = true;
+    static bool gPowerHalAidlExists = true;
+    if (!gPowerHalHidlExists && !gPowerHalAidlExists) {
+        return HalVersion::NONE;
+    }
+    if (gPowerHalAidlExists) {
+        if (!gMoKeePowerHalAidl_) {
+            gMoKeePowerHalAidl_ = waitForVintfService<IMoKeePowerAidl>();
+        }
+        if (gMoKeePowerHalAidl_) {
+            ALOGV("Successfully connected to MoKee Power HAL AIDL service.");
+            return HalVersion::AIDL;
         } else {
-            ALOGI("Couldn't load power HAL service");
-            gMoKeePowerHalExists = false;
+            gPowerHalAidlExists = false;
         }
     }
+    if (gPowerHalHidlExists && gMoKeePowerHalV1_0_ == nullptr) {
+        gMoKeePowerHalV1_0_ = IMoKeePowerV1_0::getService();
+        if (gMoKeePowerHalV1_0_) {
+            ALOGV("Successfully connected to MoKee Power HAL HIDL 1.0 service.");
+        } else {
+            ALOGV("Couldn't load MoKee power HAL HIDL service");
+            gPowerHalHidlExists = false;
+            return HalVersion::NONE;
+        }
+    }
+    if (gMoKeePowerHalV1_0_) {
+        return HalVersion::HIDL_1_0;
+    }
+    return HalVersion::NONE;
 }
 
 // Retrieve a copy of PowerHAL HIDL V1_0
@@ -184,11 +211,14 @@ sp<IPowerV1_1> getPowerHalHidlV1_1() {
     return nullptr;
 }
 
-// Retrieve a copy of MoKeePowerHAL V1_0
-sp<IMoKeePowerV1_0> getMoKeePowerHalV1_0() {
-    std::lock_guard<std::mutex> lock(gPowerHalMutex);
-    connectMoKeePowerHalLocked();
-    return gMoKeePowerHalV1_0_;
+// Retrieve a copy of MoKeePowerHAL AIDL
+sp<IMoKeePowerAidl> getMoKeePowerHalAidl() {
+    std::lock_guard<std::mutex> lock(gMoKeePowerHalMutex);
+    if (connectMoKeePowerHalLocked() == HalVersion::AIDL) {
+        return gMoKeePowerHalAidl_;
+    }
+
+    return nullptr;
 }
 
 // Check if a call to a power HAL function failed; if so, log the failure and invalidate the
@@ -338,6 +368,17 @@ static void sendPowerHint(PowerHint hintId, uint32_t data) {
                 lock.unlock();
                 setPowerModeWithHandle(handle, Mode::VR, static_cast<bool>(data));
                 break;
+            // TODO: Fix mokee sdk once killed hidl.
+            } else if (hintId == static_cast<PowerHint>(MoKeePowerHint1_0::CPU_BOOST)) {
+                lock.unlock();
+                sp<IMoKeePowerAidl> handle = getMoKeePowerHalAidl();
+                handle->setBoost(MoKeeBoostAidl::CPU_BOOST, data);
+                break;
+            } else if (hintId == static_cast<PowerHint>(MoKeePowerHint1_0::SET_PROFILE)) {
+                lock.unlock();
+                sp<IMoKeePowerAidl> handle = getMoKeePowerHalAidl();
+                handle->setBoost(MoKeeBoostAidl::SET_PROFILE, data);
+                break;
             } else {
                 ALOGE("Unsupported power hint: %s.", toString(hintId).c_str());
                 return;
@@ -439,12 +480,34 @@ void disableAutoSuspend() {
 
 static jint nativeGetFeature(JNIEnv* /* env */, jclass /* clazz */, jint featureId) {
     int value = -1;
-
-    sp<IMoKeePowerV1_0> mokeePowerHalV1_0 = getMoKeePowerHalV1_0();
-    if (mokeePowerHalV1_0 != nullptr) {
-        value = mokeePowerHalV1_0->getFeature(static_cast<MoKeeFeature>(featureId));
+    std::unique_lock<std::mutex> lock(gMoKeePowerHalMutex);
+    switch (connectMoKeePowerHalLocked()) {
+        case HalVersion::NONE:
+            break;
+        case HalVersion::HIDL_1_0: {
+            sp<IMoKeePowerV1_0> handle = gMoKeePowerHalV1_0_;
+            lock.unlock();
+            value = handle->getFeature(static_cast<MoKeeFeatureV1_0>(featureId));
+            break;
+        }
+        case HalVersion::AIDL: {
+            sp<IMoKeePowerAidl> handle = gMoKeePowerHalAidl_;
+            lock.unlock();
+            switch (static_cast<MoKeeFeatureV1_0>(featureId)) {
+                case MoKeeFeatureV1_0::SUPPORTED_PROFILES:
+                    handle->getFeature(MoKeeFeatureAidl::SUPPORTED_PROFILES, &value);
+                    break;
+                default:
+                    ALOGE("Unsupported power feature: %d.", featureId);
+                    break;
+            }
+            break;
+        }
+        default: {
+            ALOGE("Unknown MoKee power HAL state");
+            break;
+        }
     }
-
     return static_cast<jint>(value);
 }
 

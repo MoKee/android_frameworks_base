@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2018 The OmniROM Project
- *               2020 The LineageOS Project
+ *               2020-2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,6 +61,12 @@ public class AODTile extends QSTileImpl<BooleanState> implements
     }
 
     @Override
+    protected void handleDestroy() {
+        super.handleDestroy();
+        mSetting.setListening(false);
+    }
+
+    @Override
     public boolean isAvailable() {
         return mContext.getResources().getBoolean(
                 com.android.internal.R.bool.config_dozeAlwaysOnDisplayAvailable);
@@ -74,20 +80,25 @@ public class AODTile extends QSTileImpl<BooleanState> implements
     }
 
     @Override
+    public void handleSetListening(boolean listening) {
+        super.handleSetListening(listening);
+        mSetting.setListening(listening);
+    }
+
+    @Override
+    protected void handleUserSwitch(int newUserId) {
+        mSetting.setUserId(newUserId);
+        handleRefreshState(mSetting.getValue());
+    }
+
+    @Override
     public void handleClick() {
-        setEnabled(!mState.value);
-        refreshState();
+        mSetting.setValue(mState.value ? 0 : 1);
     }
 
     @Override
     public Intent getLongClickIntent() {
         return null;
-    }
-
-    private void setEnabled(boolean enabled) {
-        Settings.Secure.putInt(mContext.getContentResolver(),
-                Settings.Secure.DOZE_ALWAYS_ON,
-                enabled ? 1 : 0);
     }
 
     @Override
@@ -119,9 +130,5 @@ public class AODTile extends QSTileImpl<BooleanState> implements
     @Override
     public int getMetricsCategory() {
         return MoKeeMetricsLogger.TILE_AOD;
-    }
-
-    @Override
-    public void handleSetListening(boolean listening) {
     }
 }

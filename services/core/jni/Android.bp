@@ -168,6 +168,7 @@ cc_defaults {
         "service.incremental",
         "suspend_control_aidl_interface-cpp",
         "vendor.mokee.power@1.0",
+        "vendor.mokee.power-cpp",
     ],
 
     static_libs: [
