@@ -49,7 +49,7 @@
     <string name="app_ops_play_audio">ئۈن چال</string>
     <string name="app_ops_post_notification">ئۇقتۇرۇش يوللايدۇ</string>
     <string name="app_ops_project_media">ۋاسىتىنى قويىدۇ</string>
-    <string name="app_ops_read_calendar">يىلنامەڭىزنى ئوقۇيدۇ</string>
+    <string name="app_ops_read_calendar">يىلنامىڭىزنى ئوقۇيدۇ</string>
     <string name="app_ops_read_call_log">چاقىرىش خاتىرىسىنى ئوقۇيدۇ</string>
     <string name="app_ops_read_cell_broadcasts">رايونلۇق رادىئونى ئوقۇش</string>
     <string name="app_ops_read_clipboard">چاپلاش تاختىسىنى ئوقۇيدۇ</string>
