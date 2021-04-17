@@ -49,6 +49,7 @@ emerxentes</string>
     <string name="accessibility_quick_settings_profiles_changed">Perfil camudáu a <xliff:g id="profile" example="Default">%s </xliff:g>.</string>
     <string name="quick_settings_usb_tether_label">Tethering USB</string>
     <string name="quick_settings_volume_panel_label">Panel de volume</string>
+    <string name="vpn_credentials_password">Contraseña</string>
     <string name="accessibility_dpad_left">Cursor esquierda</string>
     <string name="accessibility_dpad_right">Cursor derecha</string>
     <string name="global_action_restart_more">Reaniciar\u2026</string>

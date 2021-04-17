@@ -43,6 +43,9 @@
     <string name="accessibility_quick_settings_profiles_changed">ప్రొఫైల్ <xliff:g id="profile" example="Default">%s</xliff:g>కు మార్చబడింది.</string>
     <string name="quick_settings_usb_tether_label">USB టీథరింగ్</string>
     <string name="quick_settings_volume_panel_label">వాల్యూమ్ ప్యానల్</string>
+    <string name="vpn_credentials_password">పాస్‌వర్డ్</string>
     <string name="accessibility_dpad_left">కర్సర్ ఎడమకి</string>
     <string name="accessibility_dpad_right">కర్సర్ కుడికి</string>
+    <string name="global_action_restart_recovery">పునరుద్ధరణ</string>
+    <string name="global_action_restart_bootloader">బూట్‌లోడర్</string>
 </resources>

@@ -48,6 +48,9 @@
     <string name="accessibility_quick_settings_profiles_changed">プロファイルが<xliff:g id="profile" example="Default">%s</xliff:g>に変更されました。</string>
     <string name="quick_settings_usb_tether_label">USBテザリング</string>
     <string name="quick_settings_volume_panel_label">音量パネル</string>
+    <string name="quick_settings_vpn_label">VPN</string>
+    <string name="vpn_credentials_username">ユーザー名</string>
+    <string name="vpn_credentials_password">パスワード</string>
     <string name="accessibility_dpad_left">カーソルを左へ</string>
     <string name="accessibility_dpad_right">カーソルを右へ</string>
     <string name="global_action_restart_system">システム</string>

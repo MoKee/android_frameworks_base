@@ -43,7 +43,9 @@
     <string name="accessibility_quick_settings_profiles_changed">Profiel verander na <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <string name="quick_settings_usb_tether_label">USB internet verbinding</string>
     <string name="quick_settings_volume_panel_label">Volume paneel</string>
+    <string name="vpn_credentials_password">Wagwoord</string>
     <string name="accessibility_dpad_left">Wyser na links</string>
     <string name="accessibility_dpad_right">Wyser na regs</string>
     <string name="global_action_restart_system">Stelsel</string>
+    <string name="global_action_restart_progress">Herbegin tans\u2026</string>
 </resources>

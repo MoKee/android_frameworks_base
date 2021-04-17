@@ -40,6 +40,10 @@
     <string name="accessibility_quick_settings_profiles_changed">Profilis pakeistas į <xliff:g id="profile" example="Default">%s </xliff:g>.</string>
     <string name="quick_settings_usb_tether_label">USB susiejimas</string>
     <string name="quick_settings_volume_panel_label">Garsumo skydelis</string>
+    <string name="vpn_credentials_username">Vartotojo vardas</string>
+    <string name="vpn_credentials_password">Slaptažodis</string>
     <string name="accessibility_dpad_left">Žymeklis kairėje</string>
     <string name="accessibility_dpad_right">Žymeklis dešinėje</string>
+    <string name="global_action_restart_recovery">Atkūrimo režimas</string>
+    <string name="global_action_restart_download">Atsisiųsti</string>
 </resources>

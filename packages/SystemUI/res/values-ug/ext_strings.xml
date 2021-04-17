@@ -43,6 +43,9 @@
     <string name="accessibility_quick_settings_profiles_changed">مۇھىت ھالىتى <xliff:g id="profile" example="Default">%s</xliff:g> گە ئۆزگەرتىلدى.</string>
     <string name="quick_settings_usb_tether_label">USB ھەمبەھىر</string>
     <string name="quick_settings_volume_panel_label">ئاۋاز تاختىسى</string>
+    <string name="vpn_credentials_password">ئىم</string>
     <string name="accessibility_dpad_left">نۇربەلگە سولغا</string>
     <string name="accessibility_dpad_right">نۇر بەلگە ئوڭغا</string>
+    <string name="global_action_restart_recovery">ئەسلىگە كەلتۈر</string>
+    <string name="global_action_restart_bootloader">قوزغىتىش يۈكلىگۈچ</string>
 </resources>

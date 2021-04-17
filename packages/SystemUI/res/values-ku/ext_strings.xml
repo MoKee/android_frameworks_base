@@ -22,6 +22,9 @@
     <string name="quick_settings_heads_up_label">فه‌رمووه‌کان</string>
     <string name="quick_settings_profiles_label">زانیاری تایبەتیەکانی سیستەم</string>
     <string name="quick_settings_usb_tether_label">گرتنەدەستی USB</string>
+    <string name="vpn_credentials_password">تێپەڕەوشە</string>
     <string name="accessibility_dpad_left">جێنیشانده‌ر بۆ لای چه‌پ</string>
     <string name="accessibility_dpad_right">جێنیشانده‌ر بۆ لای ڕاست</string>
+    <string name="global_action_restart_recovery">ڕیکەڤەری</string>
+    <string name="global_action_restart_bootloader">بووتلەودەر</string>
 </resources>

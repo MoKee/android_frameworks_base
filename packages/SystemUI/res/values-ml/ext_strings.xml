@@ -43,6 +43,10 @@
     <string name="accessibility_quick_settings_profiles_changed">പ്രൊഫൈൽ <xliff:g id="profile" example="Default">%s</xliff:g> ലേക്ക് മാറ്റി.</string>
     <string name="quick_settings_usb_tether_label">USB ടെതറിംഗ്</string>
     <string name="quick_settings_volume_panel_label">വോളിയം പാനൽ</string>
+    <string name="vpn_credentials_password">പാസ്‌വേഡ്</string>
     <string name="accessibility_dpad_left">കർസർ ഇടത്</string>
     <string name="accessibility_dpad_right">കർസർ വലത്</string>
+    <string name="global_action_restart_recovery">റിക്കവറി</string>
+    <string name="global_action_restart_bootloader">ബൂട്ട്ലോഡര്‍</string>
+    <string name="global_action_restart_download">ഡൗൺലോഡ്</string>
 </resources>

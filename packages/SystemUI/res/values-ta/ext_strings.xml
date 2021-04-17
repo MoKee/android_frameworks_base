@@ -31,6 +31,7 @@
     <string name="accessibility_quick_settings_heads_up_on">ஹெட்ஸ் அப் ஆன்.</string>
     <string name="accessibility_quick_settings_heads_up_changed_off">ஹெட்ஸ் அப் ஆஃப் செய்யப்பட்டது.</string>
     <string name="accessibility_quick_settings_heads_up_changed_on">ஹெட்ஸ் அப் ஆன் செய்யப்பட்டது.</string>
+    <string name="quick_settings_reading_mode">வாசித்தல் பயன்முறை</string>
     <string name="quick_settings_sync_label">ஒத்திசை</string>
     <string name="accessibility_quick_settings_sync_off">ஒத்திசைவு ஆஃப்</string>
     <string name="accessibility_quick_settings_sync_on">ஒத்திசைவு ஆன்</string>
@@ -43,6 +44,12 @@
     <string name="accessibility_quick_settings_profiles_changed">சுயவிவரம் <xliff:g id="profile" example="Default">%s</xliff:g>க்கு மாற்றப்பட்டது.</string>
     <string name="quick_settings_usb_tether_label">USB டெதெரிங்</string>
     <string name="quick_settings_volume_panel_label">வால்யூம் பேனல்</string>
+    <string name="quick_settings_vpn_label">VPN</string>
+    <string name="vpn_credentials_password">கடவுச்சொல்</string>
     <string name="accessibility_dpad_left">இடஞ்சுட்டி இடது</string>
     <string name="accessibility_dpad_right">இடஞ்சுட்டி வலது</string>
+    <string name="global_action_restart_system">முறைமை</string>
+    <string name="global_action_restart_recovery">மீட்டல்</string>
+    <string name="global_action_restart_bootloader">பூட்லோடர்</string>
+    <string name="global_action_restart_download">பதிவிறக்கம்</string>
 </resources>

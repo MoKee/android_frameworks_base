@@ -43,6 +43,8 @@
     <string name="accessibility_quick_settings_profiles_changed">Profil op <xliff:g id="profile" example="Default">%s</xliff:g> geännert.</string>
     <string name="quick_settings_usb_tether_label">USB-Tethering</string>
     <string name="quick_settings_volume_panel_label">Lautstäerktpanneau</string>
+    <string name="vpn_credentials_password">Passwuert</string>
     <string name="accessibility_dpad_left">Cursor lénks</string>
     <string name="accessibility_dpad_right">Cursor riets</string>
+    <string name="global_action_restart_recovery">Recuperatioun</string>
 </resources>

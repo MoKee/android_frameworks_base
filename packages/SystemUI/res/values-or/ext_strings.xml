@@ -43,6 +43,9 @@
     <string name="accessibility_quick_settings_profiles_changed">ପ୍ରୋଫାଇଲ୍ <xliff:g id="profile" example="Default">%s</xliff:g>କୁ ପରିବର୍ତ୍ତିତ ହେଲା।</string>
     <string name="quick_settings_usb_tether_label">USB ଟିଥରିଂ</string>
     <string name="quick_settings_volume_panel_label">ଭୋଲ୍ୟୁମ୍‍ ପ୍ୟାନେଲ୍‍</string>
+    <string name="vpn_credentials_password">ପାସୱାର୍ଡ୍</string>
     <string name="accessibility_dpad_left">କର୍ସର୍‍ ବାମ</string>
     <string name="accessibility_dpad_right">କର୍ସର୍ ଡାହାଣ</string>
+    <string name="global_action_restart_recovery">ପୁନଃପ୍ରାପ୍ତ କରିବା</string>
+    <string name="global_action_restart_bootloader">ବୁଟ୍‍ଲୋଡର୍‍</string>
 </resources>

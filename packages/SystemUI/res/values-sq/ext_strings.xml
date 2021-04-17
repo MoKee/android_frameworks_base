@@ -33,6 +33,8 @@
     <string name="accessibility_quick_settings_heads_up_on">Heads-up Aktiv.</string>
     <string name="accessibility_quick_settings_heads_up_changed_off">Njoftimet Heads-up u çaktivizuan.</string>
     <string name="accessibility_quick_settings_heads_up_changed_on">Njoftimet Heads-up u aktivizuan.</string>
+    <string name="global_screenshot_selector_capture_description">Kapni pamjen e pjesshme të ekranit</string>
+    <string name="global_screenshot_selector_cancel_description">Anuloni pamjen e pjesshme të ekranit</string>
     <string name="quick_settings_reading_mode">Mënyrë Leximi</string>
     <string name="accessibility_quick_settings_reading_mode_on">Metoda pë lexim aktive.</string>
     <string name="accessibility_quick_settings_reading_mode_off">Metoda pë lexim jo aktive.</string>

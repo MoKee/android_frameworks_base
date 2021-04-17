@@ -48,6 +48,10 @@
     <string name="accessibility_quick_settings_profiles_changed">تم تغيير ملف التعريف إلى <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <string name="quick_settings_usb_tether_label">الربط عبر USB</string>
     <string name="quick_settings_volume_panel_label">لوحة مستوى الصوت</string>
+    <string name="quick_settings_vpn_label">VPN</string>
+    <string name="vpn_credentials_username">اسم المستخدم</string>
+    <string name="vpn_credentials_password">كلمة المرور</string>
+    <string name="vpn_credentials_dialog_connect">اتصال</string>
     <string name="accessibility_dpad_left">المؤشر إلى اليسار</string>
     <string name="accessibility_dpad_right">المؤشر الى اليمين</string>
     <string name="global_action_restart_system">النظام</string>

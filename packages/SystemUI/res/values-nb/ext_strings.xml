@@ -48,6 +48,7 @@
     <string name="accessibility_quick_settings_profiles_changed">Profil endret til <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <string name="quick_settings_usb_tether_label">USB tethering</string>
     <string name="quick_settings_volume_panel_label">Volumpanel</string>
+    <string name="vpn_credentials_password">Passord</string>
     <string name="accessibility_dpad_left">Markør til venstre</string>
     <string name="accessibility_dpad_right">Markør til høyre</string>
     <string name="global_action_restart_system">System</string>

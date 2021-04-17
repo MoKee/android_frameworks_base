@@ -43,6 +43,9 @@
     <string name="accessibility_quick_settings_profiles_changed">প্ৰ\'ফাইল <xliff:g id="profile" example="Default">%s</xliff:g>লৈ পৰিৱৰ্তন কৰা হৈছে।</string>
     <string name="quick_settings_usb_tether_label">USB টেথাৰিং</string>
     <string name="quick_settings_volume_panel_label">ভলিউম পেনেল</string>
+    <string name="vpn_credentials_password">পাছৱৰ্ড</string>
     <string name="accessibility_dpad_left">কাৰ্ছৰ বাওঁফালে</string>
     <string name="accessibility_dpad_right">কাৰ্ছৰ সোঁফালে</string>
+    <string name="global_action_restart_recovery">পুনৰুদ্ধাৰ</string>
+    <string name="global_action_restart_bootloader">বুটলোডাৰ</string>
 </resources>

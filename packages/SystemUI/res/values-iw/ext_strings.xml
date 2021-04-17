@@ -48,6 +48,8 @@
     <string name="accessibility_quick_settings_profiles_changed">פרופיל שונה ל-<xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <string name="quick_settings_usb_tether_label">קשירת USB</string>
     <string name="quick_settings_volume_panel_label">לוח עוצמת קול</string>
+    <string name="vpn_credentials_username">שם משתמש</string>
+    <string name="vpn_credentials_password">סיסמא</string>
     <string name="accessibility_dpad_left">סמן שמאלה</string>
     <string name="accessibility_dpad_right">סמן ימינה</string>
     <string name="global_action_restart_system">מערכת</string>

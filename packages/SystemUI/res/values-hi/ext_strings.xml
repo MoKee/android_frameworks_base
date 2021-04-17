@@ -23,11 +23,19 @@
     <string name="accessibility_quick_settings_ambient_display_on">परिवेशी प्रदर्शन चालू है।</string>
     <string name="accessibility_quick_settings_ambient_display_changed_off">परिवेशी प्रदर्शन को बंद किया गया है।</string>
     <string name="accessibility_quick_settings_ambient_display_changed_on">परिवेशी प्रदर्शन को चालू किया गया।</string>
+    <string name="quick_settings_caffeine_label">कैफीन</string>
+    <string name="accessibility_quick_settings_caffeine_off">कैफीन बंद</string>
+    <string name="accessibility_quick_settings_caffeine_on">कैफीन चालू</string>
     <string name="quick_settings_heads_up_label">हेड्स अप।</string>
     <string name="accessibility_quick_settings_heads_up_off">हेड्स अप बंद है।</string>
     <string name="accessibility_quick_settings_heads_up_on">हेड्स अप चालू है।</string>
     <string name="accessibility_quick_settings_heads_up_changed_off">हेड्स अप को बंद किया गया है।</string>
     <string name="accessibility_quick_settings_heads_up_changed_on">हेड्स अप को चालू किया गया।</string>
+    <string name="quick_settings_reading_mode">पठन मोड</string>
+    <string name="accessibility_quick_settings_reading_mode_on">पठन मोड चालू।</string>
+    <string name="accessibility_quick_settings_reading_mode_off">पठन मोड बंद।</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_on">पठन मोड चालू है।</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_off">पठन मोड बंद है।</string>
     <string name="quick_settings_sync_label">संकालन</string>
     <string name="accessibility_quick_settings_sync_off">संकालन बंद है।</string>
     <string name="accessibility_quick_settings_sync_on">संकालन चालू है।</string>
@@ -39,6 +47,16 @@
     <string name="accessibility_quick_settings_profiles_changed_off">प्रोफाइलों को बंद किया गया है।</string>
     <string name="accessibility_quick_settings_profiles_changed">प्रोफ़ाइल को <xliff:g id="profile" example="Default">%s</xliff:g> में बदला गया।</string>
     <string name="quick_settings_usb_tether_label">यूएसबी टेदरिंग</string>
+    <string name="quick_settings_volume_panel_label">ध्वनि पट</string>
+    <string name="vpn_credentials_password">पासवर्ड</string>
     <string name="accessibility_dpad_left">कर्सर बायाँ</string>
     <string name="accessibility_dpad_right">कर्सर दायाँ</string>
+    <string name="global_action_restart_system">प्रणाली</string>
+    <string name="global_action_restart_recovery">रिकवरी</string>
+    <string name="global_action_restart_bootloader">बूटलोडर</string>
+    <string name="global_action_restart_download">डाउनलोड करें</string>
+    <string name="global_action_restart_progress">फिर से शुरू हो रहा है\u2026</string>
+    <string name="global_action_restart_recovery_progress">रिकवरी मोड\u2026 के लिए फोन को पुनः प्रारम्भ कर रहा है</string>
+    <string name="global_action_restart_bootloader_progress">बूटलोडर मोड\u2026 के लिए फोन को पुनः प्रारम्भ कर रहा है</string>
+    <string name="global_action_restart_download_progress">डाउनलोड मोड\u2026 के लिए फोन को पुनः प्रारम्भ कर रहा है</string>
 </resources>

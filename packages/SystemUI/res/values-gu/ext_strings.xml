@@ -43,6 +43,9 @@
     <string name="accessibility_quick_settings_profiles_changed">પ્રોફાઇલ્સ બદલીને <xliff:g id="profile" example="Default">%s</xliff:g>કરાયું.</string>
     <string name="quick_settings_usb_tether_label">USB ટિથરિંગ</string>
     <string name="quick_settings_volume_panel_label">વૉલ્યુમ પૅનલ.</string>
+    <string name="vpn_credentials_password">પાસવર્ડ</string>
     <string name="accessibility_dpad_left">કર્સર ડાબું</string>
     <string name="accessibility_dpad_right">કર્સર જમણું</string>
+    <string name="global_action_restart_recovery">રિકવરી</string>
+    <string name="global_action_restart_bootloader">બૂટલોડર</string>
 </resources>
