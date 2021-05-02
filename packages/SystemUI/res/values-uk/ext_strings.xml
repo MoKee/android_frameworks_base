@@ -29,7 +29,7 @@
     <string name="global_action_restart_download_progress">Перехід в режим оновлення ПЗ\u2026</string>
     <string name="global_action_current_user">Поточний</string>
     <string name="quick_settings_network_adb_label">Налагодження по мережі</string>
-    <string name="quick_settings_network_adb_no_network">немає мережі</string>
+    <string name="quick_settings_network_adb_no_network">Немає мережі</string>
     <string name="quick_settings_ambient_display_label">Ambient дисплей</string>
     <string name="accessibility_quick_settings_ambient_display_off">Ambient дисплей вимкнено.</string>
     <string name="accessibility_quick_settings_ambient_display_on">Ambient дисплей увімкнено.</string>

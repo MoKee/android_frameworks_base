@@ -31,6 +31,8 @@
     <string name="app_ops_assist_structure">שימוש בתבנית המידע ליישום הסיוע</string>
     <string name="app_ops_audio_accessibility_volume">ווליום לנגישות קולית</string>
     <string name="app_ops_auto_start">התחל פעילות בהדלקת המכשיר</string>
+    <string name="app_ops_bind_accessibility_service">אגד שירותי נגישות</string>
+    <string name="app_ops_bluetooth_scan">סרוק אחר מכשירי Bluetooth</string>
     <string name="app_ops_change_wallpaper">החלף טפט</string>
     <string name="app_ops_delete_call_log">מחיקת יומן השיחות שלך</string>
     <string name="app_ops_delete_contacts">מחיקת אנשי הקשר שלך</string>
@@ -39,6 +41,7 @@
     <string name="app_ops_draw_on_top">הצגת תוכן מעל יישומים אחרים</string>
     <string name="app_ops_get_accounts">קבל חשבונות מכשיר</string>
     <string name="app_ops_get_usage_stats">קבלת סטטיסטיקות שימוש ביישום</string>
+    <string name="app_ops_accept_handover">קבלת שיחה מיישום אחר</string>
     <string name="app_ops_install_packages">התקן חבילות</string>
     <string name="app_ops_keep_device_awake">השארת המכשיר ער</string>
     <string name="app_ops_make_phone_call">ביצוע שיחת טלפון</string>
@@ -65,12 +68,16 @@
     <string name="app_ops_read_phone_state">גש למצב הטלפון</string>
     <string name="app_ops_read_sms">קריאת הודעות ה-SMS שלך</string>
     <string name="app_ops_receive_sms">קבלת הודעת SMS</string>
+    <string name="app_ops_receive_emergency_broadcast">קבלת שידורי חירום</string>
     <string name="app_ops_record_audio">הקלטת שמע</string>
+    <string name="app_ops_request_delete_packages">בקשה למחיקת חבילות</string>
     <string name="app_ops_run_in_background">פועל ברקע</string>
+    <string name="app_ops_run_any_in_background">הפעל ברקע</string>
     <string name="app_ops_scan_wifi">סרוק רשתות Wi-Fi</string>
     <string name="app_ops_send_mms">שליחת הודעת MMS</string>
     <string name="app_ops_send_sms">שליחת הודעת SMS</string>
     <string name="app_ops_start_at_bootup">התחל פעילות בהדלקת המכשיר</string>
+    <string name="app_ops_start_foreground">הפעל בחזית</string>
     <string name="app_ops_su">קבלת גישת שורש (Root)</string>
     <string name="app_ops_toast_window">הצגת הודעות קופצות</string>
     <string name="app_ops_toggle_bluetooth">שינוי מצב ה-Bluetooth</string>
