@@ -344,7 +344,7 @@ public class DownloadManager {
      */
     public static final String[] UNDERLYING_COLUMNS = new String[] {
         DownloadManager.COLUMN_ID,
-        DownloadManager.COLUMN_LOCAL_FILENAME,
+        Downloads.Impl._DATA + " AS " + DownloadManager.COLUMN_LOCAL_FILENAME,
         DownloadManager.COLUMN_MEDIAPROVIDER_URI,
         DownloadManager.COLUMN_DESTINATION,
         DownloadManager.COLUMN_TITLE,
@@ -352,13 +352,13 @@ public class DownloadManager {
         DownloadManager.COLUMN_URI,
         DownloadManager.COLUMN_STATUS,
         DownloadManager.COLUMN_FILE_NAME_HINT,
-        DownloadManager.COLUMN_MEDIA_TYPE,
-        DownloadManager.COLUMN_TOTAL_SIZE_BYTES,
-        DownloadManager.COLUMN_LAST_MODIFIED_TIMESTAMP,
-        DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR,
+        Downloads.Impl.COLUMN_MIME_TYPE + " AS " + DownloadManager.COLUMN_MEDIA_TYPE,
+        Downloads.Impl.COLUMN_TOTAL_BYTES + " AS " + DownloadManager.COLUMN_TOTAL_SIZE_BYTES,
+        Downloads.Impl.COLUMN_LAST_MODIFICATION + " AS " + DownloadManager.COLUMN_LAST_MODIFIED_TIMESTAMP,
+        Downloads.Impl.COLUMN_CURRENT_BYTES + " AS " + DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR,
         DownloadManager.COLUMN_ALLOW_WRITE,
-        DownloadManager.COLUMN_LOCAL_URI,
-        DownloadManager.COLUMN_REASON
+        "'placeholder' AS " + DownloadManager.COLUMN_LOCAL_URI,
+        "'placeholder' AS " + DownloadManager.COLUMN_REASON
     };
 
     /**
