@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018-2020 The LineageOS Project
+ * Copyright (C) 2018-2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.R;
 
 import org.mokee.internal.logging.MoKeeMetricsLogger;
-import org.mokee.internal.util.PackageManagerUtils;
 
 import mokee.hardware.MoKeeHardwareManager;
 import mokee.providers.MoKeeSettings;
@@ -65,8 +64,7 @@ public class ReadingModeTile extends QSTileImpl<BooleanState> {
 
     @Override
     public boolean isAvailable() {
-        return !isWellbeingEnabled() &&
-                mHardware.isSupported(MoKeeHardwareManager.FEATURE_READING_ENHANCEMENT);
+        return mHardware.isSupported(MoKeeHardwareManager.FEATURE_READING_ENHANCEMENT);
     }
 
     @Override
@@ -112,10 +110,5 @@ public class ReadingModeTile extends QSTileImpl<BooleanState> {
 
     private boolean isReadingModeEnabled() {
         return mHardware.get(MoKeeHardwareManager.FEATURE_READING_ENHANCEMENT);
-    }
-
-    private boolean isWellbeingEnabled() {
-        return PackageManagerUtils.isAppEnabled(mContext,
-                mContext.getString(com.android.internal.R.string.config_defaultWellbeingPackage));
     }
 }
