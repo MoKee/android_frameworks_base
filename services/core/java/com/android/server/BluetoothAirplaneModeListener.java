@@ -127,7 +127,9 @@ class BluetoothAirplaneModeListener {
             }
             return;
         }
-        mAirplaneHelper.onAirplaneModeChanged(mBluetoothManager);
+        if (mAirplaneHelper != null) {
+            mAirplaneHelper.onAirplaneModeChanged(mBluetoothManager);
+        }
     }
 
     @VisibleForTesting
@@ -196,7 +198,8 @@ class BluetoothAirplaneModeListener {
 
         @VisibleForTesting
         public boolean isA2dpOrHearingAidConnected() {
-            return isA2dpConnected() || isHearingAidConnected();
+            return isA2dpConnected() || isHearingAidConnected() ||
+                   isBroadcastActive();
         }
 
         @VisibleForTesting
@@ -253,6 +256,12 @@ class BluetoothAirplaneModeListener {
                 return false;
             }
             return hearingAid.getConnectedDevices().size() > 0;
+        }
+
+        private boolean isBroadcastActive() {
+           boolean ret = false;
+           ret = mAdapter.isBroadcastActive();
+           return ret;
         }
     };
 }

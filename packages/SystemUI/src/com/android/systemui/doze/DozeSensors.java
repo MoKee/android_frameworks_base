@@ -46,6 +46,8 @@ import com.android.internal.logging.UiEvent;
 import com.android.internal.logging.UiEventLogger;
 import com.android.internal.logging.UiEventLoggerImpl;
 import com.android.internal.logging.nano.MetricsProto;
+import com.android.internal.util.IndentingPrintWriter;
+import com.android.systemui.R;
 import com.android.systemui.plugins.SensorManagerPlugin;
 import com.android.systemui.statusbar.phone.DozeParameters;
 import com.android.systemui.util.sensors.AsyncSensorManager;
@@ -80,6 +82,7 @@ public class DozeSensors {
     private long mDebounceFrom;
     private boolean mSettingRegistered;
     private boolean mListening;
+    private boolean mListeningTouchScreenSensors;
 
     @VisibleForTesting
     public enum DozeSensorsUiEvent implements UiEventLogger.UiEventEnum {
@@ -174,13 +177,15 @@ public class DozeSensors {
                         dozeLog),
         };
 
-        setProxListening(false);  // Don't immediately start listening when we register.
-        mProximitySensor.register(
-                proximityEvent -> {
-                    if (proximityEvent != null) {
-                        mProxCallback.accept(!proximityEvent.getBelow());
-                    }
-                });
+        if (context.getResources().getBoolean(R.bool.doze_proximity_sensor_supported)) {
+            setProxListening(false);  // Don't immediately start listening when we register.
+            mProximitySensor.register(
+                    proximityEvent -> {
+                        if (proximityEvent != null) {
+                            mProxCallback.accept(!proximityEvent.getBelow());
+                        }
+                    });
+        }
     }
 
     /**
@@ -222,22 +227,25 @@ public class DozeSensors {
     /**
      * If sensors should be registered and sending signals.
      */
-    public void setListening(boolean listen) {
-        if (mListening == listen) {
+    public void setListening(boolean listen, boolean includeTouchScreenSensors) {
+        if (mListening == listen && mListeningTouchScreenSensors == includeTouchScreenSensors) {
             return;
         }
         mListening = listen;
+        mListeningTouchScreenSensors = includeTouchScreenSensors;
         updateListening();
     }
 
     /**
      * Registers/unregisters sensors based on internal state.
      */
-    public void updateListening() {
+    private void updateListening() {
         boolean anyListening = false;
         for (TriggerSensor s : mSensors) {
-            s.setListening(mListening);
-            if (mListening) {
+            boolean listen = mListening
+                    && (!s.mRequiresTouchscreen || mListeningTouchScreenSensors);
+            s.setListening(listen);
+            if (listen) {
                 anyListening = true;
             }
         }
@@ -309,10 +317,14 @@ public class DozeSensors {
 
     /** Dump current state */
     public void dump(PrintWriter pw) {
+        pw.println("mListening=" + mListening);
+        pw.println("mListeningTouchScreenSensors=" + mListeningTouchScreenSensors);
+        IndentingPrintWriter idpw = new IndentingPrintWriter(pw, "  ");
+        idpw.increaseIndent();
         for (TriggerSensor s : mSensors) {
-            pw.println("  Sensor: " + s.toString());
+            idpw.println("Sensor: " + s.toString());
         }
-        pw.println("  ProxSensor: " + mProximitySensor.toString());
+        idpw.println("ProxSensor: " + mProximitySensor.toString());
     }
 
     /**
