@@ -421,7 +421,7 @@ public class BatteryMeterView extends LinearLayout implements
     private void updateShowPercent() {
         final boolean showing = mBatteryPercentView != null;
         final int showBatteryPercent = MoKeeSettings.System.getIntForUser(
-                getContext().getContentResolver(), STATUS_BAR_SHOW_BATTERY_PERCENT, 0, mUser);
+                getContext().getContentResolver(), STATUS_BAR_SHOW_BATTERY_PERCENT, 1, mUser);
         final boolean drawPercentInside = mShowPercentMode == MODE_DEFAULT &&
                 showBatteryPercent == 1;
         final boolean drawPercentOnly = mShowPercentMode == MODE_ESTIMATE ||
