@@ -77,10 +77,9 @@
     <string name="global_action_restart_download_progress">Reštartovanie do režimu sťahovania\u2026</string>
     <string name="global_action_restart_fastboot_progress">Reštartovanie do režimu fastboot\u2026</string>
     <string name="global_action_current_user">Aktuálny</string>
-    <string name="global_action_users">Používatelia</string>
     <string name="status_bar_camera">Fotoaparát</string>
-    <string name="status_bar_location">Poloha</string>
+    <string name="status_bar_location">Miesto</string>
     <string name="status_bar_microphone">Mikrofón</string>
     <string name="screen_pinning_description_no_navbar">Obsah bude pripnutý v zobrazení, až kým ho neuvoľníte. Uvoľníte ho stlačením a podržaním tlačidla Späť.</string>
-    <string name="screen_pinning_toast_no_navbar">Na odopnutie tejto obrazovky stlačte &amp; a podržte tlačidlo Späť</string>
+    <string name="screen_pinning_toast_no_navbar">Na odopnutie tejto obrazovky stlačte &amp; podržte tlačidlo Späť</string>
 </resources>

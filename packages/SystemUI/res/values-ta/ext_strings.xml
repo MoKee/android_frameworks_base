@@ -2,7 +2,7 @@
 <!--
 /**
  * Copyright (c) 2015, The CyanogenMod Project
- * Copyright (c) 2017-2019, The LineageOS Project
+ * Copyright (c) 2017-2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,4 +52,7 @@
     <string name="global_action_restart_recovery">மீட்டல்</string>
     <string name="global_action_restart_bootloader">பூட்லோடர்</string>
     <string name="global_action_restart_download">பதிவிறக்கம்</string>
+    <string name="global_action_current_user">நடப்பு</string>
+    <string name="status_bar_camera">கேமரா</string>
+    <string name="status_bar_location">இருப்பிடம்</string>
 </resources>

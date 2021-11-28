@@ -19,7 +19,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string-array name="bluetooth_a2dp_codec_titles_cm">
-        <item>Gunakan Pemilihan Sistem (Default)</item>
+        <item>Gunakan Pilihan Sistem (Bawaan)</item>
         <item>SBC</item>
         <item>AAC</item>
         <item>
@@ -37,7 +37,7 @@
             <xliff:g id="aptx_twsp">aptX™ TWS+</xliff:g> audio</item>
     </string-array>
     <string-array name="bluetooth_a2dp_codec_summaries_cm">
-        <item>Gunakan Pemilihan Sistem (Default)</item>
+        <item>Gunakan Pilihan Sistem (Bawaan)</item>
         <item>SBC</item>
         <item>AAC</item>
         <item>
@@ -55,13 +55,13 @@
             <xliff:g id="aptx_twsp">aptX™ TWS+</xliff:g> audio</item>
     </string-array>
     <string-array name="bluetooth_a2dp_codec_channel_mode_titles_cm">
-        <item>Gunakan Pemilihan Sistem (Default)</item>
+        <item>Gunakan Pilihan Sistem (Bawaan)</item>
         <item>Satu</item>
         <item>Stereo</item>
         <item>Dual Channel</item>
     </string-array>
     <string-array name="bluetooth_a2dp_codec_channel_mode_summaries_cm">
-        <item>Gunakan Pemilihan Sistem (Default)</item>
+        <item>Gunakan Pilihan Sistem (Bawaan)</item>
         <item>Satu</item>
         <item>Stereo</item>
         <item>Dual Channel</item>

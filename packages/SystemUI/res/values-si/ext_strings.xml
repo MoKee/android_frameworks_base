@@ -2,7 +2,7 @@
 <!--
 /**
  * Copyright (c) 2015, The CyanogenMod Project
- * Copyright (c) 2017-2019, The LineageOS Project
+ * Copyright (c) 2017-2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,4 +24,7 @@
     <string name="global_action_restart_system">පද්ධතිය</string>
     <string name="global_action_restart_recovery">ප්‍රතිසාධන ප්‍රකාරයට</string>
     <string name="global_action_restart_bootloader">ඇරඹුම් ප්‍රවේශකයට</string>
+    <string name="global_action_current_user">වර්තමාන</string>
+    <string name="status_bar_camera">කැමරාව</string>
+    <string name="status_bar_location">ස්ථානය</string>
 </resources>

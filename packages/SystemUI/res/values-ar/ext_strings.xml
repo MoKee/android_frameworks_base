@@ -2,7 +2,7 @@
 <!--
 /**
  * Copyright (c) 2015, The CyanogenMod Project
- * Copyright (c) 2017-2019, The LineageOS Project
+ * Copyright (c) 2017-2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -62,4 +62,9 @@
     <string name="global_action_restart_recovery_progress">إعادة التشغيل إلى وضع الإسترداد</string>
     <string name="global_action_restart_bootloader_progress">إعادة التشغيل إلى وضع البوتلودر</string>
     <string name="global_action_restart_download_progress">إعادة التشغيل الى وضع التنزيل</string>
+    <string name="global_action_current_user">الحالي</string>
+    <string name="status_bar_camera">الكاميرا</string>
+    <string name="status_bar_location">الموقع</string>
+    <string name="screen_pinning_description_no_navbar">هذا يجعلها في العرض حتى تقوم بإلغاء التثبيت. اضغط مطولاً على الصفحة الرئيسية مع زر الطاقة في نفس الوقت لإلغاء التثبيت.</string>
+    <string name="screen_pinning_toast_no_navbar">لإلغاء تثبيت هذه الشاشة، اضغط &amp; مع الاستمرار بالضغط على زر الرجوع</string>
 </resources>

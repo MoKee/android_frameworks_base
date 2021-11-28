@@ -2,7 +2,7 @@
 <!--
 /**
  * Copyright (c) 2015, The CyanogenMod Project
- * Copyright (c) 2017-2019, The LineageOS Project
+ * Copyright (c) 2017-2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,4 +59,8 @@
     <string name="global_action_restart_recovery_progress">रिकवरी मोड\u2026 के लिए फोन को पुनः प्रारम्भ कर रहा है</string>
     <string name="global_action_restart_bootloader_progress">बूटलोडर मोड\u2026 के लिए फोन को पुनः प्रारम्भ कर रहा है</string>
     <string name="global_action_restart_download_progress">डाउनलोड मोड\u2026 के लिए फोन को पुनः प्रारम्भ कर रहा है</string>
+    <string name="global_action_current_user">वर्तमान</string>
+    <string name="status_bar_camera">कैमरा</string>
+    <string name="status_bar_location">स्थान</string>
+    <string name="screen_pinning_description_no_navbar">यह इसे तब तक दिखाता रहेगा जब तक आप अनपिन नहीं करते। अनपिन करने के लिए बैक बटन को कुछ देर दबाएँ &amp; रखें।</string>
 </resources>

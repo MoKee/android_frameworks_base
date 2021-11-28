@@ -62,7 +62,7 @@
     <string name="global_action_restart_bootloader_progress">Abiarazle modura berrabiarazten\u2026</string>
     <string name="global_action_restart_download_progress">Deskarga modura berrabiarazten\u2026</string>
     <string name="global_action_current_user">Unekoa</string>
+    <string name="status_bar_camera">Kamera</string>
     <string name="status_bar_location">Kokalekua</string>
     <string name="screen_pinning_description_no_navbar">Honek bistan mantenduko du desiltzatzen duzun arte. Sakatu eta mantendu atzera botoia desiltzatzeko.</string>
-    <string name="screen_pinning_toast_no_navbar">Pantaila hau desiltzatzeko sakatu eta mantendu atzera botoia</string>
 </resources>

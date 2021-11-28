@@ -72,10 +72,6 @@
     <string name="global_action_restart_bootloader_progress">Opnij opstarte nei bootloadermodus\u2026</string>
     <string name="global_action_restart_download_progress">Opnij opstarte nei downloadmodus\u2026</string>
     <string name="global_action_restart_fastboot_progress">Opnij opstarte nei fastbootddmodus\u2026</string>
-    <string name="global_action_current_user">Aktuele</string>
-    <string name="status_bar_camera">Kamera</string>
+    <string name="global_action_current_user">Praegune</string>
     <string name="status_bar_location">Lokaasje</string>
-    <string name="status_bar_microphone">Mikrofoan</string>
-    <string name="screen_pinning_description_no_navbar">It skerm bliuwt sichtber oant jo it losmeitsje. Hâld ‘Tebek’ yndrukt om it los te meitsjen.</string>
-    <string name="screen_pinning_toast_no_navbar">Hâld ‘Tebek’ yndrukt om dit skerm te ûntskoatteljen</string>
 </resources>

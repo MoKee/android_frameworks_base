@@ -23,5 +23,4 @@
     <string name="accessibility_quick_settings_profiles_changed_off">Profili su isključeni.</string>
     <string name="accessibility_quick_settings_profiles_changed">Profil promjenjen u <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
     <string name="global_action_restart_system">Sistem</string>
-    <string name="status_bar_location">Lokacija</string>
 </resources>

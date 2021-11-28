@@ -2,7 +2,7 @@
 <!--
 /**
  * Copyright (c) 2015, The CyanogenMod Project
- * Copyright (c) 2017-2019, The LineageOS Project
+ * Copyright (c) 2017-2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,4 +48,7 @@
     <string name="accessibility_dpad_right">కర్సర్ కుడికి</string>
     <string name="global_action_restart_recovery">పునరుద్ధరణ</string>
     <string name="global_action_restart_bootloader">బూట్‌లోడర్</string>
+    <string name="global_action_current_user">ప్రస్తుతం</string>
+    <string name="status_bar_camera">కెమెరా</string>
+    <string name="status_bar_location">స్థానం</string>
 </resources>

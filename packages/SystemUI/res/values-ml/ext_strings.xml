@@ -2,7 +2,7 @@
 <!--
 /**
  * Copyright (c) 2015, The CyanogenMod Project
- * Copyright (c) 2017-2019, The LineageOS Project
+ * Copyright (c) 2017-2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,4 +49,7 @@
     <string name="global_action_restart_recovery">റിക്കവറി</string>
     <string name="global_action_restart_bootloader">ബൂട്ട്ലോഡര്‍</string>
     <string name="global_action_restart_download">ഡൗൺലോഡ്</string>
+    <string name="global_action_current_user">നിലവിലുള്ളത്</string>
+    <string name="status_bar_camera">ക്യാമറ</string>
+    <string name="status_bar_location">ലൊക്കേഷൻ</string>
 </resources>

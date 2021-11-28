@@ -2,7 +2,7 @@
 <!--
 /**
  * Copyright (c) 2015, The CyanogenMod Project
- * Copyright (c) 2017-2019, The LineageOS Project
+ * Copyright (c) 2017-2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,8 @@
     <string name="accessibility_quick_settings_heads_up_on">Heads up bật.</string>
     <string name="accessibility_quick_settings_heads_up_changed_off">Heads up đã tắt.</string>
     <string name="accessibility_quick_settings_heads_up_changed_on">Heads up đã bật.</string>
+    <string name="global_screenshot_selector_capture_description">Chụp ảnh một phần màn hình</string>
+    <string name="global_screenshot_selector_cancel_description">Hủy bỏ chụp ảnh một phần màn hình</string>
     <string name="quick_settings_powershare_label">PowerShare không dây</string>
     <string name="quick_settings_powershare_off_powersave_label">PowerShare không dây tắt\nTiết kiệm pin</string>
     <string name="quick_settings_powershare_off_low_battery_label">PowerShare không dây tắt\nPin quá yếu</string>
@@ -60,8 +62,10 @@
     <string name="vpn_credentials_username">Tên người dùng</string>
     <string name="vpn_credentials_password">Mật khẩu</string>
     <string name="vpn_credentials_dialog_connect">Kết nối</string>
+    <string name="quick_settings_anti_flicker">Chống nháy ánh sáng</string>
     <string name="accessibility_dpad_left">Trỏ trái</string>
     <string name="accessibility_dpad_right">Trỏ phải</string>
+    <string name="global_action_restart_more">Khởi động lại\u2026</string>
     <string name="global_action_restart_system">Hệ thống</string>
     <string name="global_action_restart_recovery">Chế độ phục hồi</string>
     <string name="global_action_restart_bootloader">Trình nạp khởi động</string>
@@ -72,4 +76,10 @@
     <string name="global_action_restart_bootloader_progress">Đang khởi động lại vào chế độ trình nạp khởi động\u2026</string>
     <string name="global_action_restart_download_progress">Đang khởi động lại vào chế độ tải về\u2026</string>
     <string name="global_action_restart_fastboot_progress">Đang khởi động vào fastboot</string>
+    <string name="global_action_current_user">Hiện tại</string>
+    <string name="status_bar_camera">Máy ảnh</string>
+    <string name="status_bar_location">Vị trí</string>
+    <string name="status_bar_microphone">Micrô</string>
+    <string name="screen_pinning_description_no_navbar">Thao tác này sẽ duy trì hiển thị màn hình cho đến khi bạn bỏ ghim. Chạm &amp; giữ Quay lại để bỏ ghim.</string>
+    <string name="screen_pinning_toast_no_navbar">Để bỏ ghim màn hình này, chạm &amp; giữ nút Quay lại</string>
 </resources>
