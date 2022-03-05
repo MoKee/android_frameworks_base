@@ -381,6 +381,8 @@ import com.android.server.utils.TimingsTraceAndSlog;
 import com.android.server.wm.ActivityTaskManagerInternal;
 import com.mokee.security.SecurityUtils;
 
+import com.nvidia.NvAppProfileService;
+
 import dalvik.system.CloseGuard;
 import dalvik.system.VMRuntime;
 
@@ -1154,6 +1156,8 @@ public class PackageManagerService extends IPackageManager.Stub
     final SparseArray<InstallParams> mPendingEnableRollback = new SparseArray<>();
 
     final PackageInstallerService mInstallerService;
+
+    private NvAppProfileService mAppProfileService;
 
     final ArtManagerService mArtManagerService;
 
@@ -2890,6 +2894,13 @@ public class PackageManagerService extends IPackageManager.Stub
             @Override
             public boolean hasFeature(String feature) {
                 return PackageManagerService.this.hasSystemFeature(feature, 0);
+            }
+
+            public NvAppProfileService getAppProfileService() {
+                if (mAppProfileService == null) {
+                    mAppProfileService = new NvAppProfileService(mContext);
+                }
+                return mAppProfileService;
             }
         };
 
@@ -5191,6 +5202,10 @@ public class PackageManagerService extends IPackageManager.Stub
                             InstantAppRegistry.DEFAULT_UNINSTALLED_INSTANT_APP_MIN_CACHE_PERIOD))) {
                 return;
             }
+
+            // 12. Clear temp install session files
+            mInstallerService.freeStageDirs(volumeUuid);
+
         } else {
             try {
                 mInstaller.freeCache(volumeUuid, bytes, 0, 0);
