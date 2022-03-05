@@ -21,14 +21,14 @@
     <string-array name="bluetooth_a2dp_codec_titles_cm">
         <item>Sistem seçimini kullan (Varsayılan)</item>
         <item>SBC</item>
-        <item>AAC</item>
+        <item>AACE</item>
         <item><xliff:g id="qualcomm">Qualcomm®</xliff:g> <xliff:g id="aptx">aptX™</xliff:g> ses</item>
         <item><xliff:g id="qualcomm">Qualcomm®</xliff:g> <xliff:g id="aptx_hd">aptX™ HD</xliff:g> ses</item>
         <item>LDAC</item>
         <item><xliff:g id="qualcomm">Qualcomm®</xliff:g> <xliff:g id="aptx_adaptive">aptX™ Uyarlanabilir</xliff:g> ses</item>
         <item><xliff:g id="qualcomm">Qualcomm®</xliff:g> <xliff:g id="aptx_twsp">aptX™ TWS+</xliff:g> ses</item>
-        <item>Enable Optional Codecs</item>
-        <item>Disable Optional Codecs</item>
+        <item>İsteğe Bağlı Kodekleri Etkinleştir</item>
+        <item>İsteğe Bağlı Kodekleri Devre Dışı Bırak</item>
     </string-array>
     <string-array name="bluetooth_a2dp_codec_summaries_cm">
         <item>Sistem seçimini kullan (Varsayılan)</item>
@@ -37,9 +37,9 @@
         <item><xliff:g id="qualcomm">Qualcomm®</xliff:g> <xliff:g id="aptx">aptX™</xliff:g> ses</item>
         <item><xliff:g id="qualcomm">Qualcomm®</xliff:g> <xliff:g id="aptx_hd">aptX™ HD</xliff:g> ses</item>
         <item>LDAC</item>
-        <item><xliff:g id="qualcomm">Qualcomm®</xliff:g> <xliff:g id="aptx_adaptive">aptX™ Uyarlanabilir</xliff:g> ses</item>
         <item><xliff:g id="qualcomm">Qualcomm®</xliff:g> <xliff:g id="aptx_twsp">aptX™ TWS+</xliff:g> ses</item>
-        <item>Enable Optional Codecs</item>
-        <item>Disable Optional Codecs</item>
+        <item><xliff:g id="qualcomm">Qualcomm®</xliff:g> <xliff:g id="aptx_twsp">aptX™ TWS+</xliff:g> ses</item>
+        <item>İsteğe Bağlı Kodekleri Etkinleştir</item>
+        <item>İsteğe Bağlı Kodekleri Etkinleştir</item>
     </string-array>
 </resources>

@@ -22,40 +22,24 @@
         <item>使用系統選擇（預設）</item>
         <item>SBC</item>
         <item>AAC</item>
-        <item>
-            <xliff:g id="qualcomm">Qualcomm®</xliff:g>
-            <xliff:g id="aptx">aptX™</xliff:g> audio</item>
-        <item>
-            <xliff:g id="qualcomm">Qualcomm®</xliff:g>
-            <xliff:g id="aptx_hd">aptX™ HD</xliff:g> audio</item>
+        <item>Qualcomm® aptX™ 音訊</item>
+        <item>Qualcomm® aptX™ HD 音訊</item>
         <item>LDAC</item>
-        <item>
-            <xliff:g id="qualcomm">Qualcomm®</xliff:g>
-            <xliff:g id="aptx_adaptive">aptX™ Adaptive</xliff:g> audio</item>
-        <item>
-            <xliff:g id="qualcomm">Qualcomm®</xliff:g>
-            <xliff:g id="aptx_twsp">aptX™ TWS+</xliff:g> audio</item>
-        <item>Enable Optional Codecs</item>
-        <item>Disable Optional Codecs</item>
+        <item>Qualcomm® aptX™ Adaptive 音訊</item>
+        <item>Qualcomm® aptX™ TWS+ 音訊</item>
+        <item>啟用可選編解碼器</item>
+        <item>禁用可選編解碼器</item>
     </string-array>
     <string-array name="bluetooth_a2dp_codec_summaries_cm">
         <item>使用系統選擇（預設）</item>
         <item>SBC</item>
         <item>AAC</item>
-        <item>
-            <xliff:g id="qualcomm">Qualcomm®</xliff:g>
-            <xliff:g id="aptx">aptX™</xliff:g> audio</item>
-        <item>
-            <xliff:g id="qualcomm">Qualcomm®</xliff:g>
-            <xliff:g id="aptx_hd">aptX™ HD</xliff:g> audio</item>
+        <item>Qualcomm® aptX™ 音訊</item>
+        <item>Qualcomm® aptX™ HD 音訊</item>
         <item>LDAC</item>
-        <item>
-            <xliff:g id="qualcomm">Qualcomm®</xliff:g>
-            <xliff:g id="aptx_adaptive">aptX™ Adaptive</xliff:g> audio</item>
-        <item>
-            <xliff:g id="qualcomm">Qualcomm®</xliff:g>
-            <xliff:g id="aptx_twsp">aptX™ TWS+</xliff:g> audio</item>
-        <item>Enable Optional Codecs</item>
-        <item>Disable Optional Codecs</item>
+        <item><xliff:g id="qualcomm">Qualcomm®</xliff:g><xliff:g id="aptx_adaptive">aptX™ Adaptive</xliff:g>音訊</item>
+        <item><xliff:g id="qualcomm">Qualcomm®</xliff:g><xliff:g id="aptx_twsp">aptX™ TWS+</xliff:g>音訊</item>
+        <item>啟用可選編解碼器</item>
+        <item>禁用可選編解碼器</item>
     </string-array>
 </resources>
