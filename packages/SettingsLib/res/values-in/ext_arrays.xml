@@ -22,40 +22,24 @@
         <item>Gunakan Pilihan Sistem (Bawaan)</item>
         <item>SBC</item>
         <item>AAC</item>
-        <item>
-            <xliff:g id="qualcomm">Qualcomm®</xliff:g>
-            <xliff:g id="aptx">aptX™</xliff:g> audio</item>
-        <item>
-            <xliff:g id="qualcomm">Qualcomm®</xliff:g>
-            <xliff:g id="aptx_hd">aptX™ HD</xliff:g> audio</item>
+        <item>Qualcomm® aptX™ audio</item>
+        <item>Qualcomm® aptX™ HD audio</item>
         <item>LDAC</item>
-        <item>
-            <xliff:g id="qualcomm">Qualcomm®</xliff:g>
-            <xliff:g id="aptx_adaptive">aptX™ Adaptive</xliff:g> audio</item>
-        <item>
-            <xliff:g id="qualcomm">Qualcomm®</xliff:g>
-            <xliff:g id="aptx_twsp">aptX™ TWS+</xliff:g> audio</item>
-        <item>Enable Optional Codecs</item>
-        <item>Disable Optional Codecs</item>
+        <item>Qualcomm® aptX™ Adaptive audio</item>
+        <item>Qualcomm® aptX™ TWS+ audio</item>
+        <item>Aktifkan Codec Opsional</item>
+        <item>Nonaktifkan Codec Opsional</item>
     </string-array>
     <string-array name="bluetooth_a2dp_codec_summaries_cm">
         <item>Gunakan Pilihan Sistem (Bawaan)</item>
         <item>SBC</item>
         <item>AAC</item>
-        <item>
-            <xliff:g id="qualcomm">Qualcomm®</xliff:g>
-            <xliff:g id="aptx">aptX™</xliff:g> audio</item>
-        <item>
-            <xliff:g id="qualcomm">Qualcomm®</xliff:g>
-            <xliff:g id="aptx_hd">aptX™ HD</xliff:g> audio</item>
+        <item>Qualcomm® aptX™ audio</item>
+        <item>Qualcomm® aptX™ HD audio</item>
         <item>LDAC</item>
-        <item>
-            <xliff:g id="qualcomm">Qualcomm®</xliff:g>
-            <xliff:g id="aptx_adaptive">aptX™ Adaptive</xliff:g> audio</item>
-        <item>
-            <xliff:g id="qualcomm">Qualcomm®</xliff:g>
-            <xliff:g id="aptx_twsp">aptX™ TWS+</xliff:g> audio</item>
-        <item>Enable Optional Codecs</item>
-        <item>Disable Optional Codecs</item>
+        <item>Qualcomm® aptX™ Adaptive audio</item>
+        <item>Qualcomm® aptX™ TWS+ audio</item>
+        <item>Aktifkan Codec Opsional</item>
+        <item>Nonaktifkan Codec Opsional</item>
     </string-array>
 </resources>

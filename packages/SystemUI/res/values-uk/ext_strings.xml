@@ -69,6 +69,9 @@
     <string name="vpn_credentials_username">Ім‘я користувача</string>
     <string name="vpn_credentials_password">Пароль</string>
     <string name="vpn_credentials_dialog_connect">Підключитися</string>
+    <string name="quick_settings_aod_label">Завжди включений екран</string>
+    <string name="quick_settings_aod_off_powersave_label">Екран сповіщень вимкнуте.\nЕнергозаощадження</string>
+    <string name="quick_settings_powershare_label">Бездротовий зворотній заряд</string>
     <string name="status_bar_battery">Батарея</string>
     <string name="status_bar_camera">Камера</string>
     <string name="status_bar_location">Розташування</string>

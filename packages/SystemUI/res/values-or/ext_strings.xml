@@ -18,6 +18,7 @@
  */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="global_action_restart_system">ସିଷ୍ଟମ୍</string>
     <string name="global_action_restart_recovery">ପୁନଃପ୍ରାପ୍ତ କରିବା</string>
     <string name="global_action_restart_bootloader">ବୁଟ୍‍ଲୋଡର୍‍</string>
     <string name="accessibility_dpad_left">କର୍ସର୍‍ ବାମ</string>
@@ -48,6 +49,7 @@
     <string name="quick_settings_usb_tether_label">USB ଟିଥରିଂ</string>
     <string name="quick_settings_volume_panel_label">ଭୋଲ୍ୟୁମ୍‍ ପ୍ୟାନେଲ୍‍</string>
     <string name="vpn_credentials_password">ପାସୱାର୍ଡ୍</string>
+    <string name="status_bar_battery">ବ୍ୟାଟେରୀ</string>
     <string name="status_bar_camera">କ୍ୟାମେରା</string>
     <string name="status_bar_location">ଅବସ୍ଥାନ</string>
 </resources>
