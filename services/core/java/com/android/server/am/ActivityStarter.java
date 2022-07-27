@@ -129,6 +129,8 @@ import java.util.ArrayList;
  * an activity and associated task and stack.
  */
 class ActivityStarter {
+    public static final int PID_NULL = 0;
+
     private static final String TAG = TAG_WITH_CLASS_NAME ? "ActivityStarter" : TAG_AM;
     private static final String TAG_RESULTS = TAG + POSTFIX_RESULTS;
     private static final String TAG_FOCUS = TAG + POSTFIX_FOCUS;
@@ -737,12 +739,24 @@ class ActivityStarter {
                 UserHandle.CURRENT);
     }
 
+  final int startActivityMayWait(IApplicationThread caller, int callingUid, String callingPackage,
+            Intent intent, String resolvedType, IVoiceInteractionSession voiceSession,
+            IVoiceInteractor voiceInteractor, IBinder resultTo, String resultWho, int requestCode,
+            int startFlags, ProfilerInfo profilerInfo, IActivityManager.WaitResult outResult,
+            Configuration config, Bundle bOptions, boolean ignoreTargetSecurity, int userId,
+            IActivityContainer iContainer, TaskRecord inTask) {
+        return startActivityMayWait(caller, callingUid, PID_NULL, UserHandle.USER_NULL,
+             callingPackage, intent, resolvedType, voiceSession, voiceInteractor, resultTo,
+             resultWho, requestCode, startFlags, profilerInfo, outResult, config, bOptions,
+             ignoreTargetSecurity, userId, iContainer, inTask);
+    }
+
     final int startActivityMayWait(IApplicationThread caller, int callingUid,
-            String callingPackage, Intent intent, String resolvedType,
-            IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,
-            IBinder resultTo, String resultWho, int requestCode, int startFlags,
-            ProfilerInfo profilerInfo, IActivityManager.WaitResult outResult, Configuration config,
-            Bundle bOptions, boolean ignoreTargetSecurity, int userId,
+            int requestRealCallingPid, int requestRealCallingUid, String callingPackage,
+            Intent intent, String resolvedType, IVoiceInteractionSession voiceSession,
+            IVoiceInteractor voiceInteractor, IBinder resultTo, String resultWho, int requestCode,
+            int startFlags, ProfilerInfo profilerInfo, IActivityManager.WaitResult outResult,
+            Configuration config, Bundle bOptions, boolean ignoreTargetSecurity, int userId,
             IActivityContainer iContainer, TaskRecord inTask) {
         // Refuse possible leaked file descriptors
         if (intent != null && intent.hasFileDescriptors()) {
@@ -816,8 +830,13 @@ class ActivityStarter {
                 e.printStackTrace();
             }
 
-            final int realCallingPid = Binder.getCallingPid();
-            final int realCallingUid = Binder.getCallingUid();
+            final int realCallingPid = requestRealCallingPid != PID_NULL
+                ? requestRealCallingPid
+                : Binder.getCallingPid();
+            final int realCallingUid = requestRealCallingUid != UserHandle.USER_NULL
+                ? requestRealCallingUid
+                : Binder.getCallingUid();
+
             int callingPid;
             if (callingUid >= 0) {
                 callingPid = -1;
@@ -827,6 +846,7 @@ class ActivityStarter {
             } else {
                 callingPid = callingUid = -1;
             }
+
 
             final ActivityStack stack;
             if (container == null || container.mStack.isOnHomeDisplay()) {
@@ -969,8 +989,16 @@ class ActivityStarter {
     }
 
     final int startActivities(IApplicationThread caller, int callingUid, String callingPackage,
-            Intent[] intents, String[] resolvedTypes, IBinder resultTo,
-            Bundle bOptions, int userId) {
+            Intent[] intents, String[] resolvedTypes, IBinder resultTo, Bundle bOptions,
+            int userId) {
+        return startActivities(caller, callingUid, PID_NULL, UserHandle.USER_NULL, callingPackage,
+             intents, resolvedTypes, resultTo, bOptions, userId);
+    }
+
+    final int startActivities(IApplicationThread caller, int callingUid,
+            int incomingRealCallingPid, int incomingRealCallingUid, String callingPackage,
+            Intent[] intents, String[] resolvedTypes, IBinder resultTo, Bundle bOptions,
+            int userId) {
         if (intents == null) {
             throw new NullPointerException("intents is null");
         }
@@ -981,8 +1009,13 @@ class ActivityStarter {
             throw new IllegalArgumentException("intents are length different than resolvedTypes");
         }
 
-        final int realCallingPid = Binder.getCallingPid();
-        final int realCallingUid = Binder.getCallingUid();
+        final int realCallingPid = incomingRealCallingPid != PID_NULL
+                     ? incomingRealCallingPid
+                     : Binder.getCallingPid();
+
+        final int realCallingUid = incomingRealCallingUid != UserHandle.USER_NULL
+                     ? incomingRealCallingUid
+                     : Binder.getCallingUid();
 
         int callingPid;
         if (callingUid >= 0) {
@@ -993,6 +1026,8 @@ class ActivityStarter {
         } else {
             callingPid = callingUid = -1;
         }
+        boolean forceNewTask = false;
+        final int filterCallingUid = callingUid >= 0 ? callingUid : realCallingUid;
         final long origId = Binder.clearCallingIdentity();
         try {
             synchronized (mService) {
@@ -1012,6 +1047,9 @@ class ActivityStarter {
 
                     // Don't modify the client's object!
                     intent = new Intent(intent);
+                    if (forceNewTask) {
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    }
 
                     // Collect information about the target of the Intent.
                     ActivityInfo aInfo = mSupervisor.resolveActivity(intent, resolvedTypes[i], 0,
@@ -1037,7 +1075,17 @@ class ActivityStarter {
                         return res;
                     }
 
-                    resultTo = outActivity[0] != null ? outActivity[0].appToken : null;
+                    final ActivityRecord started = outActivity[0];
+                    if (started != null && started.getUid() == filterCallingUid) {
+                        // Only the started activity which has the same uid as the source caller can
+                        // be the caller of next activity.
+                        resultTo = started.appToken;
+                        forceNewTask = false;
+                    } else {
+                        // Different apps not adjacent to the caller are forced to be new task.
+                        resultTo = null;
+                        forceNewTask = true;
+                    }
                 }
             }
         } finally {
